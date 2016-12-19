@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "TeTabBarViewController.h"
+// #import "TeTabBarViewController.h"
 
 
 #import "FirstStarView.h"
@@ -15,6 +15,11 @@
 
 #import <AlipaySDK/AlipaySDK.h>
 #import "WXApi.h"
+
+#import "FSTabBarController.h"
+
+// FS
+#import "AppDelegate+FS.h"
 
 @interface AppDelegate ()
 
@@ -25,6 +30,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    // 全局设置
+    [self fsGlobalSetup];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     float sysVersion = [[UIDevice currentDevice] systemVersion].floatValue;
@@ -34,8 +42,11 @@
     }
     [self.window makeKeyAndVisible];
 
-        TeTabBarViewController *rootVC = [[TeTabBarViewController alloc] init];
-        self.window.rootViewController = rootVC;
+    /*
+    TeTabBarViewController *rootVC = [[TeTabBarViewController alloc] init];
+     */
+    FSTabBarController *tabBarController = [[FSTabBarController alloc] init];
+        self.window.rootViewController = tabBarController;
     
     // 友盟Key
     [UMSocialData setAppKey:@"57e87c1667e58ee0380015f8"];

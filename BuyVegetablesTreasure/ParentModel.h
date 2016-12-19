@@ -10,4 +10,7 @@
 
 @interface ParentModel : NSObject
 
+- (instancetype)initWithDict:(NSDictionary *)dict;
++ (instancetype)modelWithDict:(NSDictionary *)dict;
+
 @end
