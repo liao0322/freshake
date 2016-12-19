@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>644A0C51-384C-45C8-B358-14CE18D4D1CC</string>
+	<key>IDESourceControlProjectName</key>
+	<string>BuyVegetablesTreasure</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>e63db5ca-34a0-11e4-88f6-b942e5cb7680++817</key>
+		<string>svn://192.168.1.60/mall/04-Apps/01-Code/02-Trunk/ios/BuyVegetablesTreasure</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>BuyVegetablesTreasure.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>e63db5ca-34a0-11e4-88f6-b942e5cb7680++817</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectRepositoryRootDictionary</key>
+	<dict>
+		<key>e63db5ca-34a0-11e4-88f6-b942e5cb7680++817</key>
+		<string>svn://192.168.1.60</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>svn://192.168.1.60/mall/04-Apps/01-Code/02-Trunk/ios/BuyVegetablesTreasure/BuyVegetablesTreasure.xcodeproj</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>e63db5ca-34a0-11e4-88f6-b942e5cb7680++817</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.subversion</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>e63db5ca-34a0-11e4-88f6-b942e5cb7680++817</string>
+			<key>IDESourceControlWCCName</key>
+			<string>BuyVegetablesTreasure</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -1,0 +1,54 @@
+{
+
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "e63db5ca-34a0-11e4-88f6-b942e5cb7680++817+++F7967A8",
+
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+    "b1658d33-6806-1640-8609-cec4af5f86a7++3875+++FF27033" : {
+
+    },
+    "b1658d33-6806-1640-8609-cec4af5f86a7++5380+++3F99706" : {
+
+
+    "e63db5ca-34a0-11e4-88f6-b942e5cb7680++817+++F7967A8" : {
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+
+    "b1658d33-6806-1640-8609-cec4af5f86a7++3875+++FF27033" : 0,
+    "b1658d33-6806-1640-8609-cec4af5f86a7++5380+++3F99706" : 0,
+    "e63db5ca-34a0-11e4-88f6-b942e5cb7680++817+++F7967A8" : 0
+
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "644A0C51-384C-45C8-B358-14CE18D4D1CC",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+
+    "b1658d33-6806-1640-8609-cec4af5f86a7++3875+++FF27033" : "BuyVegetablesTreasure",
+    "b1658d33-6806-1640-8609-cec4af5f86a7++5380+++3F99706" : "BuyVegetablesTreasure",
+    "e63db5ca-34a0-11e4-88f6-b942e5cb7680++817+++F7967A8" : "P2NInformPub\/"
+
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "BuyVegetablesTreasure",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "BuyVegetablesTreasure.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "svn:\/\/192.168.1.60",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "b1658d33-6806-1640-8609-cec4af5f86a7++3875+++FF27033"
+
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "svn:\/\/192.168.1.60",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "b1658d33-6806-1640-8609-cec4af5f86a7++5380+++3F99706"
+
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "svn:\/\/192.168.1.60",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "e63db5ca-34a0-11e4-88f6-b942e5cb7680++817+++F7967A8"
+
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SelectCityView">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="256"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NOO-ew-LtF">
+                    <rect key="frame" x="0.0" y="40" width="600" height="216"/>
+                    <color key="backgroundColor" red="0.77254901960784317" green="0.79607843137254897" blue="0.82352941176470584" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="216" id="XlP-Oa-x5O"/>
+                    </constraints>
+                </pickerView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v0g-nW-1Y7">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="40"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择城市" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C3l-k6-dMi">
+                            <rect key="frame" x="250" y="10" width="100" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="Aun-Da-Y2Y"/>
+                                <constraint firstAttribute="width" constant="100" id="GjQ-sL-PEv"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" red="0.6705882353" green="0.67450980390000004" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j6x-yR-JYp">
+                            <rect key="frame" x="10" y="5" width="30" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="5zK-uo-5o4"/>
+                                <constraint firstAttribute="width" constant="30" id="w5f-wr-H3b"/>
+                            </constraints>
+                            <state key="normal" title="取消"/>
+                            <connections>
+                                <action selector="cancelClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="s3A-hJ-dWJ"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zNm-Qx-OgS">
+                            <rect key="frame" x="560" y="5" width="30" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="FiG-mx-Sap"/>
+                                <constraint firstAttribute="width" constant="30" id="ay9-bV-cMU"/>
+                            </constraints>
+                            <state key="normal" title="确定"/>
+                            <connections>
+                                <action selector="determineClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="9LQ-iL-6AY"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="zNm-Qx-OgS" firstAttribute="top" secondItem="v0g-nW-1Y7" secondAttribute="top" constant="5" id="1FC-3v-obb"/>
+                        <constraint firstItem="j6x-yR-JYp" firstAttribute="leading" secondItem="v0g-nW-1Y7" secondAttribute="leading" constant="10" id="20j-Un-oLj"/>
+                        <constraint firstItem="C3l-k6-dMi" firstAttribute="centerY" secondItem="v0g-nW-1Y7" secondAttribute="centerY" id="DVV-8X-S0m"/>
+                        <constraint firstAttribute="trailing" secondItem="zNm-Qx-OgS" secondAttribute="trailing" constant="10" id="k7P-Ua-6bj"/>
+                        <constraint firstItem="C3l-k6-dMi" firstAttribute="centerX" secondItem="v0g-nW-1Y7" secondAttribute="centerX" id="r2X-54-aqU"/>
+                        <constraint firstAttribute="height" constant="40" id="rEf-nJ-dYe"/>
+                        <constraint firstItem="j6x-yR-JYp" firstAttribute="top" secondItem="v0g-nW-1Y7" secondAttribute="top" constant="5" id="xP4-Za-6yO"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="v0g-nW-1Y7" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="DY2-98-uK5"/>
+                <constraint firstItem="v0g-nW-1Y7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Gn7-GN-0o9"/>
+                <constraint firstItem="NOO-ew-LtF" firstAttribute="top" secondItem="v0g-nW-1Y7" secondAttribute="bottom" id="e3O-ws-EXb"/>
+                <constraint firstAttribute="trailing" secondItem="NOO-ew-LtF" secondAttribute="trailing" id="frx-Mh-gKu"/>
+                <constraint firstItem="NOO-ew-LtF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="nEL-W6-WaR"/>
+                <constraint firstAttribute="trailing" secondItem="v0g-nW-1Y7" secondAttribute="trailing" id="pZi-xs-42z"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="selectCityPickerView" destination="NOO-ew-LtF" id="iVr-MX-VyZ"/>
+            </connections>
+            <point key="canvasLocation" x="393" y="370"/>
+        </view>
+    </objects>
+</document>
