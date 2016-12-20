@@ -302,11 +302,13 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
     
     //[self.collectionView selectItemAtIndexPath:willSelectIndexPath animated:YES scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
     
-    
-    if (self.lastTVY > scrollView.contentOffset.y || scrollView.contentOffset.y == 0) { // 往下
-        [self setTabBarHidden:NO];
-    } else { // 往上
-        [self setTabBarHidden:YES];
+    if (scrollView.contentOffset.y > 0) {
+        
+        if (self.lastTVY > scrollView.contentOffset.y) { // 往下
+            [self setTabBarHidden:NO];
+        } else { // 往上
+            [self setTabBarHidden:YES];
+        }
     }
     self.lastTVY = scrollView.contentOffset.y;
     
