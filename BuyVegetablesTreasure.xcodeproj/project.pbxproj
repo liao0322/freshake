@@ -916,7 +916,6 @@
 		FECDE73B1E07C2C80083E11B /* FSSearchHeaderTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FECDE6D31E07C2C70083E11B /* FSSearchHeaderTitleView.xib */; };
 		FECDE73C1E07C2C80083E11B /* FSSearchResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FECDE6D61E07C2C70083E11B /* FSSearchResultsViewController.m */; };
 		FECDE73D1E07C2C80083E11B /* FSSearchAssociationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FECDE6D91E07C2C70083E11B /* FSSearchAssociationViewController.m */; };
-		FECDE73E1E07C2C80083E11B /* FSShoppingCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FECDE6DE1E07C2C70083E11B /* FSShoppingCartViewController.m */; };
 		FECDE73F1E07C2C80083E11B /* FSHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FECDE6E61E07C2C70083E11B /* FSHomeViewController.m */; };
 		FECDE7401E07C2C80083E11B /* XFEqualSpaceFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = FECDE6EA1E07C2C70083E11B /* XFEqualSpaceFlowLayout.m */; };
 		FECDE7411E07C2C80083E11B /* FSCommodityCVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FECDE6EE1E07C2C70083E11B /* FSCommodityCVCell.m */; };
@@ -937,6 +936,7 @@
 		FECDE7541E07C4270083E11B /* FSNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = FECDE7531E07C4270083E11B /* FSNavigationController.m */; };
 		FECDE76B1E07C5120083E11B /* HttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FECDE76A1E07C5120083E11B /* HttpRequest.m */; };
 		FECDE78C1E07CE940083E11B /* AppDelegate+FS.m in Sources */ = {isa = PBXBuildFile; fileRef = FECDE78B1E07CE940083E11B /* AppDelegate+FS.m */; };
+		FECDE7911E08B7EE0083E11B /* FSShoppingCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FECDE78F1E08B7EE0083E11B /* FSShoppingCartViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -2333,8 +2333,6 @@
 		FECDE6D61E07C2C70083E11B /* FSSearchResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSSearchResultsViewController.m; sourceTree = "<group>"; };
 		FECDE6D81E07C2C70083E11B /* FSSearchAssociationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSSearchAssociationViewController.h; sourceTree = "<group>"; };
 		FECDE6D91E07C2C70083E11B /* FSSearchAssociationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSSearchAssociationViewController.m; sourceTree = "<group>"; };
-		FECDE6DD1E07C2C70083E11B /* FSShoppingCartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSShoppingCartViewController.h; sourceTree = "<group>"; };
-		FECDE6DE1E07C2C70083E11B /* FSShoppingCartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSShoppingCartViewController.m; sourceTree = "<group>"; };
 		FECDE6E51E07C2C70083E11B /* FSHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSHomeViewController.h; sourceTree = "<group>"; };
 		FECDE6E61E07C2C70083E11B /* FSHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHomeViewController.m; sourceTree = "<group>"; };
 		FECDE6E91E07C2C70083E11B /* XFEqualSpaceFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFEqualSpaceFlowLayout.h; sourceTree = "<group>"; };
@@ -2369,6 +2367,8 @@
 		FECDE76A1E07C5120083E11B /* HttpRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpRequest.m; sourceTree = "<group>"; };
 		FECDE78A1E07CE940083E11B /* AppDelegate+FS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+FS.h"; sourceTree = "<group>"; };
 		FECDE78B1E07CE940083E11B /* AppDelegate+FS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+FS.m"; sourceTree = "<group>"; };
+		FECDE78E1E08B7EE0083E11B /* FSShoppingCartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSShoppingCartViewController.h; sourceTree = "<group>"; };
+		FECDE78F1E08B7EE0083E11B /* FSShoppingCartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSShoppingCartViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -7581,8 +7581,8 @@
 		FECDE6DC1E07C2C70083E11B /* Root */ = {
 			isa = PBXGroup;
 			children = (
-				FECDE6DD1E07C2C70083E11B /* FSShoppingCartViewController.h */,
-				FECDE6DE1E07C2C70083E11B /* FSShoppingCartViewController.m */,
+				FECDE78D1E08B7EE0083E11B /* Controller */,
+				FECDE7901E08B7EE0083E11B /* View */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -7759,6 +7759,22 @@
 			children = (
 			);
 			path = Vender;
+			sourceTree = "<group>";
+		};
+		FECDE78D1E08B7EE0083E11B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FECDE78E1E08B7EE0083E11B /* FSShoppingCartViewController.h */,
+				FECDE78F1E08B7EE0083E11B /* FSShoppingCartViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FECDE7901E08B7EE0083E11B /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -8470,7 +8486,6 @@
 				0C5B07E51CCF54DD009528F1 /* IntroduceCell.m in Sources */,
 				0CCC4B111D781B9F009CFBB0 /* IQUITextFieldView+Additions.m in Sources */,
 				2B0D1A581BF48769005577EB /* FirstStarView.m in Sources */,
-				FECDE73E1E07C2C80083E11B /* FSShoppingCartViewController.m in Sources */,
 				0CCC4AE41D780FB0009CFBB0 /* MD5DataSigner.m in Sources */,
 				E40D23021C434CA100DC47C6 /* MJRefreshAutoFooter.m in Sources */,
 				52E962CB1C1E8E1000171522 /* SelectCityViewController.m in Sources */,
@@ -8634,6 +8649,7 @@
 				528430961BCF79EE006905AA /* CostTableViewCell.m in Sources */,
 				FECDE7131E07C2C80083E11B /* ConstThirdSDKInfo.m in Sources */,
 				E4E627CF1C463C64003A21E0 /* NewPruduct.m in Sources */,
+				FECDE7911E08B7EE0083E11B /* FSShoppingCartViewController.m in Sources */,
 				E4E0FFA91CC7566A00B9E603 /* AdWebViewController.m in Sources */,
 				0CE82CFB1DB7149800F590C8 /* ScoreCell.m in Sources */,
 				0969DC121BCDFE1700D98273 /* MMHud.m in Sources */,

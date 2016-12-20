@@ -10,20 +10,7 @@
 #import "RightGoodsModel.h"
 
 @interface FSCommodityCVCell ()
-/// 商品图片
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
-/// 商品标题
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-/// 商品价格
-@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
-/// 商品简介
-@property (weak, nonatomic) IBOutlet UILabel *descLabel;
-/// 购物车数量
-@property (weak, nonatomic) IBOutlet UILabel *countLabel;
-/// 添加至购物车按钮
-@property (weak, nonatomic) IBOutlet UIButton *plusButton;
-/// 减少商品按钮
-@property (weak, nonatomic) IBOutlet UIButton *minusButton;
+
 
 
 @end
@@ -74,11 +61,12 @@
     self.plusButton.right = self.width - 8;
     self.plusButton.centerY = self.priceLabel.centerY;
     
-    [self.countLabel sizeToFit];
-    self.countLabel.right = self.plusButton.x - 8;
+    // [self.countLabel sizeToFit];
+    self.countLabel.width = 18;
+    self.countLabel.right = self.plusButton.x - 5;
     self.countLabel.centerY = self.priceLabel.centerY;
     
-    self.minusButton.right = self.countLabel.x - 8;
+    self.minusButton.right = self.countLabel.x - 5;
     self.minusButton.centerY = self.priceLabel.centerY;
     
 }
@@ -131,7 +119,7 @@
 
 - (IBAction)minusButtonTouchUpInside:(UIButton *)sender {
     
-    if (self.model.CartNum == 0) {
+    if ([self.model.CartNum integerValue] == 0) {
         return;
     }
     

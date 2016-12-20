@@ -60,4 +60,23 @@
     return error ? nil : dict;
 }
 
+- (void)showInfoWidthError:(NSError *)error {
+    
+    if (error.code == -1009) {
+        [SVProgressHUD showErrorWithStatus:@"无网络连接!"];
+    }
+    else if (error.code == -1001) {
+        [SVProgressHUD showInfoWithStatus:@"请求超时!"];
+    }
+    else if (error.code == -1004) {
+        [SVProgressHUD showInfoWithStatus:@"无法连接到服务器!"];
+    } else if (error.code == -1011) {
+        [SVProgressHUD showInfoWithStatus:@"服务器打了个盹~>.<"];
+    }
+    else {
+        [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"%@", error.domain]];
+    }
+}
+
+
 @end

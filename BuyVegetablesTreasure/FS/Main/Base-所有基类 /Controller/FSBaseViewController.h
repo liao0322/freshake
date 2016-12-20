@@ -29,5 +29,7 @@
 /// 解析二进制数据，返回一个字典
 - (NSDictionary *)dictWithData:(NSData *)data;
 
+- (void)showInfoWidthError:(NSError *)error;
+
 
 @end

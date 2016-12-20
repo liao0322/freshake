@@ -498,46 +498,102 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
     
     NSIndexPath *indexPath = [self.mainView indexPathForCell:cell];
     RightGoodsModel *model = self.commodityArray[indexPath.row];
-    
+
     NSString *uid = [[NSUserDefaults standardUserDefaults] objectForKey:@"UID"];
     NSString *mid = [[NSUserDefaults standardUserDefaults] objectForKey:@"MID"] ? [[NSUserDefaults standardUserDefaults] objectForKey:@"MID"] : @"2";
-                                              
+    
+    __block NSInteger cartNum = [model.CartNum integerValue];
+    
     // 检查用户是否登录，如果未登录，跳转到登录页
     // 如果 uid 为空
     if ([Tools isBlankString:uid]) {
-
         [self.navigationController pushViewController:[FSLoginViewController new] animated:YES];
         return ;
     }
     
-    NSInteger cartNum = [model.CartNum integerValue];
+
     
     NSString *totPriceString = @"0";
     NSString *urlString = @"";
     
-    
     if (cartNum == 0) { // 第一次添加到购物车
         
-        urlString = [NSString stringWithFormat:ADDCARTURL,model.id,UUID,uid,totPriceString,@"1",mid,@"11"];
+        urlString = [NSString stringWithFormat:ADDCARTURL, model.id, UUID, uid, totPriceString, @"1", mid, @"11"];
         
     } else { // 更新购物车数量
-        
+        urlString = [NSString stringWithFormat:UpCart, UUID, mid, model.id,uid,[NSString stringWithFormat:@"%ld", cartNum + 1], @"0"];
     }
-    
-    
-    
+    [SVProgressHUD show];
     // 发送请求
-    
-    
-    
-    NSLog(@"点击了加号");
+    [XFNetworking GET:urlString parameters:nil success:^(id responseObject, NSInteger statusCode) {
+        [SVProgressHUD dismiss];
+        NSDictionary *dataDict = [self dictWithData:responseObject];
+
+        if ([dataDict[@"issuccess"] boolValue]) { // 成功
+            
+            cartNum++;
+            model.CartNum = [NSString stringWithFormat:@"%ld", cartNum];
+            [self.commodityArray replaceObjectAtIndex:indexPath.row withObject:model];
+            
+            // 更新 UI
+            [cell.countLabel setText:model.CartNum];
+            
+            // 设置 tabbar badge
+            NSInteger badgeValue = [[[[[[self tabBarController] tabBar] items] objectAtIndex:2] badgeValue] integerValue];
+            badgeValue++;
+            [[[[[self tabBarController] tabBar] items] objectAtIndex:2] setBadgeValue:[NSString stringWithFormat:@"%ld", badgeValue]];
+            
+        }
+        
+    } failure:^(NSError *error, NSInteger statusCode) {
+        [self showInfoWidthError:error];
+    }];
+
 }
 
 /// 点击了减号
 - (void)commodityCVCell:(FSCommodityCVCell *)cell minusButtonTouchUpInside:(UIButton *)sender {
+    NSIndexPath *indexPath = [self.mainView indexPathForCell:cell];
+    RightGoodsModel *model = self.commodityArray[indexPath.row];
     
-    // 先判断是否需要从购物车将商品删除
+    NSString *uid = [[NSUserDefaults standardUserDefaults] objectForKey:@"UID"];
+    NSString *mid = [[NSUserDefaults standardUserDefaults] objectForKey:@"MID"] ? [[NSUserDefaults standardUserDefaults] objectForKey:@"MID"] : @"2";
     
+    __block NSInteger cartNum = [model.CartNum integerValue];
+    
+    NSString *urlString = @"";
+    
+    if (cartNum > 1) { // 更新商品的数量
+        urlString = [NSString stringWithFormat:UpCart, UUID, mid, model.id, uid,[NSString stringWithFormat:@"%ld", cartNum - 1], @"1"];
+    } else { // 从购物车删除商品
+        urlString = [NSString stringWithFormat:DelCartUrl,UUID,mid,model.id,uid];
+    }
+    
+    [SVProgressHUD show];
+    [XFNetworking GET:urlString parameters:nil success:^(id responseObject, NSInteger statusCode) {
+        
+        [SVProgressHUD dismiss];
+        NSDictionary *dataDict = [self dictWithData:responseObject];
+        
+        if ([dataDict[@"issuccess"] boolValue]) { // 成功
+            
+            cartNum--;
+            model.CartNum = [NSString stringWithFormat:@"%ld", cartNum];
+            [self.commodityArray replaceObjectAtIndex:indexPath.row withObject:model];
+            
+            // 更新 UI
+            [cell.countLabel setText:model.CartNum];
+            
+            // 设置 tabbar badge
+            NSInteger badgeValue = [[[[[[self tabBarController] tabBar] items] objectAtIndex:2] badgeValue] integerValue];
+            badgeValue--;
+            [[[[[self tabBarController] tabBar] items] objectAtIndex:2] setBadgeValue:[NSString stringWithFormat:@"%ld", badgeValue]];
+            
+        }
+        
+    } failure:^(NSError *error, NSInteger statusCode) {
+        [self showInfoWidthError:error];
+    }];
     
     
     NSLog(@"点击了减号");
@@ -750,6 +806,7 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
         
         NSDictionary *dict = [self dictWithData:responseObject];
 
+        // 设置 tabbar badge
          [[[[[self tabBarController] tabBar] items] objectAtIndex:2] setBadgeValue:[NSString stringWithFormat:@"%@", dict[@"sum"]]];
         
         
@@ -810,15 +867,7 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
         // [self getCommodityData];
         
     } failure:^(NSError *error, NSInteger statusCode) {
-        if (error.code == -1009) {
-            [SVProgressHUD showErrorWithStatus:@"无网络连接!"];
-        }
-        if (error.code == -1001) {
-            [SVProgressHUD showInfoWithStatus:@"请求超时，请稍后重试!"];
-        }
-        if (error.code == -1004) {
-            [SVProgressHUD showInfoWithStatus:@"无法连接到服务器，请稍后重试!"];
-        }
+        [self showInfoWidthError:error];
         [self.refreshHeader endRefreshing];
     }];
 }
