@@ -29,8 +29,9 @@
                         <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n3q-2U-lLJ">
-                        <rect key="frame" x="148" y="224.5" width="9" height="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n3q-2U-lLJ">
+                        <rect key="frame" x="148" y="224.5" width="16" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -70,8 +71,9 @@
                         <color key="textColor" red="0.19607843137254902" green="0.19607843137254902" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="swH-Oo-leR">
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="swH-Oo-leR">
                         <rect key="frame" x="125" y="222" width="18" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <state key="normal" image="减"/>
                         <connections>
                             <action selector="minusButtonTouchUpInside:" destination="gTV-IL-0wX" eventType="touchUpInside" id="JCA-oP-qzJ"/>
@@ -81,11 +83,7 @@
             </view>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="Pbn-4D-Luy" secondAttribute="trailing" constant="8" id="2G6-dO-V1n"/>
-                <constraint firstItem="n3q-2U-lLJ" firstAttribute="centerY" secondItem="Pbn-4D-Luy" secondAttribute="centerY" id="8EK-fi-guB"/>
-                <constraint firstItem="n3q-2U-lLJ" firstAttribute="leading" secondItem="swH-Oo-leR" secondAttribute="trailing" constant="5" id="QRU-sV-69x"/>
                 <constraint firstAttribute="bottom" secondItem="Pbn-4D-Luy" secondAttribute="bottom" constant="8" id="YcO-At-d7L"/>
-                <constraint firstItem="Pbn-4D-Luy" firstAttribute="leading" secondItem="n3q-2U-lLJ" secondAttribute="trailing" constant="5" id="d6f-3a-Haw"/>
-                <constraint firstItem="swH-Oo-leR" firstAttribute="centerY" secondItem="Pbn-4D-Luy" secondAttribute="centerY" id="vxe-RM-tvx"/>
             </constraints>
             <size key="customSize" width="200.5" height="251"/>
             <connections>
