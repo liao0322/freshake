@@ -38,6 +38,8 @@
 
 @property (nonatomic) NSIndexPath *selectedIndexPath;
 
+@property (assign, nonatomic) BOOL isFirstRefresh;
+
 @end
 
 @implementation FSClassificationViewController
@@ -59,11 +61,13 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
     if (self.refreshControl.refreshing) {
         return;
     }
-    
+    if (!self.isFirstRefresh) {
+        return;
+    }
+    self.isFirstRefresh = NO;
     if (self.tableView.contentOffset.y == 0) {
         
         [UIView animateWithDuration:0.25
@@ -108,6 +112,7 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
     [super initialization];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.selectedIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    self.isFirstRefresh = YES;
 }
 
 - (void)setupNavigationBar {
