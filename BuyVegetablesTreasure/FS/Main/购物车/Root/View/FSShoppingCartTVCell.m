@@ -108,9 +108,16 @@
 #pragma mark - Custom
 
 - (IBAction)plusButtonTouchUpInside:(UIButton *)sender {
+    NSLog(@"加");
 }
 
 - (IBAction)minusButtonTouchUpInside:(UIButton *)sender {
+    NSLog(@"减");
+
 }
 
+- (IBAction)selectButtonTouchUpInside:(UIButton *)sender {
+    NSLog(@"选择");
+
+}
 @end

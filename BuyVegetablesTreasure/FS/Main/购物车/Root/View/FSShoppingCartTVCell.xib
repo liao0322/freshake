@@ -23,6 +23,9 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <state key="normal" image="shoppingcart_uncheck"/>
                         <state key="selected" image="shoppingcart_checked"/>
+                        <connections>
+                            <action selector="selectButtonTouchUpInside:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="bEE-pu-ia0"/>
+                        </connections>
                     </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ewP-l5-yVJ">
                         <rect key="frame" x="51" y="39" width="50" height="50"/>

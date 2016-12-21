@@ -216,6 +216,15 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
     
 }
 
+- (IBAction)selectAllButtonTouchUpInside:(UIButton *)sender {
+    NSLog(@"全选");
+
+}
+
+- (IBAction)orderButtonTouchUpInside:(UIButton *)sender {
+    NSLog(@"下单");
+
+}
 #pragma mark -
 #pragma mark - LazyLoad
 
