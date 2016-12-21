@@ -46,7 +46,8 @@
     TeTabBarViewController *rootVC = [[TeTabBarViewController alloc] init];
      */
     FSTabBarController *tabBarController = [[FSTabBarController alloc] init];
-        self.window.rootViewController = tabBarController;
+    tabBarController.delegate = self;
+    self.window.rootViewController = tabBarController;
     
     // 友盟Key
     [UMSocialData setAppKey:@"57e87c1667e58ee0380015f8"];

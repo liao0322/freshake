@@ -59,11 +59,7 @@
         NSInteger currentSection = currentLayoutAttributes.indexPath.section;
 
         if (currentSection == 1 && isSkip == NO) {
-            
-            /*
-            NSInteger currentRow = currentLayoutAttributes.indexPath.row;
-            i++;
-             */
+
             isSkip = YES;
             continue;
         }
@@ -72,7 +68,7 @@
         UICollectionViewLayoutAttributes *prevLayoutAttributes = attributes[i - 1];
         
         // 我们想设置的最大间距，可根据需要改
-        NSInteger spacing = 10;
+        NSInteger spacing = 15;
         
         // 前一个cell的最右边
         NSInteger right = CGRectGetMaxX(prevLayoutAttributes.frame);
@@ -82,42 +78,6 @@
             frame.origin.x = right + spacing;
             currentLayoutAttributes.frame = frame;
         }
-        /*
-        if (currentSection == 0) {
-            // 上一个attributes
-            UICollectionViewLayoutAttributes *prevLayoutAttributes = attributes[i - 1];
-            
-            // 我们想设置的最大间距，可根据需要改
-            NSInteger spacing = 10;
-            
-            // 前一个cell的最右边
-            NSInteger right = CGRectGetMaxX(prevLayoutAttributes.frame);
-            // 如果当前一个cell的最右边加上我们想要的间距加上当前cell的宽度依然在contentSize中，我们改变当前cell的原点位置
-            if(right + spacing + currentLayoutAttributes.frame.size.width + 15 < self.collectionViewContentSize.width) {
-                CGRect frame = currentLayoutAttributes.frame;
-                frame.origin.x = right + spacing;
-                currentLayoutAttributes.frame = frame;
-            }
-        } else if (currentSection == 1) {
-            i++;
-            
-            // 上一个attributes
-            UICollectionViewLayoutAttributes *prevLayoutAttributes = attributes[i];
-            
-            // 我们想设置的最大间距，可根据需要改
-            NSInteger spacing = 10;
-            
-            // 前一个cell的最右边
-            NSInteger right = CGRectGetMaxX(prevLayoutAttributes.frame);
-            // 如果当前一个cell的最右边加上我们想要的间距加上当前cell的宽度依然在contentSize中，我们改变当前cell的原点位置
-            if(right + spacing + currentLayoutAttributes.frame.size.width + 15 < self.collectionViewContentSize.width) {
-                CGRect frame = currentLayoutAttributes.frame;
-                frame.origin.x = right + spacing;
-                currentLayoutAttributes.frame = frame;
-            }
-            
-        }
-         */
         
         
 

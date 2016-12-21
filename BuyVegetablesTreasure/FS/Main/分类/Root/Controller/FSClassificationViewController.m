@@ -12,7 +12,7 @@
 #import "FSCommodityModel.h"
 #import "FSClassificationCVCell.h"
 #import "FSCommodityTVCell.h"
-
+#import "FSSearchViewController.h"
 
 
 @interface FSClassificationViewController ()
@@ -21,7 +21,8 @@
     UITableViewDataSource,
     UICollectionViewDelegate,
     UICollectionViewDataSource,
-    FSCommodityTVCellDelegate
+    FSCommodityTVCellDelegate,
+    UISearchBarDelegate
 >
 
 
@@ -37,6 +38,10 @@
 @property (nonatomic) UIRefreshControl *refreshControl;
 
 @property (nonatomic) NSIndexPath *selectedIndexPath;
+
+
+
+@property (nonatomic) UISearchBar *searchBar;
 
 @end
 
@@ -63,7 +68,9 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
     if (self.refreshControl.refreshing) {
         return;
     }
-    
+    if (self.commodityArray.count) {
+        return;
+    }
     if (self.tableView.contentOffset.y == 0) {
         
         [UIView animateWithDuration:0.25
@@ -76,6 +83,16 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
                              [self.refreshControl sendActionsForControlEvents:UIControlEventValueChanged];
                          }];
     }
+    
+    
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    if (!self.refreshControl.refreshing) {
+        return;
+    }
+    [self.refreshControl endRefreshing];
+    [self setTabBarHidden:NO];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -89,7 +106,7 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
     self.collectionView.height = (int)(self.view.width / 4 + 0.5);
     
     self.tableView.frame = self.view.bounds;
-    self.tableView.y = self.collectionView.bottom;
+    self.tableView.y = self.collectionView.bottom + 5;
     self.tableView.height = self.view.height - self.collectionView.bottom;
     self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 49, 0);
 
@@ -106,12 +123,16 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
 
 - (void)initialization {
     [super initialization];
+    self.view.backgroundColor = [UIColor colorViewBG];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.selectedIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+
 }
 
 - (void)setupNavigationBar {
     [super setupNavigationBar];
+    
+    self.navigationItem.titleView = self.searchBar;
     
 }
 
@@ -157,10 +178,6 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
     FSCommodityModel *commodityModel = classificationModel.List[indexPath.row];
     cell.model = commodityModel;
     cell.delegate = self;
-    
-    
-
-    
     
     return cell;
 }
@@ -229,7 +246,7 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(0, 0, 10, 0);
+    return UIEdgeInsetsMake(0, 0, 0, 0);
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
@@ -297,11 +314,13 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
     
     //[self.collectionView selectItemAtIndexPath:willSelectIndexPath animated:YES scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
     
-    
-    if (self.lastTVY > scrollView.contentOffset.y || scrollView.contentOffset.y == 0) { // 往下
-        [self setTabBarHidden:NO];
-    } else { // 往上
-        [self setTabBarHidden:YES];
+    if (scrollView.contentOffset.y > 0) {
+        
+        if (self.lastTVY > scrollView.contentOffset.y) { // 往下
+            [self setTabBarHidden:NO];
+        } else { // 往上
+            [self setTabBarHidden:YES];
+        }
     }
     self.lastTVY = scrollView.contentOffset.y;
     
@@ -317,6 +336,19 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
     
     //[self collectionView:self.collectionView didSelectItemAtIndexPath:willSelectIndexPath];
     
+}
+
+#pragma mark - UISearchBarDelegate
+
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
+    
+    FSSearchViewController *searchVC = [[FSSearchViewController alloc] init];
+    
+    
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:searchVC];
+    navController.navigationBar.tintColor = [UIColor colorDomina];
+    [self presentViewController:navController animated:NO completion:nil];
+    return NO;
 }
 
 #pragma mark - Custom
@@ -432,8 +464,16 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
         _collectionView.showsHorizontalScrollIndicator = NO;
-        _collectionView.backgroundColor = [UIColor colorViewBG];
-        _collectionView.bounces = NO;
+        _collectionView.backgroundColor = [UIColor whiteColor];
+        
+        /*
+        _collectionView.layer.shadowColor = [UIColor blackColor].CGColor;
+        _collectionView.layer.shadowOpacity = .5f;
+        _collectionView.layer.shadowOffset = CGSizeMake(0, 0);
+        _collectionView.layer.shadowRadius = 3;
+        _collectionView.layer.shouldGroupAccessibilityChildren = NO;
+         */
+        
 
     }
     return _collectionView;
@@ -469,6 +509,14 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
 }
 
 
-
+- (UISearchBar *)searchBar {
+    if (!_searchBar) {
+        _searchBar = [[UISearchBar alloc] init];
+        _searchBar.delegate = self;
+        _searchBar.searchBarStyle = UISearchBarStyleMinimal;
+        _searchBar.placeholder = @"搜索";
+    }
+    return _searchBar;
+}
 
 @end

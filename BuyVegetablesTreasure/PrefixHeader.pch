@@ -87,6 +87,7 @@
 #import "UIView+Rect.h"
 #import <SVProgressHUD.h>
 #import "XFNetworking.h"
+#import "XFMacroLog.h"
 
 #endif
 

@@ -917,7 +917,6 @@
 		FECDE73C1E07C2C80083E11B /* FSSearchResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FECDE6D61E07C2C70083E11B /* FSSearchResultsViewController.m */; };
 		FECDE73D1E07C2C80083E11B /* FSSearchAssociationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FECDE6D91E07C2C70083E11B /* FSSearchAssociationViewController.m */; };
 		FECDE73F1E07C2C80083E11B /* FSHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FECDE6E61E07C2C70083E11B /* FSHomeViewController.m */; };
-		FECDE7401E07C2C80083E11B /* XFEqualSpaceFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = FECDE6EA1E07C2C70083E11B /* XFEqualSpaceFlowLayout.m */; };
 		FECDE7411E07C2C80083E11B /* FSCommodityCVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FECDE6EE1E07C2C70083E11B /* FSCommodityCVCell.m */; };
 		FECDE7421E07C2C80083E11B /* FSCommodityCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FECDE6EF1E07C2C70083E11B /* FSCommodityCVCell.xib */; };
 		FECDE7431E07C2C80083E11B /* FSDancingBananaHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = FECDE6F11E07C2C70083E11B /* FSDancingBananaHeader.m */; };
@@ -937,6 +936,14 @@
 		FECDE76B1E07C5120083E11B /* HttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FECDE76A1E07C5120083E11B /* HttpRequest.m */; };
 		FECDE78C1E07CE940083E11B /* AppDelegate+FS.m in Sources */ = {isa = PBXBuildFile; fileRef = FECDE78B1E07CE940083E11B /* AppDelegate+FS.m */; };
 		FECDE7911E08B7EE0083E11B /* FSShoppingCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FECDE78F1E08B7EE0083E11B /* FSShoppingCartViewController.m */; };
+		FECDE7971E0925080083E11B /* XFEqualSpaceFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = FECDE7961E0925080083E11B /* XFEqualSpaceFlowLayout.m */; };
+		FECDE79A1E09277E0083E11B /* UIScrollView+UITouch.m in Sources */ = {isa = PBXBuildFile; fileRef = FECDE7991E09277E0083E11B /* UIScrollView+UITouch.m */; };
+		FECDE79E1E0971EA0083E11B /* FSShoppingCartTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FECDE79C1E0971EA0083E11B /* FSShoppingCartTVCell.m */; };
+		FECDE79F1E0971EA0083E11B /* FSShoppingCartTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FECDE79D1E0971EA0083E11B /* FSShoppingCartTVCell.xib */; };
+		FECDE7A21E0A211E0083E11B /* FSShoppingCartBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = FECDE7A11E0A211E0083E11B /* FSShoppingCartBottomView.m */; };
+		FECDE7A41E0A21410083E11B /* FSShoppingCartBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FECDE7A31E0A21410083E11B /* FSShoppingCartBottomView.xib */; };
+		FECDE7A71E0A30E70083E11B /* FSShoppingCartTVFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = FECDE7A61E0A30E70083E11B /* FSShoppingCartTVFooterView.m */; };
+		FECDE7A91E0A31410083E11B /* FSShoppingCartTVFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FECDE7A81E0A31410083E11B /* FSShoppingCartTVFooterView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -2335,8 +2342,6 @@
 		FECDE6D91E07C2C70083E11B /* FSSearchAssociationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSSearchAssociationViewController.m; sourceTree = "<group>"; };
 		FECDE6E51E07C2C70083E11B /* FSHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSHomeViewController.h; sourceTree = "<group>"; };
 		FECDE6E61E07C2C70083E11B /* FSHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHomeViewController.m; sourceTree = "<group>"; };
-		FECDE6E91E07C2C70083E11B /* XFEqualSpaceFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFEqualSpaceFlowLayout.h; sourceTree = "<group>"; };
-		FECDE6EA1E07C2C70083E11B /* XFEqualSpaceFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFEqualSpaceFlowLayout.m; sourceTree = "<group>"; };
 		FECDE6ED1E07C2C70083E11B /* FSCommodityCVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCommodityCVCell.h; sourceTree = "<group>"; };
 		FECDE6EE1E07C2C70083E11B /* FSCommodityCVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCommodityCVCell.m; sourceTree = "<group>"; };
 		FECDE6EF1E07C2C70083E11B /* FSCommodityCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSCommodityCVCell.xib; sourceTree = "<group>"; };
@@ -2369,6 +2374,19 @@
 		FECDE78B1E07CE940083E11B /* AppDelegate+FS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+FS.m"; sourceTree = "<group>"; };
 		FECDE78E1E08B7EE0083E11B /* FSShoppingCartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSShoppingCartViewController.h; sourceTree = "<group>"; };
 		FECDE78F1E08B7EE0083E11B /* FSShoppingCartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSShoppingCartViewController.m; sourceTree = "<group>"; };
+		FECDE7951E0925080083E11B /* XFEqualSpaceFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFEqualSpaceFlowLayout.h; sourceTree = "<group>"; };
+		FECDE7961E0925080083E11B /* XFEqualSpaceFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFEqualSpaceFlowLayout.m; sourceTree = "<group>"; };
+		FECDE7981E09277E0083E11B /* UIScrollView+UITouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+UITouch.h"; sourceTree = "<group>"; };
+		FECDE7991E09277E0083E11B /* UIScrollView+UITouch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+UITouch.m"; sourceTree = "<group>"; };
+		FECDE79B1E0971EA0083E11B /* FSShoppingCartTVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSShoppingCartTVCell.h; sourceTree = "<group>"; };
+		FECDE79C1E0971EA0083E11B /* FSShoppingCartTVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSShoppingCartTVCell.m; sourceTree = "<group>"; };
+		FECDE79D1E0971EA0083E11B /* FSShoppingCartTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSShoppingCartTVCell.xib; sourceTree = "<group>"; };
+		FECDE7A01E0A211E0083E11B /* FSShoppingCartBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSShoppingCartBottomView.h; sourceTree = "<group>"; };
+		FECDE7A11E0A211E0083E11B /* FSShoppingCartBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSShoppingCartBottomView.m; sourceTree = "<group>"; };
+		FECDE7A31E0A21410083E11B /* FSShoppingCartBottomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSShoppingCartBottomView.xib; sourceTree = "<group>"; };
+		FECDE7A51E0A30E70083E11B /* FSShoppingCartTVFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSShoppingCartTVFooterView.h; sourceTree = "<group>"; };
+		FECDE7A61E0A30E70083E11B /* FSShoppingCartTVFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSShoppingCartTVFooterView.m; sourceTree = "<group>"; };
+		FECDE7A81E0A31410083E11B /* FSShoppingCartTVFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSShoppingCartTVFooterView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -6506,6 +6524,8 @@
 				FECDE6091E07C2C70083E11B /* UIColor */,
 				FECDE60E1E07C2C70083E11B /* UIImage */,
 				FECDE6111E07C2C70083E11B /* UIView */,
+				FECDE7981E09277E0083E11B /* UIScrollView+UITouch.h */,
+				FECDE7991E09277E0083E11B /* UIScrollView+UITouch.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -7526,6 +7546,8 @@
 		FECDE6CA1E07C2C70083E11B /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				FECDE7951E0925080083E11B /* XFEqualSpaceFlowLayout.h */,
+				FECDE7961E0925080083E11B /* XFEqualSpaceFlowLayout.m */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -7652,8 +7674,6 @@
 		FECDE6E81E07C2C70083E11B /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				FECDE6E91E07C2C70083E11B /* XFEqualSpaceFlowLayout.h */,
-				FECDE6EA1E07C2C70083E11B /* XFEqualSpaceFlowLayout.m */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -7773,6 +7793,15 @@
 		FECDE7901E08B7EE0083E11B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FECDE79B1E0971EA0083E11B /* FSShoppingCartTVCell.h */,
+				FECDE79C1E0971EA0083E11B /* FSShoppingCartTVCell.m */,
+				FECDE79D1E0971EA0083E11B /* FSShoppingCartTVCell.xib */,
+				FECDE7A01E0A211E0083E11B /* FSShoppingCartBottomView.h */,
+				FECDE7A11E0A211E0083E11B /* FSShoppingCartBottomView.m */,
+				FECDE7A31E0A21410083E11B /* FSShoppingCartBottomView.xib */,
+				FECDE7A51E0A30E70083E11B /* FSShoppingCartTVFooterView.h */,
+				FECDE7A61E0A30E70083E11B /* FSShoppingCartTVFooterView.m */,
+				FECDE7A81E0A31410083E11B /* FSShoppingCartTVFooterView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -7907,6 +7936,7 @@
 				0C82E33B1CD2F078007DF40F /* love.png in Resources */,
 				5239FFE11CAA50F500EFF539 /* EditSiteViewController.xib in Resources */,
 				0CA8CC5E1D9E0D3300BFFE35 /* QrCode@2x.png in Resources */,
+				FECDE79F1E0971EA0083E11B /* FSShoppingCartTVCell.xib in Resources */,
 				E40D23101C434CA100DC47C6 /* MJRefresh.bundle in Resources */,
 				0CC11CB11CB4F6D500E1E789 /* 小椭圆@3x.png in Resources */,
 				098867EE1BCF34D90068FB84 /* 首页@3x.png in Resources */,
@@ -8106,6 +8136,7 @@
 				5203545F1C76B33000BD6F63 /* 三角形people@2x.png in Resources */,
 				0C20DD511D9BB9140080E446 /* 充值Icon@3x.png in Resources */,
 				FECDE7421E07C2C80083E11B /* FSCommodityCVCell.xib in Resources */,
+				FECDE7A91E0A31410083E11B /* FSShoppingCartTVFooterView.xib in Resources */,
 				098093E71BD8E079004384E8 /* 背景@3x.png in Resources */,
 				0CA8CC5C1D9E0D3300BFFE35 /* Order_Stars_Selected@2x.png in Resources */,
 				0C82E3381CD2F078007DF40F /* link.png in Resources */,
@@ -8300,6 +8331,7 @@
 				E4818FC11CC8A6EC0081E06C /* 我的收藏.png in Resources */,
 				5239FFEB1CAA50F500EFF539 /* UserSiteInfoCell.xib in Resources */,
 				0CBA54B61DE7D47C00378911 /* WeChat@2x.png in Resources */,
+				FECDE7A41E0A21410083E11B /* FSShoppingCartBottomView.xib in Resources */,
 				FECDE5F21E07B6770083E11B /* 黄-右边背景@2x.png in Resources */,
 				098868231BCF4CBB0068FB84 /* 减@2x.png in Resources */,
 				E4FF92CA1CC9BB1C009E4B8F /* Myorder_待付款-灰色@3x.png in Resources */,
@@ -8412,8 +8444,10 @@
 				0CA6744F1D19492B008A74C1 /* GoodsDetailsView.m in Sources */,
 				E4E000171CC78DB700B9E603 /* MyCollectViewController.m in Sources */,
 				E4818FF91CC8CB6E0081E06C /* ShowGifView.m in Sources */,
+				FECDE79E1E0971EA0083E11B /* FSShoppingCartTVCell.m in Sources */,
 				0C9CEB901CD84EFF00F0DCCB /* MyCollectTableViewCell.m in Sources */,
 				E4E0FFE41CC7867C00B9E603 /* MeUITTableViewCell.m in Sources */,
+				FECDE7971E0925080083E11B /* XFEqualSpaceFlowLayout.m in Sources */,
 				5219E86D1BE76B7800AA2D2E /* CouponCell.m in Sources */,
 				0C961B451D9CAAFA000B6AF6 /* OtherCell.m in Sources */,
 				FECDE7511E07C41B0083E11B /* FSTabBarController.m in Sources */,
@@ -8544,6 +8578,7 @@
 				E40D230F1C434CA100DC47C6 /* MJRefreshStateHeader.m in Sources */,
 				0CC11CAB1CB4EF8F00E1E789 /* MemberInfoCell.m in Sources */,
 				0C30E9031CBBAB4E00014D77 /* GroupDetailListModel.m in Sources */,
+				FECDE7A21E0A211E0083E11B /* FSShoppingCartBottomView.m in Sources */,
 				2BE1875A1BF6FF78004B683D /* OrderReviceModel.m in Sources */,
 				2BBC8BD11BF764B9000FF8D7 /* mask.c in Sources */,
 				E4E0FFF41CC7881F00B9E603 /* MyOrderViewController.m in Sources */,
@@ -8559,6 +8594,7 @@
 				52C4D8771C23F86700BC066A /* UserModel.m in Sources */,
 				5284306E1BCF6DD3006905AA /* PaymentCell.m in Sources */,
 				0969DC2C1BCDFE1700D98273 /* SDWebImageDownloader.m in Sources */,
+				FECDE7A71E0A30E70083E11B /* FSShoppingCartTVFooterView.m in Sources */,
 				521E31821CB368DB00041F76 /* GropViewTableViewCell.m in Sources */,
 				E40D230B1C434CA100DC47C6 /* MJRefreshBackNormalFooter.m in Sources */,
 				FECDE70D1E07C2C70083E11B /* UIButton+Create.m in Sources */,
@@ -8677,7 +8713,6 @@
 				527853171BCDF8E5005E4739 /* Utillity.m in Sources */,
 				52423BD11BE2130A00E5621C /* Emblem.m in Sources */,
 				0969DC181BCDFE1700D98273 /* MMProgressHUDWindow.m in Sources */,
-				FECDE7401E07C2C80083E11B /* XFEqualSpaceFlowLayout.m in Sources */,
 				0CFE332F1DC19CCA00F19494 /* SDCollectionViewCell.m in Sources */,
 				52926AF01C85428C00BC760B /* ForgotPasswordViewController.m in Sources */,
 				0969DC6E1BCDFF6F00D98273 /* UIImage+category.m in Sources */,
@@ -8716,6 +8751,7 @@
 				528F39C11BEAFA4700A872CC /* SearchListCell.m in Sources */,
 				52438A651C9AAF70002661DF /* PopularityFooterView.m in Sources */,
 				0CF4FBBD1DEBCAAB0096D0DB /* AmountCell.m in Sources */,
+				FECDE79A1E09277E0083E11B /* UIScrollView+UITouch.m in Sources */,
 				E4FFE1CA1C25362300F943DF /* HelpModel.m in Sources */,
 				0CF4FBC41DEC2F4E0096D0DB /* ReviewImagesView.m in Sources */,
 				521E319A1CB3A82800041F76 /* DetailsTableView.m in Sources */,
@@ -8938,7 +8974,7 @@
 					"$(inherited)",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.xianyaopai.freshake;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xianyaopai.freshakee;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -8989,7 +9025,7 @@
 					"$(inherited)",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.xianyaopai.freshake;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xianyaopai.freshakee;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
