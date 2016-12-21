@@ -22,6 +22,9 @@
     
     UINavigationBar *navBar = [UINavigationBar appearanceWhenContainedInInstancesOfClasses:@[[FSNavigationController class]]];
     
+    NSDictionary *attributes = @{NSForegroundColorAttributeName: [UIColor colorDomina]};
+    navBar.titleTextAttributes = attributes;
+    
     //navBar.translucent = NO; // 取消nav bar透明
     
     // 去除底部的边框线

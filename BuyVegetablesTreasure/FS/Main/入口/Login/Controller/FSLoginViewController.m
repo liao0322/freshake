@@ -90,8 +90,9 @@
         // 登录失败
         if (![dataDict[@"issuccess"] boolValue]) {
             [SVProgressHUD showInfoWithStatus:dataDict[@"context"]];
+            return;
         }
-        
+        [SVProgressHUD showSuccessWithStatus:@"登录成功"];
         // 登录成功
         // 持久化相关信息
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -120,10 +121,9 @@
         [userDefaults setBool:YES forKey:@"isMobLogin"];
         [userDefaults setObject:[NSString stringWithFormat:@"%@",dataDict[@"id"]] forKey:@"UID"];
         [userDefaults setObject:[NSString stringWithFormat:@"%@",dataDict[@"agentId"]] forKey:@"ZID"];
-        
+        [self dismissViewControllerAnimated:YES completion:nil];
     } failure:^(NSError *error, NSInteger statusCode) { // 登录失败
-        [SVProgressHUD dismiss];
-        [SVProgressHUD showErrorWithStatus:@"登录失败"];
+        [self showInfoWidthError:error];
     }];
     
     

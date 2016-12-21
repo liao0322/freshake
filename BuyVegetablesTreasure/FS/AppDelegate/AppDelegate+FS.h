@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 
-@interface AppDelegate (FS)
+@interface AppDelegate (FS)<UITabBarControllerDelegate>
 
 /// 全局设置
 - (void)fsGlobalSetup;

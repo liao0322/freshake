@@ -16,4 +16,10 @@
 /// 获取一张按图片自身颜色渲染的图片
 + (UIImage *)imageOriginalWithName:(NSString *)name;
 + (UIImage *)imageOriginalWithImage:(UIImage *)image;
+
+- (UIImage*)imageWithCornerRadius:(CGFloat)radius;
+
+- (UIImage *)circleImage;
+
+- (UIImage *)antiAlias;
 @end

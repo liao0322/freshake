@@ -8,6 +8,7 @@
 
 #import "FSCommodityTVCell.h"
 #import "FSCommodityModel.h"
+#import "UIImage+Create.h"
 
 @implementation FSCommodityTVCell
 
@@ -17,6 +18,7 @@
     [super awakeFromNib];
     // Initialization code
     self.selectionStyle = UITableViewCellSelectionStyleNone;
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -95,8 +97,8 @@
 - (void)setModel:(FSCommodityModel *)model {
     _model = model;
     
+    [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:_model.imgUrl] placeholderImage:[UIImage imageWithColor:[UIColor colorViewBG]]];
     
-    [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:_model.imgUrl]];
     [self.titleLabel setText:_model.productName];
     [self.descLabel setText:_model.shortDesc];
     

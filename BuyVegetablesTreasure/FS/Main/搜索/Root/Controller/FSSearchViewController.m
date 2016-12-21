@@ -296,10 +296,9 @@ static NSString * const searchFooterID = @"searchFooterID";
         text = self.historySearchArray[indexPath.row];
     }
     
-    
     CGSize cellSize = [text sizeWithAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14]}];
     
-    return (CGSize){cellSize.width + 15, 28};
+    return (CGSize){cellSize.width + 20, 40};
  
 }
 
@@ -339,9 +338,8 @@ static NSString * const searchFooterID = @"searchFooterID";
 
 #pragma mark - UIScrollViewDelegate
 
-
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    NSLog(@"aa");
+    [self.navigationController.navigationBar endEditing:YES];
 }
 
 #pragma mark - Custom
