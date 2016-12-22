@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "EvaluationView.h"
 #import "GoodsDetailsView.h"
+#import "FSBaseViewController.h"
 
-@interface GoodsDetailViewController : UIViewController
+@interface GoodsDetailViewController : FSBaseViewController
 
 @property (nonatomic, assign) NSInteger ProductId;  // 商品ID
 @property (nonatomic, assign) NSInteger wid;        // 用户ID

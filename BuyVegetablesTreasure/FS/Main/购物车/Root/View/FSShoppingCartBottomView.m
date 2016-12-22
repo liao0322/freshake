@@ -28,17 +28,25 @@
     self.selectAllButton.width = 60;
     self.selectAllButton.height = height - spacing * 2;
     self.selectAllButton.y = spacing;
-    self.selectAllButton.x = 10;
+    self.selectAllButton.x = 8;
     
-    self.totalPriceTitleLabel.centerY = self.selectAllButton.centerY;
+    self.orderButtonBGView.width = 120;
+    self.orderButtonBGView.centerY = self.selectAllButton.centerY;
+    self.orderButtonBGView.height = height;
+    self.orderButtonBGView.right = width;
+    
+    self.orderButton.width = self.orderButtonBGView.width;
+    self.orderButton.height = self.orderButtonBGView.height;
+    self.orderButton.centerY = self.orderButtonBGView.height * 0.5;
+    self.orderButton.centerX = self.orderButtonBGView.width * 0.5;
     
     [self.totalPriceLabel sizeToFit];
-    self.totalPriceLabel.centerY = self.selectAllButton.centerY;
+    self.totalPriceLabel.right = self.orderButtonBGView.x - 5;
+    self.totalPriceLabel.centerY = self.orderButtonBGView.centerY;
     
-    
-    
-    
-    
+    [self.totalPriceTitleLabel sizeToFit];
+    self.totalPriceTitleLabel.centerY = self.orderButtonBGView.centerY;
+    self.totalPriceTitleLabel.right = self.totalPriceLabel.x;
     
     
     

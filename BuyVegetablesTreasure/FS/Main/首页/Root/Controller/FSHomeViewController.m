@@ -32,6 +32,10 @@
 
 #import "FSLoginViewController.h"
 #import "FSNavigationController.h"
+#import "GoodsDetailViewController.h"
+
+#import "FSClassificationViewController.h"
+#import "AdWebViewController.h"
 
 #define NAV_BAR_ALPHA 0.95f
 
@@ -79,6 +83,8 @@
 
 /// 商品数据
 @property (copy, nonatomic) NSMutableArray *commodityArray;
+
+@property (nonatomic) UIImageView *cartAnimView;
 
 @end
 
@@ -158,7 +164,7 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
 
 - (void)initialization {
     [super initialization];
-    
+    self.view.backgroundColor = [UIColor colorViewBG];
     self.statusBarStyle = UIStatusBarStyleLightContent;
     
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -309,8 +315,23 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
 
 #pragma mark - UICollectionViewDelegate
 
+/// 点击了活动 或 或者商品
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    NSInteger section = indexPath.section;
     
+    if (section == 0) { // 点击了活动
+        
+        
+        
+    } else if (section == 1) { // 点击了商品
+        
+        RightGoodsModel *model = self.commodityArray[indexPath.row];
+        GoodsDetailViewController *goods = [[GoodsDetailViewController alloc] init];
+        goods.ProductId = [model.id integerValue];
+        [self.navigationController pushViewController:goods animated:YES];
+        
+    }
+    NSLog(@"点击了 %ld", indexPath.section);
     
 }
 
@@ -465,8 +486,43 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
 
 #pragma mark - XFCarouselViewDelegate
 
+/// 点击轮播广告
 - (void)carouselView:(XFCarouselView *)carouselView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"点击了第 %ld 个", indexPath.row);
+    UIViewController *viewController = nil;
+    
+    HomePageModel *model = self.carouselModelArray[indexPath.row];
+    
+    if ([model.ObjectType integerValue] == 1) { // 跳转到商品详情
+        if ([model.ObjectId integerValue] == 0) return;
+        
+        GoodsDetailViewController *goodsDetailVc = [[GoodsDetailViewController alloc] init];
+        NSString *productIdString = [model.ObjectId stringByReplacingOccurrencesOfString:@"," withString:@""];
+        goodsDetailVc.ProductId = [productIdString integerValue];
+        viewController = goodsDetailVc;
+        
+
+    } else if ([model.ObjectType integerValue] == 2) { // 跳转到分类
+        
+        FSClassificationViewController *classificationVC = [[FSClassificationViewController alloc] init];
+        /*
+        NSString *categoryIdString = [model.ObjectId stringByReplacingOccurrencesOfString:@"," withString:@""];
+        categoriesView.categoryId = [categoryIdString integerValue];
+        categoriesView.isSingleGoods = YES;
+        viewController = categoriesView;
+         */
+    } else { // 跳转到 web
+        
+        AdWebViewController *ad = [[AdWebViewController alloc] init];
+        ad.name = model.Name;
+        ad.url = model.Url;
+        viewController = ad;
+    }
+    
+    [self.navigationController pushViewController:viewController animated:YES];
+    
+    
+
 }
 
 #pragma mark - FSHomeFourButtonViewDelegate
@@ -511,7 +567,9 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
         return ;
     }
     
-
+    // 动画
+    CGRect rect = [cell.imageView convertRect:cell.imageView.bounds toView:self.view];
+    [self initImage:rect withImage:cell.imageView.image];
     
     NSString *totPriceString = @"0";
     NSString *urlString = @"";
@@ -703,6 +761,48 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
     
 }
 
+#pragma mark 加入购物车动画
+- (void)initImage:(CGRect)rect withImage:(UIImage *)image {
+    
+    UITabBar *tabBar = [[self tabBarController] tabBar];
+    
+    CGFloat posY = tabBar.y;
+    CGFloat itemW = tabBar.width * 0.25;
+    
+    CGFloat posX = itemW * 2 + 15;
+    
+    NSLog(@"%@", NSStringFromCGRect(tabBar.frame));
+    
+    self.cartAnimView = [[UIImageView alloc] initWithFrame:rect];
+    self.cartAnimView.image = image;
+    
+    [[UIApplication sharedApplication].keyWindow addSubview:self.cartAnimView];
+    //[self.view addSubview:self.cartAnimView];
+    
+    CABasicAnimation* rotationAnimation;
+    rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+    rotationAnimation.toValue = [NSNumber numberWithFloat: M_PI * 2.0 ];
+    rotationAnimation.duration = 1.0;
+    rotationAnimation.cumulative = YES;
+    rotationAnimation.repeatCount = 0;
+    
+    //这个是让旋转动画慢于缩放动画执行
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.cartAnimView.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
+    });
+    
+    [UIView animateWithDuration:1.0 animations:^{
+        
+        self.cartAnimView.frame = CGRectMake(posX + 27.5, posY + 27.5, 0, 0);
+        
+    } completion:^(BOOL finished) {
+        [self.cartAnimView removeFromSuperview];
+        self.cartAnimView = nil;
+    }];
+}
+
+
+/// 请求首页数据
 - (void)getHomeData {
     NSString *urlString = [NSString stringWithFormat:HOMEPAGEURL, @"5"];
     [XFNetworking GET:urlString parameters:nil success:^(id responseObject, NSInteger statusCode) {

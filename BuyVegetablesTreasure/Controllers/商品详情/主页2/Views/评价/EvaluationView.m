@@ -56,7 +56,7 @@
         btn.titleLabel.textAlignment = NSTextAlignmentCenter;
         [btn setTitle:arr[i] forState:UIControlStateNormal];
         [btn setTitleColor:[UIColor colorWithHexString:@"0x606060"] forState:UIControlStateNormal];
-        [btn setTitleColor:Color forState:UIControlStateSelected];
+        [btn setTitleColor:[UIColor colorDomina] forState:UIControlStateSelected];
         [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:btn];
 
@@ -67,7 +67,7 @@
         evalutationCountButton.titleLabel.font = [UIFont systemFontOfSize:11];
         evalutationCountButton.titleLabel.textAlignment = NSTextAlignmentCenter;
         [evalutationCountButton setTitleColor:[UIColor colorWithHexString:@"0x606060"] forState:UIControlStateNormal];
-        [evalutationCountButton setTitleColor:Color forState:UIControlStateSelected];
+        [evalutationCountButton setTitleColor:[UIColor colorDomina] forState:UIControlStateSelected];
         [self addSubview:evalutationCountButton];
     }
     

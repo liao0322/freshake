@@ -109,6 +109,49 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
     
 }
 
+- (nullable NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSInteger row = indexPath.row;
+    
+    UITableViewRowAction *removeAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"删除" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+        
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"警告" message:@"确定要删除吗" preferredStyle:UIAlertControllerStyleAlert];
+        
+        
+        UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+            
+            // 改变总价
+            /*
+            Wine *wine = self.wines[row];
+            if (wine.isSelect) {
+                NSInteger price = [wine.count integerValue] * [wine.discount integerValue];
+                _totalPrice -= price;
+                [_totalPricesLabel setText:[NSString stringWithFormat:@"￥%.2f", _totalPrice]];
+            }
+             */
+            
+            // 执行删除操作
+            //[self.wines removeObjectAtIndex:row];
+            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
+            
+        }];
+        
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            [tableView setEditing:NO animated:YES];
+        }];
+        
+        [alertController addAction:confirmAction];
+        [alertController addAction:cancelAction];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+        
+    }];
+    
+    return @[removeAction];
+    
+}
+
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return SCREEN_WIDTH / (375 / 130.0f);
 }
@@ -173,6 +216,15 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
     
 }
 
+- (IBAction)selectAllButtonTouchUpInside:(UIButton *)sender {
+    NSLog(@"全选");
+
+}
+
+- (IBAction)orderButtonTouchUpInside:(UIButton *)sender {
+    NSLog(@"下单");
+
+}
 #pragma mark -
 #pragma mark - LazyLoad
 

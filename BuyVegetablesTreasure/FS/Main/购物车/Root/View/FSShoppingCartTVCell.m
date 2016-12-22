@@ -94,7 +94,7 @@
     
     self.selectButton.selected = YES;
     
-    [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:_model.thumbnailsUrll] placeholderImage:[UIImage imageWithColor:[UIColor lightGrayColor]]];
+    [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:_model.thumbnailsUrll] placeholderImage:[UIImage imageWithColor:[UIColor colorViewBG]]];
     
     [self.titleLabel setText:_model.productName];
     [self.descLabel setText:_model.Specifications];
@@ -108,9 +108,16 @@
 #pragma mark - Custom
 
 - (IBAction)plusButtonTouchUpInside:(UIButton *)sender {
+    NSLog(@"加");
 }
 
 - (IBAction)minusButtonTouchUpInside:(UIButton *)sender {
+    NSLog(@"减");
+
 }
 
+- (IBAction)selectButtonTouchUpInside:(UIButton *)sender {
+    NSLog(@"选择");
+
+}
 @end

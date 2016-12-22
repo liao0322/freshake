@@ -73,7 +73,9 @@
         // 前一个cell的最右边
         NSInteger right = CGRectGetMaxX(prevLayoutAttributes.frame);
         // 如果当前一个cell的最右边加上我们想要的间距加上当前cell的宽度依然在contentSize中，我们改变当前cell的原点位置
-        if(right + spacing + currentLayoutAttributes.frame.size.width + 15 < self.collectionViewContentSize.width) {
+        if(right + spacing + currentLayoutAttributes.frame.size.width < self.collectionViewContentSize.width) {
+            
+            NSLog(@"self.collectionViewContentSize.width = %f", self.collectionViewContentSize.width);
             CGRect frame = currentLayoutAttributes.frame;
             frame.origin.x = right + spacing;
             currentLayoutAttributes.frame = frame;

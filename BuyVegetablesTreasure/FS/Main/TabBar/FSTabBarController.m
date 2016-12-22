@@ -89,25 +89,25 @@
     UINavigationController *homeNavController = self.childViewControllers[0];
     homeNavController.tabBarItem.title = @"首页";
     homeNavController.tabBarItem.image = [UIImage imageNamed:@"tabbar_home"];
-    homeNavController.tabBarItem.selectedImage = [UIImage imageNamed:@"tabbar_home"];
+    homeNavController.tabBarItem.selectedImage = [UIImage imageNamed:@"tabbar_home_selected"];
     
     // 分类
     UINavigationController *messageNavController = self.childViewControllers[1];
     messageNavController.tabBarItem.title = @"分类";
     messageNavController.tabBarItem.image = [UIImage imageNamed:@"tabbar_fenlei"];
-    messageNavController.tabBarItem.selectedImage = [UIImage imageNamed:@"tabbar_fenlei"];
+    messageNavController.tabBarItem.selectedImage = [UIImage imageNamed:@"tabbar_fenlei_selected"];
     
     // 购物车
     UINavigationController *discoverNavController = self.childViewControllers[2];
     discoverNavController.tabBarItem.title = @"购物车";
     discoverNavController.tabBarItem.image = [UIImage imageNamed:@"tabbar_cart"];
-    discoverNavController.tabBarItem.selectedImage = [UIImage imageNamed:@"tabbar_cart"];
+    discoverNavController.tabBarItem.selectedImage = [UIImage imageNamed:@"tabbar_cart_selected"];
     
     // 我
     UINavigationController *meNavController = self.childViewControllers[3];
     meNavController.tabBarItem.title = @"我";
     meNavController.tabBarItem.image = [UIImage imageNamed:@"tabbar_me"];
-    meNavController.tabBarItem.selectedImage = [UIImage imageNamed:@"tabbar_me"];
+    meNavController.tabBarItem.selectedImage = [UIImage imageNamed:@"tabbar_me_selected"];
     
 }
 
