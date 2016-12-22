@@ -41,6 +41,8 @@
 
 @property (nonatomic) UISearchBar *searchBar;
 
+@property (assign, nonatomic) BOOL isCellSelected;
+
 @end
 
 @implementation FSClassificationViewController
@@ -124,6 +126,7 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
     self.view.backgroundColor = [UIColor colorViewBG];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.selectedIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    self.isCellSelected = NO;
 
 }
 
@@ -210,6 +213,8 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    self.isCellSelected = YES;
+    
     // 当前选中的cell 和 前一个cell相同，那么不做任何操作
     if (self.selectedIndexPath == indexPath) {
         return;
@@ -227,6 +232,7 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
     [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:indexPath.section] atScrollPosition:UITableViewScrollPositionTop animated:YES];
     
     self.selectedIndexPath = indexPath;
+    self.isCellSelected = NO;
     
 }
 
@@ -299,10 +305,12 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
 #pragma mark - FSCommodityTVCellDelegate
 
 - (void)commodityTVCell:(FSCommodityTVCell *)cell plusButtonTouchUpInside:(UIButton *)sender {
+    NSLog(@"plus");
     
 }
 
 - (void)commodityTVCell:(FSCommodityTVCell *)cell minusButtonTouchUpInside:(UIButton *)sender {
+    NSLog(@"minus");
     
 }
 
@@ -319,11 +327,6 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
         return;
     }
     
-    NSIndexPath *topIndexpath = [[self.tableView indexPathsForVisibleRows] firstObject];
-    NSIndexPath *willSelectIndexPath = [NSIndexPath indexPathForRow:0 inSection:topIndexpath.section];
-    
-
-    
     if (scrollView.contentOffset.y > 0) {
         
         if (self.lastTVY > scrollView.contentOffset.y) { // 往下
@@ -333,15 +336,17 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
         }
     }
     self.lastTVY = scrollView.contentOffset.y;
-    
-    
 }
 
 
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+
     NSLog(@"");
     if (scrollView == self.collectionView) {
+        return;
+    }
+    if (self.isCellSelected) {
         return;
     }
     

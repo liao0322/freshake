@@ -84,6 +84,8 @@
 /// 商品数据
 @property (copy, nonatomic) NSMutableArray *commodityArray;
 
+@property (nonatomic) UIImageView *cartAnimView;
+
 @end
 
 
@@ -565,7 +567,9 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
         return ;
     }
     
-
+    // 动画
+    CGRect rect = [cell.imageView convertRect:cell.imageView.bounds toView:self.view];
+    [self initImage:rect withImage:cell.imageView.image];
     
     NSString *totPriceString = @"0";
     NSString *urlString = @"";
@@ -756,6 +760,47 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
 - (void)resetNavBarAppearance {
     
 }
+
+#pragma mark 加入购物车动画
+- (void)initImage:(CGRect)rect withImage:(UIImage *)image {
+    
+    UITabBar *tabBar = [[self tabBarController] tabBar];
+    
+    CGFloat posY = tabBar.y;
+    CGFloat itemW = tabBar.width * 0.25;
+    
+    CGFloat posX = itemW * 2 + 15;
+    
+    NSLog(@"%@", NSStringFromCGRect(tabBar.frame));
+    
+    self.cartAnimView = [[UIImageView alloc] initWithFrame:rect];
+    self.cartAnimView.image = image;
+    
+    [[UIApplication sharedApplication].keyWindow addSubview:self.cartAnimView];
+    //[self.view addSubview:self.cartAnimView];
+    
+    CABasicAnimation* rotationAnimation;
+    rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+    rotationAnimation.toValue = [NSNumber numberWithFloat: M_PI * 2.0 ];
+    rotationAnimation.duration = 1.0;
+    rotationAnimation.cumulative = YES;
+    rotationAnimation.repeatCount = 0;
+    
+    //这个是让旋转动画慢于缩放动画执行
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.cartAnimView.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
+    });
+    
+    [UIView animateWithDuration:1.0 animations:^{
+        
+        self.cartAnimView.frame = CGRectMake(posX + 27.5, posY + 27.5, 0, 0);
+        
+    } completion:^(BOOL finished) {
+        [self.cartAnimView removeFromSuperview];
+        self.cartAnimView = nil;
+    }];
+}
+
 
 /// 请求首页数据
 - (void)getHomeData {
