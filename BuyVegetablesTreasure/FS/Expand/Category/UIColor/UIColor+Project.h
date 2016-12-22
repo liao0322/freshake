@@ -17,6 +17,9 @@
 /// 按钮高亮色
 + (UIColor *)colorButtonHighlighted;
 
+/// 按钮禁用色
++ (UIColor *)colorButtonDisabled;
+
 /// 导航栏背景色
 + (UIColor *)colorNavBarBG;
 

@@ -37,7 +37,12 @@
         if ([Tools isBlankString:uid]) {
             
             FSLoginViewController *loginVC = [[FSLoginViewController alloc] init];
-            [tabBarController presentViewController:loginVC animated:YES completion:nil];
+            loginVC.title = @"帐号密码登录";
+            
+            FSNavigationController *navController = [[FSNavigationController alloc] initWithRootViewController:loginVC];
+            
+            
+            [tabBarController presentViewController:navController animated:YES completion:nil];
             return NO;
             
         }

@@ -79,12 +79,26 @@
 #pragma mark - Custom
 
 - (IBAction)minusButtonTouchUpInside:(UIButton *)sender {
+    if ([self.model.CartNum integerValue] == 0) {
+        return;
+    }
     if ([self.delegate respondsToSelector:@selector(commodityTVCell:minusButtonTouchUpInside:)]) {
         [self.delegate commodityTVCell:self minusButtonTouchUpInside:sender];
     }
 }
 
 - (IBAction)plusButtonTouchUpInside:(UIButton *)sender {
+    // 当前购物车数量
+    NSInteger cartNum = [self.model.CartNum integerValue];
+    
+    // 当前库存
+    NSInteger stock = [self.model.stock integerValue];
+    
+    // 如果当前的购物车数量 + 1 大于 库存 就不让请求
+    if ((cartNum + 1) > stock) {
+        [SVProgressHUD showInfoWithStatus:@"库存不足!"];
+        return;
+    }
     if ([self.delegate respondsToSelector:@selector(commodityTVCell:plusButtonTouchUpInside:)]) {
         [self.delegate commodityTVCell:self plusButtonTouchUpInside:sender];
     }

@@ -142,6 +142,9 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
     // [self resetNavBarAppearance];
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 #pragma mark - Override
 
@@ -168,6 +171,8 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
     self.statusBarStyle = UIStatusBarStyleLightContent;
     
     self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userIsLogined) name:@"UserIsLogined" object:nil];
 }
 
 - (void)addSubviews {
@@ -660,6 +665,10 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
 
 #pragma mark - Custom
 
+- (void)userIsLogined {
+    [self startLocation];
+}
+
 // 导航栏左边按钮点击事件
 - (void)leftButtonItemTouchUpInside:(UIButton *)sender {
     /*
@@ -905,10 +914,13 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
     [XFNetworking GET:urlString parameters:nil success:^(id responseObject, NSInteger statusCode) {
         
         NSDictionary *dict = [self dictWithData:responseObject];
+        
+        if ([dict[@"sum"] integerValue] == 0) {
+            return;
+        }
 
         // 设置 tabbar badge
          [[[[[self tabBarController] tabBar] items] objectAtIndex:2] setBadgeValue:[NSString stringWithFormat:@"%@", dict[@"sum"]]];
-        
         
     } failure:^(NSError *error, NSInteger statusCode) {
         [SVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"%@", error.domain]];

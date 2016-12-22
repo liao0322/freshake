@@ -20,6 +20,10 @@
     return [UIColor colorWithHex:XFColorButtonHighlighted];
 }
 
++ (UIColor *)colorButtonDisabled {
+    return [UIColor colorWithHex:XFColorButtonDisabled];
+}
+
 + (UIColor *)colorNavBarBG {
     return [UIColor colorWithHex:XFColorNavBarBG];
 }
