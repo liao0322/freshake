@@ -313,8 +313,23 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
 
 #pragma mark - UICollectionViewDelegate
 
+/// 点击了活动 或 或者商品
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"点击了");
+    NSInteger section = indexPath.section;
+    
+    if (section == 0) { // 点击了活动
+        
+        
+        
+    } else if (section == 1) { // 点击了商品
+        
+        RightGoodsModel *model = self.commodityArray[indexPath.row];
+        GoodsDetailViewController *goods = [[GoodsDetailViewController alloc] init];
+        goods.ProductId = [model.id integerValue];
+        [self.navigationController pushViewController:goods animated:YES];
+        
+    }
+    NSLog(@"点击了 %ld", indexPath.section);
     
 }
 

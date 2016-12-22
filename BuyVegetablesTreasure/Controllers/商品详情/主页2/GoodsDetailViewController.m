@@ -32,7 +32,6 @@
     
     _productNum = 0;
     [self requestDataFromNet:YES];
-    //[self initShoppingCartIconView];
     
     // 如果是收藏进来的隐藏购物车
     if (![_isCollect isEqualToString:@"1"]) {
@@ -43,22 +42,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [Single sharedInstance].isRefreshTitle = YES;
-    
-    // TEMP
+
     self.view.backgroundColor = [UIColor whiteColor];
     
     _isCollectStr = @"0";
     
+    // array init
     _dataSourse = [NSMutableArray array];
     _evalutationArray = [NSMutableArray array];
     _evalutationCountArray = [NSMutableArray array];
+    
+    // setup nav bar
     _collectBBI= [UIFactory createImageBBI:IMAGE(@"收藏") WithTarget:self action:@selector(collectClicked:)];
-    
     UIBarButtonItem *shareBBI = [UIFactory createImageBBI:IMAGE(@"分享") WithTarget:self action:@selector(shareClicked:)];
-    
     UIBarButtonItem *spaceBBI1 = [UIFactory createSpaceBBIWithWidth:0];
     UIBarButtonItem *spaceBBI2 = [UIFactory createSpaceBBIWithWidth:20];
-    
     self.navigationItem.rightBarButtonItems = @[spaceBBI1,_collectBBI,spaceBBI2,shareBBI];
     self.title = @"商品详情";
     
@@ -67,10 +65,10 @@
     
     [self initBottomScrollView];
     [self.view addSubview:self.bottomScrollView];
+    
     [self.bottomScrollView addSubview:self.goodsImageDetailsScrollView];
     [self.bottomScrollView addSubview:self.goodsDetailsView];
     [self goImageDetails];
-    //[self initShoppingCartIconView];
 }
 
 #pragma mark - 控件初始化
@@ -80,7 +78,10 @@
     [_bottomview removeFromSuperview];
     _productNum = _stork == 0 ? 0 : 1;
     
-    _bottomview = [[UIView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT - 50 - 64, SCREEN_WIDTH, 50)];
+    //_bottomview = [[UIView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT - 50 - 64, SCREEN_WIDTH, 50)];
+    
+    _bottomview = [[UIView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT - 50, SCREEN_WIDTH, 50)];
+    
     _bottomview.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:_bottomview];
     
@@ -92,7 +93,7 @@
     // 加入购物车
     _addbutton = [UIButton buttonWithType:UIButtonTypeCustom];
     _addbutton.frame = CGRectMake(ScreenWidth / 3, 0, ScreenWidth / 3, 50);
-    _addbutton.backgroundColor = Color;
+    _addbutton.backgroundColor = [UIColor colorDomina];
     _addbutton.tag = 111;
     _addbutton.titleLabel.font = [UIFont boldSystemFontOfSize:16];
     [_addbutton setTitle:@"加入购物车" forState:UIControlStateNormal];
@@ -107,7 +108,7 @@
     // 立即购买
     _buybutton = [UIButton buttonWithType:UIButtonTypeCustom];
     _buybutton.frame = CGRectMake(ScreenWidth / 3 * 2, 0, ScreenWidth / 3, 50);
-    _buybutton.backgroundColor = [UIColor colorWithHexString:@"0xff1200"];
+    _buybutton.backgroundColor = [UIColor orangeColor];
     _buybutton.tag = 222;
     _buybutton.titleLabel.font = [UIFont boldSystemFontOfSize:16];
     [_buybutton setTitle:@"立即购买" forState:UIControlStateNormal];
@@ -149,9 +150,10 @@
 - (void)initBottomScrollView {
     
     if (_bottomScrollView == nil) {
-        
         _bottomScrollView = [[UIScrollView alloc] init];
-        _bottomScrollView.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight - 64 - 49);
+        //_bottomScrollView.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight - 64 - 49);
+        _bottomScrollView.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight);
+        _bottomScrollView.backgroundColor = [UIColor whiteColor];
         _bottomScrollView.delegate = self;
     }
     
@@ -164,7 +166,8 @@
 
     if (_goodsImageDetailsScrollView == nil) {
         
-        _goodsImageDetailsScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, ScreenHeight - 64 - 50, ScreenWidth, ScreenHeight - 64 - 50)];
+        //_goodsImageDetailsScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, ScreenHeight - 64 - 50, ScreenWidth, ScreenHeight - 64 - 50)];
+        _goodsImageDetailsScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, ScreenHeight, ScreenWidth, ScreenHeight)];
         _goodsImageDetailsScrollView.delegate = self;
     }
     
@@ -182,7 +185,7 @@
         btn.frame = CGRectMake(ScreenWidth / 2 * i, 0, ScreenWidth / 2, 50);
         btn.titleLabel.font = [UIFont systemFontOfSize:17];
         [btn setTitle:i == 0 ? @"图文详情" : @"商品评价" forState:UIControlStateNormal];
-        [btn setTitleColor:i == 0 ? [UIColor colorWithHexString:@"0xff6600"] : [UIColor blackColor] forState:UIControlStateNormal];
+        [btn setTitleColor:i == 0 ? [UIColor colorDomina] : [UIColor blackColor] forState:UIControlStateNormal];
         [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
         [self.goodsImageDetailsScrollView addSubview:btn];
     }
@@ -193,7 +196,7 @@
     
     UILabel *moveLine = [[UILabel alloc] initWithFrame:CGRectMake(0, 50, ScreenWidth / 2, 2)];
     moveLine.tag = 210;
-    moveLine.backgroundColor = [UIColor colorWithHexString:@"0xff6600"];
+    moveLine.backgroundColor = [UIColor colorDomina];
     [self.goodsImageDetailsScrollView addSubview:moveLine];
     
     _detailsScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 53, ScreenWidth, ScreenHeight - 64 - 50 - 53)];
@@ -223,7 +226,7 @@
     
     self.evalutationView.evaluationTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [UIView animateWithDuration:0.5 animations:^{
-            self.bottomScrollView.contentOffset = CGPointMake(0, 0);
+            self.bottomScrollView.contentOffset = CGPointMake(0, -64);
         } completion:^(BOOL finished) {
             [self.evalutationView.evaluationTableView.mj_header endRefreshing];
         }];
@@ -244,7 +247,7 @@
     
     webView.scrollView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [UIView animateWithDuration:0.5 animations:^{
-            self.bottomScrollView.contentOffset = CGPointMake(0, 0);
+            self.bottomScrollView.contentOffset = CGPointMake(0, -64);
         } completion:^(BOOL finished) {
             [webView.scrollView.mj_header endRefreshing];
         }];
@@ -275,7 +278,8 @@
 
     self.goodsDetailsView.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionLayoutSubviews animations:^{
-            self.bottomScrollView.contentOffset = CGPointMake(0, ScreenHeight - 64 - 50);
+            //self.bottomScrollView.contentOffset = CGPointMake(0, ScreenHeight - 64 - 50);
+            self.bottomScrollView.contentOffset = CGPointMake(0, ScreenHeight - 64);
         } completion:^(BOOL finished) {
             [self.goodsDetailsView.tableView.mj_footer endRefreshing];
         }];
@@ -437,7 +441,7 @@
     
     UIButton *button = (UIButton *)[self.view viewWithTag:btn.tag == 110 ? 111 : 110];
     [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [btn setTitleColor:[UIColor colorWithHexString:@"0xff6600"] forState:UIControlStateNormal];
+    [btn setTitleColor:[UIColor colorDomina] forState:UIControlStateNormal];
     
     UILabel *line = (UILabel *)[self.view viewWithTag:210];
     [UIView animateWithDuration:0.5 animations:^{

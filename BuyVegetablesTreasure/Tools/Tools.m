@@ -33,6 +33,8 @@
 
 + (void) myHud:(NSString *)str inView:(UIView *)view
 {
+    [SVProgressHUD showInfoWithStatus:str];
+    /*
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication].delegate window] animated:YES];
     hud.mode = MBProgressHUDModeCustomView;
     hud.color = [UIColor grayColor];
@@ -59,10 +61,13 @@
         hud.detailsLabelText = str;
     }
     [hud hide:YES afterDelay:2];
+     */
 }
 
 + (void) myHud:(NSString *)str
 {
+    [Tools myHud:str inView:nil];
+    /*
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication].delegate window] animated:YES];
     hud.mode = MBProgressHUDModeCustomView;
     hud.color = [UIColor grayColor];
@@ -89,6 +94,7 @@
         hud.detailsLabelText = str;
     }
     [hud hide:YES afterDelay:2];
+     */
 }
 
 + (void) myAlert:(NSString *)str {
