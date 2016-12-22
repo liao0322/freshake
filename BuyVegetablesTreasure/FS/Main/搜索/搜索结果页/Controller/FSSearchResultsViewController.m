@@ -7,14 +7,21 @@
 //
 
 #import "FSSearchResultsViewController.h"
+#import "FSSearchResultTVCell.h"
 
 @interface FSSearchResultsViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic) UITableView *tableView;
 
+@property (nonatomic) UISearchBar *searchBar;
+
 @end
 
 @implementation FSSearchResultsViewController
+
+static NSString * const searchResultTVCellID = @"searchResultTVCellID";
+
+#pragma mark - LifeCycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -35,7 +42,23 @@
     
     self.tableView.frame = self.view.bounds;
 }
-#pragma mark - UITableViewDelegate
+
+#pragma mark - Override
+
+- (void)registerCells {
+    [super registerCells];
+    
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([FSSearchResultTVCell class]) bundle:nil] forCellReuseIdentifier:searchResultTVCellID];
+    
+    
+}
+
+- (void)setupNavigationBar {
+    [super setupNavigationBar];
+    
+    self.navigationItem.titleView = self.searchBar;
+    
+}
 
 
 
@@ -46,10 +69,16 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [[UITableViewCell alloc] init];
-    cell.textLabel.text = @"a";
+    FSSearchResultTVCell *cell = [tableView dequeueReusableCellWithIdentifier:searchResultTVCellID forIndexPath:indexPath];
     return cell;
 }
+
+#pragma mark - UITableViewDelegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 135.0f;
+}
+
 
 #pragma mark - LazyLoad
 
@@ -60,6 +89,16 @@
         _tableView.dataSource = self;
     }
     return _tableView;
-    
 }
+
+- (UISearchBar *)searchBar {
+    if (!_searchBar) {
+        _searchBar = [[UISearchBar alloc] init];
+        _searchBar.delegate = self;
+        _searchBar.searchBarStyle = UISearchBarStyleMinimal;
+        _searchBar.placeholder = @"搜索";
+    }
+    return _searchBar;
+}
+
 @end

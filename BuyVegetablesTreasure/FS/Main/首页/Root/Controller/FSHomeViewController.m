@@ -32,6 +32,10 @@
 
 #import "FSLoginViewController.h"
 #import "FSNavigationController.h"
+#import "GoodsDetailViewController.h"
+
+#import "FSClassificationViewController.h"
+#import "AdWebViewController.h"
 
 #define NAV_BAR_ALPHA 0.95f
 
@@ -310,7 +314,7 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
+    NSLog(@"点击了");
     
 }
 
@@ -465,8 +469,43 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
 
 #pragma mark - XFCarouselViewDelegate
 
+/// 点击轮播广告
 - (void)carouselView:(XFCarouselView *)carouselView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"点击了第 %ld 个", indexPath.row);
+    UIViewController *viewController = nil;
+    
+    HomePageModel *model = self.carouselModelArray[indexPath.row];
+    
+    if ([model.ObjectType integerValue] == 1) { // 跳转到商品详情
+        if ([model.ObjectId integerValue] == 0) return;
+        
+        GoodsDetailViewController *goodsDetailVc = [[GoodsDetailViewController alloc] init];
+        NSString *productIdString = [model.ObjectId stringByReplacingOccurrencesOfString:@"," withString:@""];
+        goodsDetailVc.ProductId = [productIdString integerValue];
+        viewController = goodsDetailVc;
+        
+
+    } else if ([model.ObjectType integerValue] == 2) { // 跳转到分类
+        
+        FSClassificationViewController *classificationVC = [[FSClassificationViewController alloc] init];
+        /*
+        NSString *categoryIdString = [model.ObjectId stringByReplacingOccurrencesOfString:@"," withString:@""];
+        categoriesView.categoryId = [categoryIdString integerValue];
+        categoriesView.isSingleGoods = YES;
+        viewController = categoriesView;
+         */
+    } else { // 跳转到 web
+        
+        AdWebViewController *ad = [[AdWebViewController alloc] init];
+        ad.name = model.Name;
+        ad.url = model.Url;
+        viewController = ad;
+    }
+    
+    [self.navigationController pushViewController:viewController animated:YES];
+    
+    
+
 }
 
 #pragma mark - FSHomeFourButtonViewDelegate
@@ -703,6 +742,7 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
     
 }
 
+/// 请求首页数据
 - (void)getHomeData {
     NSString *urlString = [NSString stringWithFormat:HOMEPAGEURL, @"5"];
     [XFNetworking GET:urlString parameters:nil success:^(id responseObject, NSInteger statusCode) {

@@ -19,13 +19,36 @@
                      success:(void (^)(id data))success
                      failure:(void (^)(NSError *error))failure
 {
-    MBProgressHUD *hud;
     if (isShowLoading) {
-        hud = [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication].delegate window] animated:YES];
-        hud.labelText = @"加载中...";
-        [hud show:YES];
+        [SVProgressHUD showWithStatus:@"正在加载..."];
     }
     
+    [XFNetworking GET:urlString parameters:nil success:^(id responseObject, NSInteger statusCode) {
+        [SVProgressHUD dismiss];
+        NSError *error;
+        NSDictionary *dataDict = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:&error];
+        if (error) {
+            [SVProgressHUD showWithStatus:@"解析错误"];
+            return;
+        }
+        if (success) {
+            success(dataDict);
+        }
+    } failure:^(NSError *error, NSInteger statusCode) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+    
+    /*
+    //MBProgressHUD *hud;
+    if (isShowLoading) {
+        //hud = [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication].delegate window] animated:YES];
+        
+        [SVProgressHUD showWithStatus:@"正在加载..."];
+        //hud.labelText = @"加载中...";
+        //[hud show:YES];
+    }
     
     AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
     
@@ -59,7 +82,8 @@
                 success(responseObject);
             }
             
-            [hud hide:YES];
+            //[hud hide:YES];
+            [SVProgressHUD dismiss];
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
            
@@ -67,7 +91,8 @@
                 failure(error);
             }
             
-            [hud hide:YES];
+            //[hud hide:YES];
+            [SVProgressHUD dismiss];
             
         }];
     }
@@ -85,7 +110,9 @@
                 else success(responseObject);
             }
             
-            [hud hide:YES];
+            //[hud hide:YES];
+            [SVProgressHUD dismiss];
+
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
            
@@ -93,9 +120,12 @@
                 failure(error);
             }
             
-            [hud hide:YES];
+            //[hud hide:YES];
+            [SVProgressHUD dismiss];
+
         }];
     }
+     */
     
 }
 

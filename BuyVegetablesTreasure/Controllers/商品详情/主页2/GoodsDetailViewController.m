@@ -32,7 +32,7 @@
     
     _productNum = 0;
     [self requestDataFromNet:YES];
-    [self initShoppingCartIconView];
+    //[self initShoppingCartIconView];
     
     // 如果是收藏进来的隐藏购物车
     if (![_isCollect isEqualToString:@"1"]) {
@@ -44,24 +44,23 @@
     [super viewDidLoad];
     [Single sharedInstance].isRefreshTitle = YES;
     
+    // TEMP
     self.view.backgroundColor = [UIColor whiteColor];
     
     _isCollectStr = @"0";
+    
     _dataSourse = [NSMutableArray array];
     _evalutationArray = [NSMutableArray array];
     _evalutationCountArray = [NSMutableArray array];
     _collectBBI= [UIFactory createImageBBI:IMAGE(@"收藏") WithTarget:self action:@selector(collectClicked:)];
-    UIBarButtonItem *shareBBI = [UIFactory createImageBBI:IMAGE(@"分享") WithTarget:self action:@selector(shareClicked:)];
     
-    self.navigationItem.leftBarButtonItem = [UIFactory createBackBBIWithTarget:self
-                                                                        action:@selector(back)];
+    UIBarButtonItem *shareBBI = [UIFactory createImageBBI:IMAGE(@"分享") WithTarget:self action:@selector(shareClicked:)];
     
     UIBarButtonItem *spaceBBI1 = [UIFactory createSpaceBBIWithWidth:0];
     UIBarButtonItem *spaceBBI2 = [UIFactory createSpaceBBIWithWidth:20];
     
     self.navigationItem.rightBarButtonItems = @[spaceBBI1,_collectBBI,spaceBBI2,shareBBI];
-    self.navigationItem.titleView = [Utillity customNavToTitle:@"商品详情"];
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithHexString:@"0xf5f6f8"];
+    self.title = @"商品详情";
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setInteger:_ProductId forKey:@"ProductId"];
@@ -71,7 +70,7 @@
     [self.bottomScrollView addSubview:self.goodsImageDetailsScrollView];
     [self.bottomScrollView addSubview:self.goodsDetailsView];
     [self goImageDetails];
-    [self initShoppingCartIconView];
+    //[self initShoppingCartIconView];
 }
 
 #pragma mark - 控件初始化
@@ -136,51 +135,7 @@
 }
 
 #pragma mark 初始化购物车图标
-- (void)initShoppingCartIconView {
-    
-    [(UIButton *)[self.view viewWithTag:100001] removeFromSuperview];
-    
-    UIButton *shoppingCartIconButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    shoppingCartIconButton.frame = CGRectMake(SCREEN_WIDTH - 60, SCREEN_HEIGHT - 75 - 64 - 25, 45, 45);
-    [shoppingCartIconButton setImage:IMAGE(@"购物车背景") forState:UIControlStateNormal];
-    shoppingCartIconButton.tag = 100001;
-    //    [shoppingCartIconButton addTarget:self action:@selector(goShoppingCart) forControlEvents:UIControlEventTouchUpInside];
-    [shoppingCartIconButton addTarget:self action:@selector(wasDragged:withEvent:) forControlEvents:UIControlEventTouchDragInside];
-    [self.view addSubview:shoppingCartIconButton];
-    
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(goShoppingCart)];
-    [shoppingCartIconButton addGestureRecognizer:tap];
-    
-    UIImageView *bgView = [[UIImageView alloc] initWithFrame:CGRectMake(shoppingCartIconButton.frame.size.width / 2 - 7.5, 5, 15, 10)];
-    [bgView setImage:IMAGE(@"数字圈")];
-    [shoppingCartIconButton addSubview:bgView];
-    
-    _emblem = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 15, 10)];
-    _emblem.font = [UIFont systemFontOfSize:8];
-    _emblem.textColor = [UIColor blackColor];
-    _emblem.textAlignment = NSTextAlignmentCenter;
-    [bgView addSubview:_emblem];
-    
-    if (isPad) {
-        
-        CGRect frame = shoppingCartIconButton.frame;
-        frame.origin.x = SCREEN_WIDTH - 75;
-        frame.size.height = 55;
-        frame.size.width = 55;
-        shoppingCartIconButton.frame = frame;
-        
-        frame = bgView.frame;
-        frame.origin.x = shoppingCartIconButton.frame.size.width/2-7.5;
-        bgView.frame = frame;
-        
-        _emblem = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, bgView.frame.size.width, bgView.frame.size.height)];
-        _emblem.font = [UIFont systemFontOfSize:9];
-        _emblem.textAlignment = NSTextAlignmentCenter;
-        [bgView addSubview:_emblem];
-    }
-    
-    [self getShoppingCartNum];
-}
+
 
 #pragma mark 初始化详情页面
 - (void)initGoodsDetailTableView {

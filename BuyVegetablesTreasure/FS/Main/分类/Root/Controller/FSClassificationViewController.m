@@ -39,8 +39,6 @@
 
 @property (nonatomic) NSIndexPath *selectedIndexPath;
 
-
-
 @property (nonatomic) UISearchBar *searchBar;
 
 @end
