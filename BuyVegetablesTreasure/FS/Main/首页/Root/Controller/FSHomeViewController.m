@@ -162,7 +162,7 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
 
 - (void)initialization {
     [super initialization];
-    
+    self.view.backgroundColor = [UIColor colorViewBG];
     self.statusBarStyle = UIStatusBarStyleLightContent;
     
     self.automaticallyAdjustsScrollViewInsets = NO;

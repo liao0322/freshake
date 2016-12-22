@@ -210,11 +210,17 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    // 当前选中的cell 和 前一个cell相同，那么不做任何操作
+    if (self.selectedIndexPath == indexPath) {
+        return;
+    }
+    // 当前选中的cell
     FSClassificationCVCell *cell = (FSClassificationCVCell *)[collectionView cellForItemAtIndexPath:indexPath];
-    // cell.imageView.backgroundColor = [UIColor orangeColor];
+    // 前一个选中的cell
+    FSClassificationCVCell *prevCell = (FSClassificationCVCell *)[collectionView cellForItemAtIndexPath:self.selectedIndexPath];
     
     cell.imageView.tintColor = [UIColor orangeColor];
-    [cell.imageView setImage:[[UIImage imageNamed:@"美味生鲜"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
+    prevCell.imageView.tintColor = [UIColor colorDomina];
 
     [collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
     
@@ -274,14 +280,20 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
     
     FSClassificationModel *model = self.commodityArray[indexPath.section];
     [cell.titleLabel setText:model.CategoryName];
+    [cell.imageView setImage:[[UIImage imageNamed:@"美味生鲜"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
     
-    if (indexPath == self.selectedIndexPath) {
-        cell.imageView.tintColor = [UIColor orangeColor];
-    } else {
-        cell.imageView.tintColor = [UIColor colorDomina];
-    }
     return cell;
     
+}
+
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    FSClassificationCVCell *cCell = (FSClassificationCVCell *)cell;
+    if (indexPath == self.selectedIndexPath) {
+        cCell.imageView.tintColor = [UIColor orangeColor];
+    } else {
+        cCell.imageView.tintColor = [UIColor colorDomina];
+    }
 }
 
 #pragma mark - FSCommodityTVCellDelegate
@@ -310,7 +322,7 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
     NSIndexPath *topIndexpath = [[self.tableView indexPathsForVisibleRows] firstObject];
     NSIndexPath *willSelectIndexPath = [NSIndexPath indexPathForRow:0 inSection:topIndexpath.section];
     
-    //[self.collectionView selectItemAtIndexPath:willSelectIndexPath animated:YES scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
+
     
     if (scrollView.contentOffset.y > 0) {
         
@@ -322,19 +334,38 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
     }
     self.lastTVY = scrollView.contentOffset.y;
     
-
-    
-    //FSClassificationCVCell *cell = [self.collectionView cellForItemAtIndexPath:willSelectIndexPath];
-    //cell.imageView.tintColor = [UIColor orangeColor];
-    
-    
-    //[self.collectionView selectItemAtIndexPath:willSelectIndexPath animated:YES scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
-    
-    
-    
-    //[self collectionView:self.collectionView didSelectItemAtIndexPath:willSelectIndexPath];
     
 }
+
+
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    NSLog(@"");
+    if (scrollView == self.collectionView) {
+        return;
+    }
+    
+    NSIndexPath *topIndexpath = [[self.tableView indexPathsForVisibleRows] firstObject];
+    NSIndexPath *willSelectIndexPath = [NSIndexPath indexPathForRow:0 inSection:topIndexpath.section];
+    
+    NSLog(@" top section = %ld", topIndexpath.section);
+    NSLog(@" will section = %ld", willSelectIndexPath.section);
+    
+    // 前一个选中的cell
+    FSClassificationCVCell *prevCell = (FSClassificationCVCell *)[self.collectionView cellForItemAtIndexPath:self.selectedIndexPath];
+    
+    // 将要选中的cell
+    FSClassificationCVCell *aCell = (FSClassificationCVCell *)[self.collectionView cellForItemAtIndexPath:willSelectIndexPath];
+    
+    prevCell.imageView.tintColor = [UIColor colorDomina];
+    aCell.imageView.tintColor = [UIColor orangeColor];
+    
+    self.selectedIndexPath = willSelectIndexPath;
+    
+    [self.collectionView selectItemAtIndexPath:willSelectIndexPath animated:YES scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
+}
+
+
 
 #pragma mark - UISearchBarDelegate
 
@@ -382,8 +413,13 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
         
         NSLog(@"%@",self.commodityArray);
         [self.tableView reloadData];
+        
+        self.collectionView.hidden = NO;
         [self.collectionView reloadData];
-        [self collectionView:self.collectionView didSelectItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+        //[self collectionView:self.collectionView didSelectItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+        
+        
+        
         /*
          _commodityTypeView.hidden = NO;
          _commodityTableView.hidden = NO;
@@ -463,6 +499,7 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
         _collectionView.dataSource = self;
         _collectionView.showsHorizontalScrollIndicator = NO;
         _collectionView.backgroundColor = [UIColor whiteColor];
+        _collectionView.hidden = YES;
         
         /*
         _collectionView.layer.shadowColor = [UIColor blackColor].CGColor;
