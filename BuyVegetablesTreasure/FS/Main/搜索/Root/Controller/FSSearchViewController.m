@@ -15,6 +15,7 @@
 #import "FSSearchResultsViewController.h"
 
 
+
 @interface FSSearchViewController ()
 <
     UISearchControllerDelegate,
@@ -24,7 +25,7 @@
     UISearchResultsUpdating
 >
 
-@property (nonatomic) UISearchController *searchController;
+
 @property (nonatomic) FSSearchAssociationViewController *associationVC;
 
 @property (nonatomic) UICollectionView *collectionView;
@@ -32,6 +33,8 @@
 
 @property (copy, nonatomic) NSMutableArray *hotSearchArray;
 @property (copy, nonatomic) NSMutableArray *historySearchArray;
+
+@property (copy, nonatomic) NSMutableArray *keyWordsArray;
 
 @end
 
@@ -275,8 +278,20 @@ static NSString * const searchFooterID = @"searchFooterID";
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSString *searchKeyWord = @"";
+    
+    if (indexPath.section == 0) {
+        searchKeyWord = self.hotSearchArray[indexPath.row];
+    } else {
+        searchKeyWord = self.historySearchArray[indexPath.row];
+    }
+    
     FSSearchResultsViewController *resultsVC = [[FSSearchResultsViewController alloc] init];
-    [self.navigationController pushViewController:resultsVC animated:YES];
+    resultsVC.serachKeyWord = searchKeyWord;
+    
+    self.searchController.searchBar.text = searchKeyWord;
+    [self.navigationController pushViewController:resultsVC animated:NO];
 
 }
 
@@ -333,7 +348,16 @@ static NSString * const searchFooterID = @"searchFooterID";
 #pragma mark - UISearchResultsUpdating
 
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
-    NSLog(@"updateSearch");
+    NSLog(@" search = %@", searchController.searchBar.text);
+    
+    NSString *searchKeyWord = searchController.searchBar.text;
+
+    if (searchKeyWord.length == 0) {
+        return;
+    }
+    
+    [self QueryGoodsWithText:searchKeyWord];
+    
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -343,6 +367,44 @@ static NSString * const searchFooterID = @"searchFooterID";
 }
 
 #pragma mark - Custom
+
+#pragma mark - 查询商品
+- (void)QueryGoodsWithText:(NSString *)text {
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *midString = [userDefaults objectForKey:@"MID"];
+    NSString *uidString = [userDefaults objectForKey:@"UID"];
+    
+    NSString *jsonString = [NSString stringWithFormat:QUERYGOODS,text,@"1",midString,uidString];
+    jsonString = [jsonString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSLog(@"%@",jsonString);
+    
+    [XFNetworking GET:jsonString parameters:nil success:^(id responseObject, NSInteger statusCode) {
+        if (self.keyWordsArray.count) {
+            [self.keyWordsArray removeAllObjects];
+        }
+        
+        NSDictionary *dictData = [self dictWithData:responseObject];
+        
+        NSArray *arr = dictData[@"ClassList"];
+        
+        for (NSDictionary *dic in arr) {
+            for (NSDictionary *dict in dic[@"List"]) {
+                NSString *name = dict[@"productName"];
+                [self.keyWordsArray addObject:name];
+            }
+        }
+        
+        self.associationVC.dataArray = self.keyWordsArray;
+        self.associationVC.nav = (FSNavigationController *)self.navigationController;
+        [self.associationVC.tableView reloadData];
+        
+    } failure:^(NSError *error, NSInteger statusCode) {
+        [self showInfoWidthError:error];
+    }];
+    
+
+}
 
 - (BOOL)isLogined {
     // 判断用户是否登录
@@ -359,6 +421,22 @@ static NSString * const searchFooterID = @"searchFooterID";
 
 - (void)clearHistory:(UIButton *)sender {
     NSLog(@"clear history");
+    
+    NSString *urlString = [NSString stringWithFormat:DELSEARCH,[[NSUserDefaults standardUserDefaults] objectForKey:@"UID"]];
+    
+    [XFNetworking GET:urlString parameters:nil success:^(id responseObject, NSInteger statusCode) {
+        NSDictionary *dataDict = [self dictWithData:responseObject];
+        
+        if (![dataDict[@"issuccess"] boolValue]) {
+            [SVProgressHUD showInfoWithStatus:dataDict[@"context"]];
+        }
+        // 清除历史记录数据
+        [self.historySearchArray removeAllObjects];
+        
+        [self.collectionView reloadData];
+    } failure:^(NSError *error, NSInteger statusCode) {
+        [self showInfoWidthError:error];
+    }];
 }
 
 
@@ -416,6 +494,13 @@ static NSString * const searchFooterID = @"searchFooterID";
         _historySearchArray = [NSMutableArray array];
     }
     return _historySearchArray;
+}
+
+- (NSMutableArray *)keyWordsArray {
+    if (!_keyWordsArray) {
+        _keyWordsArray = [NSMutableArray array];
+    }
+    return _keyWordsArray;
 }
 
 

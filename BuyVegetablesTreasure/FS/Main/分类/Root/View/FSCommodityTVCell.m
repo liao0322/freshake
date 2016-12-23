@@ -119,6 +119,8 @@
     [self.priceLabel setText:[NSString stringWithFormat:@"￥%@", _model.salePrice]];
     [self.vipLabel setText:[NSString stringWithFormat:@"(会员价)￥%@", _model.UserPrice]];
     
+    [self.countLabel setText:_model.CartNum];
+    
 }
 
 @end

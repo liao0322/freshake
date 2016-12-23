@@ -38,6 +38,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.title = @"帐号密码登录";
+
     self.phoneNumberInputTextField.maxCount = 11;
     
     
@@ -51,8 +54,6 @@
     self.passwordInputTextField.tintColor = [UIColor colorDomina];
     
     self.secondSeparatorLine.backgroundColor = [UIColor colorSeparatorLine];
-    
-
     
     // login button
     [self.loginButton setBackgroundImage:[UIImage imageWithColor:[UIColor colorDomina]] forState:UIControlStateNormal];
@@ -83,8 +84,10 @@
     CGFloat spacing = 30.0f;
     CGFloat viewWidth = width - spacing * 2;
     
+    CGFloat marginTop = height * 0.3;
+    
     self.accountIconImageView.x = spacing;
-    self.accountIconImageView.y = 100;
+    self.accountIconImageView.y = marginTop;
     
     self.phoneNumberInputTextField.x = self.accountIconImageView.right + 15;
     self.phoneNumberInputTextField.centerY = self.accountIconImageView.centerY;
@@ -111,7 +114,7 @@
     self.loginButton.x = spacing;
     self.loginButton.height = 44;
     self.loginButton.width = viewWidth;
-    self.loginButton.y = self.secondSeparatorLine.bottom + 60;
+    self.loginButton.y = self.secondSeparatorLine.bottom + height * 0.1;
     
     self.registerButton.x = self.loginButton.x;
     self.registerButton.height = self.loginButton.height;

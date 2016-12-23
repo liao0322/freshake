@@ -10,4 +10,6 @@
 
 @interface FSSearchResultsViewController : FSBaseViewController
 
+@property (copy, nonatomic) NSString *serachKeyWord;
+
 @end

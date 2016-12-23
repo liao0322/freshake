@@ -7,7 +7,11 @@
 //
 
 #import "FSBaseViewController.h"
+#import "FSNavigationController.h"
 
 @interface FSSearchAssociationViewController : FSBaseViewController
 
+@property (copy, nonatomic) NSMutableArray *dataArray;
+@property (nonatomic) UITableView *tableView;
+@property (nonatomic) FSNavigationController *nav;
 @end

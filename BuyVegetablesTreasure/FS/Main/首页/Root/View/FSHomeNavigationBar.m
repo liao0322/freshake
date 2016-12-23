@@ -35,13 +35,14 @@
     self.shadowView.frame = self.bounds;
     
     // 左边button frame
+    [self.leftButton sizeToFit];
     self.leftButton.left = 15;
     self.leftButton.centerY = ((self.height - STATUS_BAR_HEIGHT) * 0.5) + STATUS_BAR_HEIGHT;
-    [self.leftButton sizeToFit];
+    self.leftButton.width = 48;
     
     self.titleButton.centerY = self.leftButton.centerY;
-    self.titleButton.x = self.leftButton.right + 15;
-    self.titleButton.width = self.width - (self.leftButton.width + 30 + 15);
+    self.titleButton.x = self.leftButton.right + 8;
+    self.titleButton.width = self.width - (self.leftButton.width + 30 + 8);
     self.titleButton.height = 28;
     //self.titleButton.centerX = self.centerX;
     
@@ -58,6 +59,7 @@
         [_leftButton setImage:[[UIImage imageNamed:@"locate"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
         _leftButton.tintColor = [UIColor whiteColor];
         _leftButton.titleLabel.font = [UIFont systemFontOfSize:14];
+        _leftButton.titleEdgeInsets = UIEdgeInsetsMake(0, 2, 0, 0);
         
     }
     return _leftButton;

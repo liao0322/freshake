@@ -37,6 +37,8 @@
 #import "FSClassificationViewController.h"
 #import "AdWebViewController.h"
 
+#import "SelectSiteViewController.h"
+
 #define NAV_BAR_ALPHA 0.95f
 
 @interface FSHomeViewController ()
@@ -46,7 +48,8 @@
     XFCarouselViewDelegate,
     BMKLocationServiceDelegate,
     FSHomeFourButtonViewDelegate,
-    FSCommodityCVCellDelegate
+    FSCommodityCVCellDelegate,
+    BMKGeoCodeSearchDelegate
 >
 
 // 自定义的导航栏
@@ -86,6 +89,7 @@
 
 @property (nonatomic) UIImageView *cartAnimView;
 
+@property (copy, nonatomic) NSString *currentCityString;
 @end
 
 
@@ -106,10 +110,6 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
     // 设置自定义的 nav bar 背景透明
     [self setNavBarAppearance];
     
-    // 测试给tabbar 设置 badge
-
-    //self.tabBarItem.badgeValue = @"7";
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -119,10 +119,12 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    // 设置当前提货点名称
+    [self.navigationBar.leftButton setTitle:[[[NSUserDefaults standardUserDefaults] objectForKey:@"merchantsName"] substringWithRange:NSMakeRange(0, 2)] forState:UIControlStateNormal];
+    
     // 隐藏系统 nav bar
     [self.navigationController setNavigationBarHidden:YES animated:NO];
-    
-    //[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
     
     [[UIApplication sharedApplication] setStatusBarStyle:self.statusBarStyle animated:NO];
 }
@@ -167,12 +169,14 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
 
 - (void)initialization {
     [super initialization];
+    
     self.view.backgroundColor = [UIColor colorViewBG];
     self.statusBarStyle = UIStatusBarStyleLightContent;
-    
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userIsLogined) name:@"UserIsLogined" object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userIsLogout) name:@"UserIsLogout" object:nil];
 }
 
 - (void)addSubviews {
@@ -185,8 +189,6 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
         make.height.equalTo(@64);
         make.top.left.equalTo(@0);
     }];
-
-    // [self.view addSubview:self.indicatorView];
 }
 
 
@@ -202,12 +204,6 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
     [self.mainView registerClass:[FSHomeHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerReuseID];
     
     [self.mainView registerNib:[UINib nibWithNibName:NSStringFromClass([FSSectionOneHeaderView class]) bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:sectionOneHeaderID];
-
-    
-    // 注册 footer
-    /*
-    [self.mainView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:defaultFooterReuseID];
-     */
 }
 
 - (void)viewDidLayoutSubviews {
@@ -322,21 +318,52 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
 
 /// 点击了活动 或 或者商品
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"点击了 %ld", indexPath.section);
     NSInteger section = indexPath.section;
+
+    UIViewController *viewController = nil;
     
     if (section == 0) { // 点击了活动
         
+        HomePageModel *model = self.carouselModelArray[indexPath.row];
         
+        if ([model.ObjectType integerValue] == 1) { // 跳转到商品详情
+            if ([model.ObjectId integerValue] == 0) return;
+            
+            GoodsDetailViewController *goodsDetailVc = [[GoodsDetailViewController alloc] init];
+            NSString *productIdString = [model.ObjectId stringByReplacingOccurrencesOfString:@"," withString:@""];
+            goodsDetailVc.ProductId = [productIdString integerValue];
+            viewController = goodsDetailVc;
+            
+            
+        } else if ([model.ObjectType integerValue] == 2) { // 跳转到分类
+            
+            FSClassificationViewController *singleClassificationVC = [[FSClassificationViewController alloc] init];
+            
+            NSString *categoryIdString = [model.ObjectId stringByReplacingOccurrencesOfString:@"," withString:@""];
+            singleClassificationVC.isSingle = YES;
+            singleClassificationVC.categoryId = [categoryIdString integerValue];
+            viewController = singleClassificationVC;
+            
+        } else { // 跳转到 web
+            
+            AdWebViewController *ad = [[AdWebViewController alloc] init];
+            ad.name = model.Name;
+            ad.url = model.Url;
+            viewController = ad;
+        }
         
     } else if (section == 1) { // 点击了商品
         
         RightGoodsModel *model = self.commodityArray[indexPath.row];
         GoodsDetailViewController *goods = [[GoodsDetailViewController alloc] init];
         goods.ProductId = [model.id integerValue];
-        [self.navigationController pushViewController:goods animated:YES];
+        viewController = goods;
         
     }
-    NSLog(@"点击了 %ld", indexPath.section);
+    
+    [self.navigationController pushViewController:viewController animated:YES];
+
     
 }
 
@@ -489,6 +516,48 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
     [self.locService stopUserLocationService];
 }
 
+#pragma mark 逆地理编码类
+- (void)initBMKReverseGeoCodeOptionWith:(CLLocationCoordinate2D)coor {
+    
+    // 初始化检索对象
+    self.geoCodeSearch = [[BMKGeoCodeSearch alloc] init];
+    self.geoCodeSearch.delegate = self;
+    self.geoCodeSearch = [[BMKGeoCodeSearch alloc] init];
+    self.geoCodeSearch.delegate = self;
+    
+    // 初始化逆地理编码类
+    BMKReverseGeoCodeOption *reverseGeoCodeOption = [[BMKReverseGeoCodeOption alloc] init];
+    reverseGeoCodeOption.reverseGeoPoint = coor;
+    [self.geoCodeSearch reverseGeoCode:reverseGeoCodeOption];
+}
+
+#pragma mark 接收反向地理编码结果
+- (void) onGetReverseGeoCodeResult:(BMKGeoCodeSearch *)searcher
+                            result:(BMKReverseGeoCodeResult *)result
+                         errorCode:(BMKSearchErrorCode)error
+{
+    if (error == BMK_SEARCH_NO_ERROR) {
+        
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        [userDefaults setObject:result.address forKey:@"CurrentSite"];
+        
+        NSArray *cityArray = [result.address componentsSeparatedByString:@"省"];
+        
+        if (cityArray.count > 1) {
+            
+            NSArray *cityArray2 = [cityArray[1] componentsSeparatedByString:@"市"];
+            
+            self.currentCityString = [NSString stringWithFormat:@"%@市",cityArray2[0]];
+            [userDefaults setObject:self.currentCityString forKey:@"CurrentCity"];
+        }
+        else return;
+    }
+    else {
+        
+        NSLog(@"抱歉，未找到结果");
+    }
+}
+
 #pragma mark - XFCarouselViewDelegate
 
 /// 点击轮播广告
@@ -509,13 +578,13 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
 
     } else if ([model.ObjectType integerValue] == 2) { // 跳转到分类
         
-        FSClassificationViewController *classificationVC = [[FSClassificationViewController alloc] init];
-        /*
+        FSClassificationViewController *singleClassificationVC = [[FSClassificationViewController alloc] init];
+        
         NSString *categoryIdString = [model.ObjectId stringByReplacingOccurrencesOfString:@"," withString:@""];
-        categoriesView.categoryId = [categoryIdString integerValue];
-        categoriesView.isSingleGoods = YES;
-        viewController = categoriesView;
-         */
+        singleClassificationVC.isSingle = YES;
+        singleClassificationVC.categoryId = [categoryIdString integerValue];
+        viewController = singleClassificationVC;
+        
     } else { // 跳转到 web
         
         AdWebViewController *ad = [[AdWebViewController alloc] init];
@@ -525,8 +594,6 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
     }
     
     [self.navigationController pushViewController:viewController animated:YES];
-    
-    
 
 }
 
@@ -534,21 +601,29 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
 
 /// 拼团按钮点击事件
 - (void)fourButtonView:(FSHomeFourButtonView *)fourButtonView togetherBuyButtonTouchUpInside:(XFVerticalButton *)sender {
+    
+    [self.navigationController pushViewController:[UIViewController new] animated:NO];
     NSLog(@"拼团");
 }
 
 /// 充值按钮点击事件
 - (void)fourButtonView:(FSHomeFourButtonView *)fourButtonView topUpButtonTouchUpInside:(XFVerticalButton *)sender {
+    [self.navigationController pushViewController:[UIViewController new] animated:NO];
+
     NSLog(@"充值");
 }
 
 /// 新品按钮点击事件
 - (void)fourButtonView:(FSHomeFourButtonView *)fourButtonView newCommodityButtonTouchUpInside:(XFVerticalButton *)sender {
+    [self.navigationController pushViewController:[UIViewController new] animated:NO];
+
     NSLog(@"新品");
 }
 
 /// 促销按钮点击事件
 - (void)fourButtonView:(FSHomeFourButtonView *)fourButtonView salesPromotionButtonTouchUpInside:(XFVerticalButton *)sender {
+    [self.navigationController pushViewController:[UIViewController new] animated:NO];
+
     NSLog(@"促销");
 }
 
@@ -556,7 +631,8 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
 
 /// 点击了加号
 - (void)commodityCVCell:(FSCommodityCVCell *)cell plusButtonTouchUpInside:(UIButton *)sender {
-    
+    NSLog(@"点击了加号");
+
     NSIndexPath *indexPath = [self.mainView indexPathForCell:cell];
     RightGoodsModel *model = self.commodityArray[indexPath.row];
 
@@ -568,13 +644,15 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
     // 检查用户是否登录，如果未登录，跳转到登录页
     // 如果 uid 为空
     if ([Tools isBlankString:uid]) {
-        [self.navigationController pushViewController:[FSLoginViewController new] animated:YES];
+        FSLoginViewController *loginVC = [[FSLoginViewController alloc] init];
+        
+        FSNavigationController *navController = [[FSNavigationController alloc] initWithRootViewController:loginVC];
+        
+        [self presentViewController:navController animated:YES completion:nil];
         return ;
     }
     
-    // 动画
-    CGRect rect = [cell.imageView convertRect:cell.imageView.bounds toView:self.view];
-    [self initImage:rect withImage:cell.imageView.image];
+
     
     NSString *totPriceString = @"0";
     NSString *urlString = @"";
@@ -594,9 +672,13 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
 
         if ([dataDict[@"issuccess"] boolValue]) { // 成功
             
+            // 动画
+            CGRect rect = [cell.imageView convertRect:cell.imageView.bounds toView:self.view];
+            [self initImage:rect withImage:cell.imageView.image];
+            
             cartNum++;
             model.CartNum = [NSString stringWithFormat:@"%ld", cartNum];
-            [self.commodityArray replaceObjectAtIndex:indexPath.row withObject:model];
+            //[self.commodityArray replaceObjectAtIndex:indexPath.row withObject:model];
             
             // 更新 UI
             [cell.countLabel setText:model.CartNum];
@@ -616,6 +698,7 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
 
 /// 点击了减号
 - (void)commodityCVCell:(FSCommodityCVCell *)cell minusButtonTouchUpInside:(UIButton *)sender {
+    NSLog(@"点击了减号");
     NSIndexPath *indexPath = [self.mainView indexPathForCell:cell];
     RightGoodsModel *model = self.commodityArray[indexPath.row];
     
@@ -642,7 +725,7 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
             
             cartNum--;
             model.CartNum = [NSString stringWithFormat:@"%ld", cartNum];
-            [self.commodityArray replaceObjectAtIndex:indexPath.row withObject:model];
+            //[self.commodityArray replaceObjectAtIndex:indexPath.row withObject:model];
             
             // 更新 UI
             [cell.countLabel setText:model.CartNum];
@@ -657,9 +740,6 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
     } failure:^(NSError *error, NSInteger statusCode) {
         [self showInfoWidthError:error];
     }];
-    
-    
-    NSLog(@"点击了减号");
 }
 
 
@@ -669,21 +749,22 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
     [self startLocation];
 }
 
+- (void)userIsLogout {
+    [self startLocation];
+}
+
 // 导航栏左边按钮点击事件
 - (void)leftButtonItemTouchUpInside:(UIButton *)sender {
-    /*
-    SearchViewController *searchVC = [[SearchViewController alloc] init];
-    [self.navigationController pushViewController:searchVC animated:YES];
-     */
-    
-    /*
-    FSLoginViewController *loginVC = [[FSLoginViewController alloc] init];
-    [self.navigationController pushViewController:loginVC animated:YES];
-     */
+
+
+    // 选择自提点
+    SelectSiteViewController *selectSiteVc = [[SelectSiteViewController alloc] init];
+    [self.navigationController pushViewController:selectSiteVc animated:YES];
+
     
     
     // 暂时模拟登出事件
-    
+    /*
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
     NSString *mobile = [userDefaults objectForKey:@"mobile"];
@@ -731,16 +812,14 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
     [userDefaults setObject:yPoint forKey:@"yPoint"];
     [userDefaults setObject:fendianname forKey:@"Fendianname"];
     
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"UserIsLogout" object:nil];
+     */
+    
 }
 
 - (void)titleButtonTouchUpInside:(UIButton *)sender {
 
-
     FSSearchViewController *searchVC = [[FSSearchViewController alloc] init];
-     /*
-    [self.navigationController pushViewController:searchVC animated:NO];
-    */
-
     
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:searchVC];
     navController.navigationBar.tintColor = [UIColor colorDomina];
@@ -775,7 +854,7 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
     
     UITabBar *tabBar = [[self tabBarController] tabBar];
     
-    CGFloat posY = tabBar.y;
+    CGFloat posY = SCREEN_HEIGHT - 49;
     CGFloat itemW = tabBar.width * 0.25;
     
     CGFloat posX = itemW * 2 + 15;
@@ -916,6 +995,7 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
         NSDictionary *dict = [self dictWithData:responseObject];
         
         if ([dict[@"sum"] integerValue] == 0) {
+            [[[[[self tabBarController] tabBar] items] objectAtIndex:2] setBadgeValue:nil];
             return;
         }
 
@@ -976,7 +1056,6 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
         [self.navigationBar.leftButton setTitle:[[[NSUserDefaults standardUserDefaults] objectForKey:@"merchantsName"] substringWithRange:NSMakeRange(0, 2)] forState:UIControlStateNormal];
         
         [self getHomeData];
-        // [self getCommodityData];
         
     } failure:^(NSError *error, NSInteger statusCode) {
         [self showInfoWidthError:error];

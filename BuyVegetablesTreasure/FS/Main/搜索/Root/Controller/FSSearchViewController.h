@@ -10,4 +10,6 @@
 
 @interface FSSearchViewController : FSBaseViewController
 
+@property (nonatomic) UISearchController *searchController;
+
 @end
