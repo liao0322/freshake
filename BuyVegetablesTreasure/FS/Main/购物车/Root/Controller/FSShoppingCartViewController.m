@@ -42,6 +42,10 @@ static NSString * const shoppingCartTVCellID = @"shoppingCartTVCellID";
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidDisappear:(BOOL)animated {
+    [self.refreshControl endRefreshing];
+}
+
 #pragma mark - Override
 
 - (void)getDataFromRemote {
@@ -117,7 +121,6 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
         
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"警告" message:@"确定要删除吗" preferredStyle:UIAlertControllerStyleAlert];
         
-        
         UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
             
             // 改变总价
@@ -159,13 +162,17 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 #pragma mark - Custom
 
 - (void)getCommodityData {
+    if ([self.refreshControl isRefreshing]) {
+        [self.refreshControl endRefreshing];
+    }
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *uidString = [defaults objectForKey:@"UID"];
     NSString *midString = [defaults objectForKey:@"MID"];
     NSString *urlString = [NSString stringWithFormat:SHOPPINGCARTGOODS,UUID,uidString,midString];
     NSLog(@"===购物车请求===%@",urlString);
-    
+    [SVProgressHUD showWithStatus:@"正在加载..."];
     [XFNetworking GET:urlString parameters:nil success:^(id responseObject, NSInteger statusCode) {
+        [SVProgressHUD dismiss];
         NSDictionary *dataDict = [self dictWithData:responseObject];
         
         [self.commodityArray removeAllObjects];
@@ -183,6 +190,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
             }
             self.footerView.hidden = NO;
             self.bottomView.hidden = NO;
+            [self.refreshControl endRefreshing];
             [self.tableView reloadData];
             
             /*
@@ -211,6 +219,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
         }
         
     } failure:^(NSError *error, NSInteger statusCode) {
+        [self.refreshControl endRefreshing];
         [self showInfoWidthError:error];
     }];
     

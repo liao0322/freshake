@@ -1065,10 +1065,13 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
 
 /// 下拉刷新时调用
 - (void)refreshData:(FSDancingBananaHeader *)sender {
-
     [SVProgressHUD showWithStatus:@"正在加载..."];
     // 开始定位
     [self startLocation];
+    
+    if ([self.refreshHeader isRefreshing]) {
+        [self.refreshHeader endRefreshing];
+    }
 
 }
 
