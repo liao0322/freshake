@@ -756,15 +756,13 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
 // 导航栏左边按钮点击事件
 - (void)leftButtonItemTouchUpInside:(UIButton *)sender {
 
-
     // 选择自提点
     SelectSiteViewController *selectSiteVc = [[SelectSiteViewController alloc] init];
     [self.navigationController pushViewController:selectSiteVc animated:YES];
-
     
     
     // 暂时模拟登出事件
-    /*
+
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
     NSString *mobile = [userDefaults objectForKey:@"mobile"];
@@ -813,7 +811,6 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
     [userDefaults setObject:fendianname forKey:@"Fendianname"];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"UserIsLogout" object:nil];
-     */
     
 }
 
@@ -880,9 +877,7 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
     });
     
     [UIView animateWithDuration:1.0 animations:^{
-        
         self.cartAnimView.frame = CGRectMake(posX + 27.5, posY + 27.5, 0, 0);
-        
     } completion:^(BOOL finished) {
         [self.cartAnimView removeFromSuperview];
         self.cartAnimView = nil;
