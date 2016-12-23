@@ -7,7 +7,8 @@
 //
 
 #import "GoodsDetailViewController.h"
-#import "ShopLoginViewController.h"
+//#import "ShopLoginViewController.h"
+#import "FSLoginViewController.h"
 #import "GoodsCartViewController.h"
 #import "SubmitOrderViewController.h"
 #import "ShopCart.h"
@@ -18,6 +19,7 @@
 #import "WXApi.h"
 #import "GoodsDetail.h"
 #import "EvaluationModel.h"
+#import "FSNavigationController.h"
 
 @interface GoodsDetailViewController ()<UIScrollViewDelegate>
 {
@@ -300,8 +302,15 @@
     if([[NSUserDefaults standardUserDefaults]objectForKey:@"UID"] == nil ||
        [[[NSUserDefaults standardUserDefaults]objectForKey:@"UID"] isEqualToString:@""])
     {
-        self.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:[ShopLoginViewController new] animated:YES];
+        
+        FSLoginViewController *loginVC = [[FSLoginViewController alloc] init];
+        
+        FSNavigationController *navController = [[FSNavigationController alloc] initWithRootViewController:loginVC];
+        
+        [self presentViewController:navController animated:YES completion:nil];
+        
+        //self.hidesBottomBarWhenPushed = YES;
+        //[self.navigationController pushViewController:[FSLoginViewController new] animated:YES];
     }
     else {
         [self requestDataFromNetCollect];
@@ -369,8 +378,16 @@
     
     if ([Tools isBlankString:[userDefaults objectForKey:@"UID"]]) {
         
-        self.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:[ShopLoginViewController new] animated:YES];
+        
+        FSLoginViewController *loginVC = [[FSLoginViewController alloc] init];
+        
+        FSNavigationController *navController = [[FSNavigationController alloc] initWithRootViewController:loginVC];
+        
+        [self presentViewController:navController animated:YES completion:nil];
+        
+        
+        // self.hidesBottomBarWhenPushed = YES;
+        // [self.navigationController pushViewController:[ShopLoginViewController new] animated:YES];
     }
     else {
         
@@ -396,8 +413,16 @@
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
             
             if ([Tools isBlankString:[defaults objectForKey:@"UID"]]) {
-                self.hidesBottomBarWhenPushed = YES;
-                [self.navigationController pushViewController:[ShopLoginViewController new] animated:YES];
+                
+                FSLoginViewController *loginVC = [[FSLoginViewController alloc] init];
+                
+                FSNavigationController *navController = [[FSNavigationController alloc] initWithRootViewController:loginVC];
+                
+                [self presentViewController:navController animated:YES completion:nil];
+                
+                
+                // self.hidesBottomBarWhenPushed = YES;
+                // [self.navigationController pushViewController:[ShopLoginViewController new] animated:YES];
             }
             else {
                 
@@ -551,8 +576,16 @@
     
     if ([defaults objectForKey:@"UID"] == nil) {
         
+        FSLoginViewController *loginVC = [[FSLoginViewController alloc] init];
+        
+        FSNavigationController *navController = [[FSNavigationController alloc] initWithRootViewController:loginVC];
+        
+        [self presentViewController:navController animated:YES completion:nil];
+        
+        /*
         self.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:[ShopLoginViewController new] animated:YES];
+         */
     }
     
     else {
