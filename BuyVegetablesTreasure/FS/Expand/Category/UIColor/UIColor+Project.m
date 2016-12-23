@@ -16,6 +16,10 @@
     return [UIColor colorWithHex:XFColorDomina];
 }
 
++ (UIColor *)colorOrange {
+    return [UIColor colorWithHex:XFColorOrange];
+}
+
 + (UIColor *)colorButtonHighlighted {
     return [UIColor colorWithHex:XFColorButtonHighlighted];
 }

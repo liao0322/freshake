@@ -17,6 +17,8 @@
 /// 按钮高亮色
 + (UIColor *)colorButtonHighlighted;
 
++ (UIColor *)colorOrange;
+
 /// 按钮禁用色
 + (UIColor *)colorButtonDisabled;
 
