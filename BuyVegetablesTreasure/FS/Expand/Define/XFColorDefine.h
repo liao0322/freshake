@@ -13,6 +13,7 @@
 typedef NS_ENUM(NSInteger, XFColor) {
     XFColorDomina            = 0x85bd32,         // 主色调
     XFColorButtonHighlighted = 0x619222,         // 按钮高亮色
+    XFColorOrange            = 0xf18316,         // 副色调 - 橙色
     XFColorButtonDisabled    = 0xc7c7c7,         // 按钮禁用色
     XFColorNavBarBG          = 0xf5f6f8,         // 导航栏背景色
     XFColorSeparator         = 0xa3a3a3,         // 分割线颜色

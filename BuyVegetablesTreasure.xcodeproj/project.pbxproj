@@ -843,6 +843,34 @@
 		E4FFE1C31C24F66800F943DF /* 用户协议.txt in Resources */ = {isa = PBXBuildFile; fileRef = E4FFE1C21C24F66800F943DF /* 用户协议.txt */; };
 		E4FFE1CA1C25362300F943DF /* HelpModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E4FFE1C91C25362300F943DF /* HelpModel.m */; };
 		FCE22CB36A608AA4CE07090D /* libPods-BuyVegetablesTreasure.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C7075A81BE105AFB6D3C97C /* libPods-BuyVegetablesTreasure.a */; };
+		FE17A8FE1E0D419700DC7949 /* FSMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A8F01E0D419700DC7949 /* FSMeViewController.m */; };
+		FE17A8FF1E0D419700DC7949 /* FSMeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A8F31E0D419700DC7949 /* FSMeModel.m */; };
+		FE17A9001E0D419700DC7949 /* FSMeBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A8F61E0D419700DC7949 /* FSMeBottomView.m */; };
+		FE17A9011E0D419700DC7949 /* FSMeBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE17A8F71E0D419700DC7949 /* FSMeBottomView.xib */; };
+		FE17A9021E0D419700DC7949 /* FSMeCenterView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A8F91E0D419700DC7949 /* FSMeCenterView.m */; };
+		FE17A9031E0D419700DC7949 /* FSMeHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A8FB1E0D419700DC7949 /* FSMeHeadView.m */; };
+		FE17A9041E0D419700DC7949 /* FSNumView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A8FD1E0D419700DC7949 /* FSNumView.m */; };
+		FE17A94A1E0D430F00DC7949 /* FSMoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A9091E0D430F00DC7949 /* FSMoreViewController.m */; };
+		FE17A94B1E0D430F00DC7949 /* FSSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A90C1E0D430F00DC7949 /* FSSettingView.m */; };
+		FE17A94C1E0D430F00DC7949 /* FSAboutMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A9101E0D430F00DC7949 /* FSAboutMeViewController.m */; };
+		FE17A94D1E0D430F00DC7949 /* FSAboutView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A9131E0D430F00DC7949 /* FSAboutView.m */; };
+		FE17A94E1E0D430F00DC7949 /* FSHelptextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A9171E0D430F00DC7949 /* FSHelptextViewController.m */; };
+		FE17A94F1E0D430F00DC7949 /* FSHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A9191E0D430F00DC7949 /* FSHelpViewController.m */; };
+		FE17A9501E0D430F00DC7949 /* FSHelpModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A91C1E0D430F00DC7949 /* FSHelpModel.m */; };
+		FE17A9511E0D430F00DC7949 /* FSHelpView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A91F1E0D430F00DC7949 /* FSHelpView.m */; };
+		FE17A9521E0D430F00DC7949 /* FSOpenPushViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A9231E0D430F00DC7949 /* FSOpenPushViewController.m */; };
+		FE17A9531E0D430F00DC7949 /* FSMyCollectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A9281E0D430F00DC7949 /* FSMyCollectViewController.m */; };
+		FE17A9541E0D430F00DC7949 /* FSMyCollectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A92B1E0D430F00DC7949 /* FSMyCollectModel.m */; };
+		FE17A9551E0D430F00DC7949 /* FSCollectView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A92E1E0D430F00DC7949 /* FSCollectView.m */; };
+		FE17A9561E0D430F00DC7949 /* FSMyCollectTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A9301E0D430F00DC7949 /* FSMyCollectTableViewCell.m */; };
+		FE17A9571E0D430F00DC7949 /* FSMyCouponsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A9351E0D430F00DC7949 /* FSMyCouponsViewController.m */; };
+		FE17A9581E0D430F00DC7949 /* FSCouponModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A9381E0D430F00DC7949 /* FSCouponModel.m */; };
+		FE17A9591E0D430F00DC7949 /* FSParentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A93A1E0D430F00DC7949 /* FSParentModel.m */; };
+		FE17A95A1E0D430F00DC7949 /* FSJTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A93D1E0D430F00DC7949 /* FSJTableView.m */; };
+		FE17A95B1E0D430F00DC7949 /* FSMyCouponsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A93F1E0D430F00DC7949 /* FSMyCouponsCell.m */; };
+		FE17A95C1E0D430F00DC7949 /* FSMyCouponView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A9411E0D430F00DC7949 /* FSMyCouponView.m */; };
+		FE17A95D1E0D430F00DC7949 /* FSCouponsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A9451E0D430F00DC7949 /* FSCouponsDetailViewController.m */; };
+		FE17A95E1E0D430F00DC7949 /* FSCouponsDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A9491E0D430F00DC7949 /* FSCouponsDetailView.m */; };
 		FECDE5DB1E07B3820083E11B /* CouponModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FECDE5DA1E07B3820083E11B /* CouponModel.m */; };
 		FECDE5E61E07B49D0083E11B /* AMapSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FECDE5E41E07B49D0083E11B /* AMapSearchKit.framework */; };
 		FECDE5E71E07B49D0083E11B /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FECDE5E51E07B49D0083E11B /* MAMapKit.framework */; };
@@ -2217,6 +2245,61 @@
 		E4FFE1C21C24F66800F943DF /* 用户协议.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "用户协议.txt"; sourceTree = "<group>"; };
 		E4FFE1C81C25362300F943DF /* HelpModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpModel.h; sourceTree = "<group>"; };
 		E4FFE1C91C25362300F943DF /* HelpModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpModel.m; sourceTree = "<group>"; };
+		FE17A8EF1E0D419700DC7949 /* FSMeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMeViewController.h; sourceTree = "<group>"; };
+		FE17A8F01E0D419700DC7949 /* FSMeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMeViewController.m; sourceTree = "<group>"; };
+		FE17A8F21E0D419700DC7949 /* FSMeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMeModel.h; sourceTree = "<group>"; };
+		FE17A8F31E0D419700DC7949 /* FSMeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMeModel.m; sourceTree = "<group>"; };
+		FE17A8F51E0D419700DC7949 /* FSMeBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMeBottomView.h; sourceTree = "<group>"; };
+		FE17A8F61E0D419700DC7949 /* FSMeBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMeBottomView.m; sourceTree = "<group>"; };
+		FE17A8F71E0D419700DC7949 /* FSMeBottomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSMeBottomView.xib; sourceTree = "<group>"; };
+		FE17A8F81E0D419700DC7949 /* FSMeCenterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMeCenterView.h; sourceTree = "<group>"; };
+		FE17A8F91E0D419700DC7949 /* FSMeCenterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMeCenterView.m; sourceTree = "<group>"; };
+		FE17A8FA1E0D419700DC7949 /* FSMeHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMeHeadView.h; sourceTree = "<group>"; };
+		FE17A8FB1E0D419700DC7949 /* FSMeHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMeHeadView.m; sourceTree = "<group>"; };
+		FE17A8FC1E0D419700DC7949 /* FSNumView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSNumView.h; sourceTree = "<group>"; };
+		FE17A8FD1E0D419700DC7949 /* FSNumView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSNumView.m; sourceTree = "<group>"; };
+		FE17A9081E0D430F00DC7949 /* FSMoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMoreViewController.h; sourceTree = "<group>"; };
+		FE17A9091E0D430F00DC7949 /* FSMoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMoreViewController.m; sourceTree = "<group>"; };
+		FE17A90B1E0D430F00DC7949 /* FSSettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSSettingView.h; sourceTree = "<group>"; };
+		FE17A90C1E0D430F00DC7949 /* FSSettingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSSettingView.m; sourceTree = "<group>"; };
+		FE17A90F1E0D430F00DC7949 /* FSAboutMeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSAboutMeViewController.h; sourceTree = "<group>"; };
+		FE17A9101E0D430F00DC7949 /* FSAboutMeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSAboutMeViewController.m; sourceTree = "<group>"; };
+		FE17A9121E0D430F00DC7949 /* FSAboutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSAboutView.h; sourceTree = "<group>"; };
+		FE17A9131E0D430F00DC7949 /* FSAboutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSAboutView.m; sourceTree = "<group>"; };
+		FE17A9161E0D430F00DC7949 /* FSHelptextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSHelptextViewController.h; sourceTree = "<group>"; };
+		FE17A9171E0D430F00DC7949 /* FSHelptextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHelptextViewController.m; sourceTree = "<group>"; };
+		FE17A9181E0D430F00DC7949 /* FSHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSHelpViewController.h; sourceTree = "<group>"; };
+		FE17A9191E0D430F00DC7949 /* FSHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHelpViewController.m; sourceTree = "<group>"; };
+		FE17A91B1E0D430F00DC7949 /* FSHelpModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSHelpModel.h; sourceTree = "<group>"; };
+		FE17A91C1E0D430F00DC7949 /* FSHelpModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHelpModel.m; sourceTree = "<group>"; };
+		FE17A91E1E0D430F00DC7949 /* FSHelpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSHelpView.h; sourceTree = "<group>"; };
+		FE17A91F1E0D430F00DC7949 /* FSHelpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHelpView.m; sourceTree = "<group>"; };
+		FE17A9221E0D430F00DC7949 /* FSOpenPushViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSOpenPushViewController.h; sourceTree = "<group>"; };
+		FE17A9231E0D430F00DC7949 /* FSOpenPushViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSOpenPushViewController.m; sourceTree = "<group>"; };
+		FE17A9271E0D430F00DC7949 /* FSMyCollectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMyCollectViewController.h; sourceTree = "<group>"; };
+		FE17A9281E0D430F00DC7949 /* FSMyCollectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMyCollectViewController.m; sourceTree = "<group>"; };
+		FE17A92A1E0D430F00DC7949 /* FSMyCollectModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMyCollectModel.h; sourceTree = "<group>"; };
+		FE17A92B1E0D430F00DC7949 /* FSMyCollectModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMyCollectModel.m; sourceTree = "<group>"; };
+		FE17A92D1E0D430F00DC7949 /* FSCollectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCollectView.h; sourceTree = "<group>"; };
+		FE17A92E1E0D430F00DC7949 /* FSCollectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCollectView.m; sourceTree = "<group>"; };
+		FE17A92F1E0D430F00DC7949 /* FSMyCollectTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMyCollectTableViewCell.h; sourceTree = "<group>"; };
+		FE17A9301E0D430F00DC7949 /* FSMyCollectTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMyCollectTableViewCell.m; sourceTree = "<group>"; };
+		FE17A9341E0D430F00DC7949 /* FSMyCouponsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMyCouponsViewController.h; sourceTree = "<group>"; };
+		FE17A9351E0D430F00DC7949 /* FSMyCouponsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMyCouponsViewController.m; sourceTree = "<group>"; };
+		FE17A9371E0D430F00DC7949 /* FSCouponModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCouponModel.h; sourceTree = "<group>"; };
+		FE17A9381E0D430F00DC7949 /* FSCouponModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCouponModel.m; sourceTree = "<group>"; };
+		FE17A9391E0D430F00DC7949 /* FSParentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSParentModel.h; sourceTree = "<group>"; };
+		FE17A93A1E0D430F00DC7949 /* FSParentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSParentModel.m; sourceTree = "<group>"; };
+		FE17A93C1E0D430F00DC7949 /* FSJTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSJTableView.h; sourceTree = "<group>"; };
+		FE17A93D1E0D430F00DC7949 /* FSJTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSJTableView.m; sourceTree = "<group>"; };
+		FE17A93E1E0D430F00DC7949 /* FSMyCouponsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMyCouponsCell.h; sourceTree = "<group>"; };
+		FE17A93F1E0D430F00DC7949 /* FSMyCouponsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMyCouponsCell.m; sourceTree = "<group>"; };
+		FE17A9401E0D430F00DC7949 /* FSMyCouponView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMyCouponView.h; sourceTree = "<group>"; };
+		FE17A9411E0D430F00DC7949 /* FSMyCouponView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMyCouponView.m; sourceTree = "<group>"; };
+		FE17A9441E0D430F00DC7949 /* FSCouponsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCouponsDetailViewController.h; sourceTree = "<group>"; };
+		FE17A9451E0D430F00DC7949 /* FSCouponsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCouponsDetailViewController.m; sourceTree = "<group>"; };
+		FE17A9481E0D430F00DC7949 /* FSCouponsDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCouponsDetailView.h; sourceTree = "<group>"; };
+		FE17A9491E0D430F00DC7949 /* FSCouponsDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCouponsDetailView.m; sourceTree = "<group>"; };
 		FECDE5D91E07B3820083E11B /* CouponModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CouponModel.h; path = BuyVegetablesTreasure/Controllers/Payment/Model/CouponModel.h; sourceTree = SOURCE_ROOT; };
 		FECDE5DA1E07B3820083E11B /* CouponModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CouponModel.m; path = BuyVegetablesTreasure/Controllers/Payment/Model/CouponModel.m; sourceTree = SOURCE_ROOT; };
 		FECDE5E41E07B49D0083E11B /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapSearchKit.framework; sourceTree = "<group>"; };
@@ -6454,6 +6537,305 @@
 			path = "帮助中心";
 			sourceTree = "<group>";
 		};
+		FE17A8ED1E0D419700DC7949 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				FE17A8EE1E0D419700DC7949 /* Controller */,
+				FE17A8F11E0D419700DC7949 /* Model */,
+				FE17A8F41E0D419700DC7949 /* View */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		FE17A8EE1E0D419700DC7949 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FE17A8EF1E0D419700DC7949 /* FSMeViewController.h */,
+				FE17A8F01E0D419700DC7949 /* FSMeViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FE17A8F11E0D419700DC7949 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FE17A8F21E0D419700DC7949 /* FSMeModel.h */,
+				FE17A8F31E0D419700DC7949 /* FSMeModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FE17A8F41E0D419700DC7949 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FE17A8F51E0D419700DC7949 /* FSMeBottomView.h */,
+				FE17A8F61E0D419700DC7949 /* FSMeBottomView.m */,
+				FE17A8F71E0D419700DC7949 /* FSMeBottomView.xib */,
+				FE17A8F81E0D419700DC7949 /* FSMeCenterView.h */,
+				FE17A8F91E0D419700DC7949 /* FSMeCenterView.m */,
+				FE17A8FA1E0D419700DC7949 /* FSMeHeadView.h */,
+				FE17A8FB1E0D419700DC7949 /* FSMeHeadView.m */,
+				FE17A8FC1E0D419700DC7949 /* FSNumView.h */,
+				FE17A8FD1E0D419700DC7949 /* FSNumView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FE17A9051E0D430F00DC7949 /* 设置 */ = {
+			isa = PBXGroup;
+			children = (
+				FE17A9061E0D430F00DC7949 /* Root */,
+				FE17A90D1E0D430F00DC7949 /* 关于我们 */,
+				FE17A9141E0D430F00DC7949 /* 帮助中心 */,
+				FE17A9201E0D430F00DC7949 /* 消息通知 */,
+			);
+			path = "设置";
+			sourceTree = "<group>";
+		};
+		FE17A9061E0D430F00DC7949 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				FE17A9071E0D430F00DC7949 /* Controller */,
+				FE17A90A1E0D430F00DC7949 /* View */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		FE17A9071E0D430F00DC7949 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FE17A9081E0D430F00DC7949 /* FSMoreViewController.h */,
+				FE17A9091E0D430F00DC7949 /* FSMoreViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FE17A90A1E0D430F00DC7949 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FE17A90B1E0D430F00DC7949 /* FSSettingView.h */,
+				FE17A90C1E0D430F00DC7949 /* FSSettingView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FE17A90D1E0D430F00DC7949 /* 关于我们 */ = {
+			isa = PBXGroup;
+			children = (
+				FE17A90E1E0D430F00DC7949 /* Controller */,
+				FE17A9111E0D430F00DC7949 /* View */,
+			);
+			path = "关于我们";
+			sourceTree = "<group>";
+		};
+		FE17A90E1E0D430F00DC7949 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FE17A90F1E0D430F00DC7949 /* FSAboutMeViewController.h */,
+				FE17A9101E0D430F00DC7949 /* FSAboutMeViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FE17A9111E0D430F00DC7949 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FE17A9121E0D430F00DC7949 /* FSAboutView.h */,
+				FE17A9131E0D430F00DC7949 /* FSAboutView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FE17A9141E0D430F00DC7949 /* 帮助中心 */ = {
+			isa = PBXGroup;
+			children = (
+				FE17A9151E0D430F00DC7949 /* Controller */,
+				FE17A91A1E0D430F00DC7949 /* Model */,
+				FE17A91D1E0D430F00DC7949 /* View */,
+			);
+			path = "帮助中心";
+			sourceTree = "<group>";
+		};
+		FE17A9151E0D430F00DC7949 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FE17A9161E0D430F00DC7949 /* FSHelptextViewController.h */,
+				FE17A9171E0D430F00DC7949 /* FSHelptextViewController.m */,
+				FE17A9181E0D430F00DC7949 /* FSHelpViewController.h */,
+				FE17A9191E0D430F00DC7949 /* FSHelpViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FE17A91A1E0D430F00DC7949 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FE17A91B1E0D430F00DC7949 /* FSHelpModel.h */,
+				FE17A91C1E0D430F00DC7949 /* FSHelpModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FE17A91D1E0D430F00DC7949 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FE17A91E1E0D430F00DC7949 /* FSHelpView.h */,
+				FE17A91F1E0D430F00DC7949 /* FSHelpView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FE17A9201E0D430F00DC7949 /* 消息通知 */ = {
+			isa = PBXGroup;
+			children = (
+				FE17A9211E0D430F00DC7949 /* Controller */,
+				FE17A9241E0D430F00DC7949 /* View */,
+			);
+			path = "消息通知";
+			sourceTree = "<group>";
+		};
+		FE17A9211E0D430F00DC7949 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FE17A9221E0D430F00DC7949 /* FSOpenPushViewController.h */,
+				FE17A9231E0D430F00DC7949 /* FSOpenPushViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FE17A9241E0D430F00DC7949 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FE17A9251E0D430F00DC7949 /* 我的收藏 */ = {
+			isa = PBXGroup;
+			children = (
+				FE17A9261E0D430F00DC7949 /* Controller */,
+				FE17A9291E0D430F00DC7949 /* Model */,
+				FE17A92C1E0D430F00DC7949 /* View */,
+			);
+			path = "我的收藏";
+			sourceTree = "<group>";
+		};
+		FE17A9261E0D430F00DC7949 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FE17A9271E0D430F00DC7949 /* FSMyCollectViewController.h */,
+				FE17A9281E0D430F00DC7949 /* FSMyCollectViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FE17A9291E0D430F00DC7949 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FE17A92A1E0D430F00DC7949 /* FSMyCollectModel.h */,
+				FE17A92B1E0D430F00DC7949 /* FSMyCollectModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FE17A92C1E0D430F00DC7949 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FE17A92D1E0D430F00DC7949 /* FSCollectView.h */,
+				FE17A92E1E0D430F00DC7949 /* FSCollectView.m */,
+				FE17A92F1E0D430F00DC7949 /* FSMyCollectTableViewCell.h */,
+				FE17A9301E0D430F00DC7949 /* FSMyCollectTableViewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FE17A9311E0D430F00DC7949 /* 我的优惠券 */ = {
+			isa = PBXGroup;
+			children = (
+				FE17A9321E0D430F00DC7949 /* Root */,
+				FE17A9421E0D430F00DC7949 /* 优惠券详情 */,
+			);
+			path = "我的优惠券";
+			sourceTree = "<group>";
+		};
+		FE17A9321E0D430F00DC7949 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				FE17A9331E0D430F00DC7949 /* Controller */,
+				FE17A9361E0D430F00DC7949 /* Model */,
+				FE17A93B1E0D430F00DC7949 /* View */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		FE17A9331E0D430F00DC7949 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FE17A9341E0D430F00DC7949 /* FSMyCouponsViewController.h */,
+				FE17A9351E0D430F00DC7949 /* FSMyCouponsViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FE17A9361E0D430F00DC7949 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FE17A9371E0D430F00DC7949 /* FSCouponModel.h */,
+				FE17A9381E0D430F00DC7949 /* FSCouponModel.m */,
+				FE17A9391E0D430F00DC7949 /* FSParentModel.h */,
+				FE17A93A1E0D430F00DC7949 /* FSParentModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FE17A93B1E0D430F00DC7949 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FE17A93C1E0D430F00DC7949 /* FSJTableView.h */,
+				FE17A93D1E0D430F00DC7949 /* FSJTableView.m */,
+				FE17A93E1E0D430F00DC7949 /* FSMyCouponsCell.h */,
+				FE17A93F1E0D430F00DC7949 /* FSMyCouponsCell.m */,
+				FE17A9401E0D430F00DC7949 /* FSMyCouponView.h */,
+				FE17A9411E0D430F00DC7949 /* FSMyCouponView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FE17A9421E0D430F00DC7949 /* 优惠券详情 */ = {
+			isa = PBXGroup;
+			children = (
+				FE17A9431E0D430F00DC7949 /* Controller */,
+				FE17A9461E0D430F00DC7949 /* Model */,
+				FE17A9471E0D430F00DC7949 /* View */,
+			);
+			path = "优惠券详情";
+			sourceTree = "<group>";
+		};
+		FE17A9431E0D430F00DC7949 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FE17A9441E0D430F00DC7949 /* FSCouponsDetailViewController.h */,
+				FE17A9451E0D430F00DC7949 /* FSCouponsDetailViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FE17A9461E0D430F00DC7949 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FE17A9471E0D430F00DC7949 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FE17A9481E0D430F00DC7949 /* FSCouponsDetailView.h */,
+				FE17A9491E0D430F00DC7949 /* FSCouponsDetailView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		FECDE5E31E07B49D0083E11B /* 高德 */ = {
 			isa = PBXGroup;
 			children = (
@@ -7265,24 +7647,17 @@
 		FECDE6A61E07C2C70083E11B /* 我的 */ = {
 			isa = PBXGroup;
 			children = (
-				FECDE6A71E07C2C70083E11B /* Root */,
+				FE17A9051E0D430F00DC7949 /* 设置 */,
+				FE17A9251E0D430F00DC7949 /* 我的收藏 */,
+				FE17A9311E0D430F00DC7949 /* 我的优惠券 */,
+				FE17A8ED1E0D419700DC7949 /* Root */,
 				FECDE6A81E07C2C70083E11B /* 个人信息 */,
 				FECDE6AA1E07C2C70083E11B /* 地址管理 */,
-				FECDE6AD1E07C2C70083E11B /* 我的优惠券 */,
 				FECDE6B01E07C2C70083E11B /* 我的拼团 */,
-				FECDE6B21E07C2C70083E11B /* 我的收藏 */,
 				FECDE6B61E07C2C70083E11B /* 我的订单 */,
 				FECDE6B91E07C2C70083E11B /* 积分记录 */,
-				FECDE6BA1E07C2C70083E11B /* 设置 */,
 			);
 			path = "我的";
-			sourceTree = "<group>";
-		};
-		FECDE6A71E07C2C70083E11B /* Root */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Root;
 			sourceTree = "<group>";
 		};
 		FECDE6A81E07C2C70083E11B /* 个人信息 */ = {
@@ -7323,29 +7698,6 @@
 			path = "添加地址";
 			sourceTree = "<group>";
 		};
-		FECDE6AD1E07C2C70083E11B /* 我的优惠券 */ = {
-			isa = PBXGroup;
-			children = (
-				FECDE6AE1E07C2C70083E11B /* Root */,
-				FECDE6AF1E07C2C70083E11B /* 优惠券详情 */,
-			);
-			path = "我的优惠券";
-			sourceTree = "<group>";
-		};
-		FECDE6AE1E07C2C70083E11B /* Root */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Root;
-			sourceTree = "<group>";
-		};
-		FECDE6AF1E07C2C70083E11B /* 优惠券详情 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "优惠券详情";
-			sourceTree = "<group>";
-		};
 		FECDE6B01E07C2C70083E11B /* 我的拼团 */ = {
 			isa = PBXGroup;
 			children = (
@@ -7359,37 +7711,6 @@
 			children = (
 			);
 			path = Root;
-			sourceTree = "<group>";
-		};
-		FECDE6B21E07C2C70083E11B /* 我的收藏 */ = {
-			isa = PBXGroup;
-			children = (
-				FECDE6B31E07C2C70083E11B /* Root */,
-				FECDE6B41E07C2C70083E11B /* 商品 */,
-				FECDE6B51E07C2C70083E11B /* 视频 */,
-			);
-			path = "我的收藏";
-			sourceTree = "<group>";
-		};
-		FECDE6B31E07C2C70083E11B /* Root */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Root;
-			sourceTree = "<group>";
-		};
-		FECDE6B41E07C2C70083E11B /* 商品 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "商品";
-			sourceTree = "<group>";
-		};
-		FECDE6B51E07C2C70083E11B /* 视频 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "视频";
 			sourceTree = "<group>";
 		};
 		FECDE6B61E07C2C70083E11B /* 我的订单 */ = {
@@ -7420,13 +7741,6 @@
 			children = (
 			);
 			path = "积分记录";
-			sourceTree = "<group>";
-		};
-		FECDE6BA1E07C2C70083E11B /* 设置 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "设置";
 			sourceTree = "<group>";
 		};
 		FECDE6BB1E07C2C70083E11B /* 拼团 */ = {
@@ -8196,6 +8510,7 @@
 				0C82E33D1CD2F078007DF40F /* love@3x.png in Resources */,
 				0CBA54B51DE7D47C00378911 /* WeChat.png in Resources */,
 				0CAFF7BF1CB6443C006C1900 /* 提交-选中@3x.png in Resources */,
+				FE17A9011E0D419700DC7949 /* FSMeBottomView.xib in Resources */,
 				0CBA54C91DE7D52000378911 /* addAddress@2x.png in Resources */,
 				0C625EFC1CC4BEAD0052181A /* 减号.png in Resources */,
 				2B01A1FE1C119A7C00D52B29 /* set_选中@3x.png in Resources */,
@@ -8499,8 +8814,11 @@
 				521E31861CB368DB00041F76 /* GroupPeopleViewController.m in Sources */,
 				0CFE332C1DC19CC900F19494 /* TAAnimatedDotView.m in Sources */,
 				FECDE5DB1E07B3820083E11B /* CouponModel.m in Sources */,
+				FE17A9551E0D430F00DC7949 /* FSCollectView.m in Sources */,
 				0CCC4B191D781B9F009CFBB0 /* IQPreviousNextView.m in Sources */,
+				FE17A9031E0D419700DC7949 /* FSMeHeadView.m in Sources */,
 				5290B4E71BD78705001E02AC /* RightGoodsModel.m in Sources */,
+				FE17A9501E0D430F00DC7949 /* FSHelpModel.m in Sources */,
 				0C9CEB8A1CD8379900F0DCCB /* CollectView.m in Sources */,
 				E40D23121C434CA100DC47C6 /* UIScrollView+MJExtension.m in Sources */,
 				0CFE33311DC19CCA00F19494 /* UIView+SDExtension.m in Sources */,
@@ -8522,12 +8840,14 @@
 				0969DC331BCDFE1700D98273 /* UIImageView+HighlightedWebCache.m in Sources */,
 				E4818F311CC866AD0081E06C /* MySiteViewController.m in Sources */,
 				098CB8F21BD09FB700418FD8 /* CompileNumber.m in Sources */,
+				FE17A94D1E0D430F00DC7949 /* FSAboutView.m in Sources */,
 				0C5B07EC1CCF6402009528F1 /* UIView+SDAutoLayout.m in Sources */,
 				529EA8B81BF03AC100222190 /* SelectCityPickerView.m in Sources */,
 				0CE82CFC1DB7149800F590C8 /* ScoreView.m in Sources */,
 				E4E000081CC78CDD00B9E603 /* MyCouponsViewController.m in Sources */,
 				0C5B07E51CCF54DD009528F1 /* IntroduceCell.m in Sources */,
 				0CCC4B111D781B9F009CFBB0 /* IQUITextFieldView+Additions.m in Sources */,
+				FE17A95C1E0D430F00DC7949 /* FSMyCouponView.m in Sources */,
 				2B0D1A581BF48769005577EB /* FirstStarView.m in Sources */,
 				0CCC4AE41D780FB0009CFBB0 /* MD5DataSigner.m in Sources */,
 				E40D23021C434CA100DC47C6 /* MJRefreshAutoFooter.m in Sources */,
@@ -8546,6 +8866,7 @@
 				FECDE7271E07C2C80083E11B /* FSLoginViewController.m in Sources */,
 				0C5F42B11CE5D17F00FF660D /* AboutView.m in Sources */,
 				0CBA54BA1DE7D47C00378911 /* PickupInfoCell.m in Sources */,
+				FE17A95E1E0D430F00DC7949 /* FSCouponsDetailView.m in Sources */,
 				521E31951CB38F9D00041F76 /* GropCell.m in Sources */,
 				0C9D603D1CE07B26002362C0 /* LoginView.m in Sources */,
 				0CCC4AE61D780FB0009CFBB0 /* openssl_wrapper.m in Sources */,
@@ -8569,10 +8890,12 @@
 				0C630C9F1CC9F1FD00874A54 /* ShoppingCell.m in Sources */,
 				E4E000161CC78DB700B9E603 /* MyCollectModel.m in Sources */,
 				0CAFF7A81CB62D1D006C1900 /* PayGroupOrderTableView.m in Sources */,
+				FE17A9001E0D419700DC7949 /* FSMeBottomView.m in Sources */,
 				E40D230A1C434CA100DC47C6 /* MJRefreshBackGifFooter.m in Sources */,
 				0C961B431D9CAAFA000B6AF6 /* MyOrderDetailsViewController.m in Sources */,
 				FECDE7121E07C2C80083E11B /* UIView+Rect.m in Sources */,
 				E40D23141C434CA100DC47C6 /* UIView+MJExtension.m in Sources */,
+				FE17A9511E0D430F00DC7949 /* FSHelpView.m in Sources */,
 				520438AD1BE0B72C000E8F98 /* Pruduct.m in Sources */,
 				0C7730461CE17354005EB107 /* RegisterView.m in Sources */,
 				097A56001BF20A9600644E52 /* SureOrder.m in Sources */,
@@ -8598,16 +8921,21 @@
 				5224527F1CAC00E700CBC780 /* SiteModel.m in Sources */,
 				09B2BE671BDDB38A00716B27 /* Single.m in Sources */,
 				E40D23081C434CA100DC47C6 /* MJRefreshAutoNormalFooter.m in Sources */,
+				FE17A95A1E0D430F00DC7949 /* FSJTableView.m in Sources */,
 				0969DC811BCE03F600D98273 /* TetabBarBtn.m in Sources */,
 				52C4D8771C23F86700BC066A /* UserModel.m in Sources */,
+				FE17A95D1E0D430F00DC7949 /* FSCouponsDetailViewController.m in Sources */,
 				5284306E1BCF6DD3006905AA /* PaymentCell.m in Sources */,
 				0969DC2C1BCDFE1700D98273 /* SDWebImageDownloader.m in Sources */,
 				FECDE7A71E0A30E70083E11B /* FSShoppingCartTVFooterView.m in Sources */,
 				521E31821CB368DB00041F76 /* GropViewTableViewCell.m in Sources */,
 				E40D230B1C434CA100DC47C6 /* MJRefreshBackNormalFooter.m in Sources */,
+				FE17A94A1E0D430F00DC7949 /* FSMoreViewController.m in Sources */,
 				FECDE70D1E07C2C70083E11B /* UIButton+Create.m in Sources */,
 				0C6B3DA81CC7602E008193C8 /* ClassificationViewController.m in Sources */,
 				0CCC4B161D781B9F009CFBB0 /* IQKeyboardReturnKeyHandler.m in Sources */,
+				FE17A8FF1E0D419700DC7949 /* FSMeModel.m in Sources */,
+				FE17A94C1E0D430F00DC7949 /* FSAboutMeViewController.m in Sources */,
 				0CE82D011DB714BA00F590C8 /* MyGroupTableViewCell.m in Sources */,
 				FECDE7381E07C2C80083E11B /* FSSearchFooterView.m in Sources */,
 				FECDE7141E07C2C80083E11B /* URLBase.m in Sources */,
@@ -8628,6 +8956,7 @@
 				2BE187571BF6D9A5004B683D /* OrderPinglunModel.m in Sources */,
 				526027711C99506900E452C9 /* New&HotViewController.m in Sources */,
 				0CB2B4521CE2D71300E8F0BB /* MyOrderInfoCell.m in Sources */,
+				FE17A9021E0D419700DC7949 /* FSMeCenterView.m in Sources */,
 				0C6BD1881DA8EB0000F22DB5 /* EvaluationModel.m in Sources */,
 				0969DC681BCDFF6F00D98273 /* NSDate+category.m in Sources */,
 				0CCC4AE21D780FB0009CFBB0 /* DataSigner.m in Sources */,
@@ -8701,13 +9030,16 @@
 				0969DC281BCDFE1700D98273 /* NSData+ImageContentType.m in Sources */,
 				0C5B07DC1CCF5233009528F1 /* CookingProgramViewController.m in Sources */,
 				0CCC4B171D781B9F009CFBB0 /* IQTextView.m in Sources */,
+				FE17A9541E0D430F00DC7949 /* FSMyCollectModel.m in Sources */,
 				E40D230C1C434CA100DC47C6 /* MJRefreshBackStateFooter.m in Sources */,
 				FECDE7341E07C2C80083E11B /* FSCommodityTVCell.m in Sources */,
 				5229C0971BFDEDA000A209E6 /* ShoppingCartView.m in Sources */,
 				521E31831CB368DB00041F76 /* GroupDateilTableViewCell.m in Sources */,
 				52438A601C9AAF70002661DF /* HomePageViewController.m in Sources */,
 				FECDE7361E07C2C80083E11B /* FSSearchViewController.m in Sources */,
+				FE17A9561E0D430F00DC7949 /* FSMyCollectTableViewCell.m in Sources */,
 				2BBC8BD51BF764B9000FF8D7 /* qrspec.c in Sources */,
+				FE17A9041E0D419700DC7949 /* FSNumView.m in Sources */,
 				521E31911CB389FA00041F76 /* GroupMidNameCell.m in Sources */,
 				E4E0FFA21CC7561500B9E603 /* DiscoverViewController.m in Sources */,
 				FECDE71F1E07C2C80083E11B /* FSBaseModel.m in Sources */,
@@ -8716,14 +9048,18 @@
 				E40D23131C434CA100DC47C6 /* UIScrollView+MJRefresh.m in Sources */,
 				52438A611C9AAF70002661DF /* PopularityView.m in Sources */,
 				E40D23111C434CA100DC47C6 /* MJRefreshConst.m in Sources */,
+				FE17A9531E0D430F00DC7949 /* FSMyCollectViewController.m in Sources */,
 				FECDE7471E07C2C80083E11B /* FSHomeHeaderView.m in Sources */,
+				FE17A95B1E0D430F00DC7949 /* FSMyCouponsCell.m in Sources */,
 				5295E81F1BF5BFB8009F6487 /* SearchModel.m in Sources */,
 				FECDE7321E07C2C80083E11B /* FSClassificationCVCell.m in Sources */,
 				527853171BCDF8E5005E4739 /* Utillity.m in Sources */,
 				52423BD11BE2130A00E5621C /* Emblem.m in Sources */,
+				FE17A9591E0D430F00DC7949 /* FSParentModel.m in Sources */,
 				0969DC181BCDFE1700D98273 /* MMProgressHUDWindow.m in Sources */,
 				0CFE332F1DC19CCA00F19494 /* SDCollectionViewCell.m in Sources */,
 				52926AF01C85428C00BC760B /* ForgotPasswordViewController.m in Sources */,
+				FE17A94E1E0D430F00DC7949 /* FSHelptextViewController.m in Sources */,
 				0969DC6E1BCDFF6F00D98273 /* UIImage+category.m in Sources */,
 				E4818FEA1CC8B1E90081E06C /* PersonalDataViewController.m in Sources */,
 				0CE82D061DB714D700F590C8 /* MyGroupModel.m in Sources */,
@@ -8732,6 +9068,7 @@
 				522452431CAB67A000CBC780 /* SelectDeliverySiteView.m in Sources */,
 				096FD6A31BEC862600199E03 /* APAuthV2Info.m in Sources */,
 				0CCC4B181D781B9F009CFBB0 /* IQBarButtonItem.m in Sources */,
+				FE17A8FE1E0D419700DC7949 /* FSMeViewController.m in Sources */,
 				E4E0FFE61CC7867C00B9E603 /* NumView.m in Sources */,
 				0969DC6A1BCDFF6F00D98273 /* NSString+category.m in Sources */,
 				5290B4E41BD78688001E02AC /* LeftClassModel.m in Sources */,
@@ -8760,6 +9097,7 @@
 				528F39C11BEAFA4700A872CC /* SearchListCell.m in Sources */,
 				52438A651C9AAF70002661DF /* PopularityFooterView.m in Sources */,
 				0CF4FBBD1DEBCAAB0096D0DB /* AmountCell.m in Sources */,
+				FE17A9521E0D430F00DC7949 /* FSOpenPushViewController.m in Sources */,
 				FECDE79A1E09277E0083E11B /* UIScrollView+UITouch.m in Sources */,
 				E4FFE1CA1C25362300F943DF /* HelpModel.m in Sources */,
 				0CF4FBC41DEC2F4E0096D0DB /* ReviewImagesView.m in Sources */,
@@ -8786,6 +9124,7 @@
 				52438A621C9AAF70002661DF /* adTop_HeadView.m in Sources */,
 				0C625F281CC4E68A0052181A /* SelectCouponCell.m in Sources */,
 				0C961B461D9CAAFA000B6AF6 /* PaymentTimeCell.m in Sources */,
+				FE17A9571E0D430F00DC7949 /* FSMyCouponsViewController.m in Sources */,
 				09C394281BCE5B8D001420EB /* TeNavigationViewController.m in Sources */,
 				0CBE9EFA1CFD71F700D3B0DA /* EvaluationViewCell.m in Sources */,
 				0CBA54BF1DE7D47C00378911 /* OrderTotalView.m in Sources */,
@@ -8801,6 +9140,7 @@
 				FECDE7B21E0A93940083E11B /* FSSearchResultTVCell.m in Sources */,
 				0969DC2A1BCDFE1700D98273 /* SDWebImageCompat.m in Sources */,
 				09FBBECA1C2136E500ED27C2 /* ShopCart.m in Sources */,
+				FE17A9581E0D430F00DC7949 /* FSCouponModel.m in Sources */,
 				5224524F1CAB83D400CBC780 /* SelectDeliverySiteCell.m in Sources */,
 				0CAFF7B91CB64313006C1900 /* PriceDetailCell.m in Sources */,
 				520A14CA1BF2F12000F806E0 /* Map.m in Sources */,
@@ -8808,6 +9148,7 @@
 				FECDE7251E07C2C80083E11B /* FSForgetViewController.m in Sources */,
 				E4818F4F1CC869D80081E06C /* RechargeViewController.m in Sources */,
 				0CF4FBB31DEBBEA00096D0DB /* AmountModel.m in Sources */,
+				FE17A94B1E0D430F00DC7949 /* FSSettingView.m in Sources */,
 				0CCC4B0F1D781B9F009CFBB0 /* IQNSArray+Sort.m in Sources */,
 				E4818F501CC869D80081E06C /* RechargeRecordViewController.m in Sources */,
 				FECDE7301E07C2C80083E11B /* FSClassificationModel.m in Sources */,
@@ -8828,6 +9169,7 @@
 				0CCC4B1C1D781B9F009CFBB0 /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				E4818F6D1CC874540081E06C /* PublishOrderAndGoodsViewController.m in Sources */,
 				521E318D1CB36C6B00041F76 /* GroupTableView.m in Sources */,
+				FE17A94F1E0D430F00DC7949 /* FSHelpViewController.m in Sources */,
 				0CBA54BD1DE7D47C00378911 /* CostCell.m in Sources */,
 				E4818F281CC861310081E06C /* MyGroupViewController.m in Sources */,
 				FECDE7221E07C2C80083E11B /* FSBaseTableView.m in Sources */,
