@@ -20,7 +20,7 @@
     // 设置 SVProgressHUD
     [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
     [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
-    [SVProgressHUD setMaximumDismissTimeInterval:3];
+    [SVProgressHUD setMaximumDismissTimeInterval:2];
     
     // 设置 状态栏
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
@@ -37,7 +37,10 @@
         if ([Tools isBlankString:uid]) {
             
             FSLoginViewController *loginVC = [[FSLoginViewController alloc] init];
-            [tabBarController presentViewController:loginVC animated:YES completion:nil];
+            
+            FSNavigationController *navController = [[FSNavigationController alloc] initWithRootViewController:loginVC];
+            
+            [tabBarController presentViewController:navController animated:YES completion:nil];
             return NO;
             
         }

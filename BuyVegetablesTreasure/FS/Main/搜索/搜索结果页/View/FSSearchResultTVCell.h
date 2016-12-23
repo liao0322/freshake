@@ -7,7 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SearchModel.h"
 
 @interface FSSearchResultTVCell : UITableViewCell
+@property (nonatomic) SearchModel *model;
+
+@property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
+
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *descLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
+
+@property (weak, nonatomic) IBOutlet UIButton *minusButton;
+@property (weak, nonatomic) IBOutlet UIButton *plusButton;
+
+@property (weak, nonatomic) IBOutlet UILabel *countLabel;
+
 
 @end

@@ -10,21 +10,24 @@
 
 @implementation FSSearchFooterView
 
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    // Initialization code
+    
+    self.clearHistoryButton.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.clearHistoryButton.layer.cornerRadius = 5.0f;
+    self.clearHistoryButton.layer.borderWidth = 1.0f;
+}
+
 - (void)layoutSubviews {
     [super layoutSubviews];
     
     self.clearHistoryButton.width = 120;
     self.clearHistoryButton.height = 30;
+    self.clearHistoryButton.centerX = self.width * 0.5;
 
 }
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
-    
-    self.clearHistoryButton.layer.borderColor = [UIColor darkGrayColor].CGColor;
-    self.clearHistoryButton.layer.cornerRadius = 5.0f;
-    self.clearHistoryButton.layer.borderWidth = 1.0f;
-}
+
 
 @end

@@ -13,6 +13,8 @@
 #import "FSClassificationCVCell.h"
 #import "FSCommodityTVCell.h"
 #import "FSSearchViewController.h"
+#import "FSLoginViewController.h"
+#import "FSNavigationController.h"
 
 
 @interface FSClassificationViewController ()
@@ -42,6 +44,8 @@
 @property (nonatomic) UISearchBar *searchBar;
 
 @property (assign, nonatomic) BOOL isCellSelected;
+
+@property (nonatomic) UIImageView *cartAnimView;
 
 @end
 
@@ -98,8 +102,6 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     
-
-
     self.collectionView.x = 0;
     self.collectionView.y = 64;
     self.collectionView.width = self.view.width;
@@ -111,6 +113,10 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
     self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 49, 0);
 
 
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - Override
@@ -127,6 +133,10 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.selectedIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     self.isCellSelected = NO;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userIsLogined) name:@"UserIsLogined" object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userIsLogout) name:@"UserIsLogout" object:nil];
 
 }
 
@@ -193,21 +203,6 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
     NSLog(@"");
 }
 
-/*
-- (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UIView *sectionHeader = nil;
-    if (section == 0) {
-        sectionHeader = self.collectionView;
-    }
-    return sectionHeader;
-}
-*/
-
-/*
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return(int)(SCREEN_WIDTH / 4 + 0.5) + 10;
-}
- */
 
 
 #pragma mark - UICollectionViewDelegate
@@ -305,12 +300,120 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
 #pragma mark - FSCommodityTVCellDelegate
 
 - (void)commodityTVCell:(FSCommodityTVCell *)cell plusButtonTouchUpInside:(UIButton *)sender {
-    NSLog(@"plus");
+    NSLog(@"点击了加号");
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    FSClassificationModel *cModel = self.commodityArray[indexPath.section];
+    
+    FSCommodityModel *model = cModel.List[indexPath.row];
+    
+    NSString *uid = [[NSUserDefaults standardUserDefaults] objectForKey:@"UID"];
+    NSString *mid = [[NSUserDefaults standardUserDefaults] objectForKey:@"MID"] ? [[NSUserDefaults standardUserDefaults] objectForKey:@"MID"] : @"2";
+    
+    __block NSInteger cartNum = [model.CartNum integerValue];
+    
+    // 检查用户是否登录，如果未登录，跳转到登录页
+    // 如果 uid 为空
+    if ([Tools isBlankString:uid]) {
+        
+        FSLoginViewController *loginVC = [[FSLoginViewController alloc] init];
+        
+        FSNavigationController *navController = [[FSNavigationController alloc] initWithRootViewController:loginVC];
+        
+        [self presentViewController:navController animated:YES completion:nil];
+        
+        //[self.navigationController pushViewController:[FSLoginViewController new] animated:YES];
+        return ;
+    }
+    
+    
+    NSString *totPriceString = @"0";
+    NSString *urlString = @"";
+    
+    if (cartNum == 0) { // 第一次添加到购物车
+        
+        urlString = [NSString stringWithFormat:ADDCARTURL, model.id, UUID, uid, totPriceString, @"1", mid, @"11"];
+        
+    } else { // 更新购物车数量
+        urlString = [NSString stringWithFormat:UpCart, UUID, mid, model.id,uid,[NSString stringWithFormat:@"%ld", cartNum + 1], @"0"];
+    }
+    [SVProgressHUD show];
+    // 发送请求
+    [XFNetworking GET:urlString parameters:nil success:^(id responseObject, NSInteger statusCode) {
+        [SVProgressHUD dismiss];
+        
+        NSDictionary *dataDict = [self dictWithData:responseObject];
+        
+        if ([dataDict[@"issuccess"] boolValue]) { // 成功
+            
+            // 动画
+            CGRect rect = [cell.iconImageView convertRect:cell.iconImageView.bounds toView:self.view];
+            [self initImage:rect withImage:cell.iconImageView.image];
+            
+            cartNum++;
+            model.CartNum = [NSString stringWithFormat:@"%ld", cartNum];
+            //[self.commodityArray replaceObjectAtIndex:indexPath.row withObject:model];
+            //[cModel.List replaceObjectAtIndex:indexPath.row withObject:model];
+            // 更新 UI
+            [cell.countLabel setText:model.CartNum];
+            
+            // 设置 tabbar badge
+            NSInteger badgeValue = [[[[[[self tabBarController] tabBar] items] objectAtIndex:2] badgeValue] integerValue];
+            badgeValue++;
+            [[[[[self tabBarController] tabBar] items] objectAtIndex:2] setBadgeValue:[NSString stringWithFormat:@"%ld", badgeValue]];
+            
+        }
+        
+    } failure:^(NSError *error, NSInteger statusCode) {
+        [self showInfoWidthError:error];
+    }];
     
 }
 
 - (void)commodityTVCell:(FSCommodityTVCell *)cell minusButtonTouchUpInside:(UIButton *)sender {
-    NSLog(@"minus");
+    NSLog(@"点击了减号");
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    FSClassificationModel *cModel = self.commodityArray[indexPath.section];
+    
+    FSCommodityModel *model = cModel.List[indexPath.row];
+    
+    NSString *uid = [[NSUserDefaults standardUserDefaults] objectForKey:@"UID"];
+    NSString *mid = [[NSUserDefaults standardUserDefaults] objectForKey:@"MID"] ? [[NSUserDefaults standardUserDefaults] objectForKey:@"MID"] : @"2";
+    
+    __block NSInteger cartNum = [model.CartNum integerValue];
+    
+    NSString *urlString = @"";
+    
+    if (cartNum > 1) { // 更新商品的数量
+        urlString = [NSString stringWithFormat:UpCart, UUID, mid, model.id, uid,[NSString stringWithFormat:@"%ld", cartNum - 1], @"1"];
+    } else { // 从购物车删除商品
+        urlString = [NSString stringWithFormat:DelCartUrl,UUID,mid,model.id,uid];
+    }
+    
+    [SVProgressHUD show];
+    [XFNetworking GET:urlString parameters:nil success:^(id responseObject, NSInteger statusCode) {
+        
+        [SVProgressHUD dismiss];
+        NSDictionary *dataDict = [self dictWithData:responseObject];
+        
+        if ([dataDict[@"issuccess"] boolValue]) { // 成功
+            
+            cartNum--;
+            model.CartNum = [NSString stringWithFormat:@"%ld", cartNum];
+            //[self.commodityArray replaceObjectAtIndex:indexPath.row withObject:model];
+            
+            // 更新 UI
+            [cell.countLabel setText:model.CartNum];
+            
+            // 设置 tabbar badge
+            NSInteger badgeValue = [[[[[[self tabBarController] tabBar] items] objectAtIndex:2] badgeValue] integerValue];
+            badgeValue--;
+            [[[[[self tabBarController] tabBar] items] objectAtIndex:2] setBadgeValue:[NSString stringWithFormat:@"%ld", badgeValue]];
+            
+        }
+        
+    } failure:^(NSError *error, NSInteger statusCode) {
+        [self showInfoWidthError:error];
+    }];
     
 }
 
@@ -368,6 +471,8 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
     self.selectedIndexPath = willSelectIndexPath;
     
     [self.collectionView selectItemAtIndexPath:willSelectIndexPath animated:YES scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
+    
+    
 }
 
 
@@ -387,6 +492,54 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
 
 #pragma mark - Custom
 
+- (void)userIsLogined {
+    [self getDataFromRemote];
+}
+
+- (void)userIsLogout {
+    [self getDataFromRemote];
+}
+
+#pragma mark 加入购物车动画
+- (void)initImage:(CGRect)rect withImage:(UIImage *)image {
+    
+    UITabBar *tabBar = [[self tabBarController] tabBar];
+    
+    CGFloat posY = SCREEN_HEIGHT - 49;
+    CGFloat itemW = tabBar.width * 0.25;
+    
+    CGFloat posX = itemW * 2 + 15;
+    
+    NSLog(@"%@", NSStringFromCGRect(tabBar.frame));
+    
+    self.cartAnimView = [[UIImageView alloc] initWithFrame:rect];
+    self.cartAnimView.image = image;
+    
+    [[UIApplication sharedApplication].keyWindow addSubview:self.cartAnimView];
+    //[self.view addSubview:self.cartAnimView];
+    
+    CABasicAnimation* rotationAnimation;
+    rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+    rotationAnimation.toValue = [NSNumber numberWithFloat: M_PI * 2.0 ];
+    rotationAnimation.duration = 1.0;
+    rotationAnimation.cumulative = YES;
+    rotationAnimation.repeatCount = 0;
+    
+    //这个是让旋转动画慢于缩放动画执行
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.cartAnimView.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
+    });
+    
+    [UIView animateWithDuration:1.0 animations:^{
+        
+        self.cartAnimView.frame = CGRectMake(posX + 27.5, posY + 27.5, 0, 0);
+        
+    } completion:^(BOOL finished) {
+        [self.cartAnimView removeFromSuperview];
+        self.cartAnimView = nil;
+    }];
+}
+
 - (void)refreshData {
     // 获取商品数据
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -396,6 +549,10 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
     NSString *urlString = [NSString stringWithFormat:CLASSIFYURL, midString, uidString];
     
     NSLog(@"%@",urlString);
+    
+    if (self.categoryId) {
+        urlString = [NSString stringWithFormat:PUSHCLASSIFYURL,midString,_categoryId,uidString];
+    }
     
     [XFNetworking GET:urlString parameters:nil success:^(id responseObject, NSInteger statusCode) {
         [self.refreshControl endRefreshing];
@@ -426,9 +583,6 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
         
         
         /*
-         _commodityTypeView.hidden = NO;
-         _commodityTableView.hidden = NO;
-         _commodityTableView.commodityArray = _commodityArray;
          [_commodityTypeView createCommodityType:_commodityArray];
          [_commodityTableView refreshTableView];
          [_commodityTableView.commodityTableView.mj_header endRefreshing];

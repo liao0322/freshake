@@ -10,4 +10,7 @@
 
 @interface FSClassificationViewController : FSBaseViewController
 
+@property (assign, nonatomic) BOOL isSingle;
+@property (assign, nonatomic) NSInteger categoryId;
+
 @end

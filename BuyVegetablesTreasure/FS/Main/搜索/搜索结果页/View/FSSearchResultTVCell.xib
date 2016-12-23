@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XqI-5v-cat">
-                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="119" height="119"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="￥69.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yPu-c7-3iP">
@@ -62,6 +62,15 @@
                     </button>
                 </subviews>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="countLabel" destination="2YU-df-SCS" id="OF5-Br-SwD"/>
+                <outlet property="descLabel" destination="7nS-u8-gXF" id="T0j-Ow-F6B"/>
+                <outlet property="iconImageView" destination="XqI-5v-cat" id="kil-K1-HcL"/>
+                <outlet property="minusButton" destination="jvd-Lm-7tt" id="muh-Lt-Mhj"/>
+                <outlet property="plusButton" destination="LTc-kZ-wII" id="IXT-n8-sW2"/>
+                <outlet property="priceLabel" destination="yPu-c7-3iP" id="kRx-Q0-dSL"/>
+                <outlet property="titleLabel" destination="W42-Zw-oEQ" id="nFQ-xJ-Meq"/>
+            </connections>
         </tableViewCell>
     </objects>
     <resources>

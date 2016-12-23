@@ -7,14 +7,19 @@
 //
 
 #import "FSSearchAssociationViewController.h"
+#import "FSSearchResultsViewController.h"
 
 @interface FSSearchAssociationViewController ()<UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic) UITableView *tableView;
+
+
+
 
 @end
 
 @implementation FSSearchAssociationViewController
+
+static NSString * const defaultTVCellID = @"defaultTVCellID";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -35,21 +40,35 @@
     self.tableView.frame = self.view.bounds;
 }
 
+- (void)registerCells {
+    [super registerCells];
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:defaultTVCellID];
+}
 
 #pragma mark - UITableViewDelegate
 
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    FSSearchResultsViewController *resultsVC = [[FSSearchResultsViewController alloc] init];
+    resultsVC.serachKeyWord = self.dataArray[indexPath.row];
+    UISearchController *searchVC = (UISearchController *)self.parentViewController;
+    searchVC.searchBar.text = self.dataArray[indexPath.row];
+    
+    [self.nav pushViewController:resultsVC animated:NO];
+    
+}
 
 
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    NSInteger rows = self.dataArray.count ? self.dataArray.count : 0;
+    return rows;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [[UITableViewCell alloc] init];
-    cell.textLabel.text = @"a";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:defaultTVCellID forIndexPath:indexPath];
+    cell.textLabel.text = self.dataArray[indexPath.row];
     return cell;
 }
 
@@ -59,8 +78,6 @@
     UISearchController *searchVC = (UISearchController *)self.parentViewController;
     [searchVC.searchBar resignFirstResponder];
 }
-
-
 
 #pragma mark - LazyLoad
 
@@ -72,6 +89,13 @@
     }
     return _tableView;
     
+}
+
+- (NSMutableArray *)dataArray {
+    if (!_dataArray) {
+        _dataArray = [NSMutableArray array];
+    }
+    return _dataArray;
 }
 
 @end

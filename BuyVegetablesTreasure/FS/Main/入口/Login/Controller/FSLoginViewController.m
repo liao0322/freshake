@@ -21,13 +21,53 @@
 @property (weak, nonatomic) IBOutlet UIButton *forgetPasswordButton;
 @property (weak, nonatomic) IBOutlet UIButton *phoneLoginButton;
 
+@property (weak, nonatomic) IBOutlet UIImageView *bgImageView;
+
+@property (weak, nonatomic) IBOutlet UIView *firstSeparatorLine;
+
+@property (weak, nonatomic) IBOutlet UIView *secondSeparatorLine;
+
+@property (weak, nonatomic) IBOutlet UIImageView *accountIconImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *passwordIconImageView;
+
 @end
 
 @implementation FSLoginViewController
 
+#pragma mark - LifeCycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.title = @"帐号密码登录";
+
     self.phoneNumberInputTextField.maxCount = 11;
+    
+    
+    self.phoneNumberInputTextField.borderStyle = UITextBorderStyleNone;
+    self.phoneNumberInputTextField.tintColor = [UIColor colorDomina];
+    
+    
+    self.firstSeparatorLine.backgroundColor = [UIColor colorSeparatorLine];
+    
+    self.passwordInputTextField.borderStyle = UITextBorderStyleNone;
+    self.passwordInputTextField.tintColor = [UIColor colorDomina];
+    
+    self.secondSeparatorLine.backgroundColor = [UIColor colorSeparatorLine];
+    
+    // login button
+    [self.loginButton setBackgroundImage:[UIImage imageWithColor:[UIColor colorDomina]] forState:UIControlStateNormal];
+    [self.loginButton setBackgroundImage:[UIImage imageWithColor:[UIColor colorButtonHighlighted]] forState:UIControlStateHighlighted];
+    [self.loginButton setBackgroundImage:[UIImage imageWithColor:[UIColor colorButtonDisabled]] forState:UIControlStateDisabled];
+    self.loginButton.layer.cornerRadius = 5.0f;
+    self.loginButton.layer.masksToBounds = YES;
+    
+    [self.registerButton setBackgroundImage:[UIImage imageWithColor:[UIColor colorDomina]] forState:UIControlStateNormal];
+    [self.registerButton setBackgroundImage:[UIImage imageWithColor:[UIColor colorButtonHighlighted]] forState:UIControlStateHighlighted];
+    self.registerButton.layer.cornerRadius = 5.0f;
+    self.registerButton.layer.masksToBounds = YES;
+    
+
     
 }
 
@@ -35,6 +75,75 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    
+    CGFloat width = self.view.width;
+    CGFloat height = self.view.height;
+    CGFloat spacing = 30.0f;
+    CGFloat viewWidth = width - spacing * 2;
+    
+    CGFloat marginTop = height * 0.3;
+    
+    self.accountIconImageView.x = spacing;
+    self.accountIconImageView.y = marginTop;
+    
+    self.phoneNumberInputTextField.x = self.accountIconImageView.right + 15;
+    self.phoneNumberInputTextField.centerY = self.accountIconImageView.centerY;
+    self.phoneNumberInputTextField.width = viewWidth - self.accountIconImageView.width - 15;
+    
+    self.firstSeparatorLine.height = 0.5;
+    self.firstSeparatorLine.width = viewWidth;
+    self.firstSeparatorLine.x = spacing;
+    self.firstSeparatorLine.y = self.accountIconImageView.bottom + 5;
+    
+    
+    self.passwordIconImageView.x = spacing;
+    self.passwordIconImageView.y = self.firstSeparatorLine.bottom + 30;
+    
+    self.passwordInputTextField.x = self.phoneNumberInputTextField.x;
+    self.passwordInputTextField.centerY = self.passwordIconImageView.centerY;
+    self.passwordInputTextField.width = self.phoneNumberInputTextField.width;
+    
+    self.secondSeparatorLine.size = self.firstSeparatorLine.size;
+    self.secondSeparatorLine.x = self.firstSeparatorLine.x;
+    self.secondSeparatorLine.y = self.passwordIconImageView.bottom + 5;
+    
+    
+    self.loginButton.x = spacing;
+    self.loginButton.height = 44;
+    self.loginButton.width = viewWidth;
+    self.loginButton.y = self.secondSeparatorLine.bottom + height * 0.1;
+    
+    self.registerButton.x = self.loginButton.x;
+    self.registerButton.height = self.loginButton.height;
+    self.registerButton.width = self.loginButton.width;
+    self.registerButton.y = self.loginButton.bottom + 15;
+    
+    self.phoneLoginButton.x = spacing;
+    self.phoneLoginButton.y = self.registerButton.bottom + 15;
+    
+    self.forgetPasswordButton.y = self.phoneLoginButton.y;
+    self.forgetPasswordButton.right = self.registerButton.right;
+    
+    self.bgImageView.x = 0;
+    self.bgImageView.y = 64;
+    self.bgImageView.width = width;
+    self.bgImageView.height = width / (375 / 398.0f);
+    
+    
+    
+}
+
+#pragma mark - Override
+
+- (void)setupNavigationBar {
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(dismiss)];
+}
+
+#pragma mark - Custom
+
 // 登录按钮事件
 - (IBAction)loginButtonTouchUpInside:(UIButton *)sender {
     
@@ -70,7 +179,9 @@
     self.loginButton.enabled = self.phoneNumberInputTextField.text.length >= 11 && self.passwordInputTextField.text.length;
 }
 
-#pragma mark - Custom
+- (void)dismiss {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 #pragma mark 登录
 
@@ -121,55 +232,15 @@
         [userDefaults setBool:YES forKey:@"isMobLogin"];
         [userDefaults setObject:[NSString stringWithFormat:@"%@",dataDict[@"id"]] forKey:@"UID"];
         [userDefaults setObject:[NSString stringWithFormat:@"%@",dataDict[@"agentId"]] forKey:@"ZID"];
+        
+                     [[NSNotificationCenter defaultCenter] postNotificationName:@"UserChange" object:nil];
+        // 发出通知
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"UserIsLogined" object:nil];
+        
         [self dismissViewControllerAnimated:YES completion:nil];
     } failure:^(NSError *error, NSInteger statusCode) { // 登录失败
         [self showInfoWidthError:error];
     }];
-    
-    
-    /*
-    
-
-    [HttpRequest sendRequest:urlString param:nil requestStyle:Get setSerializer:Json success:^(id data)
-     {
-         if ([data[@"issuccess"] boolValue]) {
-             
-     
-             
-             if (_isCart) {
-                 
-                 self.tabBarController.tabBar.hidden = NO;
-                 self.tabBarController.selectedIndex = 0;
-                 [[NSNotificationCenter defaultCenter] postNotificationName:@"change" object:@"0"];
-             }
-             else if (self.tabBarController.selectedIndex != 3) {
-                 
-                 UINavigationController *nav = self.tabBarController.viewControllers[3];
-                 [nav popToRootViewControllerAnimated:YES];
-             }
-             else self.tabBarController.tabBar.hidden = NO;
-             
-             [self.navigationController popViewControllerAnimated:YES];
-             
-             // 重新注册极光推送
-             [[NSNotificationCenter defaultCenter] postNotificationName:@"userChangeTuisong" object:nil];
-             
-             // 改变用户中心的用户状态
-             [[NSNotificationCenter defaultCenter] postNotificationName:@"UserChange" object:nil];
-             
-             // 删除购物车商品
-             [self delStoreGoods];
-             
-             [MMProgressHUD dismissWithSuccess:@"登录成功!"];
-         }
-         else {
-             [MMProgressHUD dismissWithSuccess:data[@"context"]];
-         }
-         
-     } failure:^(NSError *error) {
-         [MMProgressHUD dismissWithSuccess:@"登录失败!"];
-     }];
-     */
 }
 
 

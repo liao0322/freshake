@@ -11,12 +11,17 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FSLoginViewController">
             <connections>
+                <outlet property="accountIconImageView" destination="Tal-fG-1vl" id="aEG-Un-L4w"/>
+                <outlet property="bgImageView" destination="Vwv-mt-0nj" id="gyH-PG-hg9"/>
+                <outlet property="firstSeparatorLine" destination="eHs-ej-VHe" id="sWz-Cz-NFG"/>
                 <outlet property="forgetPasswordButton" destination="H9H-3z-tnx" id="mMb-vU-P7g"/>
                 <outlet property="loginButton" destination="ReL-iy-SDF" id="GTd-gO-yUu"/>
+                <outlet property="passwordIconImageView" destination="qbj-mx-pMS" id="guQ-i9-Eno"/>
                 <outlet property="passwordInputTextField" destination="U1M-G5-Ne5" id="OD1-A1-CU4"/>
                 <outlet property="phoneLoginButton" destination="uyk-zP-Qsf" id="P2P-fB-joq"/>
                 <outlet property="phoneNumberInputTextField" destination="tUF-vP-3vv" id="bcX-4V-sku"/>
                 <outlet property="registerButton" destination="kxY-Ta-TCM" id="LIf-OD-0Bc"/>
+                <outlet property="secondSeparatorLine" destination="62E-aw-Nej" id="fqC-0u-LdN"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -25,8 +30,12 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bgLOGO" translatesAutoresizingMaskIntoConstraints="NO" id="Vwv-mt-0nj">
+                    <rect key="frame" x="0.0" y="65" width="375" height="398"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入手机号" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="tUF-vP-3vv" customClass="XFLimitedTextField">
-                    <rect key="frame" x="16" y="101" width="343" height="30"/>
+                    <rect key="frame" x="141" y="101" width="218" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -36,7 +45,7 @@
                     </connections>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U1M-G5-Ne5">
-                    <rect key="frame" x="16" y="149" width="343" height="30"/>
+                    <rect key="frame" x="149" y="149" width="210" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -45,7 +54,7 @@
                         <action selector="textFieldChanged:" destination="-1" eventType="editingChanged" id="26r-uT-Srl"/>
                     </connections>
                 </textField>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ReL-iy-SDF">
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ReL-iy-SDF">
                     <rect key="frame" x="16" y="227" width="343" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="登录"/>
@@ -53,7 +62,7 @@
                         <action selector="loginButtonTouchUpInside:" destination="-1" eventType="touchUpInside" id="wDI-3E-1cb"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kxY-Ta-TCM">
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kxY-Ta-TCM">
                     <rect key="frame" x="16" y="265" width="343" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="注册"/>
@@ -64,23 +73,51 @@
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H9H-3z-tnx">
                     <rect key="frame" x="297" y="318" width="62" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="忘记密码"/>
+                    <state key="normal" title="忘记密码">
+                        <color key="titleColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
                     <connections>
                         <action selector="forgetPasswordButtonTouchUpInside:" destination="-1" eventType="touchUpInside" id="M6J-Ww-gHb"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uyk-zP-Qsf">
-                    <rect key="frame" x="156" y="408" width="62" height="30"/>
+                    <rect key="frame" x="54" y="318" width="62" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="快速登录"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="快速登录">
+                        <color key="titleColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
                     <connections>
                         <action selector="phoneLoginButtonTouchUpInside:" destination="-1" eventType="touchUpInside" id="1Pe-9J-ZRK"/>
                     </connections>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="手机" translatesAutoresizingMaskIntoConstraints="NO" id="Tal-fG-1vl">
+                    <rect key="frame" x="16" y="81" width="17" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="密码锁" translatesAutoresizingMaskIntoConstraints="NO" id="qbj-mx-pMS">
+                    <rect key="frame" x="16" y="149" width="21" height="26"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eHs-ej-VHe">
+                    <rect key="frame" x="-63" y="140" width="422" height="1"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="62E-aw-Nej">
+                    <rect key="frame" x="-63" y="207" width="422" height="1"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <point key="canvasLocation" x="45.5" y="99.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="bgLOGO" width="375" height="398"/>
+        <image name="密码锁" width="21" height="26"/>
+        <image name="手机" width="17" height="30"/>
+    </resources>
 </document>
