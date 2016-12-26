@@ -10,4 +10,6 @@
 
 @interface FSResetPasswordViewController : FSBaseViewController
 
+@property (copy, nonatomic) NSString *phoneString;
+
 @end

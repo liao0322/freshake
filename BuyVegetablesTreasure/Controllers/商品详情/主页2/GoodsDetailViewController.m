@@ -710,7 +710,7 @@
         _currentPage = scrollView.contentOffset.x / ScreenWidth;
         
         UIButton *button = (UIButton *)[self.view viewWithTag:_currentPage + 110];
-        button.titleLabel.textColor = [UIColor colorWithHexString:@"0xff6600"];
+        button.titleLabel.textColor = [UIColor colorDomina];
         
         button = (UIButton *)[self.view viewWithTag:!_currentPage + 110];
         button.titleLabel.textColor = [UIColor blackColor];

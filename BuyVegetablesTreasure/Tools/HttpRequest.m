@@ -131,6 +131,25 @@
 
 + (void)sendRequest:(NSString *)urlString param:(NSDictionary *)param requestStyle:(RequestStyle)requestStyle setSerializer:(Serializer)serializer success:(RequestSuccess)success failure:(RequestFailure)failure
 {
+    
+    [XFNetworking GET:urlString parameters:nil success:^(id responseObject, NSInteger statusCode) {
+        [SVProgressHUD dismiss];
+        NSError *error;
+        NSDictionary *dataDict = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:&error];
+        if (error) {
+            [SVProgressHUD showWithStatus:@"解析错误"];
+            return;
+        }
+        if (success) {
+            success(dataDict);
+        }
+    } failure:^(NSError *error, NSInteger statusCode) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+    
+    /*
     AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
     
     // 设置序列化器
@@ -192,6 +211,7 @@
              }
          }];
     }
+     */
 }
 
 @end

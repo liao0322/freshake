@@ -39,8 +39,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"帐号密码登录";
+}
 
+- (void)initialization {
+    [super initialization];
+    
+    self.title = @"帐号密码登录";
+    
     self.phoneNumberInputTextField.maxCount = 11;
     
     
@@ -66,14 +71,6 @@
     [self.registerButton setBackgroundImage:[UIImage imageWithColor:[UIColor colorButtonHighlighted]] forState:UIControlStateHighlighted];
     self.registerButton.layer.cornerRadius = 5.0f;
     self.registerButton.layer.masksToBounds = YES;
-    
-
-    
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)viewDidLayoutSubviews {
@@ -84,7 +81,7 @@
     CGFloat spacing = 30.0f;
     CGFloat viewWidth = width - spacing * 2;
     
-    CGFloat marginTop = height * 0.3;
+    CGFloat marginTop = height * 0.2;
     
     self.accountIconImageView.x = spacing;
     self.accountIconImageView.y = marginTop;
@@ -131,9 +128,11 @@
     self.bgImageView.y = 64;
     self.bgImageView.width = width;
     self.bgImageView.height = width / (375 / 398.0f);
-    
-    
-    
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Override
@@ -153,8 +152,6 @@
     
     // 登录
     [self loginWithPhoneNumber:phoneNumberStr password:passwordStr];
-    
-    
 }
 
 // 注册按钮事件
@@ -237,12 +234,29 @@
         // 发出通知
         [[NSNotificationCenter defaultCenter] postNotificationName:@"UserIsLogined" object:nil];
         
+        // 删除购物车商品
+        [self delStoreGoods];
+        
         [self dismissViewControllerAnimated:YES completion:nil];
     } failure:^(NSError *error, NSInteger statusCode) { // 登录失败
         [self showInfoWidthError:error];
     }];
 }
 
-
+#pragma 删除购物车商品
+- (void)delStoreGoods {
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *mid = [userDefaults objectForKey:@"MID"];
+    NSString *uid = [userDefaults objectForKey:@"UID"];
+    
+    NSString *urlString = [NSString stringWithFormat:DelStoreCartUrl,UUID,mid,uid];
+    NSLog(@"%@",urlString);
+    [HttpRequest sendRequest:urlString param:nil requestStyle:Get setSerializer:Json success:^(id data)
+     {
+         NSLog(@"%@",data[@"context"]);
+         
+     } failure:nil];
+}
 
 @end

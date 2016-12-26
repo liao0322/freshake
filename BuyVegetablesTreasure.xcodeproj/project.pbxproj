@@ -459,8 +459,6 @@
 		0CF666571DACD3F700EC66C6 /* BuyerMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CF666561DACD3F700EC66C6 /* BuyerMessageCell.m */; };
 		0CF6665D1DACE10700EC66C6 /* AmendCoordinate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CF6665A1DACE10700EC66C6 /* AmendCoordinate.m */; };
 		0CF6665E1DACE10700EC66C6 /* MLGeolocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CF6665C1DACE10700EC66C6 /* MLGeolocation.m */; };
-		0CFE0BED1D77DA3400EBA538 /* JGPush.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CFE0BEA1D77DA3400EBA538 /* JGPush.m */; };
-		0CFE0BEE1D77DA3400EBA538 /* jpush-ios-2.1.7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CFE0BEB1D77DA3400EBA538 /* jpush-ios-2.1.7.a */; };
 		0CFE332A1DC19CC900F19494 /* NSData+SDDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CFE331A1DC19CC900F19494 /* NSData+SDDataCache.m */; };
 		0CFE332B1DC19CC900F19494 /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CFE331D1DC19CC900F19494 /* TAAbstractDotView.m */; };
 		0CFE332C1DC19CC900F19494 /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CFE331F1DC19CC900F19494 /* TAAnimatedDotView.m */; };
@@ -871,6 +869,13 @@
 		FE17A95C1E0D430F00DC7949 /* FSMyCouponView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A9411E0D430F00DC7949 /* FSMyCouponView.m */; };
 		FE17A95D1E0D430F00DC7949 /* FSCouponsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A9451E0D430F00DC7949 /* FSCouponsDetailViewController.m */; };
 		FE17A95E1E0D430F00DC7949 /* FSCouponsDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A9491E0D430F00DC7949 /* FSCouponsDetailView.m */; };
+		FE17A9681E10ACDD00DC7949 /* FSEmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A9671E10ACDD00DC7949 /* FSEmptyView.m */; };
+		FE17A96A1E10ACEE00DC7949 /* FSEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE17A9691E10ACEE00DC7949 /* FSEmptyView.xib */; };
+		FE17A96C1E1107F400DC7949 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE17A96B1E1107F400DC7949 /* UserNotifications.framework */; };
+		FE17A96E1E11080100DC7949 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FE17A96D1E11080100DC7949 /* libresolv.tbd */; };
+		FE17A9731E11087200DC7949 /* jcore-ios-1.0.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE17A9701E11087200DC7949 /* jcore-ios-1.0.0.a */; };
+		FE17A9741E11087200DC7949 /* jpush-ios-3.0.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE17A9711E11087200DC7949 /* jpush-ios-3.0.0.a */; };
+		FE17A9781E111F6100DC7949 /* NSString+Verify.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A9771E111F6100DC7949 /* NSString+Verify.m */; };
 		FECDE5DB1E07B3820083E11B /* CouponModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FECDE5DA1E07B3820083E11B /* CouponModel.m */; };
 		FECDE5E61E07B49D0083E11B /* AMapSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FECDE5E41E07B49D0083E11B /* AMapSearchKit.framework */; };
 		FECDE5E71E07B49D0083E11B /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FECDE5E51E07B49D0083E11B /* MAMapKit.framework */; };
@@ -1698,10 +1703,6 @@
 		0CF6665A1DACE10700EC66C6 /* AmendCoordinate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AmendCoordinate.m; sourceTree = "<group>"; };
 		0CF6665B1DACE10700EC66C6 /* MLGeolocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLGeolocation.h; sourceTree = "<group>"; };
 		0CF6665C1DACE10700EC66C6 /* MLGeolocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLGeolocation.m; sourceTree = "<group>"; };
-		0CFE0BE91D77DA3400EBA538 /* JGPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGPush.h; sourceTree = "<group>"; };
-		0CFE0BEA1D77DA3400EBA538 /* JGPush.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGPush.m; sourceTree = "<group>"; };
-		0CFE0BEB1D77DA3400EBA538 /* jpush-ios-2.1.7.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-2.1.7.a"; sourceTree = "<group>"; };
-		0CFE0BEC1D77DA3400EBA538 /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
 		0CFE33191DC19CC900F19494 /* NSData+SDDataCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SDDataCache.h"; sourceTree = "<group>"; };
 		0CFE331A1DC19CC900F19494 /* NSData+SDDataCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+SDDataCache.m"; sourceTree = "<group>"; };
 		0CFE331C1DC19CC900F19494 /* TAAbstractDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAbstractDotView.h; sourceTree = "<group>"; };
@@ -2300,6 +2301,16 @@
 		FE17A9451E0D430F00DC7949 /* FSCouponsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCouponsDetailViewController.m; sourceTree = "<group>"; };
 		FE17A9481E0D430F00DC7949 /* FSCouponsDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCouponsDetailView.h; sourceTree = "<group>"; };
 		FE17A9491E0D430F00DC7949 /* FSCouponsDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCouponsDetailView.m; sourceTree = "<group>"; };
+		FE17A9661E10ACDD00DC7949 /* FSEmptyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSEmptyView.h; sourceTree = "<group>"; };
+		FE17A9671E10ACDD00DC7949 /* FSEmptyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSEmptyView.m; sourceTree = "<group>"; };
+		FE17A9691E10ACEE00DC7949 /* FSEmptyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSEmptyView.xib; sourceTree = "<group>"; };
+		FE17A96B1E1107F400DC7949 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		FE17A96D1E11080100DC7949 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
+		FE17A9701E11087200DC7949 /* jcore-ios-1.0.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jcore-ios-1.0.0.a"; sourceTree = "<group>"; };
+		FE17A9711E11087200DC7949 /* jpush-ios-3.0.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-3.0.0.a"; sourceTree = "<group>"; };
+		FE17A9721E11087200DC7949 /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
+		FE17A9761E111F6100DC7949 /* NSString+Verify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Verify.h"; sourceTree = "<group>"; };
+		FE17A9771E111F6100DC7949 /* NSString+Verify.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Verify.m"; sourceTree = "<group>"; };
 		FECDE5D91E07B3820083E11B /* CouponModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CouponModel.h; path = BuyVegetablesTreasure/Controllers/Payment/Model/CouponModel.h; sourceTree = SOURCE_ROOT; };
 		FECDE5DA1E07B3820083E11B /* CouponModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CouponModel.m; path = BuyVegetablesTreasure/Controllers/Payment/Model/CouponModel.m; sourceTree = SOURCE_ROOT; };
 		FECDE5E41E07B49D0083E11B /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapSearchKit.framework; sourceTree = "<group>"; };
@@ -2474,6 +2485,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE17A96E1E11080100DC7949 /* libresolv.tbd in Frameworks */,
+				FE17A96C1E1107F400DC7949 /* UserNotifications.framework in Frameworks */,
 				0CCC4A791D780F52009CFBB0 /* Social.framework in Frameworks */,
 				0CCC4A771D780F4C009CFBB0 /* StoreKit.framework in Frameworks */,
 				FECDE5E71E07B49D0083E11B /* MAMapKit.framework in Frameworks */,
@@ -2494,7 +2507,6 @@
 				0CCC49F21D780B10009CFBB0 /* TencentOpenAPI.framework in Frameworks */,
 				0C9F5B421CBCF9640003B01E /* BaiduMapAPI_Cloud.framework in Frameworks */,
 				0C9F5B431CBCF9640003B01E /* BaiduMapAPI_Location.framework in Frameworks */,
-				0CFE0BEE1D77DA3400EBA538 /* jpush-ios-2.1.7.a in Frameworks */,
 				520438801BE0A6F1000E8F98 /* Security.framework in Frameworks */,
 				0C9F5B471CBCF9640003B01E /* BaiduMapAPI_Utils.framework in Frameworks */,
 				0CCC49EF1D780B10009CFBB0 /* libUMSocial_Sdk_5.2.1.a in Frameworks */,
@@ -2503,6 +2515,7 @@
 				FECDE5E61E07B49D0083E11B /* AMapSearchKit.framework in Frameworks */,
 				0CCC49F41D780B10009CFBB0 /* libSocialWechat.a in Frameworks */,
 				096FD6AA1BEC872000199E03 /* Foundation.framework in Frameworks */,
+				FE17A9741E11087200DC7949 /* jpush-ios-3.0.0.a in Frameworks */,
 				520438861BE0A70C000E8F98 /* CoreGraphics.framework in Frameworks */,
 				0CCC4ADF1D780FB0009CFBB0 /* libcrypto.a in Frameworks */,
 				520438841BE0A707000E8F98 /* SystemConfiguration.framework in Frameworks */,
@@ -2510,6 +2523,7 @@
 				52FFEF741C02C72500BDD63A /* CoreFoundation.framework in Frameworks */,
 				52FFEF721C02C71F00BDD63A /* CFNetwork.framework in Frameworks */,
 				5295E8211BF5E77F009F6487 /* AdSupport.framework in Frameworks */,
+				FE17A9731E11087200DC7949 /* jcore-ios-1.0.0.a in Frameworks */,
 				096FD6A61BEC868200199E03 /* CoreText.framework in Frameworks */,
 				528F3A591BEB5A9700A872CC /* OpenGLES.framework in Frameworks */,
 				0CCC4ADE1D780FB0009CFBB0 /* AlipaySDK.framework in Frameworks */,
@@ -5495,6 +5509,7 @@
 		52A35CB11BCDEC4F00309FC8 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				FE17A96F1E11087200DC7949 /* JPush */,
 				0CFE33181DC19CC900F19494 /* SDCycleScrollView */,
 				0CF666581DACE10700EC66C6 /* 定位 */,
 				0CCC4AE91D781B9F009CFBB0 /* IQKeyboardManager */,
@@ -5504,7 +5519,6 @@
 				0C5B07E61CCF6402009528F1 /* SDAutoLayout */,
 				E4140EBF1C7AA4E600F9BF62 /* WeCartPay */,
 				E40D22D51C434CA100DC47C6 /* MJRefresh */,
-				52FFEF5D1C02A85600BDD63A /* 极光 */,
 				2BBC8BBF1BF764B9000FF8D7 /* libqrencode */,
 				0969DB481BCDFE1700D98273 /* MBProgressHUD */,
 				0969DB6D1BCDFE1700D98273 /* MPProgressHUD */,
@@ -5732,20 +5746,11 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		52FFEF5D1C02A85600BDD63A /* 极光 */ = {
-			isa = PBXGroup;
-			children = (
-				0CFE0BE91D77DA3400EBA538 /* JGPush.h */,
-				0CFE0BEA1D77DA3400EBA538 /* JGPush.m */,
-				0CFE0BEB1D77DA3400EBA538 /* jpush-ios-2.1.7.a */,
-				0CFE0BEC1D77DA3400EBA538 /* JPUSHService.h */,
-			);
-			path = "极光";
-			sourceTree = "<group>";
-		};
 		A12EF907973369A30EF07E45 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FE17A96D1E11080100DC7949 /* libresolv.tbd */,
+				FE17A96B1E1107F400DC7949 /* UserNotifications.framework */,
 				6C7075A81BE105AFB6D3C97C /* libPods-BuyVegetablesTreasure.a */,
 			);
 			name = Frameworks;
@@ -6836,6 +6841,25 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		FE17A96F1E11087200DC7949 /* JPush */ = {
+			isa = PBXGroup;
+			children = (
+				FE17A9701E11087200DC7949 /* jcore-ios-1.0.0.a */,
+				FE17A9711E11087200DC7949 /* jpush-ios-3.0.0.a */,
+				FE17A9721E11087200DC7949 /* JPUSHService.h */,
+			);
+			path = JPush;
+			sourceTree = "<group>";
+		};
+		FE17A9751E111F4100DC7949 /* NSString */ = {
+			isa = PBXGroup;
+			children = (
+				FE17A9761E111F6100DC7949 /* NSString+Verify.h */,
+				FE17A9771E111F6100DC7949 /* NSString+Verify.m */,
+			);
+			path = NSString;
+			sourceTree = "<group>";
+		};
 		FECDE5E31E07B49D0083E11B /* 高德 */ = {
 			isa = PBXGroup;
 			children = (
@@ -6894,6 +6918,7 @@
 		FECDE6001E07C2C70083E11B /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				FE17A9751E111F4100DC7949 /* NSString */,
 				FECDE6011E07C2C70083E11B /* NSObject */,
 				FECDE6041E07C2C70083E11B /* UIButton */,
 				FECDE6091E07C2C70083E11B /* UIColor */,
@@ -8109,6 +8134,9 @@
 				FECDE7A51E0A30E70083E11B /* FSShoppingCartTVFooterView.h */,
 				FECDE7A61E0A30E70083E11B /* FSShoppingCartTVFooterView.m */,
 				FECDE7A81E0A31410083E11B /* FSShoppingCartTVFooterView.xib */,
+				FE17A9661E10ACDD00DC7949 /* FSEmptyView.h */,
+				FE17A9671E10ACDD00DC7949 /* FSEmptyView.m */,
+				FE17A9691E10ACEE00DC7949 /* FSEmptyView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -8391,6 +8419,7 @@
 				0C625F101CC4C3DD0052181A /* 地址.png in Resources */,
 				0C9D60621CE07DB8002362C0 /* 登陆-按钮@2x.png in Resources */,
 				E4FF92EF1CC9FC0B009E4B8F /* 到店自提.png in Resources */,
+				FE17A96A1E10ACEE00DC7949 /* FSEmptyView.xib in Resources */,
 				0C2BFD7C1CE47E2000EC8EF4 /* 视频-没有选择.png in Resources */,
 				2BEA76661C21499300F09879 /* ErrorBackImage.png in Resources */,
 				0C82E3551CD2FE38007DF40F /* 下载@2x.png in Resources */,
@@ -8874,7 +8903,6 @@
 				522452461CAB721F00CBC780 /* SelectStoreDeliveryView.m in Sources */,
 				0CB2B44C1CE2D55C00E8F0BB /* MyOrderView.m in Sources */,
 				0CB2B4551CE2DC7C00E8F0BB /* MyOrderGoodsInfoModel.m in Sources */,
-				0CFE0BED1D77DA3400EBA538 /* JGPush.m in Sources */,
 				2ACFF0F91CB4B0E7008783E3 /* GroupGoodsCell.m in Sources */,
 				E4818F571CC86D7A0081E06C /* RechargeView.m in Sources */,
 				0C961B4E1D9CAC09000B6AF6 /* ParentViewController.m in Sources */,
@@ -8894,6 +8922,7 @@
 				E40D230A1C434CA100DC47C6 /* MJRefreshBackGifFooter.m in Sources */,
 				0C961B431D9CAAFA000B6AF6 /* MyOrderDetailsViewController.m in Sources */,
 				FECDE7121E07C2C80083E11B /* UIView+Rect.m in Sources */,
+				FE17A9781E111F6100DC7949 /* NSString+Verify.m in Sources */,
 				E40D23141C434CA100DC47C6 /* UIView+MJExtension.m in Sources */,
 				FE17A9511E0D430F00DC7949 /* FSHelpView.m in Sources */,
 				520438AD1BE0B72C000E8F98 /* Pruduct.m in Sources */,
@@ -9108,6 +9137,7 @@
 				0969DC191BCDFE1700D98273 /* MMRadialProgressView.m in Sources */,
 				E40D23071C434CA100DC47C6 /* MJRefreshAutoGifFooter.m in Sources */,
 				FECDE73F1E07C2C80083E11B /* FSHomeViewController.m in Sources */,
+				FE17A9681E10ACDD00DC7949 /* FSEmptyView.m in Sources */,
 				E4818F3C1CC8689A0081E06C /* PointRecordViewController.m in Sources */,
 				52438A631C9AAF70002661DF /* ButtonView.m in Sources */,
 				0CFE332D1DC19CCA00F19494 /* TADotView.m in Sources */,
@@ -9321,6 +9351,7 @@
 					"$(PROJECT_DIR)/BuyVegetablesTreasure/Libs/UMsocial_5.2.1/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
 					"$(PROJECT_DIR)/BuyVegetablesTreasure/Libs/UMsocial_5.2.1/UMSocial_Sdk_Extra_Frameworks/Wechat",
 					"$(PROJECT_DIR)/BuyVegetablesTreasure/Libs/alipay",
+					"$(PROJECT_DIR)/BuyVegetablesTreasure/Libs/JPush",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -9372,6 +9403,7 @@
 					"$(PROJECT_DIR)/BuyVegetablesTreasure/Libs/UMsocial_5.2.1/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
 					"$(PROJECT_DIR)/BuyVegetablesTreasure/Libs/UMsocial_5.2.1/UMSocial_Sdk_Extra_Frameworks/Wechat",
 					"$(PROJECT_DIR)/BuyVegetablesTreasure/Libs/alipay",
+					"$(PROJECT_DIR)/BuyVegetablesTreasure/Libs/JPush",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
