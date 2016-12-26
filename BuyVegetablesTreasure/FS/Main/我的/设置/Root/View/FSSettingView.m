@@ -112,13 +112,13 @@
 
 #pragma mark 创建段尾
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-    if ([Tools isBlankString:[[NSUserDefaults standardUserDefaults] objectForKey:@"UID"]]) {
+    if (![Tools isBlankString:[[NSUserDefaults standardUserDefaults] objectForKey:@"UID"]]) {
         if (section == _dataSource.count - 1) {
             UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, SectionHeight + 25)];
             bgView.userInteractionEnabled = YES;
             
             UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
-            btn.frame = CGRectMake(20, 25, SCREEN_WIDTH - 40, 57);
+            btn.frame = CGRectMake(20, 25, SCREEN_WIDTH - 40, SectionHeight);
             btn.titleLabel.font = [UIFont systemFontOfSize:18.0];
             btn.backgroundColor = [UIColor colorWithHexString:@"0x86bb35"];
             btn.layer.cornerRadius = 5;

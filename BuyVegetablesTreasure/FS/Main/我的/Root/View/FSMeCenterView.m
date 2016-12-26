@@ -77,7 +77,7 @@
         UIButton *bgBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         bgBtn.tag = i + 100;
         bgBtn.frame = CGRectMake(btnWidth * i, CGRectGetMaxY(line.frame), btnWidth, self.frame.size.height - CGRectGetMaxY(line.frame));
-        [bgBtn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+        [bgBtn addTarget:self action:@selector(centerBtnClick:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:bgBtn];
         
         float bgBtnWidth = bgBtn.frame.size.width;
@@ -114,8 +114,14 @@
     
 }
 
-- (void)allOrderClick:(UIButton *)btn {
-    NSLog(@"进入查看全部订单");
+- (void)centerBtnClick:(UIButton *)sender {
+    NSLog(@"订单状态");
+}
+
+- (void)allOrderClick:(UIButton *)sender {
+    if ([self.delegate respondsToSelector:@selector(fsCenterView:allOrderButtonClick:)]) {
+        [self.delegate fsCenterView:self allOrderButtonClick:sender];
+    }
 }
 
 

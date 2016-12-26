@@ -34,9 +34,9 @@
 
     self.addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.addBtn.frame = CGRectMake(0, ScreenHeight - 64 - 45, ScreenWidth, 45);
-    self.addBtn.backgroundColor = Color;
-    self.addBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-    [self.addBtn setTitle:@"+新增地址" forState:UIControlStateNormal];
+    self.addBtn.backgroundColor = [UIColor colorDomina];
+    self.addBtn.titleLabel.font = [UIFont systemFontOfSize:18];
+    [self.addBtn setTitle:@"添加新地址" forState:UIControlStateNormal];
     [self.addBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.addBtn addTarget:self
                     action:@selector(btnClick)
@@ -51,7 +51,7 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [self.tableView registerClass:[SelectDeliverySiteCell class] forCellReuseIdentifier:@"SelectDeliverySiteCell"];
+    [self.tableView registerClass:[FSSelectDeliverySiteCell class] forCellReuseIdentifier:@"FSSelectDeliverySiteCell"];
     [self addSubview:self.tableView];
 }
 
@@ -66,6 +66,8 @@
     _addBtnClick(NO, 0);
 }
 
+
+
 #pragma mark - UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return _siteArray.count;
@@ -78,8 +80,11 @@
 #pragma mark 设置单元格
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    SelectDeliverySiteCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SelectDeliverySiteCell"];
+    FSSelectDeliverySiteCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FSSelectDeliverySiteCell"];
     cell.selectionStyle  = UITableViewCellSelectionStyleNone;
+    cell.defaultBtnClick = ^() {
+        _defaultBtnClick(YES, indexPath.section);
+    };
     cell.editBtnClick = ^(){
         _addBtnClick(YES, indexPath.section);
     };
@@ -113,11 +118,12 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [tableView cellHeightForIndexPath:indexPath
-                                       model:self.siteArray[indexPath.section]
-                                     keyPath:@"model"
-                                   cellClass:[SelectDeliverySiteCell class]
-                            contentViewWidth:ScreenWidth];
+//    return [tableView cellHeightForIndexPath:indexPath
+//                                       model:self.siteArray[indexPath.section]
+//                                     keyPath:@"model"
+//                                   cellClass:[FSSelectDeliverySiteCell class]
+//                            contentViewWidth:ScreenWidth];
+    return 135;
 }
 
 @end

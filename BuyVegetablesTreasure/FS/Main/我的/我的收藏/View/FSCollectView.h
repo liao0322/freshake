@@ -8,6 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FSCollectView : UIView
+@interface FSCollectView : UIView<UITableViewDelegate, UITableViewDataSource>
+
+@property (nonatomic, copy) UITableView *tableView;
+@property (nonatomic, copy) NSArray *dataSource;
+
+@property (nonatomic, copy) void(^deleteCollect)(NSString *idString);
+@property (nonatomic, copy) void(^didSelectBlock)();
+
+@property (nonatomic, assign) BOOL isGoods;
+@property (nonatomic, assign) BOOL isEdit;
+
+- (void)refreshTableView;
+
 
 @end

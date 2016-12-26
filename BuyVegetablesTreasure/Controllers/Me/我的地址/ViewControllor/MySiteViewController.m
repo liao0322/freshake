@@ -41,7 +41,7 @@
 - (void)initUserSiteView {
     
     _userAddressArray = [NSMutableArray array];
-    _userSiteView = [[SelectDeliverySiteView alloc] initWithFrame:self.view.bounds];
+    _userSiteView = [[SelectDeliverySiteView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64)];
     _userSiteView.backgroundColor = [UIColor redColor];
     [self.view addSubview:_userSiteView];
     [self requestUserAddressList];
@@ -57,6 +57,15 @@
         weakSelf.hidesBottomBarWhenPushed = YES;
         [weakSelf.navigationController pushViewController:siteVC animated:YES];
     };
+    
+//    _userSiteView.defaultBtnClick = ^(BOOL isDefault, NSInteger index) {
+//        deliverySiteViewController *siteVC = [[deliverySiteViewController alloc] init];
+//        siteVC.isDefault = isDefault;
+//        if (isDefault) siteVC.siteModel = weakArray[index];
+//        [weakSelf.navigationController pushViewController:siteVC animated:YES];
+//
+//    };
+   
     
     _userSiteView.userAddress = ^(SiteModel *siteModel) {};
 }
@@ -92,6 +101,7 @@
                  SiteModel *model = [[SiteModel alloc] init];
                  [model setValuesForKeysWithDictionary:dic];
                  [_userAddressArray addObject:model];
+                 
              }
              
              _userSiteView.siteArray = _userAddressArray;

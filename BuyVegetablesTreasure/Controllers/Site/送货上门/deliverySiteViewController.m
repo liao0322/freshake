@@ -33,7 +33,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.view setBackgroundColor:[UIColor whiteColor]];
+    [self.view setBackgroundColor:[UIColor colorWithHexString:@"0xf2f2f2"]];
     [self setNav];
     [self initArray];
     [self initUserInfoTabelView];
@@ -41,6 +41,8 @@
     [self getCity];
 
     if (_isDeleteSite) [self initDeleteBtn];
+    
+//    if (_isDefault) [self saveUserInfo];
 }
 
 #pragma mark - 初始化
@@ -66,22 +68,33 @@
 - (void)setNav {
     self.navigationItem.titleView = [Utillity customNavToTitle:_isDeleteSite ? @"编辑地址" : @"添加地址"];
     self.navigationItem.leftBarButtonItem = [UIFactory createBackBBIWithTarget:self action:@selector(back)];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(saveUserInfo)];
-    self.navigationItem.rightBarButtonItem.tintColor = Color;
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(saveUserInfo)];
+//    self.navigationItem.rightBarButtonItem.tintColor = Color;
 }
 
 #pragma mark 显示用户信息
 - (void)initUserInfoTabelView {
 
-    _userInfoTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - 64) style:UITableViewStyleGrouped];
+    _userInfoTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 430) style:UITableViewStyleGrouped];
     _userInfoTableView.rowHeight = CellHeight;
     _userInfoTableView.dataSource = self;
     _userInfoTableView.delegate = self;
     _userInfoTableView.scrollEnabled = NO;
     _userInfoTableView.tableFooterView = [[UIView alloc] init];
-    _userInfoTableView.backgroundColor = [UIColor colorWithHexString:@"0xEAEBEC"];
+//    _userInfoTableView.backgroundColor = [UIColor colorWithHexString:@"0xEAEBEC"];
+    _userInfoTableView.backgroundColor = [UIColor colorWithHexString:@"0xf2f2f2"];
     [_userInfoTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UserInfoCell"];
     [self.view addSubview:_userInfoTableView];
+    
+    // 保存按钮
+    UIButton *saveBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    saveBtn.frame = CGRectMake(40, CGRectGetMaxY(_userInfoTableView.frame) + 20, ScreenWidth - 80, 45);
+    saveBtn.backgroundColor = [UIColor colorDomina];
+    saveBtn.layer.cornerRadius = 5;
+    [saveBtn setTitle:@"保存" forState:UIControlStateNormal];
+    [saveBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [saveBtn addTarget:self action:@selector(saveUserInfo) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:saveBtn];
 }
 
 #pragma mark 选择城市
@@ -286,7 +299,7 @@
     
     if (indexPath.section == 0) {
         
-        cell.textLabel.textColor = [UIColor colorWithHexString:@"0x737373"];
+        cell.textLabel.textColor = [UIColor colorWithHexString:@"0x404040"];
         cell.textLabel.text = _userInfoTitleArray[indexPath.row];
         
         if (indexPath.row == 1) {
@@ -337,9 +350,10 @@
         
         return cell;;
     }
-    else {
+     else {
      
-        cell.textLabel.textColor = [UIColor colorWithHexString:@"0x737373"];
+//        cell.textLabel.textColor = [UIColor colorWithHexString:@"0x737373"];
+        cell.textLabel.textColor = [UIColor colorWithHexString:@"0x404040"];
         cell.textLabel.text = @"设为默认地址";
         cell.accessoryView = self.defaultSwitch;
         
@@ -349,7 +363,8 @@
         }
         
         return cell;
-    }
+     }
+   
 }
 
 #pragma mark - UITableViewDelegate

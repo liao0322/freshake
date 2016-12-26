@@ -113,6 +113,12 @@
     [_goodsImageView sd_setImageWithURL:[NSURL URLWithString:model.imgUrl] placeholderImage:IMAGE(@"列表页未成功图片")];
 }
 
+- (void)goBuy:(UIButton *)sender {
+    NSLog(@"立即购买");
+    
+    
+}
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code

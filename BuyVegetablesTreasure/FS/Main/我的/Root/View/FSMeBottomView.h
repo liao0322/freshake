@@ -12,11 +12,17 @@
 
 @protocol FSMeBottomViewDelegate <NSObject>
 
+// 我的订单
+- (void)fsMeBottonView:(FSMeBottomView *)fsMeBottomView myOrderButtonClick:(UIButton *)sender;
+
 // 优惠券按钮
 - (void)fsMeBottomView:(FSMeBottomView *)fsMeBottomView couponsButtonClick:(UIButton *)sender;
 
 // 收藏按钮
 - (void)fsMeBottomView:(FSMeBottomView *)fsMeBottomView collecButtonClick:(UIButton *)sender;
+
+// 地址管理
+- (void)fsMeBottomView:(FSMeBottomView *)fsMeBottomView addressButtonClick:(UIButton *)sender;
 
 @end
 

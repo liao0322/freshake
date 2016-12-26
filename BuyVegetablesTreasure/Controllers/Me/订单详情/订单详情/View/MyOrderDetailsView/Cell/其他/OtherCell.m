@@ -101,14 +101,14 @@
             _stateLabel.text = @"售后中";
         }
         
-        self.imageView.image = IMAGE(@"订单号");
+        self.imageView.image = IMAGE(@"FSOrderDetail订单");
         self.textLabel.text = [NSString stringWithFormat:@"订单号: %@",orderDetailsModel.order_no];
     }
     // 到店自提
     else if (indexPath.section == 1 && indexPath.row == 0) {
         
         self.stateLabel.text = @"";
-        self.imageView.image = IMAGE(@"到店自提");
+        self.imageView.image = IMAGE(@"FSOrderDetail送货上门");
         
         if ([orderDetailsModel.express_id intValue] == 1) {
             self.textLabel.text = @"送货上门";

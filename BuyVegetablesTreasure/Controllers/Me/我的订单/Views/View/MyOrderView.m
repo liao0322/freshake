@@ -97,7 +97,7 @@
             for (int i = 0; i < 2; i++) {
                 
                 UILabel *line = [[UILabel alloc] initWithFrame:CGRectMake(0, i * (CGRectGetHeight(cell.frame) - 0.5), ScreenWidth, 0.5)];
-                line.backgroundColor = [UIColor colorWithHexString:@"0xE4E4E4"];
+                line.backgroundColor = [UIColor colorWithHexString:@"0xd9d9d9"];
                 [cell addSubview:line];
             }
         }
@@ -108,10 +108,10 @@
         orderStatus.tag = indexPath.section + 30;
         cell.accessoryView = orderStatus;
         
-        UILabel *orderStatusLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 55, CGRectGetHeight(cell.frame))];
-        orderStatusLabel.font = [UIFont systemFontOfSize:13];
-        orderStatusLabel.textColor = Color;
-        orderStatusLabel.textAlignment = NSTextAlignmentRight;
+        UILabel *orderStatusLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 65, CGRectGetHeight(cell.frame))];
+        orderStatusLabel.font = [UIFont systemFontOfSize:14.0];
+        orderStatusLabel.textColor = [UIColor colorDomina];
+        orderStatusLabel.textAlignment = NSTextAlignmentCenter;
         [orderStatus addSubview:orderStatusLabel];
         
         if ([model.status integerValue] == 1) {
@@ -138,10 +138,10 @@
         }
         
         cell.selectionStyle = UITableViewCellStyleDefault;
-        cell.imageView.image = [UIImage imageNamed:@"订单号"];
+        cell.imageView.image = [UIImage imageNamed:@"FSMyOrder订单"];
         cell.textLabel.text = [NSString stringWithFormat:@"订单号:%@",model.order_no];
-        cell.textLabel.font = [UIFont systemFontOfSize:13];
-        cell.textLabel.textColor = [UIColor colorWithHexString:@"0x606060"];
+        cell.textLabel.font = [UIFont systemFontOfSize:14];
+        cell.textLabel.textColor = [UIColor colorWithHexString:@"0x404040"];
         
         return cell;
     }

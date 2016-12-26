@@ -12,11 +12,15 @@
 #import "FSMeBottomView.h"
 #import "FSMoreViewController.h"
 #import "FSMeModel.h"
+#import "FSNumView.h"
 #import "FSLoginViewController.h"
 #import "FSMyCouponsViewController.h"
 #import "FSNavigationController.h"
+#import "FSMyCollectViewController.h"
+#import "MySiteViewController.h"
+#import "MyOrderViewController.h"
 
-@interface FSMeViewController ()<FSMeHeadViewDelegate, FSMeBottomViewDelegate>
+@interface FSMeViewController ()<FSMeHeadViewDelegate, FSMeBottomViewDelegate, UIScrollViewDelegate,FSMeCenterViewDelegate>
 
 @property (nonatomic, copy) FSMeHeadView *headView;
 
@@ -31,6 +35,8 @@
 @property (nonatomic, copy) NSString *moneyString;
 
 @property (nonatomic, copy) NSMutableArray *dataSourse;
+
+@property (nonatomic, strong) UIScrollView *bgScrollView;
 @end
 
 @implementation FSMeViewController
@@ -44,6 +50,17 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    _uidString = [[NSUserDefaults standardUserDefaults] objectForKey:@"UID"];
+    
+    if (![Tools isBlankString:_uidString]) {
+        
+        [self requestPoint];
+    }
+    else {
+        
+        [_dataSourse removeAllObjects];
+    }
     [_headView setUserData];
     // 导航栏透明
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:0];
@@ -69,17 +86,36 @@
     
     self.view.backgroundColor = [UIColor colorWithHexString:@"0xf2f2f2"];
     
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, -64, SCREEN_WIDTH, SCREEN_HEIGHT == 568 ? 667 : SCREEN_HEIGHT)];
+    if (SCREEN_HEIGHT == 480) {
+        scrollView.contentSize = CGSizeMake(0, scrollView.frame.size.height + 150);
+    } else if (SCREEN_HEIGHT == 568) {
+        scrollView.contentSize = CGSizeMake(0, scrollView.frame.size.height + 100);
+    }
+    scrollView.showsVerticalScrollIndicator = NO;
+    if (SCREEN_HEIGHT <= 568) {
+        scrollView.alwaysBounceVertical = YES;
+        scrollView.scrollEnabled = YES;
+    } else {
+        scrollView.alwaysBounceVertical = NO;
+        scrollView.scrollEnabled = NO;
+    }
+    scrollView.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:scrollView];
+    _bgScrollView = scrollView;
+    
     _headView = [[FSMeHeadView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 200)];
     _headView.delegate = self;
-    [self.view addSubview:_headView];
+    [_bgScrollView addSubview:_headView];
     
     _centerView = [[FSMeCenterView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_headView.frame) + 10, SCREEN_WIDTH, 115)];
-    [self.view addSubview:_centerView];
+    _centerView.delegate = self;
+    [_bgScrollView addSubview:_centerView];
     
     _bottomView = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([FSMeBottomView class]) owner:self options:nil] lastObject];
     _bottomView.delegate = self;
 //    _bottomView = [[FSMeBottomView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_centerView.frame) + 10, SCREEN_WIDTH, 200)];
-    [self.view addSubview:_bottomView];
+    [_bgScrollView addSubview:_bottomView];
 }
 
 
@@ -100,12 +136,28 @@
     //[self pushViewControllerWithVC:[FSLoginViewController new]];
 }
 
+#pragma mark 前往我的订单
+- (void)fsCenterView:(FSMeCenterView *)fsCenterView allOrderButtonClick:(UIButton *)sender {
+    [self pushViewControllerWithVC:[MyOrderViewController new]];
+}
+
+- (void)fsMeBottonView:(FSMeBottomView *)fsMeBottomView myOrderButtonClick:(UIButton *)sender {
+    [self pushViewControllerWithVC:[MyOrderViewController new]];
+}
+
+#pragma mark 前往我的优惠券
 - (void)fsMeBottomView:(FSMeBottomView *)fsMeBottomView couponsButtonClick:(UIButton *)sender {
     [self pushViewControllerWithVC:[FSMyCouponsViewController new]];
 }
 
+#pragma mark 前往我的收藏
 - (void)fsMeBottomView:(FSMeBottomView *)fsMeBottomView collecButtonClick:(UIButton *)sender {
-    
+    [self pushViewControllerWithVC:[FSMyCollectViewController new]];
+}
+
+#pragma mark 前往地址管理
+- (void)fsMeBottomView:(FSMeBottomView *)fsMeBottomView addressButtonClick:(UIButton *)sender {
+    [self pushViewControllerWithVC:[MySiteViewController new]];
 }
 
 #pragma mark 前往设置界面
@@ -154,7 +206,10 @@
              // 优惠券数量
              [[NSUserDefaults standardUserDefaults] setObject:data[@"group_id"] forKey:@"group_id"];
              
-            
+             if (_dataSourse.count > 0) {
+                 [_headView.numView setData:_dataSourse[0]];
+             }
+
          }
          else [Tools myHud:data[@"context"] inView:self.view];
          

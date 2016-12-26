@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@class FSMeCenterView;
+
+@protocol FSMeCenterViewDelegate <NSObject>
+
+- (void)fsCenterView:(FSMeCenterView *)fsCenterView allOrderButtonClick:(UIButton *)sender;
+
+@end
+
 @interface FSMeCenterView : UIView
+
+@property (nonatomic, weak) id<FSMeCenterViewDelegate> delegate;
 
 @end

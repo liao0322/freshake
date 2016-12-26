@@ -31,32 +31,33 @@
 - (void)initCell {
     
     _totalCountLabel = [[UILabel alloc] init];
-    _totalCountLabel.font = [UIFont systemFontOfSize:13];
-    _totalCountLabel.textColor = [UIColor colorWithHexString:@"0x606060"];
+    _totalCountLabel.font = [UIFont systemFontOfSize:15];
+    _totalCountLabel.textColor = [UIColor colorWithHexString:@"0x404040"];
     [self.contentView addSubview:_totalCountLabel];
     
     _totalPriceLabel = [[UILabel alloc] init];
-    _totalPriceLabel.font = [UIFont systemFontOfSize:13];
-    _totalPriceLabel.textColor = [UIColor colorWithHexString:@"0x606060"];
+    _totalPriceLabel.font = [UIFont systemFontOfSize:15];
+    _totalPriceLabel.textColor = [UIColor colorWithHexString:@"0x404040"];
     _totalPriceLabel.textAlignment = NSTextAlignmentRight;
     [self.contentView addSubview:_totalPriceLabel];
     
     _line = [[UILabel alloc] init];
-    _line.backgroundColor = [UIColor colorWithHexString:@"0xE4E4E4"];
+    _line.backgroundColor = [UIColor colorWithHexString:@"0xd9d9d9"];
     [self.contentView addSubview:_line];
     
     NSArray *arr = @[@"立即评价",@"立即付款",@"订单详情"];
     for (int i = 0; i < 3; i++) {
         
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame = CGRectMake(ScreenWidth - 75 * 3 - 45 + 90 * i, 0, 75, 30);
-        btn.titleLabel.font = [UIFont systemFontOfSize:13];
+        btn.frame = CGRectMake(ScreenWidth - 90 * 3 - 45 + 105 * i, 0, 90, 40);
+        btn.titleLabel.font = [UIFont systemFontOfSize:14.0];
         btn.tag = i + 10;
         btn.hidden = i == 2 ? NO : YES;
         btn.layer.borderWidth = 1;
-        btn.layer.borderColor = Color.CGColor;
+        btn.layer.cornerRadius = 5;
+        btn.layer.borderColor = [UIColor colorDomina].CGColor;
         [btn setTitle:arr[i] forState:UIControlStateNormal];
-        [btn setTitleColor:[UIColor colorWithHexString:@"0x606060"] forState:UIControlStateNormal];
+        [btn setTitleColor:[UIColor colorWithHexString:@"0x404040"] forState:UIControlStateNormal];
         [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:btn];
     }

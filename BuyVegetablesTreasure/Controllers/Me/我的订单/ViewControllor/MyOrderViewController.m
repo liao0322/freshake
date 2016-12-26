@@ -53,7 +53,7 @@
 
 #pragma mark 设置导航
 - (void)setNav {
-    self.view.backgroundColor = [UIColor colorWithHexString:@"0xF6F6F6"];
+    self.view.backgroundColor = [UIColor colorWithHexString:@"0xf2f2f2"];
     self.navigationItem.titleView = [Utillity customNavToTitle:@"我的订单"];
     self.navigationItem.leftBarButtonItem = [UIFactory createBackBBIWithTarget:self action:@selector(back)];
 }
@@ -61,7 +61,7 @@
 #pragma mark 订单状态
 - (void)initOrderStateView {
 
-    _orderStateView = [[OrderStateView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 65)];
+    _orderStateView = [[OrderStateView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, 50)];
     _orderStateView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:_orderStateView];
     
@@ -80,7 +80,7 @@
 #pragma mark 我的订单界面
 - (void)initMyOrderView {
     
-    _myOrderView = [[MyOrderView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_orderStateView.frame), ScreenWidth, ScreenHeight - 64 - 65)];
+    _myOrderView = [[MyOrderView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_orderStateView.frame) + 10, ScreenWidth, ScreenHeight - 64 - 65)];
     [self.view addSubview:_myOrderView];
     
     WS(weakSelf);

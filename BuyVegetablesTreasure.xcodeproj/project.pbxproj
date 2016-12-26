@@ -842,6 +842,8 @@
 		E4FF92F41CC9FC0B009E4B8F /* 送货上门@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4FF92EE1CC9FC0B009E4B8F /* 送货上门@3x.png */; };
 		E4FFE1C31C24F66800F943DF /* 用户协议.txt in Resources */ = {isa = PBXBuildFile; fileRef = E4FFE1C21C24F66800F943DF /* 用户协议.txt */; };
 		E4FFE1CA1C25362300F943DF /* HelpModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E4FFE1C91C25362300F943DF /* HelpModel.m */; };
+		EBBEC3911E0E8D3E00872E7A /* FSMySiteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBBEC3901E0E8D3E00872E7A /* FSMySiteViewController.m */; };
+		EBBEC3941E0E8D7100872E7A /* FSSelectDeliverySiteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EBBEC3931E0E8D7100872E7A /* FSSelectDeliverySiteCell.m */; };
 		FCE22CB36A608AA4CE07090D /* libPods-BuyVegetablesTreasure.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C7075A81BE105AFB6D3C97C /* libPods-BuyVegetablesTreasure.a */; };
 		FE17A8FE1E0D419700DC7949 /* FSMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A8F01E0D419700DC7949 /* FSMeViewController.m */; };
 		FE17A8FF1E0D419700DC7949 /* FSMeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A8F31E0D419700DC7949 /* FSMeModel.m */; };
@@ -2245,6 +2247,10 @@
 		E4FFE1C21C24F66800F943DF /* 用户协议.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "用户协议.txt"; sourceTree = "<group>"; };
 		E4FFE1C81C25362300F943DF /* HelpModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpModel.h; sourceTree = "<group>"; };
 		E4FFE1C91C25362300F943DF /* HelpModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpModel.m; sourceTree = "<group>"; };
+		EBBEC38F1E0E8D3E00872E7A /* FSMySiteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMySiteViewController.h; sourceTree = "<group>"; };
+		EBBEC3901E0E8D3E00872E7A /* FSMySiteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMySiteViewController.m; sourceTree = "<group>"; };
+		EBBEC3921E0E8D7100872E7A /* FSSelectDeliverySiteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSSelectDeliverySiteCell.h; sourceTree = "<group>"; };
+		EBBEC3931E0E8D7100872E7A /* FSSelectDeliverySiteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSSelectDeliverySiteCell.m; sourceTree = "<group>"; };
 		FE17A8EF1E0D419700DC7949 /* FSMeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMeViewController.h; sourceTree = "<group>"; };
 		FE17A8F01E0D419700DC7949 /* FSMeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMeViewController.m; sourceTree = "<group>"; };
 		FE17A8F21E0D419700DC7949 /* FSMeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMeModel.h; sourceTree = "<group>"; };
@@ -6537,6 +6543,33 @@
 			path = "帮助中心";
 			sourceTree = "<group>";
 		};
+		EBBEC38C1E0E8D1000872E7A /* 我的地址 */ = {
+			isa = PBXGroup;
+			children = (
+				EBBEC38D1E0E8D1000872E7A /* Controller */,
+				EBBEC38E1E0E8D1000872E7A /* View */,
+			);
+			path = "我的地址";
+			sourceTree = "<group>";
+		};
+		EBBEC38D1E0E8D1000872E7A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				EBBEC38F1E0E8D3E00872E7A /* FSMySiteViewController.h */,
+				EBBEC3901E0E8D3E00872E7A /* FSMySiteViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		EBBEC38E1E0E8D1000872E7A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EBBEC3921E0E8D7100872E7A /* FSSelectDeliverySiteCell.h */,
+				EBBEC3931E0E8D7100872E7A /* FSSelectDeliverySiteCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		FE17A8ED1E0D419700DC7949 /* Root */ = {
 			isa = PBXGroup;
 			children = (
@@ -7647,12 +7680,12 @@
 		FECDE6A61E07C2C70083E11B /* 我的 */ = {
 			isa = PBXGroup;
 			children = (
+				EBBEC38C1E0E8D1000872E7A /* 我的地址 */,
+				FE17A8ED1E0D419700DC7949 /* Root */,
 				FE17A9051E0D430F00DC7949 /* 设置 */,
 				FE17A9251E0D430F00DC7949 /* 我的收藏 */,
 				FE17A9311E0D430F00DC7949 /* 我的优惠券 */,
-				FE17A8ED1E0D419700DC7949 /* Root */,
 				FECDE6A81E07C2C70083E11B /* 个人信息 */,
-				FECDE6AA1E07C2C70083E11B /* 地址管理 */,
 				FECDE6B01E07C2C70083E11B /* 我的拼团 */,
 				FECDE6B61E07C2C70083E11B /* 我的订单 */,
 				FECDE6B91E07C2C70083E11B /* 积分记录 */,
@@ -7673,29 +7706,6 @@
 			children = (
 			);
 			path = Root;
-			sourceTree = "<group>";
-		};
-		FECDE6AA1E07C2C70083E11B /* 地址管理 */ = {
-			isa = PBXGroup;
-			children = (
-				FECDE6AB1E07C2C70083E11B /* Root */,
-				FECDE6AC1E07C2C70083E11B /* 添加地址 */,
-			);
-			path = "地址管理";
-			sourceTree = "<group>";
-		};
-		FECDE6AB1E07C2C70083E11B /* Root */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Root;
-			sourceTree = "<group>";
-		};
-		FECDE6AC1E07C2C70083E11B /* 添加地址 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "添加地址";
 			sourceTree = "<group>";
 		};
 		FECDE6B01E07C2C70083E11B /* 我的拼团 */ = {
@@ -9104,6 +9114,7 @@
 				521E319A1CB3A82800041F76 /* DetailsTableView.m in Sources */,
 				FECDE70E1E07C2C70083E11B /* UIButton+EnlargeEdge.m in Sources */,
 				0CBA549A1DE7D47C00378911 /* SubmitOrderViewController.m in Sources */,
+				EBBEC3911E0E8D3E00872E7A /* FSMySiteViewController.m in Sources */,
 				096FD6A41BEC862600199E03 /* Product.m in Sources */,
 				0969DC191BCDFE1700D98273 /* MMRadialProgressView.m in Sources */,
 				E40D23071C434CA100DC47C6 /* MJRefreshAutoGifFooter.m in Sources */,
@@ -9140,6 +9151,7 @@
 				FECDE7B21E0A93940083E11B /* FSSearchResultTVCell.m in Sources */,
 				0969DC2A1BCDFE1700D98273 /* SDWebImageCompat.m in Sources */,
 				09FBBECA1C2136E500ED27C2 /* ShopCart.m in Sources */,
+				EBBEC3941E0E8D7100872E7A /* FSSelectDeliverySiteCell.m in Sources */,
 				FE17A9581E0D430F00DC7949 /* FSCouponModel.m in Sources */,
 				5224524F1CAB83D400CBC780 /* SelectDeliverySiteCell.m in Sources */,
 				0CAFF7B91CB64313006C1900 /* PriceDetailCell.m in Sources */,
@@ -9323,6 +9335,10 @@
 					"$(PROJECT_DIR)/BuyVegetablesTreasure/Libs/alipay",
 				);
 				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
+				"OTHER_LDFLAGS[arch=*]" = (
 					"$(inherited)",
 					"-ObjC",
 				);

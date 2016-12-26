@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SelectDeliverySiteCell.h"
+#import "FSSelectDeliverySiteCell.h"
 
 @interface SelectDeliverySiteView : UIView<UITableViewDataSource,UITableViewDelegate>
 
@@ -16,6 +17,7 @@
 @property (nonatomic, copy) void(^userAddress)(SiteModel *mapArray);
 @property (nonatomic, copy) void(^addBtnClick)(BOOL isDel, NSInteger index);
 
+@property (nonatomic, copy) void(^defaultBtnClick)(BOOL isDefault, NSInteger index);
 - (void)refreshSite;
 
 @end

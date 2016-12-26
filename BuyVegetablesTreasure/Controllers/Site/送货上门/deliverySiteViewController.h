@@ -14,4 +14,6 @@
 @property (nonatomic, assign) SiteModel *siteModel;
 @property (nonatomic, assign) BOOL isDeleteSite;
 
+//@property (nonatomic, assign) BOOL isDefault;
+
 @end

@@ -48,7 +48,8 @@
 }
 
 #pragma mark 退出
-- (void)outClick {
+- (void)outBtnClick {
+    NSLog(@"退出登录");
     [Tools myAlert:@"确定退出？" target:self];
 }
 
@@ -144,7 +145,7 @@
             btn.layer.cornerRadius = 5;
             [btn setTitle:@"退出当前账号" forState:UIControlStateNormal];
             [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-            [btn addTarget:self action:@selector(outClick) forControlEvents:UIControlEventTouchUpInside];
+            [btn addTarget:self action:@selector(outBtnClick) forControlEvents:UIControlEventTouchUpInside];
             [bgView addSubview:btn];
             
             return bgView;

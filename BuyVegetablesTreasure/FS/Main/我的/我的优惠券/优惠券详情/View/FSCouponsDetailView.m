@@ -49,13 +49,15 @@
     // 优惠券背景
     UIImage *couponImg = IMAGE(@"FS详情优惠券");
     UIImageView *couponImgView = [[UIImageView alloc] initWithImage:couponImg];
+    couponImgView.frame = CGRectMake(SCREEN_WIDTH == 320 ? 15 : 20, CGRectGetMaxY(headImgView.frame) + 5, SCREEN_WIDTH - 2 * (SCREEN_WIDTH == 320 ? 15 : 20), 120);
     [self addSubview:couponImgView];
     
-    couponImgView.sd_layout
-    .leftSpaceToView(self, 20)
-    .topSpaceToView(headImgView, 5)
-    .widthIs(couponImg.size.width)
-    .heightIs(couponImg.size.height);
+//    couponImgView.sd_layout
+//    .leftSpaceToView(self, SCREEN_WIDTH == 320 ? 15 : 20)
+//    .rightSpaceToView(self, SCREEN_WIDTH == 320 ? 15 : 20)
+//    .topSpaceToView(headImgView, 5)
+//    .widthIs(couponImg.size.width)
+//    .heightIs(couponImg.size.height);
     
     // 价格
     self.priceLabel = [UILabel new];
@@ -65,9 +67,9 @@
     [couponImgView addSubview:self.priceLabel];
     
     self.priceLabel.sd_layout
-    .leftSpaceToView(couponImgView, 20)
+    .leftEqualToView(couponImgView)
     .centerYEqualToView(couponImgView)
-    .widthIs(100)
+    .widthIs(SCREEN_WIDTH == 320 ? 100 : 125)
     .heightIs(couponImgView.height);
     
     // 规则说明
@@ -78,9 +80,9 @@
     [couponImgView addSubview:self.guiZeLabel];
     
     self.guiZeLabel.sd_layout
-    .leftSpaceToView(couponImgView, couponImgView.width / 2 - 20)
+    .leftSpaceToView(couponImgView, couponImgView.width / 2 - 25)
     .rightSpaceToView(couponImgView, 15)
-    .topSpaceToView(couponImgView, couponImgView.height / 2 - 20)
+    .topSpaceToView(couponImgView, couponImgView.height / 2 - 30)
     .autoHeightRatio(0);
     
     // 时间标题
@@ -93,7 +95,7 @@
     [couponImgView addSubview:timeTitleLabel];
     
     timeTitleLabel.sd_layout
-    .leftSpaceToView(couponImgView, couponImgView.width/2 - 20)
+    .leftSpaceToView(couponImgView, couponImgView.width/2 - 25)
     .topSpaceToView(self.guiZeLabel, 10)
     .autoHeightRatio(0);
     
@@ -113,18 +115,20 @@
     // 使用说明背景
     UIImage *explainImg = IMAGE(@"FS椭圆");
     UIImageView *explainBgView = [[UIImageView alloc] initWithImage:explainImg];
+    explainBgView.frame = CGRectMake(SCREEN_WIDTH == 320 ? 15 : 20, CGRectGetMaxY(couponImgView.frame) + 10, SCREEN_WIDTH - 2 * (SCREEN_WIDTH == 320 ? 15 : 20), SCREEN_HEIGHT - 84 - CGRectGetHeight(headImgView.frame) - CGRectGetHeight(couponImgView.frame));
     [self addSubview:explainBgView];
     
-    explainBgView.sd_layout
-    .leftSpaceToView(self, 20)
-    .rightSpaceToView(self, 45)
-    .topSpaceToView(couponImgView, 10)
-    .widthIs(explainImg.size.width)
-    .heightIs(explainImg.size.height);
+//    explainBgView.sd_layout
+//    .leftSpaceToView(self, 20)
+//    .rightSpaceToView(self, 45)
+//    .topSpaceToView(couponImgView, 10)
+//    .widthIs(explainImg.size.width)
+//    .heightIs(explainImg.size.height);
     
     // 使用说明标题
     UILabel *explainTitle = [UILabel new];
-    explainTitle.frame = CGRectMake(15, 45, explainBgView.size.width / 2, 15);
+    explainTitle.text = @"使用说明";
+    explainTitle.frame = CGRectMake(20, 45, explainBgView.size.width / 2, 15);
     explainTitle.font = [UIFont systemFontOfSize:14.0];
     explainTitle.textColor = [UIColor whiteColor];
     [explainBgView addSubview:explainTitle];
@@ -136,21 +140,22 @@
     [explainBgView addSubview:_explainLabel];
     
     _explainLabel.sd_layout
-    .leftSpaceToView(explainBgView, 15)
+    .leftSpaceToView(explainBgView, 20)
     .rightSpaceToView(explainBgView, 15)
     .topSpaceToView(explainTitle, 10)
     .autoHeightRatio(0);
     
     // 使用条件标题
     UILabel *conditionTitle = [UILabel new];
+    conditionTitle.text = @"使用条件";
     conditionTitle.font = [UIFont systemFontOfSize:14.0];
     conditionTitle.textColor = [UIColor whiteColor];
     [explainBgView addSubview:conditionTitle];
     
     conditionTitle.sd_layout
-    .leftSpaceToView(explainBgView, 15)
+    .leftSpaceToView(explainBgView, 20)
     .rightSpaceToView(explainBgView, 15)
-    .topSpaceToView(_explainLabel, 20)
+    .topSpaceToView(_explainLabel, 15)
     .autoHeightRatio(0);
     
     // 使用条件

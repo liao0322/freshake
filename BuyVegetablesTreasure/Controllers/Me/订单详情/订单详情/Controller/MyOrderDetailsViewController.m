@@ -28,7 +28,7 @@
     
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor colorWithHexString:@"0xF6F6F6"];
+    self.view.backgroundColor = [UIColor colorWithHexString:@"0xf2f2f2"];
     self.navigationItem.titleView = [Utillity customNavToTitle:@"订单详情"];
     self.navigationItem.leftBarButtonItem = [UIFactory createBackBBIWithTarget:self action:@selector(back)];
     
@@ -104,7 +104,7 @@
     self.orderDetailsView.sd_layout
     .leftEqualToView(self.view)
     .rightEqualToView(self.view)
-    .topEqualToView(self.view)
+    .topSpaceToView(self.view,64)
     .bottomSpaceToView(_payBtn, 0);
     
     WS(weakSelf);
@@ -130,7 +130,7 @@
 - (void)initPayBtn {
     
     _payBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    _payBtn.backgroundColor = Color;
+    _payBtn.backgroundColor = [UIColor colorDomina];
     _payBtn.hidden = YES;
     [_payBtn setTitle:@"立即支付" forState:UIControlStateNormal];
     [_payBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];

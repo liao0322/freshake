@@ -110,24 +110,24 @@
     _noticeLabel.font = [UIFont systemFontOfSize:17.0];
     _noticeLabel.textColor = [UIColor whiteColor];
     _noticeLabel.textAlignment = NSTextAlignmentCenter;
-    _noticeLabel.hidden = YES;
     [bgImageView addSubview:_noticeLabel];
     
     _loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     _loginBtn.frame = CGRectMake(ScreenWidth / 2 - 60, CGRectGetMaxY(_noticeLabel.frame) + 10, 93, 34);
     _loginBtn.center = CGPointMake(ScreenWidth / 2, bgImageView.frame.size.height / 2 + 20);
-    _loginBtn.backgroundColor = [UIColor colorOrange];
+    _loginBtn.backgroundColor = [UIColor colorWithHexString:@"0x71ab19"];
     _loginBtn.layer.cornerRadius = 10;
     _loginBtn.titleLabel.font = [UIFont systemFontOfSize:16.0];
     [_loginBtn setTitle:@"登录/注册" forState:UIControlStateNormal];
     [_loginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [_loginBtn addTarget:self action:@selector(goLogin:) forControlEvents:UIControlEventTouchUpInside];
-    _loginBtn.hidden = YES;
     [bgImageView addSubview:_loginBtn];
 }
 
 - (void)iconClick:(UITapGestureRecognizer *)tap {
-    _pushLogin(nil);
+    
+    NSLog(@"设置个人信息");
+//    _pushLogin(nil);
 }
 
 //- (void)setClick:(UITapGestureRecognizer *)tap {
@@ -139,11 +139,17 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
     if ([userDefaults objectForKey:@"UID"]) {
+        
+        
         _icon.hidden = NO;
         _name.hidden = NO;
         _mobile.hidden = NO;
         _numView.hidden = NO;
         _rightImage.hidden = NO;
+        
+        _noticeLabel.hidden = YES;
+        _loginBtn.hidden = YES;
+        
         
         if ([Tools isBlankString:[userDefaults objectForKey:@"nick_name"]]) {
             _name.text = @"去取个昵称吧~";
@@ -157,6 +163,9 @@
         [_icon sd_setImageWithURL:[userDefaults objectForKey:@"avatar"] placeholderImage:IMAGE(@"FS头像") options:SDWebImageRetryFailed];
         
     } else {
+        
+        _noticeLabel.hidden = NO;
+        _loginBtn.hidden = NO;
         
         _icon.hidden = YES;
         _name.hidden = YES;

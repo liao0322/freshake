@@ -44,15 +44,11 @@
 
 - (void)initMyCouponView {
     
-    self.myCouponView = [FSMyCouponView new];
+    self.myCouponView = [[FSMyCouponView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
     self.myCouponView.isSelectCoupon = self.isSelectCoupon;
     [self.view addSubview:self.myCouponView];
     
-    self.myCouponView.sd_layout
-    .leftEqualToView(self.view)
-    .rightEqualToView(self.view)
-    .topEqualToView(self.view)
-    .bottomEqualToView(self.view);
+   
     
     WS(weakSelf);
     [self.myCouponView setSelectCoupon:^(NSString *priceString, NSString *idString, BOOL isSelect) {

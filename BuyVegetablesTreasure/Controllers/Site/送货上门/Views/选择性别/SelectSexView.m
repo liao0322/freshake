@@ -38,7 +38,7 @@
         sexBtn.layer.cornerRadius = 7.5;
         sexBtn.layer.borderWidth = 0.5;
         sexBtn.layer.borderColor = [UIColor colorWithHexString:@"0xDBDEDD"].CGColor;
-        [sexBtn setImage:[UIImage imageNamed:@"勾图标"] forState:UIControlStateSelected];
+        [sexBtn setImage:[UIImage imageNamed:@"FS选中"] forState:UIControlStateSelected];
         [bgButton addSubview:sexBtn];
         
         UILabel *sexLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(sexBtn.frame) + 10, 0, 100, CGRectGetHeight(bgButton.frame))];

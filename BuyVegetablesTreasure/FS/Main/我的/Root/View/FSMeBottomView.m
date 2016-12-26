@@ -20,6 +20,9 @@
 
 // 我的订单
 - (IBAction)myDingDanClick:(id)sender {
+    if ([self.delegate respondsToSelector:@selector(fsMeBottonView:myOrderButtonClick:)]) {
+        [self.delegate fsMeBottonView:self myOrderButtonClick:sender];
+    }
 }
 
 // 我的优惠券
@@ -41,10 +44,15 @@
 
 // 我的拼团
 - (IBAction)myPingTuanClick:(id)sender {
+    NSLog(@"我的拼团");
 }
 
 // 地址管理
 - (IBAction)addressClick:(id)sender {
+    
+    if ([self.delegate respondsToSelector:@selector(fsMeBottomView:addressButtonClick:)]) {
+        [self.delegate fsMeBottomView:self addressButtonClick:sender];
+    }
 }
 
 

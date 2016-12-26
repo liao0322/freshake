@@ -8,7 +8,7 @@
 
 #import "MyOrderGoodsCell.h"
 
-#define TextSize 13
+#define TextSize 15.0
 
 @interface MyOrderGoodsCell ()
 
@@ -38,18 +38,18 @@
     
     _goodsNameLabel = [[UILabel alloc] init];
     _goodsNameLabel.font = [UIFont systemFontOfSize:TextSize];
-    _goodsNameLabel.textColor = [UIColor colorWithHexString:@"0x606060"];
+    _goodsNameLabel.textColor = [UIColor colorWithHexString:@"0x404040"];
     _goodsNameLabel.textAlignment = NSTextAlignmentRight;
     [self.contentView addSubview:_goodsNameLabel];
     
     _goodsPriceLabel = [[UILabel alloc] init];
     _goodsPriceLabel.font = [UIFont systemFontOfSize:TextSize];
-    _goodsPriceLabel.textColor = [UIColor colorWithHexString:@"0x606060"];;
+    _goodsPriceLabel.textColor = [UIColor colorWithHexString:@"0x404040"];;
     _goodsPriceLabel.textAlignment = NSTextAlignmentRight;
     [self.contentView addSubview:_goodsPriceLabel];
     
     _line = [[UILabel alloc] init];
-    _line.backgroundColor = [UIColor colorWithHexString:@"0xE4E4E4"];
+    _line.backgroundColor = [UIColor colorWithHexString:@"0xd9d9d9"];
     [self.contentView addSubview:_line];
 }
 
