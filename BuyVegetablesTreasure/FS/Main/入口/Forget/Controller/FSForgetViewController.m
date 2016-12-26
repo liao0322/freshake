@@ -86,13 +86,47 @@
 #pragma mark - Custom
 
 - (IBAction)nextButtonTouchUpInside:(UIButton *)sender {
-    FSResetPasswordViewController *resetPasswordVC = [FSResetPasswordViewController new];
-    [self.navigationController pushViewController:resetPasswordVC animated:YES];
+    [self.view endEditing:YES];
+
+    NSString *phoneNumberStr = self.accountTextField.text;
+    
+    if (![Tools isMobileNum:phoneNumberStr]) {
+        [SVProgressHUD showInfoWithStatus:@"请输入正确的手机号!"];
+    }
+    
+    NSString *urlString = [NSString stringWithFormat:GETCODE,phoneNumberStr,@"1"];
+    
+    [SVProgressHUD show];
+    [XFNetworking GET:urlString parameters:nil success:^(id responseObject, NSInteger statusCode) {
+        NSDictionary *data = [self dictWithData:responseObject];
+        
+        NSString *issuccess = [NSString stringWithFormat:@"%@",data[@"issuccess"]];
+        
+        if ([issuccess isEqualToString:@"1"]) {
+            [SVProgressHUD dismiss];
+            FSResetPasswordViewController *resetPasswordVC = [FSResetPasswordViewController new];
+            resetPasswordVC.phoneString = phoneNumberStr;
+            
+            [self.navigationController pushViewController:resetPasswordVC animated:YES];
+        }
+        else
+        {
+            [SVProgressHUD showInfoWithStatus:data[@"context"]];
+        }
+    } failure:^(NSError *error, NSInteger statusCode) {
+        [self showInfoWidthError:error];
+    }];
+
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (IBAction)textFieldChanged:(UITextField *)sender {
+    self.nextButton.enabled = self.accountTextField.text.length >= 11;
+}
+
 
 @end

@@ -152,8 +152,6 @@
     
     // 登录
     [self loginWithPhoneNumber:phoneNumberStr password:passwordStr];
-    
-    
 }
 
 // 注册按钮事件
@@ -236,12 +234,29 @@
         // 发出通知
         [[NSNotificationCenter defaultCenter] postNotificationName:@"UserIsLogined" object:nil];
         
+        // 删除购物车商品
+        [self delStoreGoods];
+        
         [self dismissViewControllerAnimated:YES completion:nil];
     } failure:^(NSError *error, NSInteger statusCode) { // 登录失败
         [self showInfoWidthError:error];
     }];
 }
 
-
+#pragma 删除购物车商品
+- (void)delStoreGoods {
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *mid = [userDefaults objectForKey:@"MID"];
+    NSString *uid = [userDefaults objectForKey:@"UID"];
+    
+    NSString *urlString = [NSString stringWithFormat:DelStoreCartUrl,UUID,mid,uid];
+    NSLog(@"%@",urlString);
+    [HttpRequest sendRequest:urlString param:nil requestStyle:Get setSerializer:Json success:^(id data)
+     {
+         NSLog(@"%@",data[@"context"]);
+         
+     } failure:nil];
+}
 
 @end

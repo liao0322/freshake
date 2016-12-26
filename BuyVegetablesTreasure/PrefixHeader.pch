@@ -36,7 +36,7 @@
 #import "UIFactory.h"
 #import "Single.h"
 #import "NSString+MD5Addition.h"
-#import "JGPush.h"
+//#import "JGPush.h"
 #import "HttpRequest.h"
 #import "NSString+MD5.h"
 #import "UIImageView+category.h"

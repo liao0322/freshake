@@ -13,6 +13,9 @@
 @property (strong, nonatomic) UIWindow *window;
 @property (assign, nonatomic) NSInteger allowRotation;
 @property (strong, nonatomic) CLLocationManager * locationManager;
+@property (strong, nonatomic) NSTimer *timer;
 
+/// 获取App的代理
++ (AppDelegate *)appDelegate;
 @end
 

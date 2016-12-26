@@ -47,7 +47,7 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入验证码" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="H3K-Qi-St2">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入验证码" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="H3K-Qi-St2" customClass="XFLimitedTextField">
                     <rect key="frame" x="116" y="144" width="149" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <nil key="textColor"/>
@@ -67,21 +67,26 @@
                     <state key="normal" title="注册">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="registerButtonTouchUpInside:" destination="-1" eventType="touchUpInside" id="qA9-6h-dEy"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MaK-pV-UIW">
-                    <rect key="frame" x="65" y="319" width="138" height="24"/>
+                    <rect key="frame" x="93" y="317" width="115" height="29"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <state key="normal" title="我已看过并同意" image="未选中">
+                    <state key="normal" title="注册即视为已同意">
                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                     </state>
-                    <state key="selected" image="选中"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DG2-KD-2LI">
                     <rect key="frame" x="273" y="144" width="77" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <state key="normal" title="获取验证码"/>
+                    <connections>
+                        <action selector="requestCaptchaButtonTouchUpInside:" destination="-1" eventType="touchUpInside" id="KbF-Zv-m4p"/>
+                    </connections>
                 </button>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qQi-wi-eXq">
                     <rect key="frame" x="57" y="121" width="240" height="1"/>
@@ -132,6 +137,9 @@
                     <state key="normal" title="《鲜摇派用户协定》">
                         <color key="titleColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
+                    <connections>
+                        <action selector="agreementButtonTouchUpInside:" destination="-1" eventType="touchUpInside" id="llP-Jg-j5v"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -144,7 +152,5 @@
         <image name="login验证码" width="23" height="25"/>
         <image name="密码锁" width="21" height="26"/>
         <image name="手机" width="17" height="30"/>
-        <image name="未选中" width="24" height="24"/>
-        <image name="选中" width="24" height="24"/>
     </resources>
 </document>
