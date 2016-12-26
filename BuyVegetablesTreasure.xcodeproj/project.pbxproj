@@ -871,6 +871,8 @@
 		FE17A95C1E0D430F00DC7949 /* FSMyCouponView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A9411E0D430F00DC7949 /* FSMyCouponView.m */; };
 		FE17A95D1E0D430F00DC7949 /* FSCouponsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A9451E0D430F00DC7949 /* FSCouponsDetailViewController.m */; };
 		FE17A95E1E0D430F00DC7949 /* FSCouponsDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A9491E0D430F00DC7949 /* FSCouponsDetailView.m */; };
+		FE17A9681E10ACDD00DC7949 /* FSEmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A9671E10ACDD00DC7949 /* FSEmptyView.m */; };
+		FE17A96A1E10ACEE00DC7949 /* FSEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE17A9691E10ACEE00DC7949 /* FSEmptyView.xib */; };
 		FECDE5DB1E07B3820083E11B /* CouponModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FECDE5DA1E07B3820083E11B /* CouponModel.m */; };
 		FECDE5E61E07B49D0083E11B /* AMapSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FECDE5E41E07B49D0083E11B /* AMapSearchKit.framework */; };
 		FECDE5E71E07B49D0083E11B /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FECDE5E51E07B49D0083E11B /* MAMapKit.framework */; };
@@ -2300,6 +2302,9 @@
 		FE17A9451E0D430F00DC7949 /* FSCouponsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCouponsDetailViewController.m; sourceTree = "<group>"; };
 		FE17A9481E0D430F00DC7949 /* FSCouponsDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCouponsDetailView.h; sourceTree = "<group>"; };
 		FE17A9491E0D430F00DC7949 /* FSCouponsDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCouponsDetailView.m; sourceTree = "<group>"; };
+		FE17A9661E10ACDD00DC7949 /* FSEmptyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSEmptyView.h; sourceTree = "<group>"; };
+		FE17A9671E10ACDD00DC7949 /* FSEmptyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSEmptyView.m; sourceTree = "<group>"; };
+		FE17A9691E10ACEE00DC7949 /* FSEmptyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSEmptyView.xib; sourceTree = "<group>"; };
 		FECDE5D91E07B3820083E11B /* CouponModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CouponModel.h; path = BuyVegetablesTreasure/Controllers/Payment/Model/CouponModel.h; sourceTree = SOURCE_ROOT; };
 		FECDE5DA1E07B3820083E11B /* CouponModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CouponModel.m; path = BuyVegetablesTreasure/Controllers/Payment/Model/CouponModel.m; sourceTree = SOURCE_ROOT; };
 		FECDE5E41E07B49D0083E11B /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapSearchKit.framework; sourceTree = "<group>"; };
@@ -8109,6 +8114,9 @@
 				FECDE7A51E0A30E70083E11B /* FSShoppingCartTVFooterView.h */,
 				FECDE7A61E0A30E70083E11B /* FSShoppingCartTVFooterView.m */,
 				FECDE7A81E0A31410083E11B /* FSShoppingCartTVFooterView.xib */,
+				FE17A9661E10ACDD00DC7949 /* FSEmptyView.h */,
+				FE17A9671E10ACDD00DC7949 /* FSEmptyView.m */,
+				FE17A9691E10ACEE00DC7949 /* FSEmptyView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -8391,6 +8399,7 @@
 				0C625F101CC4C3DD0052181A /* 地址.png in Resources */,
 				0C9D60621CE07DB8002362C0 /* 登陆-按钮@2x.png in Resources */,
 				E4FF92EF1CC9FC0B009E4B8F /* 到店自提.png in Resources */,
+				FE17A96A1E10ACEE00DC7949 /* FSEmptyView.xib in Resources */,
 				0C2BFD7C1CE47E2000EC8EF4 /* 视频-没有选择.png in Resources */,
 				2BEA76661C21499300F09879 /* ErrorBackImage.png in Resources */,
 				0C82E3551CD2FE38007DF40F /* 下载@2x.png in Resources */,
@@ -9108,6 +9117,7 @@
 				0969DC191BCDFE1700D98273 /* MMRadialProgressView.m in Sources */,
 				E40D23071C434CA100DC47C6 /* MJRefreshAutoGifFooter.m in Sources */,
 				FECDE73F1E07C2C80083E11B /* FSHomeViewController.m in Sources */,
+				FE17A9681E10ACDD00DC7949 /* FSEmptyView.m in Sources */,
 				E4818F3C1CC8689A0081E06C /* PointRecordViewController.m in Sources */,
 				52438A631C9AAF70002661DF /* ButtonView.m in Sources */,
 				0CFE332D1DC19CCA00F19494 /* TADotView.m in Sources */,

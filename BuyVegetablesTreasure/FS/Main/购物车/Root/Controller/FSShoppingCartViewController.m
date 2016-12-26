@@ -11,8 +11,15 @@
 #import "FSShoppingCartTVCell.h"
 #import "FSShoppingCartBottomView.h"
 #import "FSShoppingCartTVFooterView.h"
+#import "FSEmptyView.h"
+#import "SubmitOrderViewController.h"
 
-@interface FSShoppingCartViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface FSShoppingCartViewController ()
+<
+    UITableViewDelegate,
+    UITableViewDataSource,
+    FSShoppingCartTVCellDelegate
+>
 
 @property (copy, nonatomic) NSMutableArray *commodityArray;
 
@@ -24,6 +31,13 @@
 
 @property (nonatomic) FSShoppingCartTVFooterView *footerView;
 
+@property (nonatomic) FSEmptyView *emptyView;
+
+@property (assign, nonatomic) CGFloat totalPrice;
+
+@property (copy, nonatomic) NSString *point;
+@property (copy, nonatomic) NSString *tick;
+
 @end
 
 @implementation FSShoppingCartViewController
@@ -34,12 +48,18 @@ static NSString * const shoppingCartTVCellID = @"shoppingCartTVCellID";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self getCommodityData];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -49,8 +69,10 @@ static NSString * const shoppingCartTVCellID = @"shoppingCartTVCellID";
 #pragma mark - Override
 
 - (void)getDataFromRemote {
+    [super getDataFromRemote];
     // 获取购物车商品数据
-    [self getCommodityData];
+    //[self getCommodityData];
+    [self requestPoint];
     
 }
 
@@ -58,19 +80,26 @@ static NSString * const shoppingCartTVCellID = @"shoppingCartTVCellID";
     [super initialization];
     
     self.title = @"购物车";
+    self.totalPrice = 0.0f;
+
 }
 
 - (void)addSubviews {
     [super addSubviews];
     
     [self.view addSubview:self.tableView];
+
     [self.view addSubview:self.bottomView];
+    [self.view addSubview:self.emptyView];
+
     
 }
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     self.tableView.frame = self.view.bounds;
+    
+    self.emptyView.frame = self.view.bounds;
     
     self.bottomView.width = self.view.width;
     self.bottomView.height = 49;
@@ -89,13 +118,14 @@ static NSString * const shoppingCartTVCellID = @"shoppingCartTVCellID";
     if (self.commodityArray.count) {
         rows = self.commodityArray.count;
     }
+    //self.emptyView.hidden = rows;
     return rows;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     FSShoppingCartTVCell *cell = [tableView dequeueReusableCellWithIdentifier:shoppingCartTVCellID forIndexPath:indexPath];
-    
+    cell.delegate = self;
     cell.model = self.commodityArray[indexPath.row];
     return cell;
 }
@@ -123,19 +153,54 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
         
         UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
             
-            // 改变总价
-            /*
-            Wine *wine = self.wines[row];
-            if (wine.isSelect) {
-                NSInteger price = [wine.count integerValue] * [wine.discount integerValue];
-                _totalPrice -= price;
-                [_totalPricesLabel setText:[NSString stringWithFormat:@"￥%.2f", _totalPrice]];
-            }
-             */
+            ShopCart *model = self.commodityArray[row];
             
-            // 执行删除操作
-            //[self.wines removeObjectAtIndex:row];
-            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
+            NSString *uid = [[NSUserDefaults standardUserDefaults] objectForKey:@"UID"];
+            NSString *mid = [[NSUserDefaults standardUserDefaults] objectForKey:@"MID"] ? [[NSUserDefaults standardUserDefaults] objectForKey:@"MID"] : @"2";
+            
+            NSString *urlString = [NSString stringWithFormat:DelCartUrl,UUID,mid,model.productId,uid];
+            
+            [SVProgressHUD show];
+            [XFNetworking GET:urlString parameters:nil success:^(id responseObject, NSInteger statusCode) {
+                [SVProgressHUD dismiss];
+                
+                NSInteger cartNum = [model.productNum integerValue];
+
+                // 改变总价
+                if (model.isSelect) {
+                    CGFloat price = cartNum * [model.salePrice floatValue];
+                    
+                    self.totalPrice -= price;
+                    [self.bottomView.totalPriceLabel setText:[NSString stringWithFormat:@"￥%.2f", self.totalPrice]];
+                    [self.bottomView.totalPriceLabel sizeToFit];
+                }
+                
+                // 设置 tabbar badge
+                NSInteger badgeValue = [[[[[[self tabBarController] tabBar] items] objectAtIndex:2] badgeValue] integerValue];
+                badgeValue -= cartNum;
+                
+                if (badgeValue == 0) {
+                    [[[[[self tabBarController] tabBar] items] objectAtIndex:2] setBadgeValue:nil];
+                } else {
+                    [[[[[self tabBarController] tabBar] items] objectAtIndex:2] setBadgeValue:[NSString stringWithFormat:@"%ld", badgeValue]];
+                }
+
+                // 执行删除操作
+                [self.commodityArray removeObjectAtIndex:row];
+                [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
+                
+                if (self.commodityArray.count == 0) { // 没数据了
+                    self.emptyView.hidden = NO;
+                    self.footerView.hidden = YES;
+                    self.bottomView.hidden = YES;
+                    [self.tableView reloadData];
+
+                }
+                
+            } failure:^(NSError *error, NSInteger statusCode) {
+                [self showInfoWidthError:error];
+            }];
+            
             
         }];
         
@@ -151,12 +216,176 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
     }];
     
     return @[removeAction];
-    
 }
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return SCREEN_WIDTH / (375 / 130.0f);
+}
+
+#pragma mark - FSShoppingCartTVCellDelegate
+
+// 添加操作
+- (void)shoppingCartTVCell:(FSShoppingCartTVCell *)cell plusButtonTouchUpInside:(UIButton *)sender {
+    NSLog(@"加");
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    ShopCart *model = self.commodityArray[indexPath.row];
+    
+    NSString *uid = [[NSUserDefaults standardUserDefaults] objectForKey:@"UID"];
+    NSString *mid = [[NSUserDefaults standardUserDefaults] objectForKey:@"MID"] ? [[NSUserDefaults standardUserDefaults] objectForKey:@"MID"] : @"2";
+    
+    __block NSInteger cartNum = [model.productNum integerValue];
+    
+    NSString *totPriceString = @"0";
+    NSString *urlString = @"";
+    
+    if (cartNum == 0) { // 第一次添加到购物车
+        
+        urlString = [NSString stringWithFormat:ADDCARTURL, model.productId, UUID, uid, totPriceString, @"1", mid, @"11"];
+        
+    } else { // 更新购物车数量
+        urlString = [NSString stringWithFormat:UpCart, UUID, mid, model.productId,uid,[NSString stringWithFormat:@"%ld", cartNum + 1], @"0"];
+    }
+    [SVProgressHUD show];
+    // 发送请求
+    [XFNetworking GET:urlString parameters:nil success:^(id responseObject, NSInteger statusCode) {
+        [SVProgressHUD dismiss];
+        NSDictionary *dataDict = [self dictWithData:responseObject];
+        
+        if ([dataDict[@"issuccess"] boolValue]) { // 成功
+            
+            cartNum++;
+            model.productNum = @(cartNum);
+
+            // 更新 UI
+            [cell.countLabel setText:[model.productNum stringValue]];
+            
+            // 设置 tabbar badge
+            NSInteger badgeValue = [[[[[[self tabBarController] tabBar] items] objectAtIndex:2] badgeValue] integerValue];
+            badgeValue++;
+            [[[[[self tabBarController] tabBar] items] objectAtIndex:2] setBadgeValue:[NSString stringWithFormat:@"%ld", badgeValue]];
+            
+            if (model.isSelect) {
+                CGFloat discount = [model.salePrice floatValue];
+                self.totalPrice += discount;
+                
+                [self.bottomView.totalPriceLabel setText:[NSString stringWithFormat:@"￥%.2f", self.totalPrice]];
+                [self.bottomView.totalPriceLabel sizeToFit];
+            }
+        }
+        
+    } failure:^(NSError *error, NSInteger statusCode) {
+        [self showInfoWidthError:error];
+    }];
+
+    
+}
+
+- (void)shoppingCartTVCell:(FSShoppingCartTVCell *)cell minusButtonTouchUpInside:(UIButton *)sender {
+    NSLog(@"减");
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    ShopCart *model = self.commodityArray[indexPath.row];
+    
+    NSString *uid = [[NSUserDefaults standardUserDefaults] objectForKey:@"UID"];
+    NSString *mid = [[NSUserDefaults standardUserDefaults] objectForKey:@"MID"] ? [[NSUserDefaults standardUserDefaults] objectForKey:@"MID"] : @"2";
+    
+    __block NSInteger cartNum = [model.productNum integerValue];
+    
+    NSString *urlString = @"";
+    
+    if (cartNum > 1) { // 更新商品的数量
+        urlString = [NSString stringWithFormat:UpCart, UUID, mid, model.productId, uid,[NSString stringWithFormat:@"%ld", cartNum - 1], @"1"];
+    } else { // 从购物车删除商品
+        
+        urlString = [NSString stringWithFormat:DelCartUrl,UUID,mid,model.productId,uid];
+        
+    }
+    
+    [SVProgressHUD show];
+    [XFNetworking GET:urlString parameters:nil success:^(id responseObject, NSInteger statusCode) {
+        
+        [SVProgressHUD dismiss];
+        NSDictionary *dataDict = [self dictWithData:responseObject];
+        
+        if ([dataDict[@"issuccess"] boolValue]) { // 成功
+            
+            cartNum--;
+            model.productNum = @(cartNum);
+            
+            // 更新 UI
+            [cell.countLabel setText:[model.productNum stringValue]];
+            
+            // 设置 tabbar badge
+            NSInteger badgeValue = [[[[[[self tabBarController] tabBar] items] objectAtIndex:2] badgeValue] integerValue];
+            badgeValue--;
+            if (badgeValue == 0) {
+                [[[[[self tabBarController] tabBar] items] objectAtIndex:2] setBadgeValue:nil];
+            } else {
+                [[[[[self tabBarController] tabBar] items] objectAtIndex:2] setBadgeValue:[NSString stringWithFormat:@"%ld", badgeValue]];
+            }
+            
+            if (model.isSelect) {
+                CGFloat discount = [model.salePrice floatValue];
+                self.totalPrice -= discount;
+                
+                [self.bottomView.totalPriceLabel setText:[NSString stringWithFormat:@"￥%.2f", self.totalPrice]];
+                [self.bottomView.totalPriceLabel sizeToFit];
+            }
+            if (cartNum == 0) { // 从本地删除购物车
+                
+                [self.commodityArray removeObjectAtIndex:indexPath.row];
+                [_tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
+            }
+            
+            if (self.commodityArray.count == 0) { // 没数据了
+                self.emptyView.hidden = NO;
+                self.footerView.hidden = YES;
+                self.bottomView.hidden = YES;
+                [self.tableView reloadData];
+                
+            }
+            
+        }
+        
+    } failure:^(NSError *error, NSInteger statusCode) {
+        [self showInfoWidthError:error];
+    }];
+    
+
+}
+
+- (void)shoppingCartTVCell:(FSShoppingCartTVCell *)cell selectButtonTouchUpInside:(UIButton *)sender {
+    NSLog(@"选");
+    
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    ShopCart *model = self.commodityArray[indexPath.row];
+    
+    if (sender.isSelected) { // 选中
+
+        model.isSelect = YES;
+        
+        CGFloat price = [model.productNum integerValue] * [model.salePrice floatValue];
+        
+        self.totalPrice += price;
+        [self.bottomView.totalPriceLabel setText:[NSString stringWithFormat:@"￥%.2f", self.totalPrice]];
+        [self.bottomView.totalPriceLabel sizeToFit];
+        self.bottomView.selectAllButton.selected = [self isAllSelected];
+        
+    } else { // 不选
+        
+        model.isSelect = NO;
+
+        CGFloat price = [model.productNum integerValue] * [model.salePrice floatValue];
+        
+        self.totalPrice -= price;
+        
+        [self.bottomView.totalPriceLabel setText:[NSString stringWithFormat:@"￥%.2f", self.totalPrice]];
+        [self.bottomView.totalPriceLabel sizeToFit];
+
+        self.bottomView.selectAllButton.selected = NO;
+        
+    }
+
 }
 
 #pragma mark - Custom
@@ -186,36 +415,41 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
             for (NSDictionary *dic in dataDict[@"list"]) {
                 
                 ShopCart *model = [ShopCart modelWithDict:dic];
+                model.isSelect = YES;
                 [self.commodityArray addObject:model];
             }
-            self.footerView.hidden = NO;
-            self.bottomView.hidden = NO;
+            
+            if (self.commodityArray.count) {
+                
+                self.footerView.hidden = NO;
+                self.bottomView.hidden = NO;
+                self.emptyView.hidden = YES;
+                [self.tableView reloadData];
+                
+                self.totalPrice = [self getTotalPrice];
+                
+                [self.bottomView.totalPriceLabel setText:[NSString stringWithFormat:@"￥%.2f", self.totalPrice]];
+                [self.bottomView.totalPriceLabel sizeToFit];
+                
+                self.bottomView.selectAllButton.selected = YES;
+                
+            } else {
+                self.footerView.hidden = YES;
+                self.bottomView.hidden = YES;
+                self.emptyView.hidden = NO;
+            }
+            
             [self.refreshControl endRefreshing];
-            [self.tableView reloadData];
-            
-            /*
-            if (_goodsCartArray.count > 0) {
-                _bottomView.hidden = NO;
-                _goodsCartTableView.hidden = NO;
-                _goodsCartTableView.goodsCartArray = _goodsCartArray;
-                [_goodsCartTableView refreshTableView];
-            }
-            else {
-                _bottomView.hidden = YES;
-                _goodsCartTableView.hidden = YES;
-            }
-            
-            [self initBottomView];
-             */
+
         }
         else {
-            
-            /*
-            if (_goodsCartArray.count == 0) {
-                _bottomView.hidden = YES;
-                _goodsCartTableView.hidden = YES;
+            if (!self.commodityArray.count) {
+                self.footerView.hidden = YES;
+                self.bottomView.hidden = YES;
+                self.emptyView.hidden = NO;
+
+                
             }
-             */
         }
         
     } failure:^(NSError *error, NSInteger statusCode) {
@@ -226,14 +460,178 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (IBAction)selectAllButtonTouchUpInside:(UIButton *)sender {
-    NSLog(@"全选");
+    sender.selected = !sender.isSelected;
 
+    CGFloat totalPrice = 0.0f;
+    
+    if (sender.isSelected) { // 全选
+        
+        for (ShopCart *model in self.commodityArray) {
+            CGFloat price = [model.productNum integerValue] * [model.salePrice floatValue];
+            model.isSelect = YES;
+            totalPrice += price;
+            
+        }
+        self.totalPrice = totalPrice;
+        
+    } else { // 全不选
+        for (ShopCart *model in self.commodityArray) {
+            model.isSelect = NO;
+        }
+        self.totalPrice = 0.0f;
+    }
+    [self.tableView reloadData];
+    [self.bottomView.totalPriceLabel setText:[NSString stringWithFormat:@"￥%.2f", self.totalPrice]];
+    [self.bottomView.totalPriceLabel sizeToFit];
 }
 
 - (IBAction)orderButtonTouchUpInside:(UIButton *)sender {
     NSLog(@"下单");
+    
+    NSMutableArray *arr = [NSMutableArray array];
+    for (int i = 0; i < self.commodityArray.count; i++) {
+        
+        ShopCart *model = self.commodityArray[i];
+        
+        if (model.isSelect) {
+            
+            [arr addObject:model];
+        }
+    }
+    
+    if (arr.count == 0) {
+        return [Tools myHud:@"请选择商品" inView:self.view];
+    }
+    
+    // 保存商品列表
+    NSMutableArray *listArray = [NSMutableArray array];
+    for (int i = 0; i < arr.count; i++) {
+        
+        ShopCart *model = arr[i];
+        NSDictionary *dic = @{@"Id":[NSString stringWithFormat:@"%zd",[model.ID integerValue]],
+                              @"num":[NSString stringWithFormat:@"%zd",[model.productNum integerValue]]};
+        
+        [listArray addObject:dic];
+    }
+    
+    NSDictionary *listDict = @{@"List":listArray};
+    NSString *jsonString = [Utillity DataTOjsonString:listDict];
+    NSString *urlString = [NSString stringWithFormat:SUMBITORDER,jsonString];
+    urlString = [urlString stringByReplacingOccurrencesOfString:@"%20" withString:@""];
+    urlString = [urlString stringByReplacingOccurrencesOfString:@"%0A" withString:@""];
+    SLog(@"=====选好了=====%@",urlString);
+    
+    [HttpRequest sendGetOrPostRequest:urlString param:nil requestStyle:POST setSerializer:Json isShowLoading:YES success:^(id data)
+     {
+         if ([data[@"issuccess"] boolValue]) {
+             
+             self.hidesBottomBarWhenPushed = YES;
+             // 提交订单页
+             SubmitOrderViewController *paymentVC = [[SubmitOrderViewController alloc] init];
+             paymentVC.goodsArray = arr;
+             [self.navigationController pushViewController:paymentVC animated:YES];
+             /*
+             if (self.isHiddenBackBtn) {
+                 self.hidesBottomBarWhenPushed = NO;
+             }
+              */
+             
+         }
+         else [Tools myHud:data[@"context"] inView:self.view];
+         
+     } failure:^(NSError *error) {
+         NSLog(@"%@",error);
+         [self showInfoWidthError:error];
+     }];
 
 }
+
+- (CGFloat)getTotalPrice {
+    CGFloat totalPrice = 0.0f;
+    
+    for (ShopCart *model in self.commodityArray) {
+        if (!model.isSelect) {
+            continue;
+        }
+        if (model.isSelect) {
+            CGFloat price = [model.productNum integerValue] * [model.salePrice floatValue];
+            totalPrice += price;
+        }
+    }
+    return totalPrice;
+}
+
+- (BOOL)isAllSelected {
+    BOOL b = YES;
+    for (ShopCart *model in self.commodityArray) {
+        if (!model.isSelect) {
+            b = NO;
+            break;
+        }
+    }
+    return b;
+}
+
+/// 逛逛
+- (IBAction)strollButtonTouchUpInside:(UIButton *)sender {
+    self.tabBarController.selectedIndex = 1;
+}
+
+- (void)getShoppingCartCount {
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *uidString = [defaults objectForKey:@"UID"];
+    NSString *midString = [defaults objectForKey:@"MID"];
+    
+    NSString *urlString = [NSString stringWithFormat:SHOPPINGCARTNUM, UUID, uidString, midString];
+    
+    NSLog(@"购物车 = %@",urlString);
+    [XFNetworking GET:urlString parameters:nil success:^(id responseObject, NSInteger statusCode) {
+        
+        NSDictionary *dict = [self dictWithData:responseObject];
+        
+        if ([dict[@"sum"] integerValue] == 0) {
+            [[[[[self tabBarController] tabBar] items] objectAtIndex:2] setBadgeValue:nil];
+            return;
+        }
+        
+        // 设置 tabbar badge
+        [[[[[self tabBarController] tabBar] items] objectAtIndex:2] setBadgeValue:[NSString stringWithFormat:@"%@", dict[@"sum"]]];
+        
+    } failure:^(NSError *error, NSInteger statusCode) {
+        [SVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"%@", error.domain]];
+    }];
+}
+
+#pragma mark 获取积分等
+-(void)requestPoint {
+    NSString *urlString = [NSString stringWithFormat:GetUSERINFO,[[NSUserDefaults standardUserDefaults] objectForKey:@"UID"]];
+    
+    NSLog(@"==获取积分、余额、优惠券==%@",urlString);
+    
+    [XFNetworking GET:urlString parameters:nil success:^(id responseObject, NSInteger statusCode) {
+        NSDictionary *dataDict = [self dictWithData:responseObject];
+        
+        if ([[dataDict objectForKey:@"issuccess"] boolValue]) {
+            
+            self.point = dataDict[@"point"];
+            self.tick = dataDict[@"TickNum"];
+            
+            [self.footerView.pointLabel setText:[NSString stringWithFormat:@"积分%@，可抵用%.2f元", self.point, [self.point floatValue] / 1000.0f]];
+            [self.footerView.pointLabel sizeToFit];
+            
+            [self.footerView.couponLabel setText:[NSString stringWithFormat:@"优惠券%@张", self.tick]];
+            [self.footerView.couponLabel sizeToFit];
+
+            [self.tableView reloadData];
+        }
+    } failure:^(NSError *error, NSInteger statusCode) {
+        [self showInfoWidthError:error];
+    }];
+    
+}
+
+
 #pragma mark -
 #pragma mark - LazyLoad
 
@@ -264,7 +662,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 - (UIRefreshControl *)refreshControl {
     if (!_refreshControl) {
         _refreshControl = [[UIRefreshControl alloc] init];
-        [_refreshControl addTarget:self action:@selector(getDataFromRemote) forControlEvents:UIControlEventValueChanged];
+        [_refreshControl addTarget:self action:@selector(getCommodityData) forControlEvents:UIControlEventValueChanged];
     }
     return _refreshControl;
 }
@@ -289,6 +687,14 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
         _footerView.hidden = YES;
     }
     return _footerView;
+}
+
+- (FSEmptyView *)emptyView {
+    if (!_emptyView) {
+        _emptyView = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([FSEmptyView class]) owner:self options:nil] lastObject];
+        _emptyView.hidden = YES;
+    }
+    return _emptyView;
 }
 
 @end

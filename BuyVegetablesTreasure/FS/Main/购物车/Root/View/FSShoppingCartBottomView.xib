@@ -70,7 +70,7 @@
                 <outlet property="orderButton" destination="mBv-vl-wWw" id="O7L-4T-JZo"/>
                 <outlet property="orderButtonBGView" destination="3M3-ZF-ruA" id="v6p-fu-jPa"/>
                 <outlet property="selectAllButton" destination="tCx-ne-xcX" id="92U-lO-dMl"/>
-                <outlet property="totalPriceLabel" destination="VHy-Q5-Bub" id="bcj-4U-I5g"/>
+                <outlet property="totalPriceLabel" destination="VHy-Q5-Bub" id="etb-kS-K3I"/>
                 <outlet property="totalPriceTitleLabel" destination="gf4-XD-6fW" id="qqF-OF-7YC"/>
             </connections>
             <point key="canvasLocation" x="92.5" y="207.5"/>
