@@ -15,6 +15,7 @@
 #import "FSSearchViewController.h"
 #import "FSLoginViewController.h"
 #import "FSNavigationController.h"
+#import "GoodsDetailViewController.h"
 
 
 @interface FSClassificationViewController ()
@@ -87,8 +88,11 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
                              [self.refreshControl sendActionsForControlEvents:UIControlEventValueChanged];
                          }];
     }
-    
-    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self refreshData];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -120,12 +124,6 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
 }
 
 #pragma mark - Override
-
-- (void)getDataFromRemote {
-    [super getDataFromRemote];
-    
-    //[self.refreshControl beginRefreshing];
-}
 
 - (void)initialization {
     [super initialization];
@@ -201,6 +199,14 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"");
+    FSClassificationModel *cModel = self.commodityArray[indexPath.section];
+    FSCommodityModel *model = cModel.List[indexPath.row];
+    
+    GoodsDetailViewController *goodsDetailVc = [[GoodsDetailViewController alloc] init];
+    NSString *productIdString = [model.id stringByReplacingOccurrencesOfString:@"," withString:@""];
+    goodsDetailVc.ProductId = [productIdString integerValue];
+    
+    [self.navigationController pushViewController:goodsDetailVc animated:YES];
 }
 
 
@@ -407,8 +413,11 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
             // 设置 tabbar badge
             NSInteger badgeValue = [[[[[[self tabBarController] tabBar] items] objectAtIndex:2] badgeValue] integerValue];
             badgeValue--;
-            [[[[[self tabBarController] tabBar] items] objectAtIndex:2] setBadgeValue:[NSString stringWithFormat:@"%ld", badgeValue]];
-            
+            if (badgeValue == 0) {
+                [[[[[self tabBarController] tabBar] items] objectAtIndex:2] setBadgeValue:nil];
+            } else {
+                [[[[[self tabBarController] tabBar] items] objectAtIndex:2] setBadgeValue:[NSString stringWithFormat:@"%ld", badgeValue]];
+            }
         }
         
     } failure:^(NSError *error, NSInteger statusCode) {
@@ -472,10 +481,7 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
     
     [self.collectionView selectItemAtIndexPath:willSelectIndexPath animated:YES scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
     
-    
 }
-
-
 
 #pragma mark - UISearchBarDelegate
 

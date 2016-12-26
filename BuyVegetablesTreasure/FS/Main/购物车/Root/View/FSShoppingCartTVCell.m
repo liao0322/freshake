@@ -11,14 +11,7 @@
 
 @interface FSShoppingCartTVCell ()
 
-@property (weak, nonatomic) IBOutlet UIButton *selectButton;
-@property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *descLabel;
-@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
-@property (weak, nonatomic) IBOutlet UIButton *minusButton;
-@property (weak, nonatomic) IBOutlet UILabel *countLabel;
-@property (weak, nonatomic) IBOutlet UIButton *plusButton;
+
 
 @end
 
@@ -92,7 +85,7 @@
 - (void)setModel:(ShopCart *)model {
     _model = model;
     
-    self.selectButton.selected = YES;
+    self.selectButton.selected = _model.isSelect;
     
     [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:_model.thumbnailsUrll] placeholderImage:[UIImage imageWithColor:[UIColor colorViewBG]]];
     
@@ -108,16 +101,39 @@
 #pragma mark - Custom
 
 - (IBAction)plusButtonTouchUpInside:(UIButton *)sender {
-    NSLog(@"加");
+    // 当前购物车数量
+    NSInteger cartNum = [self.model.productNum integerValue];
+    
+    // 当前库存
+    NSInteger stock = [self.model.stock integerValue];
+    
+    // 如果当前的购物车数量 + 1 大于 库存 就不让请求
+    if ((cartNum + 1) > stock) {
+        [SVProgressHUD showInfoWithStatus:@"库存不足!"];
+        return;
+    }
+    
+    if ([self.delegate respondsToSelector:@selector(shoppingCartTVCell:plusButtonTouchUpInside:)]) {
+        [self.delegate shoppingCartTVCell:self plusButtonTouchUpInside:sender];
+    }
 }
 
 - (IBAction)minusButtonTouchUpInside:(UIButton *)sender {
-    NSLog(@"减");
+    if ([self.model.productNum integerValue] == 0) {
+        return;
+    }
+    
+    if ([self.delegate respondsToSelector:@selector(shoppingCartTVCell:minusButtonTouchUpInside:)]) {
+        [self.delegate shoppingCartTVCell:self minusButtonTouchUpInside:sender];
+    }
 
 }
 
 - (IBAction)selectButtonTouchUpInside:(UIButton *)sender {
-    NSLog(@"选择");
+    sender.selected = !sender.selected;
+    if ([self.delegate respondsToSelector:@selector(shoppingCartTVCell:selectButtonTouchUpInside:)]) {
+        [self.delegate shoppingCartTVCell:self selectButtonTouchUpInside:sender];
+    }
 
 }
 @end

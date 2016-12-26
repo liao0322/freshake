@@ -16,7 +16,7 @@
 //#import "ClassificationViewController.h"
 #import "FSClassificationViewController.h"
 
-#import "FSMeViewController.h"
+//#import "FSMeViewController.h"
 
 @interface FSTabBarController ()
 
@@ -72,7 +72,7 @@
     [self p_addChildViewController:goodsCartVC];
     
     // 我
-    FSMeViewController *meVC = [[FSMeViewController alloc] init];
+    MeViewController *meVC = [[MeViewController alloc] init];
     [self p_addChildViewController:meVC];
     
 }

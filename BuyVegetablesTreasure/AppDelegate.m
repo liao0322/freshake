@@ -21,6 +21,7 @@
 // FS
 #import "AppDelegate+FS.h"
 
+
 @interface AppDelegate ()
 
 @end
@@ -32,6 +33,9 @@
     
     // 全局设置
     [self fsGlobalSetup];
+    
+    [self setupJPushWithOptions:launchOptions];
+    
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
@@ -91,7 +95,7 @@
                                                 name:@"userChangeTuisong"
                                               object:nil];
     
-    JGPush(launchOptions, @"39199d3657e3a31906dbc20b");
+    //JGPush(launchOptions, @"39199d3657e3a31906dbc20b");
     [self userchangeTuisong];
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -104,11 +108,14 @@
 - (void)userchangeTuisong {
 
     NSString *uidString = [[NSUserDefaults standardUserDefaults] objectForKey:@"UID"];
+    
+    /*
     if (![Tools isBlankString:uidString]) {
         
         [JPUSHService setTags:[NSSet set] callbackSelector:nil object:self];
         [JPUSHService setAlias:uidString callbackSelector:nil object:self];
         [JPUSHService setTags:[NSSet setWithObjects:@"1",nil] alias:uidString callbackSelector:nil object:self];
+         
     }
     else {
         
@@ -116,46 +123,7 @@
         [JPUSHService setAlias:@"" callbackSelector:nil object:self];
         [JPUSHService setTags:[NSSet set] alias:@"" callbackSelector:nil object:self];
     }
-}
-// 注册设备
-- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
-{
-    [JPUSHService registerDeviceToken:deviceToken];
-}
-// 获取推送
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    
-    [JPUSHService handleRemoteNotification:userInfo];
-}
-// 显示本地通知在最前面
-- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
-{
-    return [JGPush showLocalNotificationAtFront:notification];
-}
-// 接收到推送消息
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
-{
-    
-    [JPUSHService handleRemoteNotification:userInfo];
-    
-    application.applicationIconBadgeNumber = 0;
-    
-    if (completionHandler) {
-        completionHandler(UIBackgroundFetchResultNewData);
-    }
-    
-    // 收到推送消息
-    if (application.applicationState == UIApplicationStateActive) {
-        IFPLog(@"%@",userInfo);
-        
-        // 应用正处理前台状态下，不会收到推送消息，因此在此处需要额外处理一下
-        if (application.applicationState == UIApplicationStateActive) {
-            
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"收到推送消息" message:userInfo[@"aps"][@"alert"] delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil ,nil];
-            [alert show];
-        }
-    }
-    return;
+     */
 }
 
 
@@ -198,6 +166,10 @@
 
 - (void)applicationWillResignActive:(UIApplication *)application {
 //    [BMKMapView willBackGround];
+}
+
++ (AppDelegate *)appDelegate {
+    return (AppDelegate *)[UIApplication sharedApplication].delegate;
 }
 
 @end

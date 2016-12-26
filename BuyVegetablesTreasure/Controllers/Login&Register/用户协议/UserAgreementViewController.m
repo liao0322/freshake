@@ -15,8 +15,8 @@
     [super viewDidLoad];
 
     self.view.backgroundColor = [UIColor colorWithHexString:@"0xf8f8f8"];
-    self.navigationItem.titleView = [Utillity customNavToTitle:@"用户协议"];
-    self.navigationItem.leftBarButtonItem = [UIFactory createBackBBIWithTarget:self action:@selector(back)];
+    self.title = @"用户协议";
+    //self.navigationItem.leftBarButtonItem = [UIFactory createBackBBIWithTarget:self action:@selector(back)];
     
     // 路径
     NSString *txtPath = [[NSBundle mainBundle] pathForResource:@"用户协议" ofType:@"txt"];

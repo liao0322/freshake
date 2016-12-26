@@ -120,6 +120,7 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    [self refreshData:nil];
     // 设置当前提货点名称
     [self.navigationBar.leftButton setTitle:[[[NSUserDefaults standardUserDefaults] objectForKey:@"merchantsName"] substringWithRange:NSMakeRange(0, 2)] forState:UIControlStateNormal];
     
@@ -325,7 +326,7 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
     
     if (section == 0) { // 点击了活动
         
-        HomePageModel *model = self.carouselModelArray[indexPath.row];
+        HomePageModel *model = self.adRlistArray[indexPath.row];
         
         if ([model.ObjectType integerValue] == 1) { // 跳转到商品详情
             if ([model.ObjectId integerValue] == 0) return;
@@ -652,8 +653,6 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
         return ;
     }
     
-
-    
     NSString *totPriceString = @"0";
     NSString *urlString = @"";
     
@@ -733,7 +732,11 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
             // 设置 tabbar badge
             NSInteger badgeValue = [[[[[[self tabBarController] tabBar] items] objectAtIndex:2] badgeValue] integerValue];
             badgeValue--;
-            [[[[[self tabBarController] tabBar] items] objectAtIndex:2] setBadgeValue:[NSString stringWithFormat:@"%ld", badgeValue]];
+            if (badgeValue == 0) {
+                [[[[[self tabBarController] tabBar] items] objectAtIndex:2] setBadgeValue:nil];
+            } else {
+                [[[[[self tabBarController] tabBar] items] objectAtIndex:2] setBadgeValue:[NSString stringWithFormat:@"%ld", badgeValue]];
+            }
             
         }
         
