@@ -25,8 +25,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithHexString:@"0xf8f8f8"];
-    self.navigationItem.titleView = [Utillity customNavToTitle:@"充值确认"];
-    self.navigationItem.leftBarButtonItem = [UIFactory createBackBBIWithTarget:self action:@selector(back)];
+    self.title = @"充值确认";
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(zhifubaoPush) name:@"zhifubao" object:nil];
     
     [self initUITableView];
@@ -38,14 +38,11 @@
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
--(void)back{
-    
-    [self.navigationController popViewControllerAnimated:YES];
-}
 #pragma mark 初始化tableView
 -(void)initUITableView
 {
-    _tableView = [Tools tableViewWithFrame:CGRectMake(0, 65, SCREEN_WIDTH, 165) style:UITableViewStylePlain delegate:self dataSource:self];
+    //_tableView = [Tools tableViewWithFrame:CGRectMake(0, 65, SCREEN_WIDTH, 165) style:UITableViewStylePlain delegate:self dataSource:self];
+    _tableView = [Tools tableViewWithFrame:self.view.bounds style:UITableViewStylePlain delegate:self dataSource:self];
     [self.view addSubview:_tableView];
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.rowHeight = 165;
@@ -54,7 +51,7 @@
     [_tableView registerNib:[UINib nibWithNibName:@"PaymentCell" bundle:nil]
      forCellReuseIdentifier:@"PaymentCell"];
     
-    UIView *line = [[UIView alloc]initWithFrame:CGRectMake(0, 55+10+165, SCREEN_WIDTH,1)];
+    UIView *line = [[UIView alloc]initWithFrame:CGRectMake(0, 55+10+165, SCREEN_WIDTH,0.5)];
     line.backgroundColor=[UIColor colorWithHexString:@"0xd7d7d7"];
     [self.view addSubview:line];
 
@@ -68,7 +65,7 @@
     [self.view addSubview:_rechargeView];
     
     
-    _bottomView = [[RechargeView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT-64-55, SCREEN_WIDTH, 55)];
+    _bottomView = [[RechargeView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT-55, SCREEN_WIDTH, 55)];
     _bottomView.isBottomView = @"1";
     [_bottomView SetUI:[NSString stringWithFormat:@"￥ %.2f",[_Money floatValue]] WithTitle:@"充值金额:" AndColor:@"0xff5f3e"];
     [self.view addSubview:_bottomView];

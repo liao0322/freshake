@@ -72,7 +72,7 @@
         [_PayButton setTitle:@"充 值" forState:UIControlStateNormal];
         _PayButton.titleLabel.font = [UIFont systemFontOfSize:18];
         [_PayButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        _PayButton.backgroundColor = [UIColor colorWithHexString:@"0xff9700"];
+        _PayButton.backgroundColor = [UIColor colorDomina];
         [view addSubview:_PayButton];
         
         

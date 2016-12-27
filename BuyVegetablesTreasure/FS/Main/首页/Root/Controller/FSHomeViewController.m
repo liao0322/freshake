@@ -39,6 +39,9 @@
 
 #import "SelectSiteViewController.h"
 
+#import "FSGroupBuyViewController.h"
+#import "AmountViewController.h"
+
 #define NAV_BAR_ALPHA 0.95f
 
 @interface FSHomeViewController ()
@@ -603,15 +606,29 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
 /// 拼团按钮点击事件
 - (void)fourButtonView:(FSHomeFourButtonView *)fourButtonView togetherBuyButtonTouchUpInside:(XFVerticalButton *)sender {
     
-    [self.navigationController pushViewController:[UIViewController new] animated:NO];
+    [self.navigationController pushViewController:[FSGroupBuyViewController new] animated:NO];
     NSLog(@"拼团");
 }
 
 /// 充值按钮点击事件
 - (void)fourButtonView:(FSHomeFourButtonView *)fourButtonView topUpButtonTouchUpInside:(XFVerticalButton *)sender {
-    [self.navigationController pushViewController:[UIViewController new] animated:NO];
-
     NSLog(@"充值");
+
+    NSString *uid = [[NSUserDefaults standardUserDefaults] objectForKey:@"UID"];
+    
+    // 检查用户是否登录，如果未登录，跳转到登录页
+    // 如果 uid 为空
+    if ([Tools isBlankString:uid]) {
+        FSLoginViewController *loginVC = [[FSLoginViewController alloc] init];
+        
+        FSNavigationController *navController = [[FSNavigationController alloc] initWithRootViewController:loginVC];
+        
+        [self presentViewController:navController animated:YES completion:nil];
+        return ;
+    }
+    
+    [self.navigationController pushViewController:[AmountViewController new] animated:YES];
+
 }
 
 /// 新品按钮点击事件

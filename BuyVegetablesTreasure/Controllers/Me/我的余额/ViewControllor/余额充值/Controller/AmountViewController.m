@@ -33,21 +33,8 @@
 }
 
 - (void)setNav {
-    
-    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    btn.frame = CGRectMake(0, 0, 60, 20);
-    btn.titleLabel.font = [UIFont systemFontOfSize:14];
-    [btn setTitle:@"充值记录" forState:UIControlStateNormal];
-    [btn setTitleColor:Color forState:UIControlStateNormal];
-    [btn addTarget:self action:@selector(goRecord) forControlEvents:UIControlEventTouchUpInside];
-    
-    self.navigationItem.titleView = [Utillity customNavToTitle:@"余额充值"];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
-    self.navigationItem.leftBarButtonItem = [UIFactory createBackBBIWithTarget:self action:@selector(back)];
-}
-
-- (void)back{
-    [self.navigationController popViewControllerAnimated:YES];
+    self.navigationItem.title = @"余额充值";
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"充值记录" style:UIBarButtonItemStylePlain target:self action:@selector(goRecord)];
 }
 
 - (void)goRecord {
@@ -73,6 +60,12 @@
     .heightIs(50);
 }
 
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    
+    
+}
+
 - (void)initAmountTableView {
     
     self.amountTableView = [AmountTableView new];
@@ -88,6 +81,11 @@
     .rightEqualToView(self.view)
     .topEqualToView(self.view)
     .bottomSpaceToView(self.amountTextField, 0);
+    
+    self.amountTableView.tableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
+    
+    
+
 }
 
 - (void)getRechargeImage {

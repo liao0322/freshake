@@ -10,7 +10,7 @@
 #import "FSNavigationController.h"
 // #import "HomePageViewController.h"
 #import "FSHomeViewController.h"
-#import "MeViewController.h"
+//#import "MeViewController.h"
 // #import "GoodsCartViewController.h"
 #import "FSShoppingCartViewController.h"
 //#import "ClassificationViewController.h"
@@ -73,6 +73,7 @@
     
     // 我
 //    MeViewController *meVC = [[MeViewController alloc] init];
+
     FSMeViewController *meVC = [[FSMeViewController alloc] init];
     [self p_addChildViewController:meVC];
     

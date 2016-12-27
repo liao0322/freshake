@@ -878,6 +878,13 @@
 		FE17A9731E11087200DC7949 /* jcore-ios-1.0.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE17A9701E11087200DC7949 /* jcore-ios-1.0.0.a */; };
 		FE17A9741E11087200DC7949 /* jpush-ios-3.0.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE17A9711E11087200DC7949 /* jpush-ios-3.0.0.a */; };
 		FE17A9781E111F6100DC7949 /* NSString+Verify.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A9771E111F6100DC7949 /* NSString+Verify.m */; };
+		FE17A9841E1204D800DC7949 /* FSGroupBuyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A9801E1204D800DC7949 /* FSGroupBuyViewController.m */; };
+		FE17A9851E1204D800DC7949 /* FSGroupBuyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE17A9811E1204D800DC7949 /* FSGroupBuyViewController.xib */; };
+		FE17A9891E12091400DC7949 /* FSGroupBuyTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A9871E12091400DC7949 /* FSGroupBuyTVCell.m */; };
+		FE17A98A1E12091400DC7949 /* FSGroupBuyTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE17A9881E12091400DC7949 /* FSGroupBuyTVCell.xib */; };
+		FE17A98E1E12361A00DC7949 /* XFStrikethroughLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A98D1E12361A00DC7949 /* XFStrikethroughLabel.m */; };
+		FE17A9951E12536000DC7949 /* FSGroupBuyDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A9931E12536000DC7949 /* FSGroupBuyDetailsViewController.m */; };
+		FE17A9961E12536000DC7949 /* FSGroupBuyDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE17A9941E12536000DC7949 /* FSGroupBuyDetailsViewController.xib */; };
 		FECDE5DB1E07B3820083E11B /* CouponModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FECDE5DA1E07B3820083E11B /* CouponModel.m */; };
 		FECDE5E61E07B49D0083E11B /* AMapSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FECDE5E41E07B49D0083E11B /* AMapSearchKit.framework */; };
 		FECDE5E71E07B49D0083E11B /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FECDE5E51E07B49D0083E11B /* MAMapKit.framework */; };
@@ -2317,6 +2324,17 @@
 		FE17A9721E11087200DC7949 /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
 		FE17A9761E111F6100DC7949 /* NSString+Verify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Verify.h"; sourceTree = "<group>"; };
 		FE17A9771E111F6100DC7949 /* NSString+Verify.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Verify.m"; sourceTree = "<group>"; };
+		FE17A97F1E1204D800DC7949 /* FSGroupBuyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSGroupBuyViewController.h; sourceTree = "<group>"; };
+		FE17A9801E1204D800DC7949 /* FSGroupBuyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSGroupBuyViewController.m; sourceTree = "<group>"; };
+		FE17A9811E1204D800DC7949 /* FSGroupBuyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSGroupBuyViewController.xib; sourceTree = "<group>"; };
+		FE17A9861E12091400DC7949 /* FSGroupBuyTVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSGroupBuyTVCell.h; sourceTree = "<group>"; };
+		FE17A9871E12091400DC7949 /* FSGroupBuyTVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSGroupBuyTVCell.m; sourceTree = "<group>"; };
+		FE17A9881E12091400DC7949 /* FSGroupBuyTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSGroupBuyTVCell.xib; sourceTree = "<group>"; };
+		FE17A98C1E12361A00DC7949 /* XFStrikethroughLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFStrikethroughLabel.h; sourceTree = "<group>"; };
+		FE17A98D1E12361A00DC7949 /* XFStrikethroughLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFStrikethroughLabel.m; sourceTree = "<group>"; };
+		FE17A9921E12536000DC7949 /* FSGroupBuyDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSGroupBuyDetailsViewController.h; sourceTree = "<group>"; };
+		FE17A9931E12536000DC7949 /* FSGroupBuyDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSGroupBuyDetailsViewController.m; sourceTree = "<group>"; };
+		FE17A9941E12536000DC7949 /* FSGroupBuyDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSGroupBuyDetailsViewController.xib; sourceTree = "<group>"; };
 		FECDE5D91E07B3820083E11B /* CouponModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CouponModel.h; path = BuyVegetablesTreasure/Controllers/Payment/Model/CouponModel.h; sourceTree = SOURCE_ROOT; };
 		FECDE5DA1E07B3820083E11B /* CouponModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CouponModel.m; path = BuyVegetablesTreasure/Controllers/Payment/Model/CouponModel.m; sourceTree = SOURCE_ROOT; };
 		FECDE5E41E07B49D0083E11B /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapSearchKit.framework; sourceTree = "<group>"; };
@@ -6893,6 +6911,68 @@
 			path = NSString;
 			sourceTree = "<group>";
 		};
+		FE17A97E1E1204D800DC7949 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FE17A97F1E1204D800DC7949 /* FSGroupBuyViewController.h */,
+				FE17A9801E1204D800DC7949 /* FSGroupBuyViewController.m */,
+				FE17A9811E1204D800DC7949 /* FSGroupBuyViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FE17A9821E1204D800DC7949 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FE17A9831E1204D800DC7949 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FE17A9861E12091400DC7949 /* FSGroupBuyTVCell.h */,
+				FE17A9871E12091400DC7949 /* FSGroupBuyTVCell.m */,
+				FE17A9881E12091400DC7949 /* FSGroupBuyTVCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FE17A98B1E12360900DC7949 /* XFStrikethroughLabel */ = {
+			isa = PBXGroup;
+			children = (
+				FE17A98C1E12361A00DC7949 /* XFStrikethroughLabel.h */,
+				FE17A98D1E12361A00DC7949 /* XFStrikethroughLabel.m */,
+			);
+			path = XFStrikethroughLabel;
+			sourceTree = "<group>";
+		};
+		FE17A98F1E12493100DC7949 /* 拼团详情 */ = {
+			isa = PBXGroup;
+			children = (
+				FE17A9901E12493100DC7949 /* Controller */,
+				FE17A9911E12493100DC7949 /* View */,
+			);
+			path = "拼团详情";
+			sourceTree = "<group>";
+		};
+		FE17A9901E12493100DC7949 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FE17A9921E12536000DC7949 /* FSGroupBuyDetailsViewController.h */,
+				FE17A9931E12536000DC7949 /* FSGroupBuyDetailsViewController.m */,
+				FE17A9941E12536000DC7949 /* FSGroupBuyDetailsViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FE17A9911E12493100DC7949 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		FECDE5E31E07B49D0083E11B /* 高德 */ = {
 			isa = PBXGroup;
 			children = (
@@ -7096,11 +7176,11 @@
 		FECDE62B1E07C2C70083E11B /* Widget */ = {
 			isa = PBXGroup;
 			children = (
+				FE17A98B1E12360900DC7949 /* XFStrikethroughLabel */,
 				FECDE62C1E07C2C70083E11B /* XFCarouselView */,
 				FECDE6311E07C2C70083E11B /* XFLimitedTextField */,
 				FECDE6341E07C2C70083E11B /* XFNoHighlightButton */,
 				FECDE6371E07C2C70083E11B /* XFVerticalButton */,
-				FECDE63A1E07C2C70083E11B /* ZJPPTViewOC */,
 			);
 			path = Widget;
 			sourceTree = "<group>";
@@ -7141,45 +7221,6 @@
 				FECDE6391E07C2C70083E11B /* XFVerticalButton.m */,
 			);
 			path = XFVerticalButton;
-			sourceTree = "<group>";
-		};
-		FECDE63A1E07C2C70083E11B /* ZJPPTViewOC */ = {
-			isa = PBXGroup;
-			children = (
-				FECDE63B1E07C2C70083E11B /* ZJPPTViewCustom */,
-				FECDE63C1E07C2C70083E11B /* ZJPPTViewDefault */,
-				FECDE63D1E07C2C70083E11B /* ZJPPTViewOCBase */,
-				FECDE63E1E07C2C70083E11B /* ZJPPTViewTextOnly */,
-			);
-			path = ZJPPTViewOC;
-			sourceTree = "<group>";
-		};
-		FECDE63B1E07C2C70083E11B /* ZJPPTViewCustom */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ZJPPTViewCustom;
-			sourceTree = "<group>";
-		};
-		FECDE63C1E07C2C70083E11B /* ZJPPTViewDefault */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ZJPPTViewDefault;
-			sourceTree = "<group>";
-		};
-		FECDE63D1E07C2C70083E11B /* ZJPPTViewOCBase */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ZJPPTViewOCBase;
-			sourceTree = "<group>";
-		};
-		FECDE63E1E07C2C70083E11B /* ZJPPTViewTextOnly */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ZJPPTViewTextOnly;
 			sourceTree = "<group>";
 		};
 		FECDE63F1E07C2C70083E11B /* Main */ = {
@@ -7782,10 +7823,10 @@
 			isa = PBXGroup;
 			children = (
 				FECDE6BC1E07C2C70083E11B /* Root */,
+				FE17A98F1E12493100DC7949 /* 拼团详情 */,
 				FECDE6BD1E07C2C70083E11B /* 店铺自提 */,
 				FECDE6BE1E07C2C70083E11B /* 拼团提交 */,
 				FECDE6BF1E07C2C70083E11B /* 拼团玩法 */,
-				FECDE6C01E07C2C70083E11B /* 拼团详情页 */,
 				FECDE6C11E07C2C70083E11B /* 送货上门 */,
 			);
 			path = "拼团";
@@ -7794,6 +7835,9 @@
 		FECDE6BC1E07C2C70083E11B /* Root */ = {
 			isa = PBXGroup;
 			children = (
+				FE17A97E1E1204D800DC7949 /* Controller */,
+				FE17A9821E1204D800DC7949 /* Model */,
+				FE17A9831E1204D800DC7949 /* View */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -7817,13 +7861,6 @@
 			children = (
 			);
 			path = "拼团玩法";
-			sourceTree = "<group>";
-		};
-		FECDE6C01E07C2C70083E11B /* 拼团详情页 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "拼团详情页";
 			sourceTree = "<group>";
 		};
 		FECDE6C11E07C2C70083E11B /* 送货上门 */ = {
@@ -8437,6 +8474,7 @@
 				0C625EFE1CC4BEAD0052181A /* 减号@3x.png in Resources */,
 				E4F415CE1D2DF081000CF65E /* watch_sao_kuang@3x.png in Resources */,
 				0C6442F91CD327E200354A2A /* kr-video-player-pause@2x.png in Resources */,
+				FE17A9961E12536000DC7949 /* FSGroupBuyDetailsViewController.xib in Resources */,
 				0C6442FC1CD327E200354A2A /* kr-video-player-play@3x.png in Resources */,
 				098867EB1BCF34D90068FB84 /* 首页2@2x.png in Resources */,
 				526025061C98F19900E452C9 /* 拼团Icon@3x.png in Resources */,
@@ -8470,6 +8508,7 @@
 				E4FF92E41CC9BB1C009E4B8F /* Myorder_已提货-灰色@2x.png in Resources */,
 				0CBA54AC1DE7D47C00378911 /* Invoice_select@3x.png in Resources */,
 				0CBA54B41DE7D47C00378911 /* TakingGoods@3x.png in Resources */,
+				FE17A98A1E12091400DC7949 /* FSGroupBuyTVCell.xib in Resources */,
 				E4FF92DD1CC9BB1C009E4B8F /* Myorder_所有订单-灰色.png in Resources */,
 				098CB9301BD0A1AA00418FD8 /* 手机@3x.png in Resources */,
 				0C625EE51CC4BB020052181A /* 分类图标.png in Resources */,
@@ -8612,6 +8651,7 @@
 				0C2BFD7E1CE47E2000EC8EF4 /* 视频-没有选择@3x.png in Resources */,
 				0CAFF7B11CB63A45006C1900 /* 到店自提图标.png in Resources */,
 				0C625EFB1CC4BEAD0052181A /* 加号@3x.png in Resources */,
+				FE17A9851E1204D800DC7949 /* FSGroupBuyViewController.xib in Resources */,
 				FECDE7BF1E0B848C0083E11B /* 已收藏@3x.png in Resources */,
 				2B03CA371BF316F100F01B93 /* 相册@3x.png in Resources */,
 				0CAA8BD11CC5FBE200523A9A /* 我的拼团@2x.png in Resources */,
@@ -8849,6 +8889,7 @@
 				E4818FF11CC8B6820081E06C /* IconInfoCell.m in Sources */,
 				0C1245CD1CC0EA7500DB8AF1 /* GroupDetailsImageViewController.m in Sources */,
 				0C7730491CE1A92C005EB107 /* HelpView.m in Sources */,
+				FE17A9841E1204D800DC7949 /* FSGroupBuyViewController.m in Sources */,
 				0CFE332B1DC19CC900F19494 /* TAAbstractDotView.m in Sources */,
 				521E31861CB368DB00041F76 /* GroupPeopleViewController.m in Sources */,
 				0CFE332C1DC19CC900F19494 /* TAAnimatedDotView.m in Sources */,
@@ -8982,6 +9023,7 @@
 				0969DC141BCDFE1700D98273 /* MMProgressHUD+Class.m in Sources */,
 				E4818F531CC86B280081E06C /* MeViewController.m in Sources */,
 				0969DC6D1BCDFF6F00D98273 /* UIDevice+category.m in Sources */,
+				FE17A9951E12536000DC7949 /* FSGroupBuyDetailsViewController.m in Sources */,
 				0C7FEC7A1D01707C001E469B /* CouponsDetailCell.m in Sources */,
 				52EC1C211C59F81600679033 /* LocationCell.m in Sources */,
 				2ACFF1141CB4BCA3008783E3 /* UserStatusCell.m in Sources */,
@@ -9046,6 +9088,7 @@
 				0C6532771CD9D4620049884B /* CollectTableViewCell.m in Sources */,
 				FECDE71D1E07C2C80083E11B /* FSBaseTabBarController.m in Sources */,
 				528EE1551BE33B3F003FCD93 /* NSString+MD5.m in Sources */,
+				FE17A9891E12091400DC7949 /* FSGroupBuyTVCell.m in Sources */,
 				5239FFEF1CAA511300EFF539 /* BDMapViewController.m in Sources */,
 				E48522CA1CCA266D00E2A366 /* GoodsCartCell.m in Sources */,
 				E4818FE71CC8B1E90081E06C /* DateScrollView.m in Sources */,
@@ -9133,6 +9176,7 @@
 				FECDE7431E07C2C80083E11B /* FSDancingBananaHeader.m in Sources */,
 				0CBA54BB1DE7D47C00378911 /* CustomerInfoCell.m in Sources */,
 				0969DC2E1BCDFE1700D98273 /* SDWebImageManager.m in Sources */,
+				FE17A98E1E12361A00DC7949 /* XFStrikethroughLabel.m in Sources */,
 				528F39C11BEAFA4700A872CC /* SearchListCell.m in Sources */,
 				52438A651C9AAF70002661DF /* PopularityFooterView.m in Sources */,
 				0CF4FBBD1DEBCAAB0096D0DB /* AmountCell.m in Sources */,
