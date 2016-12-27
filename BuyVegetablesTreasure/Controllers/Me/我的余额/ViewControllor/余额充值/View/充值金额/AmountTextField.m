@@ -30,7 +30,7 @@
     self.backgroundColor = [UIColor whiteColor];
     // 充值按钮
     self.amountBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.amountBtn.backgroundColor = Color;
+    self.amountBtn.backgroundColor = [UIColor colorDomina];
     self.amountBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     [self.amountBtn setTitle:@"立即充值" forState:UIControlStateNormal];
     [self.amountBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];

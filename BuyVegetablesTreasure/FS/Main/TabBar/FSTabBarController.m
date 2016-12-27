@@ -10,13 +10,13 @@
 #import "FSNavigationController.h"
 // #import "HomePageViewController.h"
 #import "FSHomeViewController.h"
-#import "MeViewController.h"
+//#import "MeViewController.h"
 // #import "GoodsCartViewController.h"
 #import "FSShoppingCartViewController.h"
 //#import "ClassificationViewController.h"
 #import "FSClassificationViewController.h"
 
-//#import "FSMeViewController.h"
+#import "FSMeViewController.h"
 
 @interface FSTabBarController ()
 
@@ -72,7 +72,7 @@
     [self p_addChildViewController:goodsCartVC];
     
     // 我
-    MeViewController *meVC = [[MeViewController alloc] init];
+    FSMeViewController *meVC = [[FSMeViewController alloc] init];
     [self p_addChildViewController:meVC];
     
 }

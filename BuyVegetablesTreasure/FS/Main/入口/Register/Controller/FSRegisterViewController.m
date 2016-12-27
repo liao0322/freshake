@@ -264,7 +264,8 @@
                      [[NSNotificationCenter defaultCenter] postNotificationName:@"userChangeTuisong" object:nil];
                      [[NSNotificationCenter defaultCenter] postNotificationName:@"UserChange" object:nil];
                      
-                     [self.navigationController pushViewController:[SucceedViewController new] animated:YES];
+                     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+                     //[self.navigationController pushViewController:[SucceedViewController new] animated:YES];
                      
                      [self delStoreGoods];
                  }

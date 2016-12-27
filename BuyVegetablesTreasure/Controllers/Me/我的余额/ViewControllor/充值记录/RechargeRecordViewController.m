@@ -25,8 +25,8 @@
     [super viewDidLoad];
     _dataSourse = [NSMutableArray array];
     self.view.backgroundColor = [UIColor colorWithHexString:@"0xf8f8f8"];
-    self.navigationItem.titleView = [Utillity customNavToTitle:@"充值记录"];
-    self.navigationItem.leftBarButtonItem = [UIFactory createBackBBIWithTarget:self action:@selector(back)];
+    self.title = @"充值记录";
+
     [self initView];
     [self initUITableView];
     
@@ -34,13 +34,9 @@
 
 }
 
--(void)back{
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
 #pragma mark 初始化tableView
 -(void)initUITableView {
-    _tableview = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64) style:UITableViewStyleGrouped];
+    _tableview = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
     _tableview.dataSource = self;
     _tableview.delegate = self;
     _tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
