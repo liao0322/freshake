@@ -59,8 +59,8 @@
     .topSpaceToView(self.nameLabel, 15)
     .autoHeightRatio(0);
     
-    UILabel *line = [[UILabel alloc] initWithFrame:CGRectMake(0, 85, ScreenWidth, 1)];
-    line.backgroundColor = [UIColor colorWithHexString:@"0*d9d9d9"];
+    UILabel *line = [[UILabel alloc] initWithFrame:CGRectMake(0, 85, ScreenWidth, 0.5)];
+    line.backgroundColor = [UIColor colorWithHexString:@"0xd9d9d9"];
     [self.contentView addSubview:line];
     
     self.defaultBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -72,7 +72,7 @@
     self.deleteBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.deleteBtn setTitle:@"  删除" forState:UIControlStateNormal];
     [self.deleteBtn setImage:IMAGE(@"FSAddress删除") forState:UIControlStateNormal];
-    [self.deleteBtn setTitleColor:[UIColor colorWithHexString:@"0*b2b2b2"] forState:UIControlStateNormal];
+    [self.deleteBtn setTitleColor:[UIColor colorWithHexString:@"0xb2b2b2"] forState:UIControlStateNormal];
     [self.deleteBtn addTarget:self action:@selector(deleteClick) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:self.deleteBtn];
     
@@ -85,7 +85,7 @@
     self.editBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.editBtn setTitle:@"  编辑" forState:UIControlStateNormal];
     [self.editBtn setImage:IMAGE(@"FSAddress编辑") forState:UIControlStateNormal];
-    [self.editBtn setTitleColor:[UIColor colorWithHexString:@"0*b2b2b2"] forState:UIControlStateNormal];
+    [self.editBtn setTitleColor:[UIColor colorWithHexString:@"0xb2b2b2"] forState:UIControlStateNormal];
     [self.editBtn addTarget:self action:@selector(editClick) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:self.editBtn];
     
@@ -107,7 +107,7 @@
 }
 
 - (void)deleteClick {
-    _defaultBtnClick();
+    _deleteBtnClick();
 }
 
 - (void)setModel:(SiteModel *)model {

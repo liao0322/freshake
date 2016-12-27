@@ -28,7 +28,7 @@
 
 - (void)setNav {
     
-    self.view.backgroundColor = [UIColor colorWithHexString:@"0xf8f8f8"];
+    self.view.backgroundColor = [UIColor colorWithHexString:@"0xf2f2f2"];
     self.navigationItem.titleView = [Utillity customNavToTitle:@"设置"];
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithHexString:@"0xf5f6f8"];
     self.navigationItem.leftBarButtonItem = [UIFactory createBackBBIWithTarget:self action:@selector(back)];

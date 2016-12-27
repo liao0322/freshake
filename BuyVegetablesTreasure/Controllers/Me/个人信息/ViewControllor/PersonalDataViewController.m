@@ -48,7 +48,7 @@
     self.tableView.scrollEnabled = NO;
     self.tableView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.tableView.backgroundColor = [UIColor colorWithHexString:@"0xF6F6F6"];
+    self.tableView.backgroundColor = [UIColor colorWithHexString:@"0xf2f2f2"];
     
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];

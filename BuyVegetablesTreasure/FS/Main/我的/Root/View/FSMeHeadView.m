@@ -50,8 +50,13 @@
     .widthIs(70)
     .heightIs(70);
     
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(iconClick:)];
-    [_icon addGestureRecognizer:tap];
+    UIButton *myMessageBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    myMessageBtn.frame = CGRectMake(0, 64, ScreenWidth, bgImageView.frame.size.height - 64 - 50);
+    [myMessageBtn addTarget:self action:@selector(myMessageClick:) forControlEvents:UIControlEventTouchUpInside];
+    [bgImageView addSubview:myMessageBtn];
+    
+//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(iconClick:)];
+//    [_icon addGestureRecognizer:tap];
     
     // 用户手机号
     _mobile = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_icon.frame) + 40, 60, SCREEN_WIDTH / 2, 20)];
@@ -124,9 +129,12 @@
     [bgImageView addSubview:_loginBtn];
 }
 
-- (void)iconClick:(UITapGestureRecognizer *)tap {
+- (void)myMessageClick:(UIButton *)sender {
     
     NSLog(@"设置个人信息");
+    if ([self.delegate respondsToSelector:@selector(fsHeadView:myMessageButtonClick:)]) {
+        [self.delegate fsHeadView:self myMessageButtonClick:sender];
+    }
 //    _pushLogin(nil);
 }
 

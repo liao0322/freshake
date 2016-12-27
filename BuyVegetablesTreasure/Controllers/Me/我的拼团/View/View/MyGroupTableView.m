@@ -89,9 +89,10 @@
         
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell.textLabel.font = [UIFont systemFontOfSize:14];
-            cell.textLabel.textColor = [UIColor colorWithHexString:@"0xff6600"];
-            
+            cell.textLabel.font = [UIFont systemFontOfSize:14.0];
+//            cell.textLabel.textColor = [UIColor colorWithHexString:@"0xff6600"];
+            cell.textLabel.textColor = [UIColor colorDomina];
+        
             if ([model.status integerValue]) {
                 
                 if ([model.status integerValue] == 1 || [model.status integerValue] == 2) {
@@ -117,9 +118,9 @@
                 detailsBtn.titleLabel.font = [UIFont systemFontOfSize:13];
                 detailsBtn.layer.cornerRadius = 5;
                 detailsBtn.layer.borderWidth = 1;
-                detailsBtn.layer.borderColor = [UIColor colorWithHexString:@"0xff6600"].CGColor;
+                detailsBtn.layer.borderColor = [UIColor colorDomina].CGColor;
                 [detailsBtn setTitle:i == 0 ? @"查看团详情" : @"查看订单详情" forState:UIControlStateNormal];
-                [detailsBtn setTitleColor:[UIColor colorWithHexString:@"0xff6600"] forState:UIControlStateNormal];
+                [detailsBtn setTitleColor:[UIColor colorDomina] forState:UIControlStateNormal];
                 [detailsBtn addTarget:self action:@selector(goDetails:) forControlEvents:UIControlEventTouchUpInside];
                 [cell addSubview:detailsBtn];
             }
@@ -134,9 +135,9 @@
             detailsBtn.titleLabel.font = [UIFont systemFontOfSize:13];
             detailsBtn.layer.cornerRadius = 5;
             detailsBtn.layer.borderWidth = 1;
-            detailsBtn.layer.borderColor = [UIColor colorWithHexString:@"0xff6600"].CGColor;
+            detailsBtn.layer.borderColor = [UIColor colorDomina].CGColor;
             [detailsBtn setTitle:@"查看团详情" forState:UIControlStateNormal];
-            [detailsBtn setTitleColor:[UIColor colorWithHexString:@"0xff6600"] forState:UIControlStateNormal];
+            [detailsBtn setTitleColor:[UIColor colorDomina] forState:UIControlStateNormal];
             [detailsBtn addTarget:self action:@selector(goDetails:) forControlEvents:UIControlEventTouchUpInside];
             [cell addSubview:detailsBtn];
         }

@@ -128,49 +128,49 @@
     // 使用说明标题
     UILabel *explainTitle = [UILabel new];
     explainTitle.text = @"使用说明";
-    explainTitle.frame = CGRectMake(20, 45, explainBgView.size.width / 2, 15);
-    explainTitle.font = [UIFont systemFontOfSize:14.0];
+    explainTitle.frame = CGRectMake(25, 45, explainBgView.size.width / 2, 15);
+    explainTitle.font = [UIFont systemFontOfSize:12.0];
     explainTitle.textColor = [UIColor whiteColor];
     [explainBgView addSubview:explainTitle];
     
     // 使用说明
     _explainLabel = [UILabel new];
-    _explainLabel.font = [UIFont systemFontOfSize:14.0];
+    _explainLabel.font = [UIFont systemFontOfSize:12.0];
     _explainLabel.textColor = [UIColor whiteColor];
     [explainBgView addSubview:_explainLabel];
     
     _explainLabel.sd_layout
-    .leftSpaceToView(explainBgView, 20)
-    .rightSpaceToView(explainBgView, 15)
+    .leftSpaceToView(explainBgView, 25)
+    .rightSpaceToView(explainBgView, 20)
     .topSpaceToView(explainTitle, 10)
     .autoHeightRatio(0);
     
     // 使用条件标题
     UILabel *conditionTitle = [UILabel new];
     conditionTitle.text = @"使用条件";
-    conditionTitle.font = [UIFont systemFontOfSize:14.0];
+    conditionTitle.font = [UIFont systemFontOfSize:12.0];
     conditionTitle.textColor = [UIColor whiteColor];
     [explainBgView addSubview:conditionTitle];
     
     conditionTitle.sd_layout
-    .leftSpaceToView(explainBgView, 20)
-    .rightSpaceToView(explainBgView, 15)
+    .leftSpaceToView(explainBgView, 25)
+    .rightSpaceToView(explainBgView, 20)
     .topSpaceToView(_explainLabel, 15)
     .autoHeightRatio(0);
     
     // 使用条件
     _conditionLabel = [UILabel new];
-    _conditionLabel.font = [UIFont systemFontOfSize:14.0];
+    _conditionLabel.font = [UIFont systemFontOfSize:12.0];
     _conditionLabel.textColor = [UIColor whiteColor];
     [explainBgView addSubview:_conditionLabel];
     
     _conditionLabel.sd_layout
-    .leftSpaceToView(explainBgView, 15)
-    .rightSpaceToView(explainBgView, 15)
+    .leftSpaceToView(explainBgView, 25)
+    .rightSpaceToView(explainBgView, 20)
     .topSpaceToView(conditionTitle, 10)
     .autoHeightRatio(0);
     
-    [self setupAutoHeightWithBottomView:_conditionLabel bottomMargin:10];
+    [self setupAutoHeightWithBottomView:explainBgView bottomMargin:10];
 }
 
 - (void)setCouponModel:(FSCouponModel *)couponModel {
@@ -187,10 +187,10 @@
     _priceLabel.attributedText = attributeString;
     
     // 使用说明
-    _explainLabel.text = couponModel.XZContent;
+    _explainLabel.text = couponModel.Remark;
     
     // 使用条件
-    _conditionLabel.text = couponModel.Remark;
+    _conditionLabel.text = couponModel.XZContent;
     
     // 时间
     _timeLabel.text = [NSString stringWithFormat:@"%@\n%@", couponModel.beginDate, couponModel.ExpileDate];

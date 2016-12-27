@@ -14,7 +14,7 @@
 
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         
-        int spacing = 10;
+        int spacing = 15;
         
         // 商品图片
         _goodsImageView = [UIImageView new];
@@ -28,47 +28,48 @@
         
         // 商品名称
         _goodsNameLabel = [UILabel new];
-        _goodsNameLabel.font = [UIFont systemFontOfSize:15];
-        _goodsNameLabel.textColor = [UIColor colorWithHexString:@"0x606060"];
+        _goodsNameLabel.font = [UIFont systemFontOfSize:16.0];
+        _goodsNameLabel.textColor = [UIColor colorWithHexString:@"0x404040"];
         [self.contentView addSubview:_goodsNameLabel];
         
         _goodsNameLabel.sd_layout
         .leftSpaceToView(_goodsImageView, spacing)
         .rightSpaceToView(self.contentView , spacing)
         .topSpaceToView(self.contentView, 20)
-        .heightIs(15);
+        .heightIs(17);
         
         // 立即购买按钮
         _goPlayBtn = [UIButton new];
         _goPlayBtn.layer.cornerRadius = 5;
-        _goPlayBtn.layer.borderWidth = 1;
-        _goPlayBtn.layer.borderColor = [Color CGColor];
-        _goPlayBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+//        _goPlayBtn.layer.borderWidth = 1;
+//        _goPlayBtn.layer.borderColor = [Color CGColor];
+        _goPlayBtn.backgroundColor = [UIColor colorDomina];
+        _goPlayBtn.titleLabel.font = [UIFont systemFontOfSize:15.0];
         [_goPlayBtn setTitle:@"立即购买" forState:UIControlStateNormal];
-        [_goPlayBtn setTitleColor:Color forState:UIControlStateNormal];
+        [_goPlayBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_goPlayBtn addTarget:self action:@selector(goPay) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:_goPlayBtn];
         
         _goPlayBtn.sd_layout
         .bottomSpaceToView(self.contentView, spacing)
         .rightSpaceToView(self.contentView, spacing)
-        .widthIs(80)
-        .heightIs(25);
+        .widthIs(85)
+        .heightIs(27);
         
         // 商品价格
         _goodsPriceLabel = [UILabel new];
-        _goodsPriceLabel.font = [UIFont systemFontOfSize:14];
-        _goodsPriceLabel.textColor = Color;
+        _goodsPriceLabel.font = [UIFont systemFontOfSize:18.0];
+        _goodsPriceLabel.textColor = [UIColor colorOrange];
         [self.contentView addSubview:_goodsPriceLabel];
         
         _goodsPriceLabel.sd_layout
         .leftSpaceToView(_goodsImageView, spacing)
         .rightSpaceToView(_goPlayBtn, spacing)
         .bottomSpaceToView(self.contentView, 20)
-        .heightIs(15);
+        .heightIs(19);
         
         _deleteView = [UIView new];
-        _deleteView.backgroundColor = Color;
+        _deleteView.backgroundColor = [UIColor colorOrange];
         [self.contentView addSubview:_deleteView];
         
         _deleteView.sd_layout

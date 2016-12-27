@@ -28,7 +28,7 @@
 
 - (void)initAboutView {
     
-    AboutView *aboutView = [[AboutView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - 64)];
+    AboutView *aboutView = [[AboutView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight - 64)];
     [self.view addSubview:aboutView];
 }
 

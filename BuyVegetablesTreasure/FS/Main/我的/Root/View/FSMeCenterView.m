@@ -101,10 +101,10 @@
         UILabel *countLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(iconImageView.frame) - 5, 6, 15, 15)];
         countLabel.tag = i + 70;
         countLabel.font = [UIFont systemFontOfSize:7];
-        countLabel.backgroundColor = [UIColor colorWithHexString:@"0xf18316"];
+        countLabel.backgroundColor = [UIColor whiteColor];
         countLabel.textAlignment = NSTextAlignmentCenter;
-        countLabel.textColor = [UIColor orangeColor];
-        countLabel.layer.borderColor = [UIColor orangeColor].CGColor;
+        countLabel.textColor = [UIColor colorDomina];
+        countLabel.layer.borderColor = [UIColor colorDomina].CGColor;
         countLabel.layer.borderWidth = 1;
         countLabel.layer.masksToBounds = YES;
         countLabel.layer.cornerRadius = countLabel.frame.size.width / 2;
@@ -115,7 +115,9 @@
 }
 
 - (void)centerBtnClick:(UIButton *)sender {
-    NSLog(@"订单状态");
+    if ([self.delegate respondsToSelector:@selector(fsCenterView:allOrderButtonClick:)]) {
+        [self.delegate fsCenterView:self allOrderButtonClick:sender];
+    }
 }
 
 - (void)allOrderClick:(UIButton *)sender {
@@ -124,6 +126,21 @@
     }
 }
 
+- (void)setLabelCountWithModel:(MyOrderModel *)model {
+    NSArray *arr = @[model.NoPaymentCount,model.NoPickupCount,model.CompleteCount,model.EvaluateCount];
+    
+    for (int i = 0; i < 4; i++) {
+        
+        NSString *countString = [NSString stringWithFormat:@"%zd",[arr[i] integerValue]];
+        if ([arr[i] integerValue] > 99) {
+            countString = @"99+";
+        }
+        
+        [(UILabel *)[self viewWithTag:i + 70] setText:countString];
+        [(UILabel *)[self viewWithTag:i + 70] setHidden:[countString isEqualToString:@"0"] ? YES : NO];
+    }
+
+}
 
 
 @end

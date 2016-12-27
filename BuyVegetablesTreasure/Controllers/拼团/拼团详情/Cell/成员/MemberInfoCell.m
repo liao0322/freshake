@@ -44,7 +44,7 @@
     
     // 昵称
     _nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(bgImageView.frame) + 10, 0, ScreenWidth / 2 - 80, 60)];
-    _nameLabel.text = @"小清新的流氓";
+//    _nameLabel.text = @"小清新的流氓";
     _nameLabel.font = [UIFont systemFontOfSize:13];
     _nameLabel.textColor = [UIColor colorWithHexString:@"0x606060"];
     [self.contentView addSubview:_nameLabel];
@@ -73,8 +73,14 @@
 }
 
 - (void)setModel:(GroupDetailListModel *)model {
+    NSString *name = [NSString stringWithFormat:@"%@", model.mobile];
     
-    _nameLabel.text = model.mobile;
+    if (name.length >= 11) {
+        _nameLabel.text = [name stringByReplacingCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
+    } else {
+        _nameLabel.text = model.mobile;
+    }
+    
     _timeLabel.text = model.AddTime;
     _statusLabel.text = [model.IsAdd boolValue] ? @"开团" : @"跟团";
     

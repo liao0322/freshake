@@ -24,6 +24,9 @@
 // 地址管理
 - (void)fsMeBottomView:(FSMeBottomView *)fsMeBottomView addressButtonClick:(UIButton *)sender;
 
+// 我的拼团
+- (void)fsMeBottomView:(FSMeBottomView *)fsMeBottomView myPTButtonClick:(UIButton *)sender;
+
 @end
 
 @interface FSMeBottomView : UIView

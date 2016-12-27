@@ -85,7 +85,7 @@
         NSMutableArray *arr = [NSMutableArray array];
         if ([data[@"issuccess"] boolValue]) {
             for (NSDictionary *dict in data[@"List"]) {
-                FSCouponModel *model = [[FSCouponModel alloc] init];
+                CouponModel *model = [[CouponModel alloc] init];
                 [model setValuesForKeysWithDictionary:dict];
                 [arr addObject:model];
             }

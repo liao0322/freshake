@@ -36,7 +36,7 @@
     CGFloat width = [Utillity getTextWidthWithText:@"开团成功" height:40 font:[UIFont systemFontOfSize:14]];
     _statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(ScreenWidth / 2 - width / 2, 20, width * 3, 40)];
     _statusLabel.font = [UIFont systemFontOfSize:14];
-    _statusLabel.textColor = [UIColor colorWithHexString:@"0xfc9d15"];
+    _statusLabel.textColor = [UIColor colorWithHexString:@"0x404040"];
     _statusLabel.numberOfLines = 0;
     [self.contentView addSubview:_statusLabel];
     
@@ -69,11 +69,11 @@
             // 时间
             _timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(_statusLabel.frame.origin.x, CGRectGetMaxY(_statusLabel.frame), ScreenWidth, 20)];
             _timeLabel.font = [UIFont systemFontOfSize:14];
-            _timeLabel.textColor = [UIColor colorWithHexString:@"0xfc9d15"];
+            _timeLabel.textColor = [UIColor colorWithHexString:@"0x404040"];
             [self.contentView addSubview:_timeLabel];
             
             NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"剩余付款时间 %@",[self getTime:model.PayTime]]];
-            [attributeString setAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithHexString:@"0xfc9d15"], NSFontAttributeName : [UIFont systemFontOfSize:20]} range:NSMakeRange(7, 5)];
+            [attributeString setAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithHexString:@"0x404040"], NSFontAttributeName : [UIFont systemFontOfSize:20]} range:NSMakeRange(7, 5)];
             _timeLabel.attributedText = attributeString;
             
             _timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(calculateTime) userInfo:nil repeats:YES];
@@ -82,17 +82,17 @@
     else if (status == 2) {
         
         _statusLabel.text = @"开团成功\n快去邀请好友加入!";
-        _statusImageView.image = IMAGE(@"通过");
+        _statusImageView.image = IMAGE(@"FSPTdetail成功");
     }
     else if (status == 3) {
         
         _statusLabel.text = @"拼团成功\n请前往我的订单查看信息!";
-        _statusImageView.image = IMAGE(@"通过");
+        _statusImageView.image = IMAGE(@"FSPTdetail成功");
     }
     else if (status == 4) {
         
         _statusLabel.text = @"拼团失败\n下次多邀请几个小伙伴吧!";
-        _statusImageView.image = IMAGE(@"不通过");
+        _statusImageView.image = IMAGE(@"FSPTdetail失败");
     }
 }
 
@@ -123,7 +123,7 @@
     }
     
     NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"剩余付款时间 %@:%@", _mString,_sString]];
-    [attributeString setAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithHexString:@"0xfc9d15"], NSFontAttributeName : [UIFont systemFontOfSize:20]} range:NSMakeRange(7, 5)];
+    [attributeString setAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithHexString:@"0x404040"], NSFontAttributeName : [UIFont systemFontOfSize:20]} range:NSMakeRange(7, 5)];
     _timeLabel.attributedText = attributeString;
 }
 

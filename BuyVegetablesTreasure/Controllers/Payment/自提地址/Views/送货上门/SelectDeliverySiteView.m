@@ -11,7 +11,6 @@
 
 @interface SelectDeliverySiteView ()
 
-@property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIButton *addBtn;
 
 @end
@@ -83,7 +82,15 @@
     FSSelectDeliverySiteCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FSSelectDeliverySiteCell"];
     cell.selectionStyle  = UITableViewCellSelectionStyleNone;
     cell.defaultBtnClick = ^() {
-        _defaultBtnClick(YES, indexPath.section);
+        SiteModel *model = _siteArray[indexPath.section];
+        NSDictionary *dic = [[NSDictionary alloc] init];
+        [model setValuesForKeysWithDictionary:dic];
+        NSLog(@"^^^^^^^^^^^^^%@",dic);
+        _defaultAddress(dic);
+    };
+    cell.deleteBtnClick = ^() {
+        SiteModel *model = _siteArray[indexPath.section];
+        _deleteAddress(model.id);
     };
     cell.editBtnClick = ^(){
         _addBtnClick(YES, indexPath.section);

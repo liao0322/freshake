@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MyOrderModel.h"
 
 @class FSMeCenterView;
 
 @protocol FSMeCenterViewDelegate <NSObject>
+
 
 - (void)fsCenterView:(FSMeCenterView *)fsCenterView allOrderButtonClick:(UIButton *)sender;
 
@@ -19,5 +21,8 @@
 @interface FSMeCenterView : UIView
 
 @property (nonatomic, weak) id<FSMeCenterViewDelegate> delegate;
+
+- (void)setLabelCountWithModel:(MyOrderModel *)model;
+
 
 @end

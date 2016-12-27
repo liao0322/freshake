@@ -100,7 +100,7 @@
     WS(weakSelf);
     if (_detailsTableView == nil) {
         
-        _detailsTableView = [[DetailsTableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - 64 - 50)];
+        _detailsTableView = [[DetailsTableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
         _detailsTableView.myGroupModel = _model;
         _detailsTableView.goController = ^(UIViewController *viewController) {
             
@@ -133,7 +133,7 @@
 #pragma mark 订单状态
 - (void)initOrderStatusBtn {
     
-    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, ScreenHeight - 50 - 64, ScreenWidth, 50)];
+    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, ScreenHeight - 50, ScreenWidth, 50)];
     bgView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:bgView];
     
@@ -145,12 +145,14 @@
     _titleLabel.text = @"还差2人成团";
     _titleLabel.font = [UIFont systemFontOfSize:15];
     _titleLabel.textAlignment = NSTextAlignmentCenter;
-    _titleLabel.textColor = [UIColor colorWithHexString:@"0xfc9d15"];
+//    _titleLabel.textColor = [UIColor colorWithHexString:@"0xfc9d15"];
+    _titleLabel.textColor = [UIColor colorDomina];
     [bgView addSubview:_titleLabel];
     
     _orderStatusBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     _orderStatusBtn.frame = CGRectMake(CGRectGetMaxX(_titleLabel.frame), 0, ScreenWidth / 5 * 2, CGRectGetHeight(bgView.frame));
-    _orderStatusBtn.backgroundColor = [UIColor colorWithHexString:@"0xff6600"];
+//    _orderStatusBtn.backgroundColor = [UIColor colorWithHexString:@"0xff6600"];
+    _orderStatusBtn.backgroundColor = [UIColor colorDomina];
     _orderStatusBtn.titleLabel.font = [UIFont systemFontOfSize:16];
     [_orderStatusBtn setTitle:@"分享好友" forState:UIControlStateNormal];
     [_orderStatusBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];

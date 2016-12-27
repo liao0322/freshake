@@ -65,7 +65,7 @@
     
     // 优惠券名称
     self.couponNameLabel = [UILabel new];
-    self.couponNameLabel.frame = CGRectMake(self.bgImgView.width / 2 - 30, 40, self.bgImgView.width - CGRectGetWidth(_priceLabel.frame), 16);
+    self.couponNameLabel.frame = CGRectMake(self.bgImgView.width / 2 - 30, 35, self.bgImgView.width - CGRectGetWidth(_priceLabel.frame), 16);
     self.couponNameLabel.font = [UIFont boldSystemFontOfSize:15.0];
     [self.bgImgView addSubview:self.couponNameLabel];
     
@@ -112,7 +112,7 @@
     self.guiZeLabel.sd_layout
     .leftSpaceToView(self.bgImgView, self.bgImgView.width/2 - 20)
     .rightSpaceToView(self.bgImgView, 15)
-    .topSpaceToView(self.timeLabel, 10)
+    .topSpaceToView(self.timeLabel, 6)
     .heightIs(15);
     
     // 选中
@@ -131,8 +131,8 @@
     
 }
 
-- (void)setModel:(FSCouponModel *)model {
-    if (![model.hasLingQu boolValue] && ([model.IsExpile boolValue] || [model.IsExpile intValue] == 2)) {
+- (void)setModel:(CouponModel *)model {
+    if (![model.hasLingQu boolValue] && ([model.IsExpileDate boolValue] || [model.IsExpileDate intValue] == 2)) {
         UIImage *bgImage = IMAGE(@"FS优惠券");
        // self.bgImgView = [[UIImageView alloc] initWithImage:bgImage];
         self.bgImgView.image = bgImage;

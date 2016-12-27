@@ -25,7 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _dataSourse = [NSMutableArray array];
-    self.view.backgroundColor = [UIColor colorWithHexString:@"0xf8f8f8"];
+    self.view.backgroundColor = [UIColor colorWithHexString:@"0xf2f2f2"];
     self.navigationItem.titleView = [Utillity customNavToTitle:@"积分记录"];
     self.navigationItem.leftBarButtonItem = [UIFactory createBackBBIWithTarget:self action:@selector(back)];
     [self initView];
@@ -41,7 +41,7 @@
 #pragma mark 初始化tableView
 -(void)initUITableView
 {
-    _tableview = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64) style:UITableViewStyleGrouped];
+    _tableview = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStyleGrouped];
     _tableview.dataSource = self;
     _tableview.delegate = self;
     _tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -75,7 +75,7 @@
 {
     _rechargeView = [[RechargeView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 55)];
     _rechargeView.isBottomView = @"0";
-    [_rechargeView SetUI:[NSString stringWithFormat:@"%@分",_point] WithTitle:@"当前积分:" AndColor:@"0xff6600"];
+    [_rechargeView SetUI:[NSString stringWithFormat:@"%@分",_point] WithTitle:@"当前积分:" AndColor:@"0x88bb35"];
 }
 #pragma mark 设置行
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

@@ -12,12 +12,15 @@
 
 @interface SelectDeliverySiteView : UIView<UITableViewDataSource,UITableViewDelegate>
 
+@property (nonatomic, strong) UITableView *tableView;
+
 @property (nonatomic, copy) NSArray *siteArray;
 
 @property (nonatomic, copy) void(^userAddress)(SiteModel *mapArray);
 @property (nonatomic, copy) void(^addBtnClick)(BOOL isDel, NSInteger index);
-
-@property (nonatomic, copy) void(^defaultBtnClick)(BOOL isDefault, NSInteger index);
+@property (nonatomic, copy) void(^deleteAddress)(NSString *idString);
+@property (nonatomic, copy) void(^defaultAddress)(NSDictionary *dic);
+//@property (nonatomic, copy) void(^defaultBtnClick)(BOOL isDefault, NSInteger index);
 - (void)refreshSite;
 
 @end

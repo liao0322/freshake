@@ -37,16 +37,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.view.backgroundColor = [UIColor colorWithHexString:@"0xF6F6F6"];
+    self.view.backgroundColor = [UIColor colorWithHexString:@"0xF2F2F2"];
     self.navigationItem.titleView = [Utillity customNavToTitle:@"收 藏"];
     self.navigationItem.leftBarButtonItem = [UIFactory createBackBBIWithTarget:self action:@selector(back)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStyleDone target:self action:@selector(edit)];
-    self.navigationItem.rightBarButtonItem.tintColor = [UIColor colorWithHexString:@"0x3c3c3c"];
+    self.navigationItem.rightBarButtonItem.tintColor = [UIColor colorDomina];
     
     _isGoods = YES;
     _dataSource = [NSMutableArray array];
     
-    [self initTypeView];
+//    [self initTypeView];
     [self initCollectView];
     [self initDeleteView];
 }
@@ -55,7 +55,7 @@
 #pragma mark 删除
 - (void)initDeleteView {
     
-    _deleteView = [[UIView alloc] initWithFrame:CGRectMake(0, ScreenHeight - 64, ScreenWidth, 50)];
+    _deleteView = [[UIView alloc] initWithFrame:CGRectMake(0, ScreenHeight, ScreenWidth, 50)];
     [self.view addSubview:_deleteView];
     
     for (int i = 0; i < 2; i++) {
@@ -70,14 +70,14 @@
             btn.tag = 55;
             btn.backgroundColor = [UIColor colorWithHexString:@"0xF6F6F6"];
             [btn setTitle:@" 全选" forState:UIControlStateNormal];
-            [btn setTitleColor:[UIColor colorWithHexString:@"0x606060"] forState:UIControlStateNormal];
-            [btn setImage:IMAGE(@"视频-没有选择") forState:UIControlStateNormal];
-            [btn setImage:IMAGE(@"视频-选择") forState:UIControlStateSelected];
+            [btn setTitleColor:[UIColor colorWithHexString:@"0x404040"] forState:UIControlStateNormal];
+            [btn setImage:IMAGE(@"FS未选中") forState:UIControlStateNormal];
+            [btn setImage:IMAGE(@"FS选中") forState:UIControlStateSelected];
             [btn addTarget:self action:@selector(allSelect:) forControlEvents:UIControlEventTouchUpInside];
         }
         else {
             
-            btn.backgroundColor = Color;
+            btn.backgroundColor = [UIColor colorDomina];
             [btn setTitle:@"删除" forState:UIControlStateNormal];
             [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             [btn addTarget:self action:@selector(deleteArr) forControlEvents:UIControlEventTouchUpInside];
@@ -85,7 +85,7 @@
     }
     
     UILabel *line = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 1)];
-    line.backgroundColor = [UIColor colorWithHexString:@"0xCECECE"];
+    line.backgroundColor = [UIColor colorWithHexString:@"0xd9d9d9"];
     [_deleteView addSubview:line];
 }
 
@@ -123,7 +123,7 @@
 #pragma mark 初始化CollectView
 - (void)initCollectView {
     
-    _collectView = [[CollectView alloc] initWithFrame:CGRectMake(0, 50, ScreenWidth, ScreenHeight - 100)];
+    _collectView = [[CollectView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
     [self.view addSubview:_collectView];
     
     WS(weakSelf);
@@ -240,14 +240,14 @@
     }];
     
     if (_collectView.tableView.editing) {
-        _collectView.tableView.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight - 160);
+        _collectView.tableView.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight - 50);
     }else{
-        _collectView.tableView.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight - 100);
+        _collectView.tableView.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight);
     }
     
     NSString *title = _collectView.tableView.editing ? @"完成" : @"编辑";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:title style:UIBarButtonItemStyleDone target:self action:@selector(edit)];
-    self.navigationItem.rightBarButtonItem.tintColor = [UIColor colorWithHexString:@"0x3c3c3c"];
+    self.navigationItem.rightBarButtonItem.tintColor = [UIColor colorDomina];
     
 }
 

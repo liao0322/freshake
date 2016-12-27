@@ -16,7 +16,7 @@
     {
         UIImageView *bgImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 190)];
         [self addSubview:bgImageView];
-        bgImageView.image = IMAGE(@"icon_背景");
+        bgImageView.image = IMAGE(@"FS背景");
         bgImageView.userInteractionEnabled = YES;
         
         
@@ -32,13 +32,13 @@
         
         _name = [[UILabel alloc]initWithFrame:CGRectMake(15, CGRectGetMaxY(_icon.frame), SCREEN_WIDTH-30, 50)];
         _name.textAlignment = NSTextAlignmentCenter;
-        _name.textColor = [UIColor colorWithHexString:@"0x262525"];
+        _name.textColor = [UIColor whiteColor];
         _name.font = [UIFont systemFontOfSize:20];
         [bgImageView addSubview:_name];
         
         _mobile = [[UILabel alloc]initWithFrame:CGRectMake(15, CGRectGetMaxY(_name.frame)-10, SCREEN_WIDTH-30, 30)];
         _mobile.textAlignment = NSTextAlignmentCenter;
-        _mobile.textColor = [UIColor colorWithHexString:@"0x262525"];
+        _mobile.textColor = [UIColor whiteColor];
         _mobile.font = [UIFont systemFontOfSize:16];
         [bgImageView addSubview:_mobile];
         

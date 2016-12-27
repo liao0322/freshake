@@ -15,6 +15,8 @@
 
 - (void)fsHeadView:(FSMeHeadView *)fsHeadView loginButtonTouchUpInside:(UIButton *)sender;
 
+- (void)fsHeadView:(FSMeHeadView *)fsHeadView myMessageButtonClick:(UIButton *)sender;
+
 @end
 
 @interface FSMeHeadView : UIView

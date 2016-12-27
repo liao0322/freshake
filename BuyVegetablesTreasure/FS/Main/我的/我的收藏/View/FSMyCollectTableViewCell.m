@@ -38,7 +38,7 @@
     [self.contentView addSubview:_goodsNameLabel];
     
     _goodsNameLabel.sd_layout
-    .leftSpaceToView(_goodsImageView, margin*2)
+    .leftSpaceToView(_goodsImageView, margin*3)
     .rightSpaceToView(self.contentView, margin)
     .topSpaceToView(self.contentView, margin)
     .heightIs(18);

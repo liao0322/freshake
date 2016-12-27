@@ -21,7 +21,7 @@
 
 - (void)initView {
     
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(ScreenWidth / 3, ScreenWidth / 3, ScreenWidth / 3, ScreenWidth / 3)];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(ScreenWidth / 3, 40, ScreenWidth / 3, ScreenWidth / 3)];
     imageView.image = IMAGE(@"logo.jpg");
     [self addSubview:imageView];
     

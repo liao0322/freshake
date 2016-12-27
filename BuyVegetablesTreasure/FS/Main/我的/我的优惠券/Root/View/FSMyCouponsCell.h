@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FSCouponModel.h"
+#import "CouponModel.h"
 
 @interface FSMyCouponsCell : UITableViewCell
 
-@property (nonatomic, strong) FSCouponModel *model;
+@property (nonatomic, strong) CouponModel *model;
 
 @end

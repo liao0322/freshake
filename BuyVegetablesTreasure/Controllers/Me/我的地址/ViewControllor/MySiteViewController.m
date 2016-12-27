@@ -17,6 +17,9 @@
 
 @property (nonatomic, copy) NSMutableArray *userAddressArray;
 @property (nonatomic, copy) SelectDeliverySiteView *userSiteView;
+@property (nonatomic, assign) CLLocationCoordinate2D currentCoor;
+@property (nonatomic, strong) Map *mapModel;
+
 
 @end
 
@@ -44,6 +47,7 @@
     _userSiteView = [[SelectDeliverySiteView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64)];
     _userSiteView.backgroundColor = [UIColor redColor];
     [self.view addSubview:_userSiteView];
+    
     [self requestUserAddressList];
     
     __weak typeof(self)weakSelf = self;
@@ -57,6 +61,20 @@
         weakSelf.hidesBottomBarWhenPushed = YES;
         [weakSelf.navigationController pushViewController:siteVC animated:YES];
     };
+    
+    _userSiteView.deleteAddress = ^(NSString *idString) {
+        [weakSelf deleteRequstWithId:idString];
+    };
+    
+    _userSiteView.defaultAddress = ^(NSDictionary *dic) {
+        [weakSelf saveUserInfo:dic];
+    };
+    
+    _userSiteView.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        
+        [self requestUserAddressList];
+        [_userSiteView.tableView.mj_header endRefreshing];
+    }];
     
 //    _userSiteView.defaultBtnClick = ^(BOOL isDefault, NSInteger index) {
 //        deliverySiteViewController *siteVC = [[deliverySiteViewController alloc] init];
@@ -124,5 +142,80 @@
          
      } failure:nil];
 }
+
+#pragma mark 保存用户信息
+- (void)saveUserInfo:(NSDictionary *)dic {
+    NSLog(@"%@", dic);
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *uidString = [userDefaults objectForKey:@"UID"];
+    NSString *userName = [dic objectForKey:@"userName"];
+    NSString *idString = [dic objectForKey:@"id"];
+    NSString *phoneString = [dic objectForKey:@"Phone"];
+    NSString *cityStirng = [dic objectForKey:@"City"];
+    NSString *areaString = [dic objectForKey:@"Area"];
+    NSString *addressString = [dic objectForKey:@"Address"];
+    NSString *sexString = [dic objectForKey:@"sex"];
+    
+    
+//    if ([Tools isBlankString:userName]) {
+//        return [Tools myHud:@"请输入收货人名字" inView:self.view];
+//    }
+//    if ([Tools isBlankString:phoneString]) {
+//        return [Tools myHud:@"请填写手机号码" inView:self.view];
+//    }
+//    else if (![Tools isMobileNum:phoneString]) {
+//        return [Tools myHud:@"请输入正确号码" inView:self.view];
+//    }
+//    else if ([Tools isBlankString:cityStirng]) {
+//        return [Tools myHud:@"请选择所在城市" inView:self.view];
+//    }
+//    else if ([Tools isBlankString:areaString]) {
+//        return [Tools myHud:@"请选择地址" inView:self.view];
+//    }
+    
+    if ([[dic objectForKey:@"Area"] isEqualToString:areaString]) {
+        
+        _currentCoor.latitude = [[dic objectForKey:@"X"] doubleValue];
+        _currentCoor.longitude = [[dic objectForKey:@"Y"] doubleValue];
+    }
+    else {
+        
+        _currentCoor.latitude = [_mapModel.xPoint doubleValue];
+        _currentCoor.longitude = [_mapModel.yPoint doubleValue];
+    }
+    
+    NSString *urlString = [NSString stringWithFormat:EditAddress,uidString,userName,sexString,idString,cityStirng,areaString,addressString,phoneString,_currentCoor.latitude, _currentCoor.longitude, [Single sharedInstance].cityId, 1];
+    urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    [HttpRequest sendGetOrPostRequest:urlString param:nil requestStyle:Get setSerializer:Json isShowLoading:YES success:^(id data)
+     {
+         if ([data[@"issuccess"] boolValue]) {
+             
+             [self.navigationController popViewControllerAnimated:YES];
+             [Tools myHud:data[@"context"] inView:[[UIApplication sharedApplication].delegate window]];
+         }
+         else [Tools myHud:data[@"context"] inView:[[UIApplication sharedApplication].delegate window]];
+         
+     } failure:nil];
+}
+
+
+#pragma mark 删除地址
+- (void)deleteRequstWithId:(NSString *)idString {
+    
+    NSString *urlString = [NSString stringWithFormat:DeleteAdress,idString];
+    [HttpRequest sendGetOrPostRequest:urlString param:nil requestStyle:Get setSerializer:Json isShowLoading:YES success:^(id data)
+     {
+         if ([data[@"issuccess"] boolValue]) {
+//             [self.navigationController popViewControllerAnimated:YES];
+             [_userSiteView.tableView.mj_header beginRefreshing];
+             [Tools myHud:data[@"context"] inView:[[UIApplication sharedApplication].delegate window]];
+         }
+         else [Tools myHud:data[@"context"] inView:[[UIApplication sharedApplication].delegate window]];
+         
+     } failure:nil];
+}
+
 
 @end

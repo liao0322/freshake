@@ -22,7 +22,7 @@
     [super viewDidLoad];
 
     _dataSource = [NSMutableArray array];
-    self.view.backgroundColor = [UIColor colorWithHexString:@"0xF6F6F6"];
+    self.view.backgroundColor = [UIColor colorWithHexString:@"0xf2f2f2"];
     self.navigationItem.titleView = [Utillity customNavToTitle:@"我的拼团"];
     self.navigationItem.leftBarButtonItem = [UIFactory createBackBBIWithTarget:self action:@selector(back)];
     
@@ -36,7 +36,7 @@
     WS(weakSelf);
     if (_myGroupTableView == nil) {
         
-        _myGroupTableView = [[MyGroupTableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - 64)];
+        _myGroupTableView = [[MyGroupTableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
         _myGroupTableView.goViewController = ^(UIViewController *viewController) {
             weakSelf.hidesBottomBarWhenPushed = YES;
             [weakSelf.navigationController pushViewController:viewController animated:YES];

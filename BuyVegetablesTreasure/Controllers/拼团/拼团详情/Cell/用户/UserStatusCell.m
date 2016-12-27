@@ -39,7 +39,9 @@
         GroupDetailListModel *listModel = model.listArray[0];
         if ([model.UStatus isEqualToString:@"4"]) {
             
-            UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(ScreenWidth / 2 - width / 2, (width + 70) / 2 - width / 2, width, width)];
+//            UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(ScreenWidth / 2 - width / 2, (width + 70) / 2 - width / 2, width, width)];
+            UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, (width + 70) / 2 - width / 2, width, width)];
+
             bgImageView.image = [UIImage imageNamed:@"小椭圆"];
             bgImageView.clipsToBounds = YES;
             [self.contentView addSubview:bgImageView];
@@ -50,8 +52,10 @@
             [headImageView sd_setImageWithURL:[NSURL URLWithString:listModel.avatar] placeholderImage:IMAGE(@"头像三")];
             [bgImageView addSubview:headImageView];
             
-            UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(ScreenWidth / 2 - width / 2, CGRectGetMaxY(bgImageView.frame), width, 20)];
-            nameLabel.text = listModel.mobile;
+            UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(bgImageView.frame), width, 20)];
+            NSString *name = [NSString stringWithFormat:@"%@", listModel.mobile];
+            
+            nameLabel.text = [name stringByReplacingCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
             nameLabel.font = [UIFont systemFontOfSize:13];
             nameLabel.textColor = [UIColor colorWithHexString:@"0x606060"];
             nameLabel.textAlignment = NSTextAlignmentCenter;

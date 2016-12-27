@@ -38,7 +38,7 @@
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    _tableView.backgroundColor = [UIColor colorWithHexString:@"0xf8f8f8"];
+    _tableView.backgroundColor = [UIColor colorWithHexString:@"0xf2f2f2"];
     [self addSubview:_tableView];
 }
 
@@ -79,7 +79,7 @@
     
     cell.textLabel.text = _dataSource[indexPath.section];
     cell.textLabel.font = [UIFont systemFontOfSize:14];
-    cell.textLabel.textColor = [UIColor colorWithHexString:@"0x606060"];
+    cell.textLabel.textColor = [UIColor colorWithHexString:@"0x404040"];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
@@ -108,7 +108,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     
     if (section == 0) {
-        return 10;
+        return 0.01;
     }
     
     return 0.01;
@@ -140,8 +140,8 @@
             
             UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
             btn.frame = CGRectMake(15, 25, SCREEN_WIDTH - 30, SectionHeight);
-            btn.titleLabel.font = [UIFont systemFontOfSize:17];
-            btn.backgroundColor = Color;
+            btn.titleLabel.font = [UIFont systemFontOfSize:18.0];
+            btn.backgroundColor = [UIColor colorDomina];
             btn.layer.cornerRadius = 5;
             [btn setTitle:@"退出当前账号" forState:UIControlStateNormal];
             [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];

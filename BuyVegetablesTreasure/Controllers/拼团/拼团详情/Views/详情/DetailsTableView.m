@@ -108,10 +108,10 @@
         [cell setGroupModel:_myGroupModel];
         
         if ([_groupDetailModel.UStatus integerValue] == 3) {
-            [cell.isSuccessImageView setImage:IMAGE(@"拼团成功图标")];
+            [cell.isSuccessImageView setImage:IMAGE(@"FSPT拼团成功")];
         }
         else if ([_groupDetailModel.UStatus integerValue] == 4) {
-            [cell.isSuccessImageView setImage:IMAGE(@"拼团失败图标")];
+            [cell.isSuccessImageView setImage:IMAGE(@"FSPT拼团失败")];
         }
         else {
             [cell.isSuccessImageView setImage:nil];

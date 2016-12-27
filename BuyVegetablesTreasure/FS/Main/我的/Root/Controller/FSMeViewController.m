@@ -12,13 +12,19 @@
 #import "FSMeBottomView.h"
 #import "FSMoreViewController.h"
 #import "FSMeModel.h"
+#import "MyOrderModel.h"
 #import "FSNumView.h"
 #import "FSLoginViewController.h"
 #import "FSMyCouponsViewController.h"
 #import "FSNavigationController.h"
-#import "FSMyCollectViewController.h"
+//#import "FSMyCollectViewController.h"
 #import "MySiteViewController.h"
 #import "MyOrderViewController.h"
+#import "MyGroupViewController.h"
+#import "MyCollectViewController.h"
+#import "MoreViewController.h"
+#import "PersonalDataViewController.h"
+#import "PointRecordViewController.h"
 
 @interface FSMeViewController ()<FSMeHeadViewDelegate, FSMeBottomViewDelegate, UIScrollViewDelegate,FSMeCenterViewDelegate>
 
@@ -37,6 +43,9 @@
 @property (nonatomic, copy) NSMutableArray *dataSourse;
 
 @property (nonatomic, strong) UIScrollView *bgScrollView;
+
+@property (nonatomic, strong) NSMutableArray *orderCountArray;
+
 @end
 
 @implementation FSMeViewController
@@ -46,16 +55,18 @@
     [self setNavi];
     [self createUI];
     [_headView setUserData];
+    _orderCountArray = [NSMutableArray array];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
     _uidString = [[NSUserDefaults standardUserDefaults] objectForKey:@"UID"];
     
     if (![Tools isBlankString:_uidString]) {
         
         [self requestPoint];
+        [self getCount];
+
     }
     else {
         
@@ -107,6 +118,20 @@
     _headView.delegate = self;
     [_bgScrollView addSubview:_headView];
     
+    WS(weakSelf);
+    _headView.numView.btnBlock = ^(NSInteger tag) {
+        if (tag == 50) {
+            PointRecordViewController *pointVC = [[PointRecordViewController alloc] init];
+            pointVC.point = weakSelf.pointString;
+            [weakSelf.navigationController pushViewController:pointVC animated:YES];
+        }
+        else if (tag == 51) {
+            NSLog(@"余额");
+        }else {
+            [weakSelf pushViewControllerWithVC:[FSMyCouponsViewController new]];
+        }
+    };
+    
     _centerView = [[FSMeCenterView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_headView.frame) + 10, SCREEN_WIDTH, 115)];
     _centerView.delegate = self;
     [_bgScrollView addSubview:_centerView];
@@ -124,6 +149,7 @@
 
 }
 
+#pragma mark - 前往登录
 - (void)fsHeadView:(FSMeHeadView *)fsHeadView loginButtonTouchUpInside:(UIButton *)sender {
     NSLog(@"登录");
     
@@ -135,33 +161,121 @@
     //[self pushViewControllerWithVC:[FSLoginViewController new]];
 }
 
+#pragma mark - 前往个人信息
+- (void)fsHeadView:(FSMeHeadView *)fsHeadView myMessageButtonClick:(UIButton *)sender {
+    [self pushViewControllerWithVC:[PersonalDataViewController new]];
+}
+
 #pragma mark 前往我的订单
 - (void)fsCenterView:(FSMeCenterView *)fsCenterView allOrderButtonClick:(UIButton *)sender {
-    [self pushViewControllerWithVC:[MyOrderViewController new]];
+    
+    _uidString = [[NSUserDefaults standardUserDefaults] objectForKey:@"UID"];
+    
+    if (![Tools isBlankString:_uidString]) {
+        
+        [self pushViewControllerWithVC:[MyOrderViewController new]];
+    }
+    else {
+        FSLoginViewController *loginVC = [[FSLoginViewController alloc] init];
+        
+        FSNavigationController *navController = [[FSNavigationController alloc] initWithRootViewController:loginVC];
+        [self presentViewController:navController animated:YES completion:nil];
+    }
+
+    
 }
 
 - (void)fsMeBottonView:(FSMeBottomView *)fsMeBottomView myOrderButtonClick:(UIButton *)sender {
-    [self pushViewControllerWithVC:[MyOrderViewController new]];
+    
+    _uidString = [[NSUserDefaults standardUserDefaults] objectForKey:@"UID"];
+    
+    if (![Tools isBlankString:_uidString]) {
+        
+        [self pushViewControllerWithVC:[MyOrderViewController new]];
+    }
+    else {
+        FSLoginViewController *loginVC = [[FSLoginViewController alloc] init];
+        
+        FSNavigationController *navController = [[FSNavigationController alloc] initWithRootViewController:loginVC];
+        [self presentViewController:navController animated:YES completion:nil];
+    }
+
+//    [self pushViewControllerWithVC:[MyOrderViewController new]];
+}
+
+#pragma mark 前往我的拼团
+- (void)fsMeBottomView:(FSMeBottomView *)fsMeBottomView myPTButtonClick:(UIButton *)sender {
+    _uidString = [[NSUserDefaults standardUserDefaults] objectForKey:@"UID"];
+    
+    if (![Tools isBlankString:_uidString]) {
+        [self pushViewControllerWithVC:[MyGroupViewController new]];
+    }
+    else {
+        FSLoginViewController *loginVC = [[FSLoginViewController alloc] init];
+        
+        FSNavigationController *navController = [[FSNavigationController alloc] initWithRootViewController:loginVC];
+        [self presentViewController:navController animated:YES completion:nil];
+    }
+
 }
 
 #pragma mark 前往我的优惠券
 - (void)fsMeBottomView:(FSMeBottomView *)fsMeBottomView couponsButtonClick:(UIButton *)sender {
-    [self pushViewControllerWithVC:[FSMyCouponsViewController new]];
+    
+    _uidString = [[NSUserDefaults standardUserDefaults] objectForKey:@"UID"];
+    
+    if (![Tools isBlankString:_uidString]) {
+        [self pushViewControllerWithVC:[FSMyCouponsViewController new]];
+    }
+    else {
+        FSLoginViewController *loginVC = [[FSLoginViewController alloc] init];
+        
+        FSNavigationController *navController = [[FSNavigationController alloc] initWithRootViewController:loginVC];
+        [self presentViewController:navController animated:YES completion:nil];
+    }
 }
 
 #pragma mark 前往我的收藏
 - (void)fsMeBottomView:(FSMeBottomView *)fsMeBottomView collecButtonClick:(UIButton *)sender {
-    [self pushViewControllerWithVC:[FSMyCollectViewController new]];
+    
+    _uidString = [[NSUserDefaults standardUserDefaults] objectForKey:@"UID"];
+    
+    if (![Tools isBlankString:_uidString]) {
+        
+        [self pushViewControllerWithVC:[MyCollectViewController new]];
+        
+    }
+    else {
+        FSLoginViewController *loginVC = [[FSLoginViewController alloc] init];
+        
+        FSNavigationController *navController = [[FSNavigationController alloc] initWithRootViewController:loginVC];
+        [self presentViewController:navController animated:YES completion:nil];
+    }
+
 }
 
 #pragma mark 前往地址管理
 - (void)fsMeBottomView:(FSMeBottomView *)fsMeBottomView addressButtonClick:(UIButton *)sender {
-    [self pushViewControllerWithVC:[MySiteViewController new]];
+    
+    _uidString = [[NSUserDefaults standardUserDefaults] objectForKey:@"UID"];
+    
+    if (![Tools isBlankString:_uidString]) {
+        
+        [self pushViewControllerWithVC:[MySiteViewController new]];
+
+    }
+    else {
+        FSLoginViewController *loginVC = [[FSLoginViewController alloc] init];
+        
+        FSNavigationController *navController = [[FSNavigationController alloc] initWithRootViewController:loginVC];
+        [self presentViewController:navController animated:YES completion:nil];
+    }
+
 }
 
 #pragma mark 前往设置界面
 - (void)goSetting {
-    [self pushViewControllerWithVC:[FSMoreViewController new]];
+    [self pushViewControllerWithVC:[MoreViewController new]];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -175,6 +289,26 @@
     [self.navigationController pushViewController:viewController animated:YES];
     self.hidesBottomBarWhenPushed = NO;
 }
+
+#pragma mark 订单状态总条数
+- (void)getCount {
+    
+    [_orderCountArray removeAllObjects];
+    
+    NSString *urlString = [NSString stringWithFormat:GetOrderSum,_uidString];
+    NSLog(@"获取角标数量 = %@",urlString);
+    
+    [HttpRequest sendGetOrPostRequest:urlString param:nil requestStyle:Get setSerializer:Json isShowLoading:YES success:^(id data)
+     {
+         MyOrderModel *model = [[MyOrderModel alloc] init];
+         [model setDic:data];
+         [_orderCountArray addObject:model];
+         
+         [_centerView setLabelCountWithModel:_orderCountArray[0]];
+         
+     } failure:nil];
+}
+
 
 #pragma mark - 数据请求
 #pragma mark 获取积分

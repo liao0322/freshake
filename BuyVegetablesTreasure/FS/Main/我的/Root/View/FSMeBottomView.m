@@ -44,7 +44,9 @@
 
 // 我的拼团
 - (IBAction)myPingTuanClick:(id)sender {
-    NSLog(@"我的拼团");
+    if ([self.delegate respondsToSelector:@selector(fsMeBottomView:myPTButtonClick:)]) {
+        [self.delegate fsMeBottomView:self myPTButtonClick:sender];
+    }
 }
 
 // 地址管理

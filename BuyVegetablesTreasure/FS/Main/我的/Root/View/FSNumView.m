@@ -95,7 +95,7 @@
 
 - (void)meBtnClick:(UIButton *)btn {
     NSLog(@"获取积分、余额");
-//    _btnBlock(btn.tag);
+    _btnBlock(btn.tag);
 }
 /*
 // Only override drawRect: if you perform custom drawing.
