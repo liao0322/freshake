@@ -16,6 +16,9 @@
 @property (nonatomic, strong) NSArray *dataSource;
 @property (nonatomic, strong) NSString *orderId;
 
+@property (nonatomic, copy) NSString *stateUrl;
+@property (nonatomic, copy) void(^requestOrder)(NSString *urlString);
+
 @property (nonatomic, copy) void(^goViewController)(UIViewController *viewController);
 @property (nonatomic, copy) void(^goPay)(Order *model);
 @property (nonatomic, copy) void(^cancelOrder)();

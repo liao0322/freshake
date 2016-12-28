@@ -44,7 +44,7 @@
     _uidString = [[NSUserDefaults standardUserDefaults] objectForKey:@"UID"];
     
     [self setNav];
-    [self initOrderStateView];
+//    [self initOrderStateView];
     [self initMyOrderView];
     
     // 支付通知
@@ -69,21 +69,22 @@
     line.backgroundColor = [UIColor colorWithHexString:@"0xE4E4E4"];
     [_orderStateView addSubview:line];
     
-    WS(weakSelf);
-    _orderStateView.requestOrder = ^(NSString *urlString) {
-        _urlString = urlString;
-        [weakSelf getCount];
-        [weakSelf getOrder];
-    };
 }
 
 #pragma mark 我的订单界面
 - (void)initMyOrderView {
     
-    _myOrderView = [[MyOrderView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_orderStateView.frame) + 10, ScreenWidth, ScreenHeight - 64 - 65)];
+    _myOrderView = [[MyOrderView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight - 64)];
     [self.view addSubview:_myOrderView];
     
     WS(weakSelf);
+    
+    _myOrderView.requestOrder = ^(NSString *urlString) {
+        _urlString = urlString;
+//        [weakSelf getCount];
+        [weakSelf getOrder];
+    };
+
     // 前往控制器
     _myOrderView.goViewController = ^(UIViewController *viewController) {
         [weakSelf goViewController:viewController];
@@ -206,7 +207,7 @@
         _urlString = [NSString stringWithFormat:ORDER,1,1000,_uidString];
     }
     
-    NSLog(@"%@",_urlString);
+    NSLog(@"********#######%@",_urlString);
     
     [HttpRequest sendGetOrPostRequest:_urlString param:nil requestStyle:Get setSerializer:Json isShowLoading:YES success:^(id data)
     {

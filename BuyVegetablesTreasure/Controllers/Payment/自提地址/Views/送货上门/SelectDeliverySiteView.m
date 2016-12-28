@@ -83,10 +83,9 @@
     cell.selectionStyle  = UITableViewCellSelectionStyleNone;
     cell.defaultBtnClick = ^() {
         SiteModel *model = _siteArray[indexPath.section];
-        NSDictionary *dic = [[NSDictionary alloc] init];
-        [model setValuesForKeysWithDictionary:dic];
-        NSLog(@"^^^^^^^^^^^^^%@",dic);
-        _defaultAddress(dic);
+       
+        NSLog(@"^^^^^^^^^^^^^%@",model);
+        _defaultAddress(YES, model);
     };
     cell.deleteBtnClick = ^() {
         SiteModel *model = _siteArray[indexPath.section];

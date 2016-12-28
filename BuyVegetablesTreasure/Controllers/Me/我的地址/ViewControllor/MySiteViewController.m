@@ -19,6 +19,8 @@
 @property (nonatomic, copy) SelectDeliverySiteView *userSiteView;
 @property (nonatomic, assign) CLLocationCoordinate2D currentCoor;
 @property (nonatomic, strong) Map *mapModel;
+@property (nonatomic, assign) BOOL isDeleteSite;
+
 
 
 @end
@@ -66,8 +68,9 @@
         [weakSelf deleteRequstWithId:idString];
     };
     
-    _userSiteView.defaultAddress = ^(NSDictionary *dic) {
-        [weakSelf saveUserInfo:dic];
+    _userSiteView.defaultAddress = ^(BOOL isDel,SiteModel *model) {
+        _isDeleteSite = isDel;
+        [weakSelf saveUserInfo:model];
     };
     
     _userSiteView.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
@@ -144,18 +147,18 @@
 }
 
 #pragma mark 保存用户信息
-- (void)saveUserInfo:(NSDictionary *)dic {
-    NSLog(@"%@", dic);
+- (void)saveUserInfo:(SiteModel *)model {
+    NSLog(@"%@", model);
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSString *uidString = [userDefaults objectForKey:@"UID"];
-    NSString *userName = [dic objectForKey:@"userName"];
-    NSString *idString = [dic objectForKey:@"id"];
-    NSString *phoneString = [dic objectForKey:@"Phone"];
-    NSString *cityStirng = [dic objectForKey:@"City"];
-    NSString *areaString = [dic objectForKey:@"Area"];
-    NSString *addressString = [dic objectForKey:@"Address"];
-    NSString *sexString = [dic objectForKey:@"sex"];
+    NSString *userName = model.userName;
+    NSString *idString = _isDeleteSite ? model.id : @"0";
+    NSString *phoneString = model.Phone;
+    NSString *cityStirng = model.City;
+    NSString *areaString = model.Area;
+    NSString *addressString = model.Address;
+    NSString *sexString = model.sex;
     
     
 //    if ([Tools isBlankString:userName]) {
@@ -174,10 +177,10 @@
 //        return [Tools myHud:@"请选择地址" inView:self.view];
 //    }
     
-    if ([[dic objectForKey:@"Area"] isEqualToString:areaString]) {
+    if ([model.Area isEqualToString:areaString]) {
         
-        _currentCoor.latitude = [[dic objectForKey:@"X"] doubleValue];
-        _currentCoor.longitude = [[dic objectForKey:@"Y"] doubleValue];
+        _currentCoor.latitude = [model.X doubleValue];
+        _currentCoor.longitude = [model.Y doubleValue];
     }
     else {
         
@@ -192,7 +195,7 @@
      {
          if ([data[@"issuccess"] boolValue]) {
              
-             [self.navigationController popViewControllerAnimated:YES];
+             [_userSiteView.tableView.mj_header beginRefreshing];
              [Tools myHud:data[@"context"] inView:[[UIApplication sharedApplication].delegate window]];
          }
          else [Tools myHud:data[@"context"] inView:[[UIApplication sharedApplication].delegate window]];

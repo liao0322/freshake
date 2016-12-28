@@ -11,8 +11,8 @@
 
 @interface OrderStateView : UIView
 
-@property (nonatomic, copy) NSString *stateUrl;
-@property (nonatomic, copy) void(^requestOrder)(NSString *urlString);
+//@property (nonatomic, copy) NSString *stateUrl;
+//@property (nonatomic, copy) void(^requestOrder)(NSString *urlString);
 
 - (void)setCountLabelWithModel:(MyOrderModel *)model;
 

@@ -137,26 +137,27 @@
 //    [(UILabel *)[self viewWithTag:btn.tag - 100 + 70] setTextColor:Color];
 //    [[(UILabel *)[self viewWithTag:btn.tag - 100 + 70] layer] setBorderColor:Color.CGColor];
     
-    if (btn.tag == 100) {
-        _stateUrl = ORDER;
-    }
-    else if (btn.tag == 101) {
-        _stateUrl = WAITPAY;
-    }
-    else if (btn.tag == 102) {
-        _stateUrl = SHIPED;
-    }
-    else if (btn.tag == 103) {
-        _stateUrl = FINISHED;
-    }
-    else if (btn.tag == 104) {
-        _stateUrl = WAITCOMMENT;
-    }
-    
-    NSString *midString = [[NSUserDefaults standardUserDefaults] objectForKey:@"UID"];
-    NSString *urlString = [NSString stringWithFormat:_stateUrl,1,1000,midString];
-    NSLog(@"%@",urlString);
-    _requestOrder(urlString);
+//    if (btn.tag == 100) {
+//        _stateUrl = ORDER;
+//    }
+//    else if (btn.tag == 101) {
+//      
+//        _stateUrl = WAITPAY;
+//    }
+//    else if (btn.tag == 102) {
+//        _stateUrl = SHIPED;
+//    }
+//    else if (btn.tag == 103) {
+//        _stateUrl = FINISHED;
+//    }
+//    else if (btn.tag == 104) {
+//        _stateUrl = WAITCOMMENT;
+//    }
+//    
+//    NSString *midString = [[NSUserDefaults standardUserDefaults] objectForKey:@"UID"];
+//    NSString *urlString = [NSString stringWithFormat:_stateUrl,1,1000,midString];
+//    NSLog(@"%@",urlString);
+//    _requestOrder(urlString);
 }
 
 - (void)setCountLabelWithModel:(MyOrderModel *)model {
@@ -177,13 +178,6 @@
 
 
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-}
 
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    float xx = scrollView.contentOffset.x * (Menu_Width / ScreenWidth) - Menu_Width;
-    [_bgScrollView scrollRectToVisible:CGRectMake(xx, 0, ScreenWidth, bg_Height) animated:YES];
-    
-}
 
 @end

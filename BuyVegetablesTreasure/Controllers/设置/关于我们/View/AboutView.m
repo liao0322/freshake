@@ -54,7 +54,7 @@
     .autoHeightRatio(0);
     
     UILabel *label = [UILabel new];
-    label.text = @"Copyright（c）2014-2016 上海宜生源文化传播有限公司 allrights reserved";
+    label.text = @"Copyright（c）2014-2017 上海宜生源文化传播有限公司 allrights reserved";
     label.font = [UIFont systemFontOfSize:11];
     label.textColor = [UIColor colorWithHexString:@"0x999999"];
     label.textAlignment = NSTextAlignmentCenter;

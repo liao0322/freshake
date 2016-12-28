@@ -25,6 +25,7 @@
 #import "MoreViewController.h"
 #import "PersonalDataViewController.h"
 #import "PointRecordViewController.h"
+#import "AmountViewController.h"
 
 @interface FSMeViewController ()<FSMeHeadViewDelegate, FSMeBottomViewDelegate, UIScrollViewDelegate,FSMeCenterViewDelegate>
 
@@ -56,6 +57,7 @@
     [self createUI];
     [_headView setUserData];
     _orderCountArray = [NSMutableArray array];
+    _dataSourse = [NSMutableArray array];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -98,9 +100,9 @@
     
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, -64, SCREEN_WIDTH, SCREEN_HEIGHT == 568 ? 667 : SCREEN_HEIGHT)];
     if (SCREEN_HEIGHT == 480) {
-        scrollView.contentSize = CGSizeMake(0, scrollView.frame.size.height + 150);
+        scrollView.contentSize = CGSizeMake(0, scrollView.frame.size.height + 50);
     } else if (SCREEN_HEIGHT == 568) {
-        scrollView.contentSize = CGSizeMake(0, scrollView.frame.size.height + 100);
+        scrollView.contentSize = CGSizeMake(0, scrollView.frame.size.height - 50);
     }
     scrollView.showsVerticalScrollIndicator = NO;
     if (SCREEN_HEIGHT <= 568) {
@@ -126,7 +128,7 @@
             [weakSelf.navigationController pushViewController:pointVC animated:YES];
         }
         else if (tag == 51) {
-            NSLog(@"余额");
+            [weakSelf pushViewControllerWithVC:[AmountViewController new]];
         }else {
             [weakSelf pushViewControllerWithVC:[FSMyCouponsViewController new]];
         }
@@ -163,7 +165,20 @@
 
 #pragma mark - 前往个人信息
 - (void)fsHeadView:(FSMeHeadView *)fsHeadView myMessageButtonClick:(UIButton *)sender {
-    [self pushViewControllerWithVC:[PersonalDataViewController new]];
+    
+    _uidString = [[NSUserDefaults standardUserDefaults] objectForKey:@"UID"];
+    
+    if (![Tools isBlankString:_uidString]) {
+        [self pushViewControllerWithVC:[PersonalDataViewController new]];
+
+    }
+    else {
+        FSLoginViewController *loginVC = [[FSLoginViewController alloc] init];
+        
+        FSNavigationController *navController = [[FSNavigationController alloc] initWithRootViewController:loginVC];
+        [self presentViewController:navController animated:YES completion:nil];
+    }
+
 }
 
 #pragma mark 前往我的订单
@@ -340,7 +355,7 @@
              [[NSUserDefaults standardUserDefaults] setObject:data[@"group_id"] forKey:@"group_id"];
              
              if (_dataSourse.count > 0) {
-                 [_headView.numView setData:_dataSourse[0]];
+                 [_headView setpointCountWithModel:_dataSourse[0]];
              }
 
          }

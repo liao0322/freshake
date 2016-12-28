@@ -23,7 +23,7 @@
     
     // 手机号
     self.phoneLabel = [UILabel new];
-    self.phoneLabel.frame = CGRectMake(SCREEN_WIDTH - SCREEN_WIDTH / 3, 17, SCREEN_WIDTH / 3, 17);
+    self.phoneLabel.frame = CGRectMake(SCREEN_WIDTH - SCREEN_WIDTH / 3 - 15, 17, SCREEN_WIDTH / 3, 17);
     self.phoneLabel.font = [UIFont systemFontOfSize:16.0];
     self.phoneLabel.textAlignment = NSTextAlignmentCenter;
     self.phoneLabel.textColor = [UIColor colorWithHexString:@"0*404040"];
@@ -36,7 +36,7 @@
     
     // 名称
     self.nameLabel = [UILabel new];
-    self.nameLabel.frame = CGRectMake(15, 17, SCREEN_WIDTH / 4, 17);
+    self.nameLabel.frame = CGRectMake(15, 17, SCREEN_WIDTH / 4 + 20, 17);
     self.nameLabel.font = [UIFont systemFontOfSize:16.0];
     self.nameLabel.textColor = [UIColor colorWithHexString:@"0*404040"];
     [self.contentView addSubview:self.nameLabel];
@@ -107,7 +107,16 @@
 }
 
 - (void)deleteClick {
-    _deleteBtnClick();
+    [Tools myAlert:@"确定删除该地址？" target:self];
+
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    if (buttonIndex == 1) {
+        _deleteBtnClick();
+
+    }
 }
 
 - (void)setModel:(SiteModel *)model {

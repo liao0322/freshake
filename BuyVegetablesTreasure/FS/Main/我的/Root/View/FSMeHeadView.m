@@ -183,7 +183,14 @@
     }
 }
 
+- (void)setpointCountWithModel:(FSMeModel *)model {
+    _numView.pointLabel.text = model.point;
+    
+    _numView.balanceLabel.text = [NSString stringWithFormat:@"￥%@", model.amount];
+    
+    _numView.couponLabel.text = model.tickNum;
 
+}
 - (void)goLogin:(UIButton *)sender{
     if ([self.delegate respondsToSelector:@selector(fsHeadView:loginButtonTouchUpInside:)]) {
         [self.delegate fsHeadView:self loginButtonTouchUpInside:sender];

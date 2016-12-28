@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FSNumView.h"
+#import "FSMeModel.h"
 
 @class FSMeHeadView;
 
@@ -42,6 +43,8 @@
 @property (nonatomic, weak) id<FSMeHeadViewDelegate>delegate;
 
 @property (nonatomic, copy) void(^goViewController)(UIViewController *viewController);
+
+- (void)setpointCountWithModel:(FSMeModel *)model;
 
 - (void)setUserData;
 

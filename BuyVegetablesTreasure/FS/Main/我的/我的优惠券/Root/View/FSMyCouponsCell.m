@@ -66,7 +66,7 @@
     // 优惠券名称
     self.couponNameLabel = [UILabel new];
     self.couponNameLabel.frame = CGRectMake(self.bgImgView.width / 2 - 30, 35, self.bgImgView.width - CGRectGetWidth(_priceLabel.frame), 16);
-    self.couponNameLabel.font = [UIFont boldSystemFontOfSize:15.0];
+    self.couponNameLabel.font = [UIFont boldSystemFontOfSize:SCREEN_WIDTH == 320 ? 13 : 15];
     [self.bgImgView addSubview:self.couponNameLabel];
     
 

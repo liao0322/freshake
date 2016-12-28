@@ -49,7 +49,7 @@
     // 优惠券背景
     UIImage *couponImg = IMAGE(@"FS详情优惠券");
     UIImageView *couponImgView = [[UIImageView alloc] initWithImage:couponImg];
-    couponImgView.frame = CGRectMake(SCREEN_WIDTH == 320 ? 15 : 20, CGRectGetMaxY(headImgView.frame) + 5, SCREEN_WIDTH - 2 * (SCREEN_WIDTH == 320 ? 15 : 20), 120);
+    couponImgView.frame = CGRectMake(SCREEN_WIDTH == 320 ? 15 : 20, CGRectGetMaxY(headImgView.frame) + 5, SCREEN_WIDTH - 2 * (SCREEN_WIDTH == 320 ? 15 : 20),SCREEN_WIDTH == 320 ? 100 : 120);
     [self addSubview:couponImgView];
     
 //    couponImgView.sd_layout
@@ -128,7 +128,7 @@
     // 使用说明标题
     UILabel *explainTitle = [UILabel new];
     explainTitle.text = @"使用说明";
-    explainTitle.frame = CGRectMake(25, 45, explainBgView.size.width / 2, 15);
+    explainTitle.frame = CGRectMake(25, SCREEN_WIDTH == 320 ? 25 : 45, explainBgView.size.width / 2, 15);
     explainTitle.font = [UIFont systemFontOfSize:12.0];
     explainTitle.textColor = [UIColor whiteColor];
     [explainBgView addSubview:explainTitle];
@@ -155,7 +155,7 @@
     conditionTitle.sd_layout
     .leftSpaceToView(explainBgView, 25)
     .rightSpaceToView(explainBgView, 20)
-    .topSpaceToView(_explainLabel, 15)
+    .topSpaceToView(_explainLabel, SCREEN_WIDTH == 320 ? 10 : 15)
     .autoHeightRatio(0);
     
     // 使用条件
