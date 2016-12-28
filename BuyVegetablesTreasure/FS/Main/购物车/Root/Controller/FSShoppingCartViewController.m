@@ -82,7 +82,6 @@ static NSString * const shoppingCartTVCellID = @"shoppingCartTVCellID";
     
     self.title = @"购物车";
     self.totalPrice = 0.0f;
-
 }
 
 - (void)addSubviews {
