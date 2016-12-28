@@ -25,7 +25,8 @@
 
 - (void)initCell {
     
-    self.imageView.image = IMAGE(@"地标");
+    self.imageView.image = [IMAGE(@"地标") imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    self.imageView.tintColor = [UIColor colorDomina];
     self.textLabel.text = @"查询提货点";
     self.textLabel.font = [UIFont systemFontOfSize:14];
     self.textLabel.textColor = Color;

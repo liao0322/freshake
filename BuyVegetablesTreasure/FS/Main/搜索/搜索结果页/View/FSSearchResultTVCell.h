@@ -9,6 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "SearchModel.h"
 
+@class FSSearchResultTVCell;
+
+@protocol FSSearchResultTVCellDelegate <NSObject>
+
+- (void)searchResultTVCell:(FSSearchResultTVCell *)cell plusButtonTouchUpInside:(UIButton *)sender;
+
+- (void)searchResultTVCell:(FSSearchResultTVCell *)cell minusButtonTouchUpInside:(UIButton *)sender;
+
+@end
+
 @interface FSSearchResultTVCell : UITableViewCell
 @property (nonatomic) SearchModel *model;
 
@@ -25,5 +35,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *countLabel;
 
+@property (weak, nonatomic) id<FSSearchResultTVCellDelegate> delegate;
 
 @end

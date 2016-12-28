@@ -54,7 +54,8 @@
             
             switch (i) {
                 case 0:
-                    _bImageView.image=IMAGE(@"选择支付方式图标");
+                    _bImageView.image=[IMAGE(@"选择支付方式图标") imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+                    _bImageView.tintColor = [UIColor colorDomina];
                     _bLabel.text=@"选择支付方法";
                     _bLabel.textColor=[UIColor colorWithHexString:@"0xff6600"];
                     break;

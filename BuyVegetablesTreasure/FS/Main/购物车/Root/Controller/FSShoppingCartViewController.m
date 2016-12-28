@@ -60,6 +60,7 @@ static NSString * const shoppingCartTVCellID = @"shoppingCartTVCellID";
     [super viewWillAppear:animated];
     
     [self getCommodityData];
+    [self getShoppingCartNum];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -104,7 +105,17 @@ static NSString * const shoppingCartTVCellID = @"shoppingCartTVCellID";
     self.bottomView.width = self.view.width;
     self.bottomView.height = 49;
     self.bottomView.x = 0;
-    self.bottomView.bottom = self.view.height - 49;
+    if (!self.tabBarController) {
+        NSLog(@"");
+        self.bottomView.bottom = self.view.height;
+    } else {
+        if ([self.tabBarController.tabBar isHidden]) {
+            self.bottomView.bottom = self.view.height;
+        } else {
+            self.bottomView.bottom = self.view.height - 49;
+        }
+    }
+
 }
 
 - (void)registerCells {
@@ -200,8 +211,6 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
             } failure:^(NSError *error, NSInteger statusCode) {
                 [self showInfoWidthError:error];
             }];
-            
-            
         }];
         
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
@@ -525,16 +534,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
      {
          if ([data[@"issuccess"] boolValue]) {
              
-             self.hidesBottomBarWhenPushed = YES;
              // 提交订单页
              SubmitOrderViewController *paymentVC = [[SubmitOrderViewController alloc] init];
              paymentVC.goodsArray = arr;
              [self.navigationController pushViewController:paymentVC animated:YES];
-             /*
-             if (self.isHiddenBackBtn) {
-                 self.hidesBottomBarWhenPushed = NO;
-             }
-              */
              
          }
          else [Tools myHud:data[@"context"] inView:self.view];
@@ -574,7 +577,11 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 
 /// 逛逛
 - (IBAction)strollButtonTouchUpInside:(UIButton *)sender {
-    self.tabBarController.selectedIndex = 1;
+    if ([self.tabBarController.tabBar isHidden]) {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    } else {
+        self.tabBarController.selectedIndex = 1;
+    }
 }
 
 - (void)getShoppingCartCount {
@@ -629,6 +636,34 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
         [self showInfoWidthError:error];
     }];
     
+}
+
+#pragma mark 获取购物车数量
+- (void)getShoppingCartNum {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *uidString = [defaults objectForKey:@"UID"];
+    NSString *midString = [defaults objectForKey:@"MID"];
+    
+    NSString *urlString = [NSString stringWithFormat:SHOPPINGCARTNUM,UUID,uidString,midString];
+    [XFNetworking GET:urlString parameters:nil success:^(id responseObject, NSInteger statusCode) {
+        NSDictionary *data = [self dictWithData:responseObject];
+        if ([data[@"issuccess"] boolValue]) {
+            int sum = [[data objectForKey:@"sum"] intValue];
+            
+            // 设置 tabbar badge
+            if (sum == 0) {
+                [[[[[self tabBarController] tabBar] items] objectAtIndex:2] setBadgeValue:nil];
+            } else {
+                [[[[[self tabBarController] tabBar] items] objectAtIndex:2] setBadgeValue:[NSString stringWithFormat:@"%ld", sum]];
+            }
+            
+        } else {
+            [SVProgressHUD showInfoWithStatus:data[@"context"]];
+        }
+        [_tableView reloadData];
+    } failure:^(NSError *error, NSInteger statusCode) {
+        [self showInfoWidthError:error];
+    }];
 }
 
 

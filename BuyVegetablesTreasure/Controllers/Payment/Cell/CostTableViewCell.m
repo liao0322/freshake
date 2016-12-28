@@ -37,7 +37,9 @@
     
     // 标题图片
     UIImageView *titleImageView = [[UIImageView alloc] init];
-    titleImageView.image = IMAGE(@"商品详情");
+    titleImageView.tintColor = [UIColor colorDomina];
+    
+    titleImageView.image = [IMAGE(@"商品详情") imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     titleImageView.frame = CGRectMake(15, 14, 22, 22);
     [self addSubview:titleImageView];
     
@@ -46,6 +48,7 @@
     titleLabel.frame = CGRectMake(CGRectGetMaxX(titleImageView.frame) + 10, 0, 100, 50);
     titleLabel.font = [UIFont systemFontOfSize:15];
     titleLabel.text = @"费用明细";
+    
     titleLabel.textColor = Color;
     [self addSubview:titleLabel];
     

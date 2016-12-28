@@ -78,7 +78,8 @@
 {
     // 创建带背景图片的按钮
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn setImage:[UIImage imageNamed:@"返回箭头"] forState:UIControlStateNormal];
+    btn.tintColor = [UIColor colorDomina];
+    [btn setImage:[[UIImage imageNamed:@"返回箭头"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
     [btn setFrame:CGRectMake(0, 0, 40, 40)];
     [btn setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 20)];
     [btn addTarget:target action:selector forControlEvents:UIControlEventTouchUpInside];

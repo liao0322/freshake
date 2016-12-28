@@ -14,7 +14,8 @@
 #import "MemberInfoCell.h"
 #import "PlayGroupView.h"
 #import "GroupDetailListModel.h"
-#import "GroupDetailsImageViewController.h"
+//#import "GroupDetailsImageViewController.h"
+#import "FSGroupBuyHelperViewController.h"
 
 @interface DetailsTableView ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -163,7 +164,7 @@
         
         PlayGroupView *playGroup = [[PlayGroupView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 90) andShowNumber:numberString];
         playGroup.goPlayGroup=^(){
-            _goController([GroupDetailsImageViewController new]);
+            _goController([FSGroupBuyHelperViewController new]);
         };
         
         [cell addSubview:playGroup];

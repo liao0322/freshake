@@ -10,7 +10,7 @@
 #import <AFNetworkActivityIndicatorManager.h>
 // #import "XFError.h"
 
-#define TIME_OUT_INTERVAL 15
+#define TIME_OUT_INTERVAL 5.0f
 
 #define KEY_NET_ERROR_REASON        @"reason"
 #define KEY_NET_ERROR_MESSAGE       @"message"
@@ -116,7 +116,9 @@ static BOOL _isNetwork;
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
     // 设置超时时间
+    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
     manager.requestSerializer.timeoutInterval = TIME_OUT_INTERVAL;
+    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
     
     // 设置客户端发送给服务器端的数据格式：HTTP (AFJSONRequestSerializer,AFHTTPRequestSerializer)
     manager.requestSerializer = [AFJSONRequestSerializer serializer]; // 上传JSON格式

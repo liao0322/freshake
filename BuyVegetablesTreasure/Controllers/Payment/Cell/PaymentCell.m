@@ -28,7 +28,8 @@
     [self.contentView addSubview:line];
     
     UIImageView *titleImage = [[UIImageView alloc] initWithFrame:CGRectMake(15, 15, 20, 20)];
-    titleImage.image = [UIImage imageNamed:@"选择支付方式图标"];
+    titleImage.tintColor = [UIColor colorDomina];
+    titleImage.image = [[UIImage imageNamed:@"选择支付方式图标"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     [self.contentView addSubview:titleImage];
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(titleImage.frame) + 10, 15, ScreenWidth, 20)];

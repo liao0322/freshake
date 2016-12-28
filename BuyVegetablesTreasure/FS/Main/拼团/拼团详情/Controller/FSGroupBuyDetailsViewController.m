@@ -11,6 +11,10 @@
 #import "SubmitOrderViewController.h"
 #import "SubmitGroupViewController.h"
 #import "ShopCart.h"
+#import "FSLoginViewController.h"
+#import "FSNavigationController.h"
+
+#import "FSGroupBuyHelperViewController.h"
 
 @interface FSGroupBuyDetailsViewController ()
 @property (weak, nonatomic) IBOutlet UIView *bgView;
@@ -53,6 +57,8 @@
 //    [self.salePriceLabel setText:[NSString stringWithFormat:@"原价￥%@", _model.salePrice]];
     [self.salePriceLabel sizeToFit];
     
+    [self.helpButton setTitle:[NSString stringWithFormat:@"需%@人成团，详见拼团玩法 >", _model.ActivityUserNum] forState:UIControlStateNormal];
+    
     self.singleBuyBGView.layer.cornerRadius = 10;
     self.singleBuyBGView.layer.masksToBounds = YES;
 
@@ -85,10 +91,7 @@
     
     [self.singleBuyPriceLabel setText:[NSString stringWithFormat:@"%@元", self.model.salePrice]];
     [self.groupBuyPriceLabel setText:[NSString stringWithFormat:@"%@元", self.model.ActivityPrice]];
-    
 }
-
-
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
@@ -195,10 +198,27 @@
 }
 
 - (IBAction)groupBuyButtonTouchUpInside:(UIButton *)sender {
+    
+    NSString *uid = [[NSUserDefaults standardUserDefaults] objectForKey:@"UID"];
+    
+    // 检查用户是否登录，如果未登录，跳转到登录页
+    // 如果 uid 为空
+    if ([Tools isBlankString:uid]) {
+        
+        FSLoginViewController *loginVC = [[FSLoginViewController alloc] init];
+        FSNavigationController *navController = [[FSNavigationController alloc] initWithRootViewController:loginVC];
+        [self presentViewController:navController animated:YES completion:nil];
+        return ;
+    }
+    
     SubmitGroupViewController *submitGroupVC = [SubmitGroupViewController new];
     submitGroupVC.groupModel = _model;
     [self.navigationController pushViewController:submitGroupVC animated:YES];
 }
 
+- (IBAction)helpButtonTouchUpInside:(UIButton *)sender {
+    FSGroupBuyHelperViewController *helperVC = [FSGroupBuyHelperViewController new];
+    [self.navigationController pushViewController:helperVC animated:YES];
+}
 
 @end

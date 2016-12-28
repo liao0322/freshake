@@ -8,9 +8,9 @@
 
 #import "FSShoppingCartTVCell.h"
 #import "ShopCart.h"
+#import "UIButton+EnlargeEdge.h"
 
 @interface FSShoppingCartTVCell ()
-
 
 
 @end
@@ -23,6 +23,9 @@
     [super awakeFromNib];
     
     self.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    [self.plusButton setEnlargeEdgeWithTop:10 right:5 bottom:10 left:5];
+    [self.minusButton setEnlargeEdgeWithTop:10 right:5 bottom:10 left:5];
 }
 
 - (void)layoutSubviews {

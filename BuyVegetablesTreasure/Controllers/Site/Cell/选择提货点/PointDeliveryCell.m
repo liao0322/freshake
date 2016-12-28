@@ -40,7 +40,8 @@
 
 - (void)initCell {
     
-    UIImage *distancaImg = IMAGE(@"地标");
+    UIImage *distancaImg = [IMAGE(@"地标") imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    
     
     // 定位View
     UIView *distancaView = [UIView new];
@@ -55,6 +56,7 @@
     
     // 定位图
     UIImageView *distancaImgView = [UIImageView new];
+    distancaImgView.tintColor = [UIColor colorDomina];
     distancaImgView.image = distancaImg;
     [distancaView addSubview:distancaImgView];
     

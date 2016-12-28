@@ -72,7 +72,7 @@
         [self initIntegralSwitch];
         [self initOrderTotalView];
         [self initTableView];
-        [self initDeliveryTimeView];
+        //[self initDeliveryTimeView];
     }
     
     return self;
@@ -94,6 +94,7 @@
     [_tableView registerClass:[PickupInfoCell class] forCellReuseIdentifier:@"PickupInfoCell"];
     [_tableView registerClass:[TimeOrCouponCell class] forCellReuseIdentifier:@"TimeOrCouponCell"];
     [_tableView registerClass:[RemarkCell class] forCellReuseIdentifier:@"RemarkCell"];
+    _tableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
     [self addSubview:_tableView];
     
     _tableView.sd_layout

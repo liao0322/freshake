@@ -302,7 +302,8 @@
     }
     
     UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(ScreenWidth / 2 - 8.5, CGRectGetHeight(_mapView.frame) / 2 - 25, 19, 25)];
-    iconImageView.image = [UIImage imageNamed:@"收货-地标"];
+    iconImageView.tintColor = [UIColor colorDomina];
+    iconImageView.image = [[UIImage imageNamed:@"收货-地标"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     [self.view addSubview:iconImageView];
 }
 

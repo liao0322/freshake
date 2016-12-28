@@ -12,7 +12,8 @@
 #import "PriceDetailCell.h"
 #import "PlayGroupView.h"
 #import "SiteViewController.h"
-#import "GroupDetailsImageViewController.h"
+//#import "GroupDetailsImageViewController.h"
+#import "FSGroupBuyHelperViewController.h"
 #import "RemarkCell.h"
 #import "PickupInfoCell.h"
 #import "TimeOrCouponCell.h"
@@ -212,7 +213,7 @@
             _playGroup = [[PlayGroupView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 90) andShowNumber:@"2"];
             
             _playGroup.goPlayGroup=^(){
-                weakGoViewController([GroupDetailsImageViewController new]);
+                weakGoViewController([FSGroupBuyHelperViewController new]);
             };
             
             [cell addSubview:_playGroup];
@@ -290,13 +291,14 @@
         bgView.backgroundColor = [UIColor whiteColor];
         
         UIImageView *titleImage = [[UIImageView alloc] initWithFrame:CGRectMake(15, 15, 20, 20)];
-        titleImage.image = [UIImage imageNamed:section == 0 ? @"到店自提图标" : @"商品详情"];
+        titleImage.tintColor = [UIColor colorDomina];
+        titleImage.image = [[UIImage imageNamed:section == 0 ? @"到店自提图标" : @"商品详情"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         [bgView addSubview:titleImage];
         
         UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(titleImage.frame) + 10, 15, ScreenWidth, 20)];
         titleLabel.text = section == 0 ? @"收（取）货地址" : @"商品详情";
         titleLabel.font = [UIFont systemFontOfSize:15];
-        titleLabel.textColor = [UIColor colorWithHexString:@"0xff6600"];
+        titleLabel.textColor = [UIColor colorDomina];
         [bgView addSubview:titleLabel];
         
         UILabel *line = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 0.5)];

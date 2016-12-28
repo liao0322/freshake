@@ -85,7 +85,7 @@
 #pragma mark - 初始化
 - (void)initPayGroupOrderTableView {
     
-    _payGroupOrderTableView = [[PayGroupOrderTableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - 64 - 50)];
+    _payGroupOrderTableView = [[PayGroupOrderTableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - 50)];
     _payGroupOrderTableView.gourpModel = _groupModel;
     [self.view addSubview:_payGroupOrderTableView];
     
@@ -122,14 +122,15 @@
 - (void)setNav {
     
     self.view.backgroundColor = [UIColor colorWithHexString:@"0xF6F6F6"];
-    self.navigationItem.titleView = [Utillity customNavToTitle:@"拼团提交"];
+    
+    self.title = @"拼团提交";
     self.navigationItem.leftBarButtonItem = [UIFactory createBackBBIWithTarget:self action:@selector(back)];
 }
 
 #pragma mark 付款
 - (void)payOrderView {
 
-    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, ScreenHeight - 50 - 64, ScreenWidth, 50)];
+    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, ScreenHeight - 50, ScreenWidth, 50)];
     bgView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:bgView];
     
@@ -146,7 +147,7 @@
     
     UIButton *orderStatusBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     orderStatusBtn.frame = CGRectMake(CGRectGetMaxX(_priceLabel.frame), 0, ScreenWidth / 5 * 2, CGRectGetHeight(bgView.frame));
-    orderStatusBtn.backgroundColor = [UIColor colorWithHexString:@"0xff6600"];
+    orderStatusBtn.backgroundColor = [UIColor colorDomina];
     orderStatusBtn.titleLabel.font = [UIFont systemFontOfSize:16];
     [orderStatusBtn setTitle:@"确认付款" forState:UIControlStateNormal];
     [orderStatusBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];

@@ -8,6 +8,7 @@
 
 #import "FSCommodityCVCell.h"
 #import "RightGoodsModel.h"
+#import "UIButton+EnlargeEdge.h"
 
 @interface FSCommodityCVCell ()
 
@@ -24,6 +25,9 @@
     
     self.topSeparatorLine.height = 0.5;
     self.topSeparatorLine.backgroundColor = [UIColor colorViewBG];
+    
+    [self.plusButton setEnlargeEdgeWithTop:10 right:5 bottom:10 left:5];
+    [self.minusButton setEnlargeEdgeWithTop:10 right:5 bottom:10 left:5];
     
 }
 

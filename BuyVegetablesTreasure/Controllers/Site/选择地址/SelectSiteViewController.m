@@ -40,8 +40,9 @@
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     
     _MapArray = [NSMutableArray array];
-    self.navigationItem.titleView = [Utillity customNavToTitle:@"选择自提点"];
-    self.navigationItem.leftBarButtonItem = [UIFactory createBackBBIWithTarget:self action:@selector(back)];
+//    self.navigationItem.titleView = [Utillity customNavToTitle:@"选择自提点"];
+    self.title = @"选择自提点";
+//    self.navigationItem.leftBarButtonItem = [UIFactory createBackBBIWithTarget:self action:@selector(back)];
 //    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:[[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentCity"] style:UIBarButtonItemStylePlain target:self action:@selector(selectCity)];
     self.navigationItem.rightBarButtonItem.tintColor = [UIColor colorWithHexString:@"0xffb743"];
     
@@ -66,7 +67,7 @@
     self.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:[SelectCityViewController new] animated:YES];
 }
-
+/*
 - (void)back{
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -74,6 +75,7 @@
     
     [self.navigationController popViewControllerAnimated:YES];
 }
+ */
 
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

@@ -75,7 +75,9 @@
     if (indexPath.section == 0) {
         
         cell.textLabel.text = [userDefaults objectForKey:@"CurrentSite"];
-        cell.imageView.image = [UIImage imageNamed:@"地址图标"];
+        cell.imageView.tintColor = [UIColor colorDomina];
+        cell.imageView.image = [[UIImage imageNamed:@"地址图标"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+
     }
     else if (indexPath.section == 1) {
         

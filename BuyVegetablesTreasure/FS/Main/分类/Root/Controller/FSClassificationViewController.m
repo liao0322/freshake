@@ -372,7 +372,6 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
     } failure:^(NSError *error, NSInteger statusCode) {
         [self showInfoWidthError:error];
     }];
-    
 }
 
 - (void)commodityTVCell:(FSCommodityTVCell *)cell minusButtonTouchUpInside:(UIButton *)sender {
@@ -438,35 +437,30 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
     if (scrollView == self.collectionView) {
         return;
     }
-    
     if (scrollView.contentOffset.y > 0) {
-        
         if (self.lastTVY > scrollView.contentOffset.y) { // 往下
             [self setTabBarHidden:NO];
         } else { // 往上
             [self setTabBarHidden:YES];
         }
     }
+    
     self.lastTVY = scrollView.contentOffset.y;
 }
 
 
-
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-
-    NSLog(@"");
     if (scrollView == self.collectionView) {
         return;
     }
     if (self.isCellSelected) {
         return;
     }
-    
+    if ([self.refreshControl isRefreshing]) {
+        return;
+    }
     NSIndexPath *topIndexpath = [[self.tableView indexPathsForVisibleRows] firstObject];
     NSIndexPath *willSelectIndexPath = [NSIndexPath indexPathForRow:0 inSection:topIndexpath.section];
-    
-    NSLog(@" top section = %ld", topIndexpath.section);
-    NSLog(@" will section = %ld", willSelectIndexPath.section);
     
     // 前一个选中的cell
     FSClassificationCVCell *prevCell = (FSClassificationCVCell *)[self.collectionView cellForItemAtIndexPath:self.selectedIndexPath];
@@ -480,7 +474,6 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
     self.selectedIndexPath = willSelectIndexPath;
     
     [self.collectionView selectItemAtIndexPath:willSelectIndexPath animated:YES scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
-    
 }
 
 #pragma mark - UISearchBarDelegate

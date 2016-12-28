@@ -1,26 +1,28 @@
 //
-//  FSSearchResultsViewController.m
+//  FSNewCommodityViewController.m
 //  BuyVegetablesTreasure
 //
-//  Created by DamonLiao on 2016/12/11.
+//  Created by DamonLiao on 2016/12/28.
 //  Copyright © 2016年 c521xiong. All rights reserved.
 //
 
-#import "FSSearchResultsViewController.h"
-#import "FSSearchResultTVCell.h"
-#import "SearchModel.h"
-#import "FSSearchViewController.h"
-#import "GoodsDetailViewController.h"
+#import "FSNewCommodityViewController.h"
+#import "FSNewCommodityTVCell.h"
 #import "FSShoppingCartIcon.h"
+#import "FSShoppingCartViewController.h"
+#import "GoodsDetailViewController.h"
+#import "NewPruduct.h"
 #import "FSLoginViewController.h"
 #import "FSNavigationController.h"
-#import "FSShoppingCartViewController.h"
 
-@interface FSSearchResultsViewController ()<UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, FSSearchResultTVCellDelegate>
+@interface FSNewCommodityViewController ()
+<
+    UITableViewDelegate,
+    UITableViewDataSource,
+    FSNewCommodityTVCellDelegate
+>
 
-@property (nonatomic) UITableView *tableView;
-
-@property (nonatomic) UISearchBar *searchBar;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (copy, nonatomic) NSMutableArray *dataArray;
 
@@ -32,21 +34,30 @@
 
 @end
 
-@implementation FSSearchResultsViewController
+@implementation FSNewCommodityViewController
 
-static NSString * const searchResultTVCellID = @"searchResultTVCellID";
-
-#pragma mark - LifeCycle
+static NSString * const newCommodityTVCellID = @"newCommodityTVCellID";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
 }
 
-- (void)addSubviews {
-    [self.view addSubview:self.tableView];
-    [self.view addSubview:self.cartView];
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self requestDataFromNet];
+    [self getShoppingCartNum];
+}
+- (void)initialization {
+    [super initialization];
+    self.title = self.isNewGoods ? @"新品" : @"促销";
+    self.tableView.separatorInset = UIEdgeInsetsMake(0, -10, 0, 0);
+    self.tableView.tableFooterView = [UIView new];
+}
 
+- (void)registerCells {
+    [super registerCells];
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([FSNewCommodityTVCell class]) bundle:nil] forCellReuseIdentifier:newCommodityTVCellID];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -54,10 +65,18 @@ static NSString * const searchResultTVCellID = @"searchResultTVCellID";
     // Dispose of any resources that can be recreated.
 }
 
+- (void)addSubviews {
+    [super addSubviews];
+    [self.view addSubview:self.cartView];
+}
+
+- (void)getDataFromRemote {
+    [super getDataFromRemote];
+
+}
+
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
-    
-    self.tableView.frame = self.view.bounds;
     
     self.cartView.width = 54;
     self.cartView.height = 54;
@@ -65,115 +84,46 @@ static NSString * const searchResultTVCellID = @"searchResultTVCellID";
     self.cartView.bottom = self.view.height - 40;
 }
 
-#pragma mark - Override
-
-- (void)getDataFromRemote {
-    [super getDataFromRemote];
-    
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSString *mid = [userDefaults objectForKey:@"MID"];
-    NSString *uid = [userDefaults objectForKey:@"UID"];
-    
-    NSString *urlString = [NSString stringWithFormat:QUERYGOODS,self.serachKeyWord,@"1",mid,uid];
-    
-    NSString *jsonString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    [SVProgressHUD show];
-    [XFNetworking GET:jsonString parameters:nil success:^(id responseObject, NSInteger statusCode) {
-        [SVProgressHUD dismiss];
-        
-        NSDictionary *dict = [self dictWithData:responseObject];
-        
-        if (self.dataArray.count > 0) {
-            [self.dataArray removeAllObjects];
-        }
-        NSArray *arr = dict[@"ClassList"];
-
-        for (NSDictionary *dic in arr) {
-            for (NSDictionary *dcit in dic[@"List"]) {
-                SearchModel *model = [SearchModel modelWithDict:dcit];
-                [self.dataArray addObject:model];
-            }
-        }
-        [self.tableView reloadData];
-        
-        if (self.dataArray.count ==0 ) {
-            [Tools myHud:@"抱歉，未搜索到任何商品" inView:self.view];
-        }
-        
-    } failure:^(NSError *error, NSInteger statusCode) {
-        [self showInfoWidthError:error];
-    }];
-    
-    [self getShoppingCartNum];
-    
-}
-
-- (void)registerCells {
-    [super registerCells];
-    
-    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([FSSearchResultTVCell class]) bundle:nil] forCellReuseIdentifier:searchResultTVCellID];
-    
-    
-}
-
-- (void)setupNavigationBar {
-    [super setupNavigationBar];
-    
-    self.navigationItem.titleView = self.searchBar;
-    
-}
-
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSInteger rows = 0;
-    if (self.dataArray.count) {
-        rows = self.dataArray.count;
-        self.cartView.hidden = NO;
-    } else {
-        self.cartView.hidden = YES;
-    }
+    rows = self.dataArray.count ? self.dataArray.count : 0;
     return rows;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    FSSearchResultTVCell *cell = [tableView dequeueReusableCellWithIdentifier:searchResultTVCellID forIndexPath:indexPath];
-    cell.model = self.dataArray[indexPath.row];
+    FSNewCommodityTVCell *cell = [tableView dequeueReusableCellWithIdentifier:newCommodityTVCellID forIndexPath:indexPath];
     cell.delegate = self;
+    cell.model = self.dataArray[indexPath.row];
     return cell;
 }
 
 #pragma mark - UITableViewDelegate
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NewPruduct *model = self.dataArray[indexPath.row];
+    
+    GoodsDetailViewController *goodsDetailVc = [[GoodsDetailViewController alloc] init];
+    NSString *productIdString = [[model.Id stringValue] stringByReplacingOccurrencesOfString:@"," withString:@""];
+    
+    goodsDetailVc.ProductId = [productIdString integerValue];
+    
+    [self.navigationController pushViewController:goodsDetailVc animated:YES];
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     return 135.0f;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    SearchModel *model = self.dataArray[indexPath.row];
-    
-    GoodsDetailViewController *goods = [[GoodsDetailViewController alloc] init];
-    goods.ProductId = [model.id integerValue];
-    
-    [self.navigationController pushViewController:goods animated:YES];
-    
-}
+#pragma mark - FSNewCommodityTVCellDelegate
 
-#pragma mark - UISearchBarDelegate
-
-- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
-    FSSearchViewController *searchVC = [[FSSearchViewController alloc] init];
-    searchVC.searchController.searchBar.text = self.serachKeyWord;
-    [self.navigationController popViewControllerAnimated:NO];
-    return NO;
-}
-
-#pragma mark - FSSearchResultTVCellDelegate
-- (void)searchResultTVCell:(FSSearchResultTVCell *)cell plusButtonTouchUpInside:(UIButton *)sender {
-    
+- (void)newCommodityTVCell:(FSNewCommodityTVCell *)cell plusButtonTouchUpInside:(UIButton *)sender {
     NSLog(@"点击了加号");
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-    SearchModel *model = self.dataArray[indexPath.row];
+    NewPruduct *model = self.dataArray[indexPath.row];
     
     NSString *uid = [[NSUserDefaults standardUserDefaults] objectForKey:@"UID"];
     NSString *mid = [[NSUserDefaults standardUserDefaults] objectForKey:@"MID"] ? [[NSUserDefaults standardUserDefaults] objectForKey:@"MID"] : @"2";
@@ -196,10 +146,10 @@ static NSString * const searchResultTVCellID = @"searchResultTVCellID";
     
     if (cartNum == 0) { // 第一次添加到购物车
         
-        urlString = [NSString stringWithFormat:ADDCARTURL, model.id, UUID, uid, totPriceString, @"1", mid, @"11"];
+        urlString = [NSString stringWithFormat:ADDCARTURL, [model.Id stringValue], UUID, uid, totPriceString, @"1", mid, @"11"];
         
     } else { // 更新购物车数量
-        urlString = [NSString stringWithFormat:UpCart, UUID, mid, model.id,uid,[NSString stringWithFormat:@"%ld", cartNum + 1], @"0"];
+        urlString = [NSString stringWithFormat:UpCart, UUID, mid, [model.Id stringValue],uid,[NSString stringWithFormat:@"%ld", cartNum + 1], @"0"];
     }
     [SVProgressHUD show];
     // 发送请求
@@ -216,7 +166,7 @@ static NSString * const searchResultTVCellID = @"searchResultTVCellID";
             
             cartNum++;
             model.CartNum = [NSString stringWithFormat:@"%ld", cartNum];
-            
+
             // 更新 UI
             [cell.countLabel setText:model.CartNum];
             
@@ -230,15 +180,13 @@ static NSString * const searchResultTVCellID = @"searchResultTVCellID";
     } failure:^(NSError *error, NSInteger statusCode) {
         [self showInfoWidthError:error];
     }];
-    
 }
 
-- (void)searchResultTVCell:(FSSearchResultTVCell *)cell minusButtonTouchUpInside:(UIButton *)sender {
-    
+- (void)newCommodityTVCell:(FSNewCommodityTVCell *)cell minusButtonTouchUpInside:(UIButton *)sender {
     NSLog(@"点击了减号");
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     
-    SearchModel *model = self.dataArray[indexPath.row];
+    NewPruduct *model = self.dataArray[indexPath.row];
     
     NSString *uid = [[NSUserDefaults standardUserDefaults] objectForKey:@"UID"];
     NSString *mid = [[NSUserDefaults standardUserDefaults] objectForKey:@"MID"] ? [[NSUserDefaults standardUserDefaults] objectForKey:@"MID"] : @"2";
@@ -248,9 +196,9 @@ static NSString * const searchResultTVCellID = @"searchResultTVCellID";
     NSString *urlString = @"";
     
     if (cartNum > 1) { // 更新商品的数量
-        urlString = [NSString stringWithFormat:UpCart, UUID, mid, model.id, uid,[NSString stringWithFormat:@"%ld", cartNum - 1], @"1"];
+        urlString = [NSString stringWithFormat:UpCart, UUID, mid, [model.Id stringValue], uid,[NSString stringWithFormat:@"%ld", cartNum - 1], @"1"];
     } else { // 从购物车删除商品
-        urlString = [NSString stringWithFormat:DelCartUrl,UUID,mid,model.id,uid];
+        urlString = [NSString stringWithFormat:DelCartUrl,UUID,mid,[model.Id stringValue],uid];
     }
     
     [SVProgressHUD show];
@@ -271,16 +219,56 @@ static NSString * const searchResultTVCellID = @"searchResultTVCellID";
             self.totalCartNumber += 1;
             [self.cartView.countLabel setText:[NSString stringWithFormat:@"%ld", self.totalCartNumber]];
             [self.cartView setNeedsLayout];
-            
+
         }
         
     } failure:^(NSError *error, NSInteger statusCode) {
         [self showInfoWidthError:error];
     }];
-    
+
 }
 
 #pragma mark - Custom
+
+#pragma mark 获取数据
+-(void)requestDataFromNet
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *midString = [userDefaults objectForKey:@"MID"];
+    NSString *uidString = [Tools isBlankString:[userDefaults objectForKey:@"UID"]] ? @"" : [userDefaults objectForKey:@"UID"];
+    NSString *urlString = [NSString stringWithFormat:GETPRUCTLIST,midString,uidString,_specialOffer,_latest];
+    [SVProgressHUD showWithStatus:@"正在加载..."];
+    [XFNetworking GET:urlString parameters:nil success:^(id responseObject, NSInteger statusCode) {
+        [SVProgressHUD dismiss];
+        NSDictionary *data = [self dictWithData:responseObject];
+        
+        if ([[NSString stringWithFormat:@"%@",data[@"issuccess"]] isEqualToString:@"1"]) {
+            
+            [self.dataArray removeAllObjects];
+            
+            for (NSDictionary *dict in data[@"ClassList"]) {
+                NewPruduct *model = [[NewPruduct alloc]init];
+                [model setValuesForKeysWithDictionary:dict];
+                [self.dataArray addObject:model];
+            }
+        }
+        
+        if (self.dataArray.count == 0) {
+            
+            _tableView.hidden = YES;
+            UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2 -50, SCREEN_HEIGHT/2-100, 100, 100)];
+            imageView.image = IMAGE(@"无数据");
+            imageView.contentMode = UIViewContentModeCenter;
+            [self.view addSubview:imageView];
+        } else {
+            self.cartView.hidden = NO;
+        }
+        
+        [_tableView reloadData];
+    } failure:^(NSError *error, NSInteger statusCode) {
+        [self showInfoWidthError:error];
+    }];
+}
 
 #pragma mark 获取购物车数量
 - (void)getShoppingCartNum {
@@ -305,7 +293,6 @@ static NSString * const searchResultTVCellID = @"searchResultTVCellID";
         [self showInfoWidthError:error];
     }];
 }
-
 
 #pragma mark 加入购物车动画
 - (void)initImage:(CGRect)rect withImage:(UIImage *)image {
@@ -341,36 +328,7 @@ static NSString * const searchResultTVCellID = @"searchResultTVCellID";
     }];
 }
 
-
 #pragma mark - LazyLoad
-
-- (UITableView *)tableView {
-    if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
-        _tableView.delegate = self;
-        _tableView.dataSource = self;
-        _tableView.separatorInset = UIEdgeInsetsMake(0, -10, 0, 0);
-        _tableView.tableFooterView = [[UIView alloc] init];
-    }
-    return _tableView;
-}
-
-- (UISearchBar *)searchBar {
-    if (!_searchBar) {
-        _searchBar = [[UISearchBar alloc] init];
-        _searchBar.delegate = self;
-        _searchBar.searchBarStyle = UISearchBarStyleMinimal;
-        _searchBar.text = self.serachKeyWord;
-    }
-    return _searchBar;
-}
-
-- (NSMutableArray *)dataArray {
-    if (!_dataArray) {
-        _dataArray = [NSMutableArray array];
-    }
-    return _dataArray;
-}
 
 - (FSShoppingCartIcon *)cartView {
     if (!_cartView) {
@@ -380,7 +338,7 @@ static NSString * const searchResultTVCellID = @"searchResultTVCellID";
         __weak __typeof(self)weakSelf = self;
         _cartView.toShoppingCartBlock = ^{
             __strong __typeof(weakSelf)strongSelf = weakSelf;
-            
+
             NSString *uid = [[NSUserDefaults standardUserDefaults] objectForKey:@"UID"];
             
             // 检查用户是否登录，如果未登录，跳转到登录页
@@ -393,16 +351,20 @@ static NSString * const searchResultTVCellID = @"searchResultTVCellID";
                 return ;
             }
             
-//            [strongSelf.navigationController dismissViewControllerAnimated:YES completion:nil];
-
             FSShoppingCartViewController *shoppingCartVC = [FSShoppingCartViewController new];
             [strongSelf.navigationController pushViewController:shoppingCartVC animated:YES];
         };
         
         _cartView.hidden = YES;
-        
+
     }
     return _cartView;
 }
 
+- (NSMutableArray *)dataArray {
+    if (!_dataArray) {
+        _dataArray = [NSMutableArray array];
+    }
+    return _dataArray;
+}
 @end

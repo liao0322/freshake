@@ -9,6 +9,7 @@
 #import "FSCommodityTVCell.h"
 #import "FSCommodityModel.h"
 #import "UIImage+Create.h"
+#import "UIButton+EnlargeEdge.h"
 
 @implementation FSCommodityTVCell
 
@@ -18,6 +19,9 @@
     [super awakeFromNib];
     // Initialization code
     self.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    [self.plusButton setEnlargeEdgeWithTop:10 right:5 bottom:10 left:5];
+    [self.minusButton setEnlargeEdgeWithTop:10 right:5 bottom:10 left:5];
     
 }
 
