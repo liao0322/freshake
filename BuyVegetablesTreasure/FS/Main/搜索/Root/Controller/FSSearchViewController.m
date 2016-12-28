@@ -206,6 +206,16 @@ static NSString * const searchFooterID = @"searchFooterID";
     return YES;
 }
 
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    searchBar.showsCancelButton = YES;
+    for (id cc in [searchBar.subviews[0] subviews]) {
+        if ([cc isKindOfClass:[UIButton class]]) {
+            UIButton *btn = (UIButton *)cc;
+            [btn setTitle:@"取消" forState:UIControlStateNormal];
+        }
+    }
+}
+
 // 取消button点击时调用
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     [self dismissViewControllerAnimated:NO completion:nil];

@@ -42,6 +42,8 @@
 #import "FSGroupBuyViewController.h"
 #import "AmountViewController.h"
 
+#import "FSNewCommodityViewController.h"
+
 #define NAV_BAR_ALPHA 0.95f
 
 @interface FSHomeViewController ()
@@ -633,16 +635,23 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
 
 /// 新品按钮点击事件
 - (void)fourButtonView:(FSHomeFourButtonView *)fourButtonView newCommodityButtonTouchUpInside:(XFVerticalButton *)sender {
-    [self.navigationController pushViewController:[UIViewController new] animated:NO];
-
     NSLog(@"新品");
+    FSNewCommodityViewController *newCommodityVC = [FSNewCommodityViewController new];
+    newCommodityVC.latest = @"1";
+    newCommodityVC.specialOffer = @"0";
+    newCommodityVC.isNewGoods = YES;
+    [self.navigationController pushViewController:newCommodityVC animated:YES];
 }
 
 /// 促销按钮点击事件
 - (void)fourButtonView:(FSHomeFourButtonView *)fourButtonView salesPromotionButtonTouchUpInside:(XFVerticalButton *)sender {
-    [self.navigationController pushViewController:[UIViewController new] animated:NO];
-
     NSLog(@"促销");
+    FSNewCommodityViewController *newCommodityVC = [FSNewCommodityViewController new];
+    newCommodityVC.latest = @"0";
+    newCommodityVC.specialOffer = @"1";
+    newCommodityVC.isNewGoods = NO;
+
+    [self.navigationController pushViewController:newCommodityVC animated:YES];
 }
 
 #pragma mark - FSCommodityCVCellDelegate
@@ -838,7 +847,7 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
 
     FSSearchViewController *searchVC = [[FSSearchViewController alloc] init];
     
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:searchVC];
+    FSNavigationController *navController = [[FSNavigationController alloc] initWithRootViewController:searchVC];
     navController.navigationBar.tintColor = [UIColor colorDomina];
     [self presentViewController:navController animated:NO completion:nil];
 

@@ -112,7 +112,7 @@
         
         _segmented = [[UISegmentedControl alloc] initWithItems:@[@"店铺自提",@"送货上门"]];
         _segmented.selectedSegmentIndex = 0;
-        _segmented.tintColor = [UIColor colorWithHexString:@"0xff6600"];
+        _segmented.tintColor = [UIColor colorDomina];
         [_segmented addTarget:self action:@selector(valueChange:) forControlEvents:UIControlEventValueChanged];
         self.navigationItem.titleView = _segmented;
     }

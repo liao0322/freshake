@@ -40,7 +40,9 @@
     _statusLabel.numberOfLines = 0;
     [self.contentView addSubview:_statusLabel];
     
-    _statusImageView = [[UIImageView alloc] initWithImage:IMAGE(@"待付款")];
+    _statusImageView = [[UIImageView alloc] initWithImage:[IMAGE(@"待付款") imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
+    _statusImageView.tintColor = [UIColor colorDomina];
+    
     _statusImageView.frame = CGRectMake(_statusLabel.frame.origin.x - 40, 26, 28, 28);
     [self.contentView addSubview:_statusImageView];
     
@@ -62,7 +64,7 @@
         
         _statusLabel.frame = frame;
         _statusLabel.text = @"待处理";
-        _statusImageView.image = IMAGE(@"待付款");
+        _statusImageView.image = [IMAGE(@"待付款") imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         
         if (_timeLabel == nil) {
             

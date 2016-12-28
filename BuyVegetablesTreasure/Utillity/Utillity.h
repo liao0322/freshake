@@ -38,7 +38,7 @@
 
 #define UUID [[UIDevice currentDevice] uniqueDeviceIdentifier]
 
-#define Color [UIColor colorWithHexString:@"0xff6600"]
+#define Color [UIColor colorDomina]
 
 @property ( nonatomic, copy ) UIButton *customButton;
 

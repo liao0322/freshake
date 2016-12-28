@@ -187,7 +187,7 @@ typedef NS_ENUM(NSInteger,CouponType) {
 #pragma mark - 导航条
 // 设置导航
 - (void)setNav {
-    self.navigationItem.titleView = [Utillity customNavToTitle:@"提交订单"];
+    self.title = @"提交订单";
     self.navigationItem.leftBarButtonItem = [UIFactory createBackBBIWithTarget:self action:@selector(back)];
 }
 

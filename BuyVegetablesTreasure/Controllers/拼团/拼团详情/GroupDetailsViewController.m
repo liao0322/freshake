@@ -10,9 +10,10 @@
 #import "PlayGroupView.h"
 #import "SubmitGroupViewController.h"
 #import "SubmitOrderViewController.h"
-#import "GroupDetailsImageViewController.h"
+//#import "GroupDetailsImageViewController.h"
 #import "ShopLoginViewController.h"
 #import "ShopCart.h"
+#import "FSGroupBuyHelperViewController.h"
 
 @interface GroupDetailsViewController ()<UITableViewDataSource,UITableViewDelegate>{
     
@@ -42,7 +43,7 @@
     PlayGroupView *_playGroup=[[PlayGroupView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 90) andShowNumber:@"1"];
     _playGroup.goPlayGroup=^(){
         self.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:[GroupDetailsImageViewController new] animated:YES];
+        [self.navigationController pushViewController:[FSGroupBuyHelperViewController new] animated:YES];
     };
     _tableView.tableFooterView=_playGroup;
 }
