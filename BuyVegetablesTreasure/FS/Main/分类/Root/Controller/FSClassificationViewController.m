@@ -327,7 +327,6 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
         
         [self presentViewController:navController animated:YES completion:nil];
         
-        //[self.navigationController pushViewController:[FSLoginViewController new] animated:YES];
         return ;
     }
     
@@ -357,9 +356,7 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
             
             cartNum++;
             model.CartNum = [NSString stringWithFormat:@"%ld", cartNum];
-            //[self.commodityArray replaceObjectAtIndex:indexPath.row withObject:model];
-            //[cModel.List replaceObjectAtIndex:indexPath.row withObject:model];
-            // 更新 UI
+
             [cell.countLabel setText:model.CartNum];
             
             // 设置 tabbar badge

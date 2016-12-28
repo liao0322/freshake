@@ -115,7 +115,6 @@ static NSString * const shoppingCartTVCellID = @"shoppingCartTVCellID";
             self.bottomView.bottom = self.view.height - 49;
         }
     }
-
 }
 
 - (void)registerCells {
