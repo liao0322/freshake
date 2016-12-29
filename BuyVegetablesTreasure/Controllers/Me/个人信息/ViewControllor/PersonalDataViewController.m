@@ -374,9 +374,21 @@
     hud.labelText = @"加载中...";
     [hud show:YES];
     
+    
+    
     if (imageData) {
         
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        
+        
+        manager.responseSerializer.acceptableContentTypes = [NSSet setWithArray:@[@"application/json",
+                                                                                  @"text/html",
+                                                                                  @"text/json",
+                                                                                  @"text/plain",
+                                                                                  @"text/javascript",
+                                                                                  @"text/xml",
+                                                                                  @"image/*"]];
+        
         NSDictionary *parameters = @{@"userId":[[NSUserDefaults standardUserDefaults] objectForKey:@"UID"]};
         
         [manager POST:UPDATEUSERIMAGE parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData)
