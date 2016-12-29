@@ -41,9 +41,12 @@
     [super viewDidLoad];
     imageData=[NSData data];
 
-    self.navigationItem.titleView = [Utillity customNavToTitle:@"个人信息"];
+    //self.navigationItem.titleView = [Utillity customNavToTitle:@"个人信息"];
+    self.title = @"个人信息";
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithHexString:@"0xf5f6f8"];
     self.navigationItem.leftBarButtonItem = [UIFactory createBackBBIWithTarget:self action:@selector(back)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(saveUserName)];
+    
     
     _nameString = [[NSUserDefaults standardUserDefaults] objectForKey:@"nick_name"];
     _sexString=[[NSUserDefaults standardUserDefaults]objectForKey:@"sex"];
@@ -68,7 +71,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -77,14 +80,16 @@
         
         return 1;
     }
+    else if (section == 1) {
+        return 1;
+    }
     else {
         
-        return 3;
+        return 2;
     }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     if (indexPath.section == 0) {
         
         IconInfoCell * cell = [tableView dequeueReusableCellWithIdentifier:@"MeUITTableViewCell"];
@@ -96,21 +101,54 @@
         return cell;
     }
     
+    else if (indexPath.section == 1) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NickCell"];
+        if (!cell) {
+            cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"NickCell"];
+            
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.backgroundColor = [UIColor whiteColor];
+        if ([cell viewWithTag:60] == nil) {
+            nametext = [[UITextField alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 180, 15, 140, 20)];
+            nametext.textAlignment = NSTextAlignmentRight;
+            nametext.delegate = self;
+            nametext.font = [UIFont systemFontOfSize:15.0];
+            nametext.textColor = [UIColor colorWithHexString:@"0x999999"];
+            nametext.tag = 60;
+            
+            [cell addSubview:nametext];
+
+        }
+        cell.textLabel.textColor = [UIColor colorWithHexString:@"0x999999"];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.textLabel.text = @"昵称";
+        UITextField *text = (UITextField *)[cell viewWithTag:60];
+        text.text = _nameString == nil ? @"鲜摇派" : _nameString;
+        return cell;
+    }
+    
     else {
         
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
         if (!cell) {
             cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+            
         }
+        
+
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.backgroundColor = [UIColor whiteColor];
-        if ([cell viewWithTag:60] == nil) {
-            UITextField *text = [[UITextField alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 180, 15, 140, 20)];
-            text.textAlignment = NSTextAlignmentRight;
-            text.font = [UIFont systemFontOfSize:15.0];
-            text.textColor = [UIColor colorWithHexString:@"0x999999"];
-            text.tag = 60;
+        if ([cell viewWithTag:80] == nil || [cell viewWithTag:70] == nil ) {
+            
+            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 180, 15, 140, 20)];
+            label.textAlignment = NSTextAlignmentRight;
+            label.font = [UIFont systemFontOfSize:15];
+            label.textColor = [UIColor colorWithHexString:@"0x999999"];
+            label.tag = indexPath.row == 0 ? 70 : 80;
+            
+            [cell addSubview:label];
             
             
             UILabel *line = [[UILabel alloc] initWithFrame:CGRectMake(0, 49, SCREEN_WIDTH, 1)];
@@ -122,39 +160,23 @@
             }
             
             [cell addSubview:line];
-            [cell addSubview:text];
-            nametext = text;
         }
-        else if  ([cell viewWithTag:80] == nil || [cell viewWithTag:70] == nil) {
-            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 180, 15, 140, 20)];
-            label.textAlignment = NSTextAlignmentRight;
-            label.font = [UIFont systemFontOfSize:15];
-            label.tag = indexPath.row == 1 ? 70 : 80;
-            label.textColor = [UIColor colorWithHexString:@"0x999999"];
-            
-            
-            [cell addSubview:label];
-        }
+       
         
         cell.textLabel.textColor = [UIColor colorWithHexString:@"0x999999"];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         
         if (indexPath.row == 0) {
-            cell.textLabel.text = @"昵称";
-            UITextField *text = (UITextField *)[cell viewWithTag:60];
-            text.text = _nameString == nil ? @"鲜摇派" : _nameString;
-        }
-        
-        else if (indexPath.row == 1) {
             cell.textLabel.text = @"性别";
             UILabel *label = ( UILabel * )[cell viewWithTag:70];
             label.text = _sexString==nil ? @"男" : _sexString;
         }
-        else if (indexPath.row == 2) {
+        
+        else if (indexPath.row == 1) {
             cell.textLabel.text = @"生日";
             UILabel *label = ( UILabel * )[cell viewWithTag:80];
             label.text = _dateString == nil ? @"1990-01-01" : _dateString;
-            
+
         }
         
         return cell;
@@ -243,6 +265,24 @@
     [imageData writeToFile:fullPath atomically:NO];
 }
 
+#pragma mark - 保存更新用户昵称
+- (void)saveUserName {
+    [nametext resignFirstResponder];
+    _nameString = nametext.text;
+    
+    NSLog(@"====昵称====%@",_nameString);
+
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:_nameString forKey:@"nick_name"];
+    [defaults synchronize];
+    
+    // 更新昵称
+    [self requestDataFromNetKey:@"nick_name" Value:[_nameString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    nametext.placeholder = [defaults objectForKey:@"nick_name"];
+    
+    [self.tableView reloadData];
+
+}
 #pragma mark - UIImagePickerControllerDelegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
@@ -257,23 +297,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     dateScrollView.hidden = YES;
-    if (indexPath.section == 1) {
+    if (indexPath.section == 2) {
         
         if (indexPath.row == 0) {
-//            NSLog(@"====昵称====%@",_nameString);
-//            
-//            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//            [defaults setObject:_nameString forKey:@"nick_name"];
-//            [defaults synchronize];
-//            
-//            // 更新昵称
-//            [self requestDataFromNetKey:@"nick_name" Value:[_nameString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-//            nametext.placeholder = [defaults objectForKey:@"nick_name"];
-//            
-//            [self.tableView reloadData];
-        }
-        else if (indexPath.row == 1) {
-            
             if (sexView == nil) {
                 sexView = [[NSBundle mainBundle] loadNibNamed:@"SexOrBirthdayView" owner:self options:nil][1];
                 sexView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 64);
@@ -292,9 +318,9 @@
                 //更新性别
                 [weakSelf requestDataFromNetKey:@"sex" Value:[sexString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
             };
+
         }
-        else if (indexPath.row == 2) {
-            
+        else if (indexPath.row == 1) {
             if (dateScrollView == nil) {
                 
                 dateScrollView = [[DateScrollView alloc] init];
@@ -312,7 +338,9 @@
                 };
                 
                 [self.view addSubview:dateScrollView];
-            }
+
+                   }
+    
             else {
                 
                 dateScrollView.hidden = NO;
@@ -381,17 +409,6 @@
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
-    [nametext resignFirstResponder];
-    NSLog(@"====昵称====%@",_nameString);
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:_nameString forKey:@"nick_name"];
-    [defaults synchronize];
-    
-    // 更新昵称
-    [self requestDataFromNetKey:@"nick_name" Value:[_nameString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    nametext.placeholder = [defaults objectForKey:@"nick_name"];
-    
-    [self.tableView reloadData];
-}
+//    [nametext resignFirstResponder];
+   }
 @end

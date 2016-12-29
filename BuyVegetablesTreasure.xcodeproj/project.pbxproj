@@ -8269,7 +8269,6 @@
 				TargetAttributes = {
 					52A35C821BCDEB9100309FC8 = {
 						CreatedOnToolsVersion = 6.3.2;
-						DevelopmentTeam = QUP3N2G398;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
@@ -9413,7 +9412,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: kang XU (9HJTJ9KTLK)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
-				DEVELOPMENT_TEAM = QUP3N2G398;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -9430,7 +9429,7 @@
 					"\"$(SRCROOT)/BuyVegetablesTreasure/Libs/alipay\"",
 				);
 				INFOPLIST_FILE = BuyVegetablesTreasure/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -9449,7 +9448,7 @@
 					"$(inherited)",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.xianyaopai.freshakee;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xianyaopai.freshake;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -9469,7 +9468,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: kang XU (9HJTJ9KTLK)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
-				DEVELOPMENT_TEAM = QUP3N2G398;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -9486,7 +9485,7 @@
 					"\"$(SRCROOT)/BuyVegetablesTreasure/Libs/alipay\"",
 				);
 				INFOPLIST_FILE = BuyVegetablesTreasure/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -9501,7 +9500,7 @@
 					"$(inherited)",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.xianyaopai.freshakee;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xianyaopai.freshake;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

@@ -19,11 +19,11 @@
 
 
 // 我的订单
-- (IBAction)myDingDanClick:(id)sender {
-    if ([self.delegate respondsToSelector:@selector(fsMeBottonView:myOrderButtonClick:)]) {
-        [self.delegate fsMeBottonView:self myOrderButtonClick:sender];
-    }
-}
+//- (IBAction)myDingDanClick:(id)sender {
+//    if ([self.delegate respondsToSelector:@selector(fsMeBottonView:myOrderButtonClick:)]) {
+//        [self.delegate fsMeBottonView:self myOrderButtonClick:sender];
+//    }
+//}
 
 // 我的优惠券
 - (IBAction)myYouHuiQuanClick:(id)sender {

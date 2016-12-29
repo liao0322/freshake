@@ -200,23 +200,23 @@
     
 }
 
-- (void)fsMeBottonView:(FSMeBottomView *)fsMeBottomView myOrderButtonClick:(UIButton *)sender {
-    
-    _uidString = [[NSUserDefaults standardUserDefaults] objectForKey:@"UID"];
-    
-    if (![Tools isBlankString:_uidString]) {
-        
-        [self pushViewControllerWithVC:[MyOrderViewController new]];
-    }
-    else {
-        FSLoginViewController *loginVC = [[FSLoginViewController alloc] init];
-        
-        FSNavigationController *navController = [[FSNavigationController alloc] initWithRootViewController:loginVC];
-        [self presentViewController:navController animated:YES completion:nil];
-    }
-
-//    [self pushViewControllerWithVC:[MyOrderViewController new]];
-}
+//- (void)fsMeBottonView:(FSMeBottomView *)fsMeBottomView myOrderButtonClick:(UIButton *)sender {
+//    
+//    _uidString = [[NSUserDefaults standardUserDefaults] objectForKey:@"UID"];
+//    
+//    if (![Tools isBlankString:_uidString]) {
+//        
+//        [self pushViewControllerWithVC:[MyOrderViewController new]];
+//    }
+//    else {
+//        FSLoginViewController *loginVC = [[FSLoginViewController alloc] init];
+//        
+//        FSNavigationController *navController = [[FSNavigationController alloc] initWithRootViewController:loginVC];
+//        [self presentViewController:navController animated:YES completion:nil];
+//    }
+//
+////    [self pushViewControllerWithVC:[MyOrderViewController new]];
+//}
 
 #pragma mark 前往我的拼团
 - (void)fsMeBottomView:(FSMeBottomView *)fsMeBottomView myPTButtonClick:(UIButton *)sender {
