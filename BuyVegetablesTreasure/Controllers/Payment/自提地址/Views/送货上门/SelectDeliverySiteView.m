@@ -32,7 +32,7 @@
 - (void)initAddSiteBtn {
 
     self.addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.addBtn.frame = CGRectMake(0, ScreenHeight - 64 - 45, ScreenWidth, 45);
+    self.addBtn.frame = CGRectMake(0, ScreenHeight - 45, ScreenWidth, 45);
     self.addBtn.backgroundColor = [UIColor colorDomina];
     self.addBtn.titleLabel.font = [UIFont systemFontOfSize:18];
     [self.addBtn setTitle:@"添加新地址" forState:UIControlStateNormal];
@@ -46,7 +46,8 @@
 #pragma mark 显示商家提货点
 - (void)initStoreDeliveryTableView {
     
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - 64 - 45) style:UITableViewStyleGrouped];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight) style:UITableViewStyleGrouped];
+    self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;

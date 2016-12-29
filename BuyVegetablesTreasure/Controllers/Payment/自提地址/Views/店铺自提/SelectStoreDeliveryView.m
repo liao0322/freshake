@@ -30,7 +30,8 @@
 #pragma mark 显示商家提货点
 - (void)initStoreDeliveryTableView {
     
-    _storeDeliveryTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - 64) style:UITableViewStyleGrouped];
+    _storeDeliveryTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight) style:UITableViewStyleGrouped];
+//    _storeDeliveryTableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
     _storeDeliveryTableView.delegate = self;
     _storeDeliveryTableView.dataSource = self;
     _storeDeliveryTableView.separatorStyle = NO;

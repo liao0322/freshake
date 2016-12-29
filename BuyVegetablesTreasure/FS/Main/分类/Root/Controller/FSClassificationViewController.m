@@ -479,9 +479,7 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
     
     FSSearchViewController *searchVC = [[FSSearchViewController alloc] init];
     
-    
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:searchVC];
-    navController.navigationBar.tintColor = [UIColor colorDomina];
+    FSNavigationController *navController = [[FSNavigationController alloc] initWithRootViewController:searchVC];
     [self presentViewController:navController animated:NO completion:nil];
     return NO;
 }
