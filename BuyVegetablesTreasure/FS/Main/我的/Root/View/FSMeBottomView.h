@@ -13,7 +13,7 @@
 @protocol FSMeBottomViewDelegate <NSObject>
 
 // 我的订单
-- (void)fsMeBottonView:(FSMeBottomView *)fsMeBottomView myOrderButtonClick:(UIButton *)sender;
+//- (void)fsMeBottonView:(FSMeBottomView *)fsMeBottomView myOrderButtonClick:(UIButton *)sender;
 
 // 优惠券按钮
 - (void)fsMeBottomView:(FSMeBottomView *)fsMeBottomView couponsButtonClick:(UIButton *)sender;
@@ -32,7 +32,7 @@
 @interface FSMeBottomView : UIView
 //@property (strong, nonatomic) IBOutlet UIView *fsBottomView;
 
-- (IBAction)myDingDanClick:(id)sender;
+//- (IBAction)myDingDanClick:(id)sender;
 
 - (IBAction)myYouHuiQuanClick:(id)sender;
 
