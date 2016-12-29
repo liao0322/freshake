@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MyOrderView.h"
 
 @interface MyOrderViewController : UIViewController
+
+@property (nonatomic, strong) MyOrderView *myOrderView;
 
 @end

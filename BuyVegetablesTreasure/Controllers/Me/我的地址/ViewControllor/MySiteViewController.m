@@ -36,7 +36,8 @@
 
     self.view.backgroundColor = [UIColor whiteColor];
     
-    self.navigationItem.titleView = [Utillity customNavToTitle:@"我的地址"];
+//    self.navigationItem.titleView = [Utillity customNavToTitle:@"我的地址"];
+    self.title = @"我的地址";
     self.navigationItem.leftBarButtonItem = [UIFactory createBackBBIWithTarget:self action:@selector(back)];
     self.navigationItem.rightBarButtonItem = [UIFactory createImageBBI:IMAGE(@"收货-增加收货地址") WithTarget:self action:@selector(goAddSite)];
     
@@ -46,7 +47,7 @@
 - (void)initUserSiteView {
     
     _userAddressArray = [NSMutableArray array];
-    _userSiteView = [[SelectDeliverySiteView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64)];
+    _userSiteView = [[SelectDeliverySiteView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 64)];
     _userSiteView.backgroundColor = [UIColor redColor];
     [self.view addSubview:_userSiteView];
     
@@ -194,7 +195,6 @@
     [HttpRequest sendGetOrPostRequest:urlString param:nil requestStyle:Get setSerializer:Json isShowLoading:YES success:^(id data)
      {
          if ([data[@"issuccess"] boolValue]) {
-             
              [_userSiteView.tableView.mj_header beginRefreshing];
              [Tools myHud:data[@"context"] inView:[[UIApplication sharedApplication].delegate window]];
          }

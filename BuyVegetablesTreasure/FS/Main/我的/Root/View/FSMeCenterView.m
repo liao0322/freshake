@@ -14,6 +14,7 @@
 @property (nonatomic, strong) NSArray *selectImgArray;
 @property (nonatomic, strong) NSArray *titleArray;
 @property (nonatomic, strong) UILabel *countLabel;
+@property (nonatomic, copy)   NSString *uidString;
 @end
 
 @implementation FSMeCenterView
@@ -75,7 +76,7 @@
         int btnWidth = SCREEN_WIDTH / _titleArray.count;
         
         UIButton *bgBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        bgBtn.tag = i + 100;
+        bgBtn.tag = i + 140;
         bgBtn.frame = CGRectMake(btnWidth * i, CGRectGetMaxY(line.frame), btnWidth, self.frame.size.height - CGRectGetMaxY(line.frame));
         [bgBtn addTarget:self action:@selector(centerBtnClick:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:bgBtn];
@@ -116,6 +117,16 @@
 }
 
 - (void)centerBtnClick:(UIButton *)sender {
+    
+    if (sender.tag == 140) {
+        _btnIndex = 1;
+    } else if (sender.tag == 141) {
+        _btnIndex = 2;
+    } else if (sender.tag == 142) {
+        _btnIndex = 3;
+    } else {
+        _btnIndex = 4;
+    }
     if ([self.delegate respondsToSelector:@selector(fsCenterView:allOrderButtonClick:)]) {
         [self.delegate fsCenterView:self allOrderButtonClick:sender];
     }
@@ -128,26 +139,43 @@
 }
 
 - (void)setLabelCountWithModel:(MyOrderModel *)model {
-    NSArray *arr = @[model.NoPaymentCount,model.NoPickupCount,model.CompleteCount,model.EvaluateCount];
     
-    for (int i = 0; i < 4; i++) {
+    _uidString = [[NSUserDefaults standardUserDefaults] objectForKey:@"UID"];
+    
+    if (![Tools isBlankString:_uidString]) {
         
+        NSArray *arr = @[model.NoPaymentCount,model.NoPickupCount,model.CompleteCount,model.EvaluateCount];
         
-        NSString *countString = [NSString stringWithFormat:@"%zd",[arr[i] integerValue]];
-        
-        if ([arr[i] integerValue] > 0) {
-            _countLabel.hidden = NO;
+        for (int i = 0; i < 4; i++) {
+            
+            
+            NSString *countString = [NSString stringWithFormat:@"%zd",[arr[i] integerValue]];
+            
+            if ([arr[i] integerValue] > 0) {
+                _countLabel.hidden = NO;
+            }
+            
+            if ([arr[i] integerValue] > 99) {
+                countString = @"99+";
+            }
+            
+            
+            [(UILabel *)[self viewWithTag:i + 70] setText:countString];
+            [(UILabel *)[self viewWithTag:i + 70] setHidden:[countString isEqualToString:@"0"] ? YES : NO];
         }
+
         
-        if ([arr[i] integerValue] > 99) {
-            countString = @"99+";
+    }
+    else {
+        for (int i = 0; i < 4; i++) {
+            
+            [(UILabel *)[self viewWithTag:i + 70] setHidden:YES];
         }
-        
-       
-        [(UILabel *)[self viewWithTag:i + 70] setText:countString];
-        [(UILabel *)[self viewWithTag:i + 70] setHidden:[countString isEqualToString:@"0"] ? YES : NO];
+
     }
 
+    
+   
 }
 
 

@@ -21,8 +21,10 @@
 @interface FSMeCenterView : UIView
 
 @property (nonatomic, weak) id<FSMeCenterViewDelegate> delegate;
+@property (nonatomic, assign) NSInteger btnIndex;
 
 - (void)setLabelCountWithModel:(MyOrderModel *)model;
+
 
 
 @end

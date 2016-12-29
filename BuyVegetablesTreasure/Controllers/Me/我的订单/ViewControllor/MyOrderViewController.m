@@ -10,7 +10,6 @@
 #import "Order.h"
 #import "MyOrderModel.h"
 #import "WXApi.h"
-#import "MyOrderView.h"
 #import "OrderStateView.h"
 #import "GoodsCartViewController.h"
 
@@ -24,7 +23,6 @@
 @property (nonatomic, strong) NSMutableArray *orderCountArray;
 
 @property (nonatomic, strong) UIButton *bgView;
-@property (nonatomic, strong) MyOrderView *myOrderView;
 @property (nonatomic, strong) OrderStateView *orderStateView;
 
 @end
@@ -54,7 +52,8 @@
 #pragma mark 设置导航
 - (void)setNav {
     self.view.backgroundColor = [UIColor colorWithHexString:@"0xf2f2f2"];
-    self.navigationItem.titleView = [Utillity customNavToTitle:@"我的订单"];
+//    self.navigationItem.titleView = [Utillity customNavToTitle:@"我的订单"];
+    self.title = @"我的订单";
     self.navigationItem.leftBarButtonItem = [UIFactory createBackBBIWithTarget:self action:@selector(back)];
 }
 
@@ -74,7 +73,7 @@
 #pragma mark 我的订单界面
 - (void)initMyOrderView {
     
-    _myOrderView = [[MyOrderView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight - 64)];
+    _myOrderView = [[MyOrderView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight)];
     [self.view addSubview:_myOrderView];
     
     WS(weakSelf);

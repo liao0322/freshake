@@ -41,7 +41,8 @@
     
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithHexString:@"0xf5f6f8"];
     self.view.backgroundColor = [UIColor colorWithHexString:@"0xF6F6F6"];
-    self.navigationItem.titleView = [Utillity customNavToTitle:@"帮助"];
+//    self.navigationItem.titleView = [Utillity customNavToTitle:@"帮助"];
+    self.title = @"帮助";
     self.navigationItem.leftBarButtonItem = [UIFactory createBackBBIWithTarget:self action:@selector(back)];
 }
 

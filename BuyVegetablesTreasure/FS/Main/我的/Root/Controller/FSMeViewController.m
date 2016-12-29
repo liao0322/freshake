@@ -47,6 +47,7 @@
 
 @property (nonatomic, strong) NSMutableArray *orderCountArray;
 
+
 @end
 
 @implementation FSMeViewController
@@ -71,7 +72,8 @@
 
     }
     else {
-        
+        [self getCount];
+
         [_dataSourse removeAllObjects];
     }
     [_headView setUserData];
@@ -102,7 +104,7 @@
     if (SCREEN_HEIGHT == 480) {
         scrollView.contentSize = CGSizeMake(0, scrollView.frame.size.height + 50);
     } else if (SCREEN_HEIGHT == 568) {
-        scrollView.contentSize = CGSizeMake(0, scrollView.frame.size.height - 50);
+        scrollView.contentSize = CGSizeMake(0, scrollView.frame.size.height - 80);
     }
     scrollView.showsVerticalScrollIndicator = NO;
     if (SCREEN_HEIGHT <= 568) {
@@ -137,6 +139,7 @@
     _centerView = [[FSMeCenterView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_headView.frame) + 10, SCREEN_WIDTH, 115)];
     _centerView.delegate = self;
     [_bgScrollView addSubview:_centerView];
+    
     
     _bottomView = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([FSMeBottomView class]) owner:self options:nil] lastObject];
     _bottomView.delegate = self;
@@ -187,8 +190,13 @@
     _uidString = [[NSUserDefaults standardUserDefaults] objectForKey:@"UID"];
     
     if (![Tools isBlankString:_uidString]) {
-        
-        [self pushViewControllerWithVC:[MyOrderViewController new]];
+        MyOrderViewController *myOrderVC = [[MyOrderViewController alloc] init];
+        NSLog(@"^^^^^^^^^^^&&&&&%ld", self.centerView.btnIndex);
+        myOrderVC.myOrderView.indexStr = [NSString stringWithFormat:@"%ld", self.centerView.btnIndex];
+        self.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:myOrderVC animated:YES];
+        self.hidesBottomBarWhenPushed = NO;
+//        [self pushViewControllerWithVC:[MyOrderViewController new]];
     }
     else {
         FSLoginViewController *loginVC = [[FSLoginViewController alloc] init];
@@ -200,23 +208,6 @@
     
 }
 
-//- (void)fsMeBottonView:(FSMeBottomView *)fsMeBottomView myOrderButtonClick:(UIButton *)sender {
-//    
-//    _uidString = [[NSUserDefaults standardUserDefaults] objectForKey:@"UID"];
-//    
-//    if (![Tools isBlankString:_uidString]) {
-//        
-//        [self pushViewControllerWithVC:[MyOrderViewController new]];
-//    }
-//    else {
-//        FSLoginViewController *loginVC = [[FSLoginViewController alloc] init];
-//        
-//        FSNavigationController *navController = [[FSNavigationController alloc] initWithRootViewController:loginVC];
-//        [self presentViewController:navController animated:YES completion:nil];
-//    }
-//
-////    [self pushViewControllerWithVC:[MyOrderViewController new]];
-//}
 
 #pragma mark 前往我的拼团
 - (void)fsMeBottomView:(FSMeBottomView *)fsMeBottomView myPTButtonClick:(UIButton *)sender {

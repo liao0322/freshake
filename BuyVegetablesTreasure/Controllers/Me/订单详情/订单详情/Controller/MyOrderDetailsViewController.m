@@ -29,7 +29,8 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor colorWithHexString:@"0xf2f2f2"];
-    self.navigationItem.titleView = [Utillity customNavToTitle:@"订单详情"];
+//    self.navigationItem.titleView = [Utillity customNavToTitle:@"订单详情"];
+    self.title = @"订单详情";
     self.navigationItem.leftBarButtonItem = [UIFactory createBackBBIWithTarget:self action:@selector(back)];
     
     // 初始化支付按钮

@@ -126,12 +126,12 @@
     .heightEqualToWidth();
     
     // 是否匿名
-    UIImage *img = IMAGE(@"匿名未勾选");
+    UIImage *img = IMAGE(@"FSPJ未选中");
     UIButton *isAnonymousBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     isAnonymousBtn.selected = YES;
     isAnonymousBtn.frame = CGRectMake(20, CGRectGetMaxY(self.textViwe.frame) + 10, img.size.width, img.size.height);
     [isAnonymousBtn setImage:img forState:UIControlStateNormal];
-    [isAnonymousBtn setImage:IMAGE(@"匿名勾选") forState:UIControlStateSelected];
+    [isAnonymousBtn setImage:IMAGE(@"FSPJ选中") forState:UIControlStateSelected];
     [isAnonymousBtn addTarget:self action:@selector(isAnonymous:) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:isAnonymousBtn];
     
@@ -157,17 +157,18 @@
     // 提交按钮
     UIButton *sendBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     sendBtn.titleLabel.font = [UIFont systemFontOfSize:13];
-    sendBtn.layer.borderColor = Color.CGColor;
+    sendBtn.layer.borderColor = [UIColor colorDomina].CGColor;
     sendBtn.layer.borderWidth = 1;
+    sendBtn.layer.cornerRadius = 5;
     [sendBtn setTitle:@"发表评价" forState:UIControlStateNormal];
-    [sendBtn setTitleColor:Color forState:UIControlStateNormal];
+    [sendBtn setTitleColor:[UIColor colorWithHexString:@"0x404040"] forState:UIControlStateNormal];
     [sendBtn addTarget:self action:@selector(btnClick) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:sendBtn];
     
     sendBtn.sd_layout
     .centerXEqualToView(self.contentView)
     .topSpaceToView(anonymousLabel, 15)
-    .widthIs(ScreenWidth / 5 * 3)
+    .widthIs(ScreenWidth - 80)
     .heightIs(45);
     
     [self setupAutoHeightWithBottomView:sendBtn bottomMargin:30];

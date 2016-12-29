@@ -87,7 +87,7 @@
         cell.accessoryView = _orderStatusLabel;
         
         cell.selectionStyle = UITableViewCellStyleDefault;
-        cell.imageView.image = IMAGE(@"订单号");
+        cell.imageView.image = IMAGE(@"FSMyOrder订单");
         cell.textLabel.text = [NSString stringWithFormat:@"订单号:%@",_model.order_no];
         cell.textLabel.font = [UIFont systemFontOfSize:13];
         cell.textLabel.textColor = [UIColor colorWithHexString:@"0x606060"];

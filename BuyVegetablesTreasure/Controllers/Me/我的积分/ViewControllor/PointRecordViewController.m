@@ -26,7 +26,8 @@
     [super viewDidLoad];
     _dataSourse = [NSMutableArray array];
     self.view.backgroundColor = [UIColor colorWithHexString:@"0xf2f2f2"];
-    self.navigationItem.titleView = [Utillity customNavToTitle:@"积分记录"];
+//    self.navigationItem.titleView = [Utillity customNavToTitle:@"积分记录"];
+    self.title = @"积分记录";
     self.navigationItem.leftBarButtonItem = [UIFactory createBackBBIWithTarget:self action:@selector(back)];
     [self initView];
     [self initUITableView];

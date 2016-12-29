@@ -38,7 +38,8 @@
     [super viewDidLoad];
 
     self.view.backgroundColor = [UIColor colorWithHexString:@"0xF2F2F2"];
-    self.navigationItem.titleView = [Utillity customNavToTitle:@"收 藏"];
+//    self.navigationItem.titleView = [Utillity customNavToTitle:@"收 藏"];
+    self.title = @"收 藏";
     self.navigationItem.leftBarButtonItem = [UIFactory createBackBBIWithTarget:self action:@selector(back)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStyleDone target:self action:@selector(edit)];
     self.navigationItem.rightBarButtonItem.tintColor = [UIColor colorDomina];

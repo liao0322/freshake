@@ -20,7 +20,8 @@
     _isOpenPush=@"0";
     self.view.backgroundColor = [UIColor colorWithHexString:@"0xF2F2F2"];
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithHexString:@"0xf5f6f8"];
-    self.navigationItem.titleView = [Utillity customNavToTitle:@"消息设置"];
+//    self.navigationItem.titleView = [Utillity customNavToTitle:@"消息设置"];
+    self.title = @"消息设置";
     self.navigationItem.leftBarButtonItem = [UIFactory createBackBBIWithTarget:self action:@selector(back)];
     if ([[UIDevice currentDevice].systemVersion floatValue] >=8.0f) {
         // system is iOS8

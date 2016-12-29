@@ -18,7 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithHexString:@"0xdf3c5c"];
-    self.navigationItem.titleView = [Utillity customNavToTitle:@"优惠券详情"];
+//    self.navigationItem.titleView = [Utillity customNavToTitle:@"优惠券详情"];
+    self.title = @"优惠券详情";
     self.navigationItem.leftBarButtonItem = [UIFactory createBackBBIWithTarget:self action:@selector(back)];
     
     [self initCouponsDetailView];

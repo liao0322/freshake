@@ -38,6 +38,7 @@
     [cell setBackgroundColor:[UIColor colorWithHexString:@"0xf2f2f2"]];
     [cell setModel:self.dataSource[indexPath.section]];
     [cell useCellFrameCacheWithIndexPath:indexPath tableView:tableView];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 

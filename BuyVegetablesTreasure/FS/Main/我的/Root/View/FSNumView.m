@@ -22,11 +22,11 @@
     
     float width = ScreenWidth / 3;
     for (int i  = 0; i < 3; i++) {
-        _button = [UIButton buttonWithType:UIButtonTypeSystem];
+        _button = [UIButton buttonWithType:UIButtonTypeCustom];
         _button.frame = CGRectMake(i * width, 0, width, 50);
         _button.tag = 50 + i;
+        _button.adjustsImageWhenHighlighted = NO;
         [_button addTarget:self action:@selector(meBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-        _button.showsTouchWhenHighlighted = YES;
         [self addSubview:_button];
     }
     

@@ -23,7 +23,8 @@
 
     _dataSource = [NSMutableArray array];
     self.view.backgroundColor = [UIColor colorWithHexString:@"0xf2f2f2"];
-    self.navigationItem.titleView = [Utillity customNavToTitle:@"我的拼团"];
+//    self.navigationItem.titleView = [Utillity customNavToTitle:@"我的拼团"];
+    self.title = @"我的拼团";
     self.navigationItem.leftBarButtonItem = [UIFactory createBackBBIWithTarget:self action:@selector(back)];
     
     [self initMyGroupTableView];

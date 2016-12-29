@@ -96,9 +96,9 @@
     
     _rightImage.sd_layout
     .rightSpaceToView(bgImageView, 22)
-    .topSpaceToView(bgImageView, 65)
+    .topSpaceToView(bgImageView, 70)
     .widthIs(15)
-    .heightIs(30);
+    .heightIs(28);
     
     _numView = [[FSNumView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 50)];
     _numView.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.5];

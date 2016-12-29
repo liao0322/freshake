@@ -21,6 +21,7 @@
 @property (nonatomic, strong) NSArray *titleArray;
 @property (nonatomic, assign) CGRect temRect;
 @property (nonatomic, strong) UIButton *temBtn;
+@property (nonatomic, strong) UIButton *bgBtn;
 @property (nonatomic, strong) UIPageControl *page;
 @property (nonatomic, strong) UIView *bgBtnView;
 
@@ -50,28 +51,34 @@
         
         int btnWidth = SCREEN_WIDTH / _titleArray.count;
         
-        UIButton *bgBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        bgBtn.tag = i + 100;
-        bgBtn.frame = CGRectMake(btnWidth * i + 5, 0, btnWidth, bg_Height);
-        [bgBtn setTitle:_titleArray[i] forState:UIControlStateNormal];
+        _bgBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _bgBtn.tag = i + 100;
+        _bgBtn.frame = CGRectMake(btnWidth * i + 5, 0, btnWidth, bg_Height);
+        [_bgBtn setTitle:_titleArray[i] forState:UIControlStateNormal];
         //        [bgBtn setTitleColor:[UIColor colorWithHexString:@"0x404040"] forState:UIControlStateNormal];
-        bgBtn.titleLabel.font = [UIFont systemFontOfSize:14.0];
-        [_btnArr addObject:bgBtn];
-        [bgBtn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+        _bgBtn.titleLabel.font = [UIFont systemFontOfSize:14.0];
+        [_btnArr addObject:_bgBtn];
+        [_bgBtn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+        
+        
         
         if (i == 0) {
-            [bgBtn setTitleColor:[UIColor colorDomina] forState:UIControlStateNormal];
-            _temBtn = bgBtn;
-            _temRect = bgBtn.frame;
+            [_bgBtn setTitleColor:[UIColor colorDomina] forState:UIControlStateNormal];
+            _temBtn = _bgBtn;
+            _temRect = _bgBtn.frame;
         } else {
             
-            [bgBtn setTitleColor:[UIColor colorWithHexString:@"0x404040"] forState:UIControlStateNormal];
+            [_bgBtn setTitleColor:[UIColor colorWithHexString:@"0x404040"] forState:UIControlStateNormal];
         }
         
-        [_bgBtnView addSubview:bgBtn];
+        [_bgBtnView addSubview:_bgBtn];
     }
-    
-    _lineScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_temRect), SCREEN_WIDTH / _titleArray.count, 2)];
+    if ([_indexStr intValue] == 1) {
+        _bgBtn.tag = 101;
+        [_bgBtn sendActionsForControlEvents:UIControlEventTouchUpInside];
+    }
+
+    _lineScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(ScreenWidth == 320 ? 12 : 12, CGRectGetMaxY(_temRect), SCREEN_WIDTH / _titleArray.count - 15, 2)];
     _lineScrollView.backgroundColor = [UIColor colorDomina];
     _lineScrollView.delegate = self;
     _lineScrollView.contentSize = CGSizeMake(SCREEN_WIDTH * _titleArray.count, 2);
@@ -278,7 +285,6 @@
     [_temBtn setTitleColor:[UIColor colorWithHexString:@"0x404040"] forState:UIControlStateNormal];
     [btn setTitleColor:[UIColor colorDomina] forState:UIControlStateNormal];
     _temBtn = btn;
-    
     if (btn.tag == 100) {
         [_bgScrollView setContentOffset:CGPointMake(0, 0) animated:YES];
         _stateUrl = ORDER;
@@ -312,7 +318,7 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if (scrollView == _bgScrollView) {
         _lineScrollView.contentOffset = CGPointMake(_bgScrollView.contentOffset.x / _titleArray.count, 0);
-        _lineScrollView.frame = CGRectMake(_bgScrollView.contentOffset.x / _titleArray.count, bg_Height, SCREEN_WIDTH / _titleArray.count, 2);
+        _lineScrollView.frame = CGRectMake(_bgScrollView.contentOffset.x / _titleArray.count + 12, bg_Height, SCREEN_WIDTH / _titleArray.count - 15, 2);
     }
 }
 

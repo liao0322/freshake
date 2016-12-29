@@ -48,14 +48,15 @@
 
 - (void)setNav {
     
-    self.view.backgroundColor = [UIColor colorWithHexString:@"0xF6F6F6"];
-    self.navigationItem.titleView = [Utillity customNavToTitle:@"商品评价"];
+    self.view.backgroundColor = [UIColor colorWithHexString:@"0xF2F2F2"];
+//    self.navigationItem.titleView = [Utillity customNavToTitle:@"商品评价"];
+    self.title = @"商品评价";
     self.navigationItem.leftBarButtonItem = [UIFactory createBackBBIWithTarget:self action:@selector(back)];
 }
 
 - (void)initScoreView {
 
-    ScoreView *scoreView = [[ScoreView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - 64)];
+    ScoreView *scoreView = [[ScoreView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
     scoreView.model = _orderModel;
     [scoreView refreshTableView];
     [self.view addSubview:scoreView];

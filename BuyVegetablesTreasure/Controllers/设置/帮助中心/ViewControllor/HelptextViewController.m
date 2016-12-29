@@ -21,7 +21,8 @@
     {
         _titleText = @"帮  助";
     }
-    self.navigationItem.titleView = [Utillity customNavToTitle:_titleText];
+//    self.navigationItem.titleView = [Utillity customNavToTitle:_titleText];
+    self.title = _titleText;
     self.view.backgroundColor = [UIColor colorWithHexString:@"0xF6F6F6"];
     self.navigationItem.leftBarButtonItem = [UIFactory createBackBBIWithTarget:self action:@selector(back)];
     

@@ -49,7 +49,7 @@
     for (int i = 0; i < 3; i++) {
         
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame = CGRectMake(ScreenWidth - 90 * 3 - 45 + 105 * i, 0, 90, 40);
+        btn.frame = CGRectMake(ScreenWidth - 85 * 3 - 50 + 100 * i, 0, 85, 35);
         btn.titleLabel.font = [UIFont systemFontOfSize:14.0];
         btn.tag = i + 10;
         btn.hidden = i == 2 ? NO : YES;
@@ -124,7 +124,7 @@
             [(UIButton *)[self viewWithTag:11] setHidden:NO];
             [(UIButton *)[self viewWithTag:11] setTitle:@"再次购买" forState:UIControlStateNormal];
             
-            CGRect frame = CGRectMake(ScreenWidth - 75 * 3 - 45, 0, 75, 30);
+            CGRect frame = CGRectMake(ScreenWidth - 85 * 3 - 50, 0, 85, 35);
             [(UIButton *)[self viewWithTag:10] setFrame:frame];
         }
         else if (![midString isEqualToString:[model.sid stringValue]]){

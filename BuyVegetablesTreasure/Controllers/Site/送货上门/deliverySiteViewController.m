@@ -26,6 +26,7 @@
 @property (nonatomic, assign) CLLocationCoordinate2D currentCoor;
 @property (nonatomic, strong) Map *mapModel;
 @property (nonatomic, strong) UISwitch *defaultSwitch;
+@property (nonatomic, strong) UIButton *saveBtn;
 
 @end
 
@@ -66,7 +67,8 @@
 
 #pragma mark 导航
 - (void)setNav {
-    self.navigationItem.titleView = [Utillity customNavToTitle:_isDeleteSite ? @"编辑地址" : @"添加地址"];
+//    self.navigationItem.titleView = [Utillity customNavToTitle:_isDeleteSite ? @"编辑地址" : @"添加地址"];
+    self.title = _isDeleteSite ? @"编辑地址" : @"添加地址";
     self.navigationItem.leftBarButtonItem = [UIFactory createBackBBIWithTarget:self action:@selector(back)];
 //    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(saveUserInfo)];
 //    self.navigationItem.rightBarButtonItem.tintColor = Color;
@@ -87,14 +89,15 @@
     [self.view addSubview:_userInfoTableView];
     
     // 保存按钮
-    UIButton *saveBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    saveBtn.frame = CGRectMake(40, CGRectGetMaxY(_userInfoTableView.frame) + 20, ScreenWidth - 80, 45);
-    saveBtn.backgroundColor = [UIColor colorDomina];
-    saveBtn.layer.cornerRadius = 5;
-    [saveBtn setTitle:@"保存" forState:UIControlStateNormal];
-    [saveBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [saveBtn addTarget:self action:@selector(saveUserInfo) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:saveBtn];
+    _saveBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    _saveBtn.frame = CGRectMake(40, CGRectGetMaxY(_userInfoTableView.frame) + 20, ScreenWidth - 80, 45);
+    _saveBtn.backgroundColor = [UIColor colorDomina];
+    _saveBtn.titleLabel.font = [UIFont systemFontOfSize:19.0];
+    _saveBtn.layer.cornerRadius = 5;
+    [_saveBtn setTitle:@"保存" forState:UIControlStateNormal];
+    [_saveBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [_saveBtn addTarget:self action:@selector(saveUserInfo) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_saveBtn];
 }
 
 #pragma mark 选择城市
@@ -143,14 +146,17 @@
 - (void)initDeleteBtn {
 
     UIButton *deleteBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    deleteBtn.frame = CGRectMake(0, 0, ScreenWidth, CellHeight);
-    deleteBtn.backgroundColor = [UIColor colorWithHexString:@"0xff6600"];
-    deleteBtn.titleLabel.font = [UIFont systemFontOfSize:16];
-    [deleteBtn setTitle:@"删除当前地址" forState:UIControlStateNormal];
-    [deleteBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    deleteBtn.frame = CGRectMake(40, CGRectGetMaxY(_saveBtn.frame) + 15, ScreenWidth - 80, 45);
+//    deleteBtn.backgroundColor = [UIColor colorWithHexString:@"0xff6600"];
+    deleteBtn.layer.cornerRadius = 5;
+    deleteBtn.layer.borderWidth = 0.5;
+    deleteBtn.layer.borderColor = [UIColor colorDomina].CGColor;
+    deleteBtn.titleLabel.font = [UIFont systemFontOfSize:19.0];
+    [deleteBtn setTitle:@"删除" forState:UIControlStateNormal];
+    [deleteBtn setTitleColor:[UIColor colorDomina] forState:UIControlStateNormal];
     [deleteBtn addTarget:self action:@selector(deleteUserInfo) forControlEvents:UIControlEventTouchUpInside];
-    
-    _userInfoTableView.tableFooterView = deleteBtn;
+    [self.view addSubview:deleteBtn];
+//    _userInfoTableView.tableFooterView = deleteBtn;
 }
 
 #pragma mark 事件处理

@@ -162,7 +162,8 @@
 
 #pragma mark 设置Nav
 - (void)setNav {
-    self.navigationItem.titleView = [Utillity customNavToTitle:@"拼团详情"];
+//    self.navigationItem.titleView = [Utillity customNavToTitle:@"拼团详情"];
+    self.title = @"拼团详情";
     self.navigationItem.leftBarButtonItem = [UIFactory createBackBBIWithTarget:self action:@selector(back)];
 }
 

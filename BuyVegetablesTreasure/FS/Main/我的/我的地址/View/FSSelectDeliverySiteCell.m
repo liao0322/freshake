@@ -72,7 +72,8 @@
     self.deleteBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.deleteBtn setTitle:@"  删除" forState:UIControlStateNormal];
     [self.deleteBtn setImage:IMAGE(@"FSAddress删除") forState:UIControlStateNormal];
-    [self.deleteBtn setTitleColor:[UIColor colorWithHexString:@"0xb2b2b2"] forState:UIControlStateNormal];
+    self.deleteBtn.titleLabel.font = [UIFont systemFontOfSize:15.0];
+    [self.deleteBtn setTitleColor:[UIColor colorWithHexString:@"0x808080"] forState:UIControlStateNormal];
     [self.deleteBtn addTarget:self action:@selector(deleteClick) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:self.deleteBtn];
     
@@ -85,7 +86,8 @@
     self.editBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.editBtn setTitle:@"  编辑" forState:UIControlStateNormal];
     [self.editBtn setImage:IMAGE(@"FSAddress编辑") forState:UIControlStateNormal];
-    [self.editBtn setTitleColor:[UIColor colorWithHexString:@"0xb2b2b2"] forState:UIControlStateNormal];
+    self.editBtn.titleLabel.font = [UIFont systemFontOfSize:15.0];
+    [self.editBtn setTitleColor:[UIColor colorWithHexString:@"0x808080"] forState:UIControlStateNormal];
     [self.editBtn addTarget:self action:@selector(editClick) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:self.editBtn];
     
