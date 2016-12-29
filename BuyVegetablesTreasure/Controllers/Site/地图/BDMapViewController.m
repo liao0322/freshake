@@ -56,7 +56,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.leftBarButtonItem = [UIFactory createBackBBIWithTarget:self action:@selector(back)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"确定" style:UIBarButtonItemStylePlain target:self action:@selector(ok)];
-    self.navigationItem.rightBarButtonItem.tintColor = [UIColor colorWithHexString:@"0xF48B17"];
+    self.navigationItem.rightBarButtonItem.tintColor = [UIColor colorDomina];
     
     // 搜索文本框
     _mapTextField = [[UITextField alloc] init];
@@ -207,7 +207,7 @@
 #pragma mark - 控件初始化
 - (void)initTableView {
     
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT - SCREEN_HEIGHT / 2 - 64, SCREEN_WIDTH, SCREEN_HEIGHT / 2)];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT - SCREEN_HEIGHT / 2, SCREEN_WIDTH, SCREEN_HEIGHT / 2)];
     _tableView.dataSource = self;
     _tableView.delegate = self;
     _tableView.rowHeight = 70;
@@ -273,7 +273,7 @@
 #pragma mark 创建高德地图
 - (void)initMapView {
     
-    _mapView = [[MAMapView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT / 2)];
+    _mapView = [[MAMapView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT / 2)];
     _mapView.delegate = self;
 
     [self.view addSubview:_mapView];

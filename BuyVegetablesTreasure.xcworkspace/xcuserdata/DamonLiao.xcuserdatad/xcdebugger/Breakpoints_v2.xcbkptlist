@@ -6,22 +6,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BuyVegetablesTreasure/FS/Main/Base-&#x6240;&#x6709;&#x57fa;&#x7c7b; /Controller/FSBaseViewController.m"
-            timestampString = "503895246.592761"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
-            landmarkName = "-showInfoWidthError:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -68,11 +52,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BuyVegetablesTreasure/FS/Main/&#x9996;&#x9875;/Root/Controller/FSHomeViewController.m"
-            timestampString = "504592369.251525"
+            timestampString = "504679062.25562"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "542"
-            endingLineNumber = "542"
+            startingLineNumber = "568"
+            endingLineNumber = "568"
             landmarkName = "-onGetReverseGeoCodeResult:result:errorCode:"
             landmarkType = "7">
          </BreakpointContent>
@@ -90,6 +74,22 @@
             startingLineNumber = "390"
             endingLineNumber = "390"
             landmarkName = "-cartView"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BuyVegetablesTreasure/FS/Main/Base-&#x6240;&#x6709;&#x57fa;&#x7c7b; /Controller/FSBaseViewController.m"
+            timestampString = "504690802.954677"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "-showInfoWidthError:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

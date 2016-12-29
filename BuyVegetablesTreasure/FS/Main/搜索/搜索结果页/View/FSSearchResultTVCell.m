@@ -59,7 +59,7 @@
 - (void)setModel:(SearchModel *)model {
     _model = model;
     
-    [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:_model.imgUrl] placeholderImage:[UIImage imageWithColor:[UIColor colorViewBG]]];
+    [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:_model.imgUrl] placeholderImage:[UIImage imageNamed:@"placeholderimage"]];
     
     [self.titleLabel setText:_model.productName];
     

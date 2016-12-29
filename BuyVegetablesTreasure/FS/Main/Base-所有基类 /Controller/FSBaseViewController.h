@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FSNoDataView.h"
+
 
 @interface FSBaseViewController : UIViewController
 
@@ -31,5 +33,6 @@
 
 - (void)showInfoWidthError:(NSError *)error;
 
+@property (nonatomic) FSNoDataView *noDataView;
 
 @end

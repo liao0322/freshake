@@ -113,6 +113,7 @@
     [btn setFrame:CGRectMake(0, 0, 25, 25)];
     [btn addTarget:target action:selector forControlEvents:UIControlEventTouchUpInside];
     [btn setImage:image forState:UIControlStateNormal];
+    btn.tintColor = [UIColor colorDomina];
     [btn setImageEdgeInsets:UIEdgeInsetsMake(3, 3,3, 3)];
     // 用btn来创建自定义的BBI
     UIBarButtonItem *bbi = [[UIBarButtonItem alloc] initWithCustomView:btn];

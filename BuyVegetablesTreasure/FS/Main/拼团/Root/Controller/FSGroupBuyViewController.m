@@ -110,6 +110,12 @@ static NSString * const groupBuyTVCellID = @"groupBuyTVCellID";
                 GroupModel *groupModel = [GroupModel modelWithDict:dict];
                 [self.dataArray addObject:groupModel];
             }
+            
+            if (!self.dataArray.count) {
+                self.tableView.backgroundView = self.noDataView;
+            } else {
+                self.tableView.backgroundView = nil;
+            }
             [self.tableView reloadData];
         }
         

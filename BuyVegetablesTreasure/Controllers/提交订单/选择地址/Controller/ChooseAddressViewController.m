@@ -121,7 +121,8 @@
         self.navigationItem.titleView = [Utillity customNavToTitle:_distributionStatus ? @"送货上门" : @"店铺自提"];
 
         if (_distributionStatus) {
-            self.navigationItem.rightBarButtonItem = [UIFactory createImageBBI:IMAGE(@"addAddress") WithTarget:self action:@selector(goAddress)];
+            
+            self.navigationItem.rightBarButtonItem = [UIFactory createImageBBI:[IMAGE(@"addAddress") imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] WithTarget:self action:@selector(goAddress)];
         }
     }
 }
@@ -143,7 +144,7 @@
     if (segment.selectedSegmentIndex == 1) {
         
         [self getUserAddressList];
-        self.navigationItem.rightBarButtonItem = [UIFactory createImageBBI:IMAGE(@"addAddress") WithTarget:self action:@selector(goAddress)];
+        self.navigationItem.rightBarButtonItem = [UIFactory createImageBBI:[IMAGE(@"addAddress") imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] WithTarget:self action:@selector(goAddress)];
     }
     else {
         

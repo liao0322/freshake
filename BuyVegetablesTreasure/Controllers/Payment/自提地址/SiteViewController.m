@@ -72,7 +72,7 @@
         
         if (_isDistribution) {
             
-            self.navigationItem.rightBarButtonItem = [UIFactory createImageBBI:IMAGE(@"收货-增加收货地址") WithTarget:self action:@selector(goAddSite)];
+            self.navigationItem.rightBarButtonItem = [UIFactory createImageBBI:[IMAGE(@"收货-增加收货地址") imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] WithTarget:self action:@selector(goAddSite)];
         }
     }
     

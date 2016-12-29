@@ -15,5 +15,6 @@
 @property (assign, nonatomic) NSInteger CategoryId;
 @property (copy, nonatomic) NSString *CategoryName;
 @property (copy, nonatomic) NSMutableArray *List;
+@property (copy, nonatomic) NSString *IconPath;
 
 @end

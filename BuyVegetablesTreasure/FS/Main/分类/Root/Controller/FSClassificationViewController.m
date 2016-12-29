@@ -287,7 +287,12 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
     
     FSClassificationModel *model = self.commodityArray[indexPath.section];
     [cell.titleLabel setText:model.CategoryName];
-    [cell.imageView setImage:[[UIImage imageNamed:@"美味生鲜"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
+    
+    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:model.IconPath] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+
+        UIImage *i = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        [cell.imageView setImage:i];
+    }];
     
     return cell;
     
@@ -296,11 +301,13 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
     
     FSClassificationCVCell *cCell = (FSClassificationCVCell *)cell;
+    
     if (indexPath == self.selectedIndexPath) {
         cCell.imageView.tintColor = [UIColor orangeColor];
     } else {
         cCell.imageView.tintColor = [UIColor colorDomina];
     }
+
 }
 
 #pragma mark - FSCommodityTVCellDelegate
@@ -541,8 +548,6 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
     NSString *uidString = [userDefaults objectForKey:@"UID"];
     
     NSString *urlString = [NSString stringWithFormat:CLASSIFYURL, midString, uidString];
-    
-    NSLog(@"%@",urlString);
     
     if (self.categoryId) {
         urlString = [NSString stringWithFormat:PUSHCLASSIFYURL,midString,_categoryId,uidString];

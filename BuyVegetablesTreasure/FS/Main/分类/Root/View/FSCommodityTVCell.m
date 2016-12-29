@@ -115,12 +115,14 @@
 - (void)setModel:(FSCommodityModel *)model {
     _model = model;
     
-    [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:_model.imgUrl] placeholderImage:[UIImage imageWithColor:[UIColor colorViewBG]]];
+    [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:_model.imgUrl] placeholderImage:[UIImage imageNamed:@"placeholderimage"]];
     
     [self.titleLabel setText:_model.productName];
     [self.descLabel setText:_model.shortDesc];
     
-    [self.priceLabel setText:[NSString stringWithFormat:@"￥%@", _model.salePrice]];
+    
+    CGFloat price = [_model.salePrice floatValue];
+    [self.priceLabel setText:[NSString stringWithFormat:@"￥%.1f", price]];
     [self.vipLabel setText:[NSString stringWithFormat:@"(会员价)￥%@", _model.UserPrice]];
     
     [self.countLabel setText:_model.CartNum];

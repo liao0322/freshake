@@ -90,7 +90,7 @@
     
     self.selectButton.selected = _model.isSelect;
     
-    [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:_model.thumbnailsUrll] placeholderImage:[UIImage imageWithColor:[UIColor colorViewBG]]];
+    [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:_model.thumbnailsUrll] placeholderImage:[UIImage imageNamed:@"placeholderimage"]];
     
     [self.titleLabel setText:_model.productName];
     [self.descLabel setText:_model.Specifications];

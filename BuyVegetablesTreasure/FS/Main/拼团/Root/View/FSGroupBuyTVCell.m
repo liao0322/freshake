@@ -39,7 +39,14 @@
     self.bgView.x = spacing;
     self.bgView.y = 0;
     self.bgView.width = width - spacing * 2;
-    self.bgView.height = height - height * 0.08;
+    if (SCREEN_WIDTH == 320) {
+        self.bgView.height = height - height * 0.06;
+    } else if (SCREEN_WIDTH == 375) {
+        self.bgView.height = height - height * 0.09;
+
+    } else if (SCREEN_WIDTH == 414) {
+        self.bgView.height = height - height * 0.11;
+    }
     
     self.iconImageView.width = self.bgView.width;
     self.iconImageView.height = 180 * imageScale;

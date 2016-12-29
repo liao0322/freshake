@@ -77,7 +77,7 @@
 
 - (void)setModel:(RightGoodsModel *)model {
     _model = model;
-    [self.imageView sd_setImageWithURL:[NSURL URLWithString:_model.imgUrl] placeholderImage:[UIImage imageWithColor:[UIColor colorViewBG]]];
+    [self.imageView sd_setImageWithURL:[NSURL URLWithString:_model.imgUrl] placeholderImage:[UIImage imageNamed:@"placeholderimage"]];
     
     self.titleLabel.text = _model.productName;
     self.descLabel.text = _model.shortDesc;

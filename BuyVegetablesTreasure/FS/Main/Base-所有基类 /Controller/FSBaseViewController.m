@@ -7,6 +7,7 @@
 //
 
 #import "FSBaseViewController.h"
+#import "FSNoDataView.h"
 
 @interface FSBaseViewController ()
 
@@ -41,7 +42,7 @@
 }
 
 - (void)addSubviews {
-    
+
 }
 
 - (void)registerCells {
@@ -50,6 +51,11 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [self.view endEditing:YES];
+}
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    self.noDataView.frame = self.view.bounds;
 }
 
 #pragma mark - Custom
@@ -78,5 +84,14 @@
     }
 }
 
+#pragma mark - LazyLoad
+
+- (FSNoDataView *)noDataView {
+    if (!_noDataView) {
+        _noDataView = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([FSNoDataView class]) owner:nil options:nil] lastObject];
+        
+    }
+    return _noDataView;
+}
 
 @end

@@ -889,6 +889,8 @@
 		FE8256681E13CECD0028D0F2 /* Payment@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FE8256661E13CECD0028D0F2 /* Payment@3x.png */; };
 		FE82566B1E13CEF80028D0F2 /* TakingGoods@2X.png in Resources */ = {isa = PBXBuildFile; fileRef = FE8256691E13CEF80028D0F2 /* TakingGoods@2X.png */; };
 		FE82566C1E13CEF80028D0F2 /* TakingGoods@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FE82566A1E13CEF80028D0F2 /* TakingGoods@3x.png */; };
+		FE843A831E14DDD200528DBB /* FSNoDataView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE843A821E14DDD200528DBB /* FSNoDataView.xib */; };
+		FE843A861E14DDF200528DBB /* FSNoDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE843A851E14DDF200528DBB /* FSNoDataView.m */; };
 		FECDE5DB1E07B3820083E11B /* CouponModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FECDE5DA1E07B3820083E11B /* CouponModel.m */; };
 		FECDE5E61E07B49D0083E11B /* AMapSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FECDE5E41E07B49D0083E11B /* AMapSearchKit.framework */; };
 		FECDE5E71E07B49D0083E11B /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FECDE5E51E07B49D0083E11B /* MAMapKit.framework */; };
@@ -2347,6 +2349,9 @@
 		FE8256661E13CECD0028D0F2 /* Payment@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Payment@3x.png"; sourceTree = "<group>"; };
 		FE8256691E13CEF80028D0F2 /* TakingGoods@2X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TakingGoods@2X.png"; sourceTree = "<group>"; };
 		FE82566A1E13CEF80028D0F2 /* TakingGoods@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TakingGoods@3x.png"; sourceTree = "<group>"; };
+		FE843A821E14DDD200528DBB /* FSNoDataView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSNoDataView.xib; sourceTree = "<group>"; };
+		FE843A841E14DDF200528DBB /* FSNoDataView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSNoDataView.h; sourceTree = "<group>"; };
+		FE843A851E14DDF200528DBB /* FSNoDataView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSNoDataView.m; sourceTree = "<group>"; };
 		FECDE5D91E07B3820083E11B /* CouponModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CouponModel.h; path = BuyVegetablesTreasure/Controllers/Payment/Model/CouponModel.h; sourceTree = SOURCE_ROOT; };
 		FECDE5DA1E07B3820083E11B /* CouponModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CouponModel.m; path = BuyVegetablesTreasure/Controllers/Payment/Model/CouponModel.m; sourceTree = SOURCE_ROOT; };
 		FECDE5E41E07B49D0083E11B /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapSearchKit.framework; sourceTree = "<group>"; };
@@ -7316,6 +7321,9 @@
 				FECDE6451E07C2C70083E11B /* FSBaseTabBarController.m */,
 				FECDE6461E07C2C70083E11B /* FSBaseViewController.h */,
 				FECDE6471E07C2C70083E11B /* FSBaseViewController.m */,
+				FE843A841E14DDF200528DBB /* FSNoDataView.h */,
+				FE843A851E14DDF200528DBB /* FSNoDataView.m */,
+				FE843A821E14DDD200528DBB /* FSNoDataView.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -8269,6 +8277,7 @@
 				TargetAttributes = {
 					52A35C821BCDEB9100309FC8 = {
 						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = QUP3N2G398;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
@@ -8759,6 +8768,7 @@
 				2B8B644B1BFB1E9D004D1AC6 /* 960启动页3.png in Resources */,
 				528430821BCF6ED2006905AA /* 1@2x.png in Resources */,
 				2BB4992C1BEB267C0070F55A /* 灰色左边@2x.png in Resources */,
+				FE843A831E14DDD200528DBB /* FSNoDataView.xib in Resources */,
 				0C82E35D1CD2FE38007DF40F /* 收藏灰色.png in Resources */,
 				E4818FC11CC8A6EC0081E06C /* 我的收藏.png in Resources */,
 				5239FFEB1CAA50F500EFF539 /* UserSiteInfoCell.xib in Resources */,
@@ -8976,6 +8986,7 @@
 				0C5F42B11CE5D17F00FF660D /* AboutView.m in Sources */,
 				0CBA54BA1DE7D47C00378911 /* PickupInfoCell.m in Sources */,
 				FE17A95E1E0D430F00DC7949 /* FSCouponsDetailView.m in Sources */,
+				FE843A861E14DDF200528DBB /* FSNoDataView.m in Sources */,
 				521E31951CB38F9D00041F76 /* GropCell.m in Sources */,
 				0C9D603D1CE07B26002362C0 /* LoginView.m in Sources */,
 				0CCC4AE61D780FB0009CFBB0 /* openssl_wrapper.m in Sources */,
@@ -9412,7 +9423,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: kang XU (9HJTJ9KTLK)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = QUP3N2G398;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -9468,7 +9479,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: kang XU (9HJTJ9KTLK)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = QUP3N2G398;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

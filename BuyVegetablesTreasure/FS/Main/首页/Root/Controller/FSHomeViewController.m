@@ -95,6 +95,8 @@
 @property (nonatomic) UIImageView *cartAnimView;
 
 @property (copy, nonatomic) NSString *currentCityString;
+
+@property (nonatomic) UIRefreshControl *refreshControl;
 @end
 
 
@@ -125,7 +127,9 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [self refreshData:nil];
+    //[self startLocation];
+    [self getHomeData];
+    
     // 设置当前提货点名称
     [self.navigationBar.leftButton setTitle:[[[NSUserDefaults standardUserDefaults] objectForKey:@"merchantsName"] substringWithRange:NSMakeRange(0, 2)] forState:UIControlStateNormal];
     
@@ -133,6 +137,28 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     
     [[UIApplication sharedApplication] setStatusBarStyle:self.statusBarStyle animated:NO];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    /*
+    if (self.refreshControl.refreshing) {
+        return;
+    }
+    if (self.mainView.contentOffset.y == 0) {
+        
+        [UIView animateWithDuration:0.25
+                              delay:0
+                            options:UIViewAnimationOptionBeginFromCurrentState
+                         animations:^(void){
+                             self.mainView.contentOffset = CGPointMake(0, -self.refreshControl.frame.size.height);
+                         } completion:^(BOOL finished){
+                             [self.refreshControl beginRefreshing];
+                             [self.refreshControl sendActionsForControlEvents:UIControlEventValueChanged];
+                         }];
+    }
+     */
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -176,7 +202,7 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
 - (void)initialization {
     [super initialization];
     
-    self.view.backgroundColor = [UIColor colorViewBG];
+    self.view.backgroundColor = [UIColor whiteColor];
     self.statusBarStyle = UIStatusBarStyleLightContent;
     self.automaticallyAdjustsScrollViewInsets = NO;
     
@@ -776,10 +802,16 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
 
 - (void)userIsLogined {
     [self startLocation];
+    [self getHomeData];
+    [self getCommodityData];
+    [self getShoppingCartCount];
 }
 
 - (void)userIsLogout {
     [self startLocation];
+    [self getHomeData];
+    [self getCommodityData];
+    [self getShoppingCartCount];
 }
 
 // 导航栏左边按钮点击事件
@@ -949,7 +981,7 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
         [self getCommodityData];
         
     } failure:^(NSError *error, NSInteger statusCode) {
-        [SVProgressHUD showErrorWithStatus:@"加载失败"];
+        [self showInfoWidthError:error];
     }];
     [self getShoppingCartCount];
     
@@ -960,8 +992,6 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
 - (void)getCommodityData {
     
     NSString *urlString = [NSString stringWithFormat:HomePageGoodsList,self.midString,self.uidString];
-    
-    NSLog(@"%@",urlString);
     
     [XFNetworking GET:urlString parameters:nil success:^(id responseObject, NSInteger statusCode) {
         NSDictionary *dictData = [self dictWithData:responseObject];
@@ -975,39 +1005,17 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
             [self.commodityArray addObject:rmodel];
         }
         
+        if (self.commodityArray.count == 0) {
+            [SVProgressHUD showWithStatus:@"该提货点没有商品，请选择其他自提点"];
+        }
+        
         [self.mainView reloadData];
         [SVProgressHUD dismiss];
-        [self.refreshHeader endRefreshing];
+        [self.refreshControl endRefreshing];
         
     } failure:^(NSError *error, NSInteger statusCode) {
-        NSLog(@"请求失败");
+        [self showInfoWidthError:error];
     }];
-    
-
-    /*
-    urlString = [NSString stringWithFormat:CLASSIFYURL,midString,uidString];
-    [HttpRequest sendGetOrPostRequest:urlString param:nil requestStyle:Get setSerializer:Date isShowLoading:NO success:^(id data)
-     {
-         NSArray *arr = data[@"ClassList"];
-         for (NSDictionary *dict in arr) {
-             
-             NSArray *array = dict[@"List"];
-             NSMutableArray *goodsArray = [NSMutableArray array];
-             for (NSDictionary *goodsList in array) {
-                 
-                 RightGoodsModel *rmodel = [[RightGoodsModel alloc] init];
-                 [rmodel setValuesForKeysWithDictionary:goodsList];
-                 [goodsArray addObject:rmodel];
-             }
-             
-             if (goodsArray.count == 0) {
-                 
-                 [self initAlertControllerWithText:@"该提货点没有商品，请选择其他自提点" isGoods:YES];
-             }
-         }
-         
-     } failure:nil];
-     */
 }
 
 /// 获取购物车数量
@@ -1085,88 +1093,16 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
         
     } failure:^(NSError *error, NSInteger statusCode) {
         [self showInfoWidthError:error];
-        [self.refreshHeader endRefreshing];
+        [self.refreshControl endRefreshing];
     }];
 }
 
 /// 下拉刷新时调用
-- (void)refreshData:(FSDancingBananaHeader *)sender {
-    [SVProgressHUD showWithStatus:@"正在加载..."];
+- (void)refreshData:(UIRefreshControl *)sender {
+
     // 开始定位
     [self startLocation];
-    
-    if ([self.refreshHeader isRefreshing]) {
-        [self.refreshHeader endRefreshing];
-    }
-
 }
-
-
-#pragma mark 商品增加请求
-
-/*
-- (void)addGoodsRequestWithGoodsId:(NSString *)productId
-                        ProductNum:(NSString *)productNum
-                          TotPrice:(NSInteger )totPrice
-                             IsAdd:(BOOL)isAdd
-                              type:(BOOL)type
-                ForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSString *totPriceString = [NSString stringWithFormat:@"%zd",totPrice];
-    NSString *urlString;
-    
-    if ([Tools isBlankString:[[NSUserDefaults standardUserDefaults] objectForKey:@"UID"]]) {
-        return [self.navigationController pushViewController:[ShopLoginViewController new] animated:YES];
-    }
-    else if ( isAdd == YES ) {
-        
-        NSString *t = type == NO ? @"0" : @"1";
-        urlString = [NSString stringWithFormat:UpCart,UUID,midString,productId,uidString,productNum,t];
-    }
-    else {
-        
-        switch ([productNum integerValue]) {
-                
-            case 0:
-                NSLog(@"删除");
-                urlString = [NSString stringWithFormat:DelCartUrl,UUID,midString,productId,uidString];
-                break;
-                
-            case 1:
-                NSLog(@"添加到购物车");
-                urlString = [NSString stringWithFormat:ADDCARTURL,productId,UUID,uidString,totPriceString,productNum,midString,storeIdString];
-                break;
-                
-            default:
-                NSLog(@"更新商品");
-                NSString *t = (type == NO ? @"0" : @"1");
-                urlString = [NSString stringWithFormat:UpCart,UUID,midString,productId,uidString,productNum,t];
-                break;
-        }
-    }
-    
-    NSLog(@"%@",urlString);
-    
-    [HttpRequest sendGetOrPostRequest:urlString param:nil requestStyle:Get setSerializer:Json isShowLoading:YES success:^(id data)
-     {
-         if ( [[NSString stringWithFormat:@"%@",[data objectForKey:@"issuccess"]] isEqualToString:@"0"]) {
-             [Tools myHud:data[@"context"] inView:[[UIApplication sharedApplication].delegate window]];
-         }
-         else if ( [[NSString stringWithFormat:@"%@",[data objectForKey:@"issuccess"]] isEqualToString:@"1"]) {
-             
-             SearchModel *model = _goodsArray[indexPath.row];
-             model.CartNum = [NSString stringWithFormat:@"%zd",[model.CartNum integerValue] + _num];
-             [_goodsArray replaceObjectAtIndex:indexPath.row withObject:model];
-             
-             SearchListCell *cell = (SearchListCell *)[_popularityView.popularityCollectionView cellForItemAtIndexPath:indexPath];
-             cell.goddsNumLabel.text = model.CartNum;
-             
-             emblem.text = [NSString stringWithFormat:@"%zd",[emblem.text integerValue] + _num];
-         }
-         
-     } failure:nil];
-}
-*/
 
 
 
@@ -1187,11 +1123,11 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
         _mainView.dataSource = self;
         _mainView.delegate = self;
         _mainView.contentInset = UIEdgeInsetsMake(0, 0, 49, 0);
-        _mainView.backgroundColor = [UIColor whiteColor];
+        _mainView.backgroundColor = [UIColor clearColor];
         _mainView.showsVerticalScrollIndicator = NO;
-        
         // 添加下拉刷新
-        _mainView.mj_header = self.refreshHeader;
+        //_mainView.mj_header = self.refreshHeader;
+        _mainView.refreshControl = self.refreshControl;
 
     }
     return _mainView;
@@ -1252,5 +1188,13 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
     return _refreshHeader;
 }
 
+- (UIRefreshControl *)refreshControl {
+    if (!_refreshControl) {
+        _refreshControl = [UIRefreshControl new];
+        //_refreshControl.tintColor = [UIColor colorDomina];
+        [_refreshControl addTarget:self action:@selector(refreshData:) forControlEvents:UIControlEventValueChanged];
+    }
+    return _refreshControl;
+}
 
 @end

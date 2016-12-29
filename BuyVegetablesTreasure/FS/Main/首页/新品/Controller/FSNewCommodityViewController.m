@@ -254,13 +254,9 @@ static NSString * const newCommodityTVCellID = @"newCommodityTVCellID";
         }
         
         if (self.dataArray.count == 0) {
-            
-            _tableView.hidden = YES;
-            UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2 -50, SCREEN_HEIGHT/2-100, 100, 100)];
-            imageView.image = IMAGE(@"无数据");
-            imageView.contentMode = UIViewContentModeCenter;
-            [self.view addSubview:imageView];
+            _tableView.backgroundView = self.noDataView;
         } else {
+            _tableView.backgroundView = nil;
             self.cartView.hidden = NO;
         }
         

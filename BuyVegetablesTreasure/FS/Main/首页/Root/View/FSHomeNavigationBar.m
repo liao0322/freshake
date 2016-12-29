@@ -38,10 +38,10 @@
     [self.leftButton sizeToFit];
     self.leftButton.left = 15;
     self.leftButton.centerY = ((self.height - STATUS_BAR_HEIGHT) * 0.5) + STATUS_BAR_HEIGHT;
-    self.leftButton.width = 48;
+    self.leftButton.width = 60;
     
     self.titleButton.centerY = self.leftButton.centerY;
-    self.titleButton.x = self.leftButton.right + 8;
+    self.titleButton.x = self.leftButton.right + 5;
     self.titleButton.width = self.width - (self.leftButton.width + 30 + 8);
     self.titleButton.height = 28;
     //self.titleButton.centerX = self.centerX;
@@ -54,7 +54,6 @@
 - (XFNoHighlightButton *)leftButton {
     if (!_leftButton) {
         _leftButton = [XFNoHighlightButton buttonWithType:UIButtonTypeCustom];
-        [_leftButton setTitle:@"上海" forState:UIControlStateNormal];
         [_leftButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_leftButton setImage:[[UIImage imageNamed:@"locate"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
         _leftButton.tintColor = [UIColor whiteColor];
