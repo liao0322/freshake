@@ -792,6 +792,7 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
     
     // 暂时模拟登出事件
 
+    /*
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
     NSString *mobile = [userDefaults objectForKey:@"mobile"];
@@ -840,6 +841,7 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
     [userDefaults setObject:fendianname forKey:@"Fendianname"];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"UserIsLogout" object:nil];
+     */
     
 }
 

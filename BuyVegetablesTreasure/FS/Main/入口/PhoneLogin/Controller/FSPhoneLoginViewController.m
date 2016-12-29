@@ -10,7 +10,7 @@
 #import "XFLimitedTextField.h"
 #import "AppDelegate.h"
 
-#define CAPTCHA_INTERVAL_TIME 10
+#define CAPTCHA_INTERVAL_TIME 59
 
 @interface FSPhoneLoginViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *bgImageView;
