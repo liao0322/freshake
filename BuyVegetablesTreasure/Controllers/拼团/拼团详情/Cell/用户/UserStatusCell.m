@@ -101,7 +101,7 @@
         }
         
         NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"还差%@人，盼你如南方人盼暖气。",string]];
-        [attributeString setAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithHexString:@"0xfc9d15"], NSFontAttributeName : [UIFont systemFontOfSize:16]} range:NSMakeRange(0, 4)];
+        [attributeString setAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithHexString:@"0xfc9d15"], NSFontAttributeName : [UIFont systemFontOfSize:16]} range:NSMakeRange(2, 4)];
         
         _titleLabel.attributedText = attributeString;
         
