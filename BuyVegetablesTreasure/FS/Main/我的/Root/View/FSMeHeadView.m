@@ -27,7 +27,7 @@
 - (void)createUI {
     
     UIImageView *bgImageView = [UIImageView new];
-    bgImageView.image = IMAGE(@"FS背景");
+    bgImageView.image = IMAGE(@"FSHead背景");
     bgImageView.userInteractionEnabled = YES;
     [self addSubview:bgImageView];
     

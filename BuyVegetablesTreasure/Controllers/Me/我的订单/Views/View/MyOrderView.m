@@ -42,19 +42,9 @@
 
 - (void)initTableView {
     
-    _bgScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 50, SCREEN_WIDTH, 10)];
-    _bgScrollView.delegate = self;
-    _bgScrollView.pagingEnabled = YES;
-    _bgScrollView.contentSize = CGSizeMake(SCREEN_WIDTH * _titleArray.count, SCREEN_HEIGHT / 2);
-    _bgScrollView.showsVerticalScrollIndicator = NO;
-    _bgScrollView.showsHorizontalScrollIndicator = NO;
-    _page = [[UIPageControl alloc] initWithFrame:CGRectZero];
-    _page.numberOfPages = _titleArray.count;
-    _page.currentPage = 0;
-    [_bgScrollView addSubview:_page];
-    [self addSubview:_bgScrollView];
     
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_bgScrollView.frame), self.frame.size.width, self.frame.size.height) style:UITableViewStyleGrouped];
+    
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_bgScrollView.frame) - 10, self.frame.size.width, self.frame.size.height + 60) style:UITableViewStyleGrouped];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -104,8 +94,19 @@
         }
     }
 
-    NSLog(@"btnframe>>>>>>>>%@", NSStringFromCGRect(_bgBtn.frame));
     NSLog(@"frame>>>>>>>>%@",NSStringFromCGRect(_temBtn.frame));
+    
+    _bgScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 50, SCREEN_WIDTH, 10)];
+    _bgScrollView.delegate = self;
+    _bgScrollView.pagingEnabled = YES;
+    _bgScrollView.contentSize = CGSizeMake(SCREEN_WIDTH * _titleArray.count, SCREEN_HEIGHT / 2);
+    _bgScrollView.showsVerticalScrollIndicator = NO;
+    _bgScrollView.showsHorizontalScrollIndicator = NO;
+    _page = [[UIPageControl alloc] initWithFrame:CGRectZero];
+    _page.numberOfPages = _titleArray.count;
+    _page.currentPage = 0;
+    [_bgScrollView addSubview:_page];
+    [self addSubview:_bgScrollView];
 
     _lineScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(ScreenWidth == 320 ? 12 : 12, CGRectGetMaxY(_temRect), SCREEN_WIDTH / _titleArray.count - 15, 2)];
     _lineScrollView.backgroundColor = [UIColor colorDomina];
@@ -375,6 +376,8 @@
         _lineScrollView.contentOffset = CGPointMake(_bgScrollView.contentOffset.x / _titleArray.count, 0);
         _lineScrollView.frame = CGRectMake(_bgScrollView.contentOffset.x / _titleArray.count + 12, bg_Height, SCREEN_WIDTH / _titleArray.count - 15, 2);
     }
+    NSLog(@"lineframe>>>>>>>>%@", NSStringFromCGRect(_lineScrollView.frame));
+
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {

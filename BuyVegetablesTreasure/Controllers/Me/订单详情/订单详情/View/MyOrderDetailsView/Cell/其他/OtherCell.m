@@ -216,7 +216,7 @@
             
         }
 
-        self.stateLabel.textColor = Color;
+        self.stateLabel.textColor = [UIColor colorOrange];
         self.textLabel.text = arr[indexPath.row];
     }
     // 评价

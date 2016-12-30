@@ -39,7 +39,7 @@
 //    self.navigationItem.titleView = [Utillity customNavToTitle:@"我的地址"];
     self.title = @"我的地址";
     self.navigationItem.leftBarButtonItem = [UIFactory createBackBBIWithTarget:self action:@selector(back)];
-    self.navigationItem.rightBarButtonItem = [UIFactory createImageBBI:IMAGE(@"收货-增加收货地址") WithTarget:self action:@selector(goAddSite)];
+    self.navigationItem.rightBarButtonItem = [UIFactory createImageBBI:[IMAGE(@"收货-增加收货地址") imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] WithTarget:self action:@selector(goAddSite)];
     
     [self initUserSiteView];
 }

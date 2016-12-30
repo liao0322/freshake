@@ -97,7 +97,7 @@
 
     NSString *priceString = [NSString stringWithFormat:@"￥%.2f",[model.payable_amount floatValue]];
     NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"总计: %@",priceString]];
-    [attributeString setAttributes:@{NSForegroundColorAttributeName : Color, NSFontAttributeName : [UIFont boldSystemFontOfSize:15]} range:NSMakeRange(4, priceString.length)];
+    [attributeString setAttributes:@{NSForegroundColorAttributeName : [UIColor colorOrange], NSFontAttributeName : [UIFont boldSystemFontOfSize:15]} range:NSMakeRange(4, priceString.length)];
     
     _totalPriceLabel.attributedText = attributeString;
     _totalCountLabel.text = [NSString stringWithFormat:@"总计: %zd件商品",totalCount];

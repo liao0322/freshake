@@ -71,7 +71,7 @@
         
     NSString *priceString = [NSString stringWithFormat:@"￥%.2f",[dic[@"goods_price"] floatValue]];
     NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@/%@",priceString,dic[@"unit"]]];
-    [attributeString setAttributes:@{NSForegroundColorAttributeName : Color, NSFontAttributeName : [UIFont boldSystemFontOfSize:17]} range:NSMakeRange(0, priceString.length)];
+    [attributeString setAttributes:@{NSForegroundColorAttributeName : [UIColor colorOrange], NSFontAttributeName : [UIFont boldSystemFontOfSize:17]} range:NSMakeRange(0, priceString.length)];
     
     _goodsPriceLabel.attributedText = attributeString;
 }
