@@ -35,7 +35,7 @@
     .leftEqualToView(self)
     .rightEqualToView(self)
     .topEqualToView(self)
-    .heightIs(200);
+    .heightIs(215);
     
     // 头像
     _icon = [UIImageView new];
@@ -46,7 +46,7 @@
     
     _icon.sd_layout
     .leftSpaceToView(bgImageView, 22)
-    .topSpaceToView(bgImageView, 50)
+    .topSpaceToView(bgImageView, 64)
     .widthIs(70)
     .heightIs(70);
     
@@ -58,22 +58,24 @@
 //    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(iconClick:)];
 //    [_icon addGestureRecognizer:tap];
     
+       // 用户昵称
+    _name = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_icon.frame) + 40, 74, SCREEN_WIDTH / 2, 18)];
+//    _name.backgroundColor = [UIColor whiteColor];
+//    _name.layer.masksToBounds = YES;
+//    _name.layer.cornerRadius = 8;
+    _name.textAlignment = NSTextAlignmentLeft;
+    _name.textColor = [UIColor colorWithHexString:@"0x404040"];
+    [_name setFont:[UIFont fontWithName:@"Helvetica-Bold" size:16.0]];
+    [bgImageView addSubview:_name];
+    
     // 用户手机号
-    _mobile = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_icon.frame) + 40, 60, SCREEN_WIDTH / 2, 20)];
-//    _mobile.textAlignment = NSTextAlignmentLeft;
+    _mobile = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_icon.frame) + 40, CGRectGetMaxY(_name.frame) + 15, SCREEN_WIDTH / 2, 20)];
+    //    _mobile.textAlignment = NSTextAlignmentLeft;
     _mobile.textColor = [UIColor whiteColor];
-    [_mobile setFont:[UIFont fontWithName:@"Helvetica-Bold" size:16.0]];
+    [_mobile setFont:[UIFont fontWithName:@"Helvetica-Bold" size:14.0]];
     [bgImageView addSubview:_mobile];
     
-    // 用户昵称
-    _name = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_icon.frame) + 40, CGRectGetMaxY(_mobile.frame) + 10, 100, 18)];
-    _name.backgroundColor = [UIColor whiteColor];
-    _name.layer.masksToBounds = YES;
-    _name.layer.cornerRadius = 8;
-    _name.textAlignment = NSTextAlignmentCenter;
-    _name.textColor = [UIColor colorWithHexString:@"0xf18316"];
-    _name.font = [UIFont systemFontOfSize:14.0];
-    [bgImageView addSubview:_name];
+
     
     // 设置 
 //    UIImageView *setImage = [UIImageView new];
@@ -96,9 +98,9 @@
     
     _rightImage.sd_layout
     .rightSpaceToView(bgImageView, 22)
-    .topSpaceToView(bgImageView, 70)
-    .widthIs(15)
-    .heightIs(28);
+    .topSpaceToView(bgImageView, 91)
+    .widthIs(10)
+    .heightIs(20);
     
     _numView = [[FSNumView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 50)];
     _numView.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.5];
@@ -166,7 +168,16 @@
             _name.text = [userDefaults objectForKey:@"nick_name"];
         }
         
-        _mobile.text = [userDefaults objectForKey:@"mobile"];
+        NSString *mobileStr = [NSString stringWithFormat:@"%@", [userDefaults objectForKey:@"mobile"]];
+        
+        if (mobileStr.length >= 11) {
+            _mobile.text = [mobileStr stringByReplacingCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
+        } else {
+            _mobile.text = [userDefaults objectForKey:@"mobile"];
+        }
+
+        
+        
         
         [_icon sd_setImageWithURL:[userDefaults objectForKey:@"avatar"] placeholderImage:IMAGE(@"FS头像") options:SDWebImageRetryFailed];
         

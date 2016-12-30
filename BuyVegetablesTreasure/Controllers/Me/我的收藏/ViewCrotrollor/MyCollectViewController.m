@@ -321,9 +321,9 @@
                 [_collectView refreshTableView];
             }
             else {
-            
                 _collectView.hidden = YES;
                 [Tools myHud:@"暂无收藏商品" inView:self.view];
+        
             }
             
             [_collectView.tableView.mj_header endRefreshing];

@@ -12,6 +12,7 @@
 #import "WXApi.h"
 #import "OrderStateView.h"
 #import "GoodsCartViewController.h"
+#import "FSNoDataView.h"
 
 @interface MyOrderViewController ()
 
@@ -21,7 +22,6 @@
 @property (nonatomic, strong) NSString *orderNoString;
 @property (nonatomic, strong) NSMutableArray *dataSource;
 @property (nonatomic, strong) NSMutableArray *orderCountArray;
-
 @property (nonatomic, strong) UIButton *bgView;
 @property (nonatomic, strong) OrderStateView *orderStateView;
 
@@ -73,9 +73,10 @@
 #pragma mark 我的订单界面
 - (void)initMyOrderView {
     
-    _myOrderView = [[MyOrderView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight)];
+    _myOrderView = [[MyOrderView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight - 64 - 50)];
     [self.view addSubview:_myOrderView];
-    
+    _myOrderView.index = _Index;
+    NSLog(@"$$$$$$$$$$$******%ld", _myOrderView.index);
     WS(weakSelf);
     
     _myOrderView.requestOrder = ^(NSString *urlString) {
@@ -220,6 +221,12 @@
                 [model setValuesForKeysWithDictionary:dic];
                 [_dataSource addObject:model];
             }
+        }
+        
+        if (_dataSource.count == 0) {
+            _myOrderView.tableView.backgroundView = self.noDataView;
+        } else {
+            _myOrderView.tableView.backgroundView = nil;
         }
         
         _myOrderView.dataSource = _dataSource;

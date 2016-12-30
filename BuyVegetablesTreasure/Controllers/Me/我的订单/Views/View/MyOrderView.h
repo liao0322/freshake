@@ -26,7 +26,7 @@
 @property (nonatomic, copy) void(^goViewController)(UIViewController *viewController);
 @property (nonatomic, copy) void(^goPay)(Order *model);
 @property (nonatomic, copy) void(^cancelOrder)();
-@property (nonatomic, copy) NSString *indexStr;
+@property (nonatomic, assign) NSInteger index;
 
 - (void)refreshTableView;
 

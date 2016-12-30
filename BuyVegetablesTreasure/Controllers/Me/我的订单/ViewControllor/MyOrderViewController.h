@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "MyOrderView.h"
+#import "FSBaseViewController.h"
 
-@interface MyOrderViewController : UIViewController
-
+@interface MyOrderViewController : FSBaseViewController
+@property (nonatomic, assign) NSInteger Index;
 @property (nonatomic, strong) MyOrderView *myOrderView;
 
 @end

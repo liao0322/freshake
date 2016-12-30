@@ -404,7 +404,7 @@
                 // 保存用户头像
                 [[NSUserDefaults standardUserDefaults] setObject:responseObject[@"order_no"] forKey:@"avatar"];
                 [[NSUserDefaults standardUserDefaults] synchronize];
-                _changeImage();
+               // _changeImage();
             }
             
             [self.tableView reloadData];

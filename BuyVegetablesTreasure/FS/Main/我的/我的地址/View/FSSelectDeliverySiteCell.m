@@ -136,11 +136,11 @@
     // 判断默认地址 1 默认 0 否
     if ([model.isdefault boolValue] == 1) {
         [self.defaultBtn setTitle:@"  默认地址" forState:UIControlStateNormal];
-        [self.defaultBtn setImage:IMAGE(@"FSAddress选中") forState:UIControlStateNormal];
-        [self.defaultBtn setTitleColor:[UIColor colorOrange] forState:UIControlStateNormal];
+        [self.defaultBtn setImage:IMAGE(@"FS选中") forState:UIControlStateNormal];
+        [self.defaultBtn setTitleColor:[UIColor colorDomina] forState:UIControlStateNormal];
     }else {
         [self.defaultBtn setTitle:@"  设为默认" forState:UIControlStateNormal];
-        [self.defaultBtn setImage:IMAGE(@"FSAddress未选中") forState:UIControlStateNormal];
+        [self.defaultBtn setImage:IMAGE(@"FS未选中") forState:UIControlStateNormal];
         [self.defaultBtn setTitleColor:[UIColor colorWithHexString:@"0x404040"] forState:UIControlStateNormal];
     }
     

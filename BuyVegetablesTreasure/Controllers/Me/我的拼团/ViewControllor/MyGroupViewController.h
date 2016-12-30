@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FSBaseViewController.h"
 
-@interface MyGroupViewController : UIViewController
+@interface MyGroupViewController :FSBaseViewController
 
 @end

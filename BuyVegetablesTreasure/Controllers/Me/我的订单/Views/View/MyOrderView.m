@@ -33,60 +33,16 @@
     
     self = [super initWithFrame:frame];
     if (self) {
-        [self initOrderTableView];
         _temRect = CGRectZero;
         _btnArr = [NSMutableArray array];
+        [self initTableView];
     }
     return self;
 }
 
-- (void)initOrderTableView {
+- (void)initTableView {
     
-    _bgBtnView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, bg_Height)];
-    _bgBtnView.backgroundColor = [UIColor whiteColor];
-    [self addSubview:_bgBtnView];
-    
-    _titleArray = @[@"所有订单",@"待付款",@"待提货",@"已提货",@"待评价"];
-    for (int i = 0; i < _titleArray.count; i++) {
-        
-        int btnWidth = SCREEN_WIDTH / _titleArray.count;
-        
-        _bgBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _bgBtn.tag = i + 100;
-        _bgBtn.frame = CGRectMake(btnWidth * i + 5, 0, btnWidth, bg_Height);
-        [_bgBtn setTitle:_titleArray[i] forState:UIControlStateNormal];
-        //        [bgBtn setTitleColor:[UIColor colorWithHexString:@"0x404040"] forState:UIControlStateNormal];
-        _bgBtn.titleLabel.font = [UIFont systemFontOfSize:14.0];
-        [_btnArr addObject:_bgBtn];
-        [_bgBtn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
-        
-        
-        
-        if (i == 0) {
-            [_bgBtn setTitleColor:[UIColor colorDomina] forState:UIControlStateNormal];
-            _temBtn = _bgBtn;
-            _temRect = _bgBtn.frame;
-        } else {
-            
-            [_bgBtn setTitleColor:[UIColor colorWithHexString:@"0x404040"] forState:UIControlStateNormal];
-        }
-        
-        [_bgBtnView addSubview:_bgBtn];
-    }
-    if ([_indexStr intValue] == 1) {
-        _bgBtn.tag = 101;
-        [_bgBtn sendActionsForControlEvents:UIControlEventTouchUpInside];
-    }
-
-    _lineScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(ScreenWidth == 320 ? 12 : 12, CGRectGetMaxY(_temRect), SCREEN_WIDTH / _titleArray.count - 15, 2)];
-    _lineScrollView.backgroundColor = [UIColor colorDomina];
-    _lineScrollView.delegate = self;
-    _lineScrollView.contentSize = CGSizeMake(SCREEN_WIDTH * _titleArray.count, 2);
-    _lineScrollView.showsVerticalScrollIndicator = NO;
-    _lineScrollView.showsHorizontalScrollIndicator = NO;
-    [self addSubview:_lineScrollView];
-    
-    _bgScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_lineScrollView.frame), SCREEN_WIDTH, 10)];
+    _bgScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 50, SCREEN_WIDTH, 10)];
     _bgScrollView.delegate = self;
     _bgScrollView.pagingEnabled = YES;
     _bgScrollView.contentSize = CGSizeMake(SCREEN_WIDTH * _titleArray.count, SCREEN_HEIGHT / 2);
@@ -98,7 +54,6 @@
     [_bgScrollView addSubview:_page];
     [self addSubview:_bgScrollView];
     
-    
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_bgScrollView.frame), self.frame.size.width, self.frame.size.height) style:UITableViewStyleGrouped];
     _tableView.delegate = self;
     _tableView.dataSource = self;
@@ -109,6 +64,104 @@
     [_tableView registerClass:[MyOrderGoodsCell class] forCellReuseIdentifier:@"GoodsCell"];
     [_tableView registerClass:[MyOrderInfoCell class] forCellReuseIdentifier:@"OrderInfoCell"];
 }
+
+- (void)initOrderStateView {
+    
+    _bgBtnView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, bg_Height)];
+    _bgBtnView.backgroundColor = [UIColor whiteColor];
+    [self addSubview:_bgBtnView];
+    
+    _titleArray = @[@"所有订单",@"待付款",@"待提货",@"已提货",@"待评价"];
+    for (int i = 0; i < _titleArray.count; i++) {
+        
+        int btnWidth = SCREEN_WIDTH / _titleArray.count;
+        
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        btn.tag = i + 100;
+        btn.frame = CGRectMake(btnWidth * i + 5, 0, btnWidth, bg_Height);
+        
+        [btn setTitle:_titleArray[i] forState:UIControlStateNormal];
+        //        [bgBtn setTitleColor:[UIColor colorWithHexString:@"0x404040"] forState:UIControlStateNormal];
+        btn.titleLabel.font = [UIFont systemFontOfSize:14.0];
+        [_btnArr addObject:btn];
+        [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+        
+        
+        if (i == 0) {
+            [btn setTitleColor:[UIColor colorDomina] forState:UIControlStateNormal];
+            _temBtn = btn;
+            _temRect = btn.frame;
+        } else {
+            
+            [btn setTitleColor:[UIColor colorWithHexString:@"0x404040"] forState:UIControlStateNormal];
+        }
+        
+        [_bgBtnView addSubview:btn];
+        if (_index == i) {
+            
+            _bgBtn = btn;
+            
+        }
+    }
+
+    NSLog(@"btnframe>>>>>>>>%@", NSStringFromCGRect(_bgBtn.frame));
+    NSLog(@"frame>>>>>>>>%@",NSStringFromCGRect(_temBtn.frame));
+
+    _lineScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(ScreenWidth == 320 ? 12 : 12, CGRectGetMaxY(_temRect), SCREEN_WIDTH / _titleArray.count - 15, 2)];
+    _lineScrollView.backgroundColor = [UIColor colorDomina];
+    _lineScrollView.delegate = self;
+    _lineScrollView.contentSize = CGSizeMake(SCREEN_WIDTH * _titleArray.count, 2);
+    _lineScrollView.showsVerticalScrollIndicator = NO;
+    _lineScrollView.showsHorizontalScrollIndicator = NO;
+    [self addSubview:_lineScrollView];
+
+    
+    
+    
+    
+}
+
+- (void)layoutSubviews {
+    
+    [super layoutSubviews];
+    [self initOrderStateView];
+
+    if (_index == 0) {
+        _bgBtn.tag = 100;
+        [_bgBtn sendActionsForControlEvents:UIControlEventTouchUpInside];
+        
+    }
+    else if (_index == 1) {
+        _bgBtn.tag = 101;
+        [_bgBtn sendActionsForControlEvents:UIControlEventTouchUpInside];
+        
+        [self.tableView.mj_header beginRefreshing];
+    }else if (_index == 2) {
+        _bgBtn.tag = 102;
+        [_bgBtn sendActionsForControlEvents:UIControlEventTouchUpInside];
+        
+        [self.tableView.mj_header beginRefreshing];
+        
+    } else if (_index == 3) {
+        _bgBtn.tag = 103;
+        [_bgBtn sendActionsForControlEvents:UIControlEventTouchUpInside];
+        
+        [self.tableView.mj_header beginRefreshing];
+        
+    } else if (_index == 4) {
+        _bgBtn.tag = 104;
+        [_bgBtn sendActionsForControlEvents:UIControlEventTouchUpInside];
+        
+        [self.tableView.mj_header beginRefreshing];
+        
+    }
+    
+//    UIButton *btn = _btnArr[_index];
+//    [_temBtn setTitleColor:[UIColor colorWithHexString:@"0x404040"] forState:UIControlStateNormal];
+//    [btn setTitleColor:[UIColor colorDomina] forState:UIControlStateNormal];
+//    _temBtn = btn;
+
+   }
 
 #pragma mark 刷新
 - (void)refreshTableView {
@@ -283,8 +336,10 @@
 
 - (void)btnClick:(UIButton *)btn {
     [_temBtn setTitleColor:[UIColor colorWithHexString:@"0x404040"] forState:UIControlStateNormal];
+    
     [btn setTitleColor:[UIColor colorDomina] forState:UIControlStateNormal];
     _temBtn = btn;
+
     if (btn.tag == 100) {
         [_bgScrollView setContentOffset:CGPointMake(0, 0) animated:YES];
         _stateUrl = ORDER;
@@ -327,6 +382,7 @@
         
         int i = _bgScrollView.contentOffset.x / SCREEN_WIDTH;
         UIButton *btn = _btnArr[i];
+
         [_temBtn setTitleColor:[UIColor colorWithHexString:@"0x404040"] forState:UIControlStateNormal];
         [btn setTitleColor:[UIColor colorDomina] forState:UIControlStateNormal];
         _temBtn = btn;

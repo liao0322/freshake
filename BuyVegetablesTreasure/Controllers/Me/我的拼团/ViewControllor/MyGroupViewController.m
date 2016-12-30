@@ -92,6 +92,11 @@
             }
             
             [self initMyGroupTableView];
+            if (_dataSource == 0) {
+                _myGroupTableView.groupTableView.backgroundView = self.noDataView;
+            } else {
+                _myGroupTableView.groupTableView.backgroundView = nil;
+            }
             
         }
         else [Tools myHud:data[@"context"] inView:self.view];

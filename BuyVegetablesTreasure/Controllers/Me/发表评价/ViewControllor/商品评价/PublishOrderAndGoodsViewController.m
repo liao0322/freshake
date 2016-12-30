@@ -112,6 +112,13 @@
     NSString *urlString = [NSString stringWithFormat:PUBLISHCOMMENT,[Utillity DataTOjsonString:strJsons]];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithArray:@[@"application/json",
+                                                                              @"text/html",
+                                                                              @"text/json",
+                                                                              @"text/plain",
+                                                                              @"text/javascript",
+                                                                              @"text/xml",
+                                                                              @"image/*"]];
     [manager POST:urlString parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         
         if (self.goodsImageArray.count > 0) {
@@ -141,6 +148,7 @@
         [hud hide:YES];
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [Tools myHud:@"评价失败" inView:self.view];
         [hud hide:YES];
     }];
 }

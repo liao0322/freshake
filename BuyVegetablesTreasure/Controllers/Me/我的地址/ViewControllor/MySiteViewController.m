@@ -142,6 +142,7 @@
              imageView.image = IMAGE(@"无数据");
              imageView.contentMode = UIViewContentModeCenter;
              [self.view addSubview:imageView];
+             
          }
          
      } failure:nil];

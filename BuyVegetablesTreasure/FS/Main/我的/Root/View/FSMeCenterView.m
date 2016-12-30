@@ -124,7 +124,7 @@
         _btnIndex = 2;
     } else if (sender.tag == 142) {
         _btnIndex = 3;
-    } else {
+    } else if (sender.tag == 143){
         _btnIndex = 4;
     }
     if ([self.delegate respondsToSelector:@selector(fsCenterView:allOrderButtonClick:)]) {
@@ -133,6 +133,7 @@
 }
 
 - (void)allOrderClick:(UIButton *)sender {
+    _btnIndex = 0;
     if ([self.delegate respondsToSelector:@selector(fsCenterView:allOrderButtonClick:)]) {
         [self.delegate fsCenterView:self allOrderButtonClick:sender];
     }

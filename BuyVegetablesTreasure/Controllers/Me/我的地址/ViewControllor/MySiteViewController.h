@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FSBaseViewController.h"
 
-@interface MySiteViewController : UIViewController
+@interface MySiteViewController : FSBaseViewController
 
 
 @end

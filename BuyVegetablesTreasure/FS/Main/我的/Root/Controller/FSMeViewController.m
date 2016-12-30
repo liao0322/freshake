@@ -118,7 +118,7 @@
     [self.view addSubview:scrollView];
     _bgScrollView = scrollView;
     
-    _headView = [[FSMeHeadView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 200)];
+    _headView = [[FSMeHeadView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 215)];
     _headView.delegate = self;
     [_bgScrollView addSubview:_headView];
     
@@ -150,7 +150,7 @@
 
 
 - (void)viewDidLayoutSubviews {
-    _bottomView.frame = CGRectMake(0, 335, SCREEN_WIDTH, 200);
+    _bottomView.frame = CGRectMake(0, 350, SCREEN_WIDTH, 200);
 
 }
 
@@ -191,8 +191,9 @@
     
     if (![Tools isBlankString:_uidString]) {
         MyOrderViewController *myOrderVC = [[MyOrderViewController alloc] init];
-        NSLog(@"^^^^^^^^^^^&&&&&%ld", self.centerView.btnIndex);
-        myOrderVC.myOrderView.indexStr = [NSString stringWithFormat:@"%ld", self.centerView.btnIndex];
+        myOrderVC.Index = self.centerView.btnIndex;
+        NSLog(@"^^^^^^^^^^^&&&&&%ld", myOrderVC.Index);
+
         self.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:myOrderVC animated:YES];
         self.hidesBottomBarWhenPushed = NO;
