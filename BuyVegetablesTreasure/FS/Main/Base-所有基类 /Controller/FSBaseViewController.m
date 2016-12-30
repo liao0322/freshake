@@ -56,6 +56,7 @@
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     self.noDataView.frame = self.view.bounds;
+    self.netErrorView.frame = self.view.bounds;
 }
 
 #pragma mark - Custom
@@ -89,9 +90,15 @@
 - (FSNoDataView *)noDataView {
     if (!_noDataView) {
         _noDataView = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([FSNoDataView class]) owner:nil options:nil] lastObject];
-        
     }
     return _noDataView;
+}
+
+- (FSNetErrorView *)netErrorView {
+    if (!_netErrorView) {
+        _netErrorView = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([FSNetErrorView class]) owner:nil options:nil] lastObject];
+    }
+    return _netErrorView;
 }
 
 @end

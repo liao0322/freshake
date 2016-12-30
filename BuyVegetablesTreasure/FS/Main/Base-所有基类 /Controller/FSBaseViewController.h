@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FSNoDataView.h"
-
+#import "FSNetErrorView.h"
 
 @interface FSBaseViewController : UIViewController
 
@@ -34,5 +34,6 @@
 - (void)showInfoWidthError:(NSError *)error;
 
 @property (nonatomic) FSNoDataView *noDataView;
+@property (nonatomic) FSNetErrorView *netErrorView;
 
 @end

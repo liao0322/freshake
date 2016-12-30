@@ -43,11 +43,15 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    CGFloat buttonWidth = self.togetherBuyButton.width;
-    CGFloat horizontalInset = 30;
-    CGFloat spacing = (self.width - horizontalInset * 2 - buttonWidth * 4) / 3.0f;
     
-    self.togetherBuyButton.x = horizontalInset;
+    
+    CGFloat buttonWidth = self.togetherBuyButton.width;
+//    CGFloat horizontalInset = 30;
+    
+    CGFloat spacing = (self.width - buttonWidth * 4) / 5.0f;
+    
+    
+    self.togetherBuyButton.x = spacing;
     self.topUpButton.x = self.togetherBuyButton.right + spacing;
     self.commodityButton.x = self.topUpButton.right + spacing;
     self.salesPromotionButton.x = self.commodityButton.right + spacing;

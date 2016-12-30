@@ -889,6 +889,8 @@
 		FE843AA01E1606BB00528DBB /* Select_Payment@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FE843A9E1E1606BB00528DBB /* Select_Payment@3x.png */; };
 		FE843AA31E1622E600528DBB /* 无数据@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FE843AA11E1622E600528DBB /* 无数据@3x.png */; };
 		FE843AA41E1622E600528DBB /* 无数据@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FE843AA21E1622E600528DBB /* 无数据@2x.png */; };
+		FE843AA71E16428E00528DBB /* FSNetErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE843AA61E16428E00528DBB /* FSNetErrorView.m */; };
+		FE843AA91E16429E00528DBB /* FSNetErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE843AA81E16429E00528DBB /* FSNetErrorView.xib */; };
 		FECDE5DB1E07B3820083E11B /* CouponModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FECDE5DA1E07B3820083E11B /* CouponModel.m */; };
 		FECDE5E61E07B49D0083E11B /* AMapSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FECDE5E41E07B49D0083E11B /* AMapSearchKit.framework */; };
 		FECDE5E71E07B49D0083E11B /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FECDE5E51E07B49D0083E11B /* MAMapKit.framework */; };
@@ -2348,6 +2350,9 @@
 		FE843A9E1E1606BB00528DBB /* Select_Payment@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Select_Payment@3x.png"; sourceTree = "<group>"; };
 		FE843AA11E1622E600528DBB /* 无数据@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "无数据@3x.png"; sourceTree = "<group>"; };
 		FE843AA21E1622E600528DBB /* 无数据@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "无数据@2x.png"; sourceTree = "<group>"; };
+		FE843AA51E16428E00528DBB /* FSNetErrorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSNetErrorView.h; sourceTree = "<group>"; };
+		FE843AA61E16428E00528DBB /* FSNetErrorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSNetErrorView.m; sourceTree = "<group>"; };
+		FE843AA81E16429E00528DBB /* FSNetErrorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSNetErrorView.xib; sourceTree = "<group>"; };
 		FECDE5D91E07B3820083E11B /* CouponModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CouponModel.h; path = BuyVegetablesTreasure/Controllers/Payment/Model/CouponModel.h; sourceTree = SOURCE_ROOT; };
 		FECDE5DA1E07B3820083E11B /* CouponModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CouponModel.m; path = BuyVegetablesTreasure/Controllers/Payment/Model/CouponModel.m; sourceTree = SOURCE_ROOT; };
 		FECDE5E41E07B49D0083E11B /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapSearchKit.framework; sourceTree = "<group>"; };
@@ -7318,6 +7323,9 @@
 				FE843A841E14DDF200528DBB /* FSNoDataView.h */,
 				FE843A851E14DDF200528DBB /* FSNoDataView.m */,
 				FE843A821E14DDD200528DBB /* FSNoDataView.xib */,
+				FE843AA51E16428E00528DBB /* FSNetErrorView.h */,
+				FE843AA61E16428E00528DBB /* FSNetErrorView.m */,
+				FE843AA81E16429E00528DBB /* FSNetErrorView.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -8705,6 +8713,7 @@
 				0C6442FA1CD327E200354A2A /* kr-video-player-pause@3x.png in Resources */,
 				FE82565F1E13CDFE0028D0F2 /* 选择支付方式图标@2x.png in Resources */,
 				520354741C76B33000BD6F63 /* 椭圆-people@3x.png in Resources */,
+				FE843AA91E16429E00528DBB /* FSNetErrorView.xib in Resources */,
 				2ACFF10E1CB4B7E8008783E3 /* 不通过@3x.png in Resources */,
 				5224526F1CABBF5A00CBC780 /* 收货-编辑.png in Resources */,
 				E42A2C8E1D2F8DC900346518 /* 发票选中@3x.png in Resources */,
@@ -9174,6 +9183,7 @@
 				0969DC181BCDFE1700D98273 /* MMProgressHUDWindow.m in Sources */,
 				0CFE332F1DC19CCA00F19494 /* SDCollectionViewCell.m in Sources */,
 				52926AF01C85428C00BC760B /* ForgotPasswordViewController.m in Sources */,
+				FE843AA71E16428E00528DBB /* FSNetErrorView.m in Sources */,
 				FE17A94E1E0D430F00DC7949 /* FSHelptextViewController.m in Sources */,
 				0969DC6E1BCDFF6F00D98273 /* UIImage+category.m in Sources */,
 				E4818FEA1CC8B1E90081E06C /* PersonalDataViewController.m in Sources */,
@@ -9412,7 +9422,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = BuyVegetablesTreasure/BuyVegetablesTreasure.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: kang XU (9HJTJ9KTLK)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
 				DEVELOPMENT_TEAM = QUP3N2G398;
@@ -9468,8 +9478,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = BuyVegetablesTreasure/BuyVegetablesTreasure.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: kang XU (9HJTJ9KTLK)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				COMPRESS_PNG_FILES = NO;
 				DEVELOPMENT_TEAM = QUP3N2G398;
 				ENABLE_BITCODE = NO;

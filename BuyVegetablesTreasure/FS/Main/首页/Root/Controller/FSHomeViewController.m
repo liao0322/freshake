@@ -190,7 +190,10 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
         
         if (status == XFNetworkStatusNotReachable || status == XFNetworkStatusUnknown) { // 无网络
             [SVProgressHUD showErrorWithStatus:@"无网络连接!"];
+            
+            self.mainView.backgroundView = self.netErrorView;
         } else {
+            self.mainView.backgroundView = nil;
             [SVProgressHUD showWithStatus:@"正在加载..."];
             // 开始定位
             [self startLocation];
@@ -728,7 +731,7 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
             [self initImage:rect withImage:cell.imageView.image];
             
             cartNum++;
-            model.CartNum = [NSString stringWithFormat:@"%ld", cartNum];
+            model.CartNum = [NSString stringWithFormat:@"%ld", (long)cartNum];
             //[self.commodityArray replaceObjectAtIndex:indexPath.row withObject:model];
             
             // 更新 UI
@@ -737,7 +740,7 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
             // 设置 tabbar badge
             NSInteger badgeValue = [[[[[[self tabBarController] tabBar] items] objectAtIndex:2] badgeValue] integerValue];
             badgeValue++;
-            [[[[[self tabBarController] tabBar] items] objectAtIndex:2] setBadgeValue:[NSString stringWithFormat:@"%ld", badgeValue]];
+            [[[[[self tabBarController] tabBar] items] objectAtIndex:2] setBadgeValue:[NSString stringWithFormat:@"%ld", (long)badgeValue]];
             
         }
         
@@ -775,8 +778,7 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
         if ([dataDict[@"issuccess"] boolValue]) { // 成功
             
             cartNum--;
-            model.CartNum = [NSString stringWithFormat:@"%ld", cartNum];
-            //[self.commodityArray replaceObjectAtIndex:indexPath.row withObject:model];
+            model.CartNum = [NSString stringWithFormat:@"%ld", (long)cartNum];
             
             // 更新 UI
             [cell.countLabel setText:model.CartNum];
@@ -787,7 +789,7 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
             if (badgeValue == 0) {
                 [[[[[self tabBarController] tabBar] items] objectAtIndex:2] setBadgeValue:nil];
             } else {
-                [[[[[self tabBarController] tabBar] items] objectAtIndex:2] setBadgeValue:[NSString stringWithFormat:@"%ld", badgeValue]];
+                [[[[[self tabBarController] tabBar] items] objectAtIndex:2] setBadgeValue:[NSString stringWithFormat:@"%ld", (long)badgeValue]];
             }
             
         }
