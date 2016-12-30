@@ -20,13 +20,19 @@
     [super layoutSubviews];
     
     self.imageView.centerX = self.width * 0.5;
-    self.imageView.y = self.height * 0.1;
     
+
+    if (SCREEN_WIDTH == 320) {
+        self.imageView.y = 10;
+    } else if (SCREEN_WIDTH == 375) {
+        self.imageView.y = 15;
+    } else if (SCREEN_WIDTH == 414) {
+        self.imageView.y = 10;
+    }
+
     [self.titleLabel sizeToFit];
     self.titleLabel.centerX = self.imageView.centerX;
-    self.titleLabel.y = self.imageView.bottom + self.height * 0.1;
-
-    
+    self.titleLabel.y = self.imageView.bottom + 5;
 }
 
 

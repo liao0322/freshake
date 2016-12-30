@@ -95,12 +95,12 @@
         if (i == 0) {
             
             priceLabel.font = [UIFont systemFontOfSize:22];
-            priceLabel.textColor = Color;
+            priceLabel.textColor = [UIColor orangeColor];
         }
         else {
             
             priceLabel.font = [UIFont systemFontOfSize:14];
-            priceLabel.textColor = [UIColor colorWithHexString:@"0x606060"];
+            priceLabel.textColor = [UIColor lightGrayColor];
         }
     }
     

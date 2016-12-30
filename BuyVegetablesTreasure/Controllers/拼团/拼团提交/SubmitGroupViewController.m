@@ -91,9 +91,7 @@
     
     WS(weakSelf);
     _payGroupOrderTableView.goAddress = ^(UIViewController *viewController) {
-        weakSelf.hidesBottomBarWhenPushed = YES;
         [weakSelf.navigationController pushViewController:viewController animated:YES];
-        
     };
     
     [_payGroupOrderTableView setCurrentCoor:^(CLLocationCoordinate2D coor) {
@@ -142,7 +140,7 @@
     _priceLabel.font = [UIFont systemFontOfSize:15];
     _priceLabel.text = [NSString stringWithFormat:@"应付金额: ¥%.2f",[_groupModel.ActivityPrice floatValue]];
     _priceLabel.textAlignment = NSTextAlignmentCenter;
-    _priceLabel.textColor = Color;
+    _priceLabel.textColor = [UIColor orangeColor];
     [bgView addSubview:_priceLabel];
     
     UIButton *orderStatusBtn = [UIButton buttonWithType:UIButtonTypeCustom];

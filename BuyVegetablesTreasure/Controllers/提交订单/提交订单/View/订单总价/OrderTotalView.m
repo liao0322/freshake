@@ -37,7 +37,7 @@
     self.priceLabel = [UILabel new];
     self.priceLabel.text = @"应付金额: ¥0.00";
     self.priceLabel.font = [UIFont systemFontOfSize:14];
-    self.priceLabel.textColor = Color;
+    self.priceLabel.textColor = [UIColor orangeColor];
     self.priceLabel.textAlignment = NSTextAlignmentCenter;
     [priceBgView addSubview:self.priceLabel];
     

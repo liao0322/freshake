@@ -28,13 +28,18 @@
     return self;
 }
 
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    if (_storeDeliveryTableView.contentOffset.y == 0) {
+        _storeDeliveryTableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
+    }
+}
+
 #pragma mark - 初始化
 #pragma mark 显示商家提货点
 - (void)initStoreDeliveryTableView {
     
-    _storeDeliveryTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight) style:UITableViewStyleGrouped];
-//    _storeDeliveryTableView.backgroundColor = [UIColor blueColor];
-//    _storeDeliveryTableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
+    _storeDeliveryTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight) style:UITableViewStyleGrouped];
     _storeDeliveryTableView.delegate = self;
     _storeDeliveryTableView.dataSource = self;
     _storeDeliveryTableView.separatorStyle = NO;

@@ -184,7 +184,6 @@
         [userDefaults setObject:yPoint forKey:@"yPoint"];
         [userDefaults setObject:fendianname forKey:@"Fendianname"];
         
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"UserIsLogout" object:nil];
         
         _LogOut();
     }

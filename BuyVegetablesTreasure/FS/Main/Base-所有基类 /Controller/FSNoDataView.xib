@@ -27,6 +27,6 @@
         </view>
     </objects>
     <resources>
-        <image name="无数据.png" width="152" height="217"/>
+        <image name="无数据.png" width="87" height="147"/>
     </resources>
 </document>

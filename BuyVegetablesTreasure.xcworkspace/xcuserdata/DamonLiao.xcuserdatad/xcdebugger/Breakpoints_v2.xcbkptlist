@@ -100,11 +100,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BuyVegetablesTreasure/Controllers/Me/&#x4e2a;&#x4eba;&#x4fe1;&#x606f;/ViewControllor/PersonalDataViewController.m"
-            timestampString = "504701291.810189"
+            timestampString = "504701276.097299"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "384"
-            endingLineNumber = "384"
+            startingLineNumber = "416"
+            endingLineNumber = "416"
             landmarkName = "-requestDataFromNetUserFace"
             landmarkType = "7">
          </BreakpointContent>
@@ -115,13 +115,61 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "BuyVegetablesTreasure/Controllers/Me/&#x4e2a;&#x4eba;&#x4fe1;&#x606f;/ViewControllor/PersonalDataViewController.m"
-            timestampString = "504701276.097299"
+            filePath = "BuyVegetablesTreasure/Views/AffirmPayment.m"
+            timestampString = "504758341.929021"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "416"
-            endingLineNumber = "416"
-            landmarkName = "-requestDataFromNetUserFace"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "-createAffirmPaymentView"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BuyVegetablesTreasure/FS/Main/&#x6211;&#x7684;/&#x8bbe;&#x7f6e;/Root/View/FSSettingView.m"
+            timestampString = "504760900.544291"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
+            landmarkName = "-alertView:clickedButtonAtIndex:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BuyVegetablesTreasure/FS/Main/&#x6211;&#x7684;/&#x8bbe;&#x7f6e;/Root/View/FSSettingView.m"
+            timestampString = "504760728.729902"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
+            landmarkName = "-alertView:clickedButtonAtIndex:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BuyVegetablesTreasure/FS/Main/&#x6211;&#x7684;/&#x8bbe;&#x7f6e;/Root/View/FSSettingView.m"
+            timestampString = "504760781.874903"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "-outClick"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

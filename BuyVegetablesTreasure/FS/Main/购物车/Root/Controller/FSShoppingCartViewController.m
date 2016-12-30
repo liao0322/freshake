@@ -147,7 +147,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.row == (self.commodityArray.count - 1)) {
         self.tableView.tableFooterView = self.footerView;
-        self.tableView.tableFooterView.height = 120;
+        self.tableView.tableFooterView.height = 80;
     }
     
 }
@@ -624,9 +624,6 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
             
             [self.footerView.pointLabel setText:[NSString stringWithFormat:@"积分%@，可抵用%.2f元", self.point, [self.point floatValue] / 1000.0f]];
             [self.footerView.pointLabel sizeToFit];
-            
-            [self.footerView.couponLabel setText:[NSString stringWithFormat:@"优惠券%@张", self.tick]];
-            [self.footerView.couponLabel sizeToFit];
 
             [self.tableView reloadData];
         }

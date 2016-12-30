@@ -67,7 +67,7 @@
     
     _bottomView = [[RechargeView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT-55, SCREEN_WIDTH, 55)];
     _bottomView.isBottomView = @"1";
-    [_bottomView SetUI:[NSString stringWithFormat:@"￥ %.2f",[_Money floatValue]] WithTitle:@"充值金额:" AndColor:@"0xff5f3e"];
+    [_bottomView SetUI:[NSString stringWithFormat:@"￥ %.2f",[_Money floatValue]] WithTitle:@"充值金额:" AndColor:@"0xfd7f09"];
     [self.view addSubview:_bottomView];
 
     __weak typeof(self)weakSelf = self;

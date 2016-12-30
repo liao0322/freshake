@@ -139,7 +139,7 @@
             bgView.userInteractionEnabled = YES;
             
             UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
-            btn.frame = CGRectMake(15, 25, SCREEN_WIDTH - 30, SectionHeight);
+            btn.frame = CGRectMake(15, 25, SCREEN_WIDTH - 30, 44);
             btn.titleLabel.font = [UIFont systemFontOfSize:18.0];
             btn.backgroundColor = [UIColor colorDomina];
             btn.layer.cornerRadius = 5;
@@ -206,6 +206,7 @@
         [userDefaults setObject:yPoint forKey:@"yPoint"];
         [userDefaults setObject:fendianname forKey:@"Fendianname"];
         
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"UserIsLogout" object:nil];
         _LogOut();
     }
 }

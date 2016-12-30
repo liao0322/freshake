@@ -57,7 +57,11 @@
     // 会员价
     [self.vipLabel sizeToFit];
     self.vipLabel.x = self.titleLabel.x;
-    self.vipLabel.bottom = self.iconImageView.bottom;
+    if (SCREEN_WIDTH == 414) {
+        self.vipLabel.bottom = self.iconImageView.bottom - 10;
+    } else {
+        self.vipLabel.bottom = self.iconImageView.bottom ;
+    }
     
     // 价格
     [self.priceLabel sizeToFit];
@@ -66,7 +70,12 @@
     
     // 加号按钮
     self.plusButton.right = width - spacing;
-    self.plusButton.bottom = self.iconImageView.bottom;
+    
+    if (SCREEN_WIDTH == 414) {
+        self.plusButton.bottom = self.iconImageView.bottom - 10;
+    } else {
+        self.plusButton.bottom = self.iconImageView.bottom - 5;
+    }
     
     // 数量
     self.countLabel.width = 18;

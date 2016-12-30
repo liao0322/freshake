@@ -74,7 +74,7 @@
     _rechargeView.isBottomView = @"0";
     
     NSString *money = [[NSUserDefaults standardUserDefaults] objectForKey:@"amount"];
-    [_rechargeView SetUI:[NSString stringWithFormat:@"￥ %.2f",[money floatValue]] WithTitle:@"当前余额:" AndColor:@"0xff5f3e"];
+    [_rechargeView SetUI:[NSString stringWithFormat:@"￥ %.2f",[money floatValue]] WithTitle:@"当前余额:" AndColor:@"0xfd7f09"];
 }
 
 #pragma mark 设置行

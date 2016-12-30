@@ -124,7 +124,8 @@ typedef NS_ENUM(NSInteger,CouponType) {
 - (void)setNav {
     
     self.view.backgroundColor = [UIColor whiteColor];
-    self.navigationItem.titleView = [Utillity customNavToTitle:@"提交订单"];
+//    self.navigationItem.titleView = [Utillity customNavToTitle:@"提交订单"];
+    self.title = @"提交订单";
     self.navigationItem.leftBarButtonItem = [UIFactory createBackBBIWithTarget:self action:@selector(back)];
 }
 

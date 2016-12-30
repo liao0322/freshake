@@ -109,7 +109,14 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
     self.collectionView.x = 0;
     self.collectionView.y = 64;
     self.collectionView.width = self.view.width;
-    self.collectionView.height = (int)(self.view.width / 4 + 0.5);
+    
+    if (SCREEN_WIDTH == 320) {
+        self.collectionView.height = (int)(320.0f / 4 + 0.5);
+    } else if (SCREEN_WIDTH == 375) {
+        self.collectionView.height = (int)(320.0f / 4 + 0.5);
+    } else if (SCREEN_WIDTH == 414) {
+        self.collectionView.height = (int)(SCREEN_WIDTH / 5 + 0.5);
+    }
     
     self.tableView.frame = self.view.bounds;
     self.tableView.y = self.collectionView.bottom + 5;
@@ -252,8 +259,14 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
 // cell size
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    CGFloat cellWH = SCREEN_WIDTH / 4;
-    return (CGSize){(int)(cellWH + 0.5), (int)(cellWH + 0.5)};
+    if (SCREEN_WIDTH == 414) {
+        CGFloat cellWH = SCREEN_WIDTH / 5;
+        return (CGSize){(int)(cellWH + 0.5), (int)(cellWH + 0.5)};
+    } else {
+        CGFloat cellWH = SCREEN_WIDTH / 4;
+        return (CGSize){(int)(cellWH + 0.5), (int)(cellWH + 0.5)};
+    }
+
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
@@ -284,7 +297,6 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     FSClassificationCVCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:classificationCVCellID forIndexPath:indexPath];
-    
     FSClassificationModel *model = self.commodityArray[indexPath.section];
     [cell.titleLabel setText:model.CategoryName];
     
@@ -454,15 +466,11 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
 
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    if (scrollView == self.collectionView) {
-        return;
-    }
-    if (self.isCellSelected) {
-        return;
-    }
-    if ([self.refreshControl isRefreshing]) {
-        return;
-    }
+    if (scrollView == self.collectionView) return;
+    if (self.isCellSelected) return;
+    if ([self.refreshControl isRefreshing]) return;
+    if (!self.commodityArray.count) return;
+    
     NSIndexPath *topIndexpath = [[self.tableView indexPathsForVisibleRows] firstObject];
     NSIndexPath *willSelectIndexPath = [NSIndexPath indexPathForRow:0 inSection:topIndexpath.section];
     

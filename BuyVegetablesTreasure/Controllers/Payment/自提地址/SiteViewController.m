@@ -48,6 +48,7 @@
     _siteArray = [NSMutableArray array];
     _userAddressArray = [NSMutableArray array];
 
+    self.automaticallyAdjustsScrollViewInsets = NO;
     // 设置导航条
     [self setNav];
     // 提货地址

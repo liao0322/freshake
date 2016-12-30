@@ -108,7 +108,7 @@
                     _priceLabel.text = @"￥0.00";
                 }
                 _priceLabel.textAlignment = NSTextAlignmentRight;
-                _priceLabel.textColor = [UIColor colorWithHexString:@"0xff6600"];
+                _priceLabel.textColor = [UIColor orangeColor];
                 _priceLabel.font = [UIFont systemFontOfSize:14];
                 _priceLabel.tag = i + 1;
                 [self addSubview:_priceLabel];

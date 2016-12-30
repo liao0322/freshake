@@ -308,9 +308,6 @@
         FSNavigationController *navController = [[FSNavigationController alloc] initWithRootViewController:loginVC];
         
         [self presentViewController:navController animated:YES completion:nil];
-        
-        //self.hidesBottomBarWhenPushed = YES;
-        //[self.navigationController pushViewController:[FSLoginViewController new] animated:YES];
     }
     else {
         [self requestDataFromNetCollect];

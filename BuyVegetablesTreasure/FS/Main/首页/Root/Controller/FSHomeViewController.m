@@ -802,16 +802,11 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
 
 - (void)userIsLogined {
     [self startLocation];
-    [self getHomeData];
-    [self getCommodityData];
-    [self getShoppingCartCount];
 }
 
 - (void)userIsLogout {
     [self startLocation];
-    [self getHomeData];
-    [self getCommodityData];
-    [self getShoppingCartCount];
+
 }
 
 // 导航栏左边按钮点击事件

@@ -378,6 +378,61 @@
             [_payGroupOrderTableView reloadData];
         };
         
+        
+        /*
+        
+        SiteViewController *siteVC = [[SiteViewController alloc] init];
+        siteVC.midStr = _isCollect ? _midStr : [_userDefaults objectForKey:@"merchantsID"];
+        siteVC.isCollect = _isCollect;
+        siteVC.isDelivery = _isDelivery;
+        siteVC.isDistribution = _isDistribution;
+        [self.navigationController pushViewController:siteVC animated:YES];
+        
+        siteVC.midSite = ^(Map *mapArray) {
+            
+            [_userAddressArray removeAllObjects];
+            
+            _fendianName = mapArray.Fendianname;
+            _pickTime = mapArray.picktime;
+            _pickJuli = mapArray.pickJuli;
+            _goodsStoreID = mapArray.id;
+            _Gaddress = mapArray.addr;
+            _midStr = mapArray.mid;
+            
+            _express_fee = @"0.00";
+            //                _affirmPayment.payBtn.enabled = YES;
+            //                _affirmPayment.payBtn.backgroundColor = [UIColor clearColor];
+            [self initAffirmPayment];
+            
+            [Single sharedInstance].isDelivery = NO;
+            
+            [_userAddressArray removeAllObjects];
+            [_payTableView reloadData];
+        };
+        
+        siteVC.userAddress = ^(SiteModel *userAddressArray) {
+            
+            [_userAddressArray removeAllObjects];
+            
+            _express_fee = [_userDefaults objectForKey:@"DistancePrice"];
+            if ([_fullPrice floatValue] < _price) {
+                _express_fee = @"0.00";
+            }
+            
+            [self initAffirmPayment];
+            
+            CLLocationCoordinate2D coor;
+            coor.latitude = [userAddressArray.X floatValue];
+            coor.longitude = [userAddressArray.Y floatValue];
+            [self distanceWithCoor:coor];
+            
+            [Single sharedInstance].isDelivery = YES;
+            
+            [_userAddressArray addObject:userAddressArray];
+            [_payTableView reloadData];
+        };
+        */
+        
         _goAddress(siteVc);
     }
 }
