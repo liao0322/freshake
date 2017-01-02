@@ -522,6 +522,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
              // 提交订单页
              SubmitOrderViewController *paymentVC = [[SubmitOrderViewController alloc] init];
              paymentVC.goodsArray = arr;
+             NSLog(@"%@", paymentVC.goodsArray);
              [self.navigationController pushViewController:paymentVC animated:YES];
              
          }

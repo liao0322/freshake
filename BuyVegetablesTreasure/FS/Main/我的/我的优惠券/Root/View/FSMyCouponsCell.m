@@ -73,7 +73,7 @@
     
     // 时间标题
     UILabel *timeTitleLabel = [UILabel new];
-    timeTitleLabel.text = @"有效期:\n至:";
+    timeTitleLabel.text = @"开始时间:\n结束时间:";
     timeTitleLabel.font = [UIFont systemFontOfSize:10];
     timeTitleLabel.textColor = [UIColor colorWithHexString:@"0xb2b2b2"];
     timeTitleLabel.textAlignment = NSTextAlignmentRight;

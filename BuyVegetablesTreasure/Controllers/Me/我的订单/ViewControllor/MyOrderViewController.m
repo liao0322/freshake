@@ -14,6 +14,8 @@
 //#import "GoodsCartViewController.h"
 #import "FSNoDataView.h"
 #import "FSShoppingCartViewController.h"
+#import "SubmitOrderViewController.h"
+#import "ShopCart.h"
 
 @interface MyOrderViewController ()
 
@@ -25,6 +27,8 @@
 @property (nonatomic, strong) NSMutableArray *orderCountArray;
 @property (nonatomic, strong) UIButton *bgView;
 @property (nonatomic, strong) OrderStateView *orderStateView;
+@property (copy, nonatomic) NSMutableArray *commodityArray;
+@property (assign, nonatomic) CGFloat totalPrice;
 
 @end
 
@@ -360,24 +364,188 @@
     } failure:^(NSError *error) {}];
 }
 
+- (NSMutableArray *)commodityArray {
+    if (!_commodityArray) {
+        _commodityArray = [NSMutableArray array];
+        
+    }
+    return _commodityArray;
+}
+#pragma mark - Custom
+
+- (void)getCommodityData {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *uidString = [defaults objectForKey:@"UID"];
+    NSString *midString = [defaults objectForKey:@"MID"];
+    NSString *urlString = [NSString stringWithFormat:SHOPPINGCARTGOODS,UUID,uidString,midString];
+    NSLog(@"===购物车请求===%@",urlString);
+    [SVProgressHUD showWithStatus:@"正在加载..."];
+    [XFNetworking GET:urlString parameters:nil success:^(id responseObject, NSInteger statusCode) {
+        [SVProgressHUD dismiss];
+        NSDictionary *dataDict = [self dictWithData:responseObject];
+        
+        [self.commodityArray removeAllObjects];
+        
+        if ([dataDict[@"issuccess"] boolValue]) {
+            
+            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+            [userDefaults setObject:dataDict[@"point"] forKey:@"point"];
+            [userDefaults setObject:dataDict[@"TickCount"] forKey:@"TickCount"];
+            
+            for (NSDictionary *dic in dataDict[@"list"]) {
+                
+                ShopCart *model = [ShopCart modelWithDict:dic];
+                model.isSelect = YES;
+                [self.commodityArray addObject:model];
+            }
+            
+            if (self.commodityArray.count) {
+                
+//                self.footerView.hidden = NO;
+//                self.bottomView.hidden = NO;
+//                self.emptyView.hidden = YES;
+//                [self.tableView reloadData];
+//                
+                self.totalPrice = [self getTotalPrice];
+                
+//                [self.bottomView.totalPriceLabel setText:[NSString stringWithFormat:@"￥%.2f", fabs(self.totalPrice)]];
+//                [self.bottomView.totalPriceLabel sizeToFit];
+//                
+//                self.bottomView.selectAllButton.selected = YES;
+                
+            } else {
+//                self.footerView.hidden = YES;
+//                self.bottomView.hidden = YES;
+//                self.emptyView.hidden = NO;
+            }
+            
+//            [self.refreshControl endRefreshing];
+            
+        }
+        else {
+//            if (!self.commodityArray.count) {
+//                self.footerView.hidden = YES;
+//                self.bottomView.hidden = YES;
+//                self.emptyView.hidden = NO;
+//                
+//                
+//            }
+        }
+        
+    } failure:^(NSError *error, NSInteger statusCode) {
+//        [self.refreshControl endRefreshing];
+        [self showInfoWidthError:error];
+    }];
+    
+}
+
+
 #pragma mark 再次购买
 - (void)requestDataFromNetBuyAgainWithOrderID:(NSString *)orderID {
-    
+    [self getCommodityData];
     NSString *urlString = [NSString stringWithFormat:ADDCOPYORDERCART,orderID,UUID,_uidString,[[NSUserDefaults standardUserDefaults]objectForKey:@"mobile"]];
     
     [HttpRequest sendGetOrPostRequest:urlString param:nil requestStyle:Get setSerializer:Date isShowLoading:YES success:^(id data)
     {
         if ([data[@"issuccess"] boolValue]) {
+            [self orderJieSuan];
+//            NSMutableArray *arr = [NSMutableArray array];
+//            for (int i = 0; i < self.dataSource.count; i++) {
+//                
+//                ShopCart *model = self.dataSource[i];
+//                
+//                [arr addObject:model];
+//                
+//                SubmitOrderViewController *paymentVC = [[SubmitOrderViewController alloc] init];
+//                paymentVC.goodsArray = arr;
+//                [self.navigationController pushViewController:paymentVC animated:YES];
+//             
+//            }
+            
+            
+
             
             // 跳转购物车
 //            self.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:[FSShoppingCartViewController new] animated:YES];
+//            [self.navigationController pushViewController:[FSShoppingCartViewController new] animated:YES];
         }
         else {
             [Tools myHud:data[@"context"] inView:self.view];
         }
         
     } failure:nil];
+}
+
+- (void)orderJieSuan {
+    NSLog(@"下单");
+    
+    NSMutableArray *arr = [NSMutableArray array];
+    for (int i = 0; i < self.commodityArray.count; i++) {
+        
+        ShopCart *model = self.commodityArray[i];
+        
+        if (model.isSelect) {
+            
+            [arr addObject:model];
+        }
+    }
+    
+    if (arr.count == 0) {
+        return [Tools myHud:@"请选择商品" inView:self.view];
+    }
+    
+    // 保存商品列表
+    NSMutableArray *listArray = [NSMutableArray array];
+    for (int i = 0; i < arr.count; i++) {
+        
+        ShopCart *model = arr[i];
+        NSDictionary *dic = @{@"Id":[NSString stringWithFormat:@"%zd",[model.ID integerValue]],
+                              @"num":[NSString stringWithFormat:@"%zd",[model.productNum integerValue]]};
+        
+        [listArray addObject:dic];
+    }
+    
+    NSDictionary *listDict = @{@"List":listArray};
+    NSString *jsonString = [Utillity DataTOjsonString:listDict];
+    NSString *urlString = [NSString stringWithFormat:SUMBITORDER,jsonString];
+    urlString = [urlString stringByReplacingOccurrencesOfString:@"%20" withString:@""];
+    urlString = [urlString stringByReplacingOccurrencesOfString:@"%0A" withString:@""];
+    SLog(@"=====选好了=====%@",urlString);
+    
+    [HttpRequest sendGetOrPostRequest:urlString param:nil requestStyle:POST setSerializer:Json isShowLoading:YES success:^(id data)
+     {
+         if ([data[@"issuccess"] boolValue]) {
+             
+             // 提交订单页
+             SubmitOrderViewController *paymentVC = [[SubmitOrderViewController alloc] init];
+             paymentVC.goodsArray = arr;
+             NSLog(@"%@", paymentVC.goodsArray);
+             [self.navigationController pushViewController:paymentVC animated:YES];
+             
+         }
+         else [Tools myHud:data[@"context"] inView:self.view];
+         
+     } failure:^(NSError *error) {
+         NSLog(@"%@",error);
+         [self showInfoWidthError:error];
+     }];
+    
+
+}
+
+- (CGFloat)getTotalPrice {
+    CGFloat totalPrice = 0.0f;
+    
+    for (ShopCart *model in self.commodityArray) {
+        if (!model.isSelect) {
+            continue;
+        }
+        if (model.isSelect) {
+            CGFloat price = [model.productNum integerValue] * [model.salePrice floatValue];
+            totalPrice += price;
+        }
+    }
+    return totalPrice;
 }
 
 #pragma mark 更新支付方式
