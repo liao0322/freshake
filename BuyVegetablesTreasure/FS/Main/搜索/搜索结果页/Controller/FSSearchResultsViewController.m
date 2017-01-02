@@ -26,7 +26,7 @@
 
 @property (nonatomic) FSShoppingCartIcon *cartView;
 
-@property (nonatomic) UIImageView *cartAnimView;
+//@property (nonatomic) UIImageView *cartAnimView;
 
 @property (assign, nonatomic) NSInteger totalCartNumber;
 
@@ -313,10 +313,10 @@ static NSString * const searchResultTVCellID = @"searchResultTVCellID";
     CGFloat posY = self.cartView.centerY;
     CGFloat posX = self.cartView.centerX;
     
-    self.cartAnimView = [[UIImageView alloc] initWithFrame:rect];
-    self.cartAnimView.image = image;
+    __block UIImageView *cartAnimView = [[UIImageView alloc] initWithFrame:rect];
+    cartAnimView.image = image;
     
-    [[UIApplication sharedApplication].keyWindow addSubview:self.cartAnimView];
+    [[UIApplication sharedApplication].keyWindow addSubview:cartAnimView];
     //[self.view addSubview:self.cartAnimView];
     
     CABasicAnimation* rotationAnimation;
@@ -328,16 +328,16 @@ static NSString * const searchResultTVCellID = @"searchResultTVCellID";
     
     //这个是让旋转动画慢于缩放动画执行
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.cartAnimView.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
+        [cartAnimView.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
     });
     
     [UIView animateWithDuration:1.0 animations:^{
         
-        self.cartAnimView.frame = CGRectMake(posX, posY, 0, 0);
+        cartAnimView.frame = CGRectMake(posX, posY, 0, 0);
         
     } completion:^(BOOL finished) {
-        [self.cartAnimView removeFromSuperview];
-        self.cartAnimView = nil;
+        [cartAnimView removeFromSuperview];
+        cartAnimView = nil;
     }];
 }
 

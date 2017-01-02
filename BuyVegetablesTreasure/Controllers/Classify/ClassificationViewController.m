@@ -20,7 +20,7 @@
 
 @property (nonatomic, copy) NSString *categoryName;
 @property (nonatomic, copy) UILabel *microLabel;
-@property (nonatomic, copy) UIImageView *cartAnimView;
+//@property (nonatomic, copy) UIImageView *cartAnimView;
 @property (nonatomic, copy) NSMutableArray *commodityArray;
 
 @end
@@ -232,9 +232,9 @@
     
     UIButton *btn = (UIButton *)[self.view viewWithTag:100001];
     
-    _cartAnimView = [[UIImageView alloc] initWithFrame:rect];
-    _cartAnimView.image = image;
-    [self.view addSubview:_cartAnimView];
+    __block UIImageView *cartAnimView = [[UIImageView alloc] initWithFrame:rect];
+    cartAnimView.image = image;
+    [self.view addSubview:cartAnimView];
     
     CABasicAnimation* rotationAnimation;
     rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
@@ -245,20 +245,20 @@
     
     //这个是让旋转动画慢于缩放动画执行
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [_cartAnimView.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
+        [cartAnimView.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
     });
     
     [UIView animateWithDuration:1.0 animations:^{
         
         if (isPad) {
-            _cartAnimView.frame = CGRectMake(btn.frame.origin.x + 27.5, btn.frame.origin.y + 27.5, 0, 0);
+            cartAnimView.frame = CGRectMake(btn.frame.origin.x + 27.5, btn.frame.origin.y + 27.5, 0, 0);
         }
         else {
-            _cartAnimView.frame = CGRectMake(btn.frame.origin.x + 27.5, btn.frame.origin.y + 27.5, 0, 0);
+            cartAnimView.frame = CGRectMake(btn.frame.origin.x + 27.5, btn.frame.origin.y + 27.5, 0, 0);
         }
         
     } completion:^(BOOL finished) {
-        [_cartAnimView removeFromSuperview];
+        [cartAnimView removeFromSuperview];
     }];
 }
 

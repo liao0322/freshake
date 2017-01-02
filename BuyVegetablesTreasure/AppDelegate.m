@@ -30,7 +30,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
+
     // 全局设置
     [self fsGlobalSetup];
     

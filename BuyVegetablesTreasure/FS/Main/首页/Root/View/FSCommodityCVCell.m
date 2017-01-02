@@ -81,7 +81,8 @@
     
     self.titleLabel.text = _model.productName;
     self.descLabel.text = _model.shortDesc;
-    self.priceLabel.text = [NSString stringWithFormat:@"￥%@", _model.salePrice];
+    
+    self.priceLabel.text = [NSString stringWithFormat:@"￥%.2f", [_model.salePrice floatValue]];
     
     self.countLabel.text = _model.CartNum;
     

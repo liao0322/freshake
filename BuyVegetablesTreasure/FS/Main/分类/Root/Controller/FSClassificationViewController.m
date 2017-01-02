@@ -46,7 +46,7 @@
 
 @property (assign, nonatomic) BOOL isCellSelected;
 
-@property (nonatomic) UIImageView *cartAnimView;
+//@property (nonatomic) UIImageView *cartAnimView;
 
 @end
 
@@ -520,11 +520,11 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
     CGFloat posX = itemW * 2 + 15;
     
     NSLog(@"%@", NSStringFromCGRect(tabBar.frame));
+
+    __block UIImageView *cartAnimView = [[UIImageView alloc] initWithFrame:rect];
+    cartAnimView.image = image;
     
-    self.cartAnimView = [[UIImageView alloc] initWithFrame:rect];
-    self.cartAnimView.image = image;
-    
-    [[UIApplication sharedApplication].keyWindow addSubview:self.cartAnimView];
+    [[UIApplication sharedApplication].keyWindow addSubview:cartAnimView];
     //[self.view addSubview:self.cartAnimView];
     
     CABasicAnimation* rotationAnimation;
@@ -536,16 +536,16 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
     
     //这个是让旋转动画慢于缩放动画执行
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.cartAnimView.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
+        [cartAnimView.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
     });
     
     [UIView animateWithDuration:1.0 animations:^{
         
-        self.cartAnimView.frame = CGRectMake(posX + 27.5, posY + 27.5, 0, 0);
+        cartAnimView.frame = CGRectMake(posX + 27.5, posY + 27.5, 0, 0);
         
     } completion:^(BOOL finished) {
-        [self.cartAnimView removeFromSuperview];
-        self.cartAnimView = nil;
+        [cartAnimView removeFromSuperview];
+        cartAnimView = nil;
     }];
 }
 

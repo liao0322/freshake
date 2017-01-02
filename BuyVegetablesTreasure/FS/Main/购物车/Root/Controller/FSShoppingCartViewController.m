@@ -158,67 +158,54 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewRowAction *removeAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"删除" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
         
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"警告" message:@"确定要删除吗" preferredStyle:UIAlertControllerStyleAlert];
+        ShopCart *model = self.commodityArray[row];
         
-        UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        NSString *uid = [[NSUserDefaults standardUserDefaults] objectForKey:@"UID"];
+        NSString *mid = [[NSUserDefaults standardUserDefaults] objectForKey:@"MID"] ? [[NSUserDefaults standardUserDefaults] objectForKey:@"MID"] : @"2";
+        
+        NSString *urlString = [NSString stringWithFormat:DelCartUrl,UUID,mid,model.productId,uid];
+        
+        [SVProgressHUD show];
+        [XFNetworking GET:urlString parameters:nil success:^(id responseObject, NSInteger statusCode) {
+            [SVProgressHUD dismiss];
             
-            ShopCart *model = self.commodityArray[row];
+            NSInteger cartNum = [model.productNum integerValue];
             
-            NSString *uid = [[NSUserDefaults standardUserDefaults] objectForKey:@"UID"];
-            NSString *mid = [[NSUserDefaults standardUserDefaults] objectForKey:@"MID"] ? [[NSUserDefaults standardUserDefaults] objectForKey:@"MID"] : @"2";
+            // 改变总价
+            if (model.isSelect) {
+                CGFloat price = cartNum * [model.salePrice floatValue];
+                
+                self.totalPrice -= price;
+                
+                [self.bottomView.totalPriceLabel setText:[NSString stringWithFormat:@"￥%.2f", fabs(self.totalPrice)]];
+                [self.bottomView.totalPriceLabel sizeToFit];
+            }
             
-            NSString *urlString = [NSString stringWithFormat:DelCartUrl,UUID,mid,model.productId,uid];
+            // 设置 tabbar badge
+            NSInteger badgeValue = [[[[[[self tabBarController] tabBar] items] objectAtIndex:2] badgeValue] integerValue];
+            badgeValue -= cartNum;
             
-            [SVProgressHUD show];
-            [XFNetworking GET:urlString parameters:nil success:^(id responseObject, NSInteger statusCode) {
-                [SVProgressHUD dismiss];
+            if (badgeValue == 0) {
+                [[[[[self tabBarController] tabBar] items] objectAtIndex:2] setBadgeValue:nil];
+            } else {
+                [[[[[self tabBarController] tabBar] items] objectAtIndex:2] setBadgeValue:[NSString stringWithFormat:@"%ld", badgeValue]];
+            }
+            
+            // 执行删除操作
+            [self.commodityArray removeObjectAtIndex:row];
+            [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
+            
+            if (self.commodityArray.count == 0) { // 没数据了
+                self.emptyView.hidden = NO;
+                self.footerView.hidden = YES;
+                self.bottomView.hidden = YES;
+                [self.tableView reloadData];
                 
-                NSInteger cartNum = [model.productNum integerValue];
-
-                // 改变总价
-                if (model.isSelect) {
-                    CGFloat price = cartNum * [model.salePrice floatValue];
-                    
-                    self.totalPrice -= price;
-                    [self.bottomView.totalPriceLabel setText:[NSString stringWithFormat:@"￥%.2f", self.totalPrice]];
-                    [self.bottomView.totalPriceLabel sizeToFit];
-                }
-                
-                // 设置 tabbar badge
-                NSInteger badgeValue = [[[[[[self tabBarController] tabBar] items] objectAtIndex:2] badgeValue] integerValue];
-                badgeValue -= cartNum;
-                
-                if (badgeValue == 0) {
-                    [[[[[self tabBarController] tabBar] items] objectAtIndex:2] setBadgeValue:nil];
-                } else {
-                    [[[[[self tabBarController] tabBar] items] objectAtIndex:2] setBadgeValue:[NSString stringWithFormat:@"%ld", badgeValue]];
-                }
-
-                // 执行删除操作
-                [self.commodityArray removeObjectAtIndex:row];
-                [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
-                
-                if (self.commodityArray.count == 0) { // 没数据了
-                    self.emptyView.hidden = NO;
-                    self.footerView.hidden = YES;
-                    self.bottomView.hidden = YES;
-                    [self.tableView reloadData];
-
-                }
-                
-            } failure:^(NSError *error, NSInteger statusCode) {
-                [self showInfoWidthError:error];
-            }];
+            }
+            
+        } failure:^(NSError *error, NSInteger statusCode) {
+            [self showInfoWidthError:error];
         }];
-        
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            [tableView setEditing:NO animated:YES];
-        }];
-        
-        [alertController addAction:confirmAction];
-        [alertController addAction:cancelAction];
-        
-        [self presentViewController:alertController animated:YES completion:nil];
         
     }];
     
@@ -276,7 +263,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
                 CGFloat discount = [model.salePrice floatValue];
                 self.totalPrice += discount;
                 
-                [self.bottomView.totalPriceLabel setText:[NSString stringWithFormat:@"￥%.2f", self.totalPrice]];
+                [self.bottomView.totalPriceLabel setText:[NSString stringWithFormat:@"￥%.2f", fabs(self.totalPrice)]];
                 [self.bottomView.totalPriceLabel sizeToFit];
             }
         }
@@ -335,7 +322,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
                 CGFloat discount = [model.salePrice floatValue];
                 self.totalPrice -= discount;
                 
-                [self.bottomView.totalPriceLabel setText:[NSString stringWithFormat:@"￥%.2f", self.totalPrice]];
+                [self.bottomView.totalPriceLabel setText:[NSString stringWithFormat:@"￥%.2f", fabs(self.totalPrice)]];
                 [self.bottomView.totalPriceLabel sizeToFit];
             }
             if (cartNum == 0) { // 从本地删除购物车
@@ -374,7 +361,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
         CGFloat price = [model.productNum integerValue] * [model.salePrice floatValue];
         
         self.totalPrice += price;
-        [self.bottomView.totalPriceLabel setText:[NSString stringWithFormat:@"￥%.2f", self.totalPrice]];
+        [self.bottomView.totalPriceLabel setText:[NSString stringWithFormat:@"￥%.2f", fabs(self.totalPrice)]];
         [self.bottomView.totalPriceLabel sizeToFit];
         self.bottomView.selectAllButton.selected = [self isAllSelected];
         
@@ -386,7 +373,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
         
         self.totalPrice -= price;
         
-        [self.bottomView.totalPriceLabel setText:[NSString stringWithFormat:@"￥%.2f", self.totalPrice]];
+        [self.bottomView.totalPriceLabel setText:[NSString stringWithFormat:@"￥%.2f", fabs(self.totalPrice)]];
         [self.bottomView.totalPriceLabel sizeToFit];
 
         self.bottomView.selectAllButton.selected = NO;
@@ -435,7 +422,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
                 
                 self.totalPrice = [self getTotalPrice];
                 
-                [self.bottomView.totalPriceLabel setText:[NSString stringWithFormat:@"￥%.2f", self.totalPrice]];
+                [self.bottomView.totalPriceLabel setText:[NSString stringWithFormat:@"￥%.2f", fabs(self.totalPrice)]];
                 [self.bottomView.totalPriceLabel sizeToFit];
                 
                 self.bottomView.selectAllButton.selected = YES;
@@ -488,7 +475,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
         self.totalPrice = 0.0f;
     }
     [self.tableView reloadData];
-    [self.bottomView.totalPriceLabel setText:[NSString stringWithFormat:@"￥%.2f", self.totalPrice]];
+    [self.bottomView.totalPriceLabel setText:[NSString stringWithFormat:@"￥%.2f", fabs(self.totalPrice)]];
     [self.bottomView.totalPriceLabel sizeToFit];
 }
 

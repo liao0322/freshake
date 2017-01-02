@@ -94,7 +94,7 @@
     
     [self.titleLabel setText:_model.productName];
     [self.descLabel setText:_model.Specifications];
-    [self.priceLabel setText:[NSString stringWithFormat:@"￥%@", _model.salePrice]];
+    [self.priceLabel setText:[NSString stringWithFormat:@"￥%.1f", [_model.salePrice floatValue]]];
     [self.countLabel setText:[NSString stringWithFormat:@"%ld", [_model.productNum integerValue]]];
     
     
