@@ -26,6 +26,9 @@
 @property (weak, nonatomic) IBOutlet UIView *topSeparatorLine;
 @property (weak, nonatomic) IBOutlet UIView *leftSeparatorLine;
 
+@property (weak, nonatomic) IBOutlet UIView *bottomSeparatorLine;
+@property (weak, nonatomic) IBOutlet UIView *rightSeparatorLine;
+
 @property (weak, nonatomic) id<FSCommodityCVCellDelegate> delegate;
 
 

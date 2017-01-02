@@ -770,7 +770,8 @@
             
             if (self.numberOfCoupons == 0) {
                 
-                return [Tools myHud:@"没有可用优惠券"];
+//                return [Tools myHud:@"没有可用优惠券"];
+                return;
             }
             else {
                 

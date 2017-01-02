@@ -20,11 +20,15 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    self.leftSeparatorLine.width = 0.5;
-    self.leftSeparatorLine.backgroundColor = [UIColor colorViewBG];
     
     self.topSeparatorLine.height = 0.5;
     self.topSeparatorLine.backgroundColor = [UIColor colorViewBG];
+    
+    self.bottomSeparatorLine.height = 0.5;
+    self.bottomSeparatorLine.backgroundColor = [UIColor colorViewBG];
+    
+    self.rightSeparatorLine.width = 0.5;
+    self.rightSeparatorLine.backgroundColor = [UIColor colorViewBG];
     
     [self.plusButton setEnlargeEdgeWithTop:10 right:5 bottom:10 left:5];
     [self.minusButton setEnlargeEdgeWithTop:10 right:5 bottom:10 left:5];
@@ -35,8 +39,16 @@
     [super layoutSubviews];
     
     // 分割线
-    self.leftSeparatorLine.height = self.height;
     self.topSeparatorLine.width = self.width;
+    
+    self.bottomSeparatorLine.width = self.width;
+    self.rightSeparatorLine.height = self.height;
+    
+    self.bottomSeparatorLine.x = 0;
+    self.bottomSeparatorLine.bottom = self.height;
+    
+    self.rightSeparatorLine.y = 0;
+    self.rightSeparatorLine.right = self.right;
     
     // image
     self.imageView.width = self.width - 16;
@@ -59,20 +71,18 @@
     // price
     [self.priceLabel sizeToFit];
     self.priceLabel.x = self.descLabel.x;
-    self.priceLabel.y = self.descLabel.bottom + 5;
+    self.priceLabel.bottom = self.height - 8;
     
     // plus button、minus button、count label
     self.plusButton.right = self.width - 8;
     self.plusButton.centerY = self.priceLabel.centerY;
     
-    // [self.countLabel sizeToFit];
     self.countLabel.width = 18;
     self.countLabel.right = self.plusButton.x - 5;
     self.countLabel.centerY = self.priceLabel.centerY;
     
     self.minusButton.right = self.countLabel.x - 5;
     self.minusButton.centerY = self.priceLabel.centerY;
-    
 }
 
 - (void)setModel:(RightGoodsModel *)model {

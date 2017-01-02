@@ -290,16 +290,24 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
         
         FSCommodityCVCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:commodityVCCellID forIndexPath:indexPath];
         cell.delegate = self;
-        /*
-        if (row == 0 || row == 1) {
-            cell.topSeparatorLine.hidden = YES;
-        }
-         */
-        if (row % 2 == 0) {
-            cell.leftSeparatorLine.hidden = YES;
+
+        if (row % 2 == 0) { // 偶
+            cell.rightSeparatorLine.hidden = NO;
+
         } else {
-            cell.leftSeparatorLine.hidden = NO;
+            cell.rightSeparatorLine.hidden = YES;
+
         }
+
+        if (self.commodityArray.count % 2 != 0) { // 个数为奇数
+            if (row == (self.commodityArray.count - 2)) {
+                cell.bottomSeparatorLine.hidden = NO;
+            } else {
+                cell.bottomSeparatorLine.hidden = YES;
+            }
+        }
+
+        
         RightGoodsModel *model = self.commodityArray[indexPath.row];
         cell.model = model;
         return cell;

@@ -344,6 +344,7 @@
     NSArray *arr = isExist ? @[@"请输入支付密码"] : @[@"请输入登录密码",@"请输入支付密码",@"请再次输入支付密码"];
     for (int i = 0; i < arr.count; i++) {
         [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+            textField.height = 44;
             textField.placeholder = arr[i];
             textField.secureTextEntry = YES;
         }];

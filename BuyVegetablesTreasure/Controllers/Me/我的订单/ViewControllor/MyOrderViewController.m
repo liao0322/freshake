@@ -273,10 +273,14 @@
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:isExist ? @"余额支付" : @"设置支付密码" message:nil preferredStyle:UIAlertControllerStyleAlert];
     
     NSArray *arr = isExist ? @[@"请输入支付密码"] : @[@"请输入登陆密码",@"请输入支付密码",@"请再次输入支付密码"];
+    
     for (int i = 0; i < arr.count; i++) {
         [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
             textField.placeholder = arr[i];
             textField.secureTextEntry = YES;
+            
+            NSLog(@"%@", NSStringFromCGRect(textField.frame));
+
         }];
     }
     

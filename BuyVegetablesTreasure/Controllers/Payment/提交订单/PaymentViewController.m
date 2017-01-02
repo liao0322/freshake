@@ -1127,8 +1127,10 @@ typedef NS_ENUM(NSInteger,CouponType) {
                 };
                 
                 [self.navigationController pushViewController:couponVC animated:YES];
+            } else {
+                return;
             }
-            else return [Tools myHud:@"没有可用优惠券" inView:[[UIApplication sharedApplication].delegate window]];
+//            else return [Tools myHud:@"没有可用优惠券" inView:[[UIApplication sharedApplication].delegate window]];
         }
         // 选择时间
         else if (indexPath.row == 1 && _userAddressArray.count > 0) {

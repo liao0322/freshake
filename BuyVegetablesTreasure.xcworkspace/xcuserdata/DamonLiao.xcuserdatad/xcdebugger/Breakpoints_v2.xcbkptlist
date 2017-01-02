@@ -52,11 +52,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BuyVegetablesTreasure/FS/Main/&#x9996;&#x9875;/Root/Controller/FSHomeViewController.m"
-            timestampString = "504946310.26218"
+            timestampString = "505044726.026301"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "573"
-            endingLineNumber = "573"
+            startingLineNumber = "581"
+            endingLineNumber = "581"
             landmarkName = "-onGetReverseGeoCodeResult:result:errorCode:"
             landmarkType = "7">
          </BreakpointContent>
@@ -170,6 +170,230 @@
             startingLineNumber = "49"
             endingLineNumber = "49"
             landmarkName = "-outClick"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BuyVegetablesTreasure/Controllers/Payment/&#x63d0;&#x4ea4;&#x8ba2;&#x5355;/PaymentViewController.m"
+            timestampString = "505045846.107364"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "362"
+            endingLineNumber = "362"
+            landmarkName = "-setPayAlertControllerWithIsExist:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[PaymentViewController setPayAlertControllerWithIsExist:]"
+                  moduleName = "BuyVegetablesTreasure"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/DamonLiao/Desktop/Freshake/2.4/freshake-ios/BuyVegetablesTreasure/Controllers/Payment/%E6%8F%90%E4%BA%A4%E8%AE%A2%E5%8D%95/PaymentViewController.m"
+                  timestampString = "505048536.832869"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "362"
+                  endingLineNumber = "362"
+                  offsetFromSymbolStart = "488">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__58-[PaymentViewController setPayAlertControllerWithIsExist:]_block_invoke"
+                  moduleName = "BuyVegetablesTreasure"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/DamonLiao/Desktop/Freshake/2.4/freshake-ios/BuyVegetablesTreasure/Controllers/Payment/%E6%8F%90%E4%BA%A4%E8%AE%A2%E5%8D%95/PaymentViewController.m"
+                  timestampString = "505048536.834379"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "362"
+                  endingLineNumber = "362"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BuyVegetablesTreasure/Controllers/&#x7236;&#x63a7;&#x5236;&#x5668;/ParentViewController.m"
+            timestampString = "505045859.667054"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "-setPayWithIsExist:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ParentViewController setPayWithIsExist:]"
+                  moduleName = "BuyVegetablesTreasure"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/DamonLiao/Desktop/Freshake/2.4/freshake-ios/BuyVegetablesTreasure/Controllers/%E7%88%B6%E6%8E%A7%E5%88%B6%E5%99%A8/ParentViewController.m"
+                  timestampString = "505048536.83761"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "113"
+                  endingLineNumber = "113"
+                  offsetFromSymbolStart = "488">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__42-[ParentViewController setPayWithIsExist:]_block_invoke"
+                  moduleName = "BuyVegetablesTreasure"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/DamonLiao/Desktop/Freshake/2.4/freshake-ios/BuyVegetablesTreasure/Controllers/%E7%88%B6%E6%8E%A7%E5%88%B6%E5%99%A8/ParentViewController.m"
+                  timestampString = "505048536.839388"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "113"
+                  endingLineNumber = "113"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BuyVegetablesTreasure/Controllers/&#x62fc;&#x56e2;/&#x62fc;&#x56e2;&#x63d0;&#x4ea4;/SubmitGroupViewController.m"
+            timestampString = "505046002.940146"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "346"
+            endingLineNumber = "346"
+            landmarkName = "-setPayAlertControllerWithIsExist:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[SubmitGroupViewController setPayAlertControllerWithIsExist:]"
+                  moduleName = "BuyVegetablesTreasure"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/DamonLiao/Desktop/Freshake/2.4/freshake-ios/BuyVegetablesTreasure/Controllers/%E6%8B%BC%E5%9B%A2/%E6%8B%BC%E5%9B%A2%E6%8F%90%E4%BA%A4/SubmitGroupViewController.m"
+                  timestampString = "505048536.84271"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "346"
+                  endingLineNumber = "346"
+                  offsetFromSymbolStart = "488">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__62-[SubmitGroupViewController setPayAlertControllerWithIsExist:]_block_invoke"
+                  moduleName = "BuyVegetablesTreasure"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/DamonLiao/Desktop/Freshake/2.4/freshake-ios/BuyVegetablesTreasure/Controllers/%E6%8B%BC%E5%9B%A2/%E6%8B%BC%E5%9B%A2%E6%8F%90%E4%BA%A4/SubmitGroupViewController.m"
+                  timestampString = "505048536.84426"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "346"
+                  endingLineNumber = "346"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BuyVegetablesTreasure/Controllers/&#x62fc;&#x56e2;/&#x62fc;&#x56e2;&#x63d0;&#x4ea4;/SubmitGroupViewController.m"
+            timestampString = "505045953.798356"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "342"
+            endingLineNumber = "342"
+            landmarkName = "-setPayAlertControllerWithIsExist:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BuyVegetablesTreasure/Controllers/Payment/&#x63d0;&#x4ea4;&#x8ba2;&#x5355;/PaymentViewController.m"
+            timestampString = "505045956.482753"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "358"
+            endingLineNumber = "358"
+            landmarkName = "-setPayAlertControllerWithIsExist:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BuyVegetablesTreasure/Controllers/&#x7236;&#x63a7;&#x5236;&#x5668;/ParentViewController.m"
+            timestampString = "505045959.239122"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "-setPayWithIsExist:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BuyVegetablesTreasure/Controllers/&#x5546;&#x54c1;&#x8be6;&#x60c5;/&#x4e3b;&#x9875;2/GoodsDetailViewController.m"
+            timestampString = "505047887.145955"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "423"
+            endingLineNumber = "423"
+            landmarkName = "-addCart:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BuyVegetablesTreasure/Controllers/&#x5546;&#x54c1;&#x8be6;&#x60c5;/&#x4e3b;&#x9875;2/GoodsDetailViewController.m"
+            timestampString = "505048536.630008"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "627"
+            endingLineNumber = "627"
+            landmarkName = "-requestGoods"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

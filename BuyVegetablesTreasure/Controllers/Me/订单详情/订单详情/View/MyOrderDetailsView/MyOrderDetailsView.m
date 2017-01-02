@@ -163,9 +163,13 @@
         }
         
         return 0;
+    } else if (section == 3) {
+        return 0;
     }
     
+    
     // 订单号、提货码、发票
+    
     return 1;
 }
 
