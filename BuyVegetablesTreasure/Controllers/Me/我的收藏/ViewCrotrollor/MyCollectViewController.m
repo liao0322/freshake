@@ -331,6 +331,13 @@
         else {
             
             _isGoods = YES;
+            
+            _collectView.hidden = YES;
+            _collectView.isGoods = YES;
+            _collectView.dataSource = _dataSource;
+            [_dataSource removeAllObjects];
+            [_collectView refreshTableView];
+            
             [_collectView.tableView.mj_header endRefreshing];
             
             [Tools myHud:@"暂无收藏商品" inView:self.view];

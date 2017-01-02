@@ -31,8 +31,6 @@
     bgImageView.userInteractionEnabled = YES;
     [self addSubview:bgImageView];
     
-    
-    
 //    CGFloat bgImageViewScale = SCREEN_WIDTH / 375;
     
     bgImageView.sd_layout
@@ -217,6 +215,7 @@
 //    [nav pushViewController:coupVC animated:YES];
     
 //    _goViewController([NSClassFromString(@"ShopLoginViewController") new]);
+    
 }
 
 

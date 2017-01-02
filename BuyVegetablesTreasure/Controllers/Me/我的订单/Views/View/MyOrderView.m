@@ -44,9 +44,11 @@
     
     
     
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_bgScrollView.frame) - 10, self.frame.size.width, self.frame.size.height + 60) style:UITableViewStyleGrouped];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_bgScrollView.frame) - 10, self.frame.size.width, self.frame.size.height + 10) style:UITableViewStyleGrouped];
     _tableView.delegate = self;
     _tableView.dataSource = self;
+    _tableView.showsVerticalScrollIndicator = NO;
+    _tableView.showsHorizontalScrollIndicator = NO;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.backgroundColor = [UIColor colorWithHexString:@"0xf2f2f2"];
     [self addSubview:_tableView];

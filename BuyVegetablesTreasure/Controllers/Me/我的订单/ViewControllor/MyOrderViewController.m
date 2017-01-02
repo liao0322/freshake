@@ -11,8 +11,9 @@
 #import "MyOrderModel.h"
 #import "WXApi.h"
 #import "OrderStateView.h"
-#import "GoodsCartViewController.h"
+//#import "GoodsCartViewController.h"
 #import "FSNoDataView.h"
+#import "FSShoppingCartViewController.h"
 
 @interface MyOrderViewController ()
 
@@ -31,8 +32,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     
-    [self getOrder];
-    [self getCount];
+//    [self getOrder];
+//    [self getCount];
 }
 
 - (void)viewDidLoad {
@@ -73,7 +74,7 @@
 #pragma mark 我的订单界面
 - (void)initMyOrderView {
     
-    _myOrderView = [[MyOrderView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight - 64 - 50)];
+    _myOrderView = [[MyOrderView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight - 64)];
     [self.view addSubview:_myOrderView];
     _myOrderView.index = _Index;
     NSLog(@"$$$$$$$$$$$******%ld", _myOrderView.index);
@@ -369,8 +370,8 @@
         if ([data[@"issuccess"] boolValue]) {
             
             // 跳转购物车
-            self.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:[GoodsCartViewController new] animated:YES];
+//            self.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:[FSShoppingCartViewController new] animated:YES];
         }
         else {
             [Tools myHud:data[@"context"] inView:self.view];
