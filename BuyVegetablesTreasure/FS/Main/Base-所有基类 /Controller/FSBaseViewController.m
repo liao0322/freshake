@@ -80,6 +80,9 @@
     } else if (error.code == -1011) {
         [SVProgressHUD showInfoWithStatus:@"服务器打了个盹~>.<"];
     }
+    else if (error.code == -1003) {
+        [SVProgressHUD showInfoWithStatus:@"服务器打了个盹~>.<"];
+    }
     else {
         [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"%@", error.domain]];
     }

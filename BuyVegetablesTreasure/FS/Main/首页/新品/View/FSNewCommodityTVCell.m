@@ -39,7 +39,9 @@
     }
     
     [self.descLabel setText:_model.categoryName];
-    [self.priceLabel setText:[NSString stringWithFormat:@"￥%@", _model.salePrice]];
+    
+    CGFloat price = [_model.salePrice floatValue];
+    [self.priceLabel setText:[NSString stringWithFormat:@"￥%.1f", price]];
     [self.countLabel setText:_model.CartNum];
 }
 

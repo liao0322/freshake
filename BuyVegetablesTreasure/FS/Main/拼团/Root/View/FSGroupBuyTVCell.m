@@ -39,17 +39,17 @@
     self.bgView.x = spacing;
     self.bgView.y = 0;
     self.bgView.width = width - spacing * 2;
-    if (SCREEN_WIDTH == 320) {
-        self.bgView.height = height - height * 0.06;
-    } else if (SCREEN_WIDTH == 375) {
+    if (SCREEN_WIDTH == 320) { // 5
+        self.bgView.height = height - height * 0.04;
+    } else if (SCREEN_WIDTH == 375) { // 6
         self.bgView.height = height - height * 0.09;
 
-    } else if (SCREEN_WIDTH == 414) {
+    } else if (SCREEN_WIDTH == 414) { // 6+
         self.bgView.height = height - height * 0.11;
     }
     
     self.iconImageView.width = self.bgView.width;
-    self.iconImageView.height = 180 * imageScale;
+    self.iconImageView.height = 190 * imageScale;
     self.iconImageView.x = 0;
     self.iconImageView.y = 0;
     

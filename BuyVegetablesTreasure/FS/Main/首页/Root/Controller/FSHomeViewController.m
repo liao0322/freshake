@@ -191,7 +191,9 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
         if (status == XFNetworkStatusNotReachable || status == XFNetworkStatusUnknown) { // 无网络
             [SVProgressHUD showErrorWithStatus:@"无网络连接!"];
             
-            self.mainView.backgroundView = self.netErrorView;
+            if (!self.commodityArray.count) {
+                self.mainView.backgroundView = self.netErrorView;
+            }
         } else {
             self.mainView.backgroundView = nil;
             [SVProgressHUD showWithStatus:@"正在加载..."];
