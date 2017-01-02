@@ -209,6 +209,7 @@
         MyOrderGoodsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyOrderGoodsCell"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [cell setModel:_orderDetailsModel.list[indexPath.row]];
+        NSLog(@"%@", _orderDetailsModel.list[indexPath.row]);
         [cell useCellFrameCacheWithIndexPath:indexPath tableView:tableView];
         return cell;
     }
