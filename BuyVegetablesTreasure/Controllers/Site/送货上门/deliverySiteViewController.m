@@ -27,6 +27,7 @@
 @property (nonatomic, strong) Map *mapModel;
 @property (nonatomic, strong) UISwitch *defaultSwitch;
 @property (nonatomic, strong) UIButton *saveBtn;
+@property (nonatomic, strong) UIButton *deleteBtn;
 
 @end
 
@@ -41,7 +42,6 @@
     [self initSelectCityView];
     [self getCity];
 
-    if (_isDeleteSite) [self initDeleteBtn];
     
 //    if (_isDefault) [self saveUserInfo];
 }
@@ -98,6 +98,24 @@
     [_saveBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [_saveBtn addTarget:self action:@selector(saveUserInfo) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_saveBtn];
+    
+    _deleteBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    _deleteBtn.frame = CGRectMake(40, CGRectGetMaxY(_saveBtn.frame) + 15, ScreenWidth - 80, 45);
+    //    deleteBtn.backgroundColor = [UIColor colorWithHexString:@"0xff6600"];
+    _deleteBtn.layer.cornerRadius = 5;
+    _deleteBtn.layer.borderWidth = 0.5;
+    _deleteBtn.layer.borderColor = [UIColor colorDomina].CGColor;
+    _deleteBtn.titleLabel.font = [UIFont systemFontOfSize:19.0];
+    [_deleteBtn setTitle:@"删除" forState:UIControlStateNormal];
+    [_deleteBtn setTitleColor:[UIColor colorDomina] forState:UIControlStateNormal];
+    [_deleteBtn addTarget:self action:@selector(deleteUserInfo) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_deleteBtn];
+    
+    if (_isDeleteSite) {
+        _deleteBtn.hidden = NO;
+    } else {
+        _deleteBtn.hidden = YES;
+    }
 }
 
 #pragma mark 选择城市
@@ -108,6 +126,7 @@
         _selectCityView = [[CityPickerView alloc] initWithFrame:CGRectMake(0, ScreenHeight, ScreenWidth, ScreenHeight / 3)];
         [self.view bringSubviewToFront:_selectCityView];
         [self.view addSubview:_selectCityView];
+        
     }
     else {
         
@@ -145,18 +164,7 @@
 #pragma mark 删除按钮
 - (void)initDeleteBtn {
 
-    UIButton *deleteBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    deleteBtn.frame = CGRectMake(40, CGRectGetMaxY(_saveBtn.frame) + 15, ScreenWidth - 80, 45);
-//    deleteBtn.backgroundColor = [UIColor colorWithHexString:@"0xff6600"];
-    deleteBtn.layer.cornerRadius = 5;
-    deleteBtn.layer.borderWidth = 0.5;
-    deleteBtn.layer.borderColor = [UIColor colorDomina].CGColor;
-    deleteBtn.titleLabel.font = [UIFont systemFontOfSize:19.0];
-    [deleteBtn setTitle:@"删除" forState:UIControlStateNormal];
-    [deleteBtn setTitleColor:[UIColor colorDomina] forState:UIControlStateNormal];
-    [deleteBtn addTarget:self action:@selector(deleteUserInfo) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:deleteBtn];
-//    _userInfoTableView.tableFooterView = deleteBtn;
+ //    _userInfoTableView.tableFooterView = deleteBtn;
 }
 
 #pragma mark 事件处理

@@ -196,7 +196,10 @@
     [HttpRequest sendGetOrPostRequest:urlString param:nil requestStyle:Get setSerializer:Json isShowLoading:YES success:^(id data)
      {
          if ([data[@"issuccess"] boolValue]) {
-             [_userSiteView.tableView.mj_header beginRefreshing];
+             
+             
+//             [_userSiteView.tableView.mj_header beginRefreshing];
+             [self requestUserAddressList];
              [Tools myHud:data[@"context"] inView:[[UIApplication sharedApplication].delegate window]];
          }
          else [Tools myHud:data[@"context"] inView:[[UIApplication sharedApplication].delegate window]];

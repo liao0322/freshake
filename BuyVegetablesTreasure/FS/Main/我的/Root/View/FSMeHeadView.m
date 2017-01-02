@@ -31,6 +31,10 @@
     bgImageView.userInteractionEnabled = YES;
     [self addSubview:bgImageView];
     
+    
+    
+//    CGFloat bgImageViewScale = SCREEN_WIDTH / 375;
+    
     bgImageView.sd_layout
     .leftEqualToView(self)
     .rightEqualToView(self)

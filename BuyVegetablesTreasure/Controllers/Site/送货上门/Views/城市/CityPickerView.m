@@ -27,7 +27,7 @@
 
 - (void)initView {
     
-    _selectCityPickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, self.frame.size.height - 40)];
+    _selectCityPickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, self.frame.size.height)];
     _selectCityPickerView.backgroundColor = [UIColor colorWithHexString:@"0xC5CBD2"];
     _selectCityPickerView.delegate = self;
     _selectCityPickerView.dataSource = self;
@@ -47,7 +47,7 @@
         button.frame = CGRectMake(10 + (ScreenWidth - 50) * i, 0, 35, CGRectGetHeight(bgView.frame));
         button.titleLabel.font = [UIFont systemFontOfSize:15];
         [button setTitle:i == 0 ? @"取消" : @"确定" forState:UIControlStateNormal];
-        [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor colorDomina] forState:UIControlStateNormal];
         [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
         [bgView addSubview:button];
     }
