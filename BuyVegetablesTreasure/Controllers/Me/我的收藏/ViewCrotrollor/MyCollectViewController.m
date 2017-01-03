@@ -232,19 +232,24 @@
 - (void)edit {
     
     [_collectView.tableView setEditing:!_collectView.tableView.editing animated:YES];
-    _collectView.isEdit = _collectView.tableView.editing;
 
+    _collectView.isEdit = _collectView.tableView.editing;
+    
+    
     CGRect frame = _deleteView.frame;
-    frame.origin.y = frame.origin.y + (_collectView.isEdit ? -50 : 50);
-    [UIView animateWithDuration:0.3 animations:^{
-        _deleteView.frame = frame;
-    }];
     
     if (_collectView.tableView.editing) {
         _collectView.tableView.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight - 50);
+        frame.origin.y = frame.origin.y - 50;
+
     }else{
         _collectView.tableView.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight);
+        frame.origin.y = ScreenHeight;
+
     }
+    [UIView animateWithDuration:0.3 animations:^{
+        _deleteView.frame = frame;
+    }];
     
     NSString *title = _collectView.tableView.editing ? @"完成" : @"编辑";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:title style:UIBarButtonItemStyleDone target:self action:@selector(edit)];

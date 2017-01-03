@@ -498,8 +498,6 @@
 		2BD89D5B1BE374B3004EF4A0 /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD89D5A1BE374B3004EF4A0 /* Address.m */; };
 		2BE187571BF6D9A5004B683D /* OrderPinglunModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE187561BF6D9A5004B683D /* OrderPinglunModel.m */; };
 		2BE1875A1BF6FF78004B683D /* OrderReviceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE187591BF6FF78004B683D /* OrderReviceModel.m */; };
-		2BEA76621C2146C700F09879 /* 列表页未成功图片.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BEA76611C2146C700F09879 /* 列表页未成功图片.png */; };
-		2BEA76661C21499300F09879 /* ErrorBackImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BEA76651C21499300F09879 /* ErrorBackImage.png */; };
 		2BEA766B1C21506E00F09879 /* 我的收藏@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BEA76691C21506E00F09879 /* 我的收藏@3x.png */; };
 		2BEA766C1C21506E00F09879 /* 我的收藏@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BEA766A1C21506E00F09879 /* 我的收藏@2x.png */; };
 		2BFE7F311BEC49F300B2B746 /* 没有同意协义@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BFE7F291BEC49F300B2B746 /* 没有同意协义@2x.png */; };
@@ -853,6 +851,8 @@
 		FE17A98E1E12361A00DC7949 /* XFStrikethroughLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A98D1E12361A00DC7949 /* XFStrikethroughLabel.m */; };
 		FE17A9951E12536000DC7949 /* FSGroupBuyDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A9931E12536000DC7949 /* FSGroupBuyDetailsViewController.m */; };
 		FE17A9961E12536000DC7949 /* FSGroupBuyDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE17A9941E12536000DC7949 /* FSGroupBuyDetailsViewController.xib */; };
+		FE50A20D1E1B8CB2008D1710 /* ErrorBackImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FE50A20C1E1B8CB2008D1710 /* ErrorBackImage.png */; };
+		FE50A20F1E1B8DCB008D1710 /* 列表页未成功图片.png in Resources */ = {isa = PBXBuildFile; fileRef = FE50A20E1E1B8DCB008D1710 /* 列表页未成功图片.png */; };
 		FE8256461E1365B00028D0F2 /* FSNewCommodityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE82563F1E1365B00028D0F2 /* FSNewCommodityViewController.m */; };
 		FE8256471E1365B00028D0F2 /* FSNewCommodityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE8256401E1365B00028D0F2 /* FSNewCommodityViewController.xib */; };
 		FE82564E1E1365CD0028D0F2 /* FSNewCommodityTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE82564A1E1365CD0028D0F2 /* FSNewCommodityTVCell.m */; };
@@ -1783,8 +1783,6 @@
 		2BE187561BF6D9A5004B683D /* OrderPinglunModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderPinglunModel.m; sourceTree = "<group>"; };
 		2BE187581BF6FF78004B683D /* OrderReviceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderReviceModel.h; sourceTree = "<group>"; };
 		2BE187591BF6FF78004B683D /* OrderReviceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderReviceModel.m; sourceTree = "<group>"; };
-		2BEA76611C2146C700F09879 /* 列表页未成功图片.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "列表页未成功图片.png"; sourceTree = "<group>"; };
-		2BEA76651C21499300F09879 /* ErrorBackImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ErrorBackImage.png; sourceTree = "<group>"; };
 		2BEA76691C21506E00F09879 /* 我的收藏@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "我的收藏@3x.png"; sourceTree = "<group>"; };
 		2BEA766A1C21506E00F09879 /* 我的收藏@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "我的收藏@2x.png"; sourceTree = "<group>"; };
 		2BFE7F291BEC49F300B2B746 /* 没有同意协义@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "没有同意协义@2x.png"; sourceTree = "<group>"; };
@@ -2310,6 +2308,8 @@
 		FE17A9921E12536000DC7949 /* FSGroupBuyDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSGroupBuyDetailsViewController.h; sourceTree = "<group>"; };
 		FE17A9931E12536000DC7949 /* FSGroupBuyDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSGroupBuyDetailsViewController.m; sourceTree = "<group>"; };
 		FE17A9941E12536000DC7949 /* FSGroupBuyDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSGroupBuyDetailsViewController.xib; sourceTree = "<group>"; };
+		FE50A20C1E1B8CB2008D1710 /* ErrorBackImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ErrorBackImage.png; sourceTree = "<group>"; };
+		FE50A20E1E1B8DCB008D1710 /* 列表页未成功图片.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "列表页未成功图片.png"; sourceTree = "<group>"; };
 		FE82563E1E1365B00028D0F2 /* FSNewCommodityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSNewCommodityViewController.h; sourceTree = "<group>"; };
 		FE82563F1E1365B00028D0F2 /* FSNewCommodityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSNewCommodityViewController.m; sourceTree = "<group>"; };
 		FE8256401E1365B00028D0F2 /* FSNewCommodityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSNewCommodityViewController.xib; sourceTree = "<group>"; };
@@ -2642,11 +2642,11 @@
 		094948D81C1EC2880064BD3C /* 无数据图 */ = {
 			isa = PBXGroup;
 			children = (
+				FE50A20E1E1B8DCB008D1710 /* 列表页未成功图片.png */,
+				FE50A20C1E1B8CB2008D1710 /* ErrorBackImage.png */,
 				FE843AA11E1622E600528DBB /* 无数据@3x.png */,
 				FE843AA21E1622E600528DBB /* 无数据@2x.png */,
 				E4DC9A4A1C61B29600451CA6 /* 无商品.png */,
-				2BEA76651C21499300F09879 /* ErrorBackImage.png */,
-				2BEA76611C2146C700F09879 /* 列表页未成功图片.png */,
 			);
 			path = "无数据图";
 			sourceTree = "<group>";
@@ -8508,7 +8508,6 @@
 				E4FF92EF1CC9FC0B009E4B8F /* 到店自提.png in Resources */,
 				FE17A96A1E10ACEE00DC7949 /* FSEmptyView.xib in Resources */,
 				0C2BFD7C1CE47E2000EC8EF4 /* 视频-没有选择.png in Resources */,
-				2BEA76661C21499300F09879 /* ErrorBackImage.png in Resources */,
 				0C82E3551CD2FE38007DF40F /* 下载@2x.png in Resources */,
 				0CB2B4701CE2E9BB00E8F0BB /* 订单号@2x.png in Resources */,
 				0C625EFE1CC4BEAD0052181A /* 减号@3x.png in Resources */,
@@ -8581,7 +8580,6 @@
 				0C82E3381CD2F078007DF40F /* link.png in Resources */,
 				0C9D60671CE07DB8002362C0 /* 登陆-验证码图标.png in Resources */,
 				2B03CA391BF316F100F01B93 /* 相机@3x.png in Resources */,
-				2BEA76621C2146C700F09879 /* 列表页未成功图片.png in Resources */,
 				0CB2B46B1CE2E9BB00E8F0BB /* 匿名未勾选@3x.png in Resources */,
 				2BFE7F311BEC49F300B2B746 /* 没有同意协义@2x.png in Resources */,
 				2BBC8BDA1BF76788000FF8D7 /* 二维@2x.png in Resources */,
@@ -8602,6 +8600,7 @@
 				0C625EF51CC4BEAD0052181A /* 购物车背景@2x.png in Resources */,
 				0C20DD471D9BB7CD0080E446 /* Tabbar购物车橙色@2x.png in Resources */,
 				0CBA54A01DE7D47C00378911 /* BalancePayment@3x.png in Resources */,
+				FE50A20D1E1B8CB2008D1710 /* ErrorBackImage.png in Resources */,
 				E4FF92CD1CC9BB1C009E4B8F /* Myorder_待付款@3x.png in Resources */,
 				FECDE5F51E07B6770083E11B /* 黄-左边背景@2x.png in Resources */,
 				0CAFF7B41CB63A45006C1900 /* 商品详情.png in Resources */,
@@ -8768,6 +8767,7 @@
 				520354601C76B33000BD6F63 /* 三角形people@3x.png in Resources */,
 				FE8256581E13B2170028D0F2 /* FSGroupBuyHelperViewController.xib in Resources */,
 				0C630CA01CC9F1FD00874A54 /* ShoppingCell.xib in Resources */,
+				FE50A20F1E1B8DCB008D1710 /* 列表页未成功图片.png in Resources */,
 				E4DC9A4B1C61B29600451CA6 /* 无商品.png in Resources */,
 				E4FF92E61CC9BB1C009E4B8F /* Myorder_已提货.png in Resources */,
 				2B8B644B1BFB1E9D004D1AC6 /* 960启动页3.png in Resources */,
