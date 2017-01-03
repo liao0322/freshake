@@ -27,7 +27,8 @@
     [self addSubview:dateView];
     
     UIView *btnView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 40)];
-    btnView.backgroundColor = [UIColor colorWithHexString:@"0xff6600"];
+//    btnView.backgroundColor = [UIColor colorWithHexString:@"0xff6600"];
+    btnView.backgroundColor = [UIColor colorDomina];
     [dateView addSubview:btnView];
     
     for (int i = 0; i < 2; i++)
