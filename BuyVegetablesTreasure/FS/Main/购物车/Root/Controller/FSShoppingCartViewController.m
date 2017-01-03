@@ -61,21 +61,10 @@ static NSString * const shoppingCartTVCellID = @"shoppingCartTVCellID";
     
     [self getCommodityData];
     [self getShoppingCartNum];
-}
-
-- (void)viewDidDisappear:(BOOL)animated {
-    [self.refreshControl endRefreshing];
+    [self requestPoint];
 }
 
 #pragma mark - Override
-
-- (void)getDataFromRemote {
-    [super getDataFromRemote];
-    // 获取购物车商品数据
-    //[self getCommodityData];
-    [self requestPoint];
-    
-}
 
 - (void)initialization {
     [super initialization];
@@ -666,7 +655,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
         _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
-        _tableView.refreshControl = self.refreshControl;
+//        _tableView.refreshControl = self.refreshControl;
         _tableView.separatorInset = UIEdgeInsetsMake(0, -10, 0, 0);
         _tableView.contentInset = UIEdgeInsetsMake(0, 0, 49, 0);
         _tableView.tableFooterView = [[UIView alloc] init];

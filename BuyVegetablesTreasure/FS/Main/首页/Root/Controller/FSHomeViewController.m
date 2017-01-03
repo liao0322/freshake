@@ -44,6 +44,7 @@
 
 #import "FSNewCommodityViewController.h"
 
+
 #define NAV_BAR_ALPHA 0.95f
 
 @interface FSHomeViewController ()
@@ -97,6 +98,9 @@
 @property (copy, nonatomic) NSString *currentCityString;
 
 @property (nonatomic) UIRefreshControl *refreshControl;
+
+@property (nonatomic) MJRefreshNormalHeader *normalHeader;
+
 @end
 
 
@@ -290,16 +294,24 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
         
         FSCommodityCVCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:commodityVCCellID forIndexPath:indexPath];
         cell.delegate = self;
-        /*
-        if (row == 0 || row == 1) {
-            cell.topSeparatorLine.hidden = YES;
-        }
-         */
-        if (row % 2 == 0) {
-            cell.leftSeparatorLine.hidden = YES;
+
+        if (row % 2 == 0) { // 偶
+            cell.rightSeparatorLine.hidden = NO;
+
         } else {
-            cell.leftSeparatorLine.hidden = NO;
+            cell.rightSeparatorLine.hidden = YES;
+
         }
+
+        if (self.commodityArray.count % 2 != 0) { // 个数为奇数
+            if (row == (self.commodityArray.count - 2)) {
+                cell.bottomSeparatorLine.hidden = NO;
+            } else {
+                cell.bottomSeparatorLine.hidden = YES;
+            }
+        }
+
+        
         RightGoodsModel *model = self.commodityArray[indexPath.row];
         cell.model = model;
         return cell;
@@ -1010,7 +1022,7 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
         
         [self.mainView reloadData];
         [SVProgressHUD dismiss];
-        [self.refreshControl endRefreshing];
+        [self.normalHeader endRefreshing];
         
     } failure:^(NSError *error, NSInteger statusCode) {
         [self showInfoWidthError:error];
@@ -1092,18 +1104,16 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
         
     } failure:^(NSError *error, NSInteger statusCode) {
         [self showInfoWidthError:error];
-        [self.refreshControl endRefreshing];
+        [self.normalHeader endRefreshing];
     }];
 }
 
 /// 下拉刷新时调用
-- (void)refreshData:(UIRefreshControl *)sender {
+- (void)refreshData:(MJRefreshNormalHeader *)sender {
 
     // 开始定位
     [self startLocation];
 }
-
-
 
 #pragma mark - LazyLoad
 
@@ -1126,8 +1136,9 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
         _mainView.showsVerticalScrollIndicator = NO;
         // 添加下拉刷新
         //_mainView.mj_header = self.refreshHeader;
-        _mainView.refreshControl = self.refreshControl;
-
+//        _mainView.refreshControl = self.refreshControl;
+        
+        _mainView.mj_header = self.normalHeader;
     }
     return _mainView;
 }
@@ -1194,6 +1205,14 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
         [_refreshControl addTarget:self action:@selector(refreshData:) forControlEvents:UIControlEventValueChanged];
     }
     return _refreshControl;
+}
+
+- (MJRefreshNormalHeader *)normalHeader {
+    if (!_normalHeader) {
+        _normalHeader = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshData:)];
+        _normalHeader.lastUpdatedTimeLabel.hidden = YES;
+    }
+    return _normalHeader;
 }
 
 @end

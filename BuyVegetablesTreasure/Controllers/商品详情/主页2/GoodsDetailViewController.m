@@ -417,9 +417,6 @@
                 
                 [self presentViewController:navController animated:YES completion:nil];
                 
-                
-                // self.hidesBottomBarWhenPushed = YES;
-                // [self.navigationController pushViewController:[ShopLoginViewController new] animated:YES];
             }
             else {
                 
@@ -578,11 +575,6 @@
         FSNavigationController *navController = [[FSNavigationController alloc] initWithRootViewController:loginVC];
         
         [self presentViewController:navController animated:YES completion:nil];
-        
-        /*
-        self.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:[ShopLoginViewController new] animated:YES];
-         */
     }
     
     else {
@@ -624,13 +616,16 @@
                          [Tools myHud:@"成功加入购物车" inView:[[UIApplication sharedApplication].delegate window]];
                      }
                      else if ([issuccess isEqualToString:@"0"]) {
+                         NSLog(@"%@", data[@"context"]);
                          [Tools myHud:data[@"context"] inView:[[UIApplication sharedApplication].delegate window]];
                      }
                      [self requestDataFromNet:NO];
                      [self initBottomView];
                      
                      
-                 } failure:nil];
+                 } failure:^(NSError *error) {
+                     NSLog(@"%@", error);
+                 }];
             }
             else {
                 

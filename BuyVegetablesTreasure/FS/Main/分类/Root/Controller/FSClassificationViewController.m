@@ -48,6 +48,9 @@
 
 //@property (nonatomic) UIImageView *cartAnimView;
 
+@property (nonatomic) MJRefreshNormalHeader *normalHeader;
+
+
 @end
 
 @implementation FSClassificationViewController
@@ -60,6 +63,8 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [SVProgressHUD showWithStatus:@"正在加载..."];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -70,6 +75,7 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
+    /*
     if (self.refreshControl.refreshing) {
         return;
     }
@@ -88,6 +94,8 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
                              [self.refreshControl sendActionsForControlEvents:UIControlEventValueChanged];
                          }];
     }
+     */
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -96,10 +104,10 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
-    if (!self.refreshControl.refreshing) {
+    if (![self.normalHeader isRefreshing]) {
         return;
     }
-    [self.refreshControl endRefreshing];
+//    [self.refreshControl endRefreshing];
     [self setTabBarHidden:NO];
 }
 
@@ -562,7 +570,8 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
     }
     
     [XFNetworking GET:urlString parameters:nil success:^(id responseObject, NSInteger statusCode) {
-        [self.refreshControl endRefreshing];
+        [SVProgressHUD dismiss];
+        [self.normalHeader endRefreshing];
         [self.commodityArray removeAllObjects];
         
         // 类别数据
@@ -608,7 +617,7 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
          */
         
     } failure:^(NSError *error, NSInteger statusCode) {
-        [self.refreshControl endRefreshing];
+        [self.normalHeader endRefreshing];
         [self showInfoWidthError:error];
     }];
     
@@ -685,10 +694,12 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
         _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
-        _tableView.refreshControl = self.refreshControl;
         _tableView.separatorInset = UIEdgeInsetsMake(0, -10, 0, 0);
         _tableView.tableFooterView = [[UIView alloc] init];
         _tableView.backgroundColor = [UIColor colorViewBG];
+        _tableView.mj_header = self.normalHeader;
+//        _tableView.refreshControl = self.refreshControl;
+
 
     }
     return _tableView;
@@ -720,4 +731,11 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
     return _searchBar;
 }
 
+- (MJRefreshNormalHeader *)normalHeader {
+    if (!_normalHeader) {
+        _normalHeader = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshData)];
+        _normalHeader.lastUpdatedTimeLabel.hidden = YES;
+    }
+    return _normalHeader;
+}
 @end
