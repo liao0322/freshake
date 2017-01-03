@@ -891,6 +891,7 @@
 		FE843AA91E16429E00528DBB /* FSNetErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE843AA81E16429E00528DBB /* FSNetErrorView.xib */; };
 		FE843AAC1E166AFE00528DBB /* 形状-6-拷贝@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FE843AAA1E166AFE00528DBB /* 形状-6-拷贝@2x.png */; };
 		FE843AAD1E166AFE00528DBB /* 形状-6-拷贝@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FE843AAB1E166AFE00528DBB /* 形状-6-拷贝@3x.png */; };
+		FE843AB01E1B38A200528DBB /* XFTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = FE843AAF1E1B38A200528DBB /* XFTextField.m */; };
 		FECDE5DB1E07B3820083E11B /* CouponModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FECDE5DA1E07B3820083E11B /* CouponModel.m */; };
 		FECDE5E61E07B49D0083E11B /* AMapSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FECDE5E41E07B49D0083E11B /* AMapSearchKit.framework */; };
 		FECDE5E71E07B49D0083E11B /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FECDE5E51E07B49D0083E11B /* MAMapKit.framework */; };
@@ -2353,6 +2354,8 @@
 		FE843AA81E16429E00528DBB /* FSNetErrorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSNetErrorView.xib; sourceTree = "<group>"; };
 		FE843AAA1E166AFE00528DBB /* 形状-6-拷贝@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "形状-6-拷贝@2x.png"; sourceTree = "<group>"; };
 		FE843AAB1E166AFE00528DBB /* 形状-6-拷贝@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "形状-6-拷贝@3x.png"; sourceTree = "<group>"; };
+		FE843AAE1E1B38A200528DBB /* XFTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFTextField.h; sourceTree = "<group>"; };
+		FE843AAF1E1B38A200528DBB /* XFTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFTextField.m; sourceTree = "<group>"; };
 		FECDE5D91E07B3820083E11B /* CouponModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CouponModel.h; path = BuyVegetablesTreasure/Controllers/Payment/Model/CouponModel.h; sourceTree = SOURCE_ROOT; };
 		FECDE5DA1E07B3820083E11B /* CouponModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CouponModel.m; path = BuyVegetablesTreasure/Controllers/Payment/Model/CouponModel.m; sourceTree = SOURCE_ROOT; };
 		FECDE5E41E07B49D0083E11B /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapSearchKit.framework; sourceTree = "<group>"; };
@@ -7235,6 +7238,8 @@
 				FECDE6311E07C2C70083E11B /* XFLimitedTextField */,
 				FECDE6341E07C2C70083E11B /* XFNoHighlightButton */,
 				FECDE6371E07C2C70083E11B /* XFVerticalButton */,
+				FE843AAE1E1B38A200528DBB /* XFTextField.h */,
+				FE843AAF1E1B38A200528DBB /* XFTextField.m */,
 			);
 			path = Widget;
 			sourceTree = "<group>";
@@ -8922,6 +8927,7 @@
 				521E31851CB368DB00041F76 /* GroupDetailsViewController.m in Sources */,
 				096FD6A21BEC862600199E03 /* AliOrder.m in Sources */,
 				0CBA54B91DE7D47C00378911 /* PaymentTypeCell.m in Sources */,
+				FE843AB01E1B38A200528DBB /* XFTextField.m in Sources */,
 				52423BD71BE2298E00E5621C /* NSString+MD5Addition.m in Sources */,
 				0C7FEC7B1D01707C001E469B /* CouponsDetailView.m in Sources */,
 				FECDE71C1E07C2C80083E11B /* FSBaseNavigationController.m in Sources */,
