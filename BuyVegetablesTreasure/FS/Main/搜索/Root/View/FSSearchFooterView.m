@@ -24,7 +24,7 @@
     
     self.clearHistoryButton.width = 120;
     self.clearHistoryButton.height = 30;
-    self.clearHistoryButton.centerX = self.width * 0.5;
+    self.clearHistoryButton.centerX = self.width * 0.5 - 15;
 
 }
 

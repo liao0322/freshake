@@ -33,7 +33,10 @@
 - (void)initGoodsDetailCell {
     
     // 商品图片
-    _goodsImgScrollView = [[SDCycleScrollView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenWidth / 4 * 3)];
+//    _goodsImgScrollView = [[SDCycleScrollView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenWidth / 4 * 3)];
+    
+    _goodsImgScrollView = [[SDCycleScrollView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenWidth)];
+    
     _goodsImgScrollView.dotColor = [UIColor colorDomina];
     _goodsImgScrollView.placeholderImage = IMAGE(@"BannerError");
     _goodsImgScrollView.localizationImagesGroup = @[IMAGE(@"BannerError")];

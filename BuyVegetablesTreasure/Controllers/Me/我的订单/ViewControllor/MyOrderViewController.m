@@ -278,19 +278,11 @@
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:isExist ? @"余额支付" : @"设置支付密码" message:nil preferredStyle:UIAlertControllerStyleAlert];
     
     
-    
-    [alertController.view addSubview:[UIButton buttonWithType:UIButtonTypeContactAdd]];
-    
-    alertController.view.height = 300;
-    
-    
     NSArray *arr = isExist ? @[@"请输入支付密码"] : @[@"请输入登陆密码",@"请输入支付密码",@"请再次输入支付密码"];
-    /*
+    
     for (int i = 0; i < arr.count; i++) {
         [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
 
-            textField.borderStyle = UITextBorderStyleNone;
-            textField.height = 100;
             textField.placeholder = arr[i];
             textField.secureTextEntry = YES;
             
@@ -298,7 +290,7 @@
 
         }];
     }
-    */
+
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         

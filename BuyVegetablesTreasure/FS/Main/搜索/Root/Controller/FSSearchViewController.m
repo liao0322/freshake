@@ -179,6 +179,7 @@ static NSString * const searchFooterID = @"searchFooterID";
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     self.collectionView.frame = self.view.bounds;
+
     
 }
 
@@ -276,6 +277,8 @@ static NSString * const searchFooterID = @"searchFooterID";
             return nil;
         }
         FSSearchFooterView *footerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:searchFooterID forIndexPath:indexPath];
+//        footerView.x = 0;
+//        footerView.y = 0;
         
         [footerView.clearHistoryButton addTarget:self action:@selector(clearHistory:) forControlEvents:UIControlEventTouchUpInside];
         
