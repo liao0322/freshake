@@ -25,6 +25,7 @@
     
     [XFNetworking GET:urlString parameters:nil success:^(id responseObject, NSInteger statusCode) {
         [SVProgressHUD dismiss];
+        
         NSError *error;
         NSDictionary *dataDict = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:&error];
         if (error) {
@@ -35,6 +36,7 @@
             success(dataDict);
         }
     } failure:^(NSError *error, NSInteger statusCode) {
+        [SVProgressHUD dismiss];
         if (failure) {
             failure(error);
         }
@@ -144,6 +146,7 @@
             success(dataDict);
         }
     } failure:^(NSError *error, NSInteger statusCode) {
+        [SVProgressHUD dismiss];
         if (failure) {
             failure(error);
         }
