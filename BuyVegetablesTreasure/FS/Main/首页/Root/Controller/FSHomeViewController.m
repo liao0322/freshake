@@ -993,6 +993,7 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
         
     } failure:^(NSError *error, NSInteger statusCode) {
         [self showInfoWidthError:error];
+        [self.normalHeader endRefreshing];
     }];
     [self getShoppingCartCount];
     
@@ -1026,6 +1027,8 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
         
     } failure:^(NSError *error, NSInteger statusCode) {
         [self showInfoWidthError:error];
+        [self.normalHeader endRefreshing];
+
     }];
 }
 
@@ -1049,6 +1052,7 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
         
     } failure:^(NSError *error, NSInteger statusCode) {
         [SVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"%@", error.domain]];
+        
     }];
 }
 
