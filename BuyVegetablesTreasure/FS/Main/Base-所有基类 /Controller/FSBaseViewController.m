@@ -70,7 +70,7 @@
 - (void)showInfoWidthError:(NSError *)error {
     
     if (error.code == -1009) {
-        [SVProgressHUD showErrorWithStatus:@"无网络连接!"];
+        [SVProgressHUD showInfoWithStatus:@"无网络连接!"];
     }
     else if (error.code == -1001) {
         [SVProgressHUD showInfoWithStatus:@"请求超时!"];
@@ -84,7 +84,7 @@
         [SVProgressHUD showInfoWithStatus:@"服务器打了个盹~>.<"];
     }
     else {
-        [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"%@", error.domain]];
+        [SVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"%@", error.domain]];
     }
 }
 

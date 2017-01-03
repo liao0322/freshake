@@ -38,8 +38,8 @@
     _goodsImgScrollView = [[SDCycleScrollView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenWidth)];
     
     _goodsImgScrollView.dotColor = [UIColor colorDomina];
-    _goodsImgScrollView.placeholderImage = IMAGE(@"BannerError");
-    _goodsImgScrollView.localizationImagesGroup = @[IMAGE(@"BannerError")];
+    _goodsImgScrollView.placeholderImage = IMAGE(@"列表页未成功图片");
+    _goodsImgScrollView.localizationImagesGroup = @[IMAGE(@"列表页未成功图片")];
     _goodsImgScrollView.layer.borderColor = [UIColor colorWithHexString:@"0xe3e3e3"].CGColor;
     _goodsImgScrollView.layer.borderWidth = 0.5;
     //_goodsImgScrollView.pageControlStyle = SDCycleScrollViewPageContolStyleClassic;

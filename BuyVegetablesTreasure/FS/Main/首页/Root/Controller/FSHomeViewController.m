@@ -193,7 +193,7 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
     [XFNetworking checkNetworkStatusWithBlock:^(XFNetworkStatus status) {
         
         if (status == XFNetworkStatusNotReachable || status == XFNetworkStatusUnknown) { // 无网络
-            [SVProgressHUD showErrorWithStatus:@"无网络连接!"];
+            [SVProgressHUD showInfoWithStatus:@"无网络连接!"];
             
             if (!self.commodityArray.count) {
                 self.mainView.backgroundView = self.netErrorView;
