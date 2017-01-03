@@ -36,7 +36,7 @@
 @implementation MyOrderViewController
 
 - (void)viewWillAppear:(BOOL)animated {
-    [_myOrderView.tableView.mj_header beginRefreshing];
+//    [_myOrderView.tableView.mj_header beginRefreshing];
 //    [self getOrder];
 //    [self getCount];
 }

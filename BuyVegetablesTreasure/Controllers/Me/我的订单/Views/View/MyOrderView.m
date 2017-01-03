@@ -292,11 +292,12 @@
 
     MyOrderGoodsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GoodsCell"];
     cell.selectionStyle = UITableViewCellStyleDefault;
-    if (indexPath.row < [model.List count]) {
-        
-        [cell setModel:model.List[indexPath.row - 1]];
-        
-    }
+     [cell setModel:model.List[indexPath.row - 1]];
+//    if (indexPath.row < [model.List count]) {
+//        
+//       
+//        
+//    }
 //    else {
 //        
 //        [cell setModel:model.List[indexPath.row - 1]];
