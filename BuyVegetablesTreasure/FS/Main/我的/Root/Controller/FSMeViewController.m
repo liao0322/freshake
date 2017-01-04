@@ -17,7 +17,7 @@
 #import "FSLoginViewController.h"
 #import "FSMyCouponsViewController.h"
 #import "FSNavigationController.h"
-//#import "FSMyCollectViewController.h"
+#import "FSMyCollectViewController.h"
 #import "MySiteViewController.h"
 #import "MyOrderViewController.h"
 #import "MyGroupViewController.h"
@@ -118,7 +118,7 @@
     [self.view addSubview:scrollView];
     _bgScrollView = scrollView;
     
-    _headView = [[FSMeHeadView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 215)];
+    _headView = [[FSMeHeadView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH,SCREEN_WIDTH == 320 ? 183.5 : 215)];
     _headView.delegate = self;
     [_bgScrollView addSubview:_headView];
     
@@ -150,7 +150,7 @@
 
 
 - (void)viewDidLayoutSubviews {
-    _bottomView.frame = CGRectMake(0, 350, SCREEN_WIDTH, 200);
+    _bottomView.frame = CGRectMake(0, SCREEN_WIDTH == 320 ? 318.5 : 350, SCREEN_WIDTH, 200);
 
 }
 

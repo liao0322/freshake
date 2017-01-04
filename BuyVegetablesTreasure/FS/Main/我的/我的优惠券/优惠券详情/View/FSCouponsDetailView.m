@@ -88,7 +88,7 @@
     // 时间标题
     UILabel *timeTitleLabel = [UILabel new];
     timeTitleLabel.text = @"开始时间:\n结束时间:";
-    timeTitleLabel.font = [UIFont systemFontOfSize:12.0];
+    timeTitleLabel.font = [UIFont systemFontOfSize:SCREEN_WIDTH == 320 ? 10.0 : 12.0];
     timeTitleLabel.textColor = [UIColor whiteColor];
     timeTitleLabel.textAlignment = NSTextAlignmentRight;
     [timeTitleLabel setSingleLineAutoResizeWithMaxWidth:100];
@@ -102,7 +102,7 @@
     // 有效时间
     self.timeLabel = [UILabel new];
     self.timeLabel.numberOfLines = 0;
-    self.timeLabel.font = [UIFont systemFontOfSize:12.0];
+    self.timeLabel.font = [UIFont systemFontOfSize:SCREEN_WIDTH == 320 ? 10.0 : 12.0];
     self.timeLabel.textColor = [UIColor whiteColor];
     [couponImgView addSubview:self.timeLabel];
     
@@ -135,7 +135,7 @@
     
     // 使用说明
     _explainLabel = [UILabel new];
-    _explainLabel.font = [UIFont systemFontOfSize:12.0];
+    _explainLabel.font = [UIFont systemFontOfSize:SCREEN_WIDTH == 320 ? 10.0 : 12.0];
     _explainLabel.textColor = [UIColor whiteColor];
     [explainBgView addSubview:_explainLabel];
     
@@ -148,7 +148,7 @@
     // 使用条件标题
     UILabel *conditionTitle = [UILabel new];
     conditionTitle.text = @"使用条件";
-    conditionTitle.font = [UIFont systemFontOfSize:12.0];
+    conditionTitle.font = [UIFont systemFontOfSize:SCREEN_WIDTH == 320 ? 10.0 : 12.0];
     conditionTitle.textColor = [UIColor whiteColor];
     [explainBgView addSubview:conditionTitle];
     
@@ -160,7 +160,7 @@
     
     // 使用条件
     _conditionLabel = [UILabel new];
-    _conditionLabel.font = [UIFont systemFontOfSize:12.0];
+    _conditionLabel.font = [UIFont systemFontOfSize:SCREEN_WIDTH == 320 ? 10.0 : 12.0];
     _conditionLabel.textColor = [UIColor whiteColor];
     [explainBgView addSubview:_conditionLabel];
     

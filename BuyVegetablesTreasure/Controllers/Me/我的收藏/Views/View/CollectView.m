@@ -99,17 +99,9 @@
     
     CollectTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     
-    if (_isGoods) {
-        
-        MyCollectModel *model = _dataSource[indexPath.section];
-        [cell setModel:model];
-    }
-    else {
-        
-        CookingProgramListModel *model = _dataSource[indexPath.section];
-        [cell setVedioModel:model];
-    }
-    
+    MyCollectModel *model = _dataSource[indexPath.section];
+    [cell setModel:model];
+
     UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, cell.frame.size.height - 1)];
     bgView.backgroundColor = [UIColor whiteColor];
     cell.selectedBackgroundView = bgView;
@@ -133,16 +125,9 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         
-        if (_isGoods) {
-            MyCollectModel *model = _dataSource[indexPath.section];
-            _deleteCollect(model.id);
-        }
-        else {
-            
-            CookingProgramListModel *model = _dataSource[indexPath.section];
-            _deleteCollect(model.Id);
-        }
-        
+        MyCollectModel *model = _dataSource[indexPath.section];
+        _deleteCollect(model.id);
+
     }
 }
 
@@ -167,7 +152,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     
-   
+    
     if (_isEdit) {
         
         if (_didselectBlock) {
@@ -176,35 +161,23 @@
         
         return;
     }
+
+    MyCollectModel *model = _dataSource[indexPath.row];
     
-    if (_isGoods) {
-        
-        MyCollectModel *model = _dataSource[indexPath.row];
-        
-        if ([model.upselling integerValue] == 0) {
-            return [self alterView];
-        }
-        
-        GoodsDetailViewController *detailVC = [[GoodsDetailViewController alloc] init];
-        detailVC.isCollect = @"1";
-        detailVC.midStr = model.mid;
-        detailVC.Gaddress = model.addr;
-        detailVC.pickTime = model.picktime;
-        detailVC.goodsStoreID = model.StroreId;
-        detailVC.fendianName = model.fendianname;
-        detailVC.ProductId = [model.id integerValue];
-        _goViewController(detailVC);
+    if ([model.upselling integerValue] == 0) {
+        return [self alterView];
     }
-    else {
-        
-        CookingProgramListModel *model = _dataSource[indexPath.section];
-        CookingDetailsViewController *detailVC = [CookingDetailsViewController new];
-        detailVC.idString = model.Id;
-        detailVC.nameString = model.Title;
-        detailVC.videoURL = model.Vediourl;
-        detailVC.isVedio = YES;
-        _goViewController(detailVC);
-    }
+    
+    GoodsDetailViewController *detailVC = [[GoodsDetailViewController alloc] init];
+    detailVC.isCollect = @"1";
+    detailVC.midStr = model.mid;
+    detailVC.Gaddress = model.addr;
+    detailVC.pickTime = model.picktime;
+    detailVC.goodsStoreID = model.StroreId;
+    detailVC.fendianName = model.fendianname;
+    detailVC.ProductId = [model.id integerValue];
+    _goViewController(detailVC);
+
 }
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {

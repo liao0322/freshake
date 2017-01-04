@@ -117,12 +117,12 @@
     _goPayViewController();
 }
 
-- (void)setVedioModel:(CookingProgramListModel *)model {
-    
-    _goPlayBtn.hidden = YES;
-    _goodsPriceLabel.hidden = YES;
-    _goodsNameLabel.text = model.Title;
-    [_goodsImageView sd_setImageWithURL:[NSURL URLWithString:LMMC(model.pic)] placeholderImage:IMAGE(@"列表页未成功图片")];
-}
+//- (void)setVedioModel:(CookingProgramListModel *)model {
+//    
+//    _goPlayBtn.hidden = YES;
+//    _goodsPriceLabel.hidden = YES;
+//    _goodsNameLabel.text = model.Title;
+//    [_goodsImageView sd_setImageWithURL:[NSURL URLWithString:LMMC(model.pic)] placeholderImage:IMAGE(@"列表页未成功图片")];
+//}
 
 @end

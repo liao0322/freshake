@@ -17,7 +17,7 @@
 @property (nonatomic, copy) void(^goViewController)(UIViewController *viewController);
 @property (nonatomic, copy) void(^didselectBlock)();
 
-@property (nonatomic, assign) BOOL isGoods;
+//@property (nonatomic, assign) BOOL isGoods;
 @property (nonatomic, assign) BOOL isEdit;
 
 - (void)refreshTableView;

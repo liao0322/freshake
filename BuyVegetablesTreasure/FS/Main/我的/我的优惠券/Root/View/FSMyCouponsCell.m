@@ -13,6 +13,7 @@
 @property (nonatomic, strong) UIImageView *bgImgView;
 @property (nonatomic, strong) UIImageView *selectImgView;
 @property (nonatomic, strong) UIImageView *discountImgView;
+@property (nonatomic, strong) UIImageView *shiXiaoImgView; // 已失效标记
 @property (nonatomic, strong) UILabel *priceLabel;
 @property (nonatomic, strong) UILabel *couponNameLabel;
 @property (nonatomic, strong) UILabel *timeLabel;
@@ -31,8 +32,17 @@
 
 - (void)createUI {
     self.bgImgView = [UIImageView new];
-    self.bgImgView.frame = CGRectMake(SCREEN_WIDTH == 320 ? 15 : 20, 0, SCREEN_WIDTH - 2 * (SCREEN_WIDTH == 320 ? 15 : 20), 120);
+    self.bgImgView.frame = CGRectMake(SCREEN_WIDTH == 320 ? 15 : 20, 0, SCREEN_WIDTH - 2 * (SCREEN_WIDTH == 320 ? 15 : 20),SCREEN_WIDTH == 320 ? 102.4 : 120);
     [self.contentView addSubview:self.bgImgView];
+    
+    CGFloat SXWidth = 64;
+    CGFloat SXHeight = 53;
+    
+    self.shiXiaoImgView = [UIImageView new];
+    self.shiXiaoImgView.frame = CGRectMake(self.bgImgView.frame.size.width - SXWidth, 0, SXWidth, SXHeight);
+    self.shiXiaoImgView.image = IMAGE(@"FS已失效");
+    [self.bgImgView addSubview:self.shiXiaoImgView];
+    
     
 //    self.bgImgView.sd_layout
 //    .leftSpaceToView(self.contentView, 15)
@@ -65,7 +75,7 @@
     
     // 优惠券名称
     self.couponNameLabel = [UILabel new];
-    self.couponNameLabel.frame = CGRectMake(self.bgImgView.width / 2 - 30, 35, self.bgImgView.width - CGRectGetWidth(_priceLabel.frame), 16);
+    self.couponNameLabel.frame = CGRectMake(self.bgImgView.width / 2 - 30, SCREEN_WIDTH == 320 ? 25 : 35, self.bgImgView.width - CGRectGetWidth(_priceLabel.frame), 16);
     self.couponNameLabel.font = [UIFont boldSystemFontOfSize:SCREEN_WIDTH == 320 ? 13 : 15];
     [self.bgImgView addSubview:self.couponNameLabel];
     
@@ -136,6 +146,7 @@
         UIImage *bgImage = IMAGE(@"FS优惠券");
        // self.bgImgView = [[UIImageView alloc] initWithImage:bgImage];
         self.bgImgView.image = bgImage;
+        self.shiXiaoImgView.hidden = YES;
         self.priceLabel.textColor = [UIColor colorOrange];
         self.guiZeLabel.textColor = [UIColor colorOrange];
         self.couponNameLabel.textColor = [UIColor colorWithHexString:@"0x404040"];

@@ -17,37 +17,28 @@
 @property (nonatomic, strong) UIView *deleteView;
 @property (nonatomic, strong) NSMutableArray *dataSource;
 
-@property (nonatomic, assign) BOOL isGoods;
 
 @end
 
 @implementation MyCollectViewController
 
 - (void)viewWillAppear:(BOOL)animated {
-    
-    if (_isGoods) {
-        
+
         [self requestDataFromNet];
-    }
-    else {
-        [self getVedioList];
-    }
+  
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
     self.view.backgroundColor = [UIColor colorWithHexString:@"0xF2F2F2"];
-//    self.navigationItem.titleView = [Utillity customNavToTitle:@"收 藏"];
     self.title = @"收 藏";
     self.navigationItem.leftBarButtonItem = [UIFactory createBackBBIWithTarget:self action:@selector(back)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStyleDone target:self action:@selector(edit)];
     self.navigationItem.rightBarButtonItem.tintColor = [UIColor colorDomina];
     
-    _isGoods = YES;
     _dataSource = [NSMutableArray array];
     
-//    [self initTypeView];
     [self initCollectView];
     [self initDeleteView];
 }
@@ -90,36 +81,7 @@
     [_deleteView addSubview:line];
 }
 
-#pragma mark 类型
-- (void)initTypeView {
 
-    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 50)];
-    bgView.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:bgView];
-    
-    for (int i = 0; i < 2; i++) {
-        
-        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame = CGRectMake(ScreenWidth / 2 * i, 0, ScreenWidth / 2, CGRectGetHeight(bgView.frame));
-        btn.titleLabel.font = [UIFont systemFontOfSize:14];
-        btn.selected = !i;
-        btn.tag = i + 10;
-        [btn setTitle:i == 0 ? @"商品" : @"视频" forState:UIControlStateNormal];
-        [btn setTitleColor:[UIColor colorWithHexString:@"0x606060"] forState:UIControlStateNormal];
-        [btn setTitleColor:Color forState:UIControlStateSelected];
-        [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
-        [bgView addSubview:btn];
-    }
-    
-    UILabel *line = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(bgView.frame) - 1, ScreenWidth, 1)];
-    line.backgroundColor = [UIColor colorWithHexString:@"0xCECECE"];
-    [bgView addSubview:line];
-    
-    UILabel *moveLine = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(bgView.frame) - 1, ScreenWidth / 2, 1)];
-    moveLine.backgroundColor = Color;
-    moveLine.tag = 20;
-    [bgView addSubview:moveLine];
-}
 
 #pragma mark 初始化CollectView
 - (void)initCollectView {
@@ -138,13 +100,8 @@
     
     _collectView.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         
-        if (_isGoods) {
-            [self requestDataFromNet];
-        }
-        else {
-            [self getVedioList];
-        }
-        
+        [self requestDataFromNet];
+
         UIButton *btn = (UIButton *)[weakSelf.view viewWithTag:55];
         btn.selected = NO;
     }];
@@ -208,24 +165,15 @@
         
         NSIndexPath *indexPath = idArray[i];
         
-        if (_isGoods) {
-            
-            MyCollectModel *model = _dataSource[indexPath.section];
-            [self deleteCollectWithId:model.id];
-        }
-        else {
-            
-            CookingProgramListModel *model = _dataSource[indexPath.section];
-            [self deleteCollectWithId:model.Id];
-        }
-
+        MyCollectModel *model = _dataSource[indexPath.section];
+        [self deleteCollectWithId:model.id];
+       
     }
     
     _collectView.dataSource = _dataSource;
     [_collectView refreshTableView];
     
-    if (_isGoods) [self requestDataFromNet];
-    else [self getVedioList];
+     [self requestDataFromNet];
 }
 
 #pragma mark 编辑
@@ -262,34 +210,7 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-#pragma mark 点击类型按钮事件
-- (void)btnClick:(UIButton *)btn {
-    
-    UIButton *allsel = (UIButton *)[self.view viewWithTag:55];
-    allsel.selected = NO;
-    
-    for (int i = 0; i < 2; i++) {
-        [(UIButton *)[self.view viewWithTag:i + 10] setSelected:NO];
-    }
-    
-    btn.selected = YES;
-    
-    CGRect frame = [self.view viewWithTag:20].frame;
-    frame.origin.x = ScreenWidth / 2 * (btn.tag - 10);
-    [UIView animateWithDuration:0.3 animations:^{
-        [(UILabel *)[self.view viewWithTag:20] setFrame:frame];
-    }];
-    
-    _collectView.dataSource = nil;
-    [_collectView refreshTableView];
 
-    if (btn.tag == 10) {
-        [self requestDataFromNet];
-    }
-    else {
-        [self getVedioList];
-    }
-}
 
 #pragma mark 前往控制器
 - (void)goViewController:(UIViewController *)viewController {
@@ -308,7 +229,6 @@
         
         if ([data[@"issuccess"] boolValue]) {
             
-            _isGoods = YES;
             [_dataSource removeAllObjects];
             
             for (NSDictionary *dict in data[@"List"]) {
@@ -321,7 +241,6 @@
             if (_dataSource.count > 0) {
                 
                 _collectView.hidden = NO;
-                _collectView.isGoods = YES;
                 _collectView.dataSource = _dataSource;
                 [_collectView refreshTableView];
             }
@@ -335,10 +254,8 @@
         }
         else {
             
-            _isGoods = YES;
             
             _collectView.hidden = YES;
-            _collectView.isGoods = YES;
             _collectView.dataSource = _dataSource;
             [_dataSource removeAllObjects];
             [_collectView refreshTableView];
@@ -357,62 +274,14 @@
     }];
 }
 
-#pragma mark 获取视频列表
-- (void)getVedioList {
-
-    NSString *midString = [[NSUserDefaults standardUserDefaults] objectForKey:@"MID"];
-    NSString *uidString = [[NSUserDefaults standardUserDefaults] objectForKey:@"UID"];
-    NSString *urlString = [NSString stringWithFormat:GetVedioCollection,midString,uidString];
-    NSLog(@"%@",urlString);
-    
-    [HttpRequest sendGetOrPostRequest:urlString param:nil requestStyle:Get setSerializer:Json isShowLoading:YES success:^(id data)
-     {
-         if ([data[@"issuccess"] boolValue]) {
-
-             _isGoods = NO;
-             [_dataSource removeAllObjects];
-             
-             for (NSDictionary *dic in data[@"List"]) {
-                 
-                 CookingProgramListModel *model = [[CookingProgramListModel alloc] init];
-                 [model setValuesForKeysWithDictionary:dic];
-                 [_dataSource addObject:model];
-             }
-             
-             if (_dataSource.count > 0) {
-             
-                 _collectView.hidden = NO;
-                 _collectView.isGoods = NO;
-                 _collectView.dataSource = _dataSource;
-                 [_collectView refreshTableView];
-             }
-             else {
-              
-                 _collectView.hidden = YES;
-                 [Tools myHud:@"暂无收藏视频" inView:self.view];
-             }
-             
-             [_collectView.tableView.mj_header endRefreshing];
-         }
-         else {
-             
-             _isGoods = NO;
-             [_collectView.tableView.mj_header endRefreshing];
-         }
-         
-     } failure:^(NSError *error) {
-         [Tools myHud:@"服务器异常,稍后再试!" inView:self.view];
-     }];
-}
 
 #pragma mark 删除收藏请求
 - (void)deleteCollectWithId:(NSString *)idString {
     
     NSString *urlString;
 
-    // 判断是否商品
-    if (_isGoods) {
-        
+
+    
         MyCollectModel *model;
         for (int i = 0; i < _dataSource.count; i++) {
             
@@ -422,12 +291,7 @@
             }
         }
         urlString = [NSString stringWithFormat:DELFOLDER,[NSString stringWithFormat:@"%@",model.Tid]];
-    }
-    else {
-        
-        NSString *uidString = [[NSUserDefaults standardUserDefaults] objectForKey:@"UID"];
-        urlString = [NSString stringWithFormat:RemoveVedioCollection,idString,uidString];
-    }
+
     
     urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSLog(@"%@",urlString);
@@ -438,22 +302,14 @@
              
              for (int a = 0; a < _dataSource.count; a++) {
                  
-                 if (_isGoods) {
-                     
+
+                 
                      MyCollectModel *model = _dataSource[a];
                      if ([idString intValue] == [model.id intValue]) {
                          [_dataSource removeObjectAtIndex:a];
                          break;
                      }
-                 }
-                 else {
-                     
-                     CookingProgramListModel *model = _dataSource[a];
-                     if ([idString intValue] == [model.Id intValue]) {
-                         [_dataSource removeObjectAtIndex:a];
-                         break;
-                     }
-                 }
+        
              }
              
              _collectView.dataSource = _dataSource;
