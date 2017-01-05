@@ -120,9 +120,9 @@
     [self.bgImgView addSubview:self.guiZeLabel];
     
     self.guiZeLabel.sd_layout
-    .leftSpaceToView(self.bgImgView, self.bgImgView.width/2 - 20)
+    .leftSpaceToView(self.bgImgView, self.bgImgView.width/2 - 30)
     .rightSpaceToView(self.bgImgView, 15)
-    .topSpaceToView(self.timeLabel, 6)
+    .topSpaceToView(self.timeLabel, 2)
     .heightIs(15);
     
     // 选中
