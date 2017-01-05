@@ -91,7 +91,7 @@
     [self.bgImgView addSubview:timeTitleLabel];
     
     timeTitleLabel.sd_layout
-    .leftSpaceToView(self.bgImgView, self.bgImgView.width/2 - 20)
+    .leftSpaceToView(self.bgImgView, self.bgImgView.width/2 - 30)
     .topSpaceToView(self.couponNameLabel, 10)
     .autoHeightRatio(0);
     
