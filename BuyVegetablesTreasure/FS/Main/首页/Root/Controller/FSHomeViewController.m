@@ -218,6 +218,12 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userIsLogined) name:@"UserIsLogined" object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userIsLogout) name:@"UserIsLogout" object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rid:) name:@"kJPFNetworkDidLoginNotification" object:nil];
+}
+
+- (void)rid:(NSNotification *)not {
+    NSLog(@"%@", not.userInfo);
 }
 
 - (void)addSubviews {
