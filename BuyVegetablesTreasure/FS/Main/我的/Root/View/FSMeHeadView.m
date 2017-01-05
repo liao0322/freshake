@@ -37,7 +37,7 @@
     .leftEqualToView(self)
     .rightEqualToView(self)
     .topEqualToView(self)
-    .heightIs(215);
+    .heightIs(SCREEN_WIDTH == 320 ? 183.5 : 215);
     
     // 头像
     _icon = [UIImageView new];
@@ -48,12 +48,12 @@
     
     _icon.sd_layout
     .leftSpaceToView(bgImageView, 22)
-    .topSpaceToView(bgImageView, 64)
+    .topSpaceToView(bgImageView,SCREEN_WIDTH == 320 ? 49 : 64)
     .widthIs(70)
     .heightIs(70);
     
     UIButton *myMessageBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    myMessageBtn.frame = CGRectMake(0, 64, ScreenWidth, bgImageView.frame.size.height - 64 - 50);
+    myMessageBtn.frame = CGRectMake(0,SCREEN_WIDTH == 320 ? 49 : 64, ScreenWidth, bgImageView.frame.size.height - 64 - 50);
     [myMessageBtn addTarget:self action:@selector(myMessageClick:) forControlEvents:UIControlEventTouchUpInside];
     [bgImageView addSubview:myMessageBtn];
     
@@ -61,7 +61,7 @@
 //    [_icon addGestureRecognizer:tap];
     
        // 用户昵称
-    _name = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_icon.frame) + 40, 74, SCREEN_WIDTH / 2, 18)];
+    _name = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_icon.frame) + 40,SCREEN_WIDTH == 320 ? 59 : 74, SCREEN_WIDTH / 2, 18)];
 //    _name.backgroundColor = [UIColor whiteColor];
 //    _name.layer.masksToBounds = YES;
 //    _name.layer.cornerRadius = 8;
@@ -100,7 +100,7 @@
     
     _rightImage.sd_layout
     .rightSpaceToView(bgImageView, 22)
-    .topSpaceToView(bgImageView, 91)
+    .topSpaceToView(bgImageView,SCREEN_WIDTH == 320 ? 76 : 91)
     .widthIs(10)
     .heightIs(20);
     
