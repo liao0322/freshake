@@ -162,7 +162,7 @@
         return;
     }
 
-    MyCollectModel *model = _dataSource[indexPath.row];
+    MyCollectModel *model = _dataSource[indexPath.section];
     
     if ([model.upselling integerValue] == 0) {
         return [self alterView];

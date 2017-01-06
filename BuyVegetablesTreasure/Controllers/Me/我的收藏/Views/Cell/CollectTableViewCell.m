@@ -41,12 +41,12 @@
         // 立即购买按钮
         _goPlayBtn = [UIButton new];
         _goPlayBtn.layer.cornerRadius = 5;
-//        _goPlayBtn.layer.borderWidth = 1;
-//        _goPlayBtn.layer.borderColor = [Color CGColor];
-        _goPlayBtn.backgroundColor = [UIColor colorDomina];
+        _goPlayBtn.layer.borderWidth = 1;
+        _goPlayBtn.layer.borderColor = [Color CGColor];
+//        _goPlayBtn.backgroundColor = [UIColor colorDomina];
         _goPlayBtn.titleLabel.font = [UIFont systemFontOfSize:15.0];
         [_goPlayBtn setTitle:@"立即购买" forState:UIControlStateNormal];
-        [_goPlayBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_goPlayBtn setTitleColor:[UIColor colorDomina] forState:UIControlStateNormal];
         [_goPlayBtn addTarget:self action:@selector(goPay) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:_goPlayBtn];
         
