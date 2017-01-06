@@ -238,7 +238,6 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
     }];
 }
 
-
 - (void)registerCells {
     [super registerCells];
 

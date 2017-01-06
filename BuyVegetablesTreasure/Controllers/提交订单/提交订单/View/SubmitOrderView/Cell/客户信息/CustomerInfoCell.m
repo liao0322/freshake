@@ -88,7 +88,8 @@
             string = [Single sharedInstance].userTel;
         }
         else {
-            string = [Single sharedInstance].remark;
+//            string = [Single sharedInstance].remark;
+            string = @"";
         }
         
         if (isBlankString(string)) {
