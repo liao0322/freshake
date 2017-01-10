@@ -315,9 +315,7 @@ static NSString * const newCommodityTVCellID = @"newCommodityTVCellID";
     });
     
     [UIView animateWithDuration:1.0 animations:^{
-        
         cartAnimView.frame = CGRectMake(posX, posY, 0, 0);
-        
     } completion:^(BOOL finished) {
         [cartAnimView removeFromSuperview];
         cartAnimView = nil;

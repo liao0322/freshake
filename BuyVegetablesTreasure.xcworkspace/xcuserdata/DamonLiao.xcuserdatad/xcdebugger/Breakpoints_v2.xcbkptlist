@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BuyVegetablesTreasure/FS/Main/&#x9996;&#x9875;/Root/Controller/FSHomeViewController.m"
-            timestampString = "505359290.220646"
+            timestampString = "505710910.003637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "590"
-            endingLineNumber = "590"
+            startingLineNumber = "562"
+            endingLineNumber = "562"
             landmarkName = "-onGetReverseGeoCodeResult:result:errorCode:"
             landmarkType = "7">
          </BreakpointContent>
@@ -378,6 +378,22 @@
             startingLineNumber = "63"
             endingLineNumber = "63"
             landmarkName = "-setTimeString:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BuyVegetablesTreasure/FS/Main/&#x9996;&#x9875;/Root/Controller/FSHomeViewController.m"
+            timestampString = "505710910.003637"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "920"
+            endingLineNumber = "920"
+            landmarkName = "-getHomeData"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

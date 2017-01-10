@@ -44,6 +44,7 @@
     [self initUserSiteView];
 }
 
+
 - (void)initUserSiteView {
     
     _userAddressArray = [NSMutableArray array];

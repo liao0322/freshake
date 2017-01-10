@@ -27,10 +27,12 @@
 
 @property (nonatomic) UIRefreshControl *refreshControl;
 
+// 结算按钮所在的view
 @property (nonatomic) FSShoppingCartBottomView *bottomView;
 
 @property (nonatomic) FSShoppingCartTVFooterView *footerView;
 
+// 购物车为空时显示的view
 @property (nonatomic) FSEmptyView *emptyView;
 
 @property (assign, nonatomic) CGFloat totalPrice;
@@ -48,17 +50,14 @@ static NSString * const shoppingCartTVCellID = @"shoppingCartTVCellID";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
     [self getCommodityData];
     [self getShoppingCartNum];
     [self requestPoint];
@@ -68,7 +67,6 @@ static NSString * const shoppingCartTVCellID = @"shoppingCartTVCellID";
 
 - (void)initialization {
     [super initialization];
-    
     self.title = @"购物车";
     self.totalPrice = 0.0f;
 }
@@ -80,8 +78,6 @@ static NSString * const shoppingCartTVCellID = @"shoppingCartTVCellID";
 
     [self.view addSubview:self.bottomView];
     [self.view addSubview:self.emptyView];
-
-    
 }
 
 - (void)viewDidLayoutSubviews {
@@ -640,6 +636,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 
 
 #pragma mark -
+
 #pragma mark - LazyLoad
 
 - (NSMutableArray *)commodityArray {

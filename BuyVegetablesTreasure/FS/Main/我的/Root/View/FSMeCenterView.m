@@ -117,6 +117,14 @@
 }
 
 - (void)centerBtnClick:(UIButton *)sender {
+    /**
+     140 待付款
+     141 待提货
+     142 已提货
+     143 待评价
+     
+     **/
+    
     
     if (sender.tag == 140) {
         _btnIndex = 1;

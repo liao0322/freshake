@@ -35,5 +35,9 @@
 
 @property (nonatomic) FSNoDataView *noDataView;
 @property (nonatomic) FSNetErrorView *netErrorView;
+@property (nonatomic) XFWaterWaveView *loadingView;
+
+- (void)showLoading;
+- (void)dismissLoading;
 
 @end
