@@ -921,7 +921,6 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
         if (self.normalHeader.isRefreshing) {
             [self.normalHeader endRefreshing];
         }
-//        [self dismissLoading];
         [XFWaterWaveView dismissLoading];
     }];
     [self getShoppingCartCount];
@@ -953,11 +952,9 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
         if (self.normalHeader.isRefreshing) {
             [self.normalHeader endRefreshing];
         }
-//        [self dismissLoading];
         [XFWaterWaveView dismissLoading];
         
     } failure:^(NSError *error, NSInteger statusCode) {
-//        [self dismissLoading];
         [XFWaterWaveView dismissLoading];
         [self showInfoWidthError:error];
         if (self.normalHeader.isRefreshing) {
@@ -1045,7 +1042,6 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
         if (self.normalHeader.isRefreshing) {
             [self.normalHeader endRefreshing];
         }
-//        [self dismissLoading];
         [XFWaterWaveView dismissLoading];
         
     }];

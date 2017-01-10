@@ -63,8 +63,8 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [SVProgressHUD showWithStatus:@"正在加载..."];
-
+//    [SVProgressHUD showWithStatus:@"正在加载..."];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -74,7 +74,9 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
+    [XFWaterWaveView showLoading];
+    [self refreshData];
+
     /*
     if (self.refreshControl.refreshing) {
         return;
@@ -100,7 +102,6 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self refreshData];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -189,11 +190,7 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     FSClassificationModel *model = self.commodityArray[section];
-    NSInteger row = 0;
-    if (self.commodityArray.count) {
-        row = model.List.count;
-    }
-    return row;
+    return model.List.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -558,6 +555,7 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
 }
 
 - (void)refreshData {
+    
     // 获取商品数据
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSString *midString = [userDefaults objectForKey:@"MID"];
@@ -570,8 +568,8 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
     }
     
     [XFNetworking GET:urlString parameters:nil success:^(id responseObject, NSInteger statusCode) {
-        [SVProgressHUD dismiss];
-        [self.normalHeader endRefreshing];
+//        [SVProgressHUD dismiss];
+        
         [self.commodityArray removeAllObjects];
         
         // 类别数据
@@ -588,15 +586,15 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
             FSClassificationModel *classificationModel = [FSClassificationModel mj_objectWithKeyValues:dict];
             [self.commodityArray addObject:classificationModel];
         }
-        
         NSLog(@"%@",self.commodityArray);
         [self.tableView reloadData];
         
         self.collectionView.hidden = NO;
         [self.collectionView reloadData];
-        //[self collectionView:self.collectionView didSelectItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-        
-        
+        [XFWaterWaveView dismissLoading];
+        if (self.normalHeader.isRefreshing) {
+            [self.normalHeader endRefreshing];
+        }
         
         /*
          [_commodityTypeView createCommodityType:_commodityArray];
@@ -617,7 +615,10 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
          */
         
     } failure:^(NSError *error, NSInteger statusCode) {
-        [self.normalHeader endRefreshing];
+        [XFWaterWaveView dismissLoading];
+        if (self.normalHeader.isRefreshing) {
+            [self.normalHeader endRefreshing];
+        }
         [self showInfoWidthError:error];
     }];
     

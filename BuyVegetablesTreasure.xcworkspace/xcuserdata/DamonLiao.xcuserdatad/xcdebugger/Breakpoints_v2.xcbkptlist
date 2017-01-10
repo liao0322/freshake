@@ -387,13 +387,157 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "BuyVegetablesTreasure/FS/Main/&#x9996;&#x9875;/Root/Controller/FSHomeViewController.m"
-            timestampString = "505710910.003637"
+            filePath = "BuyVegetablesTreasure/Tools/HttpRequest.m"
+            timestampString = "505713704.24932"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "920"
-            endingLineNumber = "920"
-            landmarkName = "-getHomeData"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "+sendGetOrPostRequest:param:requestStyle:setSerializer:isShowLoading:success:failure:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BuyVegetablesTreasure/Tools/HttpRequest.m"
+            timestampString = "505713706.062741"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "+sendGetOrPostRequest:param:requestStyle:setSerializer:isShowLoading:success:failure:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BuyVegetablesTreasure/FS/Expand/Widget/XFWaterWaveView/XFWaterWaveView.m"
+            timestampString = "505718281.906005"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "278"
+            endingLineNumber = "278"
+            landmarkName = "+dismissLoading"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "+[XFWaterWaveView dismissLoading]"
+                  moduleName = "BuyVegetablesTreasure"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/DamonLiao/Desktop/Freshake/2.4/freshake-ios/BuyVegetablesTreasure/FS/Expand/Widget/XFWaterWaveView/XFWaterWaveView.m"
+                  timestampString = "505715960.103073"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "273"
+                  endingLineNumber = "273"
+                  offsetFromSymbolStart = "64">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__33+[XFWaterWaveView dismissLoading]_block_invoke"
+                  moduleName = "BuyVegetablesTreasure"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/DamonLiao/Desktop/Freshake/2.4/freshake-ios/BuyVegetablesTreasure/FS/Expand/Widget/XFWaterWaveView/XFWaterWaveView.m"
+                  timestampString = "505715960.104532"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "274"
+                  endingLineNumber = "274"
+                  offsetFromSymbolStart = "60">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BuyVegetablesTreasure/FS/Expand/Widget/XFWaterWaveView/XFWaterWaveView.m"
+            timestampString = "505718281.906005"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "289"
+            endingLineNumber = "289"
+            landmarkName = "+dismissWithCompletion:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BuyVegetablesTreasure/FS/Expand/Widget/XFWaterWaveView/XFWaterWaveView.m"
+            timestampString = "505718281.906005"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "279"
+            endingLineNumber = "279"
+            landmarkName = "+dismissLoading"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__33+[XFWaterWaveView dismissLoading]_block_invoke"
+                  moduleName = "BuyVegetablesTreasure"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/DamonLiao/Desktop/Freshake/2.4/freshake-ios/BuyVegetablesTreasure/FS/Expand/Widget/XFWaterWaveView/XFWaterWaveView.m"
+                  timestampString = "505715960.110196"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "274"
+                  endingLineNumber = "274"
+                  offsetFromSymbolStart = "60">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__33+[XFWaterWaveView dismissLoading]_block_invoke_2"
+                  moduleName = "BuyVegetablesTreasure"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/DamonLiao/Desktop/Freshake/2.4/freshake-ios/BuyVegetablesTreasure/FS/Expand/Widget/XFWaterWaveView/XFWaterWaveView.m"
+                  timestampString = "505715960.111656"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "275"
+                  endingLineNumber = "275"
+                  offsetFromSymbolStart = "36">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BuyVegetablesTreasure/FS/Expand/Widget/XFWaterWaveView/XFWaterWaveView.m"
+            timestampString = "505718281.906005"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "282"
+            endingLineNumber = "282"
+            landmarkName = "+dismissLoading"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

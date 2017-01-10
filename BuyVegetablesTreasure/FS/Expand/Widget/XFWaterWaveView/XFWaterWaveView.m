@@ -36,6 +36,7 @@
 @property (nonatomic, assign) CGFloat variable;
 
 @property (nonatomic) UIImageView *bgImageView;
+@property (nonatomic) UIView *waveView;
 @property (nonatomic) UIView *bgView;
 
 @property (nonatomic) void(^finishedBlock)();
@@ -49,13 +50,15 @@ static const CGFloat kExtraHeight = 20.0f;     // 保证水波波峰不被裁剪
 static const CGFloat kHudSize = 100.0f;
 
 - (id)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
+    self = [super initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     if (self) {
+        
         [self defaultConfig];
         [self addSubview:self.bgView];
-        self.backgroundColor = [UIColor colorWithRed:235/255.0f green:235/255.0f blue:241/255.0f alpha:1];
-        self.layer.cornerRadius = 15.0f;
-        self.layer.masksToBounds = YES;
+        [self addSubview:self.waveView];
+        
+        self.backgroundColor = [UIColor colorWithRed:255/255.0f green:255/255.0f blue:255/255.0f alpha:.0];
+
     }
     return self;
 }
@@ -96,9 +99,7 @@ static const CGFloat kHudSize = 100.0f;
     self.waveLayer.fillColor = [UIColor colorWithRed:134/255.0f green:197/255.0f blue:59/255.0f alpha:1].CGColor;
     
     self.waveLayer.frame = [self gradientLayerFrame];
-    
-    //    [self.layer addSublayer:self.waveLayer];
-    [self.bgView.layer addSublayer:self.waveLayer];
+    [self.waveView.layer addSublayer:self.waveLayer];
     
     [self addSubview:self.bgImageView];
     
@@ -106,13 +107,15 @@ static const CGFloat kHudSize = 100.0f;
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    self.bgView.frame = CGRectMake(0, 0, kHudSize, kHudSize);
-    self.bgView.center = CGPointMake(self.frame.size.width * 0.5, self.frame.size.height * 0.5);
+    
+    self.bgView.frame = CGRectMake(0, 0, 120, 120);
+    self.bgView.center = CGPointMake(SCREEN_WIDTH * 0.5, SCREEN_HEIGHT * 0.5);
+    
+    self.waveView.frame = CGRectMake(0, 0, kHudSize, kHudSize);
+    self.waveView.center = CGPointMake(self.frame.size.width * 0.5, self.frame.size.height * 0.5);
     
     self.bgImageView.frame = CGRectMake(0, 0, kHudSize, kHudSize);
-    self.bgImageView.center = self.bgView.center;
-    
-    //    self.waveLayer.frame = [self gradientLayerFrame];
+    self.bgImageView.center = self.waveView.center;
     
 }
 
@@ -150,17 +153,17 @@ static const CGFloat kHudSize = 100.0f;
 
 - (void)dismissWithCompletion:(void (^)())completion {
     self.percent = 1.0f;
-    self.waveGrowth = 5.0f;
+    self.waveGrowth = 3.0f;
     self.waveLayer.frame = [self gradientLayerFrame];
     self.finishedBlock = completion;
 }
 
-/*
+
  - (void)stopWave {
- [self.displayLink invalidate];
- self.displayLink = nil;
+     [self.displayLink invalidate];
+     self.displayLink = nil;
  }
- */
+
 
 - (void)setCurrentWave:(CADisplayLink *)displayLink {
     if ([self waveFinished]) {
@@ -172,13 +175,19 @@ static const CGFloat kHudSize = 100.0f;
             //            [self stopWave];
             return;
         }
+
+        if (self.currentWavePointY <= 0) {
+            [self stopWave];
+            if (self.finishedBlock) {
+                self.finishedBlock();
+            }
+        }
+
     } else {
         // 波浪高度未到指定高度 继续上涨
         [self amplitudeChanged];
         self.currentWavePointY -= self.waveGrowth;
-        if (self.currentWavePointY < 0.0f) {
-            self.currentWavePointY = 0.0f;
-        }
+
     }
     
     self.offsetX += self.waveSpeed;
@@ -216,11 +225,7 @@ static const CGFloat kHudSize = 100.0f;
     
     CGPathRelease(path);
     
-    if (!self.currentWavePointY) {
-        if (self.finishedBlock) {
-            self.finishedBlock();
-        }
-    }
+
 }
 
 - (void)amplitudeChanged {
@@ -258,15 +263,18 @@ static XFWaterWaveView *loadingView = nil;
 + (void)showLoading {
     UIWindow *keyWindow = [[[UIApplication sharedApplication] delegate] window];
     
-    loadingView = [[XFWaterWaveView alloc] initWithFrame:CGRectMake(0, 0, 120, 120)];
-    loadingView.center = keyWindow.center;
-    
+    if (!loadingView) {
+        loadingView = [[XFWaterWaveView alloc] initWithFrame:CGRectMake(0, 0, 120, 120)];
+        loadingView.center = keyWindow.center;
+    }
     [keyWindow addSubview:loadingView];
     [loadingView startWaveToPercent:0.5f];
 }
 
 + (void)dismissLoading {
-    
+    if (!loadingView) {
+        return;
+    }
     [loadingView dismissWithCompletion:^{
         [UIView animateWithDuration:0.1f animations:^{
             loadingView.transform = CGAffineTransformScale(loadingView.transform, 0.7f, 0.7f);
@@ -286,10 +294,20 @@ static XFWaterWaveView *loadingView = nil;
 
 #pragma mark - LazyLoad
 
+- (UIView *)waveView {
+    if (!_waveView) {
+        _waveView = [UIView new];
+        _waveView.backgroundColor = [UIColor whiteColor];
+        _waveView.layer.masksToBounds = YES;
+    }
+    return _waveView;
+}
+
 - (UIView *)bgView {
     if (!_bgView) {
-        _bgView = [UIView new];
-        _bgView.backgroundColor = [UIColor whiteColor];
+        _bgView = [[UIView alloc] init];
+        _bgView.backgroundColor = [UIColor colorWithRed:235/255.0f green:235/255.0f blue:241/255.0f alpha:1];
+        _bgView.layer.cornerRadius = 15.0f;
         _bgView.layer.masksToBounds = YES;
     }
     return _bgView;

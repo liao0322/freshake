@@ -20,11 +20,12 @@
                      failure:(void (^)(NSError *error))failure
 {
     if (isShowLoading) {
-        [SVProgressHUD showWithStatus:@"正在加载..."];
+//        [SVProgressHUD showWithStatus:@"正在加载..."];
+//        [XFWaterWaveView showLoading];
     }
     
     [XFNetworking GET:urlString parameters:nil success:^(id responseObject, NSInteger statusCode) {
-        [SVProgressHUD dismiss];
+//        [XFWaterWaveView dismissLoading];
         
         NSError *error;
         NSDictionary *dataDict = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:&error];
@@ -36,7 +37,8 @@
             success(dataDict);
         }
     } failure:^(NSError *error, NSInteger statusCode) {
-        [SVProgressHUD dismiss];
+//        [SVProgressHUD dismiss];
+//        [XFWaterWaveView dismissLoading];
         if (failure) {
             failure(error);
         }
@@ -135,7 +137,7 @@
 {
     
     [XFNetworking GET:urlString parameters:nil success:^(id responseObject, NSInteger statusCode) {
-        [SVProgressHUD dismiss];
+//        [SVProgressHUD dismiss];
         NSError *error;
         NSDictionary *dataDict = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:&error];
         if (error) {
@@ -146,7 +148,7 @@
             success(dataDict);
         }
     } failure:^(NSError *error, NSInteger statusCode) {
-        [SVProgressHUD dismiss];
+//        [SVProgressHUD dismiss];
         if (failure) {
             failure(error);
         }

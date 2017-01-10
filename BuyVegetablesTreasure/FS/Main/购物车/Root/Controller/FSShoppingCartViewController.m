@@ -21,7 +21,11 @@
     FSShoppingCartTVCellDelegate
 >
 
+// 正常商品数据
 @property (copy, nonatomic) NSMutableArray *commodityArray;
+
+// 失效商品数据
+@property (copy, nonatomic) NSMutableArray *invalidCommodityArray;
 
 @property (nonatomic) UITableView *tableView;
 
@@ -58,6 +62,7 @@ static NSString * const shoppingCartTVCellID = @"shoppingCartTVCellID";
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [XFWaterWaveView showLoading];
     [self getCommodityData];
     [self getShoppingCartNum];
     [self requestPoint];
@@ -191,7 +196,6 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
         } failure:^(NSError *error, NSInteger statusCode) {
             [self showInfoWidthError:error];
         }];
-        
     }];
     
     return @[removeAction];
@@ -370,20 +374,18 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 #pragma mark - Custom
 
 - (void)getCommodityData {
-    if ([self.refreshControl isRefreshing]) {
-        [self.refreshControl endRefreshing];
-    }
+
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *uidString = [defaults objectForKey:@"UID"];
     NSString *midString = [defaults objectForKey:@"MID"];
     NSString *urlString = [NSString stringWithFormat:SHOPPINGCARTGOODS,UUID,uidString,midString];
-    NSLog(@"===购物车请求===%@",urlString);
-    [SVProgressHUD showWithStatus:@"正在加载..."];
+    
     [XFNetworking GET:urlString parameters:nil success:^(id responseObject, NSInteger statusCode) {
-        [SVProgressHUD dismiss];
+        [XFWaterWaveView dismissLoading];
         NSDictionary *dataDict = [self dictWithData:responseObject];
         
         [self.commodityArray removeAllObjects];
+        [self.invalidCommodityArray removeAllObjects];
         
         if ([dataDict[@"issuccess"] boolValue]) {
             
@@ -418,22 +420,20 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
                 self.emptyView.hidden = NO;
             }
             
-            [self.refreshControl endRefreshing];
-
+//            [self.refreshControl endRefreshing];
         }
         else {
             if (!self.commodityArray.count) {
                 self.footerView.hidden = YES;
                 self.bottomView.hidden = YES;
                 self.emptyView.hidden = NO;
-
-                
             }
         }
         
     } failure:^(NSError *error, NSInteger statusCode) {
-        [self.refreshControl endRefreshing];
+//        [self.refreshControl endRefreshing];
         [self showInfoWidthError:error];
+        [XFWaterWaveView dismissLoading];
     }];
     
 }
@@ -466,14 +466,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (IBAction)orderButtonTouchUpInside:(UIButton *)sender {
     NSLog(@"下单");
-    
     NSMutableArray *arr = [NSMutableArray array];
     for (int i = 0; i < self.commodityArray.count; i++) {
-        
         ShopCart *model = self.commodityArray[i];
-        
         if (model.isSelect) {
-            
             [arr addObject:model];
         }
     }
@@ -485,11 +481,9 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
     // 保存商品列表
     NSMutableArray *listArray = [NSMutableArray array];
     for (int i = 0; i < arr.count; i++) {
-        
         ShopCart *model = arr[i];
         NSDictionary *dic = @{@"Id":[NSString stringWithFormat:@"%zd",[model.ID integerValue]],
                               @"num":[NSString stringWithFormat:@"%zd",[model.productNum integerValue]]};
-        
         [listArray addObject:dic];
     }
     
@@ -503,13 +497,11 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
     [HttpRequest sendGetOrPostRequest:urlString param:nil requestStyle:POST setSerializer:Json isShowLoading:YES success:^(id data)
      {
          if ([data[@"issuccess"] boolValue]) {
-             
              // 提交订单页
              SubmitOrderViewController *paymentVC = [[SubmitOrderViewController alloc] init];
              paymentVC.goodsArray = arr;
              NSLog(@"%@", paymentVC.goodsArray);
              [self.navigationController pushViewController:paymentVC animated:YES];
-             
          }
          else [Tools myHud:data[@"context"] inView:self.view];
          
@@ -555,29 +547,31 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
     }
 }
 
-- (void)getShoppingCartCount {
-    
+#pragma mark 获取购物车数量
+- (void)getShoppingCartNum {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *uidString = [defaults objectForKey:@"UID"];
     NSString *midString = [defaults objectForKey:@"MID"];
     
-    NSString *urlString = [NSString stringWithFormat:SHOPPINGCARTNUM, UUID, uidString, midString];
-    
-    NSLog(@"购物车 = %@",urlString);
+    NSString *urlString = [NSString stringWithFormat:SHOPPINGCARTNUM,UUID,uidString,midString];
     [XFNetworking GET:urlString parameters:nil success:^(id responseObject, NSInteger statusCode) {
-        
-        NSDictionary *dict = [self dictWithData:responseObject];
-        
-        if ([dict[@"sum"] integerValue] == 0) {
-            [[[[[self tabBarController] tabBar] items] objectAtIndex:2] setBadgeValue:nil];
-            return;
+        NSDictionary *data = [self dictWithData:responseObject];
+        if ([data[@"issuccess"] boolValue]) {
+            int sum = [[data objectForKey:@"sum"] intValue];
+            
+            // 设置 tabbar badge
+            if (sum == 0) {
+                [[[[[self tabBarController] tabBar] items] objectAtIndex:2] setBadgeValue:nil];
+            } else {
+                [[[[[self tabBarController] tabBar] items] objectAtIndex:2] setBadgeValue:[NSString stringWithFormat:@"%d", sum]];
+            }
+            
+        } else {
+            [SVProgressHUD showInfoWithStatus:data[@"context"]];
         }
-        
-        // 设置 tabbar badge
-        [[[[[self tabBarController] tabBar] items] objectAtIndex:2] setBadgeValue:[NSString stringWithFormat:@"%@", dict[@"sum"]]];
-        
+        [_tableView reloadData];
     } failure:^(NSError *error, NSInteger statusCode) {
-        [SVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"%@", error.domain]];
+        [self showInfoWidthError:error];
     }];
 }
 
@@ -606,35 +600,6 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
     
 }
 
-#pragma mark 获取购物车数量
-- (void)getShoppingCartNum {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *uidString = [defaults objectForKey:@"UID"];
-    NSString *midString = [defaults objectForKey:@"MID"];
-    
-    NSString *urlString = [NSString stringWithFormat:SHOPPINGCARTNUM,UUID,uidString,midString];
-    [XFNetworking GET:urlString parameters:nil success:^(id responseObject, NSInteger statusCode) {
-        NSDictionary *data = [self dictWithData:responseObject];
-        if ([data[@"issuccess"] boolValue]) {
-            int sum = [[data objectForKey:@"sum"] intValue];
-            
-            // 设置 tabbar badge
-            if (sum == 0) {
-                [[[[[self tabBarController] tabBar] items] objectAtIndex:2] setBadgeValue:nil];
-            } else {
-                [[[[[self tabBarController] tabBar] items] objectAtIndex:2] setBadgeValue:[NSString stringWithFormat:@"%ld", sum]];
-            }
-            
-        } else {
-            [SVProgressHUD showInfoWithStatus:data[@"context"]];
-        }
-        [_tableView reloadData];
-    } failure:^(NSError *error, NSInteger statusCode) {
-        [self showInfoWidthError:error];
-    }];
-}
-
-
 #pragma mark -
 
 #pragma mark - LazyLoad
@@ -645,6 +610,13 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
         
     }
     return _commodityArray;
+}
+
+- (NSMutableArray *)invalidCommodityArray {
+    if (!_invalidCommodityArray) {
+        _invalidCommodityArray = [NSMutableArray array];
+    }
+    return _invalidCommodityArray;
 }
 
 - (UITableView *)tableView {
@@ -662,7 +634,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
     }
     return _tableView;
 }
-
+/*
 - (UIRefreshControl *)refreshControl {
     if (!_refreshControl) {
         _refreshControl = [[UIRefreshControl alloc] init];
@@ -670,7 +642,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
     }
     return _refreshControl;
 }
-
+*/
 - (FSShoppingCartBottomView *)bottomView {
     if (!_bottomView) {
         _bottomView = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([FSShoppingCartBottomView class]) owner:self options:nil] lastObject];
