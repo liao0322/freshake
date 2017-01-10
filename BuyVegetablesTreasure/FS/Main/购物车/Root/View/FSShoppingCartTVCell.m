@@ -88,7 +88,12 @@
 - (void)setModel:(ShopCart *)model {
     _model = model;
     
-    self.selectButton.selected = _model.isSelect;
+    if (_model.invalid) {
+        self.selectButton.enabled = NO;
+    } else {
+        self.selectButton.enabled = YES;
+        self.selectButton.selected = _model.isSelect;
+    }
     
     [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:_model.thumbnailsUrll] placeholderImage:[UIImage imageNamed:@"placeholderimage"]];
     

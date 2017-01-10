@@ -71,7 +71,7 @@ static BOOL _isNetwork;
                            failure:(HttpRequestFailed)failure {
     
     AFHTTPSessionManager *manager = [self httpSessionManager];
-    manager.requestSerializer.timeoutInterval = 8.0f;
+    manager.requestSerializer.timeoutInterval = 15.0f;
     
     return [manager GET:URL parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
         

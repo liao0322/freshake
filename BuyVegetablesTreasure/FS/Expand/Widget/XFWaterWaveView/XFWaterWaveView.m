@@ -7,6 +7,7 @@
 //
 
 #import "XFWaterWaveView.h"
+#import "UIColor+Extension.h"
 
 @interface XFWaterWaveView ()
 
@@ -38,6 +39,7 @@
 @property (nonatomic) UIImageView *bgImageView;
 @property (nonatomic) UIView *waveView;
 @property (nonatomic) UIView *bgView;
+//@property (nonatomic) UIVisualEffectView *bgView;
 
 @property (nonatomic) void(^finishedBlock)();
 
@@ -73,7 +75,7 @@ static const CGFloat kHudSize = 100.0f;
     self.currentWavePointY = kHudSize * self.percent;       // 波纹从下往上升起
     
     self.waveGrowth = 1.0;
-    self.waveSpeed = 0.4 / M_PI;
+    self.waveSpeed = 0.3 / M_PI;
     
     self.offsetX = 0;
 }
@@ -303,16 +305,39 @@ static XFWaterWaveView *loadingView = nil;
     return _waveView;
 }
 
+
 - (UIView *)bgView {
     if (!_bgView) {
         _bgView = [[UIView alloc] init];
-        _bgView.backgroundColor = [UIColor colorWithRed:235/255.0f green:235/255.0f blue:241/255.0f alpha:1];
+//        _bgView.backgroundColor = [UIColor colorWithRed:235/255.0f green:235/255.0f blue:241/255.0f alpha:1];
+        _bgView.backgroundColor = [UIColor colorWithHex:0xededed];
+        _bgView.layer.cornerRadius = 15.0f;
+        _bgView.layer.masksToBounds = YES;
+        
+        /*
+        _bgView.layer.shadowColor = [UIColor blackColor].CGColor;
+        _bgView.layer.shadowOpacity = .5f;
+        _bgView.layer.shadowOffset = CGSizeMake(0, 0);
+        _bgView.layer.shadowRadius = 3;
+        _bgView.layer.shouldGroupAccessibilityChildren = NO;
+         */
+        
+    }
+    return _bgView;
+}
+
+
+/*
+- (UIVisualEffectView *)bgView {
+    if (!_bgView) {
+        _bgView = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight]];
+        _bgView.backgroundColor = [UIColor clearColor];
         _bgView.layer.cornerRadius = 15.0f;
         _bgView.layer.masksToBounds = YES;
     }
     return _bgView;
 }
-
+*/
 - (UIImageView *)bgImageView {
     if (!_bgImageView) {
         _bgImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"333"]];

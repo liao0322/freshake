@@ -913,6 +913,10 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
             [self.adRlistArray addObject:model];
         }
         
+        if (self.carouselModelArray.count) {
+            self.navigationBar.hidden = NO;
+        }
+        
         [self.mainView reloadData];
         [self getCommodityData];
         
@@ -1061,6 +1065,7 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
         _navigationBar = [[FSHomeNavigationBar alloc] init];
         [_navigationBar.leftButton addTarget:self action:@selector(leftButtonItemTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
         [_navigationBar.titleButton addTarget:self action:@selector(titleButtonTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
+        _navigationBar.hidden = YES;
     }
     return _navigationBar;
 }
@@ -1071,7 +1076,7 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
         _mainView.dataSource = self;
         _mainView.delegate = self;
         _mainView.contentInset = UIEdgeInsetsMake(0, 0, 49, 0);
-        _mainView.backgroundColor = [UIColor clearColor];
+        _mainView.backgroundColor = [UIColor colorWithRGBHex:0xededed];
         _mainView.showsVerticalScrollIndicator = NO;
         // 添加下拉刷新
         //_mainView.mj_header = self.refreshHeader;

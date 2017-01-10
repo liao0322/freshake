@@ -102,6 +102,7 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:NO];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -143,7 +144,7 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
 
 - (void)initialization {
     [super initialization];
-    self.view.backgroundColor = [UIColor colorViewBG];
+    self.view.backgroundColor = [UIColor colorWithRGBHex:0xededed];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.selectedIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     self.isCellSelected = NO;
@@ -697,7 +698,7 @@ static NSString * const commodityTVCellID = @"commodityTVCellID";
         _tableView.dataSource = self;
         _tableView.separatorInset = UIEdgeInsetsMake(0, -10, 0, 0);
         _tableView.tableFooterView = [[UIView alloc] init];
-        _tableView.backgroundColor = [UIColor colorViewBG];
+        _tableView.backgroundColor = [UIColor colorWithRGBHex:0xededed];
         _tableView.mj_header = self.normalHeader;
 //        _tableView.refreshControl = self.refreshControl;
 

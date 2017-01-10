@@ -62,6 +62,7 @@ static NSString * const shoppingCartTVCellID = @"shoppingCartTVCellID";
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:NO];
     [XFWaterWaveView showLoading];
     [self getCommodityData];
     [self getShoppingCartNum];
@@ -74,13 +75,14 @@ static NSString * const shoppingCartTVCellID = @"shoppingCartTVCellID";
     [super initialization];
     self.title = @"购物车";
     self.totalPrice = 0.0f;
+    self.view.backgroundColor = [UIColor colorWithRGBHex:0xededed];
+    
 }
 
 - (void)addSubviews {
     [super addSubviews];
     
     [self.view addSubview:self.tableView];
-
     [self.view addSubview:self.bottomView];
     [self.view addSubview:self.emptyView];
 }
@@ -88,14 +90,11 @@ static NSString * const shoppingCartTVCellID = @"shoppingCartTVCellID";
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     self.tableView.frame = self.view.bounds;
-    
     self.emptyView.frame = self.view.bounds;
-    
     self.bottomView.width = self.view.width;
     self.bottomView.height = 49;
     self.bottomView.x = 0;
     if (!self.tabBarController) {
-        NSLog(@"");
         self.bottomView.bottom = self.view.height;
     } else {
         if ([self.tabBarController.tabBar isHidden]) {
@@ -112,12 +111,24 @@ static NSString * const shoppingCartTVCellID = @"shoppingCartTVCellID";
 
 #pragma mark - UITableViewDataSource
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    NSInteger sections = 0;
+    if (self.commodityArray.count) {
+        sections += 1;
+    }
+    if (self.invalidCommodityArray.count) {
+        sections += 1;
+    }
+    return sections;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSInteger rows = 0;
-    if (self.commodityArray.count) {
+    if (section == 0) {
         rows = self.commodityArray.count;
+    } else {
+        rows = self.invalidCommodityArray.count;
     }
-    //self.emptyView.hidden = rows;
     return rows;
 }
 
@@ -125,12 +136,24 @@ static NSString * const shoppingCartTVCellID = @"shoppingCartTVCellID";
     
     FSShoppingCartTVCell *cell = [tableView dequeueReusableCellWithIdentifier:shoppingCartTVCellID forIndexPath:indexPath];
     cell.delegate = self;
-    cell.model = self.commodityArray[indexPath.row];
+    
+    NSInteger section = indexPath.section;
+    NSInteger row = indexPath.row;
+    ShopCart *model = nil;
+    
+    if (section == 0) {
+        model = self.commodityArray[row];
+    } else {
+        model = self.invalidCommodityArray[row];
+    }
+
+    cell.model = model;
     return cell;
 }
 
 #pragma mark - UITableViewDelegate
 
+/*
 - (void)tableView:(UITableView *)tableView
   willDisplayCell:(UITableViewCell *)cell
 forRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -139,8 +162,8 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
         self.tableView.tableFooterView = self.footerView;
         self.tableView.tableFooterView.height = 80;
     }
-    
 }
+ */
 
 - (nullable NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -190,9 +213,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
                 self.footerView.hidden = YES;
                 self.bottomView.hidden = YES;
                 [self.tableView reloadData];
-                
             }
-            
         } failure:^(NSError *error, NSInteger statusCode) {
             [self showInfoWidthError:error];
         }];
@@ -205,6 +226,33 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return SCREEN_WIDTH / (375 / 130.0f);
 }
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 15.0f;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    CGFloat height = 0.0f;
+    if (section == 0) {
+        height = 80.0f;
+    }
+    return height;
+}
+
+- (nullable UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    UIView *footerView = [UIView new];
+    
+    if (section == 0) {
+        footerView = self.footerView;
+    }
+    return footerView;
+    
+}
+
+//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+//    return 15.0f;
+//}
 
 #pragma mark - FSShoppingCartTVCellDelegate
 
@@ -373,6 +421,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 
 #pragma mark - Custom
 
+// 获取购物车数据
 - (void)getCommodityData {
 
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -396,15 +445,24 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
             for (NSDictionary *dic in dataDict[@"list"]) {
                 
                 ShopCart *model = [ShopCart modelWithDict:dic];
-                model.isSelect = YES;
-                [self.commodityArray addObject:model];
+                
+                if ([model.upselling isEqualToString:@"1"] && ([model.stock integerValue] > 0)) {
+                    model.isSelect = YES;
+                    model.invalid = NO;
+                    [self.commodityArray addObject:model];
+                } else {
+                    model.isSelect = NO;
+                    model.invalid = YES;
+                    [self.invalidCommodityArray addObject:model];
+                }
             }
             
-            if (self.commodityArray.count) {
+            if (self.commodityArray.count || self.invalidCommodityArray.count) {
                 
                 self.footerView.hidden = NO;
                 self.bottomView.hidden = NO;
                 self.emptyView.hidden = YES;
+                self.tableView.hidden = NO;
                 [self.tableView reloadData];
                 
                 self.totalPrice = [self getTotalPrice];
@@ -418,20 +476,19 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
                 self.footerView.hidden = YES;
                 self.bottomView.hidden = YES;
                 self.emptyView.hidden = NO;
+                self.tableView.hidden = YES;
             }
-            
-//            [self.refreshControl endRefreshing];
         }
         else {
-            if (!self.commodityArray.count) {
+            if (!self.commodityArray.count || !self.invalidCommodityArray.count) {
                 self.footerView.hidden = YES;
                 self.bottomView.hidden = YES;
                 self.emptyView.hidden = NO;
+                self.tableView.hidden = YES;
             }
         }
         
     } failure:^(NSError *error, NSInteger statusCode) {
-//        [self.refreshControl endRefreshing];
         [self showInfoWidthError:error];
         [XFWaterWaveView dismissLoading];
     }];
@@ -464,6 +521,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.bottomView.totalPriceLabel sizeToFit];
 }
 
+// 结算
 - (IBAction)orderButtonTouchUpInside:(UIButton *)sender {
     NSLog(@"下单");
     NSMutableArray *arr = [NSMutableArray array];
@@ -621,13 +679,18 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (UITableView *)tableView {
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
         _tableView.delegate = self;
         _tableView.dataSource = self;
 //        _tableView.refreshControl = self.refreshControl;
         _tableView.separatorInset = UIEdgeInsetsMake(0, -10, 0, 0);
         _tableView.contentInset = UIEdgeInsetsMake(0, 0, 49, 0);
         _tableView.tableFooterView = [[UIView alloc] init];
+        _tableView.hidden = YES;
+
+//        self.tableView.sectionFooterHeight = 80.0f;
+//        _tableView.backgroundColor = [UIColor colorWithRGBHex:0xededed];
+
         //_tableView.tableFooterView.height = 10;
         //_tableView.tableFooterView = self.footerView;
 

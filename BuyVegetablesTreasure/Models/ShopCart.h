@@ -29,6 +29,10 @@
 @property (nonatomic, copy) NSString *point;
 @property (nonatomic, copy) NSString *TickCount;
 @property (nonatomic, copy) NSString *UserPrice;
+@property (nonatomic, copy) NSString *StoreId;
+@property (nonatomic, copy) NSString *upselling;
+
 @property (nonatomic, assign) BOOL isSelect;
+@property (nonatomic, assign, getter=isInvalid) BOOL invalid;
 
 @end
