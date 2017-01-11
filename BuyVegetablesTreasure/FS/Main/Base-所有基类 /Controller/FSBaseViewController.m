@@ -9,6 +9,7 @@
 #import "FSBaseViewController.h"
 #import "FSNoDataView.h"
 
+
 @interface FSBaseViewController ()
 
 @end
@@ -42,7 +43,7 @@
 }
 
 - (void)addSubviews {
-
+    
 }
 
 - (void)registerCells {
@@ -57,6 +58,8 @@
     [super viewDidLayoutSubviews];
     self.noDataView.frame = self.view.bounds;
     self.netErrorView.frame = self.view.bounds;
+    self.loadingView.frame = CGRectMake(0, 0, 120, 120);
+    self.loadingView.center = self.view.center;
 }
 
 #pragma mark - Custom
@@ -88,6 +91,23 @@
     }
 }
 
+- (void)showLoading {
+    UIWindow *keyWindow = [[[UIApplication sharedApplication] delegate] window];
+    [keyWindow addSubview:self.loadingView];
+    [self.loadingView startWaveToPercent:0.5f];
+}
+
+- (void)dismissLoading {
+    [self.loadingView dismissWithCompletion:^{
+        [UIView animateWithDuration:0.1f animations:^{
+            self.loadingView.transform = CGAffineTransformScale(self.loadingView.transform, 0.7f, 0.7f);
+        } completion:^(BOOL finished) {
+            [self.loadingView removeFromSuperview];
+            self.loadingView = nil;
+        }];
+    }];
+}
+
 #pragma mark - LazyLoad
 
 - (FSNoDataView *)noDataView {
@@ -104,4 +124,10 @@
     return _netErrorView;
 }
 
+- (XFWaterWaveView *)loadingView {
+    if (!_loadingView) {
+        _loadingView = [XFWaterWaveView new];
+    }
+    return _loadingView;
+}
 @end

@@ -86,18 +86,12 @@
 
 @property (assign, nonatomic) UIStatusBarStyle statusBarStyle;
 
-@property (nonatomic) FSDancingBananaHeader *refreshHeader;
-
 @property (copy, nonatomic) NSMutableArray *adRlistArray;
 
 /// 商品数据
 @property (copy, nonatomic) NSMutableArray *commodityArray;
 
-//@property (nonatomic) UIImageView *cartAnimView;
-
 @property (copy, nonatomic) NSString *currentCityString;
-
-@property (nonatomic) UIRefreshControl *refreshControl;
 
 @property (nonatomic) MJRefreshNormalHeader *normalHeader;
 
@@ -110,7 +104,6 @@ static NSString * const commodityVCCellID = @"commodityVCCellID";
 static NSString * const activityCVCellID = @"activityCVCellID";
 static NSString * const headerReuseID = @"headerReuseID";
 static NSString * const sectionOneHeaderID = @"sectionOneHeaderID";
-
 static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
 
 #pragma mark - LifeCycle
@@ -120,12 +113,10 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
     
     // 设置自定义的 nav bar 背景透明
     [self setNavBarAppearance];
-    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -141,28 +132,6 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     
     [[UIApplication sharedApplication] setStatusBarStyle:self.statusBarStyle animated:NO];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-    /*
-    if (self.refreshControl.refreshing) {
-        return;
-    }
-    if (self.mainView.contentOffset.y == 0) {
-        
-        [UIView animateWithDuration:0.25
-                              delay:0
-                            options:UIViewAnimationOptionBeginFromCurrentState
-                         animations:^(void){
-                             self.mainView.contentOffset = CGPointMake(0, -self.refreshControl.frame.size.height);
-                         } completion:^(BOOL finished){
-                             [self.refreshControl beginRefreshing];
-                             [self.refreshControl sendActionsForControlEvents:UIControlEventValueChanged];
-                         }];
-    }
-     */
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -200,7 +169,9 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
             }
         } else {
             self.mainView.backgroundView = nil;
-            [SVProgressHUD showWithStatus:@"正在加载..."];
+//            [SVProgressHUD showWithStatus:@"正在加载..."];
+//            [self showLoading];
+            [XFWaterWaveView showLoading];
             // 开始定位
             [self startLocation];
         }
@@ -238,7 +209,6 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
     }];
 }
 
-
 - (void)registerCells {
     [super registerCells];
 
@@ -258,6 +228,7 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
     
     self.mainView.frame = self.view.bounds;
     self.indicatorView.frame = self.view.bounds;
+    
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -690,6 +661,8 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
     newCommodityVC.specialOffer = @"0";
     newCommodityVC.isNewGoods = YES;
     [self.navigationController pushViewController:newCommodityVC animated:YES];
+    
+    
 }
 
 /// 促销按钮点击事件
@@ -838,60 +811,6 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
     SelectSiteViewController *selectSiteVc = [[SelectSiteViewController alloc] init];
     [self.navigationController pushViewController:selectSiteVc animated:YES];
     
-    
-    // 暂时模拟登出事件
-
-    /*
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    
-    NSString *mobile = [userDefaults objectForKey:@"mobile"];
-    NSString *firstStart = [userDefaults objectForKey:@"firstStart"];               // 首次运行程序
-    NSString *merchantsID = [userDefaults objectForKey:@"merchantsID"];             // 商家ID
-    NSString *merchantsName = [userDefaults objectForKey:@"merchantsName"];         // 提货点名字
-    NSString *merchantsAddress = [userDefaults objectForKey:@"merchantsAddress"];   // 提货点地址
-    NSString *merchantsTime = [userDefaults objectForKey:@"merchantsTime"];         // 提货点时间
-    NSString *MID = [userDefaults objectForKey:@"MID"];     // 提货点ID
-    NSString *distance = [userDefaults objectForKey:@"distance"];           // 距离
-    float latitude = [userDefaults doubleForKey:@"positioningLatitude"];    // 经度
-    float longitude = [userDefaults doubleForKey:@"positioningLongitude"];  // 纬度
-    
-    NSString *DistanceString = [userDefaults objectForKey:@"Distance"];
-    NSString *DistancePriceString = [userDefaults objectForKey:@"DistancePrice"];
-    
-    BOOL IsDistribution = [userDefaults boolForKey:@"IsDistribution"];
-    NSString *fullPrice = [userDefaults objectForKey:@"fullPrice"];
-    
-    NSString *xPoint = [userDefaults objectForKey:@"xPoint"];
-    
-    NSString *yPoint = [userDefaults objectForKey:@"yPoint"];
-    NSString *fendianname = [userDefaults objectForKey:@"Fendianname"];
-    
-    
-    // 清除沙盒
-    [Utillity deleteCache];
-    
-    // 重新赋值
-    [userDefaults setObject:firstStart forKey:@"firstStart"];
-    [userDefaults setObject:merchantsID forKey:@"merchantsID"];
-    [userDefaults setObject:merchantsName forKey:@"merchantsName"];
-    [userDefaults setObject:merchantsAddress forKey:@"merchantsAddress"];
-    [userDefaults setObject:merchantsTime forKey:@"merchantsTime"];
-    [userDefaults setObject:MID forKey:@"MID"];
-    [userDefaults setObject:distance forKey:@"distance"];
-    [userDefaults setDouble:latitude forKey:@"positioningLatitude"];
-    [userDefaults setDouble:longitude forKey:@"positioningLongitude"];
-    [userDefaults setObject:mobile forKey:@"mobile"];
-    [userDefaults setObject:DistanceString forKey:@"Distance"];
-    [userDefaults setObject:DistancePriceString forKey:@"DistancePrice"];
-    [userDefaults setBool:IsDistribution forKey:@"IsDistribution"];
-    [userDefaults setObject:fullPrice forKey:@"fullPrice"];
-    [userDefaults setObject:xPoint forKey:@"xPoint"];
-    [userDefaults setObject:yPoint forKey:@"yPoint"];
-    [userDefaults setObject:fendianname forKey:@"Fendianname"];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"UserIsLogout" object:nil];
-     */
-    
 }
 
 - (void)titleButtonTouchUpInside:(UIButton *)sender {
@@ -994,12 +913,19 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
             [self.adRlistArray addObject:model];
         }
         
+        if (self.carouselModelArray.count) {
+            self.navigationBar.hidden = NO;
+        }
+        
         [self.mainView reloadData];
         [self getCommodityData];
         
     } failure:^(NSError *error, NSInteger statusCode) {
         [self showInfoWidthError:error];
-        [self.normalHeader endRefreshing];
+        if (self.normalHeader.isRefreshing) {
+            [self.normalHeader endRefreshing];
+        }
+        [XFWaterWaveView dismissLoading];
     }];
     [self getShoppingCartCount];
     
@@ -1018,7 +944,6 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
         
         NSArray *arr = dictData[@"ClassList"];
         for (NSDictionary *dict in arr) {
-            
             RightGoodsModel *rmodel = [RightGoodsModel modelWithDict:dict];
             [self.commodityArray addObject:rmodel];
         }
@@ -1028,13 +953,17 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
         }
         
         [self.mainView reloadData];
-        [SVProgressHUD dismiss];
-        [self.normalHeader endRefreshing];
+        if (self.normalHeader.isRefreshing) {
+            [self.normalHeader endRefreshing];
+        }
+        [XFWaterWaveView dismissLoading];
         
     } failure:^(NSError *error, NSInteger statusCode) {
+        [XFWaterWaveView dismissLoading];
         [self showInfoWidthError:error];
-        [self.normalHeader endRefreshing];
-
+        if (self.normalHeader.isRefreshing) {
+            [self.normalHeader endRefreshing];
+        }
     }];
 }
 
@@ -1114,7 +1043,11 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
         
     } failure:^(NSError *error, NSInteger statusCode) {
         [self showInfoWidthError:error];
-        [self.normalHeader endRefreshing];
+        if (self.normalHeader.isRefreshing) {
+            [self.normalHeader endRefreshing];
+        }
+        [XFWaterWaveView dismissLoading];
+        
     }];
 }
 
@@ -1132,6 +1065,7 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
         _navigationBar = [[FSHomeNavigationBar alloc] init];
         [_navigationBar.leftButton addTarget:self action:@selector(leftButtonItemTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
         [_navigationBar.titleButton addTarget:self action:@selector(titleButtonTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
+        _navigationBar.hidden = YES;
     }
     return _navigationBar;
 }
@@ -1142,7 +1076,7 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
         _mainView.dataSource = self;
         _mainView.delegate = self;
         _mainView.contentInset = UIEdgeInsetsMake(0, 0, 49, 0);
-        _mainView.backgroundColor = [UIColor clearColor];
+        _mainView.backgroundColor = [UIColor colorWithRGBHex:0xededed];
         _mainView.showsVerticalScrollIndicator = NO;
         // 添加下拉刷新
         //_mainView.mj_header = self.refreshHeader;
@@ -1199,23 +1133,6 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
     return _commodityArray;
 }
 
-- (FSDancingBananaHeader *)refreshHeader {
-    if (!_refreshHeader) {
-        _refreshHeader = [FSDancingBananaHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshData:)];
-        _refreshHeader.lastUpdatedTimeLabel.hidden = YES;
-        _refreshHeader.stateLabel.hidden = YES;
-    }
-    return _refreshHeader;
-}
-
-- (UIRefreshControl *)refreshControl {
-    if (!_refreshControl) {
-        _refreshControl = [UIRefreshControl new];
-        //_refreshControl.tintColor = [UIColor colorDomina];
-        [_refreshControl addTarget:self action:@selector(refreshData:) forControlEvents:UIControlEventValueChanged];
-    }
-    return _refreshControl;
-}
 
 - (MJRefreshNormalHeader *)normalHeader {
     if (!_normalHeader) {
@@ -1224,5 +1141,30 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
     }
     return _normalHeader;
 }
+
+
+
+/*
+- (FSDancingBananaHeader *)refreshHeader {
+    if (!_refreshHeader) {
+        _refreshHeader = [FSDancingBananaHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshData:)];
+        _refreshHeader.lastUpdatedTimeLabel.hidden = YES;
+        _refreshHeader.stateLabel.hidden = YES;
+    }
+    return _refreshHeader;
+}
+*/
+
+/*
+- (UIRefreshControl *)refreshControl {
+    if (!_refreshControl) {
+        _refreshControl = [UIRefreshControl new];
+        //_refreshControl.tintColor = [UIColor colorDomina];
+        [_refreshControl addTarget:self action:@selector(refreshData:) forControlEvents:UIControlEventValueChanged];
+    }
+    return _refreshControl;
+}
+*/
+
 
 @end

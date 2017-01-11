@@ -88,14 +88,16 @@
             string = [Single sharedInstance].userTel;
         }
         else {
-            string = [Single sharedInstance].remark;
+//            string = [Single sharedInstance].remark;
+            string = @"";
         }
         
         if (isBlankString(string)) {
             string = @"";
         }
         
-        [(UITextField *)[self viewWithTag:i + 90] setText:string];
+//        [(UITextField *)[self viewWithTag:i + 90] setText:string];
+        [(UITextField *)[self viewWithTag:i + 90] setText:@""];
     }
 }
 

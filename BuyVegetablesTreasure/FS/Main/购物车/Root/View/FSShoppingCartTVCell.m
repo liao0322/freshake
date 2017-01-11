@@ -12,7 +12,6 @@
 
 @interface FSShoppingCartTVCell ()
 
-
 @end
 
 @implementation FSShoppingCartTVCell
@@ -26,6 +25,8 @@
     
     [self.plusButton setEnlargeEdgeWithTop:10 right:5 bottom:10 left:5];
     [self.minusButton setEnlargeEdgeWithTop:10 right:5 bottom:10 left:5];
+    
+    [self.selectButton setImage:[UIImage imageNamed:@"shoppingcart_disabled"] forState:UIControlStateDisabled];
 }
 
 - (void)layoutSubviews {
@@ -71,8 +72,6 @@
     
     self.minusButton.centerY = self.plusButton.centerY;
     self.minusButton.right = self.countLabel.x;
-    
-    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -88,7 +87,20 @@
 - (void)setModel:(ShopCart *)model {
     _model = model;
     
-    self.selectButton.selected = _model.isSelect;
+    
+    if (_model.isInvalid) { // 无效
+        self.selectButton.enabled = NO;
+        self.selectButton.selected = NO;
+        self.plusButton.enabled = NO;
+        self.minusButton.enabled = NO;
+        
+    } else {
+        self.selectButton.enabled = YES;
+        self.selectButton.selected = _model.isSelect;
+        
+        self.plusButton.enabled = YES;
+        self.minusButton.enabled = YES;
+    }
     
     [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:_model.thumbnailsUrll] placeholderImage:[UIImage imageNamed:@"placeholderimage"]];
     
@@ -96,8 +108,6 @@
     [self.descLabel setText:_model.Specifications];
     [self.priceLabel setText:[NSString stringWithFormat:@"￥%.1f", [_model.salePrice floatValue]]];
     [self.countLabel setText:[NSString stringWithFormat:@"%ld", [_model.productNum integerValue]]];
-    
-    
     
 }
 

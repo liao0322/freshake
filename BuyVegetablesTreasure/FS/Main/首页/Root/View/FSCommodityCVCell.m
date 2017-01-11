@@ -21,6 +21,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
+    self.backgroundColor = [UIColor whiteColor];
     self.topSeparatorLine.height = 0.5;
     self.topSeparatorLine.backgroundColor = [UIColor colorViewBG];
     
