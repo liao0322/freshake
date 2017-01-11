@@ -109,7 +109,6 @@
 		09FBBECA1C2136E500ED27C2 /* ShopCart.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FBBEC91C2136E500ED27C2 /* ShopCart.m */; };
 		0C00DA851D63FD9A0038A781 /* UserAgreementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C00DA841D63FD9A0038A781 /* UserAgreementViewController.m */; };
 		0C1245CD1CC0EA7500DB8AF1 /* GroupDetailsImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1245CC1CC0EA7500DB8AF1 /* GroupDetailsImageViewController.m */; };
-		0C1245CF1CC0EBFC00DB8AF1 /* img_spelling_step.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0C1245CE1CC0EBFC00DB8AF1 /* img_spelling_step.jpg */; };
 		0C20DD461D9BB7CD0080E446 /* Tabbar购物车橙色.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C20DD401D9BB7CD0080E446 /* Tabbar购物车橙色.png */; };
 		0C20DD471D9BB7CD0080E446 /* Tabbar购物车橙色@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C20DD411D9BB7CD0080E446 /* Tabbar购物车橙色@2x.png */; };
 		0C20DD481D9BB7CD0080E446 /* Tabbar购物车橙色@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C20DD421D9BB7CD0080E446 /* Tabbar购物车橙色@3x.png */; };
@@ -633,7 +632,6 @@
 		5284305D1BCF530C006905AA /* 送货@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 528430501BCF530C006905AA /* 送货@3x.png */; };
 		5284306E1BCF6DD3006905AA /* PaymentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5284306C1BCF6DD3006905AA /* PaymentCell.m */; };
 		528430821BCF6ED2006905AA /* 1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 528430711BCF6ED2006905AA /* 1@2x.png */; };
-		528430831BCF6ED2006905AA /* 1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 528430721BCF6ED2006905AA /* 1@3x.png */; };
 		528430881BCF6ED2006905AA /* 微信支付图标@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 528430771BCF6ED2006905AA /* 微信支付图标@2x.png */; };
 		528430891BCF6ED2006905AA /* 微信支付图标@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 528430781BCF6ED2006905AA /* 微信支付图标@3x.png */; };
 		5284308B1BCF6ED2006905AA /* 支付宝图标@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5284307A1BCF6ED2006905AA /* 支付宝图标@2x.png */; };
@@ -855,6 +853,7 @@
 		FE50A20F1E1B8DCB008D1710 /* 列表页未成功图片.png in Resources */ = {isa = PBXBuildFile; fileRef = FE50A20E1E1B8DCB008D1710 /* 列表页未成功图片.png */; };
 		FE703EE51E247281005FD30B /* XFTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = FE703EE11E247281005FD30B /* XFTextField.m */; };
 		FE703EE61E247281005FD30B /* XFWaterWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE703EE41E247281005FD30B /* XFWaterWaveView.m */; };
+		FE703EEB1E25D9FE005FD30B /* 1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FE703EEA1E25D9FE005FD30B /* 1@3x.png */; };
 		FE8256461E1365B00028D0F2 /* FSNewCommodityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE82563F1E1365B00028D0F2 /* FSNewCommodityViewController.m */; };
 		FE8256471E1365B00028D0F2 /* FSNewCommodityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE8256401E1365B00028D0F2 /* FSNewCommodityViewController.xib */; };
 		FE82564E1E1365CD0028D0F2 /* FSNewCommodityTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE82564A1E1365CD0028D0F2 /* FSNewCommodityTVCell.m */; };
@@ -1152,7 +1151,6 @@
 		0C06564F1DC97F7C00969E73 /* BuyVegetablesTreasure.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BuyVegetablesTreasure.entitlements; sourceTree = "<group>"; };
 		0C1245CB1CC0EA7500DB8AF1 /* GroupDetailsImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupDetailsImageViewController.h; sourceTree = "<group>"; };
 		0C1245CC1CC0EA7500DB8AF1 /* GroupDetailsImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupDetailsImageViewController.m; sourceTree = "<group>"; };
-		0C1245CE1CC0EBFC00DB8AF1 /* img_spelling_step.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img_spelling_step.jpg; sourceTree = "<group>"; };
 		0C20DD401D9BB7CD0080E446 /* Tabbar购物车橙色.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tabbar购物车橙色.png"; sourceTree = "<group>"; };
 		0C20DD411D9BB7CD0080E446 /* Tabbar购物车橙色@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tabbar购物车橙色@2x.png"; sourceTree = "<group>"; };
 		0C20DD421D9BB7CD0080E446 /* Tabbar购物车橙色@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tabbar购物车橙色@3x.png"; sourceTree = "<group>"; };
@@ -1972,7 +1970,6 @@
 		5284306B1BCF6DD3006905AA /* PaymentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentCell.h; sourceTree = "<group>"; };
 		5284306C1BCF6DD3006905AA /* PaymentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentCell.m; sourceTree = "<group>"; };
 		528430711BCF6ED2006905AA /* 1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1@2x.png"; sourceTree = "<group>"; };
-		528430721BCF6ED2006905AA /* 1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1@3x.png"; sourceTree = "<group>"; };
 		528430771BCF6ED2006905AA /* 微信支付图标@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "微信支付图标@2x.png"; sourceTree = "<group>"; };
 		528430781BCF6ED2006905AA /* 微信支付图标@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "微信支付图标@3x.png"; sourceTree = "<group>"; };
 		5284307A1BCF6ED2006905AA /* 支付宝图标@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "支付宝图标@2x.png"; sourceTree = "<group>"; };
@@ -2315,6 +2312,7 @@
 		FE703EE11E247281005FD30B /* XFTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFTextField.m; sourceTree = "<group>"; };
 		FE703EE31E247281005FD30B /* XFWaterWaveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFWaterWaveView.h; sourceTree = "<group>"; };
 		FE703EE41E247281005FD30B /* XFWaterWaveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFWaterWaveView.m; sourceTree = "<group>"; };
+		FE703EEA1E25D9FE005FD30B /* 1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1@3x.png"; sourceTree = "<group>"; };
 		FE82563E1E1365B00028D0F2 /* FSNewCommodityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSNewCommodityViewController.h; sourceTree = "<group>"; };
 		FE82563F1E1365B00028D0F2 /* FSNewCommodityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSNewCommodityViewController.m; sourceTree = "<group>"; };
 		FE8256401E1365B00028D0F2 /* FSNewCommodityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSNewCommodityViewController.xib; sourceTree = "<group>"; };
@@ -5337,7 +5335,7 @@
 				2BFE7F2F1BEC49F300B2B746 /* 选择星形@2x.png */,
 				2BFE7F301BEC49F300B2B746 /* 选择星形@3x.png */,
 				528430711BCF6ED2006905AA /* 1@2x.png */,
-				528430721BCF6ED2006905AA /* 1@3x.png */,
+				FE703EEA1E25D9FE005FD30B /* 1@3x.png */,
 				FE843A991E16056900528DBB /* 勾图标@2x.png */,
 				FE843A9A1E16056900528DBB /* 勾图标@3x.png */,
 				528430771BCF6ED2006905AA /* 微信支付图标@2x.png */,
@@ -5517,7 +5515,6 @@
 			isa = PBXGroup;
 			children = (
 				0CCA02FD1D1A2995009286ED /* BannerError.png */,
-				0C1245CE1CC0EBFC00DB8AF1 /* img_spelling_step.jpg */,
 				522452561CABBF5A00CBC780 /* 收货地址icon */,
 				527DAD4E1CA9389900535C0B /* 优惠劵 */,
 				5260246D1C98F19900E452C9 /* 老妈买菜首页icon */,
@@ -8680,7 +8677,6 @@
 				0CBA549B1DE7D47C00378911 /* Alipay.png in Resources */,
 				098BF0C31BE865EB0017B425 /* 查看箭头@3x.png in Resources */,
 				0C9F5AE81CBC9EDE0003B01E /* 待付款@2x.png in Resources */,
-				528430831BCF6ED2006905AA /* 1@3x.png in Resources */,
 				FECDE72C1E07C2C80083E11B /* FSRegisterViewController.xib in Resources */,
 				5284308B1BCF6ED2006905AA /* 支付宝图标@2x.png in Resources */,
 				0C625F1C1CC4DAF90052181A /* 数字圈.png in Resources */,
@@ -8693,7 +8689,6 @@
 				0CCC49EE1D780B10009CFBB0 /* UMSocialLocalizable.strings in Resources */,
 				FECDE7351E07C2C80083E11B /* FSCommodityTVCell.xib in Resources */,
 				E48190051CC8D6C10081E06C /* 摇一摇@3x.png in Resources */,
-				0C1245CF1CC0EBFC00DB8AF1 /* img_spelling_step.jpg in Resources */,
 				FE843A8F1E1603F300528DBB /* 通过@2x.png in Resources */,
 				E48190001CC8D6C10081E06C /* 扫一扫.png in Resources */,
 				5203546D1C76B33000BD6F63 /* 拼团-图标@2x.png in Resources */,
@@ -8809,6 +8804,7 @@
 				0C82E33A1CD2F078007DF40F /* link@3x.png in Resources */,
 				2BEA766B1C21506E00F09879 /* 我的收藏@3x.png in Resources */,
 				0C77305D1CE1C252005EB107 /* 优惠券-左.png in Resources */,
+				FE703EEB1E25D9FE005FD30B /* 1@3x.png in Resources */,
 				0CBA549C1DE7D47C00378911 /* Alipay@2x.png in Resources */,
 				0CBA549E1DE7D47C00378911 /* BalancePayment.png in Resources */,
 				09BE96E01BE9D4F1000115EB /* RemarksTableViewCell.xib in Resources */,
