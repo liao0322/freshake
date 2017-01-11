@@ -9,7 +9,7 @@
 #import "MyOrderView.h"
 #import "MyOrderDetailsViewController.h"
 #import "PublishOrderAndGoodsViewController.h"
-
+#import "GoodsDetailViewController.h"
 #define bg_Height 50
 
 
@@ -117,10 +117,6 @@
     _lineScrollView.showsVerticalScrollIndicator = NO;
     _lineScrollView.showsHorizontalScrollIndicator = NO;
     [self addSubview:_lineScrollView];
-
-    
-    
-    
     
 }
 
@@ -164,7 +160,7 @@
 //    [btn setTitleColor:[UIColor colorDomina] forState:UIControlStateNormal];
 //    _temBtn = btn;
 
-   }
+}
 
 #pragma mark 刷新
 - (void)refreshTableView {
@@ -336,7 +332,17 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     Order *model = _dataSource[indexPath.section];
+    if (model.List.count > 0) {
+        GoodsDetailViewController *detailVC = [[GoodsDetailViewController alloc] init];
+        NSDictionary *dataDic = [NSDictionary new];
+        dataDic = [model.List objectAtIndex:indexPath.row - 1];
+        NSLog(@"%@", dataDic);
+        detailVC.ProductId = [[dataDic objectForKey:@"goods_id"] integerValue];
+        
+        _goViewController(detailVC);
 
+    }
+    
     if (indexPath.row - 1 < model.List.count) {
         
         if ([model.status integerValue] == 3) {

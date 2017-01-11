@@ -18,6 +18,7 @@
 @property (nonatomic, strong) UILabel *couponNameLabel;
 @property (nonatomic, strong) UILabel *timeLabel;
 @property (nonatomic, strong) UILabel *guiZeLabel;
+
 @end
 
 @implementation FSMyCouponsCell
@@ -38,6 +39,8 @@
     CGFloat SXWidth = 64;
     CGFloat SXHeight = 53;
     
+    
+    // 已失效标签
     self.shiXiaoImgView = [UIImageView new];
     self.shiXiaoImgView.frame = CGRectMake(self.bgImgView.frame.size.width - SXWidth, 0, SXWidth, SXHeight);
     self.shiXiaoImgView.image = IMAGE(@"FS已失效");
@@ -64,7 +67,7 @@
     // 价格
     self.priceLabel = [UILabel new];
     self.priceLabel.textAlignment = NSTextAlignmentCenter;
-    self.priceLabel.font = [UIFont boldSystemFontOfSize:SCREEN_WIDTH == 320 ? 17 : 19];
+    self.priceLabel.font = [UIFont boldSystemFontOfSize:SCREEN_WIDTH == 320 ? 14 : 16];
     [self.bgImgView addSubview:self.priceLabel];
     
     self.priceLabel.sd_layout
@@ -172,7 +175,7 @@
 
 - (void)setAttributtedStringWithString:(NSString *)string textColor:(UIColor *)color {
     NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"¥%@元",string]];
-    [attributeString setAttributes:@{NSForegroundColorAttributeName : color, NSFontAttributeName : [UIFont boldSystemFontOfSize:(SCREEN_WIDTH == 320 ? 36 : 40.0)]} range:NSMakeRange(1, string.length)];
+    [attributeString setAttributes:@{NSForegroundColorAttributeName : color, NSFontAttributeName : [UIFont boldSystemFontOfSize:(SCREEN_WIDTH == 320 ? 24 : 28)]} range:NSMakeRange(1, string.length)];
     self.priceLabel.attributedText = attributeString;
 }
 

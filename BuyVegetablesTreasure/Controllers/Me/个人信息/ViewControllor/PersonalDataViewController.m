@@ -90,6 +90,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    [nametext resignFirstResponder];
     if (indexPath.section == 0) {
         
         IconInfoCell * cell = [tableView dequeueReusableCellWithIdentifier:@"MeUITTableViewCell"];
@@ -420,7 +421,9 @@
     }
 }
 
-- (void)textFieldDidEndEditing:(UITextField *)textField {
-//    [nametext resignFirstResponder];
-   }
+#pragma mark 键盘收起
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
+}
+
 @end

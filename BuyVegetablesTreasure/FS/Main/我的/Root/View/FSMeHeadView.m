@@ -57,10 +57,8 @@
     [myMessageBtn addTarget:self action:@selector(myMessageClick:) forControlEvents:UIControlEventTouchUpInside];
     [bgImageView addSubview:myMessageBtn];
     
-//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(iconClick:)];
-//    [_icon addGestureRecognizer:tap];
-    
-       // 用户昵称
+
+    // 用户昵称
     _name = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_icon.frame) + 40,SCREEN_WIDTH == 320 ? 59 : 74, SCREEN_WIDTH / 2, 18)];
 //    _name.backgroundColor = [UIColor whiteColor];
 //    _name.layer.masksToBounds = YES;
@@ -78,22 +76,6 @@
     [bgImageView addSubview:_mobile];
     
 
-    
-    // 设置 
-//    UIImageView *setImage = [UIImageView new];
-//    setImage.image = IMAGE(@"FS设置");
-//    setImage.userInteractionEnabled = YES;
-//    [bgImageView addSubview:setImage];
-//    
-//    setImage.sd_layout
-//    .rightSpaceToView(bgImageView, 22)
-//    .topSpaceToView(bgImageView, 20)
-//    .widthIs(30)
-//    .heightIs(30);
-    
-//    UITapGestureRecognizer *setTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(setClick:)];
-//    [setImage addGestureRecognizer:setTap];
-    
     _rightImage = [[UIImageView alloc] init];
     _rightImage.image = IMAGE(@"FS进入");
     [bgImageView addSubview:_rightImage];
@@ -142,10 +124,6 @@
 //    _pushLogin(nil);
 }
 
-//- (void)setClick:(UITapGestureRecognizer *)tap {
-//
-//    NSLog(@"跳转到设置页面");
-//}
 
 - (void)setUserData {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -181,7 +159,7 @@
         
         
         
-        [_icon sd_setImageWithURL:[userDefaults objectForKey:@"avatar"] placeholderImage:IMAGE(@"FS头像") options:SDWebImageRetryFailed];
+        [_icon sd_setImageWithURL:[userDefaults objectForKey:@"avatar"] placeholderImage:IMAGE(@"FS默认头像") options:SDWebImageRetryFailed];
         
     } else {
         

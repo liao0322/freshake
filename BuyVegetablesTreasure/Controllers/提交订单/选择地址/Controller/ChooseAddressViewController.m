@@ -28,6 +28,10 @@
 // 提货点地址
 @property (nonatomic, strong) SelectStoreDeliveryView *selectStoreDeliveryView;
 
+@property (nonatomic, assign) CLLocationCoordinate2D currentCoor;
+
+@property (nonatomic, strong) Map *mapModel;
+
 @end
 
 @implementation ChooseAddressViewController
@@ -93,6 +97,18 @@
         
         if (isDel) siteVC.siteModel = weakArray[index];
         [weakSelf.navigationController pushViewController:siteVC animated:YES];
+    };
+    
+    // 删除地址
+    _userSiteView.deleteAddress = ^(NSString *idString) {
+        
+        [weakSelf deleteRequstWithId:idString];
+    };
+    
+    // 默认地址
+    _userSiteView.defaultAddress = ^(BOOL isDel,SiteModel *model) {
+        _isDeleteSite = isDel;
+        [weakSelf saveUserInfo:model];
     };
     
     self.userSiteView.userAddress = ^(SiteModel *siteArray) {
@@ -211,6 +227,68 @@
         else [Tools myHud:data[@"context"]];
     
     } failure:nil];
+}
+
+#pragma mark 保存用户信息
+- (void)saveUserInfo:(SiteModel *)model {
+    NSLog(@"%@", model);
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *uidString = [userDefaults objectForKey:@"UID"];
+    NSString *userName = model.userName;
+    NSString *idString = _isDeleteSite ? model.id : @"0";
+    NSString *phoneString = model.Phone;
+    NSString *cityStirng = model.City;
+    NSString *areaString = model.Area;
+    NSString *addressString = model.Address;
+    NSString *sexString = model.sex;
+    
+    
+    if ([model.Area isEqualToString:areaString]) {
+        
+        _currentCoor.latitude = [model.X doubleValue];
+        _currentCoor.longitude = [model.Y doubleValue];
+    }
+    else {
+        
+        _currentCoor.latitude = [_mapModel.xPoint doubleValue];
+        _currentCoor.longitude = [_mapModel.yPoint doubleValue];
+    }
+    
+    NSString *urlString = [NSString stringWithFormat:EditAddress,uidString,userName,sexString,idString,cityStirng,areaString,addressString,phoneString,_currentCoor.latitude, _currentCoor.longitude, [Single sharedInstance].cityId, 1];
+    urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    [HttpRequest sendGetOrPostRequest:urlString param:nil requestStyle:Get setSerializer:Json isShowLoading:YES success:^(id data)
+     {
+         if ([data[@"issuccess"] boolValue]) {
+             
+             
+             //             [_userSiteView.tableView.mj_header beginRefreshing];
+             [self getUserAddressList];
+             [Tools myHud:data[@"context"] inView:[[UIApplication sharedApplication].delegate window]];
+         }
+         else [Tools myHud:data[@"context"] inView:[[UIApplication sharedApplication].delegate window]];
+         
+     } failure:nil];
+}
+
+
+#pragma mark 删除地址
+- (void)deleteRequstWithId:(NSString *)idString {
+    
+    NSString *urlString = [NSString stringWithFormat:DeleteAdress,idString];
+    [HttpRequest sendGetOrPostRequest:urlString param:nil requestStyle:Get setSerializer:Json isShowLoading:YES success:^(id data)
+     {
+         if ([data[@"issuccess"] boolValue]) {
+             //             [self.navigationController popViewControllerAnimated:YES];
+//             [_userSiteView.tableView.mj_header beginRefreshing];
+             [self getUserAddressList];
+
+             [Tools myHud:data[@"context"] inView:[[UIApplication sharedApplication].delegate window]];
+         }
+         else [Tools myHud:data[@"context"] inView:[[UIApplication sharedApplication].delegate window]];
+         
+     } failure:nil];
 }
 
 @end

@@ -54,7 +54,7 @@
 -(void)setDataSource
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [_icon sd_setImageWithURL:[[NSUserDefaults standardUserDefaults] objectForKey:@"avatar"] placeholderImage:IMAGE(@"列表页未成功图片")];
+    [_icon sd_setImageWithURL:[[NSUserDefaults standardUserDefaults] objectForKey:@"avatar"] placeholderImage:IMAGE(@"FS默认头像")];
     if ([Tools isBlankString:[userDefaults objectForKey:@"nick_name"]])
     {
         _name.text = @"去取个昵称吧~";

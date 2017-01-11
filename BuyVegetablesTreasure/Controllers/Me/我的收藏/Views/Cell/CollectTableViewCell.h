@@ -23,6 +23,6 @@
 @property (nonatomic, copy) void(^goPayViewController)();
 
 - (void)setModel:(MyCollectModel *)model;
-- (void)setVedioModel:(CookingProgramListModel *)model;
+//- (void)setVedioModel:(CookingProgramListModel *)model;
 
 @end

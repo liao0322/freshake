@@ -34,18 +34,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.view.backgroundColor = [UIColor whiteColor];
-    
-//    self.navigationItem.titleView = [Utillity customNavToTitle:@"我的地址"];
-    self.title = @"我的地址";
-    self.navigationItem.leftBarButtonItem = [UIFactory createBackBBIWithTarget:self action:@selector(back)];
-    self.navigationItem.rightBarButtonItem = [UIFactory createImageBBI:[IMAGE(@"收货-增加收货地址") imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] WithTarget:self action:@selector(goAddSite)];
+    [self setNavi];
     
     [self initUserSiteView];
 }
 
+- (void)setNavi {
+    self.title = @"我的地址";
+    self.navigationItem.leftBarButtonItem = [UIFactory createBackBBIWithTarget:self action:@selector(back)];
+    self.navigationItem.rightBarButtonItem = [UIFactory createImageBBI:[IMAGE(@"收货-增加收货地址") imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] WithTarget:self action:@selector(goAddSite)];
+
+}
+
 - (void)initUserSiteView {
-    
+    self.view.backgroundColor = [UIColor whiteColor];
     _userAddressArray = [NSMutableArray array];
     _userSiteView = [[SelectDeliverySiteView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 64)];
     _userSiteView.backgroundColor = [UIColor redColor];
@@ -79,16 +81,7 @@
         [self requestUserAddressList];
         [_userSiteView.tableView.mj_header endRefreshing];
     }];
-    
-//    _userSiteView.defaultBtnClick = ^(BOOL isDefault, NSInteger index) {
-//        deliverySiteViewController *siteVC = [[deliverySiteViewController alloc] init];
-//        siteVC.isDefault = isDefault;
-//        if (isDefault) siteVC.siteModel = weakArray[index];
-//        [weakSelf.navigationController pushViewController:siteVC animated:YES];
-//
-//    };
-   
-    
+
     _userSiteView.userAddress = ^(SiteModel *siteModel) {};
 }
 
@@ -162,22 +155,6 @@
     NSString *addressString = model.Address;
     NSString *sexString = model.sex;
     
-    
-//    if ([Tools isBlankString:userName]) {
-//        return [Tools myHud:@"请输入收货人名字" inView:self.view];
-//    }
-//    if ([Tools isBlankString:phoneString]) {
-//        return [Tools myHud:@"请填写手机号码" inView:self.view];
-//    }
-//    else if (![Tools isMobileNum:phoneString]) {
-//        return [Tools myHud:@"请输入正确号码" inView:self.view];
-//    }
-//    else if ([Tools isBlankString:cityStirng]) {
-//        return [Tools myHud:@"请选择所在城市" inView:self.view];
-//    }
-//    else if ([Tools isBlankString:areaString]) {
-//        return [Tools myHud:@"请选择地址" inView:self.view];
-//    }
     
     if ([model.Area isEqualToString:areaString]) {
         

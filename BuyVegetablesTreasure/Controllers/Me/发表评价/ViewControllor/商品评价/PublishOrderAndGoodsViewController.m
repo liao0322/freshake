@@ -199,4 +199,9 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"GetImage" object:info[UIImagePickerControllerOriginalImage]];
 }
 
+#pragma mark 键盘收起
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
+}
+
 @end

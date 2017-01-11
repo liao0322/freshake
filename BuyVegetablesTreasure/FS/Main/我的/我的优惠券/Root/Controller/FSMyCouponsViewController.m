@@ -24,7 +24,6 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor colorWithHexString:@"0xf2f2f2"];
-//    self.navigationItem.titleView = [Utillity customNavToTitle:@"我的优惠券"];
     self.title = @"我的优惠券";
     self.navigationItem.leftBarButtonItem = [UIFactory createBackBBIWithTarget:self
                                                                         action:@selector(back)];

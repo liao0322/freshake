@@ -23,4 +23,7 @@
 /// 是否收藏
 @property (nonatomic, assign) BOOL isCollect;
 
+@property (nonatomic, assign) BOOL isDeleteSite;
+
+
 @end

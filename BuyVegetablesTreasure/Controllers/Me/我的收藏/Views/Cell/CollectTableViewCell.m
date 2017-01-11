@@ -43,7 +43,6 @@
         _goPlayBtn.layer.cornerRadius = 5;
         _goPlayBtn.layer.borderWidth = 1;
         _goPlayBtn.layer.borderColor = [Color CGColor];
-//        _goPlayBtn.backgroundColor = [UIColor colorDomina];
         _goPlayBtn.titleLabel.font = [UIFont systemFontOfSize:15.0];
         [_goPlayBtn setTitle:@"立即购买" forState:UIControlStateNormal];
         [_goPlayBtn setTitleColor:[UIColor colorDomina] forState:UIControlStateNormal];
@@ -106,6 +105,20 @@
         priceString = [NSString stringWithFormat:@"￥%.2f",[model.price floatValue]];
     }
     
+    // 商品下架，立即购买不响应
+    if ([model.upselling integerValue] == 0) {
+        
+        _goPlayBtn.userInteractionEnabled = NO;
+        _goPlayBtn.layer.borderColor = [UIColor colorWithHexString:@"0xb2b2b2"].CGColor;
+        _goPlayBtn.backgroundColor = [UIColor colorWithHexString:@"0xb2b2b2"];
+        [_goPlayBtn setTitleColor:[UIColor colorWithHexString:@"0xb2b2b2"] forState:UIControlStateNormal];
+
+    } else {
+        _goPlayBtn.userInteractionEnabled = YES;
+        _goPlayBtn.layer.borderColor = [Color CGColor];
+        [_goPlayBtn setTitleColor:[UIColor colorDomina] forState:UIControlStateNormal];
+    }
+
     
     _goodsNameLabel.text = model.productName;
     _goodsPriceLabel.hidden = NO;

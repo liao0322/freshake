@@ -183,7 +183,7 @@
     
     // 价格
     NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc] initWithString:string];
-    [attributeString setAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName : [UIFont boldSystemFontOfSize:40.0]} range:NSMakeRange(1, couponModel.Price.length)];
+    [attributeString setAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName : [UIFont boldSystemFontOfSize:(SCREEN_WIDTH == 320 ? 24 : 28)]} range:NSMakeRange(1, couponModel.Price.length)];
     _priceLabel.attributedText = attributeString;
     
     // 使用说明
