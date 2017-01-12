@@ -22,7 +22,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="43" height="121"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <state key="normal" image="shoppingcart_uncheck"/>
-                        <state key="disabled" image="shoppingcart_disabled"/>
                         <state key="selected" image="shoppingcart_checked"/>
                         <connections>
                             <action selector="selectButtonTouchUpInside:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="bEE-pu-ia0"/>
@@ -93,7 +92,6 @@
     </objects>
     <resources>
         <image name="shoppingcart_checked" width="20" height="20"/>
-        <image name="shoppingcart_disabled" width="20" height="20"/>
         <image name="shoppingcart_uncheck" width="20" height="20"/>
         <image name="减" width="18" height="18"/>
         <image name="加" width="18" height="18"/>

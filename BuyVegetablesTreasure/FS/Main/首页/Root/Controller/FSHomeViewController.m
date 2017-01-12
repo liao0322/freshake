@@ -941,7 +941,6 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
         NSDictionary *dictData = [self dictWithData:responseObject];
         
         [self.commodityArray removeAllObjects];
-        
         NSArray *arr = dictData[@"ClassList"];
         for (NSDictionary *dict in arr) {
             RightGoodsModel *rmodel = [RightGoodsModel modelWithDict:dict];

@@ -12,6 +12,8 @@
 
 @interface FSShoppingCartTVCell ()
 
+@property (nonatomic) UIView *maskView;
+
 @end
 
 @implementation FSShoppingCartTVCell
@@ -27,6 +29,8 @@
     [self.minusButton setEnlargeEdgeWithTop:10 right:5 bottom:10 left:5];
     
     [self.selectButton setImage:[UIImage imageNamed:@"shoppingcart_disabled"] forState:UIControlStateDisabled];
+    
+    [self.contentView addSubview:self.maskView];
 }
 
 - (void)layoutSubviews {
@@ -35,6 +39,7 @@
     CGFloat width = self.width;
     CGFloat height = self.height;
     CGFloat spacing = 8.0f;
+
     
     // 选择按钮
     self.selectButton.width = 44;
@@ -72,6 +77,8 @@
     
     self.minusButton.centerY = self.plusButton.centerY;
     self.minusButton.right = self.countLabel.x;
+    
+    self.maskView.frame = self.bounds;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -87,6 +94,13 @@
 - (void)setModel:(ShopCart *)model {
     _model = model;
     
+    if (![model.upselling isEqualToString:@"1"]) { // 已下架
+        [self.selectButton setImage:[UIImage imageNamed:@"已下架"] forState:UIControlStateDisabled];
+    } else if ([model.stock integerValue] == 0) { // 已售罄
+        [self.selectButton setImage:[UIImage imageNamed:@"已售罄"] forState:UIControlStateDisabled];
+    } else {
+        [self.selectButton setImage:nil forState:UIControlStateDisabled];
+    }
     
     if (_model.isInvalid) { // 无效
         self.selectButton.enabled = NO;
@@ -94,12 +108,32 @@
         self.plusButton.enabled = NO;
         self.minusButton.enabled = NO;
         
+        self.maskView.hidden = NO;
+        
+        self.plusButton.hidden = YES;
+        self.minusButton.hidden = YES;
+        self.countLabel.hidden = YES;
+        
+        [self.priceLabel setTextColor:[UIColor lightGrayColor]];
+        
+        [self.titleLabel setTextColor:[UIColor lightGrayColor]];
+        
     } else {
         self.selectButton.enabled = YES;
         self.selectButton.selected = _model.isSelect;
         
         self.plusButton.enabled = YES;
         self.minusButton.enabled = YES;
+        
+        self.maskView.hidden = YES;
+        
+        self.plusButton.hidden = NO;
+        self.minusButton.hidden = NO;
+        self.countLabel.hidden = NO;
+        
+        [self.priceLabel setTextColor:[UIColor orangeColor]];
+        [self.titleLabel setTextColor:[UIColor colorWithRed:40/255.0f green:40/255.0f blue:40/255.0f alpha:1.0f]];
+
     }
     
     [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:_model.thumbnailsUrll] placeholderImage:[UIImage imageNamed:@"placeholderimage"]];
@@ -148,5 +182,16 @@
         [self.delegate shoppingCartTVCell:self selectButtonTouchUpInside:sender];
     }
 
+}
+
+#pragma mark - LazyLoad
+
+- (UIView *)maskView {
+    if (!_maskView) {
+        _maskView = [UIView new];
+        _maskView.backgroundColor = [UIColor colorWithRed:0.0f green:0.0f blue:0.0f alpha:.05f];
+        _maskView.hidden = YES;
+    }
+    return _maskView;
 }
 @end

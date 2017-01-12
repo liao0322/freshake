@@ -13,6 +13,7 @@
 #import "FSShoppingCartTVFooterView.h"
 #import "FSEmptyView.h"
 #import "SubmitOrderViewController.h"
+#import "GoodsDetailViewController.h"
 
 @interface FSShoppingCartViewController ()
 <
@@ -26,6 +27,8 @@
 
 // 失效商品数据
 @property (copy, nonatomic) NSMutableArray *invalidCommodityArray;
+
+
 
 @property (nonatomic) UITableView *tableView;
 
@@ -151,6 +154,7 @@ static NSString * const shoppingCartTVCellID = @"shoppingCartTVCellID";
     return cell;
 }
 
+/*
 - (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UILabel *label = nil;
     if (self.invalidCommodityArray.count) { // 有无效商品
@@ -176,20 +180,29 @@ static NSString * const shoppingCartTVCellID = @"shoppingCartTVCellID";
     
     return view;
 }
+ */
 
 #pragma mark - UITableViewDelegate
 
-/*
-- (void)tableView:(UITableView *)tableView
-  willDisplayCell:(UITableViewCell *)cell
-forRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSInteger section = indexPath.section;
+    NSInteger row = indexPath.row;
     
-    if (indexPath.row == (self.commodityArray.count - 1)) {
-        self.tableView.tableFooterView = self.footerView;
-        self.tableView.tableFooterView.height = 80;
+    ShopCart *model = nil;
+    
+    if (section == 0) {
+        model = self.commodityArray[row];
+    } else {
+        model = self.invalidCommodityArray[row];
     }
+    
+    GoodsDetailViewController *goodsDetailVc = [[GoodsDetailViewController alloc] init];
+    NSString *productIdString = [model.ID stringByReplacingOccurrencesOfString:@"," withString:@""];
+    goodsDetailVc.ProductId = [model.productId integerValue];
+    
+    [self.navigationController pushViewController:goodsDetailVc animated:YES];
+
 }
- */
 
 - (nullable NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -265,9 +278,6 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
             }
              */
             
-
-
-            
             if (self.commodityArray.count == 0 && self.invalidCommodityArray.count == 0) { // 没数据了
                 self.emptyView.hidden = NO;
                 self.bottomView.hidden = YES;
@@ -300,6 +310,9 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 15.0f;
+    
+    /*
     CGFloat height = 0.0001f;
     if (self.invalidCommodityArray.count && self.commodityArray.count) {
         if (section == 0) {
@@ -313,6 +326,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
         height = 15.0f;
     }
     return height;
+     */
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
@@ -540,7 +554,6 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
             }
             
             
-            
             /*
             if (self.commodityArray.count == 0 && self.invalidCommodityArray.count == 0) { // 没数据了
                 self.emptyView.hidden = NO;
@@ -765,6 +778,9 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
             [self.footerView.pointLabel sizeToFit];
 
             [self.tableView reloadData];
+        } else {
+            
+            NSLog(@"%@", dataDict[@"context"]);
         }
     } failure:^(NSError *error, NSInteger statusCode) {
         [self showInfoWidthError:error];
