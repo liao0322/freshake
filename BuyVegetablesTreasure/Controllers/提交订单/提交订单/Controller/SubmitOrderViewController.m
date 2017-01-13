@@ -154,11 +154,9 @@ typedef NS_ENUM(NSInteger,CouponType) {
     BOOL state = [[notification object] boolValue];
     
     if (state) {
-        
         [Tools myHud:@"支付成功"];
     }
     else {
-        
         [Tools myHud:@"支付失败"];
     }
     

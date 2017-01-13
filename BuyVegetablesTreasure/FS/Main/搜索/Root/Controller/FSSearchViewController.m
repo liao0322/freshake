@@ -13,7 +13,7 @@
 #import "FSSearchHeaderTitleView.h"
 #import "FSSearchFooterView.h"
 #import "FSSearchResultsViewController.h"
-
+#import "NSString+Extension.h"
 
 
 @interface FSSearchViewController ()
@@ -90,11 +90,17 @@ static NSString * const searchFooterID = @"searchFooterID";
             [self.hotSearchArray removeAllObjects];
             
             for (NSDictionary *dic in data[@"list"]) {
-                [self.hotSearchArray addObject:dic[@"context"]];
+                NSString *str = [dic[@"context"] clearAllSpace];
+                if ([str length] > 0) {
+                    [self.hotSearchArray addObject:str];
+                }
             }
             
             for (NSDictionary *dic in data[@"list1"]) {
-                [self.hotSearchArray addObject:dic[@"hotContext"]];
+                NSString *str = [dic[@"hotContext"] clearAllSpace];
+                if ([str length] > 0) {
+                    [self.hotSearchArray addObject:str];
+                }
             }
         } else {
             NSLog(@"%@", data[@"context"]);
@@ -134,7 +140,7 @@ static NSString * const searchFooterID = @"searchFooterID";
             }
             
             for (NSDictionary *dic in data[@"list"]) {
-                [self.historySearchArray addObject:dic[@"context"]];
+                [self.historySearchArray addObject:[dic[@"context"] clearAllSpace]];
             }
             
         } else {
@@ -180,7 +186,6 @@ static NSString * const searchFooterID = @"searchFooterID";
     [super viewDidLayoutSubviews];
     self.collectionView.frame = self.view.bounds;
 
-    
 }
 
 #pragma mark - UISearchControllerDelegate
@@ -245,7 +250,7 @@ static NSString * const searchFooterID = @"searchFooterID";
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     NSString *text = nil;
-    
+
     FSSearchCVCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:searchCVCellID forIndexPath:indexPath];
     if (indexPath.section == 0) {
         text = self.hotSearchArray[indexPath.row];
@@ -480,6 +485,7 @@ static NSString * const searchFooterID = @"searchFooterID";
 - (UICollectionView *)collectionView {
     if (!_collectionView) {
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:self.flowLayout];
+//        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:[UICollectionViewFlowLayout new]];
         _collectionView.backgroundColor = [UIColor whiteColor];
         _collectionView.dataSource = self;
         _collectionView.delegate = self;

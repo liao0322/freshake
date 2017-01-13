@@ -15,9 +15,7 @@
     if (self) {
         self.backgroundColor = [UIColor colorWithRed:0.97f green:0.97f blue:0.97f alpha:1.0f];
         [self.contentView addSubview:self.textLabel];
-        
         self.textLabel.font = [UIFont fontWithName:@"PingFangTC-Light" size:14.0f];
-        
         self.layer.cornerRadius = 5.0f;
         self.layer.masksToBounds = YES;
     }
