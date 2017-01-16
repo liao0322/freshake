@@ -128,7 +128,6 @@
 #pragma mark 前往控制器
 - (void)goViewController:(UIViewController *)viewController {
     
-    self.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:viewController animated:YES];
 }
 

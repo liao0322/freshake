@@ -851,6 +851,12 @@
 		FE17A9961E12536000DC7949 /* FSGroupBuyDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE17A9941E12536000DC7949 /* FSGroupBuyDetailsViewController.xib */; };
 		FE474DC91E28A61E0005CD98 /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = FE474DC81E28A61E0005CD98 /* NSString+Extension.m */; };
 		FE474DCC1E2C65190005CD98 /* XFTools.m in Sources */ = {isa = PBXBuildFile; fileRef = FE474DCB1E2C65190005CD98 /* XFTools.m */; };
+		FE474DD51E2C766A0005CD98 /* FSViewExpressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE474DD31E2C766A0005CD98 /* FSViewExpressViewController.m */; };
+		FE474DD61E2C766A0005CD98 /* FSViewExpressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE474DD41E2C766A0005CD98 /* FSViewExpressViewController.xib */; };
+		FE474DD91E2C8E5C0005CD98 /* FSViewExpressTimeLineTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE474DD81E2C8E5C0005CD98 /* FSViewExpressTimeLineTVCell.m */; };
+		FE474DDD1E2C8EC30005CD98 /* FSViewExpressFirstLineTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE474DDB1E2C8EC30005CD98 /* FSViewExpressFirstLineTVCell.m */; };
+		FE474DDE1E2C8EC30005CD98 /* FSViewExpressFirstLineTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE474DDC1E2C8EC30005CD98 /* FSViewExpressFirstLineTVCell.xib */; };
+		FE474DE71E2CB25C0005CD98 /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = FE474DE61E2CB25C0005CD98 /* TTTAttributedLabel.m */; };
 		FE50A20D1E1B8CB2008D1710 /* ErrorBackImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FE50A20C1E1B8CB2008D1710 /* ErrorBackImage.png */; };
 		FE50A20F1E1B8DCB008D1710 /* 列表页未成功图片.png in Resources */ = {isa = PBXBuildFile; fileRef = FE50A20E1E1B8DCB008D1710 /* 列表页未成功图片.png */; };
 		FE703EE51E247281005FD30B /* XFTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = FE703EE11E247281005FD30B /* XFTextField.m */; };
@@ -2312,6 +2318,16 @@
 		FE474DC81E28A61E0005CD98 /* NSString+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
 		FE474DCA1E2C65190005CD98 /* XFTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XFTools.h; path = BuyVegetablesTreasure/FS/Expand/Category/NSString/XFTools.h; sourceTree = SOURCE_ROOT; };
 		FE474DCB1E2C65190005CD98 /* XFTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFTools.m; path = BuyVegetablesTreasure/FS/Expand/Category/NSString/XFTools.m; sourceTree = SOURCE_ROOT; };
+		FE474DD21E2C766A0005CD98 /* FSViewExpressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSViewExpressViewController.h; sourceTree = "<group>"; };
+		FE474DD31E2C766A0005CD98 /* FSViewExpressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSViewExpressViewController.m; sourceTree = "<group>"; };
+		FE474DD41E2C766A0005CD98 /* FSViewExpressViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSViewExpressViewController.xib; sourceTree = "<group>"; };
+		FE474DD71E2C8E5C0005CD98 /* FSViewExpressTimeLineTVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSViewExpressTimeLineTVCell.h; sourceTree = "<group>"; };
+		FE474DD81E2C8E5C0005CD98 /* FSViewExpressTimeLineTVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSViewExpressTimeLineTVCell.m; sourceTree = "<group>"; };
+		FE474DDA1E2C8EC30005CD98 /* FSViewExpressFirstLineTVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSViewExpressFirstLineTVCell.h; sourceTree = "<group>"; };
+		FE474DDB1E2C8EC30005CD98 /* FSViewExpressFirstLineTVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSViewExpressFirstLineTVCell.m; sourceTree = "<group>"; };
+		FE474DDC1E2C8EC30005CD98 /* FSViewExpressFirstLineTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSViewExpressFirstLineTVCell.xib; sourceTree = "<group>"; };
+		FE474DE51E2CB25C0005CD98 /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
+		FE474DE61E2CB25C0005CD98 /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
 		FE50A20C1E1B8CB2008D1710 /* ErrorBackImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ErrorBackImage.png; sourceTree = "<group>"; };
 		FE50A20E1E1B8DCB008D1710 /* 列表页未成功图片.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "列表页未成功图片.png"; sourceTree = "<group>"; };
 		FE703EE01E247281005FD30B /* XFTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFTextField.h; sourceTree = "<group>"; };
@@ -6996,6 +7012,70 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		FE474DCD1E2C6F470005CD98 /* 物流信息 */ = {
+			isa = PBXGroup;
+			children = (
+				FE474DCE1E2C6F470005CD98 /* 查看物流 */,
+			);
+			path = "物流信息";
+			sourceTree = "<group>";
+		};
+		FE474DCE1E2C6F470005CD98 /* 查看物流 */ = {
+			isa = PBXGroup;
+			children = (
+				FE474DCF1E2C6F470005CD98 /* Controller */,
+				FE474DD01E2C6F470005CD98 /* Model */,
+				FE474DD11E2C6F470005CD98 /* View */,
+			);
+			path = "查看物流";
+			sourceTree = "<group>";
+		};
+		FE474DCF1E2C6F470005CD98 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FE474DD21E2C766A0005CD98 /* FSViewExpressViewController.h */,
+				FE474DD31E2C766A0005CD98 /* FSViewExpressViewController.m */,
+				FE474DD41E2C766A0005CD98 /* FSViewExpressViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FE474DD01E2C6F470005CD98 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FE474DD11E2C6F470005CD98 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FE474DDA1E2C8EC30005CD98 /* FSViewExpressFirstLineTVCell.h */,
+				FE474DDB1E2C8EC30005CD98 /* FSViewExpressFirstLineTVCell.m */,
+				FE474DDC1E2C8EC30005CD98 /* FSViewExpressFirstLineTVCell.xib */,
+				FE474DD71E2C8E5C0005CD98 /* FSViewExpressTimeLineTVCell.h */,
+				FE474DD81E2C8E5C0005CD98 /* FSViewExpressTimeLineTVCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FE474DE31E2CB23E0005CD98 /* Vender */ = {
+			isa = PBXGroup;
+			children = (
+				FE474DE41E2CB25C0005CD98 /* TTTAttributedLabel */,
+			);
+			path = Vender;
+			sourceTree = "<group>";
+		};
+		FE474DE41E2CB25C0005CD98 /* TTTAttributedLabel */ = {
+			isa = PBXGroup;
+			children = (
+				FE474DE51E2CB25C0005CD98 /* TTTAttributedLabel.h */,
+				FE474DE61E2CB25C0005CD98 /* TTTAttributedLabel.m */,
+			);
+			path = TTTAttributedLabel;
+			sourceTree = "<group>";
+		};
 		FE703EDF1E247281005FD30B /* XFTextField */ = {
 			isa = PBXGroup;
 			children = (
@@ -7073,7 +7153,7 @@
 				FECDE63F1E07C2C70083E11B /* Main */,
 				FECDE5FE1E07C2C70083E11B /* Expand */,
 				FECDE7031E07C2C70083E11B /* Resource */,
-				FECDE70B1E07C2C70083E11B /* Vender */,
+				FE474DE31E2CB23E0005CD98 /* Vender */,
 			);
 			path = FS;
 			sourceTree = "<group>";
@@ -7327,6 +7407,7 @@
 				FECDE6A61E07C2C70083E11B /* 我的 */,
 				FECDE6C21E07C2C70083E11B /* 提交订单 */,
 				FECDE6DA1E07C2C70083E11B /* 支付 */,
+				FE474DCD1E2C6F470005CD98 /* 物流信息 */,
 				FECDE6DF1E07C2C70083E11B /* 选择自提点 */,
 			);
 			path = Main;
@@ -8224,13 +8305,6 @@
 			path = Xib;
 			sourceTree = "<group>";
 		};
-		FECDE70B1E07C2C70083E11B /* Vender */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Vender;
-			sourceTree = "<group>";
-		};
 		FECDE78D1E08B7EE0083E11B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -8367,6 +8441,7 @@
 				0C77305C1CE1C252005EB107 /* 优惠券-右@3x.png in Resources */,
 				0C961B5C1D9CAC27000B6AF6 /* 余额付款@3x.png in Resources */,
 				5260250D1C98F19900E452C9 /* 新品Icon.png in Resources */,
+				FE474DD61E2C766A0005CD98 /* FSViewExpressViewController.xib in Resources */,
 				FE843AA31E1622E600528DBB /* 无数据@3x.png in Resources */,
 				0CC11CB01CB4F6D500E1E789 /* 小椭圆@2x.png in Resources */,
 				0C9D60641CE07DB8002362C0 /* 登陆-未勾选.png in Resources */,
@@ -8398,6 +8473,7 @@
 				520354691C76B33000BD6F63 /* 图层-people@3x.png in Resources */,
 				522452671CABBF5A00CBC780 /* 收货-地标@2x.png in Resources */,
 				0CCC49F31D780B10009CFBB0 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
+				FE474DDE1E2C8EC30005CD98 /* FSViewExpressFirstLineTVCell.xib in Resources */,
 				0CAFF79F1CB6227B006C1900 /* 已支付-圆.png in Resources */,
 				E4FF92E01CC9BB1C009E4B8F /* Myorder_所有订单.png in Resources */,
 				0988682F1BCF4CBB0068FB84 /* 购物车@2x.png in Resources */,
@@ -9084,6 +9160,7 @@
 				0969DC2C1BCDFE1700D98273 /* SDWebImageDownloader.m in Sources */,
 				FECDE7A71E0A30E70083E11B /* FSShoppingCartTVFooterView.m in Sources */,
 				521E31821CB368DB00041F76 /* GropViewTableViewCell.m in Sources */,
+				FE474DD91E2C8E5C0005CD98 /* FSViewExpressTimeLineTVCell.m in Sources */,
 				E40D230B1C434CA100DC47C6 /* MJRefreshBackNormalFooter.m in Sources */,
 				FE17A94A1E0D430F00DC7949 /* FSMoreViewController.m in Sources */,
 				FECDE70D1E07C2C70083E11B /* UIButton+Create.m in Sources */,
@@ -9268,6 +9345,7 @@
 				FECDE70E1E07C2C70083E11B /* UIButton+EnlargeEdge.m in Sources */,
 				0CBA549A1DE7D47C00378911 /* SubmitOrderViewController.m in Sources */,
 				EBBEC3911E0E8D3E00872E7A /* FSMySiteViewController.m in Sources */,
+				FE474DE71E2CB25C0005CD98 /* TTTAttributedLabel.m in Sources */,
 				096FD6A41BEC862600199E03 /* Product.m in Sources */,
 				0969DC191BCDFE1700D98273 /* MMRadialProgressView.m in Sources */,
 				E40D23071C434CA100DC47C6 /* MJRefreshAutoGifFooter.m in Sources */,
@@ -9285,9 +9363,11 @@
 				52D104F91BE99C9D00584B91 /* ShoppingCartModel.m in Sources */,
 				2BD89D5B1BE374B3004EF4A0 /* Address.m in Sources */,
 				0C7730421CE17341005EB107 /* RegisterViewController.m in Sources */,
+				FE474DDD1E2C8EC30005CD98 /* FSViewExpressFirstLineTVCell.m in Sources */,
 				0C6B3DB01CC764C3008193C8 /* CommodityTypeView.m in Sources */,
 				52438A621C9AAF70002661DF /* adTop_HeadView.m in Sources */,
 				0C625F281CC4E68A0052181A /* SelectCouponCell.m in Sources */,
+				FE474DD51E2C766A0005CD98 /* FSViewExpressViewController.m in Sources */,
 				0C961B461D9CAAFA000B6AF6 /* PaymentTimeCell.m in Sources */,
 				FE17A9571E0D430F00DC7949 /* FSMyCouponsViewController.m in Sources */,
 				09C394281BCE5B8D001420EB /* TeNavigationViewController.m in Sources */,

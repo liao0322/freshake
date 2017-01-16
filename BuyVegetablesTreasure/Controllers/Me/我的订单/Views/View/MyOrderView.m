@@ -10,6 +10,11 @@
 #import "MyOrderDetailsViewController.h"
 #import "PublishOrderAndGoodsViewController.h"
 #import "GoodsDetailViewController.h"
+
+
+// TEMP
+#import "FSViewExpressViewController.h"
+
 #define bg_Height 50
 
 
@@ -330,6 +335,9 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    FSViewExpressViewController *viewExpressVC = [FSViewExpressViewController new];
+    _goViewController(viewExpressVC);
     /*
     Order *model = _dataSource[indexPath.section];
     if (model.List.count > 0) {
