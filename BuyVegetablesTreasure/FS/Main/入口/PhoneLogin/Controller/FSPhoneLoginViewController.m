@@ -230,7 +230,7 @@
     
     [SVProgressHUD showWithStatus:@"正在登录..."];
     [XFNetworking GET:urlString parameters:nil success:^(id responseObject, NSInteger statusCode) {
-        
+        [SVProgressHUD dismiss];
         NSDictionary *data = [self dictWithData:responseObject];
         
         if ([data[@"issuccess"] boolValue]) {

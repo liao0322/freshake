@@ -850,6 +850,7 @@
 		FE17A9951E12536000DC7949 /* FSGroupBuyDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A9931E12536000DC7949 /* FSGroupBuyDetailsViewController.m */; };
 		FE17A9961E12536000DC7949 /* FSGroupBuyDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE17A9941E12536000DC7949 /* FSGroupBuyDetailsViewController.xib */; };
 		FE474DC91E28A61E0005CD98 /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = FE474DC81E28A61E0005CD98 /* NSString+Extension.m */; };
+		FE474DCC1E2C65190005CD98 /* XFTools.m in Sources */ = {isa = PBXBuildFile; fileRef = FE474DCB1E2C65190005CD98 /* XFTools.m */; };
 		FE50A20D1E1B8CB2008D1710 /* ErrorBackImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FE50A20C1E1B8CB2008D1710 /* ErrorBackImage.png */; };
 		FE50A20F1E1B8DCB008D1710 /* 列表页未成功图片.png in Resources */ = {isa = PBXBuildFile; fileRef = FE50A20E1E1B8DCB008D1710 /* 列表页未成功图片.png */; };
 		FE703EE51E247281005FD30B /* XFTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = FE703EE11E247281005FD30B /* XFTextField.m */; };
@@ -2309,6 +2310,8 @@
 		FE17A9941E12536000DC7949 /* FSGroupBuyDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSGroupBuyDetailsViewController.xib; sourceTree = "<group>"; };
 		FE474DC71E28A61E0005CD98 /* NSString+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extension.h"; sourceTree = "<group>"; };
 		FE474DC81E28A61E0005CD98 /* NSString+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
+		FE474DCA1E2C65190005CD98 /* XFTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XFTools.h; path = BuyVegetablesTreasure/FS/Expand/Category/NSString/XFTools.h; sourceTree = SOURCE_ROOT; };
+		FE474DCB1E2C65190005CD98 /* XFTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFTools.m; path = BuyVegetablesTreasure/FS/Expand/Category/NSString/XFTools.m; sourceTree = SOURCE_ROOT; };
 		FE50A20C1E1B8CB2008D1710 /* ErrorBackImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ErrorBackImage.png; sourceTree = "<group>"; };
 		FE50A20E1E1B8DCB008D1710 /* 列表页未成功图片.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "列表页未成功图片.png"; sourceTree = "<group>"; };
 		FE703EE01E247281005FD30B /* XFTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFTextField.h; sourceTree = "<group>"; };
@@ -7249,6 +7252,8 @@
 		FECDE62A1E07C2C70083E11B /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				FE474DCA1E2C65190005CD98 /* XFTools.h */,
+				FE474DCB1E2C65190005CD98 /* XFTools.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -9119,6 +9124,7 @@
 				FECDE7451E07C2C80083E11B /* FSHomeFourButtonView.m in Sources */,
 				520438B11BE0B73E000E8F98 /* Order.m in Sources */,
 				0969DC171BCDFE1700D98273 /* MMProgressHUDViewController.m in Sources */,
+				FE474DCC1E2C65190005CD98 /* XFTools.m in Sources */,
 				E4AB9B271CACCE7600FEEFA1 /* HomeAddressCell.m in Sources */,
 				0969DC691BCDFF6F00D98273 /* NSObject+category.m in Sources */,
 				52A35C8C1BCDEB9100309FC8 /* AppDelegate.m in Sources */,

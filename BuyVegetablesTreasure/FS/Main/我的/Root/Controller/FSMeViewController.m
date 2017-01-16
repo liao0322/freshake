@@ -187,6 +187,9 @@
 #pragma mark 前往我的订单
 - (void)fsCenterView:(FSMeCenterView *)fsCenterView allOrderButtonClick:(UIButton *)sender {
     
+    NSLog(@"%@", [sender currentTitle]);
+    
+
     _uidString = [[NSUserDefaults standardUserDefaults] objectForKey:@"UID"];
     
     if (![Tools isBlankString:_uidString]) {
@@ -205,8 +208,6 @@
         FSNavigationController *navController = [[FSNavigationController alloc] initWithRootViewController:loginVC];
         [self presentViewController:navController animated:YES completion:nil];
     }
-
-    
 }
 
 

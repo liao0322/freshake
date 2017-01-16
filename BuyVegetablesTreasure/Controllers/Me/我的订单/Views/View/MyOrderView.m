@@ -330,7 +330,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    /*
     Order *model = _dataSource[indexPath.section];
     if (model.List.count > 0) {
         GoodsDetailViewController *detailVC = [[GoodsDetailViewController alloc] init];
@@ -351,6 +351,7 @@
             [self goViewController:10 model:model];
         }
     }
+     */
 }
 
 - (void)btnClick:(UIButton *)btn {
