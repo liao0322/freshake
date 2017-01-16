@@ -190,7 +190,7 @@ static NSString * const shoppingCartTVCellID = @"shoppingCartTVCellID";
     
     ShopCart *model = nil;
     
-    if (section == 0) {
+    if (section == 0 && self.commodityArray.count) {
         model = self.commodityArray[row];
     } else {
         model = self.invalidCommodityArray[row];

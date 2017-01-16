@@ -709,7 +709,7 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
         urlString = [NSString stringWithFormat:ADDCARTURL, model.id, UUID, uid, totPriceString, @"1", mid, @"11"];
         
     } else { // 更新购物车数量
-        urlString = [NSString stringWithFormat:UpCart, UUID, mid, model.id,uid,[NSString stringWithFormat:@"%ld", cartNum + 1], @"0"];
+        urlString = [NSString stringWithFormat:UpCart, UUID, mid, model.id,uid,[NSString stringWithFormat:@"%d", cartNum + 1], @"0"];
     }
     [SVProgressHUD show];
     // 发送请求
