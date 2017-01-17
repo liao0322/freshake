@@ -12,9 +12,12 @@
 @interface FSViewExpressTimeLineTVCell ()<TTTAttributedLabelDelegate>
 
 @property (nonatomic) UIView *timeLineView;
-@property (nonatomic) UIView *locatingPointView;
+@property (nonatomic) UIButton *locatingPointButton;
 
 @property (nonatomic) TTTAttributedLabel *contentLabel;
+
+@property (nonatomic) UILabel *dateLabel;
+
 
 
 @end
@@ -31,7 +34,9 @@
 
 - (void)addSubviews {
     [self.contentView addSubview:self.timeLineView];
+    [self.contentView addSubview:self.locatingPointButton];
     [self.contentView addSubview:self.contentLabel];
+    [self.contentView addSubview:self.dateLabel];
 }
 
 
@@ -46,25 +51,57 @@
     
     self.timeLineView.width = 1;
     self.timeLineView.height = self.height;
-    self.timeLineView.x = 10;
+    self.timeLineView.x = 35;
     self.timeLineView.y = 0;
     
+    self.locatingPointButton.width = 18;
+    self.locatingPointButton.height = 18;
+    self.locatingPointButton.y = 10;
+    self.locatingPointButton.centerX = self.timeLineView.centerX;
+    
+    self.contentLabel.width = 100;
+    self.contentLabel.height = 50;
+    self.contentLabel.x = 70;
+    self.contentLabel.y = 10;
+    
+    
+    [self.dateLabel sizeToFit];
+    self.dateLabel.x = 70;
+    self.dateLabel.bottom = self.height;
     
 }
+
+#pragma mark - TTTAttributedLabelDelegate
+
+- (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url {
+    
+}
+
+
 
 #pragma mark - LazyLoad
 
 - (UIView *)timeLineView {
     if (!_timeLineView) {
         _timeLineView = [UIView new];
-        _timeLineView.backgroundColor = [UIColor grayColor];
+        _timeLineView.backgroundColor = [UIColor colorWithRGBHex:0xd0d0d0];
     }
     return _timeLineView;
+}
+
+- (UIButton *)locatingPointButton {
+    if (!_locatingPointButton) {
+        _locatingPointButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_locatingPointButton setImage:[UIImage imageNamed:@"express_before"] forState:UIControlStateNormal];
+        [_locatingPointButton setImage:[UIImage imageNamed:@"express_current"] forState:UIControlStateSelected];
+    }
+    return _locatingPointButton;
 }
 
 - (TTTAttributedLabel *)contentLabel {
     if (!_contentLabel) {
         _contentLabel = [[TTTAttributedLabel alloc] initWithFrame:CGRectZero];
+        [_contentLabel setText:@"aa"];
         _contentLabel.numberOfLines = 0;
         _contentLabel.textColor = [UIColor orangeColor];
         _contentLabel.font = [UIFont systemFontOfSize:14];
@@ -82,9 +119,13 @@
     return _contentLabel;
 }
 
-#pragma mark - TTTAttributedLabelDelegate
-
-- (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url {
-    
+- (UILabel *)dateLabel {
+    if (!_dateLabel) {
+        _dateLabel = [[UILabel alloc] init];
+        [_dateLabel setText:@"2016-12-18 14:12:19"];
+        [_dateLabel setFont:[UIFont systemFontOfSize:14]];
+        
+    }
+    return _dateLabel;
 }
 @end

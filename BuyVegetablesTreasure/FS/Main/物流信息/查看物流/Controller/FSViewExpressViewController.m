@@ -34,6 +34,8 @@ static NSString * const viewExpressTimeLineTVCellID = @"viewExpressTimeLineTVCel
     [super initialization];
     self.title = @"查看物流";
     
+    self.tableView.separatorInset = UIEdgeInsetsMake(0, 70, 0, 0);
+    
 }
 
 - (void)registerCells {
