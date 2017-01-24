@@ -763,7 +763,6 @@ static NSString * const shoppingCartTVCellID = @"shoppingCartTVCellID";
 #pragma mark 获取积分等
 -(void)requestPoint {
     NSString *urlString = [NSString stringWithFormat:GetUSERINFO,[[NSUserDefaults standardUserDefaults] objectForKey:@"UID"]];
-    
     NSLog(@"==获取积分、余额、优惠券==%@",urlString);
     
     [XFNetworking GET:urlString parameters:nil success:^(id responseObject, NSInteger statusCode) {
@@ -774,7 +773,7 @@ static NSString * const shoppingCartTVCellID = @"shoppingCartTVCellID";
             self.point = dataDict[@"point"];
             self.tick = dataDict[@"TickNum"];
             
-            [self.footerView.pointLabel setText:[NSString stringWithFormat:@"积分%@，可抵用%.2f元", self.point, [self.point floatValue] / 1000.0f]];
+            [self.footerView.pointLabel setText:[NSString stringWithFormat:@"积分%@，可抵用%.2f元", self.point, [self.point floatValue] / 100.0f]];
             [self.footerView.pointLabel sizeToFit];
 
             [self.tableView reloadData];

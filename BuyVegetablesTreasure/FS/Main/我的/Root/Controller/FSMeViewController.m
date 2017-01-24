@@ -27,6 +27,8 @@
 #import "PointRecordViewController.h"
 #import "AmountViewController.h"
 
+#import "FSMyOrderListViewController.h"
+
 @interface FSMeViewController ()<FSMeHeadViewDelegate, FSMeBottomViewDelegate, UIScrollViewDelegate,FSMeCenterViewDelegate>
 
 @property (nonatomic, copy) FSMeHeadView *headView;
@@ -189,7 +191,11 @@
     
     NSLog(@"%@", [sender currentTitle]);
     
+    FSMyOrderListViewController *myOrderListVC = [FSMyOrderListViewController new];
+    [self.navigationController pushViewController:myOrderListVC animated:YES];
+    
 
+    /*
     _uidString = [[NSUserDefaults standardUserDefaults] objectForKey:@"UID"];
     
     if (![Tools isBlankString:_uidString]) {
@@ -208,6 +214,8 @@
         FSNavigationController *navController = [[FSNavigationController alloc] initWithRootViewController:loginVC];
         [self presentViewController:navController animated:YES completion:nil];
     }
+     */
+
 }
 
 

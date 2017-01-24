@@ -19,7 +19,8 @@
 #define LMMC(name) [NSString stringWithFormat:@"http://h5.freshake.cn/%@", name]   // 运营环境
 
 #elif HTTP_TEST_TYPE == 2
-#define LMMC(name) [NSString stringWithFormat:@"http://h5.p2na.com/%@", name]     // 开发环境
+//#define LMMC(name) [NSString stringWithFormat:@"http://h5.p2na.com/%@", name]     // 开发环境
+#define LMMC(name) [NSString stringWithFormat:@"http://192.168.1.150:7100/%@", name]     // 开发环境
 #endif
 
 #define Path(name) [NSString stringWithFormat:@"api/Phone/Fifth/index.aspx?page=%@", name]     // 路径
