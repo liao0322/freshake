@@ -10,4 +10,6 @@
 
 @interface FSMyOrderListTVCell : UITableViewCell
 
+@property (copy, nonatomic) NSDictionary *dict;
+
 @end

@@ -189,11 +189,20 @@
 #pragma mark 前往我的订单
 - (void)fsCenterView:(FSMeCenterView *)fsCenterView allOrderButtonClick:(UIButton *)sender {
     
-    NSLog(@"%@", [sender currentTitle]);
+
+    _uidString = [[NSUserDefaults standardUserDefaults] objectForKey:@"UID"];
     
-    FSMyOrderListViewController *myOrderListVC = [FSMyOrderListViewController new];
-    [self.navigationController pushViewController:myOrderListVC animated:YES];
-    
+    if (![Tools isBlankString:_uidString]) {
+        FSMyOrderListViewController *myOrderListVC = [FSMyOrderListViewController new];
+        myOrderListVC.selectedIndex = self.centerView.btnIndex;
+        [self.navigationController pushViewController:myOrderListVC animated:YES];
+    }
+    else {
+        FSLoginViewController *loginVC = [[FSLoginViewController alloc] init];
+        FSNavigationController *navController = [[FSNavigationController alloc] initWithRootViewController:loginVC];
+        [self presentViewController:navController animated:YES completion:nil];
+    }
+
 
     /*
     _uidString = [[NSUserDefaults standardUserDefaults] objectForKey:@"UID"];
@@ -214,7 +223,8 @@
         FSNavigationController *navController = [[FSNavigationController alloc] initWithRootViewController:loginVC];
         [self presentViewController:navController animated:YES completion:nil];
     }
-     */
+    */
+
 
 }
 

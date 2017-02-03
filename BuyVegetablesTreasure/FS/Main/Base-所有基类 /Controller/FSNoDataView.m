@@ -23,7 +23,10 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     [self.imageView sizeToFit];
-    self.imageView.center = self.center;
+    
+    
+    self.imageView.centerX = self.width * 0.5;
+    self.imageView.centerY = self.height * 0.5;
 }
 
 @end

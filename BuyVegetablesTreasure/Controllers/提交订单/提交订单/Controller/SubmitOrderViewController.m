@@ -7,7 +7,8 @@
 //
 
 #import "SubmitOrderViewController.h"
-#import "MyOrderViewController.h"
+//#import "MyOrderViewController.h"
+#import "FSMyOrderListViewController.h"
 #import "SubmitOrderView.h"
 #import "CouponModel.h"
 #import "ShopCart.h"
@@ -72,8 +73,18 @@ typedef NS_ENUM(NSInteger,CouponType) {
     }
     else {
         
+        CGFloat totalPrice = 0.0f;
+        
+        for (int i = 0; i < self.goodsArray.count; i++) {
+            ShopCart *model = self.goodsArray[i];
+            CGFloat price = [model.salePrice floatValue] * [model.productNum intValue];
+            totalPrice += price;
+        }
+        /*
         ShopCart *model = self.goodsArray[0];
         self.totalPrice = [model.salePrice floatValue] * [model.productNum intValue];
+         */
+        self.totalPrice = totalPrice;
         
         self.submitOrderView.hidden = NO;
         self.submitOrderView.goodsArray = self.goodsArray;
@@ -161,7 +172,9 @@ typedef NS_ENUM(NSInteger,CouponType) {
     }
     
     [Single sharedInstance].isRefreshTitle = NO;
-    [self.navigationController pushViewController:[MyOrderViewController new] animated:YES];
+    FSMyOrderListViewController *myOrderListVC = [FSMyOrderListViewController new];
+    myOrderListVC.selectedIndex = 0;
+    [self.navigationController pushViewController:myOrderListVC animated:YES];
 }
 
 // 付款成功
@@ -169,8 +182,11 @@ typedef NS_ENUM(NSInteger,CouponType) {
 
     [Tools myHud:@"付款成功" inView:self.view];
     [Single sharedInstance].isRefreshTitle = NO;
+    
+    FSMyOrderListViewController *myOrderListVC = [FSMyOrderListViewController new];
+    myOrderListVC.selectedIndex = 0;
     // 前往我的订单
-    [self.navigationController pushViewController:[MyOrderViewController new] animated:YES];
+    [self.navigationController pushViewController:myOrderListVC animated:YES];
 }
 
 // 付款失败
@@ -178,8 +194,10 @@ typedef NS_ENUM(NSInteger,CouponType) {
     
     [Tools myHud:@"付款失败" inView:self.view];
     [Single sharedInstance].isRefreshTitle = NO;
+    FSMyOrderListViewController *myOrderListVC = [FSMyOrderListViewController new];
+    myOrderListVC.selectedIndex = 0;
     // 前往我的订单
-    [self.navigationController pushViewController:[MyOrderViewController new] animated:YES];
+    [self.navigationController pushViewController:myOrderListVC animated:YES];
 }
 
 #pragma mark - 导航条
@@ -552,7 +570,9 @@ typedef NS_ENUM(NSInteger,CouponType) {
         else if ([data[@"totalPrice"] floatValue] <= 0) {
             
             // 跳转到订单详情
-             [self.navigationController pushViewController:[MyOrderViewController new] animated:YES];
+            FSMyOrderListViewController *myOrderListVC = [FSMyOrderListViewController new];
+            myOrderListVC.selectedIndex = 0;
+             [self.navigationController pushViewController:myOrderListVC animated:YES];
         }
         else if ([data[@"issuccess"] boolValue]) {
             

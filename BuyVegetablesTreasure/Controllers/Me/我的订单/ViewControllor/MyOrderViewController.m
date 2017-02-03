@@ -47,7 +47,7 @@
     _orderCountArray = [NSMutableArray array];
     _uidString = [[NSUserDefaults standardUserDefaults] objectForKey:@"UID"];
     
-    [self setNav];
+    //[self setNav];
 //    [self initOrderStateView];
     [self initMyOrderView];
     
@@ -487,11 +487,8 @@
     
     NSMutableArray *arr = [NSMutableArray array];
     for (int i = 0; i < self.commodityArray.count; i++) {
-        
         ShopCart *model = self.commodityArray[i];
-        
         if (model.isSelect) {
-            
             [arr addObject:model];
         }
     }

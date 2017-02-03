@@ -10,4 +10,6 @@
 
 @interface FSMyOrderListViewController : FSBaseViewController
 
+@property (assign, nonatomic) NSInteger selectedIndex;
+
 @end

@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^CancelOrderBlock)();
+
+@class Order;
+
 @interface FSMyOrderListSectionHeaderView : UITableViewHeaderFooterView
+
+@property (nonatomic) Order *model;
+
+@property (nonatomic) CancelOrderBlock cancelOrderBlock;
 
 @end
