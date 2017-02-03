@@ -154,33 +154,7 @@ static NSString * const shoppingCartTVCellID = @"shoppingCartTVCellID";
     return cell;
 }
 
-/*
-- (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UILabel *label = nil;
-    if (self.invalidCommodityArray.count) { // 有无效商品
-        
-        if (self.commodityArray.count) { // 有正常商品
-            if (section == 1) {
-                label = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 100, 30)];
-                label.font = [UIFont systemFontOfSize:14];
-                [label setTextColor:[UIColor lightGrayColor]];
-                [label setText:@"已失效商品"];
-            }
-        } else {
-            if (section == 0) {
-                label = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 100, 30)];
-                label.font = [UIFont systemFontOfSize:14];
-                [label setTextColor:[UIColor lightGrayColor]];
-                [label setText:@"已失效商品"];
-            }
-        }
-    }
-    UIView *view = [UIView new];
-    [view addSubview:label];
-    
-    return view;
-}
- */
+
 
 #pragma mark - UITableViewDelegate
 
@@ -256,28 +230,6 @@ static NSString * const shoppingCartTVCellID = @"shoppingCartTVCellID";
             }
             
             // 刷新 tableView
-            /*
-            if (section == 0) { // 只有一组
-                if (self.commodityArray.count == 0 && self.invalidCommodityArray.count == 0) { // 都没数据
-                    [self.tableView reloadData];
-                } else if (self.commodityArray.count == 0 && self.invalidCommodityArray.count != 0) {
-                    [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationTop];
-                }
-                else {
-                    [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
-                }
-                
-            } else {
-                
-                if (self.invalidCommodityArray.count) {
-                    [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
-                } else {
-                    [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationTop];
-                }
-                
-            }
-             */
-            
             if (self.commodityArray.count == 0 && self.invalidCommodityArray.count == 0) { // 没数据了
                 self.emptyView.hidden = NO;
                 self.bottomView.hidden = YES;
@@ -312,21 +264,6 @@ static NSString * const shoppingCartTVCellID = @"shoppingCartTVCellID";
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 15.0f;
     
-    /*
-    CGFloat height = 0.0001f;
-    if (self.invalidCommodityArray.count && self.commodityArray.count) {
-        if (section == 0) {
-            height = 15.0f;
-        } else {
-            height = 30.0f;
-        }
-    } else if (self.invalidCommodityArray.count) {
-        height = 30.0f;
-    } else {
-        height = 15.0f;
-    }
-    return height;
-     */
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
@@ -552,19 +489,7 @@ static NSString * const shoppingCartTVCellID = @"shoppingCartTVCellID";
                     [self.invalidCommodityArray addObject:model];
                 }
             }
-            
-            
-            /*
-            if (self.commodityArray.count == 0 && self.invalidCommodityArray.count == 0) { // 没数据了
-                self.emptyView.hidden = NO;
-                self.bottomView.hidden = YES;
-                self.tableView.hidden = YES;
-                [self.tableView reloadData];
-            } else if (self.commodityArray.count == 0) { // 正常商品没数据
-                self.bottomView.hidden = YES;
-                [self.tableView reloadData];
-            }
-            */
+
             
             if ((self.commodityArray.count && self.invalidCommodityArray.count) || self.commodityArray.count) {
                 
@@ -587,28 +512,6 @@ static NSString * const shoppingCartTVCellID = @"shoppingCartTVCellID";
                 self.tableView.hidden = YES;
             }
             
-            
-            /*
-            if (self.commodityArray.count || self.invalidCommodityArray.count) { // 有数据
-                
-                self.bottomView.hidden = NO;
-                self.emptyView.hidden = YES;
-                self.tableView.hidden = NO;
-                [self.tableView reloadData];
-                
-                self.totalPrice = [self getTotalPrice];
-                
-                [self.bottomView.totalPriceLabel setText:[NSString stringWithFormat:@"￥%.2f", fabs(self.totalPrice)]];
-                [self.bottomView.totalPriceLabel sizeToFit];
-                
-                self.bottomView.selectAllButton.selected = YES;
-                
-            } else {
-                self.bottomView.hidden = YES;
-                self.emptyView.hidden = NO;
-                self.tableView.hidden = YES;
-            }
-             */
         }
         else {
             if (!self.commodityArray.count || !self.invalidCommodityArray.count) {
