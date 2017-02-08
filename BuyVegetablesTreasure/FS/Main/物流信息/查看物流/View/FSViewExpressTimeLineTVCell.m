@@ -18,8 +18,6 @@
 
 @property (nonatomic) UILabel *dateLabel;
 
-
-
 @end
 
 @implementation FSViewExpressTimeLineTVCell
@@ -56,18 +54,18 @@
     
     self.locatingPointButton.width = 18;
     self.locatingPointButton.height = 18;
-    self.locatingPointButton.y = 10;
+    self.locatingPointButton.y = 15;
     self.locatingPointButton.centerX = self.timeLineView.centerX;
     
-    self.contentLabel.width = 100;
-    self.contentLabel.height = 50;
+//    self.contentLabel.width = 100;
+//    self.contentLabel.height = 50;
+    [self.contentLabel sizeToFit];
     self.contentLabel.x = 70;
-    self.contentLabel.y = 10;
-    
+    self.contentLabel.y = self.locatingPointButton.y;
     
     [self.dateLabel sizeToFit];
-    self.dateLabel.x = 70;
-    self.dateLabel.bottom = self.height;
+    self.dateLabel.x = self.contentLabel.x;
+    self.dateLabel.y = self.contentLabel.bottom + 10;
     
 }
 
@@ -76,8 +74,6 @@
 - (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url {
     
 }
-
-
 
 #pragma mark - LazyLoad
 

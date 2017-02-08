@@ -48,10 +48,8 @@
     
     self.phoneNumberInputTextField.maxCount = 11;
     
-    
     self.phoneNumberInputTextField.borderStyle = UITextBorderStyleNone;
     self.phoneNumberInputTextField.tintColor = [UIColor colorDomina];
-    
     
     self.firstSeparatorLine.backgroundColor = [UIColor colorSeparatorLine];
     

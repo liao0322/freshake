@@ -128,7 +128,7 @@
 }
 
 - (void)setModel:(Order *)model {
-    
+    _model = model;
     int totalCount = 0;
     for (int i = 0; i < model.List.count; i++) {
         totalCount += [model.List[i][@"quantity"] integerValue];
@@ -253,7 +253,7 @@
 - (UILabel *)totalPriceTitleLabel {
     if (!_totalPriceTitleLabel) {
         _totalPriceTitleLabel = [UILabel new];
-        _totalPriceTitleLabel.text = @"总计：";
+        _totalPriceTitleLabel.text = @"总价：";
         _totalPriceTitleLabel.font = [UIFont systemFontOfSize:14];
         _totalPriceTitleLabel.textColor = [UIColor colorTextDomina];
     }

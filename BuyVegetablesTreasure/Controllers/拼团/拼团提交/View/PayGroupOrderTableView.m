@@ -180,7 +180,7 @@
         else {
             
             TimeOrCouponCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TimeOrCouponCell"];
-            cell.textLabel.text = [NSString stringWithFormat:@"可用%.0f积分抵用%.2f元", self.availableIntegral, (float)self.availableIntegral / 100];
+            cell.textLabel.text = [NSString stringWithFormat:@"可用%.0f积分抵用%.2f元", self.availableIntegral, self.availableIntegral / 100.0f];
             cell.accessoryView = self.integralSwitch;
             return cell;
         }

@@ -10,10 +10,11 @@
 #define Shop_Http_h
 
 //域名
-#define HTTP_TEST_TYPE 0
+#define HTTP_TEST_TYPE 2
 
 #if HTTP_TEST_TYPE == 0
-#define LMMC(name) [NSString stringWithFormat:@"http://p2na.freshake.cn/%@", name]   // 测试环境
+
+#define LMMC(name) [NSString stringWithFormat:@"http://p2na.freshake.cn/%@", name]   // 测试环境 9970
 
 #elif HTTP_TEST_TYPE == 1
 #define LMMC(name) [NSString stringWithFormat:@"http://h5.freshake.cn/%@", name]   // 运营环境

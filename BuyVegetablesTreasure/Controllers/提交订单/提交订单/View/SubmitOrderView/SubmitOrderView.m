@@ -316,7 +316,7 @@
 - (void)switchChange:(UISwitch *)integralSwitch {
 
     // 价格
-    [self.orderTotalView setOrderTotalPrice:self.totalPrice - (integralSwitch.on * (float)self.availableIntegral / 100)
+    [self.orderTotalView setOrderTotalPrice:self.totalPrice - (integralSwitch.on * self.availableIntegral / 100.0f)
                                 couponPrice:self.couponPrice
                                     freight:self.isDistribution * [Single sharedInstance].freight];
     [self.tableView reloadData];
@@ -351,22 +351,18 @@
 
 // 优惠券数量
 - (void)setNumberOfCoupons:(NSInteger)numberOfCoupons {
-    
     _numberOfCoupons = numberOfCoupons;
-    
     if (numberOfCoupons == 0) {
         self.couponString = @"没有可用的优惠券";
     }
     else {
         self.couponString = [NSString stringWithFormat:@"您有%zd张优惠券可用",numberOfCoupons];
     }
-    
     [_tableView reloadData];
 }
 
 // 商品数组
 - (void)setGoodsArray:(NSArray *)goodsArray {
-    
     _goodsArray = goodsArray;
     [_tableView reloadData];
 }
@@ -375,9 +371,16 @@
 - (void)setTotalPrice:(CGFloat)totalPrice {
 
     _totalPrice = totalPrice;
-    self.availableIntegral = [self.orderTotalView setOrderTotalPrice:self.totalPrice - (self.integralSwitch.on * (float)self.availableIntegral / 100)
+    
+    self.availableIntegral = [self.orderTotalView setOrderTotalPrice:self.totalPrice - (self.integralSwitch.on * self.availableIntegral / 100.0f)
                                                          couponPrice:self.couponPrice
                                                              freight:self.isDistribution * [Single sharedInstance].freight];
+     
+    /*
+    self.totalPrice = [self.orderTotalView setOrderTotalPrice:self.totalPrice - (self.integralSwitch.on * self.availableIntegral / 100.0f)
+                                                         couponPrice:self.couponPrice
+                                                             freight:self.isDistribution * [Single sharedInstance].freight];
+     */
 }
 
 // 积分
