@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *unitLabel;
+@property (weak, nonatomic) IBOutlet UILabel *countLabel;
 
 @end
 
@@ -33,9 +34,12 @@
     
     self.titleLabel.text = dict[@"goods_title"];
     
+    self.unitLabel.text = dict[@"unit"];
+    
+    self.countLabel.text = [NSString stringWithFormat:@" x %@", dict[@"quantity"]];
+    
     NSString *priceString = [NSString stringWithFormat:@"￥%.2f",[dict[@"goods_price"] floatValue]];
     self.priceLabel.text = priceString;
-    self.unitLabel.text = [NSString stringWithFormat:@" * %@ %@", dict[@"quantity"],dict[@"unit"]];
     
 }
 

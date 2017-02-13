@@ -27,6 +27,11 @@
 /// 注册各种cell
 - (void)registerCells;
 
+- (void)requestData;
+- (void)initialize;
+- (void)setupViews;
+- (void)registerViews;
+
 
 /// 解析二进制数据，返回一个字典
 - (NSDictionary *)dictWithData:(NSData *)data;

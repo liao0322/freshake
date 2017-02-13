@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="154" id="KGk-i7-Jjw" customClass="XFMeMyOrderTVCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="154"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="153"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的订单" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qzL-tb-zGG">
+                        <rect key="frame" x="15" y="13" width="58" height="17"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                        <color key="textColor" red="0.15686274510000001" green="0.15686274510000001" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Or8-IP-SWx">
+                        <rect key="frame" x="0.0" y="44" width="320" height="1"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="smO-YC-scV"/>
+                        </constraints>
+                    </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P67-WA-RPP">
+                        <rect key="frame" x="213" y="7" width="92" height="28"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <state key="normal" title="查看全部订单 &gt;">
+                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="viewAllOrders:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="qaK-tj-CJY"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gnb-xb-Xsn" customClass="XFMeVerticalButton">
+                        <rect key="frame" x="4" y="98" width="88" height="28"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="PingFangSC-Light" family="PingFang SC" pointSize="14"/>
+                        <state key="normal" title="待付款" image="FS待付款">
+                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                        </state>
+                        <connections>
+                            <action selector="waitForPay:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="1OP-QY-dfH"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8I2-6T-dkM" customClass="XFMeVerticalButton">
+                        <rect key="frame" x="74" y="80" width="87" height="29"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="PingFangSC-Light" family="PingFang SC" pointSize="14"/>
+                        <state key="normal" title="待提货" image="FS待提货">
+                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                        <connections>
+                            <action selector="waitForPickUp:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="xct-Eu-t3d"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pve-kq-9V8" customClass="XFMeVerticalButton">
+                        <rect key="frame" x="130" y="80" width="83" height="27"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="PingFangSC-Light" family="PingFang SC" pointSize="14"/>
+                        <state key="normal" title="已提货" image="FS已提货">
+                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                        <connections>
+                            <action selector="picked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Vvp-pj-XdZ"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n1M-PO-XhR" customClass="XFMeVerticalButton">
+                        <rect key="frame" x="230" y="77" width="86" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="PingFangSC-Light" family="PingFang SC" pointSize="14"/>
+                        <state key="normal" title="待评价" image="FS待评价">
+                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                        <connections>
+                            <action selector="waitForComment:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="fsS-PS-ch8"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Or8-IP-SWx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="44" id="4Yq-Mi-OZT"/>
+                    <constraint firstItem="qzL-tb-zGG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12.5" id="5y7-co-KP5"/>
+                    <constraint firstItem="Or8-IP-SWx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="97r-Tb-BQh"/>
+                    <constraint firstAttribute="trailing" secondItem="Or8-IP-SWx" secondAttribute="trailing" id="Vrr-hO-04J"/>
+                    <constraint firstAttribute="trailing" secondItem="P67-WA-RPP" secondAttribute="trailing" constant="15" id="dVi-kh-Fjr"/>
+                    <constraint firstItem="qzL-tb-zGG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="twh-vr-yGw"/>
+                    <constraint firstItem="P67-WA-RPP" firstAttribute="centerY" secondItem="qzL-tb-zGG" secondAttribute="centerY" id="uNP-aX-URo"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="pickedButton" destination="pve-kq-9V8" id="hF3-iy-VDh"/>
+                <outlet property="separatorLineView" destination="Or8-IP-SWx" id="z5n-cp-kpi"/>
+                <outlet property="waitForCommentButton" destination="n1M-PO-XhR" id="7xm-Ti-gc2"/>
+                <outlet property="waitForPayButton" destination="Gnb-xb-Xsn" id="PzH-gs-M1b"/>
+                <outlet property="waitForPickUpButton" destination="8I2-6T-dkM" id="HbL-Lm-Ced"/>
+            </connections>
+            <point key="canvasLocation" x="114" y="147"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="FS已提货" width="32" height="32"/>
+        <image name="FS待付款" width="32" height="32"/>
+        <image name="FS待提货" width="32" height="32"/>
+        <image name="FS待评价" width="32" height="32"/>
+    </resources>
+</document>

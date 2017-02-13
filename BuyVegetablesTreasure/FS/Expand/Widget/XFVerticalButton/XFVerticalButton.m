@@ -43,4 +43,8 @@
 
 }
 
+- (CGFloat)xf_height {
+    return CGRectGetMaxY(self.titleLabel.frame) + 8.0f;
+}
+
 @end

@@ -19,10 +19,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self getDataFromRemote];
+    [self requestData];
     [self initialization];
+    [self initialize];
+    [self setupViews];
     [self setupNavigationBar];
     [self addSubviews];
     [self registerCells];
+    [self registerViews];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -31,24 +36,28 @@
 }
 
 - (void)getDataFromRemote {
-    
 }
 
 - (void)initialization {
-
 }
 
 - (void)setupNavigationBar {
-    
 }
 
 - (void)addSubviews {
-    
 }
 
 - (void)registerCells {
-    
 }
+
+- (void)requestData {
+}
+
+- (void)initialize {
+}
+- (void)setupViews {
+}
+- (void)registerViews {}
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [self.view endEditing:YES];

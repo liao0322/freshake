@@ -7,6 +7,8 @@
 //
 
 #import "OtherCell.h"
+#import "XFExpressDetailsViewController.h"
+
 
 @interface OtherCell ()
 
@@ -111,9 +113,20 @@
         self.imageView.image = IMAGE(@"FSOrderDetail送货上门");
         
         if ([orderDetailsModel.express_id intValue] == 1) {
+            self.stateLabel.text = @"查看物流";
+            self.stateLabel.textColor = [UIColor colorDomina];
+            self.stateLabel.userInteractionEnabled = YES;
+            
+            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewExpress)];
+            [self.stateLabel addGestureRecognizer:tap];
+            
+            
             self.textLabel.text = @"送货上门";
+            
+        } else {
+            self.textLabel.text = @"到店自提";
         }
-        else self.textLabel.text = @"到店自提";
+
     }
     // 提货码
     else if (indexPath.section == 3) {
@@ -225,6 +238,15 @@
         self.textLabel.text = @"我的评价:";
         self.textLabel.textColor = Color;
     }
+}
+
+- (void)viewExpress {
+    XFExpressDetailsViewController *viewExpressVC = [[XFExpressDetailsViewController alloc] initWithOriginalNo:self.orderDetailsModel.order_no];
+    
+    if (self.pushViewController) {
+        self.pushViewController(viewExpressVC);
+    }
+
 }
 
 @end

@@ -18,7 +18,8 @@
 #import "PublishOrderAndGoodsViewController.h"
 #import "SubmitOrderViewController.h"
 #import "ShopCart.h"
-#import "FSViewExpressViewController.h"
+//#import "FSViewExpressViewController.h"
+#import "XFExpressDetailsViewController.h"
 
 #define SEGMENT_VIEW_HEIGHT 45.0f
 
@@ -220,7 +221,7 @@ static NSString * const OrderListSectionFooterID = @"OrderListSectionFooterID";
     };
     
     footerView.viewExpressBlock = ^{
-        FSViewExpressViewController *viewExpressVC = [FSViewExpressViewController new];
+        XFExpressDetailsViewController *viewExpressVC = [[XFExpressDetailsViewController alloc] initWithOriginalNo:model.order_no];
         [self.navigationController pushViewController:viewExpressVC animated:YES];
     };
     

@@ -129,7 +129,7 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
     [self.navigationBar.leftButton setTitle:[[[NSUserDefaults standardUserDefaults] objectForKey:@"merchantsName"] substringWithRange:NSMakeRange(0, 2)] forState:UIControlStateNormal];
     
     // 隐藏系统 nav bar
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
     
     [[UIApplication sharedApplication] setStatusBarStyle:self.statusBarStyle animated:NO];
 }
@@ -139,7 +139,7 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
     
     // 显示系统 nav bar
     if ( self.navigationController.childViewControllers.count > 1 ) {
-        [self.navigationController setNavigationBarHidden:NO animated:NO];
+        [self.navigationController setNavigationBarHidden:NO animated:YES];
     }
     
     self.statusBarStyle = [UIApplication sharedApplication].statusBarStyle;

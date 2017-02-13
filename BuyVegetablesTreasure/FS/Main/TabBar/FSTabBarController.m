@@ -17,6 +17,7 @@
 #import "FSClassificationViewController.h"
 
 #import "FSMeViewController.h"
+#import "XFMeViewController.h"
 
 @interface FSTabBarController ()
 
@@ -72,9 +73,10 @@
     [self p_addChildViewController:goodsCartVC];
     
     // 我
-//    MeViewController *meVC = [[MeViewController alloc] init];
 
-    FSMeViewController *meVC = [[FSMeViewController alloc] init];
+//    FSMeViewController *meVC = [[FSMeViewController alloc] init];
+    
+    XFMeViewController *meVC = [[XFMeViewController alloc] init];
     [self p_addChildViewController:meVC];
     
 }

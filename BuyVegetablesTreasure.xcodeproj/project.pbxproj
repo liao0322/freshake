@@ -856,11 +856,6 @@
 		FE3CD2381E374E4600DF0C23 /* FSMyOrderListTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE3CD2361E374E4600DF0C23 /* FSMyOrderListTVCell.xib */; };
 		FE474DC91E28A61E0005CD98 /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = FE474DC81E28A61E0005CD98 /* NSString+Extension.m */; };
 		FE474DCC1E2C65190005CD98 /* XFTools.m in Sources */ = {isa = PBXBuildFile; fileRef = FE474DCB1E2C65190005CD98 /* XFTools.m */; };
-		FE474DD51E2C766A0005CD98 /* FSViewExpressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE474DD31E2C766A0005CD98 /* FSViewExpressViewController.m */; };
-		FE474DD61E2C766A0005CD98 /* FSViewExpressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE474DD41E2C766A0005CD98 /* FSViewExpressViewController.xib */; };
-		FE474DD91E2C8E5C0005CD98 /* FSViewExpressTimeLineTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE474DD81E2C8E5C0005CD98 /* FSViewExpressTimeLineTVCell.m */; };
-		FE474DDD1E2C8EC30005CD98 /* FSViewExpressFirstLineTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE474DDB1E2C8EC30005CD98 /* FSViewExpressFirstLineTVCell.m */; };
-		FE474DDE1E2C8EC30005CD98 /* FSViewExpressFirstLineTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE474DDC1E2C8EC30005CD98 /* FSViewExpressFirstLineTVCell.xib */; };
 		FE474DE71E2CB25C0005CD98 /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = FE474DE61E2CB25C0005CD98 /* TTTAttributedLabel.m */; };
 		FE474E341E2DF1B70005CD98 /* FSMyOrderListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE474E311E2DF1B70005CD98 /* FSMyOrderListViewController.m */; };
 		FE474E351E2DF1B70005CD98 /* FSMyOrderListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE474E321E2DF1B70005CD98 /* FSMyOrderListViewController.xib */; };
@@ -908,6 +903,30 @@
 		FE843AA91E16429E00528DBB /* FSNetErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE843AA81E16429E00528DBB /* FSNetErrorView.xib */; };
 		FE843AAC1E166AFE00528DBB /* 形状-6-拷贝@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FE843AAA1E166AFE00528DBB /* 形状-6-拷贝@2x.png */; };
 		FE843AAD1E166AFE00528DBB /* 形状-6-拷贝@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FE843AAB1E166AFE00528DBB /* 形状-6-拷贝@3x.png */; };
+		FE8CEF981E5147E100779B5F /* XFExpressNoDataTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE8CEF961E5147E100779B5F /* XFExpressNoDataTVCell.m */; };
+		FE8CEF991E5147E100779B5F /* XFExpressNoDataTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE8CEF971E5147E100779B5F /* XFExpressNoDataTVCell.xib */; };
+		FEA20E981E4DA0C300FAD315 /* XFMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA20E961E4DA0C300FAD315 /* XFMeViewController.m */; };
+		FEA20E991E4DA0C300FAD315 /* XFMeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FEA20E971E4DA0C300FAD315 /* XFMeViewController.xib */; };
+		FEA20E9E1E4DA40C00FAD315 /* XFMeHeaderTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA20E9C1E4DA40C00FAD315 /* XFMeHeaderTVCell.m */; };
+		FEA20E9F1E4DA40C00FAD315 /* XFMeHeaderTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FEA20E9D1E4DA40C00FAD315 /* XFMeHeaderTVCell.xib */; };
+		FEA20EA31E4DAE6500FAD315 /* XFMeMyOrderTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA20EA11E4DAE6500FAD315 /* XFMeMyOrderTVCell.m */; };
+		FEA20EA41E4DAE6500FAD315 /* XFMeMyOrderTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FEA20EA21E4DAE6500FAD315 /* XFMeMyOrderTVCell.xib */; };
+		FEA20EC31E4EC03500FAD315 /* XFTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA20EC21E4EC03500FAD315 /* XFTableViewCell.m */; };
+		FEA20ED61E4F3ADD00FAD315 /* XFExpressDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA20EC91E4F3ADD00FAD315 /* XFExpressDetailsViewController.m */; };
+		FEA20ED71E4F3ADD00FAD315 /* XFExpressDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FEA20ECA1E4F3ADD00FAD315 /* XFExpressDetailsViewController.xib */; };
+		FEA20ED81E4F3ADD00FAD315 /* XFExpress.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA20ECD1E4F3ADD00FAD315 /* XFExpress.m */; };
+		FEA20ED91E4F3ADD00FAD315 /* XFExpressList.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA20ECF1E4F3ADD00FAD315 /* XFExpressList.m */; };
+		FEA20EDA1E4F3ADD00FAD315 /* XFExpressDetailsFirstLineTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA20ED21E4F3ADD00FAD315 /* XFExpressDetailsFirstLineTVCell.m */; };
+		FEA20EDB1E4F3ADD00FAD315 /* XFExpressDetailsFirstLineTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FEA20ED31E4F3ADD00FAD315 /* XFExpressDetailsFirstLineTVCell.xib */; };
+		FEA20EDC1E4F3ADD00FAD315 /* XFExpressDetailsTimeLineTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA20ED51E4F3ADD00FAD315 /* XFExpressDetailsTimeLineTVCell.m */; };
+		FEA20EDF1E4F3B2E00FAD315 /* XFModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA20EDE1E4F3B2E00FAD315 /* XFModel.m */; };
+		FEA20EE21E4F3B4F00FAD315 /* XFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA20EE11E4F3B4F00FAD315 /* XFViewController.m */; };
+		FEA20EE51E4F5F6600FAD315 /* XFMeVerticalButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA20EE41E4F5F6600FAD315 /* XFMeVerticalButton.m */; };
+		FEA20EE91E4F684F00FAD315 /* XFMeBottomTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA20EE71E4F684F00FAD315 /* XFMeBottomTVCell.m */; };
+		FEA20EEA1E4F684F00FAD315 /* XFMeBottomTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FEA20EE81E4F684F00FAD315 /* XFMeBottomTVCell.xib */; };
+		FEA20EED1E4F6E1C00FAD315 /* XFMeBottomVerticalButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA20EEC1E4F6E1C00FAD315 /* XFMeBottomVerticalButton.m */; };
+		FEA20EF11E500FF400FAD315 /* XFNotLoginedHeaderTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA20EEF1E500FF400FAD315 /* XFNotLoginedHeaderTVCell.m */; };
+		FEA20EF21E500FF400FAD315 /* XFNotLoginedHeaderTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FEA20EF01E500FF400FAD315 /* XFNotLoginedHeaderTVCell.xib */; };
 		FECDE5DB1E07B3820083E11B /* CouponModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FECDE5DA1E07B3820083E11B /* CouponModel.m */; };
 		FECDE5E61E07B49D0083E11B /* AMapSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FECDE5E41E07B49D0083E11B /* AMapSearchKit.framework */; };
 		FECDE5E71E07B49D0083E11B /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FECDE5E51E07B49D0083E11B /* MAMapKit.framework */; };
@@ -2335,14 +2354,6 @@
 		FE474DC81E28A61E0005CD98 /* NSString+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
 		FE474DCA1E2C65190005CD98 /* XFTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XFTools.h; path = BuyVegetablesTreasure/FS/Expand/Category/NSString/XFTools.h; sourceTree = SOURCE_ROOT; };
 		FE474DCB1E2C65190005CD98 /* XFTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFTools.m; path = BuyVegetablesTreasure/FS/Expand/Category/NSString/XFTools.m; sourceTree = SOURCE_ROOT; };
-		FE474DD21E2C766A0005CD98 /* FSViewExpressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSViewExpressViewController.h; sourceTree = "<group>"; };
-		FE474DD31E2C766A0005CD98 /* FSViewExpressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSViewExpressViewController.m; sourceTree = "<group>"; };
-		FE474DD41E2C766A0005CD98 /* FSViewExpressViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSViewExpressViewController.xib; sourceTree = "<group>"; };
-		FE474DD71E2C8E5C0005CD98 /* FSViewExpressTimeLineTVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSViewExpressTimeLineTVCell.h; sourceTree = "<group>"; };
-		FE474DD81E2C8E5C0005CD98 /* FSViewExpressTimeLineTVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSViewExpressTimeLineTVCell.m; sourceTree = "<group>"; };
-		FE474DDA1E2C8EC30005CD98 /* FSViewExpressFirstLineTVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSViewExpressFirstLineTVCell.h; sourceTree = "<group>"; };
-		FE474DDB1E2C8EC30005CD98 /* FSViewExpressFirstLineTVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSViewExpressFirstLineTVCell.m; sourceTree = "<group>"; };
-		FE474DDC1E2C8EC30005CD98 /* FSViewExpressFirstLineTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSViewExpressFirstLineTVCell.xib; sourceTree = "<group>"; };
 		FE474DE51E2CB25C0005CD98 /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
 		FE474DE61E2CB25C0005CD98 /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
 		FE474E301E2DF1B70005CD98 /* FSMyOrderListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMyOrderListViewController.h; sourceTree = "<group>"; };
@@ -2401,6 +2412,46 @@
 		FE843AA81E16429E00528DBB /* FSNetErrorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSNetErrorView.xib; sourceTree = "<group>"; };
 		FE843AAA1E166AFE00528DBB /* 形状-6-拷贝@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "形状-6-拷贝@2x.png"; sourceTree = "<group>"; };
 		FE843AAB1E166AFE00528DBB /* 形状-6-拷贝@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "形状-6-拷贝@3x.png"; sourceTree = "<group>"; };
+		FE8CEF951E5147E100779B5F /* XFExpressNoDataTVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFExpressNoDataTVCell.h; sourceTree = "<group>"; };
+		FE8CEF961E5147E100779B5F /* XFExpressNoDataTVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFExpressNoDataTVCell.m; sourceTree = "<group>"; };
+		FE8CEF971E5147E100779B5F /* XFExpressNoDataTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XFExpressNoDataTVCell.xib; sourceTree = "<group>"; };
+		FEA20E951E4DA0C300FAD315 /* XFMeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XFMeViewController.h; path = ../Controller/XFMeViewController.h; sourceTree = "<group>"; };
+		FEA20E961E4DA0C300FAD315 /* XFMeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFMeViewController.m; path = ../Controller/XFMeViewController.m; sourceTree = "<group>"; };
+		FEA20E971E4DA0C300FAD315 /* XFMeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = XFMeViewController.xib; path = ../Controller/XFMeViewController.xib; sourceTree = "<group>"; };
+		FEA20E9B1E4DA40C00FAD315 /* XFMeHeaderTVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFMeHeaderTVCell.h; sourceTree = "<group>"; };
+		FEA20E9C1E4DA40C00FAD315 /* XFMeHeaderTVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFMeHeaderTVCell.m; sourceTree = "<group>"; };
+		FEA20E9D1E4DA40C00FAD315 /* XFMeHeaderTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XFMeHeaderTVCell.xib; sourceTree = "<group>"; };
+		FEA20EA01E4DAE6500FAD315 /* XFMeMyOrderTVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFMeMyOrderTVCell.h; sourceTree = "<group>"; };
+		FEA20EA11E4DAE6500FAD315 /* XFMeMyOrderTVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFMeMyOrderTVCell.m; sourceTree = "<group>"; };
+		FEA20EA21E4DAE6500FAD315 /* XFMeMyOrderTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XFMeMyOrderTVCell.xib; sourceTree = "<group>"; };
+		FEA20EC11E4EC03500FAD315 /* XFTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFTableViewCell.h; sourceTree = "<group>"; };
+		FEA20EC21E4EC03500FAD315 /* XFTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFTableViewCell.m; sourceTree = "<group>"; };
+		FEA20EC81E4F3ADD00FAD315 /* XFExpressDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFExpressDetailsViewController.h; sourceTree = "<group>"; };
+		FEA20EC91E4F3ADD00FAD315 /* XFExpressDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFExpressDetailsViewController.m; sourceTree = "<group>"; };
+		FEA20ECA1E4F3ADD00FAD315 /* XFExpressDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XFExpressDetailsViewController.xib; sourceTree = "<group>"; };
+		FEA20ECC1E4F3ADD00FAD315 /* XFExpress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFExpress.h; sourceTree = "<group>"; };
+		FEA20ECD1E4F3ADD00FAD315 /* XFExpress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFExpress.m; sourceTree = "<group>"; };
+		FEA20ECE1E4F3ADD00FAD315 /* XFExpressList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFExpressList.h; sourceTree = "<group>"; };
+		FEA20ECF1E4F3ADD00FAD315 /* XFExpressList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFExpressList.m; sourceTree = "<group>"; };
+		FEA20ED11E4F3ADD00FAD315 /* XFExpressDetailsFirstLineTVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFExpressDetailsFirstLineTVCell.h; sourceTree = "<group>"; };
+		FEA20ED21E4F3ADD00FAD315 /* XFExpressDetailsFirstLineTVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFExpressDetailsFirstLineTVCell.m; sourceTree = "<group>"; };
+		FEA20ED31E4F3ADD00FAD315 /* XFExpressDetailsFirstLineTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XFExpressDetailsFirstLineTVCell.xib; sourceTree = "<group>"; };
+		FEA20ED41E4F3ADD00FAD315 /* XFExpressDetailsTimeLineTVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFExpressDetailsTimeLineTVCell.h; sourceTree = "<group>"; };
+		FEA20ED51E4F3ADD00FAD315 /* XFExpressDetailsTimeLineTVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFExpressDetailsTimeLineTVCell.m; sourceTree = "<group>"; };
+		FEA20EDD1E4F3B2E00FAD315 /* XFModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFModel.h; sourceTree = "<group>"; };
+		FEA20EDE1E4F3B2E00FAD315 /* XFModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFModel.m; sourceTree = "<group>"; };
+		FEA20EE01E4F3B4F00FAD315 /* XFViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFViewController.h; sourceTree = "<group>"; };
+		FEA20EE11E4F3B4F00FAD315 /* XFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFViewController.m; sourceTree = "<group>"; };
+		FEA20EE31E4F5F6600FAD315 /* XFMeVerticalButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFMeVerticalButton.h; sourceTree = "<group>"; };
+		FEA20EE41E4F5F6600FAD315 /* XFMeVerticalButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFMeVerticalButton.m; sourceTree = "<group>"; };
+		FEA20EE61E4F684F00FAD315 /* XFMeBottomTVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFMeBottomTVCell.h; sourceTree = "<group>"; };
+		FEA20EE71E4F684F00FAD315 /* XFMeBottomTVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFMeBottomTVCell.m; sourceTree = "<group>"; };
+		FEA20EE81E4F684F00FAD315 /* XFMeBottomTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XFMeBottomTVCell.xib; sourceTree = "<group>"; };
+		FEA20EEB1E4F6E1C00FAD315 /* XFMeBottomVerticalButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFMeBottomVerticalButton.h; sourceTree = "<group>"; };
+		FEA20EEC1E4F6E1C00FAD315 /* XFMeBottomVerticalButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFMeBottomVerticalButton.m; sourceTree = "<group>"; };
+		FEA20EEE1E500FF400FAD315 /* XFNotLoginedHeaderTVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFNotLoginedHeaderTVCell.h; sourceTree = "<group>"; };
+		FEA20EEF1E500FF400FAD315 /* XFNotLoginedHeaderTVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFNotLoginedHeaderTVCell.m; sourceTree = "<group>"; };
+		FEA20EF01E500FF400FAD315 /* XFNotLoginedHeaderTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XFNotLoginedHeaderTVCell.xib; sourceTree = "<group>"; };
 		FECDE5D91E07B3820083E11B /* CouponModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CouponModel.h; path = BuyVegetablesTreasure/Controllers/Payment/Model/CouponModel.h; sourceTree = SOURCE_ROOT; };
 		FECDE5DA1E07B3820083E11B /* CouponModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CouponModel.m; path = BuyVegetablesTreasure/Controllers/Payment/Model/CouponModel.m; sourceTree = SOURCE_ROOT; };
 		FECDE5E41E07B49D0083E11B /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapSearchKit.framework; sourceTree = "<group>"; };
@@ -6655,6 +6706,7 @@
 		FE17A8ED1E0D419700DC7949 /* Root */ = {
 			isa = PBXGroup;
 			children = (
+				FEA20E9A1E4DA3DC00FAD315 /* XFMe */,
 				FE17A8EE1E0D419700DC7949 /* Controller */,
 				FE17A8F11E0D419700DC7949 /* Model */,
 				FE17A8F41E0D419700DC7949 /* View */,
@@ -7047,40 +7099,11 @@
 		FE474DCE1E2C6F470005CD98 /* 查看物流 */ = {
 			isa = PBXGroup;
 			children = (
-				FE474DCF1E2C6F470005CD98 /* Controller */,
-				FE474DD01E2C6F470005CD98 /* Model */,
-				FE474DD11E2C6F470005CD98 /* View */,
+				FEA20EC71E4F3ADD00FAD315 /* Controller */,
+				FEA20ECB1E4F3ADD00FAD315 /* Model */,
+				FEA20ED01E4F3ADD00FAD315 /* View */,
 			);
 			path = "查看物流";
-			sourceTree = "<group>";
-		};
-		FE474DCF1E2C6F470005CD98 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				FE474DD21E2C766A0005CD98 /* FSViewExpressViewController.h */,
-				FE474DD31E2C766A0005CD98 /* FSViewExpressViewController.m */,
-				FE474DD41E2C766A0005CD98 /* FSViewExpressViewController.xib */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		FE474DD01E2C6F470005CD98 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		FE474DD11E2C6F470005CD98 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				FE474DDA1E2C8EC30005CD98 /* FSViewExpressFirstLineTVCell.h */,
-				FE474DDB1E2C8EC30005CD98 /* FSViewExpressFirstLineTVCell.m */,
-				FE474DDC1E2C8EC30005CD98 /* FSViewExpressFirstLineTVCell.xib */,
-				FE474DD71E2C8E5C0005CD98 /* FSViewExpressTimeLineTVCell.h */,
-				FE474DD81E2C8E5C0005CD98 /* FSViewExpressTimeLineTVCell.m */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		FE474DE31E2CB23E0005CD98 /* Vender */ = {
@@ -7209,6 +7232,68 @@
 				FE8256561E13B2170028D0F2 /* FSGroupBuyHelperViewController.xib */,
 			);
 			path = "拼团玩法";
+			sourceTree = "<group>";
+		};
+		FEA20E9A1E4DA3DC00FAD315 /* XFMe */ = {
+			isa = PBXGroup;
+			children = (
+				FEA20E951E4DA0C300FAD315 /* XFMeViewController.h */,
+				FEA20E961E4DA0C300FAD315 /* XFMeViewController.m */,
+				FEA20E971E4DA0C300FAD315 /* XFMeViewController.xib */,
+				FEA20E9B1E4DA40C00FAD315 /* XFMeHeaderTVCell.h */,
+				FEA20E9C1E4DA40C00FAD315 /* XFMeHeaderTVCell.m */,
+				FEA20E9D1E4DA40C00FAD315 /* XFMeHeaderTVCell.xib */,
+				FEA20EEE1E500FF400FAD315 /* XFNotLoginedHeaderTVCell.h */,
+				FEA20EEF1E500FF400FAD315 /* XFNotLoginedHeaderTVCell.m */,
+				FEA20EF01E500FF400FAD315 /* XFNotLoginedHeaderTVCell.xib */,
+				FEA20EA01E4DAE6500FAD315 /* XFMeMyOrderTVCell.h */,
+				FEA20EA11E4DAE6500FAD315 /* XFMeMyOrderTVCell.m */,
+				FEA20EA21E4DAE6500FAD315 /* XFMeMyOrderTVCell.xib */,
+				FEA20EE31E4F5F6600FAD315 /* XFMeVerticalButton.h */,
+				FEA20EE41E4F5F6600FAD315 /* XFMeVerticalButton.m */,
+				FEA20EE61E4F684F00FAD315 /* XFMeBottomTVCell.h */,
+				FEA20EE71E4F684F00FAD315 /* XFMeBottomTVCell.m */,
+				FEA20EE81E4F684F00FAD315 /* XFMeBottomTVCell.xib */,
+				FEA20EEB1E4F6E1C00FAD315 /* XFMeBottomVerticalButton.h */,
+				FEA20EEC1E4F6E1C00FAD315 /* XFMeBottomVerticalButton.m */,
+			);
+			path = XFMe;
+			sourceTree = "<group>";
+		};
+		FEA20EC71E4F3ADD00FAD315 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FEA20EC81E4F3ADD00FAD315 /* XFExpressDetailsViewController.h */,
+				FEA20EC91E4F3ADD00FAD315 /* XFExpressDetailsViewController.m */,
+				FEA20ECA1E4F3ADD00FAD315 /* XFExpressDetailsViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FEA20ECB1E4F3ADD00FAD315 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FEA20ECC1E4F3ADD00FAD315 /* XFExpress.h */,
+				FEA20ECD1E4F3ADD00FAD315 /* XFExpress.m */,
+				FEA20ECE1E4F3ADD00FAD315 /* XFExpressList.h */,
+				FEA20ECF1E4F3ADD00FAD315 /* XFExpressList.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FEA20ED01E4F3ADD00FAD315 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FEA20ED11E4F3ADD00FAD315 /* XFExpressDetailsFirstLineTVCell.h */,
+				FEA20ED21E4F3ADD00FAD315 /* XFExpressDetailsFirstLineTVCell.m */,
+				FEA20ED31E4F3ADD00FAD315 /* XFExpressDetailsFirstLineTVCell.xib */,
+				FEA20ED41E4F3ADD00FAD315 /* XFExpressDetailsTimeLineTVCell.h */,
+				FEA20ED51E4F3ADD00FAD315 /* XFExpressDetailsTimeLineTVCell.m */,
+				FE8CEF951E5147E100779B5F /* XFExpressNoDataTVCell.h */,
+				FE8CEF961E5147E100779B5F /* XFExpressNoDataTVCell.m */,
+				FE8CEF971E5147E100779B5F /* XFExpressNoDataTVCell.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		FECDE5E31E07B49D0083E11B /* 高德 */ = {
@@ -7503,6 +7588,8 @@
 		FECDE6411E07C2C70083E11B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				FEA20EE01E4F3B4F00FAD315 /* XFViewController.h */,
+				FEA20EE11E4F3B4F00FAD315 /* XFViewController.m */,
 				FECDE6421E07C2C70083E11B /* FSBaseNavigationController.h */,
 				FECDE6431E07C2C70083E11B /* FSBaseNavigationController.m */,
 				FECDE6441E07C2C70083E11B /* FSBaseTabBarController.h */,
@@ -7522,6 +7609,8 @@
 		FECDE6481E07C2C70083E11B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FEA20EDD1E4F3B2E00FAD315 /* XFModel.h */,
+				FEA20EDE1E4F3B2E00FAD315 /* XFModel.m */,
 				FECDE6491E07C2C70083E11B /* FSBaseModel.h */,
 				FECDE64A1E07C2C70083E11B /* FSBaseModel.m */,
 			);
@@ -7545,6 +7634,8 @@
 		FECDE64D1E07C2C70083E11B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FEA20EC11E4EC03500FAD315 /* XFTableViewCell.h */,
+				FEA20EC21E4EC03500FAD315 /* XFTableViewCell.m */,
 				FECDE64E1E07C2C70083E11B /* FSBaseCollectionView.h */,
 				FECDE64F1E07C2C70083E11B /* FSBaseCollectionView.m */,
 				FECDE6501E07C2C70083E11B /* FSBaseCVCell.h */,
@@ -8493,7 +8584,6 @@
 				0C77305C1CE1C252005EB107 /* 优惠券-右@3x.png in Resources */,
 				0C961B5C1D9CAC27000B6AF6 /* 余额付款@3x.png in Resources */,
 				5260250D1C98F19900E452C9 /* 新品Icon.png in Resources */,
-				FE474DD61E2C766A0005CD98 /* FSViewExpressViewController.xib in Resources */,
 				FE843AA31E1622E600528DBB /* 无数据@3x.png in Resources */,
 				0CC11CB01CB4F6D500E1E789 /* 小椭圆@2x.png in Resources */,
 				0C9D60641CE07DB8002362C0 /* 登陆-未勾选.png in Resources */,
@@ -8525,7 +8615,6 @@
 				520354691C76B33000BD6F63 /* 图层-people@3x.png in Resources */,
 				522452671CABBF5A00CBC780 /* 收货-地标@2x.png in Resources */,
 				0CCC49F31D780B10009CFBB0 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
-				FE474DDE1E2C8EC30005CD98 /* FSViewExpressFirstLineTVCell.xib in Resources */,
 				0CAFF79F1CB6227B006C1900 /* 已支付-圆.png in Resources */,
 				E4FF92E01CC9BB1C009E4B8F /* Myorder_所有订单.png in Resources */,
 				0988682F1BCF4CBB0068FB84 /* 购物车@2x.png in Resources */,
@@ -8647,6 +8736,7 @@
 				528F39C21BEAFA4700A872CC /* SearchListCell.xib in Resources */,
 				BCE1732C1BDF26230022C458 /* shake_anim.gif in Resources */,
 				0CAFF7A21CB6227B006C1900 /* 待支付-圆.png in Resources */,
+				FEA20EEA1E4F684F00FAD315 /* XFMeBottomTVCell.xib in Resources */,
 				0CAA8BDE1CC6010100523A9A /* 地址管理@3x.png in Resources */,
 				FE8256601E13CDFE0028D0F2 /* 选择支付方式图标@3x.png in Resources */,
 				0C77305F1CE1C252005EB107 /* 优惠券-左@3x.png in Resources */,
@@ -8670,6 +8760,7 @@
 				0C625EFE1CC4BEAD0052181A /* 减号@3x.png in Resources */,
 				E4F415CE1D2DF081000CF65E /* watch_sao_kuang@3x.png in Resources */,
 				0C6442F91CD327E200354A2A /* kr-video-player-pause@2x.png in Resources */,
+				FE8CEF991E5147E100779B5F /* XFExpressNoDataTVCell.xib in Resources */,
 				FE17A9961E12536000DC7949 /* FSGroupBuyDetailsViewController.xib in Resources */,
 				0C6442FC1CD327E200354A2A /* kr-video-player-play@3x.png in Resources */,
 				098867EB1BCF34D90068FB84 /* 首页2@2x.png in Resources */,
@@ -8698,6 +8789,7 @@
 				0CC11CB61CB50F8800E1E789 /* 拼团失败图标@2x.png in Resources */,
 				FE8256671E13CECD0028D0F2 /* Payment@2x.png in Resources */,
 				5284308C1BCF6ED2006905AA /* 支付宝图标@3x.png in Resources */,
+				FEA20E991E4DA0C300FAD315 /* XFMeViewController.xib in Resources */,
 				0CAA8BD01CC5FBE200523A9A /* 我的拼团.png in Resources */,
 				0C7FEC761D01707C001E469B /* CouponsDetails_Right@3x.png in Resources */,
 				E4FF92C81CC9BB1C009E4B8F /* Myorder_待付款-灰色.png in Resources */,
@@ -8771,6 +8863,7 @@
 				0C82E35E1CD2FE38007DF40F /* 收藏灰色@2x.png in Resources */,
 				0CBA54A91DE7D47C00378911 /* Invoice@2x.png in Resources */,
 				0CCC49F01D780B10009CFBB0 /* UMSocialSDKResourcesNew.bundle in Resources */,
+				FEA20EDB1E4F3ADD00FAD315 /* XFExpressDetailsFirstLineTVCell.xib in Resources */,
 				098867ED1BCF34D90068FB84 /* 首页@2x.png in Resources */,
 				0CA8CC5A1D9E0D3300BFFE35 /* Order_Stars@3x.png in Resources */,
 				526024CE1C98F19900E452C9 /* 促销Icon.png in Resources */,
@@ -8785,6 +8878,7 @@
 				5203546E1C76B33000BD6F63 /* 拼团-图标@3x.png in Resources */,
 				FE82566B1E13CEF80028D0F2 /* TakingGoods@2X.png in Resources */,
 				0C82E33D1CD2F078007DF40F /* love@3x.png in Resources */,
+				FEA20EA41E4DAE6500FAD315 /* XFMeMyOrderTVCell.xib in Resources */,
 				0CBA54B51DE7D47C00378911 /* WeChat.png in Resources */,
 				0CAFF7BF1CB6443C006C1900 /* 提交-选中@3x.png in Resources */,
 				FE17A9011E0D419700DC7949 /* FSMeBottomView.xib in Resources */,
@@ -8852,6 +8946,7 @@
 				0CAA8BD11CC5FBE200523A9A /* 我的拼团@2x.png in Resources */,
 				5203547A1C76B33000BD6F63 /* 箭头@3x.png in Resources */,
 				0C625F121CC4C3DD0052181A /* 地址@3x.png in Resources */,
+				FEA20E9F1E4DA40C00FAD315 /* XFMeHeaderTVCell.xib in Resources */,
 				FE843A931E1604FB00528DBB /* 选中背景@2x.png in Resources */,
 				098867E41BCF34D90068FB84 /* 我的图标2@3x.png in Resources */,
 				0CAFF7A11CB6227B006C1900 /* 已支付-圆@3x.png in Resources */,
@@ -8870,6 +8965,7 @@
 				098CB92D1BD0A1AA00418FD8 /* lock-拷贝@2x.png in Resources */,
 				0C6442FA1CD327E200354A2A /* kr-video-player-pause@3x.png in Resources */,
 				FE82565F1E13CDFE0028D0F2 /* 选择支付方式图标@2x.png in Resources */,
+				FEA20EF21E500FF400FAD315 /* XFNotLoginedHeaderTVCell.xib in Resources */,
 				520354741C76B33000BD6F63 /* 椭圆-people@3x.png in Resources */,
 				FE843AA91E16429E00528DBB /* FSNetErrorView.xib in Resources */,
 				2ACFF10E1CB4B7E8008783E3 /* 不通过@3x.png in Resources */,
@@ -8968,6 +9064,7 @@
 				5203547E1C76B33000BD6F63 /* 选心仪高品@3x.png in Resources */,
 				0C9D605A1CE07DB8002362C0 /* 登陆-密码@3x.png in Resources */,
 				2B8B64451BFB1E84004D1AC6 /* 1136启动页3.png in Resources */,
+				FEA20ED71E4F3ADD00FAD315 /* XFExpressDetailsViewController.xib in Resources */,
 				0CB2B4691CE2E9BB00E8F0BB /* 匿名未勾选.png in Resources */,
 				0C625F161CC4C3DD0052181A /* 地址展开.png in Resources */,
 				09B2BE6F1BDDB4C100716B27 /* 组-2@3x.png in Resources */,
@@ -9105,11 +9202,13 @@
 				FE17A9501E0D430F00DC7949 /* FSHelpModel.m in Sources */,
 				0C9CEB8A1CD8379900F0DCCB /* CollectView.m in Sources */,
 				E40D23121C434CA100DC47C6 /* UIScrollView+MJExtension.m in Sources */,
+				FEA20ED91E4F3ADD00FAD315 /* XFExpressList.m in Sources */,
 				0CFE33311DC19CCA00F19494 /* UIView+SDExtension.m in Sources */,
 				0C7730661CE1CF27005EB107 /* CookingProgramListModel.m in Sources */,
 				0C5B07E21CCF528F009528F1 /* CookingProgramView.m in Sources */,
 				E40D23051C434CA100DC47C6 /* MJRefreshFooter.m in Sources */,
 				0C6B3DAD1CC764B6008193C8 /* CommodityTableView.m in Sources */,
+				FEA20EC31E4EC03500FAD315 /* XFTableViewCell.m in Sources */,
 				0CD36C2C1DF69FBC00D87671 /* MyCouponView.m in Sources */,
 				0C6442F21CD324DA00354A2A /* XSMediaPlayer.m in Sources */,
 				FECDE73A1E07C2C80083E11B /* FSSearchHeaderTitleView.m in Sources */,
@@ -9118,6 +9217,8 @@
 				E40D23041C434CA100DC47C6 /* MJRefreshComponent.m in Sources */,
 				E4E0FFA51CC7561500B9E603 /* RockViewController.m in Sources */,
 				FECDE71B1E07C2C80083E11B /* XFVerticalButton.m in Sources */,
+				FEA20EE91E4F684F00FAD315 /* XFMeBottomTVCell.m in Sources */,
+				FEA20EE51E4F5F6600FAD315 /* XFMeVerticalButton.m in Sources */,
 				E450F9ED1C44E9A600D74775 /* New&HotTableViewCell.m in Sources */,
 				0CF6665E1DACE10700EC66C6 /* MLGeolocation.m in Sources */,
 				E40D23031C434CA100DC47C6 /* MJRefreshBackFooter.m in Sources */,
@@ -9173,6 +9274,7 @@
 				0969DC2B1BCDFE1700D98273 /* SDWebImageDecoder.m in Sources */,
 				2BBC8BD01BF764B9000FF8D7 /* bitstream.c in Sources */,
 				0C630C9F1CC9F1FD00874A54 /* ShoppingCell.m in Sources */,
+				FEA20E981E4DA0C300FAD315 /* XFMeViewController.m in Sources */,
 				E4E000161CC78DB700B9E603 /* MyCollectModel.m in Sources */,
 				0CAFF7A81CB62D1D006C1900 /* PayGroupOrderTableView.m in Sources */,
 				FE17A9001E0D419700DC7949 /* FSMeBottomView.m in Sources */,
@@ -9186,11 +9288,13 @@
 				0C7730461CE17354005EB107 /* RegisterView.m in Sources */,
 				097A56001BF20A9600644E52 /* SureOrder.m in Sources */,
 				0CCC4B1B1D781B9F009CFBB0 /* IQToolbar.m in Sources */,
+				FEA20EE21E4F3B4F00FAD315 /* XFViewController.m in Sources */,
 				FECDE7241E07C2C80083E11B /* FSBaseView.m in Sources */,
 				0969DC291BCDFE1700D98273 /* SDImageCache.m in Sources */,
 				0CC0F5291CE5A65600F3D065 /* MobLoginView.m in Sources */,
 				0CFE332E1DC19CCA00F19494 /* TAPageControl.m in Sources */,
 				E4E0FFAD1CC7576300B9E603 /* MainView.m in Sources */,
+				FEA20EED1E4F6E1C00FAD315 /* XFMeBottomVerticalButton.m in Sources */,
 				0C961B611D9CAC27000B6AF6 /* PaymentTypeView.m in Sources */,
 				E40D230F1C434CA100DC47C6 /* MJRefreshStateHeader.m in Sources */,
 				0CC11CAB1CB4EF8F00E1E789 /* MemberInfoCell.m in Sources */,
@@ -9215,7 +9319,6 @@
 				0969DC2C1BCDFE1700D98273 /* SDWebImageDownloader.m in Sources */,
 				FECDE7A71E0A30E70083E11B /* FSShoppingCartTVFooterView.m in Sources */,
 				521E31821CB368DB00041F76 /* GropViewTableViewCell.m in Sources */,
-				FE474DD91E2C8E5C0005CD98 /* FSViewExpressTimeLineTVCell.m in Sources */,
 				E40D230B1C434CA100DC47C6 /* MJRefreshBackNormalFooter.m in Sources */,
 				FE17A94A1E0D430F00DC7949 /* FSMoreViewController.m in Sources */,
 				FECDE70D1E07C2C70083E11B /* UIButton+Create.m in Sources */,
@@ -9270,6 +9373,7 @@
 				0969DC321BCDFE1700D98273 /* UIImage+MultiFormat.m in Sources */,
 				098BF0D11BE8889D0017B425 /* SearchListViewController.m in Sources */,
 				FECDE78C1E07CE940083E11B /* AppDelegate+FS.m in Sources */,
+				FEA20EA31E4DAE6500FAD315 /* XFMeMyOrderTVCell.m in Sources */,
 				5218D1801C081E1D008992C8 /* GroupFootView.m in Sources */,
 				0C6442F31CD324DA00354A2A /* XSMediaPlayerMaskView.m in Sources */,
 				FE703EE61E247281005FD30B /* XFWaterWaveView.m in Sources */,
@@ -9349,6 +9453,7 @@
 				5295E81F1BF5BFB8009F6487 /* SearchModel.m in Sources */,
 				FECDE7321E07C2C80083E11B /* FSClassificationCVCell.m in Sources */,
 				527853171BCDF8E5005E4739 /* Utillity.m in Sources */,
+				FEA20EDA1E4F3ADD00FAD315 /* XFExpressDetailsFirstLineTVCell.m in Sources */,
 				52423BD11BE2130A00E5621C /* Emblem.m in Sources */,
 				FE17A9591E0D430F00DC7949 /* FSParentModel.m in Sources */,
 				0969DC181BCDFE1700D98273 /* MMProgressHUDWindow.m in Sources */,
@@ -9358,6 +9463,7 @@
 				FE17A94E1E0D430F00DC7949 /* FSHelptextViewController.m in Sources */,
 				0969DC6E1BCDFF6F00D98273 /* UIImage+category.m in Sources */,
 				E4818FEA1CC8B1E90081E06C /* PersonalDataViewController.m in Sources */,
+				FEA20E9E1E4DA40C00FAD315 /* XFMeHeaderTVCell.m in Sources */,
 				0CE82D061DB714D700F590C8 /* MyGroupModel.m in Sources */,
 				5290B4EA1BD787D5001E02AC /* ParentModel.m in Sources */,
 				FECDE7411E07C2C80083E11B /* FSCommodityCVCell.m in Sources */,
@@ -9369,6 +9475,7 @@
 				0969DC6A1BCDFF6F00D98273 /* NSString+category.m in Sources */,
 				5290B4E41BD78688001E02AC /* LeftClassModel.m in Sources */,
 				0C961B441D9CAAFA000B6AF6 /* MyOrderDetailsModel.m in Sources */,
+				FEA20ED81E4F3ADD00FAD315 /* XFExpress.m in Sources */,
 				0C77304C1CE1A9F5005EB107 /* HelptextViewController.m in Sources */,
 				E4E0FFA31CC7561500B9E603 /* ScanViewController.m in Sources */,
 				E4E0FFF31CC7881F00B9E603 /* MyOrderModel.m in Sources */,
@@ -9391,10 +9498,12 @@
 				0CBA54BB1DE7D47C00378911 /* CustomerInfoCell.m in Sources */,
 				0969DC2E1BCDFE1700D98273 /* SDWebImageManager.m in Sources */,
 				FE17A98E1E12361A00DC7949 /* XFStrikethroughLabel.m in Sources */,
+				FEA20EDF1E4F3B2E00FAD315 /* XFModel.m in Sources */,
 				528F39C11BEAFA4700A872CC /* SearchListCell.m in Sources */,
 				52438A651C9AAF70002661DF /* PopularityFooterView.m in Sources */,
 				FE474E381E2EFDF40005CD98 /* FSSegmentView.m in Sources */,
 				FE82564E1E1365CD0028D0F2 /* FSNewCommodityTVCell.m in Sources */,
+				FE8CEF981E5147E100779B5F /* XFExpressNoDataTVCell.m in Sources */,
 				0CF4FBBD1DEBCAAB0096D0DB /* AmountCell.m in Sources */,
 				FE17A9521E0D430F00DC7949 /* FSOpenPushViewController.m in Sources */,
 				FECDE79A1E09277E0083E11B /* UIScrollView+UITouch.m in Sources */,
@@ -9408,6 +9517,7 @@
 				096FD6A41BEC862600199E03 /* Product.m in Sources */,
 				0969DC191BCDFE1700D98273 /* MMRadialProgressView.m in Sources */,
 				E40D23071C434CA100DC47C6 /* MJRefreshAutoGifFooter.m in Sources */,
+				FEA20EF11E500FF400FAD315 /* XFNotLoginedHeaderTVCell.m in Sources */,
 				FECDE73F1E07C2C80083E11B /* FSHomeViewController.m in Sources */,
 				FE17A9681E10ACDD00DC7949 /* FSEmptyView.m in Sources */,
 				E4818F3C1CC8689A0081E06C /* PointRecordViewController.m in Sources */,
@@ -9422,11 +9532,9 @@
 				52D104F91BE99C9D00584B91 /* ShoppingCartModel.m in Sources */,
 				2BD89D5B1BE374B3004EF4A0 /* Address.m in Sources */,
 				0C7730421CE17341005EB107 /* RegisterViewController.m in Sources */,
-				FE474DDD1E2C8EC30005CD98 /* FSViewExpressFirstLineTVCell.m in Sources */,
 				0C6B3DB01CC764C3008193C8 /* CommodityTypeView.m in Sources */,
 				52438A621C9AAF70002661DF /* adTop_HeadView.m in Sources */,
 				0C625F281CC4E68A0052181A /* SelectCouponCell.m in Sources */,
-				FE474DD51E2C766A0005CD98 /* FSViewExpressViewController.m in Sources */,
 				0C961B461D9CAAFA000B6AF6 /* PaymentTimeCell.m in Sources */,
 				FE17A9571E0D430F00DC7949 /* FSMyCouponsViewController.m in Sources */,
 				09C394281BCE5B8D001420EB /* TeNavigationViewController.m in Sources */,
@@ -9442,6 +9550,7 @@
 				0CBA54C01DE7D47C00378911 /* DeliveryTimeView.m in Sources */,
 				0CF666571DACD3F700EC66C6 /* BuyerMessageCell.m in Sources */,
 				FECDE7B21E0A93940083E11B /* FSSearchResultTVCell.m in Sources */,
+				FEA20EDC1E4F3ADD00FAD315 /* XFExpressDetailsTimeLineTVCell.m in Sources */,
 				0969DC2A1BCDFE1700D98273 /* SDWebImageCompat.m in Sources */,
 				09FBBECA1C2136E500ED27C2 /* ShopCart.m in Sources */,
 				EBBEC3941E0E8D7100872E7A /* FSSelectDeliverySiteCell.m in Sources */,
@@ -9455,6 +9564,7 @@
 				0CF4FBB31DEBBEA00096D0DB /* AmountModel.m in Sources */,
 				FE17A94B1E0D430F00DC7949 /* FSSettingView.m in Sources */,
 				0CCC4B0F1D781B9F009CFBB0 /* IQNSArray+Sort.m in Sources */,
+				FEA20ED61E4F3ADD00FAD315 /* XFExpressDetailsViewController.m in Sources */,
 				E4818F501CC869D80081E06C /* RechargeRecordViewController.m in Sources */,
 				FECDE7301E07C2C80083E11B /* FSClassificationModel.m in Sources */,
 				528EA3E91BCF839300C23C0C /* AffirmPayment.m in Sources */,

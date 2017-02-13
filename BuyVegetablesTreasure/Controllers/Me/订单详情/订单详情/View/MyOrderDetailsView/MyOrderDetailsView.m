@@ -225,6 +225,14 @@
     OtherCell *cell = [tableView dequeueReusableCellWithIdentifier:@"OtherCell"];
     [cell setOrderModel:_orderDetailsModel indexPath:indexPath];
     [cell useCellFrameCacheWithIndexPath:indexPath tableView:tableView];
+    
+    cell.pushViewController = ^(UIViewController *viewController){
+        UIResponder *responder = [[self nextResponder] nextResponder];
+        if ([responder isKindOfClass:[UIViewController class]]) {
+            UIViewController *vc = (UIViewController *)responder;
+            [vc.navigationController pushViewController:viewController animated:YES];
+        }
+    };
     return cell;
 }
 

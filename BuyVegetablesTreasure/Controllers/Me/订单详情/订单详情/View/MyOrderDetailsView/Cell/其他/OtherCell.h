@@ -15,4 +15,9 @@
 
 - (void)setOrderModel:(MyOrderDetailsModel *)orderDetailsModel indexPath:(NSIndexPath *)indexPath;
 
+
+//@property (nonatomic) void(^viewExpressBlock)();
+
+@property (nonatomic) void(^pushViewController)(UIViewController *viewController);
+
 @end

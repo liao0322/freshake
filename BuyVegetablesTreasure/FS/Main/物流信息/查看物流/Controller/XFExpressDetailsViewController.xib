@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,9 +9,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FSViewExpressViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="XFExpressDetailsViewController">
             <connections>
-                <outlet property="tableView" destination="LfA-Ht-a1e" id="ebi-jf-hsR"/>
+                <outlet property="tableView" destination="app-2y-cOc" id="knT-0Z-R3v"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,21 +20,21 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="LfA-Ht-a1e">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="app-2y-cOc">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <connections>
-                        <outlet property="dataSource" destination="-1" id="4ZF-Oh-Ufv"/>
-                        <outlet property="delegate" destination="-1" id="uTC-Vb-EJ0"/>
+                        <outlet property="dataSource" destination="-1" id="wpa-Bv-7lz"/>
+                        <outlet property="delegate" destination="-1" id="sLW-tq-EeL"/>
                     </connections>
                 </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="LfA-Ht-a1e" secondAttribute="trailing" id="9qT-6H-NcD"/>
-                <constraint firstAttribute="bottom" secondItem="LfA-Ht-a1e" secondAttribute="bottom" id="LF1-Ms-G7V"/>
-                <constraint firstItem="LfA-Ht-a1e" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="oSg-fR-XOM"/>
-                <constraint firstItem="LfA-Ht-a1e" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="x7y-IC-zHK"/>
+                <constraint firstAttribute="bottom" secondItem="app-2y-cOc" secondAttribute="bottom" id="2gx-up-DRA"/>
+                <constraint firstItem="app-2y-cOc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Ewz-9M-JNZ"/>
+                <constraint firstItem="app-2y-cOc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="YSD-Xe-QG3"/>
+                <constraint firstAttribute="trailing" secondItem="app-2y-cOc" secondAttribute="trailing" id="sUW-XN-H5B"/>
             </constraints>
         </view>
     </objects>

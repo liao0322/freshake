@@ -10,4 +10,6 @@
 
 @interface XFVerticalButton : UIButton
 
+- (CGFloat)xf_height;
+
 @end

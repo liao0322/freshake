@@ -13,7 +13,7 @@
 
 
 // TEMP
-#import "FSViewExpressViewController.h"
+#import "XFExpressDetailsViewController.h"
 
 #define bg_Height 50
 
@@ -336,7 +336,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    FSViewExpressViewController *viewExpressVC = [FSViewExpressViewController new];
+    XFExpressDetailsViewController *viewExpressVC = [XFExpressDetailsViewController new];
     _goViewController(viewExpressVC);
     /*
     Order *model = _dataSource[indexPath.section];

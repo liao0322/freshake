@@ -10,7 +10,7 @@
 #import <AFNetworkActivityIndicatorManager.h>
 // #import "XFError.h"
 
-#define TIME_OUT_INTERVAL 3.0f
+#define TIME_OUT_INTERVAL 8.0f
 
 #define KEY_NET_ERROR_REASON        @"reason"
 #define KEY_NET_ERROR_MESSAGE       @"message"
@@ -71,7 +71,7 @@ static BOOL _isNetwork;
                            failure:(HttpRequestFailed)failure {
     
     AFHTTPSessionManager *manager = [self httpSessionManager];
-    manager.requestSerializer.timeoutInterval = 15.0f;
+    manager.requestSerializer.timeoutInterval = TIME_OUT_INTERVAL;
     
     return [manager GET:URL parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
         

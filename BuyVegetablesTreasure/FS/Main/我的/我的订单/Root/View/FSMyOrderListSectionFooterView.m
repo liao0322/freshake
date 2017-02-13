@@ -163,7 +163,7 @@
         }
     }
     
-    if ([model.status integerValue] == 2) {
+    if ([model.status integerValue] == 2 && [model.express_id integerValue] == 1) {
         [self.titles addObject:@"查看物流"];
     }
     
@@ -175,7 +175,9 @@
         if ([model.isContext isEqualToString:@"0"]) {
             [self.titles addObject:@"立即评价"];
         }
-        [self.titles addObject:@"查看物流"];
+        if ([model.express_id integerValue] == 1) {
+            [self.titles addObject:@"查看物流"];
+        }
     }
     
     

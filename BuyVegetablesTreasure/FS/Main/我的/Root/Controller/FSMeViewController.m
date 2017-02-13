@@ -71,7 +71,6 @@
         
         [self requestPoint];
         [self getCount];
-
     }
     else {
         [self getCount];
@@ -189,7 +188,6 @@
 #pragma mark 前往我的订单
 - (void)fsCenterView:(FSMeCenterView *)fsCenterView allOrderButtonClick:(UIButton *)sender {
     
-
     _uidString = [[NSUserDefaults standardUserDefaults] objectForKey:@"UID"];
     
     if (![Tools isBlankString:_uidString]) {
@@ -202,30 +200,6 @@
         FSNavigationController *navController = [[FSNavigationController alloc] initWithRootViewController:loginVC];
         [self presentViewController:navController animated:YES completion:nil];
     }
-
-
-    /*
-    _uidString = [[NSUserDefaults standardUserDefaults] objectForKey:@"UID"];
-    
-    if (![Tools isBlankString:_uidString]) {
-        MyOrderViewController *myOrderVC = [[MyOrderViewController alloc] init];
-        myOrderVC.Index = self.centerView.btnIndex;
-        NSLog(@"^^^^^^^^^^^&&&&&%ld", myOrderVC.Index);
-
-        self.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:myOrderVC animated:YES];
-        self.hidesBottomBarWhenPushed = NO;
-//        [self pushViewControllerWithVC:[MyOrderViewController new]];
-    }
-    else {
-        FSLoginViewController *loginVC = [[FSLoginViewController alloc] init];
-        
-        FSNavigationController *navController = [[FSNavigationController alloc] initWithRootViewController:loginVC];
-        [self presentViewController:navController animated:YES completion:nil];
-    }
-    */
-
-
 }
 
 

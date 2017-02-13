@@ -28,6 +28,7 @@
 #import "MJRefresh.h"
 #import "SDCycleScrollView.h"
 #import "UIImageView+WebCache.h"
+#import "UIButton+WebCache.h"
 
 //公共类和工具类
 #import "Public.h"
