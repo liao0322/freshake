@@ -7,6 +7,7 @@
 //
 
 #import "GoodsDetailCell.h"
+#import "LPLabel.h"
 
 @interface GoodsDetailCell ()
 
@@ -15,6 +16,8 @@
 @property (nonatomic, strong) UILabel *goodsIntroduce;
 @property (nonatomic, strong) UILabel *specialOfferContextLabel;
 @property (nonatomic, strong) UILabel *promotionLabel;
+@property (nonatomic, strong) UILabel *nomalSalePrice;
+@property (nonatomic, strong) LPLabel *markeSalePrice;
 
 @end
 
@@ -82,30 +85,57 @@
     .heightIs(50);
     
     // 价格
-    for (int i = 0; i < 2; i++) {
-        
-        UILabel *priceLabel = [UILabel new];
-        priceLabel.tag = i + 10;
-        priceLabel.textAlignment = NSTextAlignmentCenter;
-        [priceView addSubview:priceLabel];
-        
-        priceLabel.sd_layout
-        .topSpaceToView(priceView, 25 * i)
-        .heightIs(25)
-        .leftSpaceToView(priceView, 15)
-        .rightSpaceToView(priceView, 15);
-        
-        if (i == 0) {
-            
-            priceLabel.font = [UIFont systemFontOfSize:22];
-            priceLabel.textColor = [UIColor orangeColor];
-        }
-        else {
-            
-            priceLabel.font = [UIFont systemFontOfSize:14];
-            priceLabel.textColor = [UIColor lightGrayColor];
-        }
-    }
+    
+    _nomalSalePrice = [UILabel new];
+    _nomalSalePrice.textAlignment = NSTextAlignmentCenter;
+    _nomalSalePrice.font = [UIFont systemFontOfSize:22];
+    _nomalSalePrice.textColor = [UIColor orangeColor];
+    [priceView addSubview:_nomalSalePrice];
+
+    _nomalSalePrice.sd_layout
+    .topSpaceToView(priceView, 0)
+    .heightIs(25)
+    .leftSpaceToView(priceView, 15)
+    .rightSpaceToView(priceView, 15);
+    
+    _markeSalePrice = [LPLabel new];
+    _markeSalePrice.textAlignment = NSTextAlignmentCenter;
+    _markeSalePrice.font = [UIFont systemFontOfSize:14];
+    _markeSalePrice.strikeThroughColor = [UIColor lightGrayColor];
+    _markeSalePrice.textColor = [UIColor lightGrayColor];
+    [priceView addSubview:_markeSalePrice];
+    
+    _markeSalePrice.sd_layout
+    .topSpaceToView(priceView, 25)
+    .heightIs(25)
+    .leftSpaceToView(priceView, 15)
+    .rightSpaceToView(priceView, 15);
+
+    
+//    for (int i = 0; i < 2; i++) {
+//        
+//        UILabel *priceLabel = [UILabel new];
+//        priceLabel.tag = i + 10;
+//        priceLabel.textAlignment = NSTextAlignmentCenter;
+//        [priceView addSubview:priceLabel];
+//        
+//        priceLabel.sd_layout
+//        .topSpaceToView(priceView, 25 * i)
+//        .heightIs(25)
+//        .leftSpaceToView(priceView, 15)
+//        .rightSpaceToView(priceView, 15);
+//        
+//        if (i == 0) {
+//            
+//            priceLabel.font = [UIFont systemFontOfSize:22];
+//            priceLabel.textColor = [UIColor orangeColor];
+//        }
+//        else {
+//            
+//            priceLabel.font = [UIFont systemFontOfSize:14];
+//            priceLabel.textColor = [UIColor lightGrayColor];
+//        }
+//    }
     
     // 特价信息
     _specialOfferContextLabel = [UILabel new];
@@ -202,27 +232,24 @@
 - (void)setDetailsModel:(Pruduct *)detailsModel {
 
     // 商品价格
-    for (int i = 0; i < 2; i++) {
         
         NSRange range;
         UIFont *font;
         NSString *priceString;
-        UILabel *priceLabel = (UILabel *)[self viewWithTag:i + 10];
+//        UILabel *priceLabel = (UILabel *)[self viewWithTag:i + 10];
         
-        if (i == 0) {
-            priceString = [NSString stringWithFormat:@"¥ %.2f",[detailsModel.salePrice floatValue]];
-            range = NSMakeRange(2, priceString.length - 2);
-            font = [UIFont boldSystemFontOfSize:28];
+        
+        priceString = [NSString stringWithFormat:@"¥ %.2f",[detailsModel.salePrice floatValue]];
+        range = NSMakeRange(2, priceString.length - 2);
+        font = [UIFont boldSystemFontOfSize:28];
             
-            priceLabel.attributedText = [self setAttributedText:priceString
+        _nomalSalePrice.attributedText = [self setAttributedText:priceString
                                                            Font:font
-                                                          color:priceLabel.textColor
+                                                          color:_nomalSalePrice.textColor
                                                           range:range];
-        }
-        else {
-            priceLabel.text = [NSString stringWithFormat:@"会员价 ¥%.2f",[detailsModel.UserPrice floatValue]];
-        }
-    }
+      
+        _markeSalePrice.text = [NSString stringWithFormat:@"市场价 ¥%.2f",[detailsModel.UserPrice floatValue]];
+    
     
     // 商品图片
     if (detailsModel.albums.count > 0) {

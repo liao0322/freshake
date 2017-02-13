@@ -86,7 +86,18 @@
     self.minusButton.right = self.countLabel.x - 5;
     self.minusButton.bottom = self.plusButton.bottom;
     
+    CGRect rect = [_vipLabel.text boundingRectWithSize:CGSizeMake(10000, 10) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10]} context:nil];
     
+    CGRect frame = _vipLabel.frame;
+    frame.size.width = rect.size.width;
+    _vipLabel.frame = frame;
+    
+    [(UILabel *)[self viewWithTag:1000] removeFromSuperview];
+    UILabel *line = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, rect.size.width, 1)];
+    line.backgroundColor = [UIColor colorWithHexString:@"0x949596"];
+    line.tag = 1000;
+    [_vipLabel addSubview:line];
+
 }
 
 #pragma mark - Custom
@@ -132,7 +143,7 @@
     
     CGFloat price = [_model.salePrice floatValue];
     [self.priceLabel setText:[NSString stringWithFormat:@"￥%.1f", price]];
-    [self.vipLabel setText:[NSString stringWithFormat:@"(会员价)￥%@", _model.UserPrice]];
+    [self.vipLabel setText:[NSString stringWithFormat:@"市场价￥%@", _model.UserPrice]];
     
     [self.countLabel setText:_model.CartNum];
     

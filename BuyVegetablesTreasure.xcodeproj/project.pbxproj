@@ -806,6 +806,7 @@
 		E4FFE1CA1C25362300F943DF /* HelpModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E4FFE1C91C25362300F943DF /* HelpModel.m */; };
 		EBBEC3911E0E8D3E00872E7A /* FSMySiteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBBEC3901E0E8D3E00872E7A /* FSMySiteViewController.m */; };
 		EBBEC3941E0E8D7100872E7A /* FSSelectDeliverySiteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EBBEC3931E0E8D7100872E7A /* FSSelectDeliverySiteCell.m */; };
+		EBD663D81E51A76D0018F46B /* LPLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = EBD663D71E51A76D0018F46B /* LPLabel.m */; };
 		FCE22CB36A608AA4CE07090D /* libPods-BuyVegetablesTreasure.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C7075A81BE105AFB6D3C97C /* libPods-BuyVegetablesTreasure.a */; };
 		FE17A8FE1E0D419700DC7949 /* FSMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A8F01E0D419700DC7949 /* FSMeViewController.m */; };
 		FE17A8FF1E0D419700DC7949 /* FSMeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A8F31E0D419700DC7949 /* FSMeModel.m */; };
@@ -2265,6 +2266,8 @@
 		EBBEC3901E0E8D3E00872E7A /* FSMySiteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMySiteViewController.m; sourceTree = "<group>"; };
 		EBBEC3921E0E8D7100872E7A /* FSSelectDeliverySiteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSSelectDeliverySiteCell.h; sourceTree = "<group>"; };
 		EBBEC3931E0E8D7100872E7A /* FSSelectDeliverySiteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSSelectDeliverySiteCell.m; sourceTree = "<group>"; };
+		EBD663D61E51A76D0018F46B /* LPLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPLabel.h; sourceTree = "<group>"; };
+		EBD663D71E51A76D0018F46B /* LPLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPLabel.m; sourceTree = "<group>"; };
 		FE17A8EF1E0D419700DC7949 /* FSMeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMeViewController.h; sourceTree = "<group>"; };
 		FE17A8F01E0D419700DC7949 /* FSMeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMeViewController.m; sourceTree = "<group>"; };
 		FE17A8F21E0D419700DC7949 /* FSMeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMeModel.h; sourceTree = "<group>"; };
@@ -6703,6 +6706,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		EBD663D51E51A76D0018F46B /* LineLabel */ = {
+			isa = PBXGroup;
+			children = (
+				EBD663D61E51A76D0018F46B /* LPLabel.h */,
+				EBD663D71E51A76D0018F46B /* LPLabel.m */,
+			);
+			path = LineLabel;
+			sourceTree = "<group>";
+		};
 		FE17A8ED1E0D419700DC7949 /* Root */ = {
 			isa = PBXGroup;
 			children = (
@@ -7109,6 +7121,7 @@
 		FE474DE31E2CB23E0005CD98 /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				EBD663D51E51A76D0018F46B /* LineLabel */,
 				FE474DE41E2CB25C0005CD98 /* TTTAttributedLabel */,
 			);
 			path = Vender;
@@ -9404,6 +9417,7 @@
 				FECDE71D1E07C2C80083E11B /* FSBaseTabBarController.m in Sources */,
 				528EE1551BE33B3F003FCD93 /* NSString+MD5.m in Sources */,
 				FE8256571E13B2170028D0F2 /* FSGroupBuyHelperViewController.m in Sources */,
+				EBD663D81E51A76D0018F46B /* LPLabel.m in Sources */,
 				FE17A9891E12091400DC7949 /* FSGroupBuyTVCell.m in Sources */,
 				5239FFEF1CAA511300EFF539 /* BDMapViewController.m in Sources */,
 				E48522CA1CCA266D00E2A366 /* GoodsCartCell.m in Sources */,
