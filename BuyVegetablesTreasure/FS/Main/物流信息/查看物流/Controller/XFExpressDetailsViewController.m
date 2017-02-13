@@ -21,10 +21,10 @@
 @property (nonatomic) NSMutableArray *dataArray;
 
 @property (copy, nonatomic) NSString *originalNo;
-
 @property (nonatomic) XFExpress *express;
-
 @property (copy, nonatomic, readonly) NSDictionary *orderStatusDict;
+
+@property (assign, nonatomic) BOOL noExpress;
 
 @end
 
@@ -77,8 +77,12 @@ static CGFloat const EstimatedCellHeight = 100.0f;
         
         XFExpress *express = [XFExpress mj_objectWithKeyValues:dictData[@"result"][@"express"]];
         
-        if (dataArray) {
+        if (dataArray.count != 0) {
             self.dataArray = [dataArray mutableCopy];
+            self.noExpress = NO;
+        } else {
+            self.noExpress = YES;
+            [self.dataArray removeAllObjects];
         }
         if (express) {
             self.express = express;
@@ -86,6 +90,7 @@ static CGFloat const EstimatedCellHeight = 100.0f;
         
         [self.tableView reloadData];
     } failure:^(NSError *error, NSInteger statusCode) {
+        
     }];
 
 }
@@ -93,6 +98,7 @@ static CGFloat const EstimatedCellHeight = 100.0f;
 - (void)initialize {
     [super initialize];
     self.title = @"查看物流";
+    self.noExpress = NO;
     self.tableView.separatorInset = UIEdgeInsetsMake(0, MARGIN_LEFT, 0, 0);
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = EstimatedCellHeight;
@@ -106,7 +112,13 @@ static CGFloat const EstimatedCellHeight = 100.0f;
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    NSInteger sections = 2;
+    NSInteger sections = 0;
+    if (self.express) {
+        sections += 1;
+    }
+    if (self.dataArray.count || self.noExpress) {
+        sections += 1;
+    }
     return sections;
 }
 

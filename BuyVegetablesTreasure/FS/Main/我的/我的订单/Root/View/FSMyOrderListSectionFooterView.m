@@ -157,15 +157,17 @@
 
     [self.titles removeAllObjects];
     [self.titles addObject:@"订单详情"];
+    
     if ([model.status integerValue] == 1) {
         if ([model.payment_status integerValue] == 1) {
             [self.titles addObject:@"立即付款"];
         }
     }
-    
+    /*
     if ([model.status integerValue] == 2 && [model.express_id integerValue] == 1) {
         [self.titles addObject:@"查看物流"];
     }
+     */
     
     if ([model.status integerValue] == 3) {
         NSString *midString = [[NSUserDefaults standardUserDefaults] objectForKey:@"MID"];
@@ -175,9 +177,15 @@
         if ([model.isContext isEqualToString:@"0"]) {
             [self.titles addObject:@"立即评价"];
         }
+        /*
         if ([model.express_id integerValue] == 1) {
             [self.titles addObject:@"查看物流"];
         }
+         */
+    }
+    
+    if ([model.payment_status integerValue] != 1 && [model.express_id integerValue] == 1) {
+        [self.titles addObject:@"查看物流"];
     }
     
     
