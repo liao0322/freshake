@@ -291,4 +291,8 @@
 // 更新拼团支付方式
 #define UpdateActivityPayment_id LMMC(Path(@"UpdateActivityPayment_id&ActivityId=%@&Payment_id=%@"))
 
+
+// 确认收货
+#define ConfirmReceipt LMMC(Path(@"ReceiveOrder&user_id=%@&order_no=%@"))
+
 #endif

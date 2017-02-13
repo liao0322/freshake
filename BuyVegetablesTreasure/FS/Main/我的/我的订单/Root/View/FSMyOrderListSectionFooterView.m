@@ -188,6 +188,10 @@
         [self.titles addObject:@"查看物流"];
     }
     
+    if ([model.status integerValue] == 2) {
+        [self.titles addObject:@"确认收货"];
+    }
+    
     
     /* 10 立即评价 11 立即付款 12 订单详情
      
@@ -243,6 +247,10 @@
     } else if ([title isEqualToString:@"立即评价"]) {
         if (self.toCommentBlock) {
             self.toCommentBlock();
+        }
+    } else if ([title isEqualToString:@"确认收货"]) {
+        if (self.confirmReceiptBlock) {
+            self.confirmReceiptBlock();
         }
     }
     NSLog(@"%@", sender.currentTitle);

@@ -100,7 +100,6 @@
     self.strikethroughView.x = 0;
     self.strikethroughView.centerY = self.vipLabel.height * 0.5;
 
-
 }
 
 #pragma mark - Custom

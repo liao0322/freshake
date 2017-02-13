@@ -22,5 +22,6 @@ typedef void(^CancelOrderBlock)();
 @property (nonatomic) void(^viewExpressBlock)();
 @property (nonatomic) void(^buyAgainBlock)();
 @property (nonatomic) void(^toCommentBlock)();
+@property (nonatomic) void(^confirmReceiptBlock)();
 
 @end

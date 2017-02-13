@@ -9,6 +9,7 @@
 #import "MyOrderDetailsViewController.h"
 #import "MyOrderDetailsView.h"
 #import "PaymentTypeView.h"
+#import "MyOrderDetailsModel.h"
 
 @interface MyOrderDetailsViewController ()
 
@@ -19,6 +20,8 @@
 @property (nonatomic, strong) NSTimer *timer;
 // 选择支付类型
 @property (nonatomic, strong) PaymentTypeView *paymentTypeView;
+
+@property (nonatomic) MyOrderDetailsModel *model;
 
 @end
 
@@ -133,6 +136,7 @@
     _payBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     _payBtn.backgroundColor = [UIColor colorDomina];
     _payBtn.hidden = YES;
+
     [_payBtn setTitle:@"立即支付" forState:UIControlStateNormal];
     [_payBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [_payBtn addTarget:self action:@selector(goPay) forControlEvents:UIControlEventTouchUpInside];
@@ -147,8 +151,16 @@
 
 #pragma mark - 事件处理
 - (void)goPay {
-
-    _paymentTypeView.hidden = NO;
+    
+    if ([self.payBtn.currentTitle isEqualToString:@"确认收货"]) {
+        [XFNetworking GET:[NSString stringWithFormat:ConfirmReceipt, [[NSUserDefaults standardUserDefaults] objectForKey:@"UID"], self.model.order_no] parameters:nil success:^(id responseObject, NSInteger statusCode) {
+            self.payBtn.hidden = YES;
+            self.payBtn.sd_layout.heightIs(0);
+        } failure:^(NSError *error, NSInteger statusCode) {
+        }];
+    } else { // 支即支付
+        _paymentTypeView.hidden = NO;
+    }
 }
 
 #pragma mark - 请求
@@ -181,6 +193,7 @@
             MyOrderDetailsModel *orderDetailsModel = [[MyOrderDetailsModel alloc] init];
             [orderDetailsModel setValuesForKeysWithDictionary:data];
             self.orderDetailsView.orderDetailsModel = orderDetailsModel;
+            self.model = orderDetailsModel;
             
             // 订单状态
             NSInteger status = [orderDetailsModel.status intValue];
@@ -192,6 +205,10 @@
                 _payBtn.hidden = NO;
                 _payBtn.sd_layout.heightIs(45);
 
+            } else if (status == 2) {
+                _payBtn.hidden = NO;
+                [_payBtn setTitle:@"确认收货" forState:UIControlStateNormal];
+                _payBtn.sd_layout.heightIs(45);
             }
             else {
 

@@ -233,6 +233,16 @@ static NSString * const OrderListSectionFooterID = @"OrderListSectionFooterID";
         [self.navigationController pushViewController:publish animated:YES];
     };
     
+    footerView.confirmReceiptBlock = ^{
+        [XFNetworking GET:[NSString stringWithFormat:ConfirmReceipt, self.uidString, model.order_no] parameters:nil success:^(id responseObject, NSInteger statusCode) {
+            self.selectedIndex = 3;
+            [self.segmentView selectIndex:self.selectedIndex];
+            
+        } failure:^(NSError *error, NSInteger statusCode) {
+            [self showInfoWidthError:error];
+        }];
+    };
+    
     return footerView;
 }
 
