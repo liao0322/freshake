@@ -11,6 +11,12 @@
 #import "UIImage+Create.h"
 #import "UIButton+EnlargeEdge.h"
 
+@interface FSCommodityTVCell ()
+
+@property (nonatomic) UIView *strikethroughView;
+
+@end
+
 @implementation FSCommodityTVCell
 
 #pragma mark - LifeCycle
@@ -22,6 +28,8 @@
     
     [self.plusButton setEnlargeEdgeWithTop:10 right:5 bottom:10 left:5];
     [self.minusButton setEnlargeEdgeWithTop:10 right:5 bottom:10 left:5];
+    
+    [self.vipLabel addSubview:self.strikethroughView];
     
 }
 
@@ -86,17 +94,12 @@
     self.minusButton.right = self.countLabel.x - 5;
     self.minusButton.bottom = self.plusButton.bottom;
     
-    CGRect rect = [_vipLabel.text boundingRectWithSize:CGSizeMake(10000, 10) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10]} context:nil];
-    
-    CGRect frame = _vipLabel.frame;
-    frame.size.width = rect.size.width;
-    _vipLabel.frame = frame;
-    
-    [(UILabel *)[self viewWithTag:1000] removeFromSuperview];
-    UILabel *line = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, rect.size.width, 1)];
-    line.backgroundColor = [UIColor colorWithHexString:@"0x949596"];
-    line.tag = 1000;
-    [_vipLabel addSubview:line];
+    // 中删线
+    self.strikethroughView.width = self.vipLabel.width;
+    self.strikethroughView.height = 1;
+    self.strikethroughView.x = 0;
+    self.strikethroughView.centerY = self.vipLabel.height * 0.5;
+
 
 }
 
@@ -147,6 +150,14 @@
     
     [self.countLabel setText:_model.CartNum];
     
+}
+
+- (UIView *)strikethroughView {
+    if (!_strikethroughView) {
+        _strikethroughView = [UIView new];
+        _strikethroughView.backgroundColor = [UIColor colorWithHexString:@"0x949596"];
+    }
+    return _strikethroughView;
 }
 
 @end
