@@ -112,7 +112,7 @@
         self.stateLabel.text = @"";
         self.imageView.image = IMAGE(@"FSOrderDetail送货上门");
         
-        if ([orderDetailsModel.express_id intValue] == 1) {
+        if ([orderDetailsModel.express_id intValue] == 1 && [orderDetailsModel.status intValue] != 4) {
             self.stateLabel.text = @"查看物流";
             self.stateLabel.textColor = [UIColor colorDomina];
             self.stateLabel.userInteractionEnabled = YES;
