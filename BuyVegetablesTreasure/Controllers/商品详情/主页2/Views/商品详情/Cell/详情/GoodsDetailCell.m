@@ -248,7 +248,7 @@
                                                           color:_nomalSalePrice.textColor
                                                           range:range];
       
-        _markeSalePrice.text = [NSString stringWithFormat:@"市场价 ¥%.2f",[detailsModel.UserPrice floatValue]];
+        _markeSalePrice.text = [NSString stringWithFormat:@"市场价 ¥%.2f",[detailsModel.marketPrice floatValue]];
     
     
     // 商品图片

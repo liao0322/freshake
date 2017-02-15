@@ -48,7 +48,7 @@
     else {
         
         // 刷新提货点
-        if (_segmented.selectedSegmentIndex == 0) [self getMStore];
+        if (_segmented.selectedSegmentIndex == 1) [self getMStore];
         // 刷新取货地址
         else [self getUserAddressList];
     }
@@ -126,7 +126,7 @@
     // 开启了配送和自提
     if (_deliveryStatus && _distributionStatus) {
         
-        _segmented = [[UISegmentedControl alloc] initWithItems:@[@"店铺自提",@"送货上门"]];
+        _segmented = [[UISegmentedControl alloc] initWithItems:@[@"送货上门", @"店铺自提"]];
         _segmented.selectedSegmentIndex = 0;
         _segmented.tintColor = [UIColor colorDomina];
         [_segmented addTarget:self action:@selector(valueChange:) forControlEvents:UIControlEventValueChanged];
@@ -157,7 +157,7 @@
 // 选择送货类型
 - (void)valueChange:(UISegmentedControl *)segment {
     
-    if (segment.selectedSegmentIndex == 1) {
+    if (segment.selectedSegmentIndex == 0) {
         
         [self getUserAddressList];
         self.navigationItem.rightBarButtonItem = [UIFactory createImageBBI:[IMAGE(@"addAddress") imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] WithTarget:self action:@selector(goAddress)];

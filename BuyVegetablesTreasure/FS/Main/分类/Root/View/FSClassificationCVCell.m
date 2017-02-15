@@ -31,6 +31,7 @@
     }
 
     [self.titleLabel sizeToFit];
+    self.titleLabel.width = self.width;
     self.titleLabel.centerX = self.imageView.centerX;
     self.titleLabel.y = self.imageView.bottom + 5;
 }

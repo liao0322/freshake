@@ -92,7 +92,11 @@ static CGFloat const EstimatedCellHeight = 100.0f;
     } failure:^(NSError *error, NSInteger statusCode) {
         
     }];
+}
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
 }
 
 - (void)initialize {

@@ -145,7 +145,7 @@
     
     CGFloat price = [_model.salePrice floatValue];
     [self.priceLabel setText:[NSString stringWithFormat:@"￥%.1f", price]];
-    [self.vipLabel setText:[NSString stringWithFormat:@"市场价￥%@", _model.UserPrice]];
+    [self.vipLabel setText:[NSString stringWithFormat:@"市场价￥%@", _model.marketPrice]];
     
     [self.countLabel setText:_model.CartNum];
     

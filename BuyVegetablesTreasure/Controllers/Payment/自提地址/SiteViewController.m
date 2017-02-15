@@ -61,7 +61,7 @@
 
     if (_isDistribution && _isDelivery) {
         
-        _segmented = [[UISegmentedControl alloc] initWithItems:@[@"店铺自提",@"送货上门"]];
+        _segmented = [[UISegmentedControl alloc] initWithItems:@[@"送货上门", @"店铺自提"]];
         _segmented.selectedSegmentIndex = 0;
         _segmented.tintColor = [UIColor colorDomina];
         [_segmented addTarget:self action:@selector(valueChange:) forControlEvents:UIControlEventValueChanged];
@@ -123,10 +123,10 @@
 #pragma mark 选择送货类型
 - (void)valueChange:(UISegmentedControl *)segment {
     
-    _userSiteView.hidden = !segment.selectedSegmentIndex;
-    _selectStoreDeliveryView.hidden = segment.selectedSegmentIndex;
+    _userSiteView.hidden = segment.selectedSegmentIndex;
+    _selectStoreDeliveryView.hidden = !segment.selectedSegmentIndex;
     
-    if (segment.selectedSegmentIndex == 0) {
+    if (segment.selectedSegmentIndex == 1) {
         [self requestDataFromNet];
     }
     else {

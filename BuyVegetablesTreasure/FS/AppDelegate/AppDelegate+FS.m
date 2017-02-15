@@ -167,6 +167,10 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
         [JPUSHService handleRemoteNotification:userInfo];
     }
+    
+    UITabBarController *tbvc = self.window.rootViewController;
+    tbvc.selectedIndex = 0;
+    
     completionHandler();  // 系统要求执行这个方法
 }
 

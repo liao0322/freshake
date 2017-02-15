@@ -85,13 +85,17 @@ static NSString * const OrderListSectionFooterID = @"OrderListSectionFooterID";
     [super initialization];
     self.title = @"我的订单";
     
-    [self.segmentView selectIndex:self.selectedIndex];
+    
     
     // table view init
     self.tableView.contentInset = UIEdgeInsetsMake(SEGMENT_VIEW_HEIGHT, 0, 0, 0);
     self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(SEGMENT_VIEW_HEIGHT, 0, 0, 0);
     self.tableView.separatorInset = UIEdgeInsetsMake(0, -10, 0, 0);
     self.tableView.mj_header = self.normalHeader;
+}
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.segmentView selectIndex:self.selectedIndex];
 }
 
 - (void)addSubviews {
@@ -139,12 +143,13 @@ static NSString * const OrderListSectionFooterID = @"OrderListSectionFooterID";
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 125.0f;
-}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 60.0f;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 125.0f;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {

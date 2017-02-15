@@ -10,9 +10,10 @@
 #import "OtherCell.h"
 #import "QrCodeView.h"
 #import "OrderAddressCell.h"
-#import "MyOrderGoodsCell.h"
+//#import "MyOrderGoodsCell.h"
 #import "PaymentTimeCell.h"
 #import "OderDetailsEvaluationCell.h"
+#import "FSMyOrderListTVCell.h"
 
 #define GetUserId [[NSUserDefaults standardUserDefaults] objectForKey:@"UID"]
 
@@ -47,7 +48,9 @@
     _tableView.tableFooterView = [[UIView alloc] init];
     [_tableView registerClass:[OtherCell class] forCellReuseIdentifier:@"OtherCell"];
     [_tableView registerClass:[OrderAddressCell class] forCellReuseIdentifier:@"OrderAddressCell"];
-    [_tableView registerClass:[MyOrderGoodsCell class] forCellReuseIdentifier:@"MyOrderGoodsCell"];
+    
+    [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([FSMyOrderListTVCell class]) bundle:nil] forCellReuseIdentifier:@"FSMyOrderListTVCell"];
+    
     [_tableView registerClass:[OderDetailsEvaluationCell class] forCellReuseIdentifier:@"OderDetailsEvaluationCell"];
     [_tableView registerClass:[PaymentTimeCell class] forCellReuseIdentifier:@"PaymentTimeCell"];
     [self addSubview:_tableView];
@@ -206,11 +209,23 @@
     // 商品
     else if (indexPath.section == 2) {
         
+        FSMyOrderListTVCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FSMyOrderListTVCell" forIndexPath:indexPath];
+        
+        // 分隔线
+        UIView *separatorLine = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 0.5)];
+        separatorLine.backgroundColor = [UIColor colorViewBG];
+        [cell addSubview:separatorLine];
+        
+        cell.dict = self.orderDetailsModel.list[indexPath.row];
+        
+//        [cell useCellFrameCacheWithIndexPath:indexPath tableView:tableView];
+        
+        /*
         MyOrderGoodsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyOrderGoodsCell"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [cell setModel:_orderDetailsModel.list[indexPath.row]];
-        NSLog(@"%@", _orderDetailsModel.list[indexPath.row]);
         [cell useCellFrameCacheWithIndexPath:indexPath tableView:tableView];
+         */
         return cell;
     }
     // 评价
@@ -260,7 +275,7 @@
     }
     // 商品
     else if (indexPath.section == 2) {
-        return 100;
+        return 125;
     }
     // 评价
     else if (indexPath.section == 6 && indexPath.row > 0) {
