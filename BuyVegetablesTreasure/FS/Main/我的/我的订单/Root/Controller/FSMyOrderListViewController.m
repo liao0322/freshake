@@ -20,6 +20,7 @@
 #import "ShopCart.h"
 //#import "FSViewExpressViewController.h"
 #import "XFExpressDetailsViewController.h"
+#import "XFMeViewController.h"
 
 #define SEGMENT_VIEW_HEIGHT 45.0f
 
@@ -61,6 +62,20 @@ static NSString * const OrderListSectionFooterID = @"OrderListSectionFooterID";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    /*
+    NSMutableArray *array = [self.navigationController.viewControllers mutableCopy];
+    UIViewController *viewController = [array objectAtIndex:0];
+    if (![viewController isKindOfClass:[XFMeViewController class]]) {
+        
+        for (int i = 0; i < array.count; i++) {
+            if (i != 0) {
+                [array removeObjectAtIndex:i];
+            }
+        }
+    }
+    [self.navigationController setViewControllers:array animated:YES];
+     */
 
 }
 
@@ -85,14 +100,13 @@ static NSString * const OrderListSectionFooterID = @"OrderListSectionFooterID";
     [super initialization];
     self.title = @"我的订单";
     
-    
-    
     // table view init
     self.tableView.contentInset = UIEdgeInsetsMake(SEGMENT_VIEW_HEIGHT, 0, 0, 0);
     self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(SEGMENT_VIEW_HEIGHT, 0, 0, 0);
     self.tableView.separatorInset = UIEdgeInsetsMake(0, -10, 0, 0);
     self.tableView.mj_header = self.normalHeader;
 }
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.segmentView selectIndex:self.selectedIndex];

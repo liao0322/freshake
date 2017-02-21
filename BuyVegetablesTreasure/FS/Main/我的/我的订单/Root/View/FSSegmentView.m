@@ -87,9 +87,6 @@
 }
 
 - (void)itemTouchUpInside:(XFNoHighlightButton *)sender {
-//    if (sender == self.selectedButton) {
-//        return;
-//    }
     
     sender.selected = YES;
     if (self.selectedButton) {

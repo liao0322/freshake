@@ -59,7 +59,19 @@ static CGFloat const EstimatedCellHeight = 100.0f;
                                      @"syscode": @"001"
                                      };
     
-    [XFNetworking GET:@"http://122.144.136.72:8090/ordercenter/ocapi/queryOrderExpress" parameters:parametersDict success:^(id responseObject, NSInteger statusCode) {
+    NSString *domainString = @"";
+    
+#if HTTP_TEST_TYPE == 0
+    
+    domainString = @"http://122.144.136.72:8090/ordercenter/ocapi/";
+    
+#elif HTTP_TEST_TYPE == 1
+    domainString = @"http://oc.freshake.cn:8080/ocapi/";
+
+#endif
+    NSString *urlString = [NSString stringWithFormat:@"%@%@", domainString, @"queryOrderExpress"];
+
+    [XFNetworking GET:urlString parameters:parametersDict success:^(id responseObject, NSInteger statusCode) {
         if (statusCode != 200) {
             return;
         }
@@ -189,7 +201,7 @@ static CGFloat const EstimatedCellHeight = 100.0f;
 - (NSDictionary *)orderStatusDict {
     return @{
              @"001": @"处理中",
-             @"002": @"处理中",
+             @"002": @"已支付",
              @"003": @"已分仓",
              @"004": @"已确认",
              @"005": @"已分拣",
@@ -197,7 +209,7 @@ static CGFloat const EstimatedCellHeight = 100.0f;
              @"007": @"已出库",
              @"008": @"已发货",
              @"009": @"已完成",
-             @"010": @"已撤单"
+             @"010": @"已取消"
              };
 }
 
