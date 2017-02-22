@@ -807,6 +807,13 @@
 		EBBEC3911E0E8D3E00872E7A /* FSMySiteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBBEC3901E0E8D3E00872E7A /* FSMySiteViewController.m */; };
 		EBBEC3941E0E8D7100872E7A /* FSSelectDeliverySiteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EBBEC3931E0E8D7100872E7A /* FSSelectDeliverySiteCell.m */; };
 		EBD663D81E51A76D0018F46B /* LPLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = EBD663D71E51A76D0018F46B /* LPLabel.m */; };
+		EBEDEBDC1E5D8F2800A9EFA4 /* FSGiftCardProblemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBEDEBDA1E5D8F2800A9EFA4 /* FSGiftCardProblemViewController.m */; };
+		EBEDEBDD1E5D8F2800A9EFA4 /* FSGiftCardProblemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBEDEBDB1E5D8F2800A9EFA4 /* FSGiftCardProblemViewController.xib */; };
+		EBEDEBE01E5D9B8000A9EFA4 /* FSGiftCardExplainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBEDEBDF1E5D9B8000A9EFA4 /* FSGiftCardExplainViewController.m */; };
+		EBF655701E5C266F002328B2 /* FSGiftCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF6556E1E5C266F002328B2 /* FSGiftCardViewController.m */; };
+		EBF655711E5C266F002328B2 /* FSGiftCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBF6556F1E5C266F002328B2 /* FSGiftCardViewController.xib */; };
+		EBF655751E5C47D2002328B2 /* FSGetGiftCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF655731E5C47D2002328B2 /* FSGetGiftCardViewController.m */; };
+		EBF655761E5C47D2002328B2 /* FSGetGiftCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBF655741E5C47D2002328B2 /* FSGetGiftCardViewController.xib */; };
 		FCE22CB36A608AA4CE07090D /* libPods-BuyVegetablesTreasure.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C7075A81BE105AFB6D3C97C /* libPods-BuyVegetablesTreasure.a */; };
 		FE17A8FE1E0D419700DC7949 /* FSMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A8F01E0D419700DC7949 /* FSMeViewController.m */; };
 		FE17A8FF1E0D419700DC7949 /* FSMeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A8F31E0D419700DC7949 /* FSMeModel.m */; };
@@ -2268,6 +2275,17 @@
 		EBBEC3931E0E8D7100872E7A /* FSSelectDeliverySiteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSSelectDeliverySiteCell.m; sourceTree = "<group>"; };
 		EBD663D61E51A76D0018F46B /* LPLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPLabel.h; sourceTree = "<group>"; };
 		EBD663D71E51A76D0018F46B /* LPLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPLabel.m; sourceTree = "<group>"; };
+		EBEDEBD91E5D8F2800A9EFA4 /* FSGiftCardProblemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSGiftCardProblemViewController.h; sourceTree = "<group>"; };
+		EBEDEBDA1E5D8F2800A9EFA4 /* FSGiftCardProblemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSGiftCardProblemViewController.m; sourceTree = "<group>"; };
+		EBEDEBDB1E5D8F2800A9EFA4 /* FSGiftCardProblemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSGiftCardProblemViewController.xib; sourceTree = "<group>"; };
+		EBEDEBDE1E5D9B8000A9EFA4 /* FSGiftCardExplainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSGiftCardExplainViewController.h; sourceTree = "<group>"; };
+		EBEDEBDF1E5D9B8000A9EFA4 /* FSGiftCardExplainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSGiftCardExplainViewController.m; sourceTree = "<group>"; };
+		EBF6556D1E5C266F002328B2 /* FSGiftCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSGiftCardViewController.h; sourceTree = "<group>"; };
+		EBF6556E1E5C266F002328B2 /* FSGiftCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSGiftCardViewController.m; sourceTree = "<group>"; };
+		EBF6556F1E5C266F002328B2 /* FSGiftCardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSGiftCardViewController.xib; sourceTree = "<group>"; };
+		EBF655721E5C47D2002328B2 /* FSGetGiftCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSGetGiftCardViewController.h; sourceTree = "<group>"; };
+		EBF655731E5C47D2002328B2 /* FSGetGiftCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSGetGiftCardViewController.m; sourceTree = "<group>"; };
+		EBF655741E5C47D2002328B2 /* FSGetGiftCardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSGetGiftCardViewController.xib; sourceTree = "<group>"; };
 		FE17A8EF1E0D419700DC7949 /* FSMeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMeViewController.h; sourceTree = "<group>"; };
 		FE17A8F01E0D419700DC7949 /* FSMeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMeViewController.m; sourceTree = "<group>"; };
 		FE17A8F21E0D419700DC7949 /* FSMeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMeModel.h; sourceTree = "<group>"; };
@@ -6715,6 +6733,48 @@
 			path = LineLabel;
 			sourceTree = "<group>";
 		};
+		EBF655691E5C2651002328B2 /* 礼品卡 */ = {
+			isa = PBXGroup;
+			children = (
+				EBF6556A1E5C2651002328B2 /* Controller */,
+				EBF6556B1E5C2651002328B2 /* Model */,
+				EBF6556C1E5C2651002328B2 /* View */,
+			);
+			path = "礼品卡";
+			sourceTree = "<group>";
+		};
+		EBF6556A1E5C2651002328B2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				EBF6556D1E5C266F002328B2 /* FSGiftCardViewController.h */,
+				EBF6556E1E5C266F002328B2 /* FSGiftCardViewController.m */,
+				EBF6556F1E5C266F002328B2 /* FSGiftCardViewController.xib */,
+				EBF655721E5C47D2002328B2 /* FSGetGiftCardViewController.h */,
+				EBF655731E5C47D2002328B2 /* FSGetGiftCardViewController.m */,
+				EBF655741E5C47D2002328B2 /* FSGetGiftCardViewController.xib */,
+				EBEDEBD91E5D8F2800A9EFA4 /* FSGiftCardProblemViewController.h */,
+				EBEDEBDA1E5D8F2800A9EFA4 /* FSGiftCardProblemViewController.m */,
+				EBEDEBDB1E5D8F2800A9EFA4 /* FSGiftCardProblemViewController.xib */,
+				EBEDEBDE1E5D9B8000A9EFA4 /* FSGiftCardExplainViewController.h */,
+				EBEDEBDF1E5D9B8000A9EFA4 /* FSGiftCardExplainViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		EBF6556B1E5C2651002328B2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EBF6556C1E5C2651002328B2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		FE17A8ED1E0D419700DC7949 /* Root */ = {
 			isa = PBXGroup;
 			children = (
@@ -8100,6 +8160,7 @@
 			isa = PBXGroup;
 			children = (
 				FE17A8ED1E0D419700DC7949 /* Root */,
+				EBF655691E5C2651002328B2 /* 礼品卡 */,
 				FE474E271E2DEE320005CD98 /* 我的订单 */,
 				EBBEC38C1E0E8D1000872E7A /* 我的地址 */,
 				FE17A9051E0D430F00DC7949 /* 设置 */,
@@ -8593,6 +8654,7 @@
 				0C7FEC751D01707C001E469B /* CouponsDetails_Right@2x.png in Resources */,
 				0C9F5AE11CBC9ECA0003B01E /* 待付款@3x.png in Resources */,
 				2B05683C1BF1B8EA005D939A /* shake_activity_bg.jpg in Resources */,
+				EBF655711E5C266F002328B2 /* FSGiftCardViewController.xib in Resources */,
 				098867E21BCF34D90068FB84 /* 分类图标@2x.png in Resources */,
 				0C77305C1CE1C252005EB107 /* 优惠券-右@3x.png in Resources */,
 				0C961B5C1D9CAC27000B6AF6 /* 余额付款@3x.png in Resources */,
@@ -8608,6 +8670,7 @@
 				0CA8CC5F1D9E0D3300BFFE35 /* QrCode@3x.png in Resources */,
 				E4818FC01CC8A6EC0081E06C /* 我的订单.png in Resources */,
 				0C625F151CC4C3DD0052181A /* 地址放大@3x.png in Resources */,
+				EBEDEBDD1E5D8F2800A9EFA4 /* FSGiftCardProblemViewController.xib in Resources */,
 				E4F0B1F41C472CF300E4FE85 /* Home_hot_goods_re.png in Resources */,
 				5260250F1C98F19900E452C9 /* 新品Icon@3x.png in Resources */,
 				098867DF1BCF34D90068FB84 /* 分类图标2@2x.png in Resources */,
@@ -8637,6 +8700,7 @@
 				FECDE79F1E0971EA0083E11B /* FSShoppingCartTVCell.xib in Resources */,
 				E40D23101C434CA100DC47C6 /* MJRefresh.bundle in Resources */,
 				0CC11CB11CB4F6D500E1E789 /* 小椭圆@3x.png in Resources */,
+				EBF655761E5C47D2002328B2 /* FSGetGiftCardViewController.xib in Resources */,
 				098867EE1BCF34D90068FB84 /* 首页@3x.png in Resources */,
 				522452691CABBF5A00CBC780 /* 收货-增加收货地址.png in Resources */,
 				E4818FD81CC8A8250081E06C /* 首页.png in Resources */,
@@ -9164,6 +9228,7 @@
 				E4E0FFE41CC7867C00B9E603 /* MeUITTableViewCell.m in Sources */,
 				FECDE7971E0925080083E11B /* XFEqualSpaceFlowLayout.m in Sources */,
 				5219E86D1BE76B7800AA2D2E /* CouponCell.m in Sources */,
+				EBEDEBDC1E5D8F2800A9EFA4 /* FSGiftCardProblemViewController.m in Sources */,
 				0C961B451D9CAAFA000B6AF6 /* OtherCell.m in Sources */,
 				FECDE7511E07C41B0083E11B /* FSTabBarController.m in Sources */,
 				0CCC4AE51D780FB0009CFBB0 /* NSDataEx.m in Sources */,
@@ -9480,6 +9545,7 @@
 				FEA20E9E1E4DA40C00FAD315 /* XFMeHeaderTVCell.m in Sources */,
 				0CE82D061DB714D700F590C8 /* MyGroupModel.m in Sources */,
 				5290B4EA1BD787D5001E02AC /* ParentModel.m in Sources */,
+				EBF655751E5C47D2002328B2 /* FSGetGiftCardViewController.m in Sources */,
 				FECDE7411E07C2C80083E11B /* FSCommodityCVCell.m in Sources */,
 				522452431CAB67A000CBC780 /* SelectDeliverySiteView.m in Sources */,
 				096FD6A31BEC862600199E03 /* APAuthV2Info.m in Sources */,
@@ -9577,6 +9643,7 @@
 				E4818F4F1CC869D80081E06C /* RechargeViewController.m in Sources */,
 				0CF4FBB31DEBBEA00096D0DB /* AmountModel.m in Sources */,
 				FE17A94B1E0D430F00DC7949 /* FSSettingView.m in Sources */,
+				EBEDEBE01E5D9B8000A9EFA4 /* FSGiftCardExplainViewController.m in Sources */,
 				0CCC4B0F1D781B9F009CFBB0 /* IQNSArray+Sort.m in Sources */,
 				FEA20ED61E4F3ADD00FAD315 /* XFExpressDetailsViewController.m in Sources */,
 				E4818F501CC869D80081E06C /* RechargeRecordViewController.m in Sources */,
@@ -9600,6 +9667,7 @@
 				E4818F6D1CC874540081E06C /* PublishOrderAndGoodsViewController.m in Sources */,
 				521E318D1CB36C6B00041F76 /* GroupTableView.m in Sources */,
 				FE17A94F1E0D430F00DC7949 /* FSHelpViewController.m in Sources */,
+				EBF655701E5C266F002328B2 /* FSGiftCardViewController.m in Sources */,
 				0CBA54BD1DE7D47C00378911 /* CostCell.m in Sources */,
 				E4818F281CC861310081E06C /* MyGroupViewController.m in Sources */,
 				FECDE7221E07C2C80083E11B /* FSBaseTableView.m in Sources */,

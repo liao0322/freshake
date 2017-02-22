@@ -1,25 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="230" id="KGk-i7-Jjw" customClass="XFMeBottomTVCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="230"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="345.5" id="KGk-i7-Jjw" customClass="XFMeBottomTVCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="346"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="229"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="345"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Smu-Zm-VEz" customClass="XFMeBottomVerticalButton">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c8M-e3-qfD" customClass="XFMeBottomVerticalButton">
                         <rect key="frame" x="0.0" y="0.0" width="106" height="114.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <fontDescription key="fontDescription" name="PingFangSC-Light" family="PingFang SC" pointSize="14"/>
+                        <state key="normal" title="礼品卡" image="card礼品卡">
+                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                        </state>
+                        <connections>
+                            <action selector="gitCard:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="VI5-Nk-suT"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Smu-Zm-VEz" customClass="XFMeBottomVerticalButton">
+                        <rect key="frame" x="106.5" y="0.0" width="106.5" height="114.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <fontDescription key="fontDescription" name="PingFangSC-Light" family="PingFang SC" pointSize="14"/>
                         <state key="normal" title="我的拼团" image="FS拼团">
@@ -30,7 +42,7 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ll3-FL-BOs" customClass="XFMeBottomVerticalButton">
-                        <rect key="frame" x="107" y="0.0" width="106" height="114.5"/>
+                        <rect key="frame" x="214" y="0.0" width="106" height="114.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <fontDescription key="fontDescription" name="PingFangSC-Light" family="PingFang SC" pointSize="14"/>
                         <state key="normal" title="我的优惠券" image="FS我的优惠券">
@@ -41,7 +53,7 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ECs-Iz-tBt" customClass="XFMeBottomVerticalButton">
-                        <rect key="frame" x="214" y="0.0" width="106" height="114.5"/>
+                        <rect key="frame" x="0.0" y="115" width="106" height="115"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <fontDescription key="fontDescription" name="PingFangSC-Light" family="PingFang SC" pointSize="14"/>
                         <state key="normal" title="我的收藏" image="FS我的收藏">
@@ -52,7 +64,7 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PtP-6D-K47" customClass="XFMeBottomVerticalButton">
-                        <rect key="frame" x="0.0" y="115.5" width="106" height="114"/>
+                        <rect key="frame" x="107" y="115" width="106.5" height="115"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <fontDescription key="fontDescription" name="PingFangSC-Light" family="PingFang SC" pointSize="14"/>
                         <state key="normal" title="地址管理" image="FS地址管理">
@@ -63,7 +75,7 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g27-FV-gtx" customClass="XFMeBottomVerticalButton">
-                        <rect key="frame" x="107" y="116" width="106" height="114"/>
+                        <rect key="frame" x="214.5" y="115" width="106" height="115"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <fontDescription key="fontDescription" name="PingFangSC-Light" family="PingFang SC" pointSize="14"/>
                         <state key="normal" title="帮助中心" image="帮助中心">
@@ -74,7 +86,7 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I6O-SO-UpI" customClass="XFMeBottomVerticalButton">
-                        <rect key="frame" x="214" y="116" width="106" height="114"/>
+                        <rect key="frame" x="0.0" y="231" width="106" height="114"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <fontDescription key="fontDescription" name="PingFangSC-Light" family="PingFang SC" pointSize="14"/>
                         <state key="normal" title="客服热线" image="客服热线">
@@ -84,44 +96,58 @@
                             <action selector="customerService:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ONz-It-nde"/>
                         </connections>
                     </button>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Air-yF-YA8" userLabel="WhiteView">
+                        <rect key="frame" x="107" y="231.5" width="212.5" height="113.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
                 </subviews>
                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 <constraints>
-                    <constraint firstItem="I6O-SO-UpI" firstAttribute="centerY" secondItem="g27-FV-gtx" secondAttribute="centerY" id="2mw-zX-sFC"/>
-                    <constraint firstItem="g27-FV-gtx" firstAttribute="leading" secondItem="PtP-6D-K47" secondAttribute="trailing" constant="0.5" id="53w-rT-y3a"/>
-                    <constraint firstItem="I6O-SO-UpI" firstAttribute="height" secondItem="g27-FV-gtx" secondAttribute="height" id="D6j-Qj-ugL"/>
-                    <constraint firstItem="Smu-Zm-VEz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="EHq-RG-BIq"/>
-                    <constraint firstItem="g27-FV-gtx" firstAttribute="height" secondItem="PtP-6D-K47" secondAttribute="height" id="Jj6-FS-xeY"/>
-                    <constraint firstItem="PtP-6D-K47" firstAttribute="leading" secondItem="Smu-Zm-VEz" secondAttribute="leading" id="Ock-sP-G3a"/>
-                    <constraint firstItem="Ll3-FL-BOs" firstAttribute="leading" secondItem="Smu-Zm-VEz" secondAttribute="trailing" constant="0.5" id="RMo-I6-xEf"/>
-                    <constraint firstItem="ECs-Iz-tBt" firstAttribute="width" secondItem="Ll3-FL-BOs" secondAttribute="width" id="RTg-Gq-ZON"/>
-                    <constraint firstAttribute="bottom" secondItem="PtP-6D-K47" secondAttribute="bottom" id="Rpp-dH-ADV"/>
-                    <constraint firstItem="PtP-6D-K47" firstAttribute="top" secondItem="Smu-Zm-VEz" secondAttribute="bottom" constant="0.5" id="S7P-Ry-8Sw"/>
-                    <constraint firstItem="I6O-SO-UpI" firstAttribute="leading" secondItem="g27-FV-gtx" secondAttribute="trailing" constant="0.5" id="Txm-vs-oTb"/>
-                    <constraint firstAttribute="trailing" secondItem="ECs-Iz-tBt" secondAttribute="trailing" id="Uoh-E0-Up4"/>
-                    <constraint firstItem="ECs-Iz-tBt" firstAttribute="top" secondItem="Ll3-FL-BOs" secondAttribute="top" id="XFH-SC-1TC"/>
-                    <constraint firstItem="ECs-Iz-tBt" firstAttribute="leading" secondItem="Ll3-FL-BOs" secondAttribute="trailing" constant="0.5" id="YTd-Dl-0cB"/>
-                    <constraint firstItem="Smu-Zm-VEz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="bfE-Ws-Q7t"/>
-                    <constraint firstItem="Ll3-FL-BOs" firstAttribute="top" secondItem="Smu-Zm-VEz" secondAttribute="top" id="mKR-Ee-YRg"/>
-                    <constraint firstItem="Ll3-FL-BOs" firstAttribute="width" secondItem="Smu-Zm-VEz" secondAttribute="width" id="qCm-vh-3HE"/>
-                    <constraint firstItem="g27-FV-gtx" firstAttribute="centerY" secondItem="PtP-6D-K47" secondAttribute="centerY" id="qZu-S1-6rJ"/>
-                    <constraint firstItem="g27-FV-gtx" firstAttribute="width" secondItem="PtP-6D-K47" secondAttribute="width" id="sk7-sT-Qln"/>
-                    <constraint firstItem="PtP-6D-K47" firstAttribute="width" secondItem="Smu-Zm-VEz" secondAttribute="width" id="uWl-F4-90X"/>
-                    <constraint firstItem="PtP-6D-K47" firstAttribute="height" secondItem="Smu-Zm-VEz" secondAttribute="height" id="usK-bT-V8p"/>
-                    <constraint firstItem="Ll3-FL-BOs" firstAttribute="height" secondItem="Smu-Zm-VEz" secondAttribute="height" id="vxk-z3-xN7"/>
-                    <constraint firstItem="I6O-SO-UpI" firstAttribute="width" secondItem="g27-FV-gtx" secondAttribute="width" id="wJZ-3c-JQG"/>
-                    <constraint firstItem="ECs-Iz-tBt" firstAttribute="height" secondItem="Ll3-FL-BOs" secondAttribute="height" id="xKL-vW-yL5"/>
+                    <constraint firstItem="I6O-SO-UpI" firstAttribute="trailing" secondItem="ECs-Iz-tBt" secondAttribute="trailing" id="4gB-LW-vM9"/>
+                    <constraint firstItem="c8M-e3-qfD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="4pT-40-BMZ"/>
+                    <constraint firstItem="I6O-SO-UpI" firstAttribute="top" secondItem="ECs-Iz-tBt" secondAttribute="bottom" constant="0.5" id="6Pt-Dt-Myh"/>
+                    <constraint firstItem="Air-yF-YA8" firstAttribute="leading" secondItem="I6O-SO-UpI" secondAttribute="trailing" constant="0.5" id="7mO-km-ndu"/>
+                    <constraint firstItem="ECs-Iz-tBt" firstAttribute="width" secondItem="c8M-e3-qfD" secondAttribute="width" id="9qA-gm-hmN"/>
+                    <constraint firstItem="Air-yF-YA8" firstAttribute="top" secondItem="I6O-SO-UpI" secondAttribute="top" id="AYY-pk-yco"/>
+                    <constraint firstItem="I6O-SO-UpI" firstAttribute="width" secondItem="ECs-Iz-tBt" secondAttribute="width" id="DPo-PF-IeP"/>
+                    <constraint firstItem="Smu-Zm-VEz" firstAttribute="leading" secondItem="c8M-e3-qfD" secondAttribute="trailing" constant="0.5" id="EI6-yW-Yw9"/>
+                    <constraint firstItem="Smu-Zm-VEz" firstAttribute="height" secondItem="c8M-e3-qfD" secondAttribute="height" id="F3r-MH-DpJ"/>
+                    <constraint firstItem="Air-yF-YA8" firstAttribute="height" secondItem="I6O-SO-UpI" secondAttribute="height" id="Hid-8Q-B9d"/>
+                    <constraint firstItem="Air-yF-YA8" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottom" id="Jdn-JK-py5"/>
+                    <constraint firstItem="Ll3-FL-BOs" firstAttribute="height" secondItem="Smu-Zm-VEz" secondAttribute="height" id="Lvb-Fe-Npx"/>
+                    <constraint firstItem="ECs-Iz-tBt" firstAttribute="top" secondItem="c8M-e3-qfD" secondAttribute="bottom" constant="0.5" id="Rzn-fL-A3O"/>
+                    <constraint firstItem="ECs-Iz-tBt" firstAttribute="height" secondItem="c8M-e3-qfD" secondAttribute="height" id="S3C-C8-wIL"/>
+                    <constraint firstItem="g27-FV-gtx" firstAttribute="width" secondItem="PtP-6D-K47" secondAttribute="width" id="U8q-Bk-Zhv"/>
+                    <constraint firstItem="PtP-6D-K47" firstAttribute="width" secondItem="ECs-Iz-tBt" secondAttribute="width" id="WJo-a2-EUM"/>
+                    <constraint firstAttribute="trailing" secondItem="Ll3-FL-BOs" secondAttribute="trailing" id="d4L-r6-BZf"/>
+                    <constraint firstItem="PtP-6D-K47" firstAttribute="centerY" secondItem="ECs-Iz-tBt" secondAttribute="centerY" id="et4-oe-yc7"/>
+                    <constraint firstItem="Ll3-FL-BOs" firstAttribute="width" secondItem="Smu-Zm-VEz" secondAttribute="width" id="fCX-MJ-5Us"/>
+                    <constraint firstItem="Smu-Zm-VEz" firstAttribute="width" secondItem="c8M-e3-qfD" secondAttribute="width" id="foN-rm-F2f"/>
+                    <constraint firstItem="g27-FV-gtx" firstAttribute="leading" secondItem="PtP-6D-K47" secondAttribute="trailing" constant="0.5" id="gIF-Y4-e9x"/>
+                    <constraint firstAttribute="bottom" secondItem="I6O-SO-UpI" secondAttribute="bottom" id="gl9-xZ-hxj"/>
+                    <constraint firstItem="c8M-e3-qfD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="iTq-dl-rCR"/>
+                    <constraint firstItem="Ll3-FL-BOs" firstAttribute="top" secondItem="c8M-e3-qfD" secondAttribute="top" id="ms6-N4-bhb"/>
+                    <constraint firstItem="g27-FV-gtx" firstAttribute="centerY" secondItem="PtP-6D-K47" secondAttribute="centerY" id="pEG-JD-1ZD"/>
+                    <constraint firstItem="Air-yF-YA8" firstAttribute="width" secondItem="I6O-SO-UpI" secondAttribute="width" multiplier="2" id="pZS-Rw-dfl"/>
+                    <constraint firstItem="PtP-6D-K47" firstAttribute="height" secondItem="ECs-Iz-tBt" secondAttribute="height" id="syz-Po-CdU"/>
+                    <constraint firstItem="PtP-6D-K47" firstAttribute="leading" secondItem="ECs-Iz-tBt" secondAttribute="trailing" constant="0.5" id="waY-Ks-ZUP"/>
+                    <constraint firstItem="ECs-Iz-tBt" firstAttribute="leading" secondItem="c8M-e3-qfD" secondAttribute="leading" id="x6X-SO-kqS"/>
+                    <constraint firstItem="I6O-SO-UpI" firstAttribute="height" secondItem="ECs-Iz-tBt" secondAttribute="height" id="y5U-K1-9E6"/>
+                    <constraint firstItem="g27-FV-gtx" firstAttribute="height" secondItem="PtP-6D-K47" secondAttribute="height" id="ydl-28-ba3"/>
+                    <constraint firstItem="Smu-Zm-VEz" firstAttribute="top" secondItem="c8M-e3-qfD" secondAttribute="top" id="z4y-Tr-Mqq"/>
+                    <constraint firstItem="Ll3-FL-BOs" firstAttribute="leading" secondItem="Smu-Zm-VEz" secondAttribute="trailing" constant="0.5" id="zwW-K9-wWg"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="customerServiceButton" destination="I6O-SO-UpI" id="PRg-iG-kOf"/>
+                <outlet property="giftCardButton" destination="c8M-e3-qfD" id="cUF-ke-98T"/>
                 <outlet property="helpCenterButton" destination="g27-FV-gtx" id="ZR4-pO-YtH"/>
                 <outlet property="myAddressButton" destination="PtP-6D-K47" id="P5h-DQ-8ag"/>
                 <outlet property="myCouponsButton" destination="Ll3-FL-BOs" id="olw-7V-fDg"/>
                 <outlet property="myFavouriteButton" destination="ECs-Iz-tBt" id="n6K-1I-FHy"/>
                 <outlet property="myGroupBuyButton" destination="Smu-Zm-VEz" id="d2R-hK-81G"/>
             </connections>
-            <point key="canvasLocation" x="272" y="-7"/>
+            <point key="canvasLocation" x="-107" y="-74"/>
         </tableViewCell>
     </objects>
     <resources>
@@ -129,6 +155,7 @@
         <image name="FS我的优惠券" width="40" height="40"/>
         <image name="FS我的收藏" width="40" height="40"/>
         <image name="FS拼团" width="40" height="40"/>
+        <image name="card礼品卡" width="40" height="40"/>
         <image name="客服热线" width="40" height="40"/>
         <image name="帮助中心" width="40" height="40"/>
     </resources>
