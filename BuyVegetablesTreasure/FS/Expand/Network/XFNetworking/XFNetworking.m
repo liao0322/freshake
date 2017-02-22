@@ -10,7 +10,7 @@
 #import <AFNetworkActivityIndicatorManager.h>
 // #import "XFError.h"
 
-#define TIME_OUT_INTERVAL 8.0f
+#define TIME_OUT_INTERVAL 15.0f
 
 #define KEY_NET_ERROR_REASON        @"reason"
 #define KEY_NET_ERROR_MESSAGE       @"message"
