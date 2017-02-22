@@ -60,8 +60,8 @@
         
         contentLabel.sd_layout
         .leftSpaceToView(titleLabel, 20)
-        .rightSpaceToView(self.contentView, 15)
-        .centerYEqualToView(titleLabel)
+        .rightSpaceToView(self.contentView, 15).topEqualToView(titleLabel)
+//        .centerYEqualToView(titleLabel)
         .autoHeightRatio(0);
         
         if (i >= 1) {
@@ -111,8 +111,8 @@
         
         contentLabel.sd_layout
         .leftSpaceToView(titleLabel, 20)
-        .rightSpaceToView(self.contentView, 15)
-        .centerYEqualToView(titleLabel)
+        .rightSpaceToView(self.contentView, 15).topEqualToView(titleLabel)
+//        .centerYEqualToView(titleLabel)
         .autoHeightRatio(0);
         
         if (i > 0) {

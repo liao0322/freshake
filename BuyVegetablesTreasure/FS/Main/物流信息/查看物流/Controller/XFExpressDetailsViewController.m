@@ -61,7 +61,7 @@ static CGFloat const EstimatedCellHeight = 100.0f;
     
     NSString *domainString = @"";
     
-#if HTTP_TEST_TYPE == 0
+#if HTTP_TEST_TYPE == 2
     
     domainString = @"http://122.144.136.72:8090/ordercenter/ocapi/";
     
