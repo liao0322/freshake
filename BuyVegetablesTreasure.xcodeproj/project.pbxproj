@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		090000371C0FE11800709702 /* 拼团图标@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 090000311C0FE11800709702 /* 拼团图标@2x.png */; };
 		090000381C0FE11800709702 /* 拼团图标@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 090000321C0FE11800709702 /* 拼团图标@3x.png */; };
-		0969DC011BCDFE1700D98273 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 0969DB491BCDFE1700D98273 /* LICENSE */; };
-		0969DC021BCDFE1700D98273 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 0969DB4B1BCDFE1700D98273 /* MBProgressHUD.m */; };
 		0969DC121BCDFE1700D98273 /* MMHud.m in Sources */ = {isa = PBXBuildFile; fileRef = 0969DB6F1BCDFE1700D98273 /* MMHud.m */; };
 		0969DC131BCDFE1700D98273 /* MMProgressHUD+Animations.m in Sources */ = {isa = PBXBuildFile; fileRef = 0969DB711BCDFE1700D98273 /* MMProgressHUD+Animations.m */; };
 		0969DC141BCDFE1700D98273 /* MMProgressHUD+Class.m in Sources */ = {isa = PBXBuildFile; fileRef = 0969DB721BCDFE1700D98273 /* MMProgressHUD+Class.m */; };
@@ -814,6 +812,8 @@
 		EBF655711E5C266F002328B2 /* FSGiftCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBF6556F1E5C266F002328B2 /* FSGiftCardViewController.xib */; };
 		EBF655751E5C47D2002328B2 /* FSGetGiftCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF655731E5C47D2002328B2 /* FSGetGiftCardViewController.m */; };
 		EBF655761E5C47D2002328B2 /* FSGetGiftCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBF655741E5C47D2002328B2 /* FSGetGiftCardViewController.xib */; };
+		EBFDD7F71E5EBC4500CFA6BC /* XYPAlterView.m in Sources */ = {isa = PBXBuildFile; fileRef = EBFDD7F61E5EBC4500CFA6BC /* XYPAlterView.m */; };
+		EBFDD7FB1E5EED7300CFA6BC /* XFProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = EBFDD7FA1E5EED7300CFA6BC /* XFProgressHUD.m */; };
 		FCE22CB36A608AA4CE07090D /* libPods-BuyVegetablesTreasure.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C7075A81BE105AFB6D3C97C /* libPods-BuyVegetablesTreasure.a */; };
 		FE17A8FE1E0D419700DC7949 /* FSMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A8F01E0D419700DC7949 /* FSMeViewController.m */; };
 		FE17A8FF1E0D419700DC7949 /* FSMeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A8F31E0D419700DC7949 /* FSMeModel.m */; };
@@ -1039,9 +1039,6 @@
 /* Begin PBXFileReference section */
 		090000311C0FE11800709702 /* 拼团图标@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "拼团图标@2x.png"; sourceTree = "<group>"; };
 		090000321C0FE11800709702 /* 拼团图标@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "拼团图标@3x.png"; sourceTree = "<group>"; };
-		0969DB491BCDFE1700D98273 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		0969DB4A1BCDFE1700D98273 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		0969DB4B1BCDFE1700D98273 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		0969DB6E1BCDFE1700D98273 /* MMHud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMHud.h; sourceTree = "<group>"; };
 		0969DB6F1BCDFE1700D98273 /* MMHud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMHud.m; sourceTree = "<group>"; };
 		0969DB701BCDFE1700D98273 /* MMProgressHUD+Animations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MMProgressHUD+Animations.h"; sourceTree = "<group>"; };
@@ -2286,6 +2283,10 @@
 		EBF655721E5C47D2002328B2 /* FSGetGiftCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSGetGiftCardViewController.h; sourceTree = "<group>"; };
 		EBF655731E5C47D2002328B2 /* FSGetGiftCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSGetGiftCardViewController.m; sourceTree = "<group>"; };
 		EBF655741E5C47D2002328B2 /* FSGetGiftCardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSGetGiftCardViewController.xib; sourceTree = "<group>"; };
+		EBFDD7F51E5EBC4500CFA6BC /* XYPAlterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYPAlterView.h; sourceTree = "<group>"; };
+		EBFDD7F61E5EBC4500CFA6BC /* XYPAlterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYPAlterView.m; sourceTree = "<group>"; };
+		EBFDD7F91E5EED7300CFA6BC /* XFProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFProgressHUD.h; sourceTree = "<group>"; };
+		EBFDD7FA1E5EED7300CFA6BC /* XFProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFProgressHUD.m; sourceTree = "<group>"; };
 		FE17A8EF1E0D419700DC7949 /* FSMeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMeViewController.h; sourceTree = "<group>"; };
 		FE17A8F01E0D419700DC7949 /* FSMeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMeViewController.m; sourceTree = "<group>"; };
 		FE17A8F21E0D419700DC7949 /* FSMeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMeModel.h; sourceTree = "<group>"; };
@@ -2766,16 +2767,6 @@
 				E4DC9A4A1C61B29600451CA6 /* 无商品.png */,
 			);
 			path = "无数据图";
-			sourceTree = "<group>";
-		};
-		0969DB481BCDFE1700D98273 /* MBProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				0969DB491BCDFE1700D98273 /* LICENSE */,
-				0969DB4A1BCDFE1700D98273 /* MBProgressHUD.h */,
-				0969DB4B1BCDFE1700D98273 /* MBProgressHUD.m */,
-			);
-			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
 		0969DB6D1BCDFE1700D98273 /* MPProgressHUD */ = {
@@ -5675,7 +5666,6 @@
 				E4140EBF1C7AA4E600F9BF62 /* WeCartPay */,
 				E40D22D51C434CA100DC47C6 /* MJRefresh */,
 				2BBC8BBF1BF764B9000FF8D7 /* libqrencode */,
-				0969DB481BCDFE1700D98273 /* MBProgressHUD */,
 				0969DB6D1BCDFE1700D98273 /* MPProgressHUD */,
 				0969DB981BCDFE1700D98273 /* SDWebImage */,
 			);
@@ -6775,6 +6765,24 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		EBFDD7F41E5EBC4500CFA6BC /* XYPAlterView */ = {
+			isa = PBXGroup;
+			children = (
+				EBFDD7F51E5EBC4500CFA6BC /* XYPAlterView.h */,
+				EBFDD7F61E5EBC4500CFA6BC /* XYPAlterView.m */,
+			);
+			path = XYPAlterView;
+			sourceTree = "<group>";
+		};
+		EBFDD7F81E5EED7300CFA6BC /* XFProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				EBFDD7F91E5EED7300CFA6BC /* XFProgressHUD.h */,
+				EBFDD7FA1E5EED7300CFA6BC /* XFProgressHUD.m */,
+			);
+			path = XFProgressHUD;
+			sourceTree = "<group>";
+		};
 		FE17A8ED1E0D419700DC7949 /* Root */ = {
 			isa = PBXGroup;
 			children = (
@@ -7574,6 +7582,8 @@
 		FECDE62B1E07C2C70083E11B /* Widget */ = {
 			isa = PBXGroup;
 			children = (
+				EBFDD7F81E5EED7300CFA6BC /* XFProgressHUD */,
+				EBFDD7F41E5EBC4500CFA6BC /* XYPAlterView */,
 				FE703EDF1E247281005FD30B /* XFTextField */,
 				FE703EE21E247281005FD30B /* XFWaterWaveView */,
 				FE17A98B1E12360900DC7949 /* XFStrikethroughLabel */,
@@ -8722,7 +8732,6 @@
 				0CBA54A51DE7D47C00378911 /* EditAddress@3x.png in Resources */,
 				0CCA065A1D1A915A009286ED /* 没有选择@3x.png in Resources */,
 				FE8256681E13CECD0028D0F2 /* Payment@3x.png in Resources */,
-				0969DC011BCDFE1700D98273 /* LICENSE in Resources */,
 				0C9E03381D77B6CE00CF08B9 /* kr-video-player-fullscreen@2x.png in Resources */,
 				0C9F5AE21CBC9ECA0003B01E /* 头像三.png in Resources */,
 				098CB92E1BD0A1AA00418FD8 /* lock-拷贝@3x.png in Resources */,
@@ -9263,6 +9272,7 @@
 				52423BD71BE2298E00E5621C /* NSString+MD5Addition.m in Sources */,
 				0C7FEC7B1D01707C001E469B /* CouponsDetailView.m in Sources */,
 				FECDE71C1E07C2C80083E11B /* FSBaseNavigationController.m in Sources */,
+				EBFDD7FB1E5EED7300CFA6BC /* XFProgressHUD.m in Sources */,
 				522237791CACB6D7004747B4 /* SelectSexView.m in Sources */,
 				E4818FF11CC8B6820081E06C /* IconInfoCell.m in Sources */,
 				0C1245CD1CC0EA7500DB8AF1 /* GroupDetailsImageViewController.m in Sources */,
@@ -9560,11 +9570,11 @@
 				E4E0FFA31CC7561500B9E603 /* ScanViewController.m in Sources */,
 				E4E0FFF31CC7881F00B9E603 /* MyOrderModel.m in Sources */,
 				0CCC4AE11D780FB0009CFBB0 /* base64.m in Sources */,
+				EBFDD7F71E5EBC4500CFA6BC /* XYPAlterView.m in Sources */,
 				0CFE33301DC19CCA00F19494 /* SDCycleScrollView.m in Sources */,
 				0C82E3431CD2F58D007DF40F /* CookingDetailsViewController.m in Sources */,
 				E4818F401CC868EA0081E06C /* RechardModel.m in Sources */,
 				0969DC351BCDFE1700D98273 /* UIView+WebCacheOperation.m in Sources */,
-				0969DC021BCDFE1700D98273 /* MBProgressHUD.m in Sources */,
 				FECDE7371E07C2C80083E11B /* FSSearchCVCell.m in Sources */,
 				0CBE9EFF1CFD71FB00D3B0DA /* GoodsDetail.m in Sources */,
 				0C961B471D9CAAFA000B6AF6 /* OrderAddressCell.m in Sources */,

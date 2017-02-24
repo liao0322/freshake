@@ -23,7 +23,8 @@
 - (void)initialization {
     [super initialization];
     self.title = @"什么是礼品卡";
-    
+    self.view.backgroundColor = [UIColor whiteColor];
+
     self.giftCardExplainLabel = [UILabel new];
     self.giftCardExplainLabel.text = @"鲜摇派礼品卡是鲜摇派独家发行的预付卡，目前仅限上海地区使用，可用于在鲜摇派快捷安全地支付各类产品订单。";
     self.giftCardExplainLabel.numberOfLines = 0;
