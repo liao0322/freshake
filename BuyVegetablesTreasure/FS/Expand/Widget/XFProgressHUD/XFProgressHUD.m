@@ -25,13 +25,11 @@ static MBProgressHUD *hud = nil;
     if (!hud) {
         hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
     }
-//    hud.margin = 10.0f;
+    
     hud.mode = MBProgressHUDModeText;
     hud.label.text = message;
-    
     // Move to bottm center.
     hud.offset = CGPointMake(0.f, MBProgressMaxOffset);
-    
     //    hud.detailsLabelFont = [UIFont boldSystemFontOfSize:16];
     [hud hideAnimated:YES afterDelay:DURING_TIME];
     

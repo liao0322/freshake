@@ -110,7 +110,7 @@
         
         _goPlayBtn.userInteractionEnabled = NO;
         _goPlayBtn.layer.borderColor = [UIColor colorWithHexString:@"0xb2b2b2"].CGColor;
-        _goPlayBtn.backgroundColor = [UIColor colorWithHexString:@"0xb2b2b2"];
+//        _goPlayBtn.backgroundColor = [UIColor colorWithHexString:@"0xb2b2b2"];
         [_goPlayBtn setTitleColor:[UIColor colorWithHexString:@"0xb2b2b2"] forState:UIControlStateNormal];
 
     } else {

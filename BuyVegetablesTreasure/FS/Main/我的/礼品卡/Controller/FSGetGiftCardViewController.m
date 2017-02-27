@@ -17,7 +17,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *cardNumTextField;
 
-@property (weak, nonatomic) IBOutlet UITextField *cardPwdTextField;
+@property (weak, nonatomic) IBOutlet XFLimitedTextField *cardPwdTextField;
 @property (weak, nonatomic) IBOutlet UIView *textViewLine;
 @property (weak, nonatomic) IBOutlet UIView *secondTextViewLine;
 
@@ -55,6 +55,7 @@
     self.secondTextViewLine.backgroundColor = [UIColor colorSeparatorLine];
     
     self.cardPwdTextField.borderStyle = UITextBorderStyleNone;
+    self.cardPwdTextField.maxCount = 6;
     self.cardPwdTextField.tintColor = [UIColor colorDomina];
     
     self.attentionLabel.font = [UIFont systemFontOfSize:SCREEN_WIDTH == 320 ? 13.0 : 15.0];
@@ -144,7 +145,6 @@
     }
     else if ([Tools isBlankString:passWord]) {
         return [XFProgressHUD showMessage:@"请输入密码" inView:self.view];
-
     }
 
     NSLog(@"*********%@", cardNumber);
@@ -182,7 +182,7 @@
 
             } else {
                 
-                [self.xypAlterView alertForGetGiftCardWithMessage:@"未领取成功！" Money:nil Success:NO];
+                [self.xypAlterView alertForGetGiftCardWithMessage:@"礼品券号或密码错误" Money:nil Success:NO];
 
             }
             

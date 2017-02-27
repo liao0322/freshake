@@ -25,6 +25,7 @@
     [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
     [SVProgressHUD setMaximumDismissTimeInterval:2];
     
+    
     // 设置 状态栏
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
