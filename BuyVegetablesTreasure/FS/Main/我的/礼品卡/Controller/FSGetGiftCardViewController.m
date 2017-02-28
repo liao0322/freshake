@@ -26,6 +26,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *getCardButton;
 @property (weak, nonatomic) IBOutlet UIImageView *cardImageView;
 
+@property (copy, nonatomic, readonly) NSDictionary *codeDict;
+
+
 @property (nonatomic) XYPAlterView *xypAlterView;
 @property (nonatomic) UIView *darkView;
 
@@ -168,23 +171,12 @@
         NSDictionary *dict = [self dictWithData:responseObject];
         NSLog(@"%@", dict);
         self.stateCode = dict[@"code"];
+        // 领取失败
         if (![self.stateCode isEqualToString:@"0"]) {
             
             [[UIApplication sharedApplication].keyWindow addSubview:self.darkView];
 
-            if ([self.stateCode isEqualToString:@"030101"]) {
-                
-                [self.xypAlterView alertForGetGiftCardWithMessage:@"没有查到礼品卡信息！" Money:nil Success:NO];
-                
-            } else if ([self.stateCode isEqualToString:@"030102"]) {
-                
-                [self.xypAlterView alertForGetGiftCardWithMessage:@"礼品卡已失效！" Money:nil Success:NO];
-
-            } else {
-                
-                [self.xypAlterView alertForGetGiftCardWithMessage:@"礼品券号或密码错误" Money:nil Success:NO];
-
-            }
+            [self.xypAlterView alertForGetGiftCardWithMessage:self.codeDict[dict[@"code"]] Money:nil Success:NO];
             
             return;
         }
@@ -196,7 +188,7 @@
         [self.xypAlterView alertForGetGiftCardWithMessage:@"礼品卡领用成功" Money:[NSString stringWithFormat:@"￥%.2f", [dict[@"result"] floatValue]] Success:YES];
         
     } failure:^(NSError *error, NSInteger statusCode) {
-        
+        [self showInfoWidthError:error];
     }];
 }
 
@@ -249,6 +241,14 @@
         return NO;
     }
     return YES;
+}
+
+- (NSDictionary *)codeDict {
+    return @{
+             @"030101" : @"没有查到礼品卡信息！",
+             @"030102" : @"礼品卡已失效！",
+             @"030103" : @"礼品卡已过期！"
+             };
 }
 
 - (void)didReceiveMemoryWarning {
