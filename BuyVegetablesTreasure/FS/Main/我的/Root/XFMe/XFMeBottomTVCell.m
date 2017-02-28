@@ -12,6 +12,9 @@
 
 @interface XFMeBottomTVCell ()
 
+
+@property (weak, nonatomic) IBOutlet XFMeBottomVerticalButton *giftCardButton;
+
 @property (weak, nonatomic) IBOutlet XFMeBottomVerticalButton *myGroupBuyButton;
 @property (weak, nonatomic) IBOutlet XFMeBottomVerticalButton *myCouponsButton;
 
@@ -28,7 +31,7 @@
     [super awakeFromNib];
     // Initialization code
     
-    [self.myGroupBuyButton layoutIfNeeded];
+    [self.giftCardButton layoutIfNeeded];
     
 }
 
@@ -39,6 +42,13 @@
 - (void)updateConstraints {
     
     [super updateConstraints];
+}
+
+
+- (IBAction)gitCard:(id)sender {
+    if (self.giftCardBlock) {
+        self.giftCardBlock();
+    }
 }
 
 - (IBAction)myGroupBuy:(id)sender {

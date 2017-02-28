@@ -8,4 +8,5 @@ target 'BuyVegetablesTreasure' do
   pod 'Masonry', '~> 1.0.2'
   pod 'SVProgressHUD', '~> 2.1.2'
   pod 'MJExtension', '~> 3.0.13'
+  pod 'MBProgressHUD', '~> 1.0.0'
 end

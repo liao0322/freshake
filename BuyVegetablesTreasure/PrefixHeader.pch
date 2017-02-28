@@ -90,6 +90,7 @@
 #import "XFNetworking.h"
 #import "XFMacroLog.h"
 #import "XFWaterWaveView.h"
+#import "XFProgressHUD.h"
 
 #endif
 

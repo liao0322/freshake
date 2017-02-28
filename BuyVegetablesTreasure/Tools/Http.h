@@ -295,4 +295,7 @@
 // 确认收货
 #define ConfirmReceipt LMMC(Path(@"ReceiveOrder&user_id=%@&order_no=%@"))
 
+// 礼品卡充值
+#define GiftCardRecharge @"http://122.144.136.72:8070/cardcenter/ccapi/chargeCard"
+
 #endif

@@ -19,6 +19,7 @@
 #import "XFMeVerticalButton.h"
 #import "PointRecordViewController.h"
 #import "AmountViewController.h"
+#import "FSGiftCardViewController.h"
 #import "FSMyCouponsViewController.h"
 #import "PersonalDataViewController.h"
 #import "FSMyOrderListViewController.h"
@@ -84,10 +85,21 @@ static CGFloat const EstimatedCellHeight = 200.0f;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = EstimatedCellHeight;
     self.automaticallyAdjustsScrollViewInsets = NO;
+  
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userIsLogined) name:@"UserIsLogined" object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userIsLogout) name:@"UserIsLogout" object:nil];
+}
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    
+    if (SCREEN_HEIGHT == 480) {
+        self.tableView.contentSize = CGSizeMake(0, SCREEN_HEIGHT + 100);
+    } else if (SCREEN_HEIGHT == 568) {
+        self.tableView.contentSize = CGSizeMake(0, SCREEN_HEIGHT + 70);
+    }
 }
 
 - (void)dealloc {
@@ -245,6 +257,18 @@ static CGFloat const EstimatedCellHeight = 200.0f;
     } else if (section == 2) {
         XFMeBottomTVCell *cell = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([XFMeBottomTVCell class]) owner:nil options:nil] lastObject];
         
+        cell.giftCardBlock = ^{
+            if (![Tools isBlankString:self.uidString]) {
+                [self.navigationController pushViewController:[FSGiftCardViewController new] animated:YES];
+            }
+            else {
+                FSLoginViewController *loginVC = [[FSLoginViewController alloc] init];
+                FSNavigationController *navController = [[FSNavigationController alloc] initWithRootViewController:loginVC];
+                [self presentViewController:navController animated:YES completion:nil];
+            }
+
+        };
+        
         cell.myGroupBuyBlock = ^{
             if (![Tools isBlankString:self.uidString]) {
                 [self.navigationController pushViewController:[MyGroupViewController new] animated:YES];
@@ -312,7 +336,7 @@ static CGFloat const EstimatedCellHeight = 200.0f;
     if (section == 0) {
         return SCREEN_WIDTH * (200 / 375.0f);
     } else if (section == 2) {
-        return 190.0f;
+        return 285.0f;
         
     }
     return UITableViewAutomaticDimension;

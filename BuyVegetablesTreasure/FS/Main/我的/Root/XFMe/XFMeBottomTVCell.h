@@ -10,6 +10,7 @@
 
 @interface XFMeBottomTVCell : UITableViewCell
 
+@property (nonatomic) void(^giftCardBlock)();
 @property (nonatomic) void(^myGroupBuyBlock)();
 @property (nonatomic) void(^myCouponsBlock)();
 @property (nonatomic) void(^myFavouriteBlock)();
