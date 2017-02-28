@@ -8542,7 +8542,7 @@
 				TargetAttributes = {
 					52A35C821BCDEB9100309FC8 = {
 						CreatedOnToolsVersion = 6.3.2;
-						DevelopmentTeam = QUP3N2G398;
+						DevelopmentTeam = JJH2E72AMK;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
@@ -9725,7 +9725,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
-				DEVELOPMENT_TEAM = QUP3N2G398;
+				DEVELOPMENT_TEAM = JJH2E72AMK;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -9781,7 +9781,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
-				DEVELOPMENT_TEAM = QUP3N2G398;
+				DEVELOPMENT_TEAM = JJH2E72AMK;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
