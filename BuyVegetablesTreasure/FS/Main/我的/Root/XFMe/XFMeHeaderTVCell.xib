@@ -6,8 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -25,7 +23,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="199.5"/>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nhk-S3-eeA">
-                        <rect key="frame" x="23" y="44" width="60" height="60"/>
+                        <rect key="frame" x="23" y="60" width="60" height="60"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="60" id="AQi-MS-eJz"/>
                             <constraint firstAttribute="width" constant="60" id="MNy-o9-P8W"/>
@@ -36,13 +34,13 @@
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="去取个昵称吧~" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rb7-5Y-j8u">
-                        <rect key="frame" x="103" y="54" width="114" height="21"/>
+                        <rect key="frame" x="103" y="70" width="114" height="21"/>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                         <color key="textColor" red="0.15686274510000001" green="0.15686274510000001" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Yp-S1-YYH">
-                        <rect key="frame" x="103" y="78" width="35.5" height="17"/>
+                        <rect key="frame" x="103" y="94" width="35.5" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -144,15 +142,25 @@
                             <constraint firstItem="BEa-sx-VEy" firstAttribute="width" secondItem="XPU-RX-SVh" secondAttribute="width" id="vPE-hY-whl"/>
                         </constraints>
                     </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ceg-Zb-07w">
+                        <rect key="frame" x="346" y="72" width="14" height="36"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                        <state key="normal" image="FS进入"/>
+                        <connections>
+                            <action selector="avatarTouchUpInside:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="eUu-Z1-0uT"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="Ceg-Zb-07w" secondAttribute="trailing" constant="15" id="454-4d-CnB"/>
                     <constraint firstItem="rb7-5Y-j8u" firstAttribute="top" secondItem="nhk-S3-eeA" secondAttribute="top" constant="10" id="DHu-HM-DRM"/>
                     <constraint firstAttribute="trailing" secondItem="mPr-NV-0Yq" secondAttribute="trailing" id="L5p-S7-aPb"/>
                     <constraint firstItem="plW-wY-Myi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Nop-jF-pa7"/>
                     <constraint firstItem="rb7-5Y-j8u" firstAttribute="leading" secondItem="nhk-S3-eeA" secondAttribute="trailing" constant="20" id="OZL-XU-ieA"/>
                     <constraint firstItem="4Yp-S1-YYH" firstAttribute="top" secondItem="rb7-5Y-j8u" secondAttribute="bottom" constant="3" id="PKB-2Y-ZbZ"/>
                     <constraint firstAttribute="bottom" secondItem="plW-wY-Myi" secondAttribute="bottom" id="S6w-hL-mRD"/>
-                    <constraint firstItem="nhk-S3-eeA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="firstBaseline" constant="44" id="bTJ-dF-KlE"/>
+                    <constraint firstItem="nhk-S3-eeA" firstAttribute="centerY" secondItem="plW-wY-Myi" secondAttribute="centerY" constant="-10" id="d98-OQ-AnX"/>
+                    <constraint firstItem="Ceg-Zb-07w" firstAttribute="centerY" secondItem="nhk-S3-eeA" secondAttribute="centerY" id="m3y-I5-9wL"/>
                     <constraint firstItem="mPr-NV-0Yq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="mfD-rn-ZEg"/>
                     <constraint firstItem="4Yp-S1-YYH" firstAttribute="leading" secondItem="rb7-5Y-j8u" secondAttribute="leading" id="msQ-jS-3Mj"/>
                     <constraint firstAttribute="trailing" secondItem="plW-wY-Myi" secondAttribute="trailing" id="ntf-Gs-fqo"/>
@@ -178,6 +186,7 @@
     </objects>
     <resources>
         <image name="FSHead背景" width="375" height="215"/>
+        <image name="FS进入" width="14" height="25"/>
         <image name="FS默认头像" width="60" height="60"/>
     </resources>
 </document>
