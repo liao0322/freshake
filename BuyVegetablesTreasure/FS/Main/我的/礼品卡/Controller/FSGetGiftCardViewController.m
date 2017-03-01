@@ -28,14 +28,13 @@
 
 @property (copy, nonatomic, readonly) NSDictionary *codeDict;
 
-
 @property (nonatomic) XYPAlterView *xypAlterView;
 @property (nonatomic) UIView *darkView;
+@property (nonatomic) NSString *stateCode;
 
 @property (nonatomic, copy) NSString *uidString; // 用户id
 @property (nonatomic, copy) NSString *userCode;  // 用户账号
 @property (nonatomic, copy) NSString *userName;  // 用户名
-@property (nonatomic) NSString *stateCode;
 
 @end
 
@@ -137,18 +136,40 @@
 // 领取按钮事件
 - (IBAction)getCardButtonAction:(id)sender {
     [self.view endEditing:YES];
-    // 获取去除空格的卡号
-    NSString *cardNumberStr = [self.cardNumTextField.text stringByReplacingOccurrencesOfString:@" " withString:@""];
-    [self getGiftCardWithCardNumber:cardNumberStr passWord:self.cardPwdTextField.text];
+
+    if (![Tools isBlankString:self.cardNumTextField.text]) {
+        if (!(_cardNumTextField.text.length < 12)) {
+            if (![Tools isBlankString:self.cardPwdTextField.text]) {
+                if (!(self.cardPwdTextField.text.length < 6)) {
+                    // 获取去除空格的卡号
+                    NSString *cardNumberStr = [self.cardNumTextField.text stringByReplacingOccurrencesOfString:@" " withString:@""];
+                    [self getGiftCardWithCardNumber:cardNumberStr passWord:self.cardPwdTextField.text];
+                    
+                } else {
+                
+                     return [XFProgressHUD showMessage:@"请输入6位密码" inView:self.view];
+                }
+            } else {
+               
+                return [XFProgressHUD showMessage:@"密码不能为空" inView:self.view];
+            }
+        }else {
+            
+            return [XFProgressHUD showMessage:@"请输入12位卡券号" inView:self.view];
+
+        }
+    }else {
+        return [XFProgressHUD showMessage:@"请输入卡券号" inView:self.view];
+    }
 }
 
 - (void)getGiftCardWithCardNumber:(NSString *)cardNumber passWord:(NSString *)passWord {
-    if ([Tools isBlankString:cardNumber]) {
-        return [XFProgressHUD showMessage:@"请输入礼品券卡号" inView:self.view];
-    }
-    else if ([Tools isBlankString:passWord]) {
-        return [XFProgressHUD showMessage:@"请输入密码" inView:self.view];
-    }
+//    if ([Tools isBlankString:cardNumber]) {
+//        return [XFProgressHUD showMessage:@"请输入礼品券卡号" inView:self.view];
+//    }
+//    else if ([Tools isBlankString:passWord]) {
+//        return [XFProgressHUD showMessage:@"请输入密码" inView:self.view];
+//    }
 
     NSLog(@"*********%@", cardNumber);
     NSMutableDictionary *parameterDict = [[NSMutableDictionary alloc] init];
@@ -214,40 +235,42 @@
 
 // 卡号间隔格式化处理
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    if (textField == _cardNumTextField) {
-        NSString *text = [self.cardNumTextField text];
-        
-        string = [string stringByReplacingOccurrencesOfString:@" " withString:@""];
-        
-        text = [text stringByReplacingCharactersInRange:range withString:string];
-        text = [text stringByReplacingOccurrencesOfString:@" " withString:@""];
-        
-        NSString *newString = @"";
-        while (text.length > 0) {
-            NSString *subString = [text substringToIndex:MIN(text.length, 4)];
-            newString = [newString stringByAppendingString:subString];
-            if (subString.length == 4) {
-                newString = [newString stringByAppendingString:@" "];
+
+    BOOL returnValue = YES;
+    
+    NSMutableString *newText = [NSMutableString stringWithCapacity:0];
+    [newText appendString:self.cardNumTextField.text]; // 拿到原有的text,根据下面判断给它添加“ ”(空格);
+    
+    NSString *noBlankStr = [self.cardNumTextField.text stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+    NSInteger textLength = [noBlankStr length];
+    
+    if (string.length) {
+        if (textLength < 12) { // 限制字符串长度12位
+            
+            if (textLength > 0 && textLength % 4 == 0) {
+                newText = [NSMutableString stringWithString:[newText stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
+                [newText appendString:@" "];
+                [newText appendString:string];
+                self.cardNumTextField.text = newText;
+                returnValue = NO; // 在此return NO,因为textField.text = newText;text已经替换好了,就不需要系统添加了,如果ruturnYES的话,会发现会多出一个字符串
+            } else {
+                [newText appendString:string];
             }
-            text = [text substringFromIndex:MIN(text.length, 4)];
+        }else { // 比12位长在这里判断输入无效
+            returnValue = NO;
         }
-                
-        if (newString.length >= 16) {
-            return NO;
-        }
-        
-        [self.cardNumTextField setText:newString];
-        
-        return NO;
+    }else { // 这里判断如果输入为空，保持原样
+        [newText replaceCharactersInRange:range withString:string];
     }
-    return YES;
+    return returnValue;
 }
 
 - (NSDictionary *)codeDict {
     return @{
-             @"030101" : @"没有查到礼品卡信息！",
-             @"030102" : @"礼品卡已失效！",
-             @"030103" : @"礼品卡已过期！"
+             @"030101" : @"卡券号或密码错误!",
+             @"030102" : @"礼品卡已失效!",
+             @"030103" : @"礼品卡已过期!"
              };
 }
 

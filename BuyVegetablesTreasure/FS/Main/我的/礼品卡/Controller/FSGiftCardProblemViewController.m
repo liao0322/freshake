@@ -34,6 +34,20 @@
     [super initialization];
     self.title = @"礼品卡常见问题";
     
+    NSString *useLabelStr = @"您可以在鲜摇派首页【我的】-【礼品卡】页面输入框里输入“券号”、“密码”领用。";
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:useLabelStr];
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    [paragraphStyle setLineSpacing:8.0];
+    
+    [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [useLabelStr length])];
+    self.useContentLabel.attributedText = attributedString;
+    
+    NSString *attentionStr = @"1） “领用”是指将鲜摇派礼品卡与鲜摇派账户建立关联的操作。\n2）用户必须先将礼品卡领用到自己的鲜摇派账户之后，才能使用该礼品卡在鲜摇派支付订单。\n3）礼品卡领用到鲜摇派账户后，仅可用于支付本鲜摇派账户的订单，不可支付其他鲜摇派账户的订单，也不可再转移至其他鲜摇派账户。\n温馨提示：通过鲜摇派首页【我的】-【礼品卡】、或参加活动获得赠送的礼品卡，鲜摇派将直接充入您的鲜摇派账户里，无需单独领用哦~ ";
+    NSMutableAttributedString *secondAttributedStr = [[NSMutableAttributedString alloc] initWithString:attentionStr];
+    [secondAttributedStr addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [attentionStr length])];
+    self.attentionContentLabel.attributedText = secondAttributedStr;
+    
+    
     [self.useContentLabel sizeToFit];
     [self.attentionContentLabel sizeToFit];
 }
