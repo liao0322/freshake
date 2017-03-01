@@ -11,8 +11,11 @@
 @interface FSGiftCardExplainViewController ()
 
 @property (nonatomic, strong) UILabel *giftCardExplainLabel;
+@property (copy, nonatomic) NSString *explainString;
 
 @end
+
+#define LINE_SPACING 8.0f
 
 @implementation FSGiftCardExplainViewController
 
@@ -26,11 +29,17 @@
     self.view.backgroundColor = [UIColor whiteColor];
 
     self.giftCardExplainLabel = [UILabel new];
-    self.giftCardExplainLabel.text = @"鲜摇派礼品卡是鲜摇派独家发行的预付卡，目前仅限上海地区使用，可用于在鲜摇派快捷安全地支付各类产品订单。";
     self.giftCardExplainLabel.numberOfLines = 0;
     self.giftCardExplainLabel.font = [UIFont systemFontOfSize:14.0];
     self.giftCardExplainLabel.textColor = [UIColor colorTextDomina];
-//    [self.view addSubview:self.giftCardExplainLabel];
+    
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self.explainString];
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    [paragraphStyle setLineSpacing:LINE_SPACING];
+    
+    [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [self.explainString length])];
+    self.giftCardExplainLabel.attributedText = attributedString;
+
     [self.giftCardExplainLabel sizeToFit];
     
 }
@@ -43,25 +52,15 @@
     [super viewDidLayoutSubviews];
     
     self.giftCardExplainLabel.x = 15.0;
-    self.giftCardExplainLabel.y = 76;
+    self.giftCardExplainLabel.y = 64.0;
     self.giftCardExplainLabel.width = SCREEN_WIDTH - 30;
-    
-    self.giftCardExplainLabel.sd_layout
-    .autoHeightRatio(0);
-}
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    self.giftCardExplainLabel.height = CGRectGetHeight(self.giftCardExplainLabel.frame) + 40;
+  
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (NSString *)explainString {
+    return @"鲜摇派礼品卡是鲜摇派独家发行的预付卡，目前仅限上海地区使用，可用于在鲜摇派快捷安全地支付各类产品订单。";
 }
-*/
+
 
 @end

@@ -8,7 +8,7 @@
 
 #import "FSGetGiftCardViewController.h"
 #import "XFLimitedTextField.h"
-#import "FSGiftCardProblemViewController.h"
+#import "FSGiftCartQuestionAnswerViewController.h"
 
 #import "XYPAlterView.h"
 
@@ -131,7 +131,7 @@
 
 // 如何领取按钮事件
 - (IBAction)getExplainButtonAction:(id)sender {
-    [self.navigationController pushViewController:[FSGiftCardProblemViewController new] animated:YES];
+    [self.navigationController pushViewController:[FSGiftCartQuestionAnswerViewController new] animated:YES];
 }
 
 // 领取按钮事件
@@ -165,12 +165,6 @@
 }
 
 - (void)getGiftCardWithCardNumber:(NSString *)cardNumber passWord:(NSString *)passWord {
-//    if ([Tools isBlankString:cardNumber]) {
-//        return [XFProgressHUD showMessage:@"请输入礼品券卡号" inView:self.view];
-//    }
-//    else if ([Tools isBlankString:passWord]) {
-//        return [XFProgressHUD showMessage:@"请输入密码" inView:self.view];
-//    }
 
     NSLog(@"*********%@", cardNumber);
     NSMutableDictionary *parameterDict = [[NSMutableDictionary alloc] init];
@@ -196,11 +190,18 @@
         // 领取失败
         if (![self.stateCode isEqualToString:@"0"]) {
             
+            if ([self.stateCode isEqualToString:@"030101"]) {
+                
+                return [XFProgressHUD showMessage:@"礼品券号或密码错误" inView:self.view];
+
+            } else {
+            
             [[UIApplication sharedApplication].keyWindow addSubview:self.darkView];
 
             [self.xypAlterView alertForGetGiftCardWithMessage:self.codeDict[dict[@"code"]] Money:nil Success:NO];
             
-            return;
+                return;
+            }
         }
         
         // 领取成功
@@ -269,9 +270,8 @@
 
 - (NSDictionary *)codeDict {
     return @{
-             @"030101" : @"卡券号或密码错误!",
-             @"030102" : @"礼品卡已失效!",
-             @"030103" : @"礼品卡已过期!"
+             @"030102" : @"礼品卡领用失败",
+             @"030103" : @"已过期"
              };
 }
 
