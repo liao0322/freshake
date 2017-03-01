@@ -29,7 +29,10 @@ static MBProgressHUD *hud = nil;
     hud.mode = MBProgressHUDModeText;
     hud.label.text = message;
     // Move to bottm center.
-    hud.offset = CGPointMake(0.f, MBProgressMaxOffset);
+    hud.label.textColor = [UIColor whiteColor];
+    hud.offset = CGPointMake(0.f, 0.f);
+    hud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
+    hud.bezelView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.7f];
     //    hud.detailsLabelFont = [UIFont boldSystemFontOfSize:16];
     [hud hideAnimated:YES afterDelay:DURING_TIME];
     
