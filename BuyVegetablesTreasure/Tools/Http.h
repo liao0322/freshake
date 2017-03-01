@@ -22,7 +22,7 @@
 #elif HTTP_TEST_TYPE == 2
 //#define LMMC(name) [NSString stringWithFormat:@"http://h5.p2na.com/%@", name]     // 开发环境
 //#define LMMC(name) [NSString stringWithFormat:@"http://192.168.1.147:7100/%@", name]     // 开发环境
-#define LMMC(name) [NSString stringWithFormat:@"http://122.144.136.72:9970/%@", name]
+#define LMMC(name) [NSString stringWithFormat:@"http://test.freshake.cn:9970/%@", name]
 #endif
 
 #define Path(name) [NSString stringWithFormat:@"api/Phone/Fifth/index.aspx?page=%@", name]     // 路径
