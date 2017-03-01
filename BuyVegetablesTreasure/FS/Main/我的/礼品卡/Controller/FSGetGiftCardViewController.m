@@ -9,6 +9,7 @@
 #import "FSGetGiftCardViewController.h"
 #import "XFLimitedTextField.h"
 #import "FSGiftCardProblemViewController.h"
+
 #import "XYPAlterView.h"
 
 @interface FSGetGiftCardViewController ()<XYPAlterViewDelegate,UITextFieldDelegate>

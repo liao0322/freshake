@@ -8,7 +8,9 @@
 
 #import "FSGiftCardViewController.h"
 #import "FSGetGiftCardViewController.h"
-#import "FSGiftCardProblemViewController.h"
+//#import "FSGiftCardProblemViewController.h"
+#import "FSGiftCartQuestionAnswerViewController.h"
+
 #import "FSGiftCardExplainViewController.h"
 
 @interface FSGiftCardViewController ()
@@ -140,7 +142,7 @@
 
 // 领用礼品卡说明事件
 - (IBAction)getExplainButtonAction:(id)sender {
-    [self.navigationController pushViewController:[FSGiftCardProblemViewController new] animated:YES];
+    [self.navigationController pushViewController:[FSGiftCartQuestionAnswerViewController new] animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

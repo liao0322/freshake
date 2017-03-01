@@ -8,6 +8,8 @@
 
 #import "FSGiftCardProblemViewController.h"
 
+#define LINE_SPACING 8.0f
+
 @interface FSGiftCardProblemViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *useAttentionTitle;
@@ -22,6 +24,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *attentionContentLabel;
 
 
+@property (copy, nonatomic) NSString *useStepString;
+@property (copy, nonatomic) NSString *useRemindString;
 @end
 
 @implementation FSGiftCardProblemViewController
@@ -37,7 +41,7 @@
     NSString *useLabelStr = @"您可以在鲜摇派首页【我的】-【礼品卡】页面输入框里输入“券号”、“密码”领用。";
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:useLabelStr];
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    [paragraphStyle setLineSpacing:8.0];
+    [paragraphStyle setLineSpacing:LINE_SPACING];
     
     [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [useLabelStr length])];
     self.useContentLabel.attributedText = attributedString;
@@ -76,8 +80,8 @@
     self.useContentLabel.x = self.useTitleLabel.x;
     self.useContentLabel.y = self.useTitleLabel.bottom + 12;
     self.useContentLabel.width = width - margin * 4;
-    self.useContentLabel.sd_layout
-    .autoHeightRatio(0);
+    self.useContentLabel.height = [self stringHeightWithString:self.useStepString];
+
     
     self.attentionGreenView.x = margin;
     self.attentionGreenView.y = self.useContentLabel.bottom + 12;
@@ -89,23 +93,29 @@
     self.attentionContentLabel.x = self.attentionTitleLabel.x;
     self.attentionContentLabel.y = self.attentionTitleLabel.bottom + 12;
     self.attentionContentLabel.width = width - margin * 4;
-    self.attentionContentLabel.sd_layout
-    .autoHeightRatio(0);
+    self.attentionContentLabel.height = [self stringHeightWithString:self.useRemindString];
+
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - Custom
+
+- (CGFloat)stringHeightWithString:(NSString *)string {
+    CGFloat height = 0.0f;
+    CGSize maxSize = CGSizeMake(self.useContentLabel.width, MAXFLOAT);
+    
+    height = [string boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14.0f]} context:nil].size.height;
+    return height ;
+    
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark - LazyLoad
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (NSString *)useStepString {
+    return @"您可以在鲜摇派首页【我的】-【礼品卡】页面输入框里输入“券号”、“密码”领用。";
 }
-*/
+
+- (NSString *)useRemindString {
+    return @"1） “领用”是指将鲜摇派礼品卡与鲜摇派账户建立关联的操作。\n2）用户必须先将礼品卡领用到自己的鲜摇派账户之后，才能使用该礼品卡在鲜摇派支付订单。\n3）礼品卡领用到鲜摇派账户后，仅可用于支付本鲜摇派账户的订单，不可支付其他鲜摇派账户的订单，也不可再转移至其他鲜摇派账户。\n温馨提示：通过鲜摇派首页【我的】-【礼品卡】、或参加活动获得赠送的礼品卡，鲜摇派将直接充入您的鲜摇派账户里，无需单独领用哦~ ";
+}
 
 @end

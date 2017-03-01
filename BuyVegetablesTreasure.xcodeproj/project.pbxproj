@@ -873,6 +873,8 @@
 		FE703EE51E247281005FD30B /* XFTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = FE703EE11E247281005FD30B /* XFTextField.m */; };
 		FE703EE61E247281005FD30B /* XFWaterWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE703EE41E247281005FD30B /* XFWaterWaveView.m */; };
 		FE703EEB1E25D9FE005FD30B /* 1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FE703EEA1E25D9FE005FD30B /* 1@3x.png */; };
+		FE77449B1E667EE0005094FF /* FSGiftCartQuestionAnswerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE7744991E667EE0005094FF /* FSGiftCartQuestionAnswerViewController.m */; };
+		FE77449C1E667EE0005094FF /* FSGiftCartQuestionAnswerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE77449A1E667EE0005094FF /* FSGiftCartQuestionAnswerViewController.xib */; };
 		FE8256461E1365B00028D0F2 /* FSNewCommodityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE82563F1E1365B00028D0F2 /* FSNewCommodityViewController.m */; };
 		FE8256471E1365B00028D0F2 /* FSNewCommodityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE8256401E1365B00028D0F2 /* FSNewCommodityViewController.xib */; };
 		FE82564E1E1365CD0028D0F2 /* FSNewCommodityTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE82564A1E1365CD0028D0F2 /* FSNewCommodityTVCell.m */; };
@@ -2390,6 +2392,9 @@
 		FE703EE31E247281005FD30B /* XFWaterWaveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFWaterWaveView.h; sourceTree = "<group>"; };
 		FE703EE41E247281005FD30B /* XFWaterWaveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFWaterWaveView.m; sourceTree = "<group>"; };
 		FE703EEA1E25D9FE005FD30B /* 1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1@3x.png"; sourceTree = "<group>"; };
+		FE7744981E667EE0005094FF /* FSGiftCartQuestionAnswerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSGiftCartQuestionAnswerViewController.h; sourceTree = "<group>"; };
+		FE7744991E667EE0005094FF /* FSGiftCartQuestionAnswerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSGiftCartQuestionAnswerViewController.m; sourceTree = "<group>"; };
+		FE77449A1E667EE0005094FF /* FSGiftCartQuestionAnswerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSGiftCartQuestionAnswerViewController.xib; sourceTree = "<group>"; };
 		FE82563E1E1365B00028D0F2 /* FSNewCommodityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSNewCommodityViewController.h; sourceTree = "<group>"; };
 		FE82563F1E1365B00028D0F2 /* FSNewCommodityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSNewCommodityViewController.m; sourceTree = "<group>"; };
 		FE8256401E1365B00028D0F2 /* FSNewCommodityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSNewCommodityViewController.xib; sourceTree = "<group>"; };
@@ -6747,6 +6752,9 @@
 				EBEDEBDB1E5D8F2800A9EFA4 /* FSGiftCardProblemViewController.xib */,
 				EBEDEBDE1E5D9B8000A9EFA4 /* FSGiftCardExplainViewController.h */,
 				EBEDEBDF1E5D9B8000A9EFA4 /* FSGiftCardExplainViewController.m */,
+				FE7744981E667EE0005094FF /* FSGiftCartQuestionAnswerViewController.h */,
+				FE7744991E667EE0005094FF /* FSGiftCartQuestionAnswerViewController.m */,
+				FE77449A1E667EE0005094FF /* FSGiftCartQuestionAnswerViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -8858,6 +8866,7 @@
 				0C5CEF7F1D98C5130093B0A2 /* Images.xcassets in Resources */,
 				0C82E3541CD2FE38007DF40F /* 下载.png in Resources */,
 				0CCA06591D1A915A009286ED /* 没有选择@2x.png in Resources */,
+				FE77449C1E667EE0005094FF /* FSGiftCartQuestionAnswerViewController.xib in Resources */,
 				5203547D1C76B33000BD6F63 /* 选心仪高品@2x.png in Resources */,
 				0CC11CB51CB50F8800E1E789 /* 拼团失败图标.png in Resources */,
 				0CAFF7B51CB63A45006C1900 /* 商品详情@2x.png in Resources */,
@@ -9625,6 +9634,7 @@
 				0C6B3DB01CC764C3008193C8 /* CommodityTypeView.m in Sources */,
 				52438A621C9AAF70002661DF /* adTop_HeadView.m in Sources */,
 				0C625F281CC4E68A0052181A /* SelectCouponCell.m in Sources */,
+				FE77449B1E667EE0005094FF /* FSGiftCartQuestionAnswerViewController.m in Sources */,
 				0C961B461D9CAAFA000B6AF6 /* PaymentTimeCell.m in Sources */,
 				FE17A9571E0D430F00DC7949 /* FSMyCouponsViewController.m in Sources */,
 				09C394281BCE5B8D001420EB /* TeNavigationViewController.m in Sources */,
