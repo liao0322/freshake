@@ -18,15 +18,17 @@
 
 #elif HTTP_TEST_TYPE == 1
 #define LMMC(name) [NSString stringWithFormat:@"http://h5.freshake.cn/%@", name]   // 运营环境
+#define CARDLMMC(head) [NSString stringWithFormat:@"http://oc.freshake.cn:8100/%@", head] // 卡券中心-运营环境
 
 #elif HTTP_TEST_TYPE == 2
 //#define LMMC(name) [NSString stringWithFormat:@"http://h5.p2na.com/%@", name]     // 开发环境
 //#define LMMC(name) [NSString stringWithFormat:@"http://192.168.1.147:7100/%@", name]     // 开发环境
 #define LMMC(name) [NSString stringWithFormat:@"http://test.freshake.cn:9970/%@", name]
+#define CARDLMMC(head) [NSString stringWithFormat:@"http://test.freshake.cn:8070/%@", head] // 卡券中心-开发环境
 #endif
 
 #define Path(name) [NSString stringWithFormat:@"api/Phone/Fifth/index.aspx?page=%@", name]     // 路径
-
+#define CardPath(head) [NSString stringWithFormat:@"ccapi/%@", head]       // 卡券中心-路径
 // 首页
 #define HOMEPAGEURL LMMC(Path(@"GetIndex&mid=%@&pageIndex=1&pagesize=1000"))
 #define HomePageGoodsList LMMC(Path(@"GetProductList&mid=%@&pageIndex=1&pagesize=1000&upselling=1&userId=%@&recommended=1"))
@@ -296,6 +298,6 @@
 #define ConfirmReceipt LMMC(Path(@"ReceiveOrder&user_id=%@&order_no=%@"))
 
 // 礼品卡充值
-#define GiftCardRecharge @"http://122.144.136.72:8070/cardcenter/ccapi/chargeCard"
+#define GiftCardRecharge CARDLMMC(CardPath(@"chargeCard"))
 
 #endif

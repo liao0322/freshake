@@ -27,7 +27,7 @@
     [super initialization];
     self.title = @"什么是礼品卡";
     self.view.backgroundColor = [UIColor whiteColor];
-
+    
     self.giftCardExplainLabel = [UILabel new];
     self.giftCardExplainLabel.numberOfLines = 0;
     self.giftCardExplainLabel.font = [UIFont systemFontOfSize:14.0];
@@ -39,7 +39,7 @@
     
     [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [self.explainString length])];
     self.giftCardExplainLabel.attributedText = attributedString;
-
+    
     [self.giftCardExplainLabel sizeToFit];
     
 }

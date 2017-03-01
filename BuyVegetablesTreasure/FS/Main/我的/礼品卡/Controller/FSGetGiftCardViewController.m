@@ -9,7 +9,6 @@
 #import "FSGetGiftCardViewController.h"
 #import "XFLimitedTextField.h"
 #import "FSGiftCartQuestionAnswerViewController.h"
-
 #import "XYPAlterView.h"
 
 @interface FSGetGiftCardViewController ()<XYPAlterViewDelegate,UITextFieldDelegate>
@@ -147,17 +146,17 @@
                     [self getGiftCardWithCardNumber:cardNumberStr passWord:self.cardPwdTextField.text];
                     
                 } else {
-                
-                     return [XFProgressHUD showMessage:@"请输入6位密码" inView:self.view];
+                    
+                    return [XFProgressHUD showMessage:@"请输入6位密码" inView:self.view];
                 }
             } else {
-               
+                
                 return [XFProgressHUD showMessage:@"密码不能为空" inView:self.view];
             }
         }else {
             
             return [XFProgressHUD showMessage:@"请输入12位卡券号" inView:self.view];
-
+            
         }
     }else {
         return [XFProgressHUD showMessage:@"请输入卡券号" inView:self.view];
@@ -166,7 +165,6 @@
 
 - (void)getGiftCardWithCardNumber:(NSString *)cardNumber passWord:(NSString *)passWord {
 
-    NSLog(@"*********%@", cardNumber);
     NSMutableDictionary *parameterDict = [[NSMutableDictionary alloc] init];
     NSDictionary *cardDic = @{@"cardNo" : cardNumber,
                               @"cardPwd" : passWord};
@@ -185,21 +183,19 @@
     [XFNetworking POST:GiftCardRecharge parameters:parameterDict success:^(id responseObject, NSInteger statusCode) {
         
         NSDictionary *dict = [self dictWithData:responseObject];
-        NSLog(@"%@", dict);
         self.stateCode = dict[@"code"];
         // 领取失败
         if (![self.stateCode isEqualToString:@"0"]) {
             
             if ([self.stateCode isEqualToString:@"030101"]) {
                 
-                return [XFProgressHUD showMessage:@"礼品券号或密码错误" inView:self.view];
-
+                return [XFProgressHUD showMessage:@"卡券号或密码错误" inView:self.view];
+                
             } else {
-            
-            [[UIApplication sharedApplication].keyWindow addSubview:self.darkView];
-
-            [self.xypAlterView alertForGetGiftCardWithMessage:self.codeDict[dict[@"code"]] Money:nil Success:NO];
-            
+                
+                [[UIApplication sharedApplication].keyWindow addSubview:self.darkView];
+                [self.xypAlterView alertForGetGiftCardWithMessage:self.codeDict[dict[@"code"]] Money:nil Success:NO];
+                
                 return;
             }
         }
@@ -207,7 +203,6 @@
         // 领取成功
         
         [[UIApplication sharedApplication].keyWindow addSubview:self.darkView];
-
         [self.xypAlterView alertForGetGiftCardWithMessage:@"礼品卡领用成功" Money:[NSString stringWithFormat:@"￥%.2f", [dict[@"result"] floatValue]] Success:YES];
         
     } failure:^(NSError *error, NSInteger statusCode) {
@@ -229,7 +224,7 @@
 // 移除子视图
 -(void)removeSubviews{
     if (self.xypAlterView.subviews.count != 0) {
-        for (UIView * view in self.xypAlterView.subviews) {
+        for (UIView *view in self.xypAlterView.subviews) {
             [view removeFromSuperview];
         }
     }
@@ -255,7 +250,7 @@
                 [newText appendString:@" "];
                 [newText appendString:string];
                 self.cardNumTextField.text = newText;
-                returnValue = NO; // 在此return NO,因为textField.text = newText;text已经替换好了,就不需要系统添加了,如果ruturnYES的话,会发现会多出一个字符串
+                returnValue = NO; // 在此return NO,因为textField.text = newText;text已经替换好了,就不需要系统添加了,如果ruturnYES的话,会发现多出一个字符串
             } else {
                 [newText appendString:string];
             }
@@ -265,7 +260,9 @@
     }else { // 这里判断如果输入为空，保持原样
         [newText replaceCharactersInRange:range withString:string];
     }
+    
     return returnValue;
+    
 }
 
 - (NSDictionary *)codeDict {

@@ -104,6 +104,6 @@
     </objects>
     <resources>
         <image name="bgLOGO" width="375" height="398"/>
-        <image name="card券" width="299" height="190"/>
+        <image name="card券" width="298" height="189"/>
     </resources>
 </document>

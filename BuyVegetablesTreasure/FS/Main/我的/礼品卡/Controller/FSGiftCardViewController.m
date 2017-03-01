@@ -51,9 +51,7 @@
     [super initialization];
     
     self.title = @"礼品卡";
-    
-//    self.firstBgView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.5];
-    
+        
     self.getCardLabel.textColor = [UIColor colorTextDomina];
     self.cardExplainLabel.textColor = [UIColor colorTextDomina];
     self.getExplainLabel.textColor = [UIColor colorTextDomina];
