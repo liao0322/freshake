@@ -137,9 +137,9 @@
 // 领取按钮事件
 - (IBAction)getCardButtonAction:(id)sender {
     [self.view endEditing:YES];
-
+    
     if (![Tools isBlankString:self.cardNumTextField.text]) {
-        if (!(_cardNumTextField.text.length < 12)) {
+        if (!(_cardNumTextField.text.length < 14)) {
             if (![Tools isBlankString:self.cardPwdTextField.text]) {
                 if (!(self.cardPwdTextField.text.length < 6)) {
                     // 获取去除空格的卡号
@@ -270,7 +270,8 @@
 
 - (NSDictionary *)codeDict {
     return @{
-             @"030102" : @"礼品卡领用失败",
+             @"000001" : @"礼品卡领用失败",
+             @"030102" : @"已失效",
              @"030103" : @"已过期"
              };
 }
