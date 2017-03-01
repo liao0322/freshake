@@ -113,7 +113,8 @@
     self.titleLabel.y = self.imageView.bottom + 10;
     
     [self.descLabel sizeToFit];
-    self.descLabel.centerX = self.titleLabel.centerX;
+    self.descLabel.x = 15;
+    self.descLabel.width = width - 30;
     self.descLabel.y = self.titleLabel.bottom + 5;
     
     [self.groupPriceTitleLabel sizeToFit];
