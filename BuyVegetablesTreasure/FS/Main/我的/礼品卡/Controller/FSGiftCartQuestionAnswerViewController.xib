@@ -81,6 +81,7 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="9Su-te-AHJ" secondAttribute="trailing" constant="15" id="04Q-Ry-c0o"/>
+                                <constraint firstItem="3l9-aA-mLl" firstAttribute="top" secondItem="9Su-te-AHJ" secondAttribute="bottom" constant="12" id="6tp-H7-ett"/>
                                 <constraint firstItem="FP8-50-9ec" firstAttribute="leading" secondItem="nXg-Bn-j59" secondAttribute="leading" id="9VI-Gu-kaa"/>
                                 <constraint firstItem="xzd-WL-Pxw" firstAttribute="centerY" secondItem="nXg-Bn-j59" secondAttribute="centerY" id="EZp-jp-pgx"/>
                                 <constraint firstItem="Tc4-Zt-IHx" firstAttribute="leading" secondItem="ovX-Ty-E7b" secondAttribute="leading" constant="15" id="JBs-Re-vKJ"/>
@@ -96,6 +97,8 @@
                                 <constraint firstItem="3l9-aA-mLl" firstAttribute="centerY" secondItem="FP8-50-9ec" secondAttribute="centerY" id="dVO-jH-ysZ"/>
                                 <constraint firstItem="bT5-VO-O9j" firstAttribute="top" secondItem="ovX-Ty-E7b" secondAttribute="top" constant="12" id="f9Z-LV-jTm"/>
                                 <constraint firstItem="bT5-VO-O9j" firstAttribute="leading" secondItem="ovX-Ty-E7b" secondAttribute="leading" constant="15" id="kAN-Go-fbw"/>
+                                <constraint firstItem="xzd-WL-Pxw" firstAttribute="top" secondItem="Tc4-Zt-IHx" secondAttribute="bottom" constant="12" id="mLo-WR-PF8"/>
+                                <constraint firstItem="Tc4-Zt-IHx" firstAttribute="top" secondItem="bT5-VO-O9j" secondAttribute="bottom" constant="12" id="meW-Uz-rMp"/>
                                 <constraint firstItem="nXg-Bn-j59" firstAttribute="leading" secondItem="bT5-VO-O9j" secondAttribute="leading" id="nCw-Iy-orX"/>
                                 <constraint firstItem="nXg-Bn-j59" firstAttribute="top" secondItem="Tc4-Zt-IHx" secondAttribute="bottom" constant="12" id="oQh-Ih-gYr"/>
                                 <constraint firstItem="9Su-te-AHJ" firstAttribute="top" secondItem="xzd-WL-Pxw" secondAttribute="bottom" constant="12" id="prk-bA-Vu1"/>

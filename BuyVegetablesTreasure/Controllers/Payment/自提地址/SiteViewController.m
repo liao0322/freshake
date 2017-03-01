@@ -25,6 +25,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     
+    /*
     // 提货点
     if (_isDelivery) {
         
@@ -38,6 +39,10 @@
         _userSiteView.hidden = NO;
         [self requestUserAddressList];
     }
+     */
+    
+    _userSiteView.hidden = NO;
+    [self requestUserAddressList];
     
     _segmented.selectedSegmentIndex = 0;
 }
