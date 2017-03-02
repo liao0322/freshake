@@ -10,7 +10,7 @@
 #define Shop_Http_h
 
 //域名
-#define HTTP_TEST_TYPE 2
+#define HTTP_TEST_TYPE 1
 
 #if HTTP_TEST_TYPE == 0
 
