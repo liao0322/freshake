@@ -27,8 +27,14 @@
 @implementation SiteViewController
 
 - (void)viewWillAppear:(BOOL)animated {
+
+    // 送货地址
+    if (_isDistribution) {
+        
+        _userSiteView.hidden = NO;
+        [self requestUserAddressList];
+    }
     
-    /*
     // 提货点
     if (_isDelivery) {
         
@@ -36,18 +42,13 @@
         [self requestDataFromNet];
     }
     
-    // 送货地址
-    if (_isDistribution) {
-        
-        _userSiteView.hidden = NO;
-        [self requestUserAddressList];
-    }
-     */
-    
+    /*
     _userSiteView.hidden = NO;
     [self requestUserAddressList];
+     */
     
-    _segmented.selectedSegmentIndex = 0;
+//    _segmented.selectedSegmentIndex = 0;
+    
 }
 
 - (void)viewDidLoad {
@@ -94,6 +95,18 @@
     
     __weak typeof(self)weakSelf = self;
     
+    if (_isDelivery) {
+        
+        _selectStoreDeliveryView = [[SelectStoreDeliveryView alloc] initWithFrame:self.view.bounds];
+        _selectStoreDeliveryView.hidden = YES;
+        [self.view addSubview:_selectStoreDeliveryView];
+        
+        _selectStoreDeliveryView.midSite = ^(Map *mapArray){
+            weakSelf.midSite(mapArray);
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+        };
+    }
+    
     if (_isDistribution) {
         
         _userSiteView = [[SelectDeliverySiteView alloc] initWithFrame:self.view.bounds];
@@ -126,17 +139,7 @@
         
     }
     
-    if (_isDelivery) {
-        
-        _selectStoreDeliveryView = [[SelectStoreDeliveryView alloc] initWithFrame:self.view.bounds];
-        _selectStoreDeliveryView.hidden = YES;
-        [self.view addSubview:_selectStoreDeliveryView];
-        
-        _selectStoreDeliveryView.midSite = ^(Map *mapArray){
-            weakSelf.midSite(mapArray);
-            [weakSelf.navigationController popViewControllerAnimated:YES];
-        };
-    }
+
 }
 
 #pragma mark - 事件处理
@@ -173,7 +176,8 @@
     float latitude = [defaults doubleForKey:@"positioningLatitude"];
     float longitude = [defaults doubleForKey:@"positioningLongitude"];
     NSString *midString = _isCollect ? _midStr : [defaults objectForKey:@"MID"];
-    NSString *cityId = _isCollect ? @"0" : [Single sharedInstance].cityId;
+//    NSString *cityId = _isCollect ? @"0" : [Single sharedInstance].cityId;
+    NSString *cityId = @"0";
     NSString *urlString = [NSString stringWithFormat:GETMSTORE,midString,latitude,longitude,cityId];
 
     [HttpRequest sendGetOrPostRequest:urlString param:nil requestStyle:Get setSerializer:Json isShowLoading:YES success:^(id data)
