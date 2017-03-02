@@ -90,7 +90,7 @@
                   moduleName = "BuyVegetablesTreasure"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DamonLiao/Desktop/Freshake/2.3.0/freshake-ios/BuyVegetablesTreasure/Controllers/Me/%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF/ViewControllor/PersonalDataViewController.m"
-                  timestampString = "510048526.900412"
+                  timestampString = "510138859.964126"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "416"
@@ -105,7 +105,7 @@
                   moduleName = "BuyVegetablesTreasure"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DamonLiao/Desktop/Freshake/2.3.0/freshake-ios/BuyVegetablesTreasure/Controllers/Me/%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF/ViewControllor/PersonalDataViewController.m"
-                  timestampString = "510048526.902934"
+                  timestampString = "510138859.970825"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "416"
@@ -120,7 +120,7 @@
                   moduleName = "BuyVegetablesTreasure"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DamonLiao/Desktop/Freshake/2.3.0/freshake-ios/BuyVegetablesTreasure/Controllers/Me/%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF/ViewControllor/PersonalDataViewController.m"
-                  timestampString = "510048526.905961"
+                  timestampString = "510138859.978522"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "416"
@@ -135,7 +135,7 @@
                   moduleName = "BuyVegetablesTreasure"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DamonLiao/Desktop/Freshake/2.3.0/freshake-ios/BuyVegetablesTreasure/Controllers/Me/%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF/ViewControllor/PersonalDataViewController.m"
-                  timestampString = "510048526.91116"
+                  timestampString = "510138859.984198"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "416"
@@ -392,6 +392,38 @@
             startingLineNumber = "95"
             endingLineNumber = "95"
             landmarkName = "-viewDidLoad"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BuyVegetablesTreasure/Controllers/Payment/&#x81ea;&#x63d0;&#x5730;&#x5740;/Views/&#x9001;&#x8d27;&#x4e0a;&#x95e8;/Cell/SelectDeliverySiteCell.m"
+            timestampString = "510139182.407719"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
+            landmarkName = "-setModel:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BuyVegetablesTreasure/Controllers/Payment/&#x81ea;&#x63d0;&#x5730;&#x5740;/Views/&#x9001;&#x8d27;&#x4e0a;&#x95e8;/Cell/SelectDeliverySiteCell.m"
+            timestampString = "510139201.682367"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "-initWithStyle:reuseIdentifier:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
