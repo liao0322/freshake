@@ -14,6 +14,7 @@
 @property (nonatomic, copy) UILabel *timeLabel;
 @property (nonatomic, copy) UIImageView *statusImageView;
 
+@property (nonatomic, copy) NSString *hString;
 @property (nonatomic, copy) NSString *mString;
 @property (nonatomic, copy) NSString *sString;
 
@@ -75,7 +76,7 @@
             [self.contentView addSubview:_timeLabel];
             
             NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"剩余付款时间 %@",[self getTime:model.PayTime]]];
-            [attributeString setAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithHexString:@"0x404040"], NSFontAttributeName : [UIFont systemFontOfSize:20]} range:NSMakeRange(7, 5)];
+            [attributeString setAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithHexString:@"0x404040"], NSFontAttributeName : [UIFont systemFontOfSize:20]} range:NSMakeRange(7, 8)];
             _timeLabel.attributedText = attributeString;
             
             _timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(calculateTime) userInfo:nil repeats:YES];
@@ -100,19 +101,20 @@
 
 - (NSString *)getTime:(NSString *)seconds {
     
-    _mString = [NSString stringWithFormat:@"%02d",[seconds intValue] / 60];
+    _hString = [NSString stringWithFormat:@"%02d", [seconds intValue] / 60 / 60];
+    _mString = [NSString stringWithFormat:@"%02d",([seconds intValue] - [_hString intValue] *3600) / 60];
     _sString = [NSString stringWithFormat:@"%02d",[seconds intValue] % 60];;
     
-    return [NSString stringWithFormat:@"%@:%@",_mString,_sString];
+    return [NSString stringWithFormat:@"%@:%@:%@",_hString,_mString,_sString];
 }
 
 - (void)calculateTime {
     
-    if ([_mString integerValue] == 0 && [_sString integerValue] == 0) {
+    if ([_hString integerValue] == 0 && [_mString integerValue] == 0 && [_sString integerValue] == 0) {
         [_timer invalidate];
         _refreshBlock();
     }
-    else if ([_mString integerValue] == 0 && [_sString integerValue] == 1) {
+    else if ([_hString integerValue] == 0 && [_mString integerValue] == 0 && [_sString integerValue] == 1) {
         _sString = @"00";
         [_timer invalidate];
     }
@@ -124,8 +126,8 @@
         _sString = [NSString stringWithFormat:@"%02d",[_sString intValue] - 1];
     }
     
-    NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"剩余付款时间 %@:%@", _mString,_sString]];
-    [attributeString setAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithHexString:@"0x404040"], NSFontAttributeName : [UIFont systemFontOfSize:20]} range:NSMakeRange(7, 5)];
+    NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"剩余付款时间 %@:%@:%@", _hString,_mString,_sString]];
+    [attributeString setAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithHexString:@"0x404040"], NSFontAttributeName : [UIFont systemFontOfSize:20]} range:NSMakeRange(7, 8)];
     _timeLabel.attributedText = attributeString;
 }
 
