@@ -175,8 +175,4 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     completionHandler();  // 系统要求执行这个方法
 }
 
-
-
-
-
 @end

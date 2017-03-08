@@ -134,12 +134,7 @@
             _isDeleteSite = isDel;
             [weakSelf saveUserInfo:model];
         };
-
-
-        
     }
-    
-
 }
 
 #pragma mark - 事件处理

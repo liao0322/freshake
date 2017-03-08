@@ -184,7 +184,7 @@
          */
     }
     
-    if ([model.payment_status integerValue] != 1 && [model.express_id integerValue] == 1) {
+    if ([model.payment_status integerValue] != 1) {
         [self.titles addObject:@"查看物流"];
     }
     
