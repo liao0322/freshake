@@ -11,6 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FSGiftCartQuestionAnswerViewController">
             <connections>
+                <outlet property="remindLabel" destination="3l9-aA-mLl" id="lL5-2r-mKQ"/>
+                <outlet property="useLabel" destination="xzd-WL-Pxw" id="Iaw-Ur-yBd"/>
                 <outlet property="useRemindLabel" destination="Qn1-yo-onZ" id="YsR-EK-xXx"/>
                 <outlet property="useStepLabel" destination="9Su-te-AHJ" id="kET-zH-izU"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -124,7 +126,7 @@
                 <constraint firstItem="yLm-1j-T0b" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="nVc-Ye-IeF"/>
                 <constraint firstItem="ovX-Ty-E7b" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="utF-nD-OrT"/>
             </constraints>
-            <point key="canvasLocation" x="98.5" y="79.5"/>
+            <point key="canvasLocation" x="-94" y="118"/>
         </view>
     </objects>
 </document>

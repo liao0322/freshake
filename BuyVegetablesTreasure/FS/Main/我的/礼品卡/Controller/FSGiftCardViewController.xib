@@ -6,6 +6,9 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,14 +19,27 @@
                 <outlet property="cardExplainImageView" destination="Yd6-N9-Prn" id="Uhf-4b-wlf"/>
                 <outlet property="cardExplainLabel" destination="cnK-xc-mJR" id="AJW-Mx-zI9"/>
                 <outlet property="cardExplainRowImage" destination="Zjh-cN-W2b" id="LeS-PJ-odM"/>
+                <outlet property="couponExplainButton" destination="3XZ-KK-e1e" id="lhU-ZK-gAV"/>
+                <outlet property="couponExplainImageView" destination="G0n-A3-vdr" id="GKT-wC-rX4"/>
+                <outlet property="couponExplainLabel" destination="MjR-K2-njI" id="2pQ-MR-eN8"/>
+                <outlet property="couponExplainRowImage" destination="3ql-UK-XE4" id="KDQ-Tk-0UP"/>
                 <outlet property="firstBgView" destination="uXL-OZ-c7Z" id="X6w-FD-9YO"/>
                 <outlet property="getCardButton" destination="YL9-A7-bhX" id="UXg-4y-kJ7"/>
                 <outlet property="getCardImageView" destination="gHg-Dq-Htc" id="IS0-M3-w7R"/>
                 <outlet property="getCardLabel" destination="dH9-xw-LOI" id="KdE-xd-8pc"/>
+                <outlet property="getCouponButton" destination="pVG-71-1eH" id="umT-h8-89B"/>
+                <outlet property="getCouponExplainButton" destination="rtk-13-NQc" id="tw6-ug-oW1"/>
+                <outlet property="getCouponExplainImageVIew" destination="r3p-P9-HF9" id="oUN-Yn-dMN"/>
+                <outlet property="getCouponExplainLabel" destination="KnN-5H-Ac4" id="mvu-9R-uiX"/>
+                <outlet property="getCouponExplainRowImage" destination="0bd-d2-Ru4" id="Mdn-fN-h9i"/>
+                <outlet property="getCouponImageView" destination="FA7-Mv-Gvt" id="vif-cx-F0R"/>
+                <outlet property="getCouponLabel" destination="VqK-zK-C2l" id="Win-ga-NPO"/>
                 <outlet property="getExplainButton" destination="stD-k6-DGx" id="uBf-GN-zPx"/>
                 <outlet property="getExplainImageView" destination="2ze-gg-zQE" id="Ggt-VY-s6q"/>
                 <outlet property="getExplainLabel" destination="0xq-dp-33d" id="TcY-x9-Kgl"/>
                 <outlet property="getExplainRowImage" destination="vjG-fC-ScP" id="OD0-QN-ExF"/>
+                <outlet property="lineFive" destination="UUh-Xk-Kyd" id="AGv-Id-pC4"/>
+                <outlet property="lineFour" destination="gDn-lR-d25" id="jdW-3T-GTC"/>
                 <outlet property="lineOne" destination="IT7-h8-96C" id="P0a-gr-Ml4"/>
                 <outlet property="lineThree" destination="0Nk-5h-ZxI" id="rM1-kx-cDD"/>
                 <outlet property="lineTwo" destination="w8Z-Ix-tya" id="Wts-PN-ctl"/>
@@ -41,110 +57,255 @@
                     <rect key="frame" x="0.0" y="65" width="375" height="398"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uXL-OZ-c7Z" userLabel="First BgView">
-                    <rect key="frame" x="0.0" y="65" width="375" height="95"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uXL-OZ-c7Z" userLabel="First BgView">
+                    <rect key="frame" x="0.0" y="64" width="375" height="95"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="card领用礼品卡" translatesAutoresizingMaskIntoConstraints="NO" id="gHg-Dq-Htc">
-                            <rect key="frame" x="25" y="20" width="37" height="29"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="card领用礼品卡" translatesAutoresizingMaskIntoConstraints="NO" id="gHg-Dq-Htc">
+                            <rect key="frame" x="30" y="22" width="37" height="29"/>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="领用礼品卡" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dH9-xw-LOI">
-                            <rect key="frame" x="8" y="57" width="141" height="21"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="领用礼品卡" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dH9-xw-LOI">
+                            <rect key="frame" x="15.5" y="61" width="66.5" height="16"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YL9-A7-bhX">
-                            <rect key="frame" x="0.0" y="0.0" width="102" height="79"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YL9-A7-bhX">
+                            <rect key="frame" x="15" y="0.0" width="66.5" height="95"/>
                             <connections>
                                 <action selector="getCardButtonAction:" destination="-1" eventType="touchUpInside" id="KRW-Zx-1Lr"/>
                             </connections>
                         </button>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IT7-h8-96C">
-                            <rect key="frame" x="0.0" y="94.5" width="240" height="0.5"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IT7-h8-96C">
+                            <rect key="frame" x="0.0" y="94.5" width="375" height="0.5"/>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="0.5" id="t8V-gq-fE4"/>
+                            </constraints>
                         </view>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="card优惠券" translatesAutoresizingMaskIntoConstraints="NO" id="FA7-Mv-Gvt">
+                            <rect key="frame" x="121" y="23" width="40" height="27"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="领用优惠券" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VqK-zK-C2l">
+                            <rect key="frame" x="108" y="61" width="66.5" height="16"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pVG-71-1eH">
+                            <rect key="frame" x="108" y="0.0" width="66.5" height="95"/>
+                            <connections>
+                                <action selector="getCouponButtonAction:" destination="-1" eventType="touchUpInside" id="Cfa-bk-9Zf"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="IT7-h8-96C" firstAttribute="leading" secondItem="uXL-OZ-c7Z" secondAttribute="leading" id="1NV-TM-exW"/>
+                        <constraint firstItem="gHg-Dq-Htc" firstAttribute="top" secondItem="uXL-OZ-c7Z" secondAttribute="top" constant="22" id="6Dl-Pm-Ssu"/>
+                        <constraint firstItem="YL9-A7-bhX" firstAttribute="centerX" secondItem="gHg-Dq-Htc" secondAttribute="centerX" id="7Py-Ye-ujA"/>
+                        <constraint firstItem="pVG-71-1eH" firstAttribute="height" secondItem="YL9-A7-bhX" secondAttribute="height" id="9Hs-5Z-f96"/>
+                        <constraint firstItem="dH9-xw-LOI" firstAttribute="centerX" secondItem="gHg-Dq-Htc" secondAttribute="centerX" id="BzG-7n-gLX"/>
+                        <constraint firstItem="gHg-Dq-Htc" firstAttribute="leading" secondItem="uXL-OZ-c7Z" secondAttribute="leading" constant="30" id="G6q-Zr-1ef"/>
+                        <constraint firstItem="IT7-h8-96C" firstAttribute="width" secondItem="uXL-OZ-c7Z" secondAttribute="width" id="JxE-Wo-ZHR"/>
+                        <constraint firstItem="FA7-Mv-Gvt" firstAttribute="centerY" secondItem="gHg-Dq-Htc" secondAttribute="centerY" id="U9P-6p-W7x"/>
+                        <constraint firstItem="VqK-zK-C2l" firstAttribute="centerX" secondItem="FA7-Mv-Gvt" secondAttribute="centerX" id="YB5-9t-5HL"/>
+                        <constraint firstItem="YL9-A7-bhX" firstAttribute="width" secondItem="dH9-xw-LOI" secondAttribute="width" id="ZZV-Qt-jx4"/>
+                        <constraint firstItem="IT7-h8-96C" firstAttribute="top" secondItem="uXL-OZ-c7Z" secondAttribute="bottom" id="djN-iY-PDU"/>
+                        <constraint firstItem="pVG-71-1eH" firstAttribute="centerX" secondItem="FA7-Mv-Gvt" secondAttribute="centerX" id="fsJ-Om-fte"/>
+                        <constraint firstItem="pVG-71-1eH" firstAttribute="width" secondItem="YL9-A7-bhX" secondAttribute="width" id="gDm-RF-Pk4"/>
+                        <constraint firstItem="YL9-A7-bhX" firstAttribute="height" secondItem="uXL-OZ-c7Z" secondAttribute="height" id="gxZ-Et-a0e"/>
+                        <constraint firstItem="pVG-71-1eH" firstAttribute="top" secondItem="YL9-A7-bhX" secondAttribute="top" id="imi-aZ-oOf"/>
+                        <constraint firstAttribute="height" constant="95" id="kjx-Z2-sWQ"/>
+                        <constraint firstItem="VqK-zK-C2l" firstAttribute="centerY" secondItem="dH9-xw-LOI" secondAttribute="centerY" id="m0S-H9-1Yp"/>
+                        <constraint firstItem="FA7-Mv-Gvt" firstAttribute="leading" secondItem="gHg-Dq-Htc" secondAttribute="trailing" constant="54" id="qhf-rN-heq"/>
+                        <constraint firstItem="dH9-xw-LOI" firstAttribute="top" secondItem="gHg-Dq-Htc" secondAttribute="bottom" constant="10" id="vaJ-6h-7pT"/>
+                        <constraint firstItem="YL9-A7-bhX" firstAttribute="top" secondItem="uXL-OZ-c7Z" secondAttribute="top" id="veN-8u-CaG"/>
+                    </constraints>
                 </view>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zbf-ia-vbd" userLabel="Second BgView">
-                    <rect key="frame" x="0.0" y="175" width="375" height="75"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zbf-ia-vbd" userLabel="Second BgView">
+                    <rect key="frame" x="0.0" y="169" width="375" height="150"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="card问号" translatesAutoresizingMaskIntoConstraints="NO" id="Yd6-N9-Prn">
-                            <rect key="frame" x="20" y="8" width="19" height="19"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="card问号" translatesAutoresizingMaskIntoConstraints="NO" id="Yd6-N9-Prn">
+                            <rect key="frame" x="15" y="9.5" width="19" height="19"/>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="card问号" translatesAutoresizingMaskIntoConstraints="NO" id="2ze-gg-zQE">
-                            <rect key="frame" x="20" y="48" width="19" height="19"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="card问号" translatesAutoresizingMaskIntoConstraints="NO" id="2ze-gg-zQE">
+                            <rect key="frame" x="15" y="47" width="19" height="19"/>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="什么是礼品卡" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cnK-xc-mJR">
-                            <rect key="frame" x="58" y="8" width="166" height="21"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="什么是礼品卡" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cnK-xc-mJR">
+                            <rect key="frame" x="44" y="10.5" width="80" height="16"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="card进入" translatesAutoresizingMaskIntoConstraints="NO" id="Zjh-cN-W2b">
-                            <rect key="frame" x="350" y="14" width="8" height="15"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="card进入" translatesAutoresizingMaskIntoConstraints="NO" id="Zjh-cN-W2b">
+                            <rect key="frame" x="352" y="11" width="8" height="15"/>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="card进入" translatesAutoresizingMaskIntoConstraints="NO" id="vjG-fC-ScP">
-                            <rect key="frame" x="343" y="47" width="8" height="15"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="card进入" translatesAutoresizingMaskIntoConstraints="NO" id="vjG-fC-ScP">
+                            <rect key="frame" x="352" y="49" width="8" height="15"/>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="什么是领用  如何领用礼品卡" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0xq-dp-33d">
-                            <rect key="frame" x="58" y="48" width="254" height="21"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="什么是领用  如何领用礼品卡" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0xq-dp-33d">
+                            <rect key="frame" x="44" y="48.5" width="166.5" height="16"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cpD-47-vbX">
-                            <rect key="frame" x="0.0" y="38" width="300" height="0.5"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cpD-47-vbX">
+                            <rect key="frame" x="0.0" y="38" width="375" height="0.5"/>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="0.5" id="0Nu-46-bRL"/>
+                            </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hG7-jz-EAi">
-                            <rect key="frame" x="20" y="0.0" width="322" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hG7-jz-EAi">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="37.5"/>
                             <connections>
                                 <action selector="cardExplainButtonAction:" destination="-1" eventType="touchUpInside" id="Jir-DP-DpU"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="stD-k6-DGx">
-                            <rect key="frame" x="20" y="45" width="260" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="stD-k6-DGx">
+                            <rect key="frame" x="0.0" y="37.5" width="375" height="37.5"/>
                             <connections>
                                 <action selector="getExplainButtonAction:" destination="-1" eventType="touchUpInside" id="wWf-gA-8kd"/>
                             </connections>
                         </button>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w8Z-Ix-tya">
-                            <rect key="frame" x="0.0" y="0.0" width="240" height="0.5"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w8Z-Ix-tya">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="0.5"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="0.5" id="EY4-tW-uaG"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Nk-5h-ZxI">
+                            <rect key="frame" x="0.0" y="74.5" width="375" height="0.5"/>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Nk-5h-ZxI">
-                            <rect key="frame" x="0.0" y="74.5" width="240" height="0.5"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="card问号" translatesAutoresizingMaskIntoConstraints="NO" id="G0n-A3-vdr">
+                            <rect key="frame" x="15" y="84.5" width="19" height="19"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="什么是优惠券" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MjR-K2-njI">
+                            <rect key="frame" x="44" y="85.5" width="80" height="16"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gDn-lR-d25">
+                            <rect key="frame" x="0.0" y="112" width="375" height="0.5"/>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="card进入" translatesAutoresizingMaskIntoConstraints="NO" id="3ql-UK-XE4">
+                            <rect key="frame" x="352" y="86" width="8" height="15"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="card问号" translatesAutoresizingMaskIntoConstraints="NO" id="r3p-P9-HF9">
+                            <rect key="frame" x="15" y="122" width="19" height="19"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="如何兑换优惠券及其注意事项" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KnN-5H-Ac4">
+                            <rect key="frame" x="44" y="123.5" width="172.5" height="16"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="card进入" translatesAutoresizingMaskIntoConstraints="NO" id="0bd-d2-Ru4">
+                            <rect key="frame" x="352" y="124" width="8" height="15"/>
+                        </imageView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UUh-Xk-Kyd">
+                            <rect key="frame" x="0.0" y="150" width="375" height="0.5"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3XZ-KK-e1e">
+                            <rect key="frame" x="0.0" y="75" width="375" height="37.5"/>
+                            <connections>
+                                <action selector="couponExplainButtonAction:" destination="-1" eventType="touchUpInside" id="laI-fd-jwn"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rtk-13-NQc">
+                            <rect key="frame" x="0.0" y="112.5" width="375" height="37.5"/>
+                            <connections>
+                                <action selector="getCouponExplainButtonAction:" destination="-1" eventType="touchUpInside" id="DB3-EL-8XX"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="3XZ-KK-e1e" firstAttribute="leading" secondItem="stD-k6-DGx" secondAttribute="leading" id="1MA-gp-KeP"/>
+                        <constraint firstItem="rtk-13-NQc" firstAttribute="leading" secondItem="3XZ-KK-e1e" secondAttribute="leading" id="3nZ-3M-0TW"/>
+                        <constraint firstItem="3XZ-KK-e1e" firstAttribute="width" secondItem="stD-k6-DGx" secondAttribute="width" id="4fz-2z-DXj"/>
+                        <constraint firstItem="UUh-Xk-Kyd" firstAttribute="top" secondItem="zbf-ia-vbd" secondAttribute="bottom" id="4uz-px-PHw"/>
+                        <constraint firstItem="cpD-47-vbX" firstAttribute="width" secondItem="zbf-ia-vbd" secondAttribute="width" id="5Kh-fa-LOE"/>
+                        <constraint firstItem="hG7-jz-EAi" firstAttribute="top" secondItem="zbf-ia-vbd" secondAttribute="top" id="5sj-UY-Vp1"/>
+                        <constraint firstItem="0Nk-5h-ZxI" firstAttribute="leading" secondItem="w8Z-Ix-tya" secondAttribute="leading" id="6h6-FQ-M9x"/>
+                        <constraint firstItem="KnN-5H-Ac4" firstAttribute="leading" secondItem="r3p-P9-HF9" secondAttribute="trailing" constant="10" id="7rQ-hP-erX"/>
+                        <constraint firstItem="Zjh-cN-W2b" firstAttribute="centerY" secondItem="cnK-xc-mJR" secondAttribute="centerY" id="9ma-qi-MLU"/>
+                        <constraint firstAttribute="trailing" secondItem="Zjh-cN-W2b" secondAttribute="trailing" constant="15" id="AOi-qI-SAW"/>
+                        <constraint firstItem="rtk-13-NQc" firstAttribute="centerY" secondItem="zbf-ia-vbd" secondAttribute="centerYWithinMargins" constant="56.25" id="AZk-Rp-xb5"/>
+                        <constraint firstItem="hG7-jz-EAi" firstAttribute="height" secondItem="zbf-ia-vbd" secondAttribute="height" multiplier="1:4" id="Adq-6L-Rf1"/>
+                        <constraint firstItem="MjR-K2-njI" firstAttribute="leading" secondItem="G0n-A3-vdr" secondAttribute="trailing" constant="10" id="CQf-bU-Dxt"/>
+                        <constraint firstItem="rtk-13-NQc" firstAttribute="width" secondItem="3XZ-KK-e1e" secondAttribute="width" id="CwQ-Wf-4Nd"/>
+                        <constraint firstItem="hG7-jz-EAi" firstAttribute="leading" secondItem="zbf-ia-vbd" secondAttribute="leading" id="DVy-Wd-dVu"/>
+                        <constraint firstItem="0bd-d2-Ru4" firstAttribute="leading" secondItem="3ql-UK-XE4" secondAttribute="leading" id="Ee7-ac-7vq"/>
+                        <constraint firstItem="UUh-Xk-Kyd" firstAttribute="leading" secondItem="gDn-lR-d25" secondAttribute="leading" id="FNt-5J-LS7"/>
+                        <constraint firstItem="Yd6-N9-Prn" firstAttribute="leading" secondItem="zbf-ia-vbd" secondAttribute="leading" constant="15" id="Fj5-RA-eRY"/>
+                        <constraint firstItem="w8Z-Ix-tya" firstAttribute="width" secondItem="zbf-ia-vbd" secondAttribute="width" id="Fv0-8Q-e6o"/>
+                        <constraint firstItem="Yd6-N9-Prn" firstAttribute="centerY" secondItem="zbf-ia-vbd" secondAttribute="centerYWithinMargins" constant="-56.25" id="G6R-OX-BKS"/>
+                        <constraint firstItem="w8Z-Ix-tya" firstAttribute="leading" secondItem="zbf-ia-vbd" secondAttribute="leading" id="H1a-Qm-Eg7"/>
+                        <constraint firstItem="0bd-d2-Ru4" firstAttribute="centerY" secondItem="KnN-5H-Ac4" secondAttribute="centerY" id="JRt-Dm-Zlt"/>
+                        <constraint firstItem="r3p-P9-HF9" firstAttribute="leading" secondItem="G0n-A3-vdr" secondAttribute="leading" id="KZl-SN-4HI"/>
+                        <constraint firstItem="w8Z-Ix-tya" firstAttribute="top" secondItem="zbf-ia-vbd" secondAttribute="top" id="LWN-8U-0E5"/>
+                        <constraint firstItem="2ze-gg-zQE" firstAttribute="centerY" secondItem="zbf-ia-vbd" secondAttribute="centerYWithinMargins" constant="-18.75" id="Mfn-lX-q2U"/>
+                        <constraint firstItem="0Nk-5h-ZxI" firstAttribute="centerY" secondItem="zbf-ia-vbd" secondAttribute="centerY" id="Mxy-Ye-hjF"/>
+                        <constraint firstItem="stD-k6-DGx" firstAttribute="width" secondItem="hG7-jz-EAi" secondAttribute="width" id="Nr3-pn-hYd"/>
+                        <constraint firstItem="cnK-xc-mJR" firstAttribute="centerY" secondItem="Yd6-N9-Prn" secondAttribute="centerY" id="R1K-Uq-R8G"/>
+                        <constraint firstItem="cnK-xc-mJR" firstAttribute="leading" secondItem="Yd6-N9-Prn" secondAttribute="trailing" constant="10" id="Vew-sw-Opd"/>
+                        <constraint firstItem="G0n-A3-vdr" firstAttribute="leading" secondItem="2ze-gg-zQE" secondAttribute="leading" id="Xws-t0-Z3E"/>
+                        <constraint firstItem="0xq-dp-33d" firstAttribute="leading" secondItem="2ze-gg-zQE" secondAttribute="trailing" constant="10" id="Zoz-XI-lnf"/>
+                        <constraint firstItem="3XZ-KK-e1e" firstAttribute="height" secondItem="stD-k6-DGx" secondAttribute="height" id="a7w-vk-vym"/>
+                        <constraint firstItem="0Nk-5h-ZxI" firstAttribute="height" secondItem="w8Z-Ix-tya" secondAttribute="height" id="aLT-Tz-QKb"/>
+                        <constraint firstItem="stD-k6-DGx" firstAttribute="height" secondItem="hG7-jz-EAi" secondAttribute="height" id="aMQ-cw-hZ9"/>
+                        <constraint firstItem="vjG-fC-ScP" firstAttribute="centerY" secondItem="0xq-dp-33d" secondAttribute="centerY" id="blM-p8-der"/>
+                        <constraint firstItem="r3p-P9-HF9" firstAttribute="centerY" secondItem="zbf-ia-vbd" secondAttribute="centerYWithinMargins" constant="56.25" id="bqB-gr-ezz"/>
+                        <constraint firstItem="UUh-Xk-Kyd" firstAttribute="height" secondItem="gDn-lR-d25" secondAttribute="height" id="buZ-89-cS5"/>
+                        <constraint firstItem="stD-k6-DGx" firstAttribute="leading" secondItem="hG7-jz-EAi" secondAttribute="leading" id="cGj-qO-u7V"/>
+                        <constraint firstItem="3ql-UK-XE4" firstAttribute="leading" secondItem="vjG-fC-ScP" secondAttribute="leading" id="dix-OO-eYM"/>
+                        <constraint firstItem="MjR-K2-njI" firstAttribute="centerY" secondItem="G0n-A3-vdr" secondAttribute="centerY" id="gqH-Sj-4ua"/>
+                        <constraint firstItem="gDn-lR-d25" firstAttribute="leading" secondItem="w8Z-Ix-tya" secondAttribute="leading" id="i12-Ce-uuu"/>
+                        <constraint firstItem="3ql-UK-XE4" firstAttribute="centerY" secondItem="MjR-K2-njI" secondAttribute="centerY" id="jcL-N7-O3K"/>
+                        <constraint firstItem="2ze-gg-zQE" firstAttribute="leading" secondItem="Yd6-N9-Prn" secondAttribute="leading" id="jtb-X6-KGX"/>
+                        <constraint firstItem="cpD-47-vbX" firstAttribute="leading" secondItem="zbf-ia-vbd" secondAttribute="leading" id="k43-eD-UAf"/>
+                        <constraint firstItem="0Nk-5h-ZxI" firstAttribute="width" secondItem="w8Z-Ix-tya" secondAttribute="width" id="kKt-IS-XKH"/>
+                        <constraint firstItem="3XZ-KK-e1e" firstAttribute="top" secondItem="stD-k6-DGx" secondAttribute="bottom" id="mjN-BI-rCy"/>
+                        <constraint firstItem="cpD-47-vbX" firstAttribute="centerY" secondItem="zbf-ia-vbd" secondAttribute="centerYWithinMargins" constant="-37.5" id="mqC-fO-bTs"/>
+                        <constraint firstAttribute="height" constant="150" id="nDY-zO-NpN"/>
+                        <constraint firstItem="gDn-lR-d25" firstAttribute="width" secondItem="w8Z-Ix-tya" secondAttribute="width" id="oIf-az-oVU"/>
+                        <constraint firstItem="UUh-Xk-Kyd" firstAttribute="width" secondItem="gDn-lR-d25" secondAttribute="width" id="omg-aV-wFD"/>
+                        <constraint firstItem="vjG-fC-ScP" firstAttribute="leading" secondItem="Zjh-cN-W2b" secondAttribute="leading" id="pUx-Ce-BQ0"/>
+                        <constraint firstItem="gDn-lR-d25" firstAttribute="centerY" secondItem="zbf-ia-vbd" secondAttribute="centerYWithinMargins" constant="37.5" id="pmT-ma-sZc"/>
+                        <constraint firstItem="hG7-jz-EAi" firstAttribute="width" secondItem="zbf-ia-vbd" secondAttribute="width" id="sRd-ME-cCE"/>
+                        <constraint firstItem="0xq-dp-33d" firstAttribute="centerY" secondItem="2ze-gg-zQE" secondAttribute="centerY" id="sdt-i1-wEl"/>
+                        <constraint firstItem="stD-k6-DGx" firstAttribute="top" secondItem="hG7-jz-EAi" secondAttribute="bottom" id="ur5-43-Z1L"/>
+                        <constraint firstItem="rtk-13-NQc" firstAttribute="height" secondItem="3XZ-KK-e1e" secondAttribute="height" id="wGs-zI-Mys"/>
+                        <constraint firstItem="G0n-A3-vdr" firstAttribute="centerY" secondItem="zbf-ia-vbd" secondAttribute="centerYWithinMargins" constant="18.75" id="yqL-vn-RTc"/>
+                        <constraint firstItem="KnN-5H-Ac4" firstAttribute="centerY" secondItem="r3p-P9-HF9" secondAttribute="centerY" id="zS9-ER-1tY"/>
+                        <constraint firstItem="gDn-lR-d25" firstAttribute="height" secondItem="0Nk-5h-ZxI" secondAttribute="height" id="zha-Ym-7RK"/>
+                    </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="zbf-ia-vbd" firstAttribute="top" secondItem="uXL-OZ-c7Z" secondAttribute="bottom" constant="10" id="1Ak-gz-VTl"/>
+                <constraint firstAttribute="trailing" secondItem="zbf-ia-vbd" secondAttribute="trailing" id="ITd-fW-Ooc"/>
+                <constraint firstItem="uXL-OZ-c7Z" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Qmo-G9-b0o"/>
+                <constraint firstItem="zbf-ia-vbd" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="XHX-JE-zqn"/>
+                <constraint firstAttribute="trailing" secondItem="uXL-OZ-c7Z" secondAttribute="trailing" id="YrR-X1-BC3"/>
+                <constraint firstItem="uXL-OZ-c7Z" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="ec1-zp-A3K"/>
+                <constraint firstItem="uXL-OZ-c7Z" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="hBW-wf-nIa"/>
+                <constraint firstItem="zbf-ia-vbd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="js9-Lk-Bag"/>
+            </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-            <point key="canvasLocation" x="-149" y="48"/>
+            <point key="canvasLocation" x="-394" y="57"/>
         </view>
     </objects>
     <resources>
         <image name="bgLOGO" width="375" height="398"/>
+        <image name="card优惠券" width="40" height="27"/>
         <image name="card进入" width="8" height="15"/>
         <image name="card问号" width="19" height="19"/>
         <image name="card领用礼品卡" width="37" height="29"/>

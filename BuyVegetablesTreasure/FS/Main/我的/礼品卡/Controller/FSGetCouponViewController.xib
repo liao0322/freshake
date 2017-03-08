@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FSGetCouponViewController">
+            <connections>
+                <outlet property="attentionLabel" destination="sIY-Qp-DiU" id="r8X-D2-3Z6"/>
+                <outlet property="bgImageView" destination="Ehe-vy-jSh" id="uTc-Ij-pox"/>
+                <outlet property="couponNumTextField" destination="Q9t-ao-h6n" id="HRw-6O-u0c"/>
+                <outlet property="getCouponButton" destination="qdV-B8-FCR" id="HbG-Wr-RNr"/>
+                <outlet property="textViewLine" destination="io3-JI-csj" id="Iyh-nl-Qfz"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bgLOGO" translatesAutoresizingMaskIntoConstraints="NO" id="Ehe-vy-jSh">
+                    <rect key="frame" x="0.0" y="65" width="375" height="398"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dcG-nG-LWI">
+                    <rect key="frame" x="0.0" y="64" width="375" height="50"/>
+                    <subviews>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入8位兑换码" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Q9t-ao-h6n" customClass="XFLimitedTextField">
+                            <rect key="frame" x="15" y="15.5" width="345" height="19"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <action selector="textFieldChanged:" destination="-1" eventType="editingChanged" id="mwb-vD-aoe"/>
+                            </connections>
+                        </textField>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="io3-JI-csj">
+                            <rect key="frame" x="0.0" y="50" width="375" height="0.5"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="0.5" id="4xt-66-n7T"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="io3-JI-csj" secondAttribute="trailing" id="9tH-qz-emy"/>
+                        <constraint firstAttribute="height" constant="50" id="OkQ-1q-bKk"/>
+                        <constraint firstItem="Q9t-ao-h6n" firstAttribute="centerY" secondItem="dcG-nG-LWI" secondAttribute="centerY" id="bxO-Sr-PcD"/>
+                        <constraint firstAttribute="trailing" secondItem="Q9t-ao-h6n" secondAttribute="trailing" constant="15" id="f8l-Nw-8ID"/>
+                        <constraint firstItem="Q9t-ao-h6n" firstAttribute="leading" secondItem="dcG-nG-LWI" secondAttribute="leading" constant="15" id="rwD-F8-Vwg"/>
+                        <constraint firstItem="io3-JI-csj" firstAttribute="top" secondItem="dcG-nG-LWI" secondAttribute="bottom" id="wIe-jj-tTU"/>
+                        <constraint firstItem="io3-JI-csj" firstAttribute="leading" secondItem="dcG-nG-LWI" secondAttribute="leading" id="y1d-XN-idt"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请关注优惠券有效期，并及时领用。" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sIY-Qp-DiU">
+                    <rect key="frame" x="15" y="124" width="245" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ard-yQ-5JX">
+                    <rect key="frame" x="285" y="118" width="75" height="30"/>
+                    <state key="normal" title="如何领用 &gt;">
+                        <color key="titleColor" red="0.52156862745098043" green="0.74117647058823533" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="getExplainButtonAction:" destination="-1" eventType="touchUpInside" id="b15-dN-MVl"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qdV-B8-FCR">
+                    <rect key="frame" x="15" y="172" width="345" height="45"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="0fI-FY-yxU"/>
+                    </constraints>
+                    <state key="normal" title="立即领用">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="getCouponButtonAction:" destination="-1" eventType="touchUpInside" id="gO2-UJ-yUf"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="ard-yQ-5JX" secondAttribute="trailing" constant="15" id="2sZ-h1-FuE"/>
+                <constraint firstItem="dcG-nG-LWI" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="8o1-nl-agf"/>
+                <constraint firstAttribute="trailing" secondItem="qdV-B8-FCR" secondAttribute="trailing" constant="15" id="Fza-0C-z0l"/>
+                <constraint firstItem="dcG-nG-LWI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="TSm-h5-zSs"/>
+                <constraint firstItem="ard-yQ-5JX" firstAttribute="centerY" secondItem="sIY-Qp-DiU" secondAttribute="centerY" id="Xld-VJ-3Uf"/>
+                <constraint firstAttribute="trailing" secondItem="dcG-nG-LWI" secondAttribute="trailing" id="YNj-Nr-UWC"/>
+                <constraint firstItem="qdV-B8-FCR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="cDh-u6-VXe"/>
+                <constraint firstItem="dcG-nG-LWI" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="lJ1-v6-DlQ"/>
+                <constraint firstItem="sIY-Qp-DiU" firstAttribute="top" secondItem="dcG-nG-LWI" secondAttribute="bottom" constant="10" id="p00-6d-Hkf"/>
+                <constraint firstItem="sIY-Qp-DiU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="uZZ-dl-zUE"/>
+                <constraint firstItem="qdV-B8-FCR" firstAttribute="top" secondItem="sIY-Qp-DiU" secondAttribute="bottom" constant="30" id="xPc-EW-h7Y"/>
+            </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+            <point key="canvasLocation" x="-150" y="54"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="bgLOGO" width="375" height="398"/>
+    </resources>
+</document>

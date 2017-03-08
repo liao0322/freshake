@@ -130,6 +130,8 @@
 
 // 如何领取按钮事件
 - (IBAction)getExplainButtonAction:(id)sender {
+    FSGiftCartQuestionAnswerViewController *answerVC = [FSGiftCartQuestionAnswerViewController new];
+    answerVC.Status = 0;
     [self.navigationController pushViewController:[FSGiftCartQuestionAnswerViewController new] animated:YES];
 }
 
