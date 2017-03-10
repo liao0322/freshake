@@ -284,6 +284,7 @@ static NSString * const OrderListSectionFooterID = @"OrderListSectionFooterID";
 }
 
 - (void)getOrder {
+    NSLog(@"%@", self.urlString);
     [XFNetworking GET:self.urlString parameters:nil success:^(id responseObject, NSInteger statusCode) {
         if ([self.normalHeader isRefreshing]) {
             [self.normalHeader endRefreshing];

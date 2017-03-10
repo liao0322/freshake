@@ -150,6 +150,7 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [Tools myHud:@"评价失败" inView:self.view];
         [hud hide:YES];
+        NSLog(@"%@", error);
     }];
 }
 

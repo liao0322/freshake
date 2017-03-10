@@ -9,8 +9,11 @@
 #import "FSGetCouponViewController.h"
 #import "FSGiftCartQuestionAnswerViewController.h"
 #import "XFLimitedTextField.h"
+#import "XYPAlterView.h"
 
-@interface FSGetCouponViewController ()
+#define ALPHANUM @"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 "
+
+@interface FSGetCouponViewController ()<XYPAlterViewDelegate, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *bgImageView;
 
@@ -21,6 +24,16 @@
 @property (weak, nonatomic) IBOutlet UILabel *attentionLabel;
 
 @property (weak, nonatomic) IBOutlet UIButton *getCouponButton;
+
+@property (copy, nonatomic, readonly) NSDictionary *codeDict;
+
+
+@property (nonatomic) XYPAlterView *xypAlterView;
+@property (nonatomic) UIView *darkView;
+@property (nonatomic) NSString *stateCode;
+
+@property (nonatomic, copy) NSString *uidString; // 用户id
+
 
 @end
 
@@ -46,6 +59,16 @@
     self.getCouponButton.layer.cornerRadius = 5.0f;
     self.getCouponButton.layer.masksToBounds = YES;
     
+    self.darkView = [UIView new];
+    self.darkView.userInteractionEnabled = YES;
+    self.darkView.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.2];
+    
+    self.xypAlterView = [XYPAlterView new];
+    self.xypAlterView.delegate = self;
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    _uidString = [userDefaults objectForKey:@"UID"];
+    
 }
 
 - (void)viewDidLayoutSubviews {
@@ -57,6 +80,8 @@
     self.bgImageView.y = 64;
     self.bgImageView.width = width;
     self.bgImageView.height = width / (375 / 398.0f);
+    
+    self.darkView.frame = [UIScreen mainScreen].bounds;
 }
 
 
@@ -72,7 +97,7 @@
     [self.view endEditing:YES];
     
     if (!(self.couponNumTextField.text.length < 8)) {
-        
+            [self getCouponsWithCouponNumber:self.couponNumTextField.text];
     }
     else{
         return [XFProgressHUD showMessage:@"请输入8位兑换码" inView:self.view];
@@ -80,11 +105,85 @@
     
 }
 
-
-- (IBAction)textFieldChanged:(UITextField *)sender {
-    self.getCouponButton.enabled = self.couponNumTextField.text.length;
+- (void)getCouponsWithCouponNumber:(NSString *)couponNumber {
+    
+    NSString *urlString = [NSString stringWithFormat:GetCoupons,[_uidString integerValue],couponNumber];
+    
+    [XFNetworking GET:urlString parameters:nil success:^(id responseObject, NSInteger statusCode) {
+        
+        NSDictionary *dict = [self dictWithData:responseObject];
+        self.stateCode = dict[@"code"];
+        // 领取失败
+        if (![self.stateCode isEqualToString:@"0"]) {
+            if ([self.stateCode isEqualToString:@"030201"]) {
+                return [XFProgressHUD showMessage:self.codeDict[dict[@"code"]] inView:self.view];
+            } else if ([self.stateCode isEqualToString:@"030202"]) {
+                return [XFProgressHUD showMessage:self.codeDict[dict[@"code"]] inView:self.view];
+            } else if ([self.stateCode isEqualToString:@"030203"]) {
+                [[UIApplication sharedApplication].keyWindow addSubview:self.darkView];
+                [self.xypAlterView alertForGetGiftCardWithMessage:self.codeDict[dict[@"code"]] Money:nil Success:NO];
+                return;
+            } else {
+                [[UIApplication sharedApplication].keyWindow addSubview:self.darkView];
+                [self.xypAlterView alertForGetGiftCardWithMessage:@"优惠券领用失败" Money:nil Success:NO];
+                return;
+            }
+        }
+        
+        // 领取成功
+        [[UIApplication sharedApplication].keyWindow addSubview:self.darkView];
+        [self.xypAlterView alertForGetGiftCardWithMessage:@"优惠券领用成功" Money:nil Success:YES];
+        
+    } failure:^(NSError *error, NSInteger statusCode) {
+        [self showInfoWidthError:error];
+    }];
+    
 }
 
+// 弹出框关闭按钮事件
+- (void)xypAlterView:(XYPAlterView *)xypAlterView closeButtonTouchUpInside:(UIButton *)sender {
+    [self.darkView removeFromSuperview];
+    [self.xypAlterView removeFromSuperview];
+    [self removeSubviews];
+    
+    if ([self.stateCode isEqualToString:@"0"]) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
+// 移除子视图
+- (void)removeSubviews {
+    if (self.xypAlterView.subviews.count != 0) {
+        for (UIView *view in self.xypAlterView.subviews) {
+            [view removeFromSuperview];
+        }
+    }
+}
+
+- (IBAction)textFieldChanged:(UITextField *)sender {
+    self.getCouponButton.enabled = self.couponNumTextField.text.length > 7;
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    NSCharacterSet *cs;
+    // 禁止输入字母和数字以外的其他字符
+    cs = [[NSCharacterSet characterSetWithCharactersInString:ALPHANUM] invertedSet];
+    NSString *filtered = [[string componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
+    // 禁止输入空格
+    NSString *spaceFiltered = [[string componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] componentsJoinedByString:@""];
+    if (![string isEqualToString:filtered] || ![string isEqualToString:spaceFiltered]) {
+        return NO;
+    }
+    return YES;
+}
+
+- (NSDictionary *)codeDict {
+    return @{
+             @"030201" : @"兑换码输入错误",
+             @"030202" : @"每张优惠券只能领用一次哦",
+             @"030203" : @"已失效"
+             };
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

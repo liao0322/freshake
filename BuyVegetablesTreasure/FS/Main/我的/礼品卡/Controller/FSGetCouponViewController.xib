@@ -33,11 +33,13 @@
                     <subviews>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入8位兑换码" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Q9t-ao-h6n" customClass="XFLimitedTextField">
                             <rect key="frame" x="15" y="15.5" width="345" height="19"/>
+                            <color key="tintColor" red="0.52156862745098043" green="0.74117647058823533" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
                             <connections>
                                 <action selector="textFieldChanged:" destination="-1" eventType="editingChanged" id="mwb-vD-aoe"/>
+                                <outlet property="delegate" destination="-1" id="792-hD-1w0"/>
                             </connections>
                         </textField>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="io3-JI-csj">
@@ -102,7 +104,7 @@
                 <constraint firstItem="qdV-B8-FCR" firstAttribute="top" secondItem="sIY-Qp-DiU" secondAttribute="bottom" constant="30" id="xPc-EW-h7Y"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-            <point key="canvasLocation" x="-150" y="54"/>
+            <point key="canvasLocation" x="-535" y="-98"/>
         </view>
     </objects>
     <resources>

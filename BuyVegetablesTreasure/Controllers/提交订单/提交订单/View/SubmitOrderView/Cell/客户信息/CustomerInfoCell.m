@@ -26,9 +26,13 @@
 
 - (void)initCell {
     
-    NSArray *titles = @[@"提货人:",@"电话:",@"买家留言:"];
-    NSArray *placeholders = @[@"输入提货人",@"输入电话",@"可输入100字以内的特殊要求"];
-    for (int i = 0; i < 3; i++) {
+//    NSArray *titles = @[@"提货人:",@"电话:",@"买家留言:"];
+    NSArray *titles = @[@"提货人:",@"电话:"];
+
+//    NSArray *placeholders = @[@"输入提货人",@"输入电话",@"可输入100字以内的特殊要求"];
+    NSArray *placeholders = @[@"输入提货人",@"输入电话"];
+
+    for (int i = 0; i < 2; i++) {
         
         UILabel *titleLabel = [UILabel new];
         titleLabel.text = titles[i];
@@ -71,26 +75,26 @@
         [Single sharedInstance].userTel = textField.text;
     
     }
-    else if (textField.tag == 92) {
-        [Single sharedInstance].remark = textField.text;
-    }
+//    else if (textField.tag == 92) {
+//        [Single sharedInstance].remark = textField.text;
+//    }
 }
 
 - (void)setData {
     
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < 2; i++) {
         
         NSString *string = @"";
         if (i == 0) {
             string = [Single sharedInstance].userName;
         }
-        else if (i == 1) {
+        else {
             string = [Single sharedInstance].userTel;
         }
-        else {
-//            string = [Single sharedInstance].remark;
-            string = @"";
-        }
+//        else {
+////            string = [Single sharedInstance].remark;
+//            string = @"";
+//        }
         
         if (isBlankString(string)) {
             string = @"";

@@ -137,4 +137,6 @@ typedef enum : NSUInteger {
  */
 + (void)WeCartPayWithNoncestr:(NSString *)noncestr package:(NSString *)package partnerid:(NSString *)partnerid prepayid:(NSString *)prepayid timestamp:(NSString *)timestamp;
 
+
+
 @end

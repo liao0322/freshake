@@ -430,10 +430,11 @@
     if (section == 0) {
         
         if (_isChooseAddress) {
+            NSInteger row;
+//            NSInteger row = 5 + self.isDistribution;
             
-            NSInteger row = 5 + self.isDistribution;
-            
-            if (self.isDistribution) row -= ![Single sharedInstance].isdeliverTime;
+            row = _isDistribution ? 5 : 6;
+//            if (self.isDistribution) row -= ![Single sharedInstance].isdeliverTime;
             
             return row;
         }
@@ -580,6 +581,10 @@
                     cell.accessoryView = self.integralSwitch;
                     return cell;
                 }
+                else {
+                    RemarkCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RemarkCell"];
+                    return cell;
+                }
             }
         }
     }
@@ -690,7 +695,7 @@
             }
             else if (indexPath.row == 2) {
                 
-                return 135;
+                return 95;
             }
         }
         // 配送

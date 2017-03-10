@@ -33,7 +33,7 @@ static MBProgressHUD *hud = nil;
     hud.offset = CGPointMake(0.f, 0.f);
     hud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
     hud.bezelView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.7f];
-    hud.bezelView.height = 400.f;
+//    hud.bezelView.height = 400.f;
     //    hud.detailsLabelFont = [UIFont boldSystemFontOfSize:16];
     [hud hideAnimated:YES afterDelay:DURING_TIME];
     

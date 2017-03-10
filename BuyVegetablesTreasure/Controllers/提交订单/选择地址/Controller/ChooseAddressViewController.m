@@ -124,7 +124,7 @@
     self.navigationItem.leftBarButtonItem = [UIFactory createBackBBIWithTarget:self action:@selector(back)];
     
     // 开启了配送和自提
-    if (_deliveryStatus && _distributionStatus) {
+    if (_deliveryStatus == 0 && _distributionStatus) {
         
         _segmented = [[UISegmentedControl alloc] initWithItems:@[@"送货上门", @"店铺自提"]];
         _segmented.selectedSegmentIndex = 0;

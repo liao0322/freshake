@@ -461,7 +461,8 @@ typedef NS_ENUM(NSInteger,CouponType) {
         
         if ([data[@"issuccess"] boolValue]) {
         
-            _submitOrderView.deliveryStatus = [data[@"IsDelivery"] boolValue];
+//            _submitOrderView.deliveryStatus = [data[@"IsDelivery"] boolValue];
+            _submitOrderView.deliveryStatus = 0;
             _submitOrderView.distributionStatus = [data[@"IsDistribution"] boolValue];
             [Single sharedInstance].isdeliverTime = [data[@"IsdeliverTime"] boolValue];
             
