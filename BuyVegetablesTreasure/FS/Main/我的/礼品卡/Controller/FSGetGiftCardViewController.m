@@ -47,7 +47,7 @@
 - (void)initialization {
     [super initialization];
     
-    self.title = @"领用礼品卡";
+    self.title = @"激活礼品卡";
     
     self.cardNumTextField.borderStyle = UITextBorderStyleNone;
     self.cardNumTextField.tintColor = [UIColor colorDomina];

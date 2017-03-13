@@ -47,7 +47,7 @@
 - (void)initialize {
     [super initialize];
     
-    self.title = @"领用优惠券";
+    self.title = @"兑换优惠券";
     
     self.couponNumTextField.maxCount = 8;
     self.attentionLabel.textColor = [UIColor colorTextDomina];

@@ -61,7 +61,7 @@
                         <constraint firstItem="io3-JI-csj" firstAttribute="leading" secondItem="dcG-nG-LWI" secondAttribute="leading" id="y1d-XN-idt"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请关注优惠券有效期，并及时领用。" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sIY-Qp-DiU">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请关注优惠券有效期，并及时兑换。" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sIY-Qp-DiU">
                     <rect key="frame" x="15" y="124" width="245" height="18"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <nil key="textColor"/>
@@ -69,7 +69,7 @@
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ard-yQ-5JX">
                     <rect key="frame" x="285" y="118" width="75" height="30"/>
-                    <state key="normal" title="如何领用 &gt;">
+                    <state key="normal" title="如何兑换 &gt;">
                         <color key="titleColor" red="0.52156862745098043" green="0.74117647058823533" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
@@ -81,7 +81,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="0fI-FY-yxU"/>
                     </constraints>
-                    <state key="normal" title="立即领用">
+                    <state key="normal" title="立即兑换">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
