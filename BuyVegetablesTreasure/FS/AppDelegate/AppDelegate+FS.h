@@ -26,4 +26,6 @@
 
 - (void)setupJPushWithOptions:(NSDictionary *)launchOptions;
 
+- (void)checkForUpdates;
+
 @end

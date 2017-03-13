@@ -12,7 +12,7 @@
 #import "FSLoginViewController.h"
 
 #define JPushAppKey @"b347d922d918772bed05afb6"
-
+#define APP_ID @"1136079278"
 
 @implementation AppDelegate (FS)
 
@@ -29,6 +29,61 @@
     // 设置 状态栏
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+}
+
+- (void)checkForUpdates {
+    // 获取当前版本
+    NSDictionary *infoDic = [[NSBundle mainBundle] infoDictionary];
+    NSString *currentVersionString = infoDic[@"CFBundleShortVersionString"];
+    
+    // 获取app store 版本
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://itunes.apple.com/cn/lookup?id=%@", APP_ID]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (data == nil) {
+            NSLog(@"你没有连接网络");
+            return;
+        }
+
+        NSDictionary *appInfoDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
+        NSArray *array = appInfoDic[@"results"];
+        NSDictionary *dic = array[0];
+        NSString *appStoreVersion = dic[@"version"];
+        
+        if ([self compareCurrentVersion:currentVersionString appStoreVersion:appStoreVersion]) {
+
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"版本更新" message:@"检测到新版本，是否更新？" preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *updateAction = [UIAlertAction actionWithTitle:@"更新" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                
+                NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://itunes.apple.com/us/app/id%@?ls=1&mt=8", APP_ID]];
+                UIApplication *application = [UIApplication sharedApplication];
+                if ([application canOpenURL:url]) {
+                    [application openURL:url];
+                }
+            }];
+            
+            [alert addAction:updateAction];
+            
+            [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+            
+        } else {
+            NSLog(@"版本号好像比商店大噢!检测到不需要更新");
+        }
+    }];
+    
+    [dataTask resume];
+}
+
+- (BOOL)compareCurrentVersion:(NSString *)currentVersion appStoreVersion:(NSString *)appStoreVersion {
+    
+    if ([currentVersion compare:appStoreVersion options:NSNumericSearch] == NSOrderedAscending) {
+        // 有新版本
+        return YES;
+    } else {
+        return NO;
+    }
 }
 
 #pragma mark - UITabBarControllerDelegate

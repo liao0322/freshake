@@ -30,6 +30,10 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+//    [NSThread sleepForTimeInterval:5.0f];
+    [self checkForUpdates];
+    
 
     // 全局设置
     [self fsGlobalSetup];
