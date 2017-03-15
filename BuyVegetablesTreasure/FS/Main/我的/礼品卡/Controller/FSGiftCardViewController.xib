@@ -300,7 +300,7 @@
                 <constraint firstItem="zbf-ia-vbd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="js9-Lk-Bag"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-            <point key="canvasLocation" x="-394" y="57"/>
+            <point key="canvasLocation" x="-749" y="57"/>
         </view>
     </objects>
     <resources>

@@ -7,17 +7,22 @@
 //
 
 #import "FSMyCouponView.h"
-#import "FSMyCouponsCell.h"
+//#import "FSMyCouponsCell.h"
+#import "CouponModel.h"
+#import "FSMyCouponsViewCell.h"
 #import "FSCouponsDetailViewController.h"
 
 @implementation FSMyCouponView
+
+static NSString * const myCouponsViewCellID = @"myCouponsViewCellID";
+
 
 - (instancetype)initWithFrame:(CGRect)frame {
     
     if (self = [super initWithFrame:frame]) {
         
         [self.tableView setBackgroundColor:[UIColor colorWithHexString:@"0xf2f2f2"]];
-        [self.tableView registerClass:[FSMyCouponsCell class] forCellReuseIdentifier:@"FSMyCouponsCell"];
+        [self.tableView registerClass:[FSMyCouponsViewCell class] forCellReuseIdentifier:myCouponsViewCellID];
     }
     return self;
 }
@@ -34,10 +39,11 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    FSMyCouponsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FSMyCouponsCell"];
+    FSMyCouponsViewCell *cell = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([FSMyCouponsViewCell class]) owner:nil options:nil] lastObject];
+    CouponModel *coupon = self.dataSource[indexPath.section];
     [cell setBackgroundColor:[UIColor colorWithHexString:@"0xf2f2f2"]];
-    [cell setModel:self.dataSource[indexPath.section]];
-    [cell useCellFrameCacheWithIndexPath:indexPath tableView:tableView];
+    cell.model = coupon;
+//    [cell useCellFrameCacheWithIndexPath:indexPath tableView:tableView];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -45,7 +51,7 @@
 #pragma mark - UITableViewDelegate
 // Cell高度
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [tableView cellHeightForIndexPath:indexPath model:self.dataSource[indexPath.section] keyPath:@"model" cellClass:[FSMyCouponsCell class] contentViewWidth:ScreenWidth];
+    return 115;
 }
 
 // 点击cell
