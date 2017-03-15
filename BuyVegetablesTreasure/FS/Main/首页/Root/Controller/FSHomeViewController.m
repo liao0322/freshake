@@ -43,6 +43,7 @@
 #import "AmountViewController.h"
 
 #import "FSNewCommodityViewController.h"
+#import "XFMemoryStorage.h"
 
 
 #define NAV_BAR_ALPHA 0.95f
@@ -113,11 +114,13 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
     
     // 设置自定义的 nav bar 背景透明
     [self setNavBarAppearance];
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
+
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -132,6 +135,13 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
     [self.navigationController setNavigationBarHidden:YES animated:YES];
     
     [[UIApplication sharedApplication] setStatusBarStyle:self.statusBarStyle animated:NO];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    if ([[XFMemoryStorage get:KEY_PUSH_TO_AD] boolValue]) {
+        [self pushToAd];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -186,15 +196,24 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
     self.statusBarStyle = UIStatusBarStyleLightContent;
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userIsLogined) name:@"UserIsLogined" object:nil];
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userIsLogout) name:@"UserIsLogout" object:nil];
+    [center addObserver:self selector:@selector(userIsLogined) name:@"UserIsLogined" object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rid:) name:@"kJPFNetworkDidLoginNotification" object:nil];
+    [center addObserver:self selector:@selector(userIsLogout) name:@"UserIsLogout" object:nil];
+    
+    [center addObserver:self selector:@selector(rid:) name:@"kJPFNetworkDidLoginNotification" object:nil];
 }
 
 - (void)rid:(NSNotification *)not {
     NSLog(@"%@", not.userInfo);
+}
+
+- (void)pushToAd {
+    [XFMemoryStorage setValue:@NO forKey:KEY_PUSH_TO_AD];
+    UIViewController *vc = [UIViewController new];
+    vc.view.backgroundColor = [UIColor whiteColor];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)addSubviews {

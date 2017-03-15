@@ -142,4 +142,9 @@ static BOOL _isNetwork;
     return manager;
 }
 
++ (NSDictionary *)dictWithData:(NSData *)data {
+    NSError *error = nil;
+    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    return error ? nil : dict;
+}
 @end

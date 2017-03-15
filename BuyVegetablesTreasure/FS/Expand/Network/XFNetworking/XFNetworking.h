@@ -69,5 +69,7 @@ typedef void(^NetworkStatus)(XFNetworkStatus status);
                             success:(HttpRequestSuccess)success
                             failure:(HttpRequestFailed)failure;
 
+#pragma mark - 数据解析
 
++ (NSDictionary *)dictWithData:(NSData *)data;
 @end

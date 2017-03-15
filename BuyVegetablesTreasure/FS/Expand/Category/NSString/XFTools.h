@@ -22,4 +22,6 @@
 /// 是否是空对象
 + (BOOL)isObjectEmpty:(NSObject *)object;
 
+
+
 @end

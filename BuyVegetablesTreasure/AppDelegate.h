@@ -17,5 +17,7 @@
 
 /// 获取App的代理
 + (AppDelegate *)appDelegate;
+
+- (void)toMain;
 @end
 

@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-// #import "TeTabBarViewController.h"
 
 
 #import "FirstStarView.h"
@@ -16,11 +15,14 @@
 #import <AlipaySDK/AlipaySDK.h>
 #import "WXApi.h"
 
-#import "FSTabBarController.h"
-
 // FS
 #import "AppDelegate+FS.h"
-
+#import "AppDelegate+LaunchAd.h"
+#import "FSSplashViewController.h"
+#import "FSNavigationController.h"
+#import "FSTabBarController.h"
+#import "XFKVCPersistence.h"
+#import "JDFile.h"
 
 @interface AppDelegate ()
 
@@ -30,32 +32,28 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    NSLog(@"%@", NSHomeDirectory());
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
     
-//    [NSThread sleepForTimeInterval:5.0f];
-    [self checkForUpdates];
-    
-
     // 全局设置
     [self fsGlobalSetup];
     
-    [self setupJPushWithOptions:launchOptions];
-    
-    
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.backgroundColor = [UIColor whiteColor];
-    float sysVersion = [[UIDevice currentDevice] systemVersion].floatValue;
-    if (sysVersion >= 9.0) {
-        UIViewController *vc = [[UIViewController alloc] init];
-        self.window.rootViewController = vc;
+    NSString *filePath = [self filePathWithImageName:[XFKVCPersistence get:KEY_AD_IMAGE_NAME]];
+    BOOL isExist = [JDFile isFileExist:filePath];
+    if (isExist) { // 有图片
+        [self restoreRootViewController:[FSSplashViewController new]];
+    } else {
+        [self toMain];
     }
-    [self.window makeKeyAndVisible];
-
-    /*
-    TeTabBarViewController *rootVC = [[TeTabBarViewController alloc] init];
-     */
-    FSTabBarController *tabBarController = [[FSTabBarController alloc] init];
-    tabBarController.delegate = self;
-    self.window.rootViewController = tabBarController;
+    [self requestLunachAd];
+    
+    //    [NSThread sleepForTimeInterval:5.0f];
+    
+    [self checkForUpdates];
+    
+    [self setupJPushWithOptions:launchOptions];
     
     // 友盟Key
     [UMSocialData setAppKey:@"57e87c1667e58ee0380015f8"];
@@ -131,12 +129,6 @@
 }
 
 
-//- (BOOL)application:(UIApplication *)app
-//            openURL:(NSURL *)url
-//            options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
-//{
-//    return NO;
-//}
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
@@ -158,8 +150,7 @@
 }
 
 // 设置旋转
-- (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
-{
+- (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
     if (_allowRotation == 1) {
         return UIInterfaceOrientationMaskAll;
     }
@@ -175,5 +166,30 @@
 + (AppDelegate *)appDelegate {
     return (AppDelegate *)[UIApplication sharedApplication].delegate;
 }
+
+- (void)toMain {
+    FSTabBarController *tabBarController = [[FSTabBarController alloc] init];
+    tabBarController.delegate = self;
+//    self.window.rootViewController = tabBarController;
+    [self restoreRootViewController:tabBarController];
+}
+
+- (void)restoreRootViewController:(UIViewController *)rootViewController {
+    typedef void (^Animation)(void);
+    UIWindow* window = [UIApplication sharedApplication].delegate.window;
+    rootViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    Animation animation = ^{
+        BOOL oldState = [UIView areAnimationsEnabled];
+        [UIView setAnimationsEnabled:NO];
+        window.rootViewController = rootViewController;
+        [UIView setAnimationsEnabled:oldState];
+    };
+    [UIView transitionWithView:window
+                      duration:0.4f
+                       options:UIViewAnimationOptionTransitionCrossDissolve
+                    animations:animation
+                    completion:nil];
+}
+
 
 @end

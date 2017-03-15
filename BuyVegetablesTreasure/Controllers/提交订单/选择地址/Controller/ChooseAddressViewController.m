@@ -131,15 +131,18 @@
         _segmented.tintColor = [UIColor colorDomina];
         [_segmented addTarget:self action:@selector(valueChange:) forControlEvents:UIControlEventValueChanged];
         self.navigationItem.titleView = _segmented;
+        
+        self.navigationItem.rightBarButtonItem = [UIFactory createImageBBI:[IMAGE(@"addAddress") imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] WithTarget:self action:@selector(goAddress)];
     }
     else {
-        
         self.navigationItem.titleView = [Utillity customNavToTitle:_distributionStatus ? @"送货上门" : @"店铺自提"];
 
+        /*
         if (_distributionStatus) {
             
             self.navigationItem.rightBarButtonItem = [UIFactory createImageBBI:[IMAGE(@"addAddress") imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] WithTarget:self action:@selector(goAddress)];
         }
+         */
     }
 }
 

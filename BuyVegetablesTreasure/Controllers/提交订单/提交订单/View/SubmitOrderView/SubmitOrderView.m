@@ -745,7 +745,7 @@
     else if (indexPath.section == 0) {
      
         // 选地址
-        if (indexPath.row == 1) {
+        if (indexPath.row == 1 || indexPath.row == 0) {
             
             ChooseAddressViewController *chooseAddressVC = [ChooseAddressViewController new];
             chooseAddressVC.deliveryStatus = self.deliveryStatus;

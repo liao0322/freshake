@@ -25,7 +25,6 @@
     [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
     [SVProgressHUD setMaximumDismissTimeInterval:2];
     
-    
     // 设置 状态栏
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
@@ -94,14 +93,10 @@
     if ([[nav.viewControllers firstObject] isKindOfClass:[FSShoppingCartViewController class]]) {
         NSString *uid = [[NSUserDefaults standardUserDefaults] objectForKey:@"UID"];
         if ([Tools isBlankString:uid]) {
-            
             FSLoginViewController *loginVC = [[FSLoginViewController alloc] init];
-            
             FSNavigationController *navController = [[FSNavigationController alloc] initWithRootViewController:loginVC];
-            
             [tabBarController presentViewController:navController animated:YES completion:nil];
             return NO;
-            
         }
         return YES;
     }
