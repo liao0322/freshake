@@ -51,7 +51,7 @@ static NSString * const myCouponsViewCellID = @"myCouponsViewCellID";
 #pragma mark - UITableViewDelegate
 // Cell高度
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 115;
+    return SCREEN_WIDTH == 320 ? 98 : 115;
 }
 
 // 点击cell

@@ -8,8 +8,7 @@
 
 #import "FSMyCouponsViewController.h"
 #import "FSMyCouponView.h"
-#import "FSMyCouponsCell.h"
-
+#import "CouponModel.h"
 
 @interface FSMyCouponsViewController ()
 

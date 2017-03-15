@@ -16,7 +16,8 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *couponNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *startTimeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *endTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *guiZeLabel;
 
 @end
@@ -47,17 +48,18 @@
     self.selectImgView.hidden = _model.isSelect ? NO : YES;
     self.priceLabel.hidden = [_model.typeId intValue] == 1 ? YES : NO;
     
-    self.timeLabel.text = [NSString stringWithFormat:@"%@\n%@", _model.beginDate,_model.ExpileDate];
+    self.startTimeLabel.text = [NSString stringWithFormat:@"%@", _model.beginDate];
+    self.endTimeLabel.text = [NSString stringWithFormat:@"%@", _model.ExpileDate];
     self.couponNameLabel.text = [NSString stringWithFormat:@"%@",_model.TickName];
     self.guiZeLabel.text = [NSString stringWithFormat:@"满%@元使用", _model.consumeMoney];
     
-    [self setAttributtedStringWithString:model.Price textColor:self.priceLabel.textColor];
+    [self setAttributtedStringWithString:_model.Price textColor:self.priceLabel.textColor];
     
 }
 
 - (void)setAttributtedStringWithString:(NSString *)string textColor:(UIColor *)color {
     NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"¥%@元",string]];
-    [attributeString setAttributes:@{NSForegroundColorAttributeName : color, NSFontAttributeName : [UIFont boldSystemFontOfSize:(SCREEN_WIDTH == 320 ? 24 : 26)]} range:NSMakeRange(1, string.length)];
+    [attributeString setAttributes:@{NSForegroundColorAttributeName : color, NSFontAttributeName : [UIFont boldSystemFontOfSize:(SCREEN_WIDTH == 320 ? 22 : 24)]} range:NSMakeRange(1, string.length)];
     self.priceLabel.attributedText = attributeString;
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
