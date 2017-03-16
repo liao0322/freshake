@@ -805,6 +805,8 @@
 		EB15A8DE1E6FD00800165E89 /* FSGetCouponViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB15A8DC1E6FD00800165E89 /* FSGetCouponViewController.xib */; };
 		EB15A8E21E6FE5B300165E89 /* FSCardExplainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB15A8E01E6FE5B300165E89 /* FSCardExplainViewController.m */; };
 		EB15A8E31E6FE5B300165E89 /* FSCardExplainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB15A8E11E6FE5B300165E89 /* FSCardExplainViewController.xib */; };
+		EB27695A1E792BFA001F86D4 /* FSMyCouponsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB2769581E792BFA001F86D4 /* FSMyCouponsViewCell.m */; };
+		EB27695B1E792BFA001F86D4 /* FSMyCouponsViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB2769591E792BFA001F86D4 /* FSMyCouponsViewCell.xib */; };
 		EBBEC3911E0E8D3E00872E7A /* FSMySiteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBBEC3901E0E8D3E00872E7A /* FSMySiteViewController.m */; };
 		EBBEC3941E0E8D7100872E7A /* FSSelectDeliverySiteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EBBEC3931E0E8D7100872E7A /* FSSelectDeliverySiteCell.m */; };
 		EBD663D81E51A76D0018F46B /* LPLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = EBD663D71E51A76D0018F46B /* LPLabel.m */; };
@@ -839,7 +841,6 @@
 		FE17A9581E0D430F00DC7949 /* FSCouponModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A9381E0D430F00DC7949 /* FSCouponModel.m */; };
 		FE17A9591E0D430F00DC7949 /* FSParentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A93A1E0D430F00DC7949 /* FSParentModel.m */; };
 		FE17A95A1E0D430F00DC7949 /* FSJTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A93D1E0D430F00DC7949 /* FSJTableView.m */; };
-		FE17A95B1E0D430F00DC7949 /* FSMyCouponsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A93F1E0D430F00DC7949 /* FSMyCouponsCell.m */; };
 		FE17A95C1E0D430F00DC7949 /* FSMyCouponView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A9411E0D430F00DC7949 /* FSMyCouponView.m */; };
 		FE17A95D1E0D430F00DC7949 /* FSCouponsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A9451E0D430F00DC7949 /* FSCouponsDetailViewController.m */; };
 		FE17A95E1E0D430F00DC7949 /* FSCouponsDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17A9491E0D430F00DC7949 /* FSCouponsDetailView.m */; };
@@ -2284,6 +2285,9 @@
 		EB15A8DF1E6FE5B300165E89 /* FSCardExplainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCardExplainViewController.h; sourceTree = "<group>"; };
 		EB15A8E01E6FE5B300165E89 /* FSCardExplainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCardExplainViewController.m; sourceTree = "<group>"; };
 		EB15A8E11E6FE5B300165E89 /* FSCardExplainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSCardExplainViewController.xib; sourceTree = "<group>"; };
+		EB2769571E792BFA001F86D4 /* FSMyCouponsViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMyCouponsViewCell.h; sourceTree = "<group>"; };
+		EB2769581E792BFA001F86D4 /* FSMyCouponsViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMyCouponsViewCell.m; sourceTree = "<group>"; };
+		EB2769591E792BFA001F86D4 /* FSMyCouponsViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSMyCouponsViewCell.xib; sourceTree = "<group>"; };
 		EBBEC38F1E0E8D3E00872E7A /* FSMySiteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMySiteViewController.h; sourceTree = "<group>"; };
 		EBBEC3901E0E8D3E00872E7A /* FSMySiteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMySiteViewController.m; sourceTree = "<group>"; };
 		EBBEC3921E0E8D7100872E7A /* FSSelectDeliverySiteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSSelectDeliverySiteCell.h; sourceTree = "<group>"; };
@@ -2347,8 +2351,6 @@
 		FE17A93A1E0D430F00DC7949 /* FSParentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSParentModel.m; sourceTree = "<group>"; };
 		FE17A93C1E0D430F00DC7949 /* FSJTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSJTableView.h; sourceTree = "<group>"; };
 		FE17A93D1E0D430F00DC7949 /* FSJTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSJTableView.m; sourceTree = "<group>"; };
-		FE17A93E1E0D430F00DC7949 /* FSMyCouponsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMyCouponsCell.h; sourceTree = "<group>"; };
-		FE17A93F1E0D430F00DC7949 /* FSMyCouponsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMyCouponsCell.m; sourceTree = "<group>"; };
 		FE17A9401E0D430F00DC7949 /* FSMyCouponView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMyCouponView.h; sourceTree = "<group>"; };
 		FE17A9411E0D430F00DC7949 /* FSMyCouponView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMyCouponView.m; sourceTree = "<group>"; };
 		FE17A9441E0D430F00DC7949 /* FSCouponsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCouponsDetailViewController.h; sourceTree = "<group>"; };
@@ -7085,8 +7087,9 @@
 			children = (
 				FE17A93C1E0D430F00DC7949 /* FSJTableView.h */,
 				FE17A93D1E0D430F00DC7949 /* FSJTableView.m */,
-				FE17A93E1E0D430F00DC7949 /* FSMyCouponsCell.h */,
-				FE17A93F1E0D430F00DC7949 /* FSMyCouponsCell.m */,
+				EB2769571E792BFA001F86D4 /* FSMyCouponsViewCell.h */,
+				EB2769581E792BFA001F86D4 /* FSMyCouponsViewCell.m */,
+				EB2769591E792BFA001F86D4 /* FSMyCouponsViewCell.xib */,
 				FE17A9401E0D430F00DC7949 /* FSMyCouponView.h */,
 				FE17A9411E0D430F00DC7949 /* FSMyCouponView.m */,
 			);
@@ -8904,6 +8907,7 @@
 				FE8256641E13CE8E0028D0F2 /* GoodsDetailsIcon@3x.png in Resources */,
 				098093E61BD8E079004384E8 /* 背景@2x.png in Resources */,
 				0C7FEC791D01707C001E469B /* CouponsHead@3x.png in Resources */,
+				EB27695B1E792BFA001F86D4 /* FSMyCouponsViewCell.xib in Resources */,
 				E42A2C8D1D2F8DC900346518 /* 发票选中@2x.png in Resources */,
 				0CBA54A51DE7D47C00378911 /* EditAddress@3x.png in Resources */,
 				0CCA065A1D1A915A009286ED /* 没有选择@3x.png in Resources */,
@@ -9473,6 +9477,7 @@
 				0C9CEB8A1CD8379900F0DCCB /* CollectView.m in Sources */,
 				E40D23121C434CA100DC47C6 /* UIScrollView+MJExtension.m in Sources */,
 				FEA20ED91E4F3ADD00FAD315 /* XFExpressList.m in Sources */,
+				EB27695A1E792BFA001F86D4 /* FSMyCouponsViewCell.m in Sources */,
 				0CFE33311DC19CCA00F19494 /* UIView+SDExtension.m in Sources */,
 				0C7730661CE1CF27005EB107 /* CookingProgramListModel.m in Sources */,
 				0C5B07E21CCF528F009528F1 /* CookingProgramView.m in Sources */,
@@ -9727,7 +9732,6 @@
 				E40D23111C434CA100DC47C6 /* MJRefreshConst.m in Sources */,
 				FE17A9531E0D430F00DC7949 /* FSMyCollectViewController.m in Sources */,
 				FECDE7471E07C2C80083E11B /* FSHomeHeaderView.m in Sources */,
-				FE17A95B1E0D430F00DC7949 /* FSMyCouponsCell.m in Sources */,
 				5295E81F1BF5BFB8009F6487 /* SearchModel.m in Sources */,
 				FECDE7321E07C2C80083E11B /* FSClassificationCVCell.m in Sources */,
 				527853171BCDF8E5005E4739 /* Utillity.m in Sources */,

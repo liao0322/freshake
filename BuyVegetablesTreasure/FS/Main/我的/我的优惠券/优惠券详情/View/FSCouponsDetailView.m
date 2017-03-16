@@ -63,7 +63,7 @@
     self.priceLabel = [UILabel new];
     self.priceLabel.textColor = [UIColor whiteColor];
     self.priceLabel.textAlignment = NSTextAlignmentCenter;
-    self.priceLabel.font = [UIFont boldSystemFontOfSize:19.0];
+    self.priceLabel.font = [UIFont systemFontOfSize:14.0];
     [couponImgView addSubview:self.priceLabel];
     
     self.priceLabel.sd_layout
@@ -183,7 +183,7 @@
     
     // 价格
     NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc] initWithString:string];
-    [attributeString setAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName : [UIFont boldSystemFontOfSize:(SCREEN_WIDTH == 320 ? 24 : 28)]} range:NSMakeRange(1, couponModel.Price.length)];
+    [attributeString setAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName : [UIFont boldSystemFontOfSize:(SCREEN_WIDTH == 320 ? 22 : 24)]} range:NSMakeRange(1, couponModel.Price.length)];
     _priceLabel.attributedText = attributeString;
     
     // 使用说明
