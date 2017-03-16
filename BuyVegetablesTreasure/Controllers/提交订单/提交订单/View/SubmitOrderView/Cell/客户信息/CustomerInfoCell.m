@@ -100,8 +100,8 @@
             string = @"";
         }
         
-//        [(UITextField *)[self viewWithTag:i + 90] setText:string];
-        [(UITextField *)[self viewWithTag:i + 90] setText:@""];
+        [(UITextField *)[self viewWithTag:i + 90] setText:string];
+//        [(UITextField *)[self viewWithTag:i + 90] setText:@""];
     }
 }
 
