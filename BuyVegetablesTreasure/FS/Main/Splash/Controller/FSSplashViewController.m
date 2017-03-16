@@ -38,7 +38,6 @@ static int const showTime = 3;
     
     self.count = showTime;
     [[NSRunLoop mainRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
-
 }
 
 - (void)setupViews {

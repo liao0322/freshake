@@ -39,6 +39,7 @@
 
 /// 事件类型{商品=1，分类=2，跳转=3}
 #define KEY_EVENT_TYPE_ID @"eventTypeId"
+#define KEY_EVENT_ID @"eventId"
 #define KEY_EVENT_URL @"eventUrl"
 #define KEY_AD_IMAGE_NAME @"imageName"
 

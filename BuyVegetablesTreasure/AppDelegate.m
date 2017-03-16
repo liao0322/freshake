@@ -51,8 +51,6 @@
     
     //    [NSThread sleepForTimeInterval:5.0f];
     
-    [self checkForUpdates];
-    
     [self setupJPushWithOptions:launchOptions];
     
     // 友盟Key

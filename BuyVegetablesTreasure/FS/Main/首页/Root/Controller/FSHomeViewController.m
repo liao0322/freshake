@@ -44,9 +44,12 @@
 
 #import "FSNewCommodityViewController.h"
 #import "XFMemoryStorage.h"
+#import "XFKVCPersistence.h"
+#import "FSWebViewController.h"
 
 
 #define NAV_BAR_ALPHA 0.95f
+#define APP_ID @"1136079278"
 
 @interface FSHomeViewController ()
 <
@@ -140,6 +143,7 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     if ([[XFMemoryStorage get:KEY_PUSH_TO_AD] boolValue]) {
+        [XFMemoryStorage setValue:@NO forKey:KEY_PUSH_TO_AD];
         [self pushToAd];
     }
 }
@@ -203,17 +207,129 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
     [center addObserver:self selector:@selector(userIsLogout) name:@"UserIsLogout" object:nil];
     
     [center addObserver:self selector:@selector(rid:) name:@"kJPFNetworkDidLoginNotification" object:nil];
+    
+    [self checkForUpdates];
+}
+
+// 检查更新
+- (void)checkForUpdates {
+    // 获取当前版本
+    NSDictionary *infoDic = [[NSBundle mainBundle] infoDictionary];
+    NSString *currentVersionString = infoDic[@"CFBundleShortVersionString"];
+    
+    NSString *newCurrentVersionString = [currentVersionString stringByReplacingOccurrencesOfString:@"." withString:@""];
+    // 获取app store 版本
+//    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://itunes.apple.com/cn/lookup?id=%@", APP_ID]];
+    
+    
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://test.freshake.cn:9970/api/Phone/Fifth/index.aspx?page=GetCheck&appNo=%@&type=4", newCurrentVersionString]];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (data == nil) {
+            NSLog(@"你没有连接网络");
+            return;
+        }
+        
+        NSDictionary *appInfoDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        BOOL isSuccess = [appInfoDic[@"issuccess"] boolValue];
+        if (!isSuccess) {
+            return;
+        }
+        
+        NSString *releaseInfo = appInfoDic[@"appContext"];
+        
+        NSString *appStoreVersion = appInfoDic[@"appName"];
+        
+        if ([self compareCurrentVersion:currentVersionString appStoreVersion:appStoreVersion]) {
+            
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"版本更新" message:@"检测到新版本，是否更新？\n检测到新版本，是否更新？\n检测到新版本，是否更新？\n检测到新版本，是否更新？\n检测到新版本，是否更新？\n检测到新版本，是否更新？" preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *updateAction = [UIAlertAction actionWithTitle:@"更新" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                
+                NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://itunes.apple.com/us/app/id%@?ls=1&mt=8", APP_ID]];
+                UIApplication *application = [UIApplication sharedApplication];
+                if ([application canOpenURL:url]) {
+                    [application openURL:url];
+                }
+            }];
+            
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+            
+            BOOL isUpgrade = [appInfoDic[@"isupgrade"] boolValue];
+            
+            [alert addAction:updateAction];
+            if (!isUpgrade) { // 强制升级
+                [alert addAction:cancelAction];
+            }
+            
+            [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert animated:YES completion:nil];
+            
+        } else {
+            NSLog(@"版本号好像比商店大噢!检测到不需要更新");
+        }
+    }];
+    
+    [dataTask resume];
+}
+
+- (BOOL)compareCurrentVersion:(NSString *)currentVersion appStoreVersion:(NSString *)appStoreVersion {
+    
+    if ([currentVersion compare:appStoreVersion options:NSNumericSearch] == NSOrderedAscending) {
+        // 有新版本
+        return YES;
+    } else {
+        return NO;
+    }
 }
 
 - (void)rid:(NSNotification *)not {
     NSLog(@"%@", not.userInfo);
 }
 
+// 点击了启动广告
 - (void)pushToAd {
-    [XFMemoryStorage setValue:@NO forKey:KEY_PUSH_TO_AD];
-    UIViewController *vc = [UIViewController new];
-    vc.view.backgroundColor = [UIColor whiteColor];
-    [self.navigationController pushViewController:vc animated:YES];
+    
+    NSInteger typeId = [[XFKVCPersistence get:KEY_EVENT_TYPE_ID] integerValue];
+    UIViewController *viewController = [UIViewController new];
+    NSInteger goodsId = [[XFKVCPersistence get:KEY_EVENT_ID] integerValue];
+    
+    if (typeId == 1) { // 跳转到商品详情
+        
+        if (goodsId == 0) return;
+        GoodsDetailViewController *goodsDetailVc = [[GoodsDetailViewController alloc] init];
+//        NSString *productIdString = [model.ObjectId stringByReplacingOccurrencesOfString:@"," withString:@""];
+        goodsDetailVc.ProductId = goodsId;
+        viewController = goodsDetailVc;
+        
+        
+    } else if (typeId == 2) { // 跳转到分类
+        
+        FSClassificationViewController *singleClassificationVC = [[FSClassificationViewController alloc] init];
+        
+//        NSString *categoryIdString = [model.ObjectId stringByReplacingOccurrencesOfString:@"," withString:@""];
+        singleClassificationVC.isSingle = YES;
+        singleClassificationVC.categoryId = goodsId;
+        viewController = singleClassificationVC;
+        
+    } else { // 跳转到 web
+        
+        /*
+        AdWebViewController *ad = [[AdWebViewController alloc] init];
+        ad.name = model.Name;
+        ad.url = model.Url;
+        viewController = ad;
+         */
+        
+        
+        FSWebViewController *webVC = [FSWebViewController new];
+        viewController = webVC;
+        
+    }
+    
+    [self.navigationController pushViewController:viewController animated:YES];
+
 }
 
 - (void)addSubviews {
@@ -379,7 +495,6 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
             NSString *productIdString = [model.ObjectId stringByReplacingOccurrencesOfString:@"," withString:@""];
             goodsDetailVc.ProductId = [productIdString integerValue];
             viewController = goodsDetailVc;
-            
             
         } else if ([model.ObjectType integerValue] == 2) { // 跳转到分类
             
@@ -843,16 +958,6 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
 }
 
 - (void)setNavBarAppearance {
-    
-    /*
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithRed:255/255.0f green:255/255.0f blue:255/255.0f alpha:1]] forBarMetrics:UIBarMetricsDefault];
-    // 底部边框线
-    [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
-    */
-    // 整体透明
-    // [[[self.navigationController.navigationBar subviews] objectAtIndex:0] setAlpha:0];
-    
-    // self.navigationController.hidesBarsOnSwipe = YES;
     
     // 设置 nav bar 背景完全透明
     self.navigationBar.backgroundColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:0];

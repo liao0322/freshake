@@ -867,6 +867,8 @@
 		FE282FA11E78D04A00B9B8A0 /* FSAdModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FE282FA01E78D04A00B9B8A0 /* FSAdModel.m */; };
 		FE282FA41E78E11400B9B8A0 /* AppDelegate+LaunchAd.m in Sources */ = {isa = PBXBuildFile; fileRef = FE282FA31E78E11400B9B8A0 /* AppDelegate+LaunchAd.m */; };
 		FE282FA81E78EE4300B9B8A0 /* FSRequestAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FE282FA71E78EE4300B9B8A0 /* FSRequestAppDelegate.m */; };
+		FE282FB11E791A4E00B9B8A0 /* FSWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE282FAF1E791A4E00B9B8A0 /* FSWebViewController.m */; };
+		FE282FB21E791A4E00B9B8A0 /* FSWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE282FB01E791A4E00B9B8A0 /* FSWebViewController.xib */; };
 		FE3CD22A1E37118F00DF0C23 /* NSString+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3CD2291E37118F00DF0C23 /* NSString+Size.m */; };
 		FE3CD22D1E37320B00DF0C23 /* FSMyOrderListSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3CD22C1E37320B00DF0C23 /* FSMyOrderListSectionHeaderView.m */; };
 		FE3CD2301E37323700DF0C23 /* FSMyOrderListSectionFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3CD22F1E37323700DF0C23 /* FSMyOrderListSectionFooterView.m */; };
@@ -2398,6 +2400,9 @@
 		FE282FA61E78EE4300B9B8A0 /* FSRequestAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSRequestAppDelegate.h; sourceTree = "<group>"; };
 		FE282FA71E78EE4300B9B8A0 /* FSRequestAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSRequestAppDelegate.m; sourceTree = "<group>"; };
 		FE282FA91E78EE5900B9B8A0 /* FSRequestAppDelegateKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSRequestAppDelegateKeys.h; sourceTree = "<group>"; };
+		FE282FAE1E791A4E00B9B8A0 /* FSWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSWebViewController.h; sourceTree = "<group>"; };
+		FE282FAF1E791A4E00B9B8A0 /* FSWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSWebViewController.m; sourceTree = "<group>"; };
+		FE282FB01E791A4E00B9B8A0 /* FSWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSWebViewController.xib; sourceTree = "<group>"; };
 		FE3CD2281E37118F00DF0C23 /* NSString+Size.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Size.h"; sourceTree = "<group>"; };
 		FE3CD2291E37118F00DF0C23 /* NSString+Size.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Size.m"; sourceTree = "<group>"; };
 		FE3CD22B1E37320B00DF0C23 /* FSMyOrderListSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMyOrderListSectionHeaderView.h; sourceTree = "<group>"; };
@@ -7302,6 +7307,40 @@
 			path = Request;
 			sourceTree = "<group>";
 		};
+		FE282FAA1E791A1C00B9B8A0 /* Web */ = {
+			isa = PBXGroup;
+			children = (
+				FE282FAB1E791A3000B9B8A0 /* Controller */,
+				FE282FAC1E791A3000B9B8A0 /* Request */,
+				FE282FAD1E791A3000B9B8A0 /* View */,
+			);
+			path = Web;
+			sourceTree = "<group>";
+		};
+		FE282FAB1E791A3000B9B8A0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FE282FAE1E791A4E00B9B8A0 /* FSWebViewController.h */,
+				FE282FAF1E791A4E00B9B8A0 /* FSWebViewController.m */,
+				FE282FB01E791A4E00B9B8A0 /* FSWebViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FE282FAC1E791A3000B9B8A0 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		FE282FAD1E791A3000B9B8A0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		FE474DCD1E2C6F470005CD98 /* 物流信息 */ = {
 			isa = PBXGroup;
 			children = (
@@ -7793,6 +7832,7 @@
 				FECDE6DA1E07C2C70083E11B /* 支付 */,
 				FE474DCD1E2C6F470005CD98 /* 物流信息 */,
 				FECDE6DF1E07C2C70083E11B /* 选择自提点 */,
+				FE282FAA1E791A1C00B9B8A0 /* Web */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -9198,6 +9238,7 @@
 				2B03CA361BF316F100F01B93 /* 相册@2x.png in Resources */,
 				0CCA06581D1A915A009286ED /* 没有选择.png in Resources */,
 				098BF0C01BE865EB0017B425 /* 查看框@2x.png in Resources */,
+				FE282FB21E791A4E00B9B8A0 /* FSWebViewController.xib in Resources */,
 				2BEA766C1C21506E00F09879 /* 我的收藏@2x.png in Resources */,
 				2B122DD21C1AA14500E46A33 /* 收藏删除.png in Resources */,
 				FECDE5F91E07B6770083E11B /* 优惠券图标@3x.png in Resources */,
@@ -9435,6 +9476,7 @@
 				0CFE33311DC19CCA00F19494 /* UIView+SDExtension.m in Sources */,
 				0C7730661CE1CF27005EB107 /* CookingProgramListModel.m in Sources */,
 				0C5B07E21CCF528F009528F1 /* CookingProgramView.m in Sources */,
+				FE282FB11E791A4E00B9B8A0 /* FSWebViewController.m in Sources */,
 				E40D23051C434CA100DC47C6 /* MJRefreshFooter.m in Sources */,
 				0C6B3DAD1CC764B6008193C8 /* CommodityTableView.m in Sources */,
 				FEA20EC31E4EC03500FAD315 /* XFTableViewCell.m in Sources */,

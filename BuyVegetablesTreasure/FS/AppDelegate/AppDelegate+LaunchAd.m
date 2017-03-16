@@ -18,11 +18,13 @@
 - (void)requestLunachAd {
     
     [FSRequestAppDelegate adListWithTypeId:@"0" success:^(FSAdModel *adModel) {
-        [XFKVCPersistence setValue:adModel.eventTypeId forKey:KEY_EVENT_TYPE_ID];
+        
         NSString *imageName = [adModel.imgUrl componentsSeparatedByString:@"/"].lastObject;
         NSString *filePath = [self filePathWithImageName:imageName];
         BOOL isExist = [JDFile isFileExist:filePath];
         if (!isExist) {
+            [XFKVCPersistence setValue:adModel.eventTypeId forKey:KEY_EVENT_TYPE_ID];
+            [XFKVCPersistence setValue:adModel.eventId forKey:KEY_EVENT_ID];
             [self downloadImageWithUrl:adModel.imgUrl imageName:imageName];
         }
     } failure:^(NSError *error, NSInteger statusCode) {
@@ -43,6 +45,7 @@
         if ([UIImagePNGRepresentation(image) writeToFile:filePath atomically:YES]) {
             [self deleteOldImage];
             [XFKVCPersistence setValue:imageName forKey:KEY_AD_IMAGE_NAME];
+            
         } else {
             NSLog(@"保存启动图片失败");
         }
