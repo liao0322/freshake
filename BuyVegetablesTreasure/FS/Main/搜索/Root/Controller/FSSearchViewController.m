@@ -82,28 +82,32 @@ static NSString * const searchFooterID = @"searchFooterID";
 
 - (void)getSearchData {
     // 获取热搜数据
-    NSString *urlString = [NSString stringWithFormat:GetHotS,[[NSUserDefaults standardUserDefaults] objectForKey:@"MID"]];
+    NSString *mid = [[NSUserDefaults standardUserDefaults] objectForKey:@"MID"];
+    
+    NSString *urlString = [NSString stringWithFormat:GetHotS, mid];
     [XFNetworking GET:urlString parameters:nil success:^(id responseObject, NSInteger statusCode) {
         id data = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];
-        if ([data[@"issuccess"] boolValue]) {
-            
-            [self.hotSearchArray removeAllObjects];
-            
-            for (NSDictionary *dic in data[@"list"]) {
-                NSString *str = [dic[@"context"] clearAllSpace];
-                if ([str length] > 0) {
-                    [self.hotSearchArray addObject:str];
-                }
+        
+        BOOL isSuccess = [data[@"issuccess"] boolValue];
+        if (!isSuccess) {
+            [SVProgressHUD showInfoWithStatus:data[@"content"]];
+            return;
+        }
+        
+        [self.hotSearchArray removeAllObjects];
+        
+        for (NSDictionary *dic in data[@"list"]) {
+            NSString *str = [dic[@"context"] clearAllSpace];
+            if ([str length] > 0) {
+                [self.hotSearchArray addObject:str];
             }
-            
-            for (NSDictionary *dic in data[@"list1"]) {
-                NSString *str = [dic[@"hotContext"] clearAllSpace];
-                if ([str length] > 0) {
-                    [self.hotSearchArray addObject:str];
-                }
+        }
+        
+        for (NSDictionary *dic in data[@"list1"]) {
+            NSString *str = [dic[@"hotContext"] clearAllSpace];
+            if ([str length] > 0) {
+                [self.hotSearchArray addObject:str];
             }
-        } else {
-            NSLog(@"%@", data[@"context"]);
         }
         self.searchController.searchBar.placeholder = data[@"searchMessger"];
         

@@ -40,7 +40,8 @@
     // 全局设置
     [self fsGlobalSetup];
     
-    NSString *filePath = [self filePathWithImageName:[XFKVCPersistence get:KEY_AD_IMAGE_NAME]];
+    NSString *imageName = [XFKVCPersistence get:KEY_AD_IMAGE_NAME];
+    NSString *filePath = [self filePathWithImageName:imageName];
     BOOL isExist = [JDFile isFileExist:filePath];
     if (isExist) { // 有图片
         [self restoreRootViewController:[FSSplashViewController new]];

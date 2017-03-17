@@ -209,6 +209,12 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
     [center addObserver:self selector:@selector(rid:) name:@"kJPFNetworkDidLoginNotification" object:nil];
     
     [self checkForUpdates];
+    
+    // 检查mid 是否存在
+    NSString *mid = [[NSUserDefaults standardUserDefaults] objectForKey:@"MID"];
+    if (!mid) {
+        [[NSUserDefaults standardUserDefaults] setObject:@"2" forKey:@"MID"];
+    }
 }
 
 // 检查更新
@@ -244,7 +250,7 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
         
         if ([self compareCurrentVersion:currentVersionString appStoreVersion:appStoreVersion]) {
             
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"版本更新" message:@"检测到新版本，是否更新？\n检测到新版本，是否更新？\n检测到新版本，是否更新？\n检测到新版本，是否更新？\n检测到新版本，是否更新？\n检测到新版本，是否更新？" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"版本更新" message:@"检测到新版本，是否更新？" preferredStyle:UIAlertControllerStyleAlert];
             
             UIAlertAction *updateAction = [UIAlertAction actionWithTitle:@"更新" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 
@@ -299,7 +305,6 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
         
         if (goodsId == 0) return;
         GoodsDetailViewController *goodsDetailVc = [[GoodsDetailViewController alloc] init];
-//        NSString *productIdString = [model.ObjectId stringByReplacingOccurrencesOfString:@"," withString:@""];
         goodsDetailVc.ProductId = goodsId;
         viewController = goodsDetailVc;
         
@@ -307,8 +312,6 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
     } else if (typeId == 2) { // 跳转到分类
         
         FSClassificationViewController *singleClassificationVC = [[FSClassificationViewController alloc] init];
-        
-//        NSString *categoryIdString = [model.ObjectId stringByReplacingOccurrencesOfString:@"," withString:@""];
         singleClassificationVC.isSingle = YES;
         singleClassificationVC.categoryId = goodsId;
         viewController = singleClassificationVC;
@@ -453,16 +456,7 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
         }
         
     } else if ([kind isEqualToString:UICollectionElementKindSectionFooter]) { // footer
-        
-        /*
-        UICollectionReusableView *footerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:defaultFooterReuseID forIndexPath:indexPath];
-        if(footerView == nil) {
-            footerView = [[UICollectionReusableView alloc] init];
-        }
-        footerView.backgroundColor = [UIColor blueColor];
-        
-        return footerView;
-         */
+
         return nil;
     }
     

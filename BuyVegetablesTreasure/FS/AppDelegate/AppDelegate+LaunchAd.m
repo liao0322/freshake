@@ -19,6 +19,13 @@
     
     [FSRequestAppDelegate adListWithTypeId:@"0" success:^(FSAdModel *adModel) {
         
+        BOOL usable = [adModel.usable boolValue];
+        if (!usable) {
+            [self deleteOldImage];
+            [XFKVCPersistence remove:KEY_EVENT_TYPE_ID];
+            [XFKVCPersistence remove:KEY_EVENT_ID];
+            [XFKVCPersistence remove:KEY_AD_IMAGE_NAME];
+        }
         NSString *imageName = [adModel.imgUrl componentsSeparatedByString:@"/"].lastObject;
         NSString *filePath = [self filePathWithImageName:imageName];
         BOOL isExist = [JDFile isFileExist:filePath];
@@ -26,6 +33,8 @@
             [XFKVCPersistence setValue:adModel.eventTypeId forKey:KEY_EVENT_TYPE_ID];
             [XFKVCPersistence setValue:adModel.eventId forKey:KEY_EVENT_ID];
             [self downloadImageWithUrl:adModel.imgUrl imageName:imageName];
+        } else {
+            [XFKVCPersistence setValue:imageName forKey:KEY_AD_IMAGE_NAME];
         }
     } failure:^(NSError *error, NSInteger statusCode) {
         
