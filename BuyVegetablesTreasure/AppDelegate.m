@@ -23,6 +23,7 @@
 #import "FSTabBarController.h"
 #import "XFKVCPersistence.h"
 #import "JDFile.h"
+#import "NSDate+Extension.h"
 
 @interface AppDelegate ()
 
@@ -40,11 +41,23 @@
     // 全局设置
     [self fsGlobalSetup];
     
+    
+    
     NSString *imageName = [XFKVCPersistence get:KEY_AD_IMAGE_NAME];
     NSString *filePath = [self filePathWithImageName:imageName];
     BOOL isExist = [JDFile isFileExist:filePath];
     if (isExist) { // 有图片
-        [self restoreRootViewController:[FSSplashViewController new]];
+        
+        NSDate *nowDate = [NSDate now];
+        NSDate *adEndTimeDate = [NSDate dateWithStringDate:[XFKVCPersistence get:KEY_AD_END_TIME] formatString:nil];
+        NSTimeInterval timeInterval = [adEndTimeDate timeIntervalSinceDate:nowDate];
+        
+        if (timeInterval < 0.0f) { // 已过期
+            [self toMain];
+        } else {
+            [self restoreRootViewController:[FSSplashViewController new]];
+        }
+        
     } else {
         [self toMain];
     }

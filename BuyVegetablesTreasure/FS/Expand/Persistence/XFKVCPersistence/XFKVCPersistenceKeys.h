@@ -42,6 +42,7 @@
 #define KEY_EVENT_ID @"eventId"
 #define KEY_EVENT_URL @"eventUrl"
 #define KEY_AD_IMAGE_NAME @"imageName"
+#define KEY_AD_END_TIME @"endTime"
 
 
 #endif /* XFKVCPersistenceKeys_h */

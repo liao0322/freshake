@@ -1049,6 +1049,7 @@
 		FECDE7BB1E0B83640083E11B /* 分享@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FECDE7B91E0B83640083E11B /* 分享@3x.png */; };
 		FECDE7BE1E0B848C0083E11B /* 已收藏@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FECDE7BC1E0B848C0083E11B /* 已收藏@2x.png */; };
 		FECDE7BF1E0B848C0083E11B /* 已收藏@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FECDE7BD1E0B848C0083E11B /* 已收藏@3x.png */; };
+		FEED31CC1E7FBC2300388826 /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = FEED31CB1E7FBC2300388826 /* NSDate+Extension.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -2686,6 +2687,8 @@
 		FECDE7B91E0B83640083E11B /* 分享@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "分享@3x.png"; sourceTree = "<group>"; };
 		FECDE7BC1E0B848C0083E11B /* 已收藏@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "已收藏@2x.png"; sourceTree = "<group>"; };
 		FECDE7BD1E0B848C0083E11B /* 已收藏@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "已收藏@3x.png"; sourceTree = "<group>"; };
+		FEED31CA1E7FBC2300388826 /* NSDate+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Extension.h"; sourceTree = "<group>"; };
+		FEED31CB1E7FBC2300388826 /* NSDate+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Extension.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -7615,6 +7618,7 @@
 		FECDE6001E07C2C70083E11B /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				FEED31C91E7FBC2300388826 /* NSDate */,
 				FE17A9751E111F4100DC7949 /* NSString */,
 				FECDE6011E07C2C70083E11B /* NSObject */,
 				FECDE6041E07C2C70083E11B /* UIButton */,
@@ -8758,6 +8762,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		FEED31C91E7FBC2300388826 /* NSDate */ = {
+			isa = PBXGroup;
+			children = (
+				FEED31CA1E7FBC2300388826 /* NSDate+Extension.h */,
+				FEED31CB1E7FBC2300388826 /* NSDate+Extension.m */,
+			);
+			path = NSDate;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -9870,6 +9883,7 @@
 				521E31841CB368DB00041F76 /* SubmitGroupViewController.m in Sources */,
 				0CCC4B1C1D781B9F009CFBB0 /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				E4818F6D1CC874540081E06C /* PublishOrderAndGoodsViewController.m in Sources */,
+				FEED31CC1E7FBC2300388826 /* NSDate+Extension.m in Sources */,
 				521E318D1CB36C6B00041F76 /* GroupTableView.m in Sources */,
 				FE17A94F1E0D430F00DC7949 /* FSHelpViewController.m in Sources */,
 				EBF655701E5C266F002328B2 /* FSGiftCardViewController.m in Sources */,

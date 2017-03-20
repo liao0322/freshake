@@ -18,23 +18,21 @@
 - (void)requestLunachAd {
     
     [FSRequestAppDelegate adListWithTypeId:@"0" success:^(FSAdModel *adModel) {
-        
-        BOOL usable = [adModel.usable boolValue];
-        if (!usable) {
-            [self deleteOldImage];
-            [XFKVCPersistence remove:KEY_EVENT_TYPE_ID];
-            [XFKVCPersistence remove:KEY_EVENT_ID];
-            [XFKVCPersistence remove:KEY_AD_IMAGE_NAME];
-        }
+
         NSString *imageName = [adModel.imgUrl componentsSeparatedByString:@"/"].lastObject;
         NSString *filePath = [self filePathWithImageName:imageName];
         BOOL isExist = [JDFile isFileExist:filePath];
-        if (!isExist) {
-            [XFKVCPersistence setValue:adModel.eventTypeId forKey:KEY_EVENT_TYPE_ID];
-            [XFKVCPersistence setValue:adModel.eventId forKey:KEY_EVENT_ID];
-            [self downloadImageWithUrl:adModel.imgUrl imageName:imageName];
+        if (!isExist) { // 不存在
+            [self downloadImageWithUrl:adModel.imgUrl imageName:imageName adModel:adModel];
         } else {
-            [XFKVCPersistence setValue:imageName forKey:KEY_AD_IMAGE_NAME];
+            BOOL usable = [adModel.usable boolValue];
+            if (!usable) {
+                [self deleteOldImage];
+                [XFKVCPersistence remove:KEY_EVENT_TYPE_ID];
+                [XFKVCPersistence remove:KEY_EVENT_ID];
+                [XFKVCPersistence remove:KEY_AD_IMAGE_NAME];
+                [XFKVCPersistence remove:KEY_AD_END_TIME];
+            }
         }
     } failure:^(NSError *error, NSInteger statusCode) {
         
@@ -42,9 +40,9 @@
 
 }
 
-
 - (void)downloadImageWithUrl:(NSString *)urlString
-                   imageName:(NSString *)imageName {
+                   imageName:(NSString *)imageName
+                     adModel:(FSAdModel *)adModel {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
         NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlString]];
@@ -53,7 +51,11 @@
         
         if ([UIImagePNGRepresentation(image) writeToFile:filePath atomically:YES]) {
             [self deleteOldImage];
+            
             [XFKVCPersistence setValue:imageName forKey:KEY_AD_IMAGE_NAME];
+            [XFKVCPersistence setValue:adModel.eventTypeId forKey:KEY_EVENT_TYPE_ID];
+            [XFKVCPersistence setValue:adModel.eventId forKey:KEY_EVENT_ID];
+            [XFKVCPersistence setValue:adModel.endTime forKey:KEY_AD_END_TIME];
             
         } else {
             NSLog(@"保存启动图片失败");
