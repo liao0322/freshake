@@ -28,18 +28,24 @@
 #import "MyCollectViewController.h"
 #import "MySiteViewController.h"
 #import "HelpViewController.h"
+#import "XFMeCollectionViewCell.h"
+#import "XFMeModel.h"
+#import <MJExtension.h>
 
-@interface XFMeViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface XFMeViewController ()<UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (copy, nonatomic) NSString *uidString;
-
 @property (copy, nonatomic) NSString *pointString;
-
 @property (copy, nonatomic) NSString *moneyString;
 
 @property (nonatomic) MeModel *model;
 @property (nonatomic) MyOrderModel *orderModel;
+
+@property (nonatomic) UICollectionView *collectionView;
+@property (nonatomic) UICollectionViewFlowLayout *flowLayout;
+
+@property (nonatomic) NSMutableArray *itemsArray;
 
 @end
 
@@ -47,9 +53,14 @@
 
 static CGFloat const EstimatedCellHeight = 200.0f;
 
+static NSString * const CVCellID = @"CVCellID";
+
+static NSInteger const cols = 4;
+static CGFloat const margin = 1;
+#define itemWH (SCREEN_WIDTH - (cols - 1) * margin) / cols
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -66,12 +77,10 @@ static CGFloat const EstimatedCellHeight = 200.0f;
         self.orderModel = nil;
         [self.tableView reloadData];
     }
-
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    
     if ( self.navigationController.childViewControllers.count > 1 ) {
         [self.navigationController setNavigationBarHidden:NO animated:YES];
     }
@@ -82,35 +91,36 @@ static CGFloat const EstimatedCellHeight = 200.0f;
 - (void)initialize {
     [super initialize];
     
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    [self setupNotifications];
+}
+
+- (void)setupViews {
+    [super setupViews];
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = EstimatedCellHeight;
-    self.automaticallyAdjustsScrollViewInsets = NO;
-  
-    
+    self.tableView.tableFooterView = self.collectionView;
+}
+
+- (void)setupNotifications {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userIsLogined) name:@"UserIsLogined" object:nil];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userIsLogout) name:@"UserIsLogout" object:nil];
 }
 
-- (void)viewDidLayoutSubviews {
-    [super viewDidLayoutSubviews];
-    
-    if (SCREEN_HEIGHT == 480) {
-        self.tableView.contentSize = CGSizeMake(0, SCREEN_HEIGHT + 100);
-    } else if (SCREEN_HEIGHT == 568) {
-        self.tableView.contentSize = CGSizeMake(0, SCREEN_HEIGHT + 70);
-    }
+- (void)registerViews {
+    [super registerViews];
+    [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([XFMeCollectionViewCell class]) bundle:nil] forCellWithReuseIdentifier:CVCellID];
 }
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -196,9 +206,7 @@ static CGFloat const EstimatedCellHeight = 200.0f;
                 [self.navigationController pushViewController:myOrderListVC animated:YES];
             }
             else {
-                FSLoginViewController *loginVC = [[FSLoginViewController alloc] init];
-                FSNavigationController *navController = [[FSNavigationController alloc] initWithRootViewController:loginVC];
-                [self presentViewController:navController animated:YES completion:nil];
+                [self presentToLoginVC];
             }
         };
         cell.waitForPayBlock = ^{
@@ -208,9 +216,7 @@ static CGFloat const EstimatedCellHeight = 200.0f;
                 [self.navigationController pushViewController:myOrderListVC animated:YES];
             }
             else {
-                FSLoginViewController *loginVC = [[FSLoginViewController alloc] init];
-                FSNavigationController *navController = [[FSNavigationController alloc] initWithRootViewController:loginVC];
-                [self presentViewController:navController animated:YES completion:nil];
+                [self presentToLoginVC];
             }
         };
         cell.waitForPickUpBlock = ^{
@@ -220,9 +226,7 @@ static CGFloat const EstimatedCellHeight = 200.0f;
                 [self.navigationController pushViewController:myOrderListVC animated:YES];
             }
             else {
-                FSLoginViewController *loginVC = [[FSLoginViewController alloc] init];
-                FSNavigationController *navController = [[FSNavigationController alloc] initWithRootViewController:loginVC];
-                [self presentViewController:navController animated:YES completion:nil];
+                [self presentToLoginVC];
             }
         };
         cell.pickedBlock = ^{
@@ -232,9 +236,7 @@ static CGFloat const EstimatedCellHeight = 200.0f;
                 [self.navigationController pushViewController:myOrderListVC animated:YES];
             }
             else {
-                FSLoginViewController *loginVC = [[FSLoginViewController alloc] init];
-                FSNavigationController *navController = [[FSNavigationController alloc] initWithRootViewController:loginVC];
-                [self presentViewController:navController animated:YES completion:nil];
+                [self presentToLoginVC];
             }
         };
         cell.waitForCommentBlock = ^{
@@ -244,86 +246,11 @@ static CGFloat const EstimatedCellHeight = 200.0f;
                 [self.navigationController pushViewController:myOrderListVC animated:YES];
             }
             else {
-                FSLoginViewController *loginVC = [[FSLoginViewController alloc] init];
-                FSNavigationController *navController = [[FSNavigationController alloc] initWithRootViewController:loginVC];
-                [self presentViewController:navController animated:YES completion:nil];
+                [self presentToLoginVC];
             }
         };
-        
-        
-        
         return cell;
         
-    } else if (section == 2) {
-        XFMeBottomTVCell *cell = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([XFMeBottomTVCell class]) owner:nil options:nil] lastObject];
-        
-        cell.giftCardBlock = ^{
-            if (![Tools isBlankString:self.uidString]) {
-                [self.navigationController pushViewController:[FSGiftCardViewController new] animated:YES];
-            }
-            else {
-                FSLoginViewController *loginVC = [[FSLoginViewController alloc] init];
-                FSNavigationController *navController = [[FSNavigationController alloc] initWithRootViewController:loginVC];
-                [self presentViewController:navController animated:YES completion:nil];
-            }
-
-        };
-        
-        cell.myGroupBuyBlock = ^{
-            if (![Tools isBlankString:self.uidString]) {
-                [self.navigationController pushViewController:[MyGroupViewController new] animated:YES];
-            }
-            else {
-                FSLoginViewController *loginVC = [[FSLoginViewController alloc] init];
-                FSNavigationController *navController = [[FSNavigationController alloc] initWithRootViewController:loginVC];
-                [self presentViewController:navController animated:YES completion:nil];
-            }
-        };
-        
-        cell.myCouponsBlock = ^{
-            if (![Tools isBlankString:self.uidString]) {
-                [self.navigationController pushViewController:[FSMyCouponsViewController new] animated:YES];
-            }
-            else {
-                FSLoginViewController *loginVC = [[FSLoginViewController alloc] init];
-                FSNavigationController *navController = [[FSNavigationController alloc] initWithRootViewController:loginVC];
-                [self presentViewController:navController animated:YES completion:nil];
-            }
-        };
-        
-        cell.myFavouriteBlock = ^{
-            if (![Tools isBlankString:self.uidString]) {
-                [self.navigationController pushViewController:[MyCollectViewController new] animated:YES];
-            }
-            else {
-                FSLoginViewController *loginVC = [[FSLoginViewController alloc] init];
-                FSNavigationController *navController = [[FSNavigationController alloc] initWithRootViewController:loginVC];
-                [self presentViewController:navController animated:YES completion:nil];
-            }
-        };
-        
-        cell.myAddressBlock = ^{
-            if (![Tools isBlankString:self.uidString]) {
-                [self.navigationController pushViewController:[MySiteViewController new] animated:YES];
-            }
-            else {
-                FSLoginViewController *loginVC = [[FSLoginViewController alloc] init];
-                FSNavigationController *navController = [[FSNavigationController alloc] initWithRootViewController:loginVC];
-                [self presentViewController:navController animated:YES completion:nil];
-            }
-        };
-        
-        cell.helpCenterBlock = ^{
-            [self.navigationController pushViewController:[HelpViewController new] animated:YES];
-        };
-        
-        cell.customerServiceBlock = ^{
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://4001725757"] options:@{} completionHandler:^(BOOL success) {
-                
-            }];
-        };
-        
-        return cell;
     }
     
     return [UITableViewCell new];
@@ -335,9 +262,6 @@ static CGFloat const EstimatedCellHeight = 200.0f;
     NSInteger section = indexPath.section;
     if (section == 0) {
         return SCREEN_WIDTH * (200 / 375.0f);
-    } else if (section == 2) {
-        return 285.0f;
-        
     }
     return UITableViewAutomaticDimension;
 }
@@ -350,7 +274,55 @@ static CGFloat const EstimatedCellHeight = 200.0f;
     return 8.0f;
 }
 
+
+#pragma mark - UICollectionViewDataSource
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return self.itemsArray.count;
+}
+
+- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    XFMeModel *model = self.itemsArray[indexPath.row];
+    XFMeCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CVCellID forIndexPath:indexPath];
+    cell.titleLabel.text = model.title;
+    cell.imageView.image = [UIImage imageNamed:model.imageName];
+    return cell;
+}
+
+#pragma mark - UICollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    XFMeModel *model = self.itemsArray[indexPath.row];
+    
+    BOOL isLogined = ![Tools isBlankString:self.uidString];
+    
+    if ([model.title isEqualToString:@"礼品卡"]) {
+        isLogined ? [self.navigationController pushViewController:[FSGiftCardViewController new] animated:YES] : [self presentToLoginVC];
+    } else if ([model.title isEqualToString:@"我的拼团"]) {
+        isLogined ? [self.navigationController pushViewController:[MyGroupViewController new] animated:YES] : [self presentToLoginVC];
+    } else if ([model.title isEqualToString:@"我的优惠券"]) {
+        isLogined ? [self.navigationController pushViewController:[FSMyCouponsViewController new] animated:YES] : [self presentToLoginVC];
+    } else if ([model.title isEqualToString:@"我的收藏"]) {
+        isLogined ? [self.navigationController pushViewController:[MyCollectViewController new] animated:YES] : [self presentToLoginVC];
+    } else if ([model.title isEqualToString:@"地址管理"]) {
+        isLogined ? [self.navigationController pushViewController:[MySiteViewController new] animated:YES] : [self presentToLoginVC];
+    } else if ([model.title isEqualToString:@"帮助中心"]) {
+        [self.navigationController pushViewController:[HelpViewController new] animated:YES];
+    } else if ([model.title isEqualToString:@"客服热线"]) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://4001725757"] options:@{} completionHandler:^(BOOL success) {
+        }];
+    } else if ([model.title isEqualToString:@"分享"]) {
+        
+    }
+}
+
 #pragma mark - Custom
+
+- (void)presentToLoginVC {
+    FSLoginViewController *loginVC = [[FSLoginViewController alloc] init];
+    FSNavigationController *navController = [[FSNavigationController alloc] initWithRootViewController:loginVC];
+    [self presentViewController:navController animated:YES completion:nil];
+}
 
 - (IBAction)toSettings {
     [self.navigationController pushViewController:[MoreViewController new] animated:YES];
@@ -376,7 +348,6 @@ static CGFloat const EstimatedCellHeight = 200.0f;
         [self showInfoWidthError:error];
     }];
 
-    
 }
 
 - (void)requestPoint {
@@ -417,6 +388,33 @@ static CGFloat const EstimatedCellHeight = 200.0f;
 
 - (NSString *)uidString {
     return [[NSUserDefaults standardUserDefaults] objectForKey:@"UID"];
+}
+
+- (UICollectionView *)collectionView {
+    if (!_collectionView) {
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, 0, 200) collectionViewLayout:self.flowLayout];
+        _collectionView.delegate = self;
+        _collectionView.dataSource = self;
+        _collectionView.backgroundColor = self.tableView.backgroundColor;
+    }
+    return _collectionView;
+}
+
+- (UICollectionViewFlowLayout *)flowLayout {
+    if (!_flowLayout) {
+        _flowLayout = [[UICollectionViewFlowLayout alloc] init];
+        _flowLayout.itemSize = CGSizeMake(itemWH, itemWH);
+        _flowLayout.minimumInteritemSpacing = margin;
+        _flowLayout.minimumLineSpacing = margin;
+    }
+    return _flowLayout;
+}
+
+- (NSMutableArray *)itemsArray {
+    if (!_itemsArray) {
+        _itemsArray = [NSMutableArray arrayWithArray:[XFMeModel mj_objectArrayWithFilename:@"MeItems.plist"]];
+    }
+    return _itemsArray;
 }
 
 @end

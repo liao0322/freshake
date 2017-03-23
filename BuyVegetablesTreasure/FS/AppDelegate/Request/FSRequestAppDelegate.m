@@ -15,7 +15,15 @@
                  success:(void (^)(FSAdModel *adModel))success
                  failure:(Failed)failure {
     
-    [XFNetworking GET:@"http://test.freshake.cn:8050/mcapi/queryAdList?typeId=0&syscode=004" parameters:nil success:^(id responseObject, NSInteger statusCode) {
+    NSString *domainString = @"";
+    
+#if HTTP_TEST_TYPE == 1
+    domainString = @"http://h5.freshake.cn";
+#elif HTTP_TEST_TYPE == 2
+    domainString = @"http://test.freshake.cn:8050";
+#endif
+    
+    [XFNetworking GET:[NSString stringWithFormat:@"%@/%@", domainString, @"mcapi/queryAdList?typeId=0&syscode=004"] parameters:nil success:^(id responseObject, NSInteger statusCode) {
         if (statusCode != 200) {
             if (failure) {
                 failure(nil, statusCode);
