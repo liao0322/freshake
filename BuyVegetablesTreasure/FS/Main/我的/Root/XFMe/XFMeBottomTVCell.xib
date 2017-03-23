@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="346"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="345.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="345"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c8M-e3-qfD" customClass="XFMeBottomVerticalButton">
@@ -147,7 +147,7 @@
                 <outlet property="myFavouriteButton" destination="ECs-Iz-tBt" id="n6K-1I-FHy"/>
                 <outlet property="myGroupBuyButton" destination="Smu-Zm-VEz" id="d2R-hK-81G"/>
             </connections>
-            <point key="canvasLocation" x="-107" y="-74"/>
+            <point key="canvasLocation" x="7" y="-172"/>
         </tableViewCell>
     </objects>
     <resources>

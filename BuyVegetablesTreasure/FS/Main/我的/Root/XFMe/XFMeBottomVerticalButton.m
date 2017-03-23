@@ -30,7 +30,6 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-
     CGPoint imageOldCenter = self.imageView.center;
     imageOldCenter.x = self.width * 0.5;
     self.imageView.center = imageOldCenter;

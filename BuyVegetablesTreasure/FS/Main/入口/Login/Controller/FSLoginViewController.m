@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *registerButton;
 @property (weak, nonatomic) IBOutlet UIButton *forgetPasswordButton;
 @property (weak, nonatomic) IBOutlet UIButton *phoneLoginButton;
+@property (weak, nonatomic) IBOutlet UIButton *weiChatLoginButton;
 
 @property (weak, nonatomic) IBOutlet UIImageView *bgImageView;
 
@@ -27,8 +28,16 @@
 
 @property (weak, nonatomic) IBOutlet UIView *secondSeparatorLine;
 
+@property (weak, nonatomic) IBOutlet UIView *thirdSeparatorLine;
+
 @property (weak, nonatomic) IBOutlet UIImageView *accountIconImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *passwordIconImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *otherLoginIconImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *weiChatIconImageView;
+
+@property (weak, nonatomic) IBOutlet UILabel *otherLoginLabel;
+@property (weak, nonatomic) IBOutlet UILabel *weiChatLabel;
+
 
 @end
 
@@ -69,6 +78,12 @@
     [self.registerButton setBackgroundImage:[UIImage imageWithColor:[UIColor colorButtonHighlighted]] forState:UIControlStateHighlighted];
     self.registerButton.layer.cornerRadius = 5.0f;
     self.registerButton.layer.masksToBounds = YES;
+    
+    self.thirdSeparatorLine.backgroundColor = [UIColor colorSeparatorLine];
+    
+    self.otherLoginLabel.textColor = [UIColor colorTextAssistant];
+    self.weiChatLabel.textColor = [UIColor colorTextDomina];
+    
 }
 
 - (void)viewDidLayoutSubviews {
@@ -122,6 +137,27 @@
     self.forgetPasswordButton.y = self.phoneLoginButton.y;
     self.forgetPasswordButton.right = self.registerButton.right;
     
+    self.thirdSeparatorLine.x = spacing;
+    self.thirdSeparatorLine.y = self.phoneLoginButton.bottom + spacing;
+    self.thirdSeparatorLine.width = self.loginButton.width;
+    self.thirdSeparatorLine.height = 0.5;
+    
+    self.otherLoginIconImageView.centerX = self.thirdSeparatorLine.centerX;
+    self.otherLoginIconImageView.centerY = self.thirdSeparatorLine.centerY;
+    
+    self.otherLoginLabel.centerX = self.otherLoginIconImageView.centerX;
+    self.otherLoginLabel.y = self.otherLoginIconImageView.bottom + 5;
+    
+    self.weiChatIconImageView.centerX = self.otherLoginIconImageView.centerX;
+    self.weiChatIconImageView.y = self.otherLoginLabel.bottom + 10;
+    
+    self.weiChatLabel.centerX = self.weiChatIconImageView.centerX;
+    self.weiChatLabel.y = self.weiChatIconImageView.bottom + 5;
+    
+    self.weiChatLoginButton.centerX = self.weiChatIconImageView.centerX;
+    self.weiChatLoginButton.y = self.weiChatIconImageView.y;
+    self.weiChatLoginButton.bottom = self.weiChatLabel.bottom;
+    
     self.bgImageView.x = 0;
     self.bgImageView.y = 64;
     self.bgImageView.width = width;
@@ -169,6 +205,12 @@
     FSPhoneLoginViewController *phoneLoginVC = [[FSPhoneLoginViewController alloc] init];
     [self.navigationController pushViewController:phoneLoginVC animated:YES];
 }
+
+// 微信登录按钮事件
+- (IBAction)weiChatLoginButtonAction:(UIButton *)sender {
+    NSLog(@"*********你点的是微信登录哦！");
+}
+
 
 - (IBAction)textFieldChanged:(UITextField *)sender {
     self.loginButton.enabled = self.phoneNumberInputTextField.text.length >= 11 && self.passwordInputTextField.text.length;
