@@ -336,6 +336,8 @@
          iconImg = image;
          NSString *titleString = [NSString stringWithFormat:@"%@(%@元)\n%@",goodsName,goodsPrice,shortDesc];
          
+         
+        
          [UMSocialConfig hiddenNotInstallPlatforms:[NSArray arrayWithObjects:
                                                     UMShareToQQ,
                                                     UMShareToQzone,

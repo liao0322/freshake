@@ -13,7 +13,7 @@
 #import "AppDelegate+alicallBack.h"
 
 #import <AlipaySDK/AlipaySDK.h>
-#import "WXApi.h"
+
 
 // FS
 #import "AppDelegate+FS.h"
@@ -25,7 +25,9 @@
 #import "JDFile.h"
 #import "NSDate+Extension.h"
 
-@interface AppDelegate ()
+#import "WXApi.h"
+
+@interface AppDelegate ()<WXApiDelegate>
 
 @end
 
@@ -67,8 +69,14 @@
     
     [self setupJPushWithOptions:launchOptions];
     
-    // 友盟Key
+    
+    
+    
+
     [UMSocialData setAppKey:@"57e87c1667e58ee0380015f8"];
+    //打开调试log的开关
+    [UMSocialData openLog:YES];
+
     // 设置QQ分享
     [UMSocialQQHandler setQQWithAppId:@"1105606669"
                                appKey:@"k0uCtHZeQtqKe7Fo"
@@ -77,8 +85,8 @@
     
     // 设置微信分享
     [UMSocialWechatHandler setWXAppId:WECARTAPPID
-                            appSecret:@"6f8462f766e5d976d9cde4fed3c6a8d1"
-                                  url:@""];
+                            appSecret:WECARTSECRET
+                                  url:@"http://www.umeng.com/social"];
     
     self.locationManager = [[CLLocationManager alloc] init];
     
@@ -89,7 +97,8 @@
     }
     
     // 向微信注册wx685053b732d0f4bc（正式）
-    [WXApi registerApp:WECARTAPPID withDescription:@"demo 2.0"];
+//    [WXApi registerApp:WECARTAPPID withDescription:@"demo 2.0"];
+    [WXApi registerApp:WECARTAPPID];
 
     CLLocationManager *locationManager = [[CLLocationManager alloc] init];
     if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
@@ -121,7 +130,7 @@
 
 - (void)userchangeTuisong {
 
-    NSString *uidString = [[NSUserDefaults standardUserDefaults] objectForKey:@"UID"];
+//    NSString *uidString = [[NSUserDefaults standardUserDefaults] objectForKey:@"UID"];
     
     /*
     if (![Tools isBlankString:uidString]) {
@@ -141,16 +150,17 @@
 }
 
 
-
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
+    [UMSocialSnsService applicationDidBecomeActive];
     [application setApplicationIconBadgeNumber:0];
-    return;
+//    return;
 }
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
     
-    return  [UMSocialSnsService handleOpenURL:url];
+   return [UMSocialSnsService handleOpenURL:url];
+    
 }
 
 - (BOOL)application:(UIApplication *)application
@@ -158,7 +168,10 @@
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation
 {
-    return  [UMSocialSnsService handleOpenURL:url];
+    
+    return [UMSocialSnsService handleOpenURL:url wxApiDelegate:nil];
+//    [UMSocialSnsService handleOpenURL:url];
+//    [WXApi handleOpenURL:url delegate:self];
 }
 
 // 设置旋转
@@ -202,6 +215,7 @@
                     animations:animation
                     completion:nil];
 }
+
 
 
 @end

@@ -11,8 +11,10 @@
 #import "FSForgetViewController.h"
 #import "FSPhoneLoginViewController.h"
 #import "XFLimitedTextField.h"
+#import "WXApi.h"
 
 @interface FSLoginViewController ()
+
 @property (weak, nonatomic) IBOutlet XFLimitedTextField *phoneNumberInputTextField;
 
 @property (weak, nonatomic) IBOutlet UITextField *passwordInputTextField;
@@ -48,6 +50,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    if ([WXApi isWXAppInstalled]) {
+        self.weiChatLoginButton.enabled = YES;
+        self.weiChatIconImageView.hidden = NO;
+        self.weiChatLabel.hidden = NO;
+    }else {
+        self.weiChatLoginButton.enabled = NO;
+        self.weiChatIconImageView.hidden = YES;
+        self.weiChatLabel.hidden = YES;
+    }
 }
 
 - (void)initialization {
@@ -206,12 +222,6 @@
     [self.navigationController pushViewController:phoneLoginVC animated:YES];
 }
 
-// 微信登录按钮事件
-- (IBAction)weiChatLoginButtonAction:(UIButton *)sender {
-    NSLog(@"*********你点的是微信登录哦！");
-}
-
-
 - (IBAction)textFieldChanged:(UITextField *)sender {
     self.loginButton.enabled = self.phoneNumberInputTextField.text.length >= 11 && self.passwordInputTextField.text.length;
 }
@@ -298,5 +308,30 @@
          
      } failure:nil];
 }
+
+#pragma mark - 微信登录
+
+// 微信登录按钮事件
+- (IBAction)weiChatLoginButtonAction:(UIButton *)sender {
+   
+    NSLog(@"*********你点的是微信登录哦！");
+//    NSString *platformName = [UMSocialSnsPlatformManager getSnsPlatformString:UMSocialSnsTypeWechatSession];
+    UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToWechatSession];
+    
+    snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
+       
+        NSLog(@"%@", response);
+        if (response.responseCode == UMSResponseCodeSuccess) {
+            
+            UMSocialAccountEntity *snsAccount = [[UMSocialAccountManager socialAccountDictionary]valueForKey:UMShareToWechatSession];
+            NSLog(@"username is %@, uid is %@,  token is %@ url is %@, unionId is %@, openId is %@",snsAccount.userName,snsAccount.usid,snsAccount.accessToken,snsAccount.iconURL,snsAccount.unionId,snsAccount.openId);
+        }
+    
+    });
+  
+
+}
+
+
 
 @end

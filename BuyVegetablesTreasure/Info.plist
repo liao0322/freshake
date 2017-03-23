@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>请打开定位以便于获取商品信息</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>zh_CN</string>
 	<key>CFBundleDisplayName</key>
@@ -27,6 +25,8 @@
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>wechat</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>wx222566b6fdefe238</string>
@@ -249,6 +249,8 @@
 	<string>是否允许此APP使用蓝牙</string>
 	<key>NSCameraUsageDescription</key>
 	<string>是否允许此App使用你的相机</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>请打开定位以便于获取商品信息</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>是否允许此App访问你的媒体资料库</string>
 	<key>UIBackgroundModes</key>
