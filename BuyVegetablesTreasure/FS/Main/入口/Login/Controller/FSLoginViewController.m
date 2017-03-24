@@ -228,7 +228,10 @@
         [userDefaults setObject:[NSString stringWithFormat:@"%@",dataDict[@"id"]] forKey:@"UID"];
         [userDefaults setObject:[NSString stringWithFormat:@"%@",dataDict[@"agentId"]] forKey:@"ZID"];
         
-                     [[NSNotificationCenter defaultCenter] postNotificationName:@"UserChange" object:nil];
+        [userDefaults setObject:dataDict[@"ISshare"] forKey:@"isShare"];
+        [userDefaults setObject:dataDict[@"shareUrl"] forKey:@"shareUrl"];
+        
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"UserChange" object:nil];
         // 发出通知
         [[NSNotificationCenter defaultCenter] postNotificationName:@"UserIsLogined" object:nil];
         

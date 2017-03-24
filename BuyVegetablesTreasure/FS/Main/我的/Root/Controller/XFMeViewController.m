@@ -31,6 +31,7 @@
 #import "XFMeCollectionViewCell.h"
 #import "XFMeModel.h"
 #import <MJExtension.h>
+#import "FSMyQRCodeViewController.h"
 
 @interface XFMeViewController ()<UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -278,6 +279,10 @@ static CGFloat const margin = 1;
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    BOOL isShare = [[[NSUserDefaults standardUserDefaults] objectForKey:@"isShare"] boolValue];
+    if (!isShare) {
+        return self.itemsArray.count - 1;
+    }
     return self.itemsArray.count;
 }
 
@@ -312,7 +317,7 @@ static CGFloat const margin = 1;
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://4001725757"] options:@{} completionHandler:^(BOOL success) {
         }];
     } else if ([model.title isEqualToString:@"分享"]) {
-        
+        isLogined ? [self.navigationController pushViewController:[FSMyQRCodeViewController new] animated:YES] : [self presentToLoginVC];
     }
 }
 

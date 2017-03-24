@@ -879,6 +879,8 @@
 		FE4609A01E839CD000664B29 /* XFMeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE46099E1E839CD000664B29 /* XFMeCollectionViewCell.xib */; };
 		FE4609A41E83A15500664B29 /* XFMeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FE4609A31E83A15500664B29 /* XFMeModel.m */; };
 		FE4609A61E83A2A200664B29 /* MeItems.plist in Resources */ = {isa = PBXBuildFile; fileRef = FE4609A51E83A2A200664B29 /* MeItems.plist */; };
+		FE4609AC1E84ABD100664B29 /* FSMyQRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE4609AA1E84ABD100664B29 /* FSMyQRCodeViewController.m */; };
+		FE4609AD1E84ABD100664B29 /* FSMyQRCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE4609AB1E84ABD100664B29 /* FSMyQRCodeViewController.xib */; };
 		FE474DC91E28A61E0005CD98 /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = FE474DC81E28A61E0005CD98 /* NSString+Extension.m */; };
 		FE474DCC1E2C65190005CD98 /* XFTools.m in Sources */ = {isa = PBXBuildFile; fileRef = FE474DCB1E2C65190005CD98 /* XFTools.m */; };
 		FE474DE71E2CB25C0005CD98 /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = FE474DE61E2CB25C0005CD98 /* TTTAttributedLabel.m */; };
@@ -1037,7 +1039,6 @@
 		FECDE78C1E07CE940083E11B /* AppDelegate+FS.m in Sources */ = {isa = PBXBuildFile; fileRef = FECDE78B1E07CE940083E11B /* AppDelegate+FS.m */; };
 		FECDE7911E08B7EE0083E11B /* FSShoppingCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FECDE78F1E08B7EE0083E11B /* FSShoppingCartViewController.m */; };
 		FECDE7971E0925080083E11B /* XFEqualSpaceFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = FECDE7961E0925080083E11B /* XFEqualSpaceFlowLayout.m */; };
-		FECDE79A1E09277E0083E11B /* UIScrollView+UITouch.m in Sources */ = {isa = PBXBuildFile; fileRef = FECDE7991E09277E0083E11B /* UIScrollView+UITouch.m */; };
 		FECDE79E1E0971EA0083E11B /* FSShoppingCartTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FECDE79C1E0971EA0083E11B /* FSShoppingCartTVCell.m */; };
 		FECDE79F1E0971EA0083E11B /* FSShoppingCartTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FECDE79D1E0971EA0083E11B /* FSShoppingCartTVCell.xib */; };
 		FECDE7A21E0A211E0083E11B /* FSShoppingCartBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = FECDE7A11E0A211E0083E11B /* FSShoppingCartBottomView.m */; };
@@ -2425,6 +2426,9 @@
 		FE4609A21E83A15500664B29 /* XFMeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFMeModel.h; sourceTree = "<group>"; };
 		FE4609A31E83A15500664B29 /* XFMeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFMeModel.m; sourceTree = "<group>"; };
 		FE4609A51E83A2A200664B29 /* MeItems.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MeItems.plist; sourceTree = "<group>"; };
+		FE4609A91E84ABD000664B29 /* FSMyQRCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMyQRCodeViewController.h; sourceTree = "<group>"; };
+		FE4609AA1E84ABD100664B29 /* FSMyQRCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMyQRCodeViewController.m; sourceTree = "<group>"; };
+		FE4609AB1E84ABD100664B29 /* FSMyQRCodeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSMyQRCodeViewController.xib; sourceTree = "<group>"; };
 		FE474DC71E28A61E0005CD98 /* NSString+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extension.h"; sourceTree = "<group>"; };
 		FE474DC81E28A61E0005CD98 /* NSString+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
 		FE474DCA1E2C65190005CD98 /* XFTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XFTools.h; path = BuyVegetablesTreasure/FS/Expand/Category/NSString/XFTools.h; sourceTree = SOURCE_ROOT; };
@@ -2675,8 +2679,6 @@
 		FECDE78F1E08B7EE0083E11B /* FSShoppingCartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSShoppingCartViewController.m; sourceTree = "<group>"; };
 		FECDE7951E0925080083E11B /* XFEqualSpaceFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFEqualSpaceFlowLayout.h; sourceTree = "<group>"; };
 		FECDE7961E0925080083E11B /* XFEqualSpaceFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFEqualSpaceFlowLayout.m; sourceTree = "<group>"; };
-		FECDE7981E09277E0083E11B /* UIScrollView+UITouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+UITouch.h"; sourceTree = "<group>"; };
-		FECDE7991E09277E0083E11B /* UIScrollView+UITouch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+UITouch.m"; sourceTree = "<group>"; };
 		FECDE79B1E0971EA0083E11B /* FSShoppingCartTVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSShoppingCartTVCell.h; sourceTree = "<group>"; };
 		FECDE79C1E0971EA0083E11B /* FSShoppingCartTVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSShoppingCartTVCell.m; sourceTree = "<group>"; };
 		FECDE79D1E0971EA0083E11B /* FSShoppingCartTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSShoppingCartTVCell.xib; sourceTree = "<group>"; };
@@ -7377,6 +7379,24 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		FE4609A71E84ABB300664B29 /* MyQRCode */ = {
+			isa = PBXGroup;
+			children = (
+				FE4609A81E84ABB300664B29 /* Controller */,
+			);
+			path = MyQRCode;
+			sourceTree = "<group>";
+		};
+		FE4609A81E84ABB300664B29 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FE4609A91E84ABD000664B29 /* FSMyQRCodeViewController.h */,
+				FE4609AA1E84ABD100664B29 /* FSMyQRCodeViewController.m */,
+				FE4609AB1E84ABD100664B29 /* FSMyQRCodeViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		FE474DCD1E2C6F470005CD98 /* 物流信息 */ = {
 			isa = PBXGroup;
 			children = (
@@ -7657,8 +7677,6 @@
 				FECDE6091E07C2C70083E11B /* UIColor */,
 				FECDE60E1E07C2C70083E11B /* UIImage */,
 				FECDE6111E07C2C70083E11B /* UIView */,
-				FECDE7981E09277E0083E11B /* UIScrollView+UITouch.h */,
-				FECDE7991E09277E0083E11B /* UIScrollView+UITouch.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -8384,6 +8402,7 @@
 		FECDE6A61E07C2C70083E11B /* 我的 */ = {
 			isa = PBXGroup;
 			children = (
+				FE4609A71E84ABB300664B29 /* MyQRCode */,
 				FE17A8ED1E0D419700DC7949 /* Root */,
 				EBF655691E5C2651002328B2 /* 礼品卡 */,
 				FE474E271E2DEE320005CD98 /* 我的订单 */,
@@ -9230,6 +9249,7 @@
 				0C625F1C1CC4DAF90052181A /* 数字圈.png in Resources */,
 				E4FF92D61CC9BB1C009E4B8F /* Myorder_待提货-灰色@3x.png in Resources */,
 				E4FF92D81CC9BB1C009E4B8F /* Myorder_待提货@2x.png in Resources */,
+				FE4609AD1E84ABD100664B29 /* FSMyQRCodeViewController.xib in Resources */,
 				E48190011CC8D6C10081E06C /* 扫一扫@2x.png in Resources */,
 				0CC11CB71CB50F8800E1E789 /* 拼团失败图标@3x.png in Resources */,
 				0CCA02FE1D1A2995009286ED /* BannerError.png in Resources */,
@@ -9838,10 +9858,10 @@
 				FE8CEF981E5147E100779B5F /* XFExpressNoDataTVCell.m in Sources */,
 				0CF4FBBD1DEBCAAB0096D0DB /* AmountCell.m in Sources */,
 				FE17A9521E0D430F00DC7949 /* FSOpenPushViewController.m in Sources */,
-				FECDE79A1E09277E0083E11B /* UIScrollView+UITouch.m in Sources */,
 				E4FFE1CA1C25362300F943DF /* HelpModel.m in Sources */,
 				0CF4FBC41DEC2F4E0096D0DB /* ReviewImagesView.m in Sources */,
 				521E319A1CB3A82800041F76 /* DetailsTableView.m in Sources */,
+				FE4609AC1E84ABD100664B29 /* FSMyQRCodeViewController.m in Sources */,
 				FECDE70E1E07C2C70083E11B /* UIButton+EnlargeEdge.m in Sources */,
 				0CBA549A1DE7D47C00378911 /* SubmitOrderViewController.m in Sources */,
 				EBBEC3911E0E8D3E00872E7A /* FSMySiteViewController.m in Sources */,
