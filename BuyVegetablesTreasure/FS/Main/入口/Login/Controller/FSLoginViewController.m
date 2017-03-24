@@ -49,7 +49,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -250,6 +249,7 @@
             [SVProgressHUD showInfoWithStatus:dataDict[@"context"]];
             return;
         }
+        
         [SVProgressHUD showSuccessWithStatus:@"登录成功"];
         // 登录成功
         // 持久化相关信息

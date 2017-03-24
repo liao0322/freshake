@@ -7,6 +7,7 @@
 //
 
 #import "FSMyQRCodeViewController.h"
+#import "NSString+Extension.h"
 
 @interface FSMyQRCodeViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
@@ -23,22 +24,15 @@
 - (void)requestData {
     [super requestData];
     
-    NSString *urlString = [[[NSUserDefaults standardUserDefaults] objectForKey:@"shareUrl"] stringValue];
+    NSString *urlString = [[NSUserDefaults standardUserDefaults] objectForKey:@"shareUrl"];
+    if (!urlString) {
+        return;
+    }
+    
+    urlString = [[urlString clearAllSpace] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
     NSURL *URL = [NSURL URLWithString:urlString];
-    NSData *data = [NSData dataWithContentsOfURL:URL];
-    UIImage *image = [UIImage imageWithData:data];
-    //NSString *filePath = [self filePathWithImageName:imageName];
-    
-    /*
-    if ([UIImagePNGRepresentation(image) writeToFile:filePath atomically:YES]) {
-        [self deleteOldImage];
-
-        
-    } else {
-        NSLog(@"保存启动图片失败");
-    }
-     */
+    [self.imageView sd_setImageWithURL:URL];
     
 }
 
