@@ -195,6 +195,7 @@
          iconImg = image;
          NSString *titleString = [NSString stringWithFormat:@"%@(%@元)\n%@",goodsName,goodsPrice,shortDesc];
          
+         
          [UMSocialConfig hiddenNotInstallPlatforms:[NSArray arrayWithObjects:
                                                     UMShareToQQ,
                                                     UMShareToQzone,
@@ -212,13 +213,14 @@
                                                       UMShareToQzone,nil]
                                             delegate:nil];
          
-         // 设置QQ分享
+          //设置QQ分享
          [UMSocialQQHandler setQQWithAppId:@"1105606669"
                                     appKey:@"k0uCtHZeQtqKe7Fo"
                                        url:model.url];
          [UMSocialQQHandler setSupportWebView:YES];
          
-         // 设置微信分享
+         
+          //设置微信分享
          [UMSocialWechatHandler setWXAppId:WECARTAPPID
                                  appSecret:@"6f8462f766e5d976d9cde4fed3c6a8d1"
                                        url:model.url];
