@@ -53,6 +53,9 @@
 //普通登录//快捷登录
 #define ZLLOGIN LMMC(Path(@"ZLLogin&phone=%@&pwd=%@&type=%d"))
 
+// 微信登录
+#define WECHATLOGIN LMMC(Path(@"regustuser&openid=%@&unionid=%@&channel_type=X1&nickname=%@"))
+
 //注册
 #define REGISTER LMMC(Path(@"GetZLLRegistered&phone=%@&pwd=%@&code=%@"))
 

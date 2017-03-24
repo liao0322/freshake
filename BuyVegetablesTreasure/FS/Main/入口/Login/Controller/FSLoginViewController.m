@@ -40,6 +40,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *otherLoginLabel;
 @property (weak, nonatomic) IBOutlet UILabel *weiChatLabel;
 
+@property (nonatomic) NSDictionary *snsAccountDic;
 
 @end
 
@@ -315,7 +316,8 @@
 - (IBAction)weiChatLoginButtonAction:(UIButton *)sender {
    
     NSLog(@"*********你点的是微信登录哦！");
-//    NSString *platformName = [UMSocialSnsPlatformManager getSnsPlatformString:UMSocialSnsTypeWechatSession];
+    
+    // 友盟微信登录认证
     UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToWechatSession];
     
     snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
@@ -325,11 +327,53 @@
             
             UMSocialAccountEntity *snsAccount = [[UMSocialAccountManager socialAccountDictionary]valueForKey:UMShareToWechatSession];
             NSLog(@"username is %@, uid is %@,  token is %@ url is %@, unionId is %@, openId is %@",snsAccount.userName,snsAccount.usid,snsAccount.accessToken,snsAccount.iconURL,snsAccount.unionId,snsAccount.openId);
+            
+            self.snsAccountDic = @{@"openid"   : snsAccount.openId,
+                                   @"unionid"  : snsAccount.unionId,
+                                   @"nick_name" : snsAccount.userName,
+                                   @"avatar"   : snsAccount.iconURL
+                                   };
+            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+            
+            NSArray *userDefaultsStr = @[@"openid",
+                                         @"unionid",
+                                         @"nick_name",
+                                         @"avatar"];
+            for (int i = 0; i < userDefaultsStr.count; i++) {
+                [userDefaults setObject:self.snsAccountDic[userDefaultsStr[i]] forKey:userDefaultsStr[i]];
+            }
+            
+            [self weChatLoginRequest];
         }
     
     });
   
 
+}
+
+- (void)weChatLoginRequest {
+    
+    NSString *urlString = [NSString stringWithFormat:WECHATLOGIN,_snsAccountDic[@"openid"],_snsAccountDic[@"unionid"],_snsAccountDic[@"nick_name"]];
+    NSLog(@"%@", urlString);
+    
+    [XFNetworking GET:urlString parameters:nil success:^(id responseObject, NSInteger statusCode) {
+        
+        NSDictionary *dataDict = [self dictWithData:responseObject];
+        // 登录失败
+        if (![dataDict[@"Code"] isEqualToString:@"0"]) {
+            [SVProgressHUD showInfoWithStatus:dataDict[@"Message"]];
+        }
+        // 登录成功
+        [SVProgressHUD showSuccessWithStatus:@"登录成功"];
+        
+        // 发出通知
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"UserIsLogined" object:nil];
+        [self dismissViewControllerAnimated:YES completion:nil];
+
+        
+    } failure:^(NSError *error, NSInteger statusCode) {
+        [self showInfoWidthError:error];
+    }];
 }
 
 

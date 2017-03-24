@@ -74,6 +74,7 @@
     
 
     [UMSocialData setAppKey:@"57e87c1667e58ee0380015f8"];
+    
     //打开调试log的开关
     [UMSocialData openLog:YES];
 
