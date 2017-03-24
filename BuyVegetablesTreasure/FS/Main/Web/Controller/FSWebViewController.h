@@ -10,4 +10,6 @@
 
 @interface FSWebViewController : FSBaseViewController
 
+- (instancetype)initWithUrlString:(NSString *)urlString;
+
 @end

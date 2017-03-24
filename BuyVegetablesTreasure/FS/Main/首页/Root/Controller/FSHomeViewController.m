@@ -308,7 +308,6 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
         goodsDetailVc.ProductId = goodsId;
         viewController = goodsDetailVc;
         
-        
     } else if (typeId == 2) { // 跳转到分类
         
         FSClassificationViewController *singleClassificationVC = [[FSClassificationViewController alloc] init];
@@ -317,18 +316,8 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
         viewController = singleClassificationVC;
         
     } else { // 跳转到 web
-        
-        /*
-        AdWebViewController *ad = [[AdWebViewController alloc] init];
-        ad.name = model.Name;
-        ad.url = model.Url;
-        viewController = ad;
-         */
-        
-        
-        FSWebViewController *webVC = [FSWebViewController new];
+        FSWebViewController *webVC = [[FSWebViewController alloc] initWithUrlString:[XFKVCPersistence get:KEY_EVENT_URL]];
         viewController = webVC;
-        
     }
     
     [self.navigationController pushViewController:viewController animated:YES];

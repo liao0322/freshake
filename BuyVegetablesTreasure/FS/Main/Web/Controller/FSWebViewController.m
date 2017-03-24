@@ -12,10 +12,18 @@
 @interface FSWebViewController ()
 
 @property (nonatomic) WKWebView *webView;
+@property (copy, nonatomic) NSString *urlString;
 
 @end
 
 @implementation FSWebViewController
+
+- (instancetype)initWithUrlString:(NSString *)urlString {
+    self = [super init];
+    if (!self) return nil;
+    _urlString = urlString;
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -25,7 +33,7 @@
 - (void)addSubviews {
     [super addSubviews];
     [self.view addSubview:self.webView];
-    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.jianshu.com"]]];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.urlString]]];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -19,11 +19,15 @@
     
     [FSRequestAppDelegate adListWithTypeId:@"0" success:^(FSAdModel *adModel) {
 
-        NSString *imageName = [adModel.imgUrl componentsSeparatedByString:@"/"].lastObject;
+        NSString *newImgUrl = [NSString stringWithFormat:@"%@%@", adModel.imgUrl, [self imageSizeSuffixString]];
+        
+        // 拼接图片名字
+        NSString *imageName = [newImgUrl componentsSeparatedByString:@"/"].lastObject;
         NSString *filePath = [self filePathWithImageName:imageName];
+        
         BOOL isExist = [JDFile isFileExist:filePath];
         if (!isExist) { // 不存在
-            [self downloadImageWithUrl:adModel.imgUrl imageName:imageName adModel:adModel];
+            [self downloadImageWithUrl:newImgUrl imageName:imageName adModel:adModel];
         } else {
             BOOL usable = [adModel.usable boolValue];
             if (!usable) {
@@ -45,13 +49,13 @@
                      adModel:(FSAdModel *)adModel {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
-        NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlString]];
+        NSURL *URL = [NSURL URLWithString:urlString];
+        NSData *data = [NSData dataWithContentsOfURL:URL];
         UIImage *image = [UIImage imageWithData:data];
         NSString *filePath = [self filePathWithImageName:imageName];
         
         if ([UIImagePNGRepresentation(image) writeToFile:filePath atomically:YES]) {
             [self deleteOldImage];
-            
             [XFKVCPersistence setValue:imageName forKey:KEY_AD_IMAGE_NAME];
             [XFKVCPersistence setValue:adModel.eventTypeId forKey:KEY_EVENT_TYPE_ID];
             [XFKVCPersistence setValue:adModel.eventId forKey:KEY_EVENT_ID];
@@ -80,5 +84,17 @@
         NSFileManager *fileManager = [NSFileManager defaultManager];
         [fileManager removeItemAtPath:filePath error:nil];
     }
+}
+
+- (NSString *)imageSizeSuffixString {
+    NSString *str = nil;
+    if (SCREEN_WIDTH == 320.0f) {
+        str = @"_640x1136.jpg";
+    } else if (SCREEN_WIDTH == 375.0f) {
+        str = @"_750x1334.jpg";
+    } else if (SCREEN_WIDTH == 414.0f) {
+        str = @"_1242x2208.jpg";
+    }
+    return str;
 }
 @end

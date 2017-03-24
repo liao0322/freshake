@@ -43,8 +43,6 @@
     // 全局设置
     [self fsGlobalSetup];
     
-    
-    
     NSString *imageName = [XFKVCPersistence get:KEY_AD_IMAGE_NAME];
     NSString *filePath = [self filePathWithImageName:imageName];
     BOOL isExist = [JDFile isFileExist:filePath];
@@ -92,9 +90,7 @@
     self.locationManager = [[CLLocationManager alloc] init];
     
     if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
-        
         [self.locationManager requestWhenInUseAuthorization];
-        
     }
     
     // 向微信注册wx685053b732d0f4bc（正式）

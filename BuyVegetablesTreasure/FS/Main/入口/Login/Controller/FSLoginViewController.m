@@ -50,7 +50,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -251,6 +250,7 @@
             [SVProgressHUD showInfoWithStatus:dataDict[@"context"]];
             return;
         }
+        
         [SVProgressHUD showSuccessWithStatus:@"登录成功"];
         // 登录成功
         // 持久化相关信息
@@ -281,7 +281,10 @@
         [userDefaults setObject:[NSString stringWithFormat:@"%@",dataDict[@"id"]] forKey:@"UID"];
         [userDefaults setObject:[NSString stringWithFormat:@"%@",dataDict[@"agentId"]] forKey:@"ZID"];
         
-                     [[NSNotificationCenter defaultCenter] postNotificationName:@"UserChange" object:nil];
+        [userDefaults setObject:dataDict[@"ISshare"] forKey:@"isShare"];
+        [userDefaults setObject:dataDict[@"shareUrl"] forKey:@"shareUrl"];
+        
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"UserChange" object:nil];
         // 发出通知
         [[NSNotificationCenter defaultCenter] postNotificationName:@"UserIsLogined" object:nil];
         
