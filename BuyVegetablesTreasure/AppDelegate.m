@@ -14,7 +14,6 @@
 
 #import <AlipaySDK/AlipaySDK.h>
 
-
 // FS
 #import "AppDelegate+FS.h"
 #import "AppDelegate+LaunchAd.h"
@@ -27,9 +26,10 @@
 
 #import "WXApi.h"
 
-@interface AppDelegate ()<WXApiDelegate>
 
-@end
+//@interface AppDelegate ()<WXApiDelegate>
+
+//@end
 
 @implementation AppDelegate
 
@@ -66,16 +66,11 @@
     //    [NSThread sleepForTimeInterval:5.0f];
     
     [self setupJPushWithOptions:launchOptions];
-    
-    
-    
-    
+    [self setupUMSocial];
 
-    [UMSocialData setAppKey:@"57e87c1667e58ee0380015f8"];
-    
-    //打开调试log的开关
-    [UMSocialData openLog:YES];
+    //[UMSocialData setAppKey:@"57e87c1667e58ee0380015f8"];
 
+    /*
     // 设置QQ分享
     [UMSocialQQHandler setQQWithAppId:@"1105606669"
                                appKey:@"k0uCtHZeQtqKe7Fo"
@@ -86,6 +81,7 @@
     [UMSocialWechatHandler setWXAppId:WECARTAPPID
                             appSecret:WECARTSECRET
                                   url:@"http://www.umeng.com/social"];
+     */
     
     self.locationManager = [[CLLocationManager alloc] init];
     
@@ -95,7 +91,7 @@
     
     // 向微信注册wx685053b732d0f4bc（正式）
 //    [WXApi registerApp:WECARTAPPID withDescription:@"demo 2.0"];
-    [WXApi registerApp:WECARTAPPID];
+    //[WXApi registerApp:WECARTAPPID];
 
     CLLocationManager *locationManager = [[CLLocationManager alloc] init];
     if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
@@ -122,6 +118,8 @@
     [userDefaults removeObjectForKey:@"userName"];
     [userDefaults removeObjectForKey:@"userTel"];
     
+    
+    
     return YES;
 }
 
@@ -146,29 +144,46 @@
      */
 }
 
+//#define __IPHONE_10_0    100000
+#if __IPHONE_OS_VERSION_MAX_ALLOWED > 100000
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options
+{
+    //6.3的新的API调用，是为了兼容国外平台(例如:新版facebookSDK,VK等)的调用[如果用6.2的api调用会没有回调],对国内平台没有影响。
+    BOOL result = [[UMSocialManager defaultManager]  handleOpenURL:url options:options];
+    if (!result) {
+        // 其他如支付等SDK的回调
+    }
+    return result;
+}
+
+#endif
+
+
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    [UMSocialSnsService applicationDidBecomeActive];
+    //[UMSocialSnsService applicationDidBecomeActive];
     [application setApplicationIconBadgeNumber:0];
-//    return;
 }
 
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
-    
-   return [UMSocialSnsService handleOpenURL:url];
-    
-}
-
-- (BOOL)application:(UIApplication *)application
-            openURL:(NSURL *)url
-  sourceApplication:(NSString *)sourceApplication
-         annotation:(id)annotation
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-    
-    return [UMSocialSnsService handleOpenURL:url wxApiDelegate:nil];
-//    [UMSocialSnsService handleOpenURL:url];
-//    [WXApi handleOpenURL:url delegate:self];
+    //6.3的新的API调用，是为了兼容国外平台(例如:新版facebookSDK,VK等)的调用[如果用6.2的api调用会没有回调],对国内平台没有影响
+    BOOL result = [[UMSocialManager defaultManager] handleOpenURL:url sourceApplication:sourceApplication annotation:annotation];
+    if (!result) {
+        // 其他如支付等SDK的回调
+    }
+    return result;
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    BOOL result = [[UMSocialManager defaultManager] handleOpenURL:url];
+    if (!result) {
+        // 其他如支付等SDK的回调
+        [WXApi handleOpenURL:url delegate:self];
+    }
+    return result;
 }
 
 // 设置旋转

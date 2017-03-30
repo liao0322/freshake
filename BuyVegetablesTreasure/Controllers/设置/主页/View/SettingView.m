@@ -9,6 +9,8 @@
 #import "SettingView.h"
 #import "HelptextViewController.h"
 
+#import <UShareUI/UMSocialUIUtility.h>
+
 #define SectionHeight 50
 
 @interface SettingView ()<UITableViewDelegate,UITableViewDataSource>
@@ -161,7 +163,6 @@
         
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         
-        NSString *mobile = [userDefaults objectForKey:@"mobile"];
         NSString *firstStart = [userDefaults objectForKey:@"firstStart"];               // 首次运行程序
         NSString *merchantsID = [userDefaults objectForKey:@"merchantsID"];             // 商家ID
         NSString *merchantsName = [userDefaults objectForKey:@"merchantsName"];         // 提货点名字
@@ -197,7 +198,6 @@
         [userDefaults setObject:distance forKey:@"distance"];
         [userDefaults setDouble:latitude forKey:@"positioningLatitude"];
         [userDefaults setDouble:longitude forKey:@"positioningLongitude"];
-        [userDefaults setObject:mobile forKey:@"mobile"];
         [userDefaults setObject:DistanceString forKey:@"Distance"];
         [userDefaults setObject:DistancePriceString forKey:@"DistancePrice"];
         [userDefaults setBool:IsDistribution forKey:@"IsDistribution"];
@@ -205,6 +205,10 @@
         [userDefaults setObject:xPoint forKey:@"xPoint"];
         [userDefaults setObject:yPoint forKey:@"yPoint"];
         [userDefaults setObject:fendianname forKey:@"Fendianname"];
+        
+        // 取消微信授权
+        [[UMSocialManager defaultManager] cancelAuthWithPlatform:UMSocialPlatformType_WechatSession completion:^(id result, NSError *error) {
+        }];
         
         [[NSNotificationCenter defaultCenter] postNotificationName:@"UserIsLogout" object:nil];
         _LogOut();

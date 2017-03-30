@@ -36,4 +36,7 @@ NSString * const AppKeyGaoDe = @"083518ce91f78192b6be838053bdceff";
 /// 极光推送
 NSString * const AppKeyJPush = @"39199d3657e3a31906dbc20b";
 
+/// ShareSDK
+NSString * const AppKeyShareSDK = @"1c739a20854a0";
+NSString * const AppSecretShareSDK = @"8ebae1b90058c69aa78d7820dfc3f26d";
 

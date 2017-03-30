@@ -12,6 +12,9 @@
 #import "FSPhoneLoginViewController.h"
 #import "XFLimitedTextField.h"
 #import "WXApi.h"
+#import "XFKVCPersistence.h"
+
+#import <UMSocialCore/UMSocialCore.h>
 
 @interface FSLoginViewController ()
 
@@ -52,6 +55,7 @@
     [super viewDidLoad];
 }
 
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
@@ -65,6 +69,7 @@
         self.weiChatLabel.hidden = YES;
     }
 }
+
 
 - (void)initialization {
     [super initialization];
@@ -252,46 +257,8 @@
         }
         
         [SVProgressHUD showSuccessWithStatus:@"登录成功"];
-        // 登录成功
-        // 持久化相关信息
-        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        NSArray *userDefaultsNumbers = @[@"amount",
-                                         @"exp",
-                                         @"point",
-                                         @"group_id"];
-        NSArray *userDefaultsStrings = @[@"telphone",
-                                        @"mobile",
-                                         @"CouponNum",
-                                         @"FolderNum",
-                                         @"address",
-                                         @"avatar",
-                                         @"nick_name",
-                                         @"user_name",
-                                         @"sex"];
-        for (int i = 0; i < userDefaultsStrings.count; i++) {
-            [userDefaults setObject:dataDict[userDefaultsStrings[i]] forKey:userDefaultsStrings[i]];
-            if (userDefaultsNumbers.count > i) {
-                [userDefaults setObject:[dataDict[userDefaultsNumbers[i]] stringValue] forKey:userDefaultsNumbers[i]];
-            }
-        }
-        if (dataDict[@"birthday"]) {
-            [userDefaults setObject:dataDict[@"birthday"] forKey:@"birthday"];
-        }
-        [userDefaults setBool:YES forKey:@"isMobLogin"];
-        [userDefaults setObject:[NSString stringWithFormat:@"%@",dataDict[@"id"]] forKey:@"UID"];
-        [userDefaults setObject:[NSString stringWithFormat:@"%@",dataDict[@"agentId"]] forKey:@"ZID"];
+        [self loginSuccessWithDict:dataDict isMobLogin:YES];
         
-        [userDefaults setObject:dataDict[@"ISshare"] forKey:@"isShare"];
-        [userDefaults setObject:dataDict[@"shareUrl"] forKey:@"shareUrl"];
-        
-         [[NSNotificationCenter defaultCenter] postNotificationName:@"UserChange" object:nil];
-        // 发出通知
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"UserIsLogined" object:nil];
-        
-        // 删除购物车商品
-        [self delStoreGoods];
-        
-        [self dismissViewControllerAnimated:YES completion:nil];
     } failure:^(NSError *error, NSInteger statusCode) { // 登录失败
         [self showInfoWidthError:error];
     }];
@@ -316,69 +283,121 @@
 #pragma mark - 微信登录
 
 // 微信登录按钮事件
+
 - (IBAction)weiChatLoginButtonAction:(UIButton *)sender {
    
-    NSLog(@"*********你点的是微信登录哦！");
-    
-    // 友盟微信登录认证
-    UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToWechatSession];
-    
-    snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
-       
-        NSLog(@"%@", response);
-        if (response.responseCode == UMSResponseCodeSuccess) {
+    [[UMSocialManager defaultManager] getUserInfoWithPlatform:UMSocialPlatformType_WechatSession currentViewController:nil completion:^(id result, NSError *error) {
+        if (error) {
             
-            UMSocialAccountEntity *snsAccount = [[UMSocialAccountManager socialAccountDictionary]valueForKey:UMShareToWechatSession];
-            NSLog(@"username is %@, uid is %@,  token is %@ url is %@, unionId is %@, openId is %@",snsAccount.userName,snsAccount.usid,snsAccount.accessToken,snsAccount.iconURL,snsAccount.unionId,snsAccount.openId);
+        } else {
+            UMSocialUserInfoResponse *resp = result;
             
-            self.snsAccountDic = @{@"openid"   : snsAccount.openId,
-                                   @"unionid"  : snsAccount.unionId,
-                                   @"nick_name" : snsAccount.userName,
-                                   @"avatar"   : snsAccount.iconURL
-                                   };
-            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+            // 授权信息
+            NSLog(@"Wechat uid: %@", resp.uid);
+            NSLog(@"Wechat openid: %@", resp.openid);
+            NSLog(@"Wechat accessToken: %@", resp.accessToken);
+            NSLog(@"Wechat refreshToken: %@", resp.refreshToken);
+            NSLog(@"Wechat expiration: %@", resp.expiration);
             
-            NSArray *userDefaultsStr = @[@"openid",
-                                         @"unionid",
-                                         @"nick_name",
-                                         @"avatar"];
-            for (int i = 0; i < userDefaultsStr.count; i++) {
-                [userDefaults setObject:self.snsAccountDic[userDefaultsStr[i]] forKey:userDefaultsStr[i]];
-            }
+            // 用户信息
+            NSLog(@"Wechat name: %@", resp.name);
+            NSLog(@"Wechat iconurl: %@", resp.iconurl);
+            NSLog(@"Wechat gender: %@", resp.gender);
             
-            [self weChatLoginRequest];
+            // 第三方平台SDK源数据
+            NSLog(@"Wechat originalResponse: %@", resp.originalResponse);
+            
+            [self wechartLoginWithOpenId:resp.openid unionId:resp.uid channelType:@"x1" nickname:resp.name avatarURL:resp.iconurl];
         }
-    
-    });
-  
-
-}
-
-- (void)weChatLoginRequest {
-    
-    NSString *urlString = [NSString stringWithFormat:WECHATLOGIN,_snsAccountDic[@"openid"],_snsAccountDic[@"unionid"],_snsAccountDic[@"nick_name"]];
-    NSLog(@"%@", urlString);
-    
-    [XFNetworking GET:urlString parameters:nil success:^(id responseObject, NSInteger statusCode) {
-        
-        NSDictionary *dataDict = [self dictWithData:responseObject];
-        // 登录失败
-        if (![dataDict[@"Code"] isEqualToString:@"0"]) {
-            [SVProgressHUD showInfoWithStatus:dataDict[@"Message"]];
-        }
-        // 登录成功
-        [SVProgressHUD showSuccessWithStatus:@"登录成功"];
-        
-        // 发出通知
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"UserIsLogined" object:nil];
-        [self dismissViewControllerAnimated:YES completion:nil];
-
-        
-    } failure:^(NSError *error, NSInteger statusCode) {
-        [self showInfoWidthError:error];
     }];
 }
 
+- (void)wechartLoginWithOpenId:(NSString *)openId
+                       unionId:(NSString *)unionId
+                   channelType:(NSString *)channelType
+                      nickname:(NSString *)nickname
+                     avatarURL:(NSString *)avatarURL {
+    
+    // http://122.144.136.72:9970/api/Phone/Fifth/index.aspx?page=regustuser&openid=ovUgfvwMKFSK_4yr_x0kh1LcpV38&unionid=omdJuwCoiZbRpnx4NzzgRTzrPSkE&channel_type=x1&nickname=aa&province=%E4%B8%8A%E6%B5%B7&avatar=http://wx.qlogo.cn/mmopen/ajNVdqHZLLDbIyDrGz1wq9h0F2tPWibibOgRgYicMhUyqKysAeQ0EDIX9qwmulrEBprkRWsKEbcIBmEgE0awjddGQ/0
+    
+    NSString *domainString = @"";
+#if HTTP_TEST_TYPE == 0
+    domainString = @"http://test.freshake.cn:9970";
+#elif HTTP_TEST_TYPE == 1
+    domainString = @"http://h5.freshake.cn";
+#elif HTTP_TEST_TYPE == 2
+    domainString = @"http://test.freshake.cn:9970";
+#endif
+    NSDictionary *parameters = @{
+                                 @"page": @"regustuser",
+                                 @"openid": openId,
+                                 @"unionid": unionId,
+                                 @"channel_type": channelType,
+                                 @"nickname": nickname,
+                                 @"avatar": avatarURL
+                                 };
 
+    
+    [XFNetworking GET:[NSString stringWithFormat:@"%@/%@", domainString, @"api/Phone/Fifth/index.aspx"] parameters:parameters success:^(id responseObject, NSInteger statusCode) {
+        NSDictionary *dataDict = [self dictWithData:responseObject];
+        // 登录失败
+        if (![dataDict[@"issuccess"] boolValue]) {
+            [SVProgressHUD showInfoWithStatus:dataDict[@"context"]];
+            return;
+        }
+        [XFKVCPersistence setValue:unionId forKey:@"unionId"];
+        [SVProgressHUD showSuccessWithStatus:@"登录成功"];
+        [self loginSuccessWithDict:dataDict isMobLogin:NO];
+    } failure:^(NSError *error, NSInteger statusCode) {
+        [self showInfoWidthError:error];
+    }];
+    
+}
+
+- (void)loginSuccessWithDict:(NSDictionary *)dataDict isMobLogin:(BOOL)isMobLogin {
+    
+    // 登录成功
+    // 持久化相关信息
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSArray *userDefaultsNumbers = @[@"amount",
+                                     @"exp",
+                                     @"point",
+                                     @"group_id"];
+    NSArray *userDefaultsStrings = @[@"telphone",
+                                     @"mobile",
+                                     @"CouponNum",
+                                     @"FolderNum",
+                                     @"address",
+                                     @"avatar",
+                                     @"nick_name",
+                                     @"user_name",
+                                     @"sex"];
+
+    for (int i = 0; i < userDefaultsStrings.count; i++) {
+        [userDefaults setObject:dataDict[userDefaultsStrings[i]] forKey:userDefaultsStrings[i]];
+        if (userDefaultsNumbers.count > i) {
+            [userDefaults setObject:[dataDict[userDefaultsNumbers[i]] stringValue] forKey:userDefaultsNumbers[i]];
+        }
+    }
+    if (dataDict[@"birthday"]) {
+        [userDefaults setObject:dataDict[@"birthday"] forKey:@"birthday"];
+    }
+    [userDefaults setBool:isMobLogin forKey:@"isMobLogin"];
+    [userDefaults setObject:[NSString stringWithFormat:@"%@",dataDict[@"id"]] forKey:@"UID"];
+    [userDefaults setObject:[NSString stringWithFormat:@"%@",dataDict[@"agentId"]] forKey:@"ZID"];
+    
+    [userDefaults setObject:dataDict[@"ISshare"] forKey:@"isShare"];
+    [userDefaults setObject:dataDict[@"shareUrl"] forKey:@"shareUrl"];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"UserChange" object:nil];
+    // 发出通知
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"UserIsLogined" object:nil];
+    
+    // 删除购物车商品
+    [self delStoreGoods];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
 
 @end

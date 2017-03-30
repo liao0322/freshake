@@ -36,6 +36,9 @@ UIKIT_EXTERN NSString * const AppKeyGaoDe;
 /// 极光推送
 UIKIT_EXTERN NSString * const AppKeyJPush;
 
+/// ShareSDK
+UIKIT_EXTERN NSString * const AppKeyShareSDK;
+UIKIT_EXTERN NSString * const AppSecretShareSDK;
 
 
 

@@ -14,6 +14,9 @@
 #import <UserNotifications/UserNotifications.h>
 #endif
 
+#import <UMSocialCore/UMSocialCore.h>
+
+
 @interface AppDelegate (FS)
 <
     UITabBarControllerDelegate,
@@ -25,7 +28,7 @@
 - (void)fsGlobalSetup;
 
 - (void)setupJPushWithOptions:(NSDictionary *)launchOptions;
-
+- (void)setupUMSocial;
 
 
 @end

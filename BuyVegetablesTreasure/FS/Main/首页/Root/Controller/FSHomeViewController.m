@@ -46,7 +46,9 @@
 #import "XFMemoryStorage.h"
 #import "XFKVCPersistence.h"
 #import "FSWebViewController.h"
-
+#import "XFFloatButton.h"
+#import "FSBindingPhoneView.h"
+#import "IQKeyboardManager.h"
 
 #define NAV_BAR_ALPHA 0.95f
 #define APP_ID @"1136079278"
@@ -99,6 +101,9 @@
 
 @property (nonatomic) MJRefreshNormalHeader *normalHeader;
 
+@property (nonatomic) XFFloatButton *floatButton;
+// @property (nonatomic) FSBindingPhoneView *bindingPhoneView;
+
 @end
 
 
@@ -118,6 +123,7 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
     // 设置自定义的 nav bar 背景透明
     [self setNavBarAppearance];
     
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -127,6 +133,7 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [IQKeyboardManager sharedManager].enable = NO;
     
     //[self startLocation];
     [self getHomeData];
@@ -138,6 +145,22 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
     [self.navigationController setNavigationBarHidden:YES animated:YES];
     
     [[UIApplication sharedApplication] setStatusBarStyle:self.statusBarStyle animated:NO];
+    
+    // 绑定手机 icon 是否显示
+    NSString *mobile = [XFKVCPersistence get:@"mobile"];
+    NSString *uid = [XFKVCPersistence get:@"UID"];
+    if (uid) { // 已登录
+        if (mobile && mobile.length != 0 && uid) {
+            [self.floatButton removeFromSuperview];
+            self.floatButton = nil;
+        } else { // 无手机号
+            [self.view addSubview:self.floatButton];
+        }
+    } else {
+        [self.floatButton removeFromSuperview];
+        self.floatButton = nil;
+    }
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -150,6 +173,7 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    [IQKeyboardManager sharedManager].enable = YES;
     
     // 显示系统 nav bar
     if ( self.navigationController.childViewControllers.count > 1 ) {
@@ -334,6 +358,8 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
         make.height.equalTo(@64);
         make.top.left.equalTo(@0);
     }];
+    
+    
 }
 
 - (void)registerCells {
@@ -570,6 +596,30 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
  */
 
 #pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    NSLog(@"scroll view will begin dragging");
+    if (self.floatButton && ![self.floatButton isHidden]) {
+        [self.floatButton hidden];
+    }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    NSLog(@"scroll view did end decelerating");
+    if (self.floatButton) {
+        [self.floatButton show];
+    }
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    if (!decelerate) {
+        if (self.floatButton) {
+            [self.floatButton show];
+        }
+    }
+    
+    NSLog(@"scroll view did end dragging will decelerate");
+}
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat offsetY = scrollView.contentOffset.y;
@@ -901,7 +951,6 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
             } else {
                 [[[[[self tabBarController] tabBar] items] objectAtIndex:2] setBadgeValue:[NSString stringWithFormat:@"%ld", (long)badgeValue]];
             }
-            
         }
         
     } failure:^(NSError *error, NSInteger statusCode) {
@@ -912,7 +961,21 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
 
 #pragma mark - Custom
 
+- (void)floatButtonDidClicked:(XFFloatButton *)floatButton {
+    //[[IQKeyboardManager sharedManager] setKeyboardDistanceFromTextField:50];
+    //[self.view addSubview:self.bindingPhoneView];
+    [FSBindingPhoneView show];
+}
+
 - (void)userIsLogined {
+    NSString *mobile = [XFKVCPersistence get:@"mobile"];
+    if (mobile && mobile.length != 0) {
+        [self.floatButton removeFromSuperview];
+        self.floatButton = nil;
+    } else { // 无手机号
+        [self.view addSubview:self.floatButton];
+    }
+
     [self startLocation];
 }
 
@@ -1248,7 +1311,22 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
     return _normalHeader;
 }
 
+- (XFFloatButton *)floatButton {
+    if (!_floatButton) {
+        _floatButton = [XFFloatButton floatButton];
+        [_floatButton addTarget:self action:@selector(floatButtonDidClicked:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _floatButton;
+}
 
+/*
+- (FSBindingPhoneView *)bindingPhoneView {
+    if (!_bindingPhoneView) {
+        _bindingPhoneView = [FSBindingPhoneView bindingPhoneView];
+    }
+    return _bindingPhoneView;
+}
+*/
 
 /*
 - (FSDancingBananaHeader *)refreshHeader {

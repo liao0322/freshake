@@ -18,6 +18,8 @@
 #import "MyOrderDetailsViewController.h"
 #import "PaymentTypeView.h"
 
+#import <UShareUI/UShareUI.h>
+
 @interface GroupPeopleViewController ()
 
 @property (nonatomic, strong) DetailsTableView *detailsTableView;
@@ -182,6 +184,55 @@
     NSString *shortDesc = model.shortDesc;
     __block UIImage *iconImg;
     
+    
+    NSString *titleString = [NSString stringWithFormat:@"%@(%@元)",goodsName,goodsPrice];
+    
+    [UMSocialUIManager setPreDefinePlatforms:@[@(UMSocialPlatformType_QQ),@(UMSocialPlatformType_WechatSession), @(UMSocialPlatformType_WechatTimeLine), @(UMSocialPlatformType_Qzone)]];
+    
+    [UMSocialShareUIConfig shareInstance].shareTitleViewConfig.isShow = NO;
+    [UMSocialShareUIConfig shareInstance].shareCancelControlConfig.isShow = NO;
+    
+    //显示分享面板
+    [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMSocialPlatformType platformType, NSDictionary *userInfo) {
+        // 根据获取的platformType确定所选平台进行下一步操作
+        
+        //创建分享消息对象
+        UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
+        
+        //创建网页内容对象
+        NSString* thumbURL =  model.thumbnailsUrll;
+        UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:titleString descr:shortDesc thumImage:thumbURL];
+        //设置网页地址
+        shareObject.webpageUrl = model.url;
+        
+        //分享消息对象设置分享内容对象
+        messageObject.shareObject = shareObject;
+        
+        //调用分享接口
+        [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
+            if (error) {
+                UMSocialLogInfo(@"************Share fail with error %@*********",error);
+            }else{
+                if ([data isKindOfClass:[UMSocialShareResponse class]]) {
+                    UMSocialShareResponse *resp = data;
+                    //分享结果消息
+                    UMSocialLogInfo(@"response message is %@",resp.message);
+                    //第三方原始返回的数据
+                    UMSocialLogInfo(@"response originalResponse data is %@",resp.originalResponse);
+                    
+                }else{
+                    UMSocialLogInfo(@"response data is %@",data);
+                }
+            }
+            [self alertWithError:error];
+        }];
+        
+        
+    }];
+    
+    
+    return;
+    
     SDWebImageManager *manager = [SDWebImageManager sharedManager];
     [manager downloadImageWithURL:[NSURL URLWithString:model.thumbnailsUrll]
                           options:SDWebImageRetryFailed
@@ -194,7 +245,7 @@
      {
          iconImg = image;
          NSString *titleString = [NSString stringWithFormat:@"%@(%@元)\n%@",goodsName,goodsPrice,shortDesc];
-         
+         /*
          
          [UMSocialConfig hiddenNotInstallPlatforms:[NSArray arrayWithObjects:
                                                     UMShareToQQ,
@@ -224,6 +275,7 @@
          [UMSocialWechatHandler setWXAppId:WECARTAPPID
                                  appSecret:@"6f8462f766e5d976d9cde4fed3c6a8d1"
                                        url:model.url];
+          */
      }];
 //    
 //    UIImageView *imgView = [UIImageView new];
@@ -259,6 +311,34 @@
 //    [UMSocialWechatHandler setWXAppId:WECARTAPPID
 //                            appSecret:@"6f8462f766e5d976d9cde4fed3c6a8d1"
 //                                  url:model.url];
+}
+
+- (void)alertWithError:(NSError *)error
+{
+    NSString *result = nil;
+    if (!error) {
+        result = [NSString stringWithFormat:@"Share succeed"];
+    }
+    else{
+        NSMutableString *str = [NSMutableString string];
+        if (error.userInfo) {
+            for (NSString *key in error.userInfo) {
+                [str appendFormat:@"%@ = %@\n", key, error.userInfo[key]];
+            }
+        }
+        if (error) {
+            result = [NSString stringWithFormat:@"Share fail with error code: %d\n%@",(int)error.code, str];
+        }
+        else{
+            result = [NSString stringWithFormat:@"Share fail"];
+        }
+    }
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"share"
+                                                    message:result
+                                                   delegate:nil
+                                          cancelButtonTitle:NSLocalizedString(@"sure", @"确定")
+                                          otherButtonTitles:nil];
+    [alert show];
 }
 
 - (void)btnClick {

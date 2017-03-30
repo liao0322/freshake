@@ -33,6 +33,11 @@
 #import <MJExtension.h>
 #import "FSMyQRCodeViewController.h"
 
+#import "XFFloatButton.h"
+#import "FSBindingPhoneView.h"
+#import "IQKeyboardManager.h"
+#import "XFKVCPersistence.h"
+
 @interface XFMeViewController ()<UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -47,6 +52,8 @@
 @property (nonatomic) UICollectionViewFlowLayout *flowLayout;
 
 @property (nonatomic) NSMutableArray *itemsArray;
+
+@property (nonatomic) XFFloatButton *floatButton;
 
 @end
 
@@ -66,6 +73,7 @@ static CGFloat const margin = 1;
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [IQKeyboardManager sharedManager].enable = NO;
     
     [self.navigationController setNavigationBarHidden:YES animated:YES];
 
@@ -78,6 +86,21 @@ static CGFloat const margin = 1;
         self.orderModel = nil;
         [self.tableView reloadData];
     }
+    
+    // 绑定手机 icon 是否显示
+    NSString *mobile = [XFKVCPersistence get:@"mobile"];
+    NSString *uid = [XFKVCPersistence get:@"UID"];
+    if (uid) { // 已登录
+        if (mobile && mobile.length != 0 && uid) {
+            [self.floatButton removeFromSuperview];
+            self.floatButton = nil;
+        } else { // 无手机号
+            [self.view addSubview:self.floatButton];
+        }
+    } else {
+        [self.floatButton removeFromSuperview];
+        self.floatButton = nil;
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -85,6 +108,8 @@ static CGFloat const margin = 1;
     if ( self.navigationController.childViewControllers.count > 1 ) {
         [self.navigationController setNavigationBarHidden:NO animated:YES];
     }
+    
+    [IQKeyboardManager sharedManager].enable = YES;
 }
 
 #pragma mark - Override
@@ -323,6 +348,12 @@ static CGFloat const margin = 1;
 
 #pragma mark - Custom
 
+- (void)floatButtonDidClicked:(XFFloatButton *)floatButton {
+    //[[IQKeyboardManager sharedManager] setKeyboardDistanceFromTextField:50];
+    //[self.view addSubview:self.bindingPhoneView];
+    [FSBindingPhoneView show];
+}
+
 - (void)presentToLoginVC {
     FSLoginViewController *loginVC = [[FSLoginViewController alloc] init];
     FSNavigationController *navController = [[FSNavigationController alloc] initWithRootViewController:loginVC];
@@ -334,6 +365,13 @@ static CGFloat const margin = 1;
 }
 
 - (void)userIsLogined {
+    NSString *mobile = [XFKVCPersistence get:@"mobile"];
+    if (mobile && mobile.length != 0) {
+        [self.floatButton removeFromSuperview];
+        self.floatButton = nil;
+    } else { // 无手机号
+        [self.view addSubview:self.floatButton];
+    }
     [self.tableView reloadData];
 }
 
@@ -389,6 +427,32 @@ static CGFloat const margin = 1;
     }];
 }
 
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    NSLog(@"scroll view will begin dragging");
+    if (self.floatButton && ![self.floatButton isHidden]) {
+        [self.floatButton hidden];
+    }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    NSLog(@"scroll view did end decelerating");
+    if (self.floatButton) {
+        [self.floatButton show];
+    }
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    if (!decelerate) {
+        if (self.floatButton) {
+            [self.floatButton show];
+        }
+    }
+    
+    NSLog(@"scroll view did end dragging will decelerate");
+}
+
 
 
 #pragma mark - LazyLoad
@@ -422,6 +486,14 @@ static CGFloat const margin = 1;
         _itemsArray = [NSMutableArray arrayWithArray:[XFMeModel mj_objectArrayWithFilename:@"MeItems.plist"]];
     }
     return _itemsArray;
+}
+
+- (XFFloatButton *)floatButton {
+    if (!_floatButton) {
+        _floatButton = [XFFloatButton floatButton];
+        [_floatButton addTarget:self action:@selector(floatButtonDidClicked:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _floatButton;
 }
 
 @end

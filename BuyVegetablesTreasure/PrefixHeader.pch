@@ -15,7 +15,7 @@
 #import "Utillity.h"
 
 #import <CoreLocation/CoreLocation.h>
-#import <AdSupport/AdSupport.h>
+//#import <AdSupport/AdSupport.h>
 
 //第三方类
 #import "UIImage+category.h"
@@ -45,7 +45,7 @@
 #import "UITableView+SDAutoTableViewCellHeight.h"
 
 // 友盟分享
-#import "UMSocial.h"
+//#import "UMSocial.h"
 
 // 百度地图
 #import <BaiduMapAPI_Base/BMKBaseComponent.h>           //引入base相关所有的头文件
@@ -56,8 +56,8 @@
 #import <BaiduMapAPI_Utils/BMKUtilsComponent.h>         //引入计算工具所有的头文件
 #import <BaiduMapAPI_Radar/BMKRadarComponent.h>         //引入周边雷达功能所有的头文件
 
-#import "UMSocialWechatHandler.h"
-#import "UMSocialQQHandler.h"
+//#import "UMSocialWechatHandler.h"
+//#import "UMSocialQQHandler.h"
 
 // 高德地图
 #import <MAMapKit/MAMapKit.h>

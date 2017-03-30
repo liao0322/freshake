@@ -253,6 +253,9 @@
             [userDefaults setObject:[NSString stringWithFormat:@"%@",data[@"id"]] forKey:@"UID"];
             [userDefaults setObject:[NSString stringWithFormat:@"%@",data[@"agentId"]] forKey:@"ZID"];
             
+            [userDefaults setObject:data[@"ISshare"] forKey:@"isShare"];
+            [userDefaults setObject:data[@"shareUrl"] forKey:@"shareUrl"];
+            
             // 重新注册极光推送
             [[NSNotificationCenter defaultCenter] postNotificationName:@"userChangeTuisong" object:nil];
             
