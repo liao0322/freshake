@@ -240,7 +240,8 @@
 }
 
 - (void)viewExpress {
-    XFExpressDetailsViewController *viewExpressVC = [[XFExpressDetailsViewController alloc] initWithOriginalNo:self.orderDetailsModel.order_no];
+//    XFExpressDetailsViewController *viewExpressVC = [[XFExpressDetailsViewController alloc] initWithOriginalNo:self.orderDetailsModel.order_no];
+        XFExpressDetailsViewController *viewExpressVC = [[XFExpressDetailsViewController alloc] initWithMyOrderDetailsModel:self.orderDetailsModel];
     
     if (self.pushViewController) {
         self.pushViewController(viewExpressVC);

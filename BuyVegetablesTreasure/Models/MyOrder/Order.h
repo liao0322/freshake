@@ -29,6 +29,7 @@
 @property(nonatomic,copy)NSString *prepayid;
 @property(nonatomic,copy)NSString *nonce_str;
 @property(nonatomic,copy)NSString *time_stamp;
+@property (copy, nonatomic) NSString *sourceCode;
 
 @property (copy, nonatomic) NSString *express_id;
 

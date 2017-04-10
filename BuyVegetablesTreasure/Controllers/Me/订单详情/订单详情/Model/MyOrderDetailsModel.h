@@ -64,4 +64,6 @@
 /// 积分
 @property (nonatomic, copy) NSString *point;
 
+@property (nonatomic, copy) NSString *sourceCode;
+
 @end

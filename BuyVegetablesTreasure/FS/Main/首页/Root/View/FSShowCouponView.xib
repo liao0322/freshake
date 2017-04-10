@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="FSShowCouponView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DK7-te-P25">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <action selector="a:" destination="iN0-l3-epB" eventType="touchUpInside" id="am0-vr-x3m"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="showcoupon_close" translatesAutoresizingMaskIntoConstraints="NO" id="SSb-9l-vh0">
+                    <rect key="frame" x="170" y="500.5" width="34" height="59"/>
+                </imageView>
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="showcoupon_优惠券背景" translatesAutoresizingMaskIntoConstraints="NO" id="2X9-EL-D2L">
+                    <rect key="frame" x="45" y="161" width="284.5" height="344.5"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="344.5" id="R3S-bh-o3u"/>
+                        <constraint firstAttribute="width" constant="284.5" id="qRA-04-67H"/>
+                    </constraints>
+                </imageView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="m2V-sc-K5J">
+                    <rect key="frame" x="45" y="288.5" width="284.5" height="90"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="90" id="dat-7h-H5S"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="dataSource" destination="iN0-l3-epB" id="l4j-Qa-YT6"/>
+                        <outlet property="delegate" destination="iN0-l3-epB" id="12r-hM-7uG"/>
+                    </connections>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hZD-g9-OBZ">
+                    <rect key="frame" x="112" y="455.5" width="150" height="35"/>
+                    <state key="normal" image="showcoupon_button"/>
+                    <connections>
+                        <action selector="getCouponButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="Aqa-Rv-hmQ"/>
+                    </connections>
+                </button>
+            </subviews>
+            <gestureRecognizers/>
+            <constraints>
+                <constraint firstItem="SSb-9l-vh0" firstAttribute="centerX" secondItem="2X9-EL-D2L" secondAttribute="centerX" id="0gc-9O-QI9"/>
+                <constraint firstItem="hZD-g9-OBZ" firstAttribute="centerX" secondItem="2X9-EL-D2L" secondAttribute="centerX" id="2tN-2a-mrV"/>
+                <constraint firstAttribute="trailing" secondItem="DK7-te-P25" secondAttribute="trailing" id="5ik-en-Lhu"/>
+                <constraint firstItem="2X9-EL-D2L" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="7eQ-cF-7xX"/>
+                <constraint firstItem="m2V-sc-K5J" firstAttribute="centerX" secondItem="2X9-EL-D2L" secondAttribute="centerX" id="BsP-Mz-9pg"/>
+                <constraint firstItem="hZD-g9-OBZ" firstAttribute="bottom" secondItem="2X9-EL-D2L" secondAttribute="bottom" constant="-15" id="IPZ-km-AaU"/>
+                <constraint firstItem="SSb-9l-vh0" firstAttribute="top" secondItem="2X9-EL-D2L" secondAttribute="bottom" constant="-5" id="TzF-nP-mAo"/>
+                <constraint firstItem="DK7-te-P25" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="UBi-mb-KVM"/>
+                <constraint firstItem="2X9-EL-D2L" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Yci-eG-3BZ"/>
+                <constraint firstItem="DK7-te-P25" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="aKu-kT-exm"/>
+                <constraint firstItem="m2V-sc-K5J" firstAttribute="width" secondItem="2X9-EL-D2L" secondAttribute="width" id="cu4-bM-hYp"/>
+                <constraint firstItem="m2V-sc-K5J" firstAttribute="centerY" secondItem="2X9-EL-D2L" secondAttribute="centerY" id="ewJ-gf-2L3"/>
+                <constraint firstAttribute="bottom" secondItem="DK7-te-P25" secondAttribute="bottom" id="m5A-eS-Rpb"/>
+            </constraints>
+            <connections>
+                <outlet property="tableView" destination="m2V-sc-K5J" id="hDV-dE-g1i"/>
+                <outlet property="tbHeightConstraint" destination="dat-7h-H5S" id="QFE-IB-x4Q"/>
+            </connections>
+            <point key="canvasLocation" x="38.5" y="79.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="showcoupon_button" width="150" height="35"/>
+        <image name="showcoupon_close" width="34" height="59"/>
+        <image name="showcoupon_优惠券背景" width="284" height="344"/>
+    </resources>
+</document>

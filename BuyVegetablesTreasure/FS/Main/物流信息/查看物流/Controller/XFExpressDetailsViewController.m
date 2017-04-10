@@ -12,6 +12,8 @@
 #import "XFExpress.h"
 #import "XFExpressList.h"
 #import "XFExpressNoDataTVCell.h"
+#import "Order.h"
+#import "MyOrderDetailsModel.h"
 
 #define MARGIN_LEFT 70.0f
 
@@ -21,6 +23,9 @@
 @property (nonatomic) NSMutableArray *dataArray;
 
 @property (copy, nonatomic) NSString *originalNo;
+@property (copy, nonatomic) NSString *sourceCode;
+
+@property (nonatomic) Order *model;
 @property (nonatomic) XFExpress *express;
 @property (copy, nonatomic, readonly) NSDictionary *orderStatusDict;
 
@@ -33,10 +38,19 @@
 static NSString * const viewExpressTimeLineTVCellID = @"viewExpressTimeLineTVCellID";
 static CGFloat const EstimatedCellHeight = 100.0f;
 
-- (instancetype)initWithOriginalNo:(NSString *)originalNo {
+- (instancetype)initWithOrder:(Order *)order {
     self = [super init];
     if (!self) return nil;
-    _originalNo = originalNo;
+    _originalNo = order.order_no;
+    _sourceCode = order.sourceCode;
+    return self;
+}
+
+- (instancetype)initWithMyOrderDetailsModel:(MyOrderDetailsModel *)model {
+    self = [super init];
+    if (!self) return nil;
+    _originalNo = model.order_no;
+    _sourceCode = model.sourceCode;
     return self;
 }
 
@@ -55,7 +69,7 @@ static CGFloat const EstimatedCellHeight = 100.0f;
 
     NSDictionary *parametersDict = @{
                                      @"originalNo": self.originalNo,
-                                     @"sourceCode": @"1",
+                                     @"sourceCode": self.sourceCode,
                                      @"syscode": @"001"
                                      };
     

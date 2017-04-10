@@ -7,10 +7,13 @@
 //
 
 #import "XFViewController.h"
+@class Order;
+@class MyOrderDetailsModel;
+
 
 @interface XFExpressDetailsViewController : XFViewController
 
-
-- (instancetype)initWithOriginalNo:(NSString *)originalNo;
+- (instancetype)initWithOrder:(Order *)order;
+- (instancetype)initWithMyOrderDetailsModel:(MyOrderDetailsModel *)model;
 
 @end

@@ -49,6 +49,10 @@
 #import "XFFloatButton.h"
 #import "FSBindingPhoneView.h"
 #import "IQKeyboardManager.h"
+#import "FSShowCouponView.h"
+#import "FSAlertView.h"
+#import "FSHomeCouponModel.h"
+#import <MJExtension.h>
 
 #define NAV_BAR_ALPHA 0.95f
 #define APP_ID @"1136079278"
@@ -104,6 +108,8 @@
 @property (nonatomic) XFFloatButton *floatButton;
 // @property (nonatomic) FSBindingPhoneView *bindingPhoneView;
 
+@property (copy, nonatomic) NSMutableArray *couponArray;
+
 @end
 
 
@@ -120,10 +126,69 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
     // 设置自定义的 nav bar 背景透明
     [self setNavBarAppearance];
     
+    /*
+    FSShowCouponViewController *showCouponVC = [FSShowCouponViewController new];
+    showCouponVC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    [self presentViewController:showCouponVC animated:YES completion:^{
+        showCouponVC.view.backgroundColor = [UIColor blackColor];
+        showCouponVC.view.alpha = 0.5f;
+    }];
+     */
     
+
+
+
+//    [FSAlertView showSuccessWithString:@"优惠券领取成功!"];
+//    [FSAlertView showErrorWithString:@"优惠券领取失败!"];
+    
+    
+}
+
+- (void)requestCoupons {
+    
+    NSString *domainString = @"";
+#if HTTP_TEST_TYPE == 0
+    domainString = @"http://test.freshake.cn:9970";
+#elif HTTP_TEST_TYPE == 1
+    domainString = @"http://h5.freshake.cn";
+#elif HTTP_TEST_TYPE == 2
+    domainString = @"http://test.freshake.cn:9970";
+#endif
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setObject:@"PushUseTickList" forKey:@"page"];
+    
+    if (![self.uidString isEqualToString:@"0"]) {
+        [parameters setObject:@([self.uidString integerValue]) forKey:@"userid"];
+    }
+    
+    [XFNetworking GET:[NSString stringWithFormat:@"%@/api/Phone/Fifth/index.aspx", domainString] parameters:parameters success:^(id responseObject, NSInteger statusCode) {
+
+        NSArray *dictArray = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+        if (!dictArray.count) {
+            return;
+        }
+        
+        NSMutableArray *tempArray = [FSHomeCouponModel mj_objectArrayWithKeyValuesArray:dictArray];
+        if (!tempArray.count) {
+            return;
+        }
+        self.couponArray = tempArray;
+        
+        FSShowCouponView *showCouponView = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([FSShowCouponView class]) owner:self options:nil] lastObject];
+        showCouponView.frame = [UIApplication sharedApplication].keyWindow.bounds;
+        showCouponView.couponArray = self.couponArray;
+        [showCouponView.tableView reloadData];
+        
+        [[UIApplication sharedApplication].keyWindow addSubview:showCouponView];
+        
+    } failure:^(NSError *error, NSInteger statusCode) {
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -165,6 +230,7 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    [self requestCoupons];
     if ([[XFMemoryStorage get:KEY_PUSH_TO_AD] boolValue]) {
         [XFMemoryStorage setValue:@NO forKey:KEY_PUSH_TO_AD];
         [self pushToAd];
@@ -252,7 +318,18 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
 //    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://itunes.apple.com/cn/lookup?id=%@", APP_ID]];
     
     
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://test.freshake.cn:9970/api/Phone/Fifth/index.aspx?page=GetCheck&appNo=%@&type=4", newCurrentVersionString]];
+    NSString *domainURL = @"";
+    
+#if HTTP_TEST_TYPE == 0
+    domainURL = @"http://test.freshake.cn:9970";
+#elif HTTP_TEST_TYPE == 1
+    domainURL = @"http://h5.freshake.cn";
+#elif HTTP_TEST_TYPE == 2
+    domainURL = @"http://test.freshake.cn:9970";
+
+#endif
+    
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/api/Phone/Fifth/index.aspx?page=GetCheck&appNo=%@&type=4", domainURL,newCurrentVersionString]];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     NSURLSession *session = [NSURLSession sharedSession];
@@ -1229,6 +1306,10 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
 
 #pragma mark - LazyLoad
 
+- (NSString *)uidString {
+    return [Tools isBlankString:[XFKVCPersistence get:@"UID"]] ? @"0" : [XFKVCPersistence get:@"UID"];
+}
+
 - (FSHomeNavigationBar *)navigationBar {
     if (!_navigationBar) {
         _navigationBar = [[FSHomeNavigationBar alloc] init];
@@ -1300,6 +1381,13 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
         _commodityArray = [NSMutableArray array];
     }
     return _commodityArray;
+}
+
+- (NSMutableArray *)couponArray {
+    if (!_couponArray) {
+        _couponArray = [NSMutableArray array];
+    }
+    return _couponArray;
 }
 
 
