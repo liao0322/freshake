@@ -35,6 +35,9 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *countLabel;
 
+@property (weak, nonatomic) IBOutlet UIImageView *addGoodsImage;
+
+
 @property (weak, nonatomic) id<FSSearchResultTVCellDelegate> delegate;
 
 @end

@@ -32,6 +32,7 @@
 #import "XFMeModel.h"
 #import <MJExtension.h>
 #import "FSMyQRCodeViewController.h"
+#import "FSMyShareViewController.h"
 
 #import "XFFloatButton.h"
 #import "FSBindingPhoneView.h"
@@ -341,7 +342,9 @@ static CGFloat const margin = 1;
     } else if ([model.title isEqualToString:@"客服热线"]) {
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://4001725757"] options:@{} completionHandler:^(BOOL success) {
         }];
-    } else if ([model.title isEqualToString:@"分享"]) {
+    } else if ([model.title isEqualToString:@"我的分享"]) {
+        isLogined ? [self.navigationController pushViewController:[FSMyShareViewController new] animated:YES] : [self presentToLoginVC];
+    } else if ([model.title isEqualToString:@"我的二维码"]) {
         isLogined ? [self.navigationController pushViewController:[FSMyQRCodeViewController new] animated:YES] : [self presentToLoginVC];
     }
 }

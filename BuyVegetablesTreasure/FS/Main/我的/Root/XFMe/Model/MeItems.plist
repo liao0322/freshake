@@ -46,9 +46,15 @@
 	</dict>
 	<dict>
 		<key>title</key>
-		<string>分享</string>
+		<string>我的分享</string>
 		<key>imageName</key>
 		<string>me_分享</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>我的二维码</string>
+		<key>imageName</key>
+		<string>me_二维码</string>
 	</dict>
 </array>
 </plist>

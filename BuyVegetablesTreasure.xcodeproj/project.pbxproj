@@ -798,10 +798,15 @@
 		EB15A8E31E6FE5B300165E89 /* FSCardExplainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB15A8E11E6FE5B300165E89 /* FSCardExplainViewController.xib */; };
 		EB27695A1E792BFA001F86D4 /* FSMyCouponsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB2769581E792BFA001F86D4 /* FSMyCouponsViewCell.m */; };
 		EB27695B1E792BFA001F86D4 /* FSMyCouponsViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB2769591E792BFA001F86D4 /* FSMyCouponsViewCell.xib */; };
+		EB4699AB1E9C8B38002AB82F /* FSMyShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB4699A91E9C8B38002AB82F /* FSMyShareViewController.m */; };
+		EB4699AC1E9C8B38002AB82F /* FSMyShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB4699AA1E9C8B38002AB82F /* FSMyShareViewController.xib */; };
+		EB4699B11E9CE2DB002AB82F /* FSMyShareCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB4699AF1E9CE2DB002AB82F /* FSMyShareCollectionViewCell.m */; };
+		EB4699B21E9CE2DB002AB82F /* FSMyShareCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB4699B01E9CE2DB002AB82F /* FSMyShareCollectionViewCell.xib */; };
 		EBBEC3911E0E8D3E00872E7A /* FSMySiteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBBEC3901E0E8D3E00872E7A /* FSMySiteViewController.m */; };
 		EBBEC3941E0E8D7100872E7A /* FSSelectDeliverySiteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EBBEC3931E0E8D7100872E7A /* FSSelectDeliverySiteCell.m */; };
 		EBD4CEE41E83701000600CB2 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EBD4CEE31E83701000600CB2 /* libc++.tbd */; };
 		EBD663D81E51A76D0018F46B /* LPLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = EBD663D71E51A76D0018F46B /* LPLabel.m */; };
+		EBEC28E61E9F5E2500EFBEC2 /* FSMyShareModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EBEC28E51E9F5E2500EFBEC2 /* FSMyShareModel.m */; };
 		EBF655701E5C266F002328B2 /* FSGiftCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF6556E1E5C266F002328B2 /* FSGiftCardViewController.m */; };
 		EBF655711E5C266F002328B2 /* FSGiftCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBF6556F1E5C266F002328B2 /* FSGiftCardViewController.xib */; };
 		EBF655751E5C47D2002328B2 /* FSGetGiftCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF655731E5C47D2002328B2 /* FSGetGiftCardViewController.m */; };
@@ -2291,6 +2296,12 @@
 		EB2769571E792BFA001F86D4 /* FSMyCouponsViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMyCouponsViewCell.h; sourceTree = "<group>"; };
 		EB2769581E792BFA001F86D4 /* FSMyCouponsViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMyCouponsViewCell.m; sourceTree = "<group>"; };
 		EB2769591E792BFA001F86D4 /* FSMyCouponsViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSMyCouponsViewCell.xib; sourceTree = "<group>"; };
+		EB4699A81E9C8B38002AB82F /* FSMyShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMyShareViewController.h; sourceTree = "<group>"; };
+		EB4699A91E9C8B38002AB82F /* FSMyShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMyShareViewController.m; sourceTree = "<group>"; };
+		EB4699AA1E9C8B38002AB82F /* FSMyShareViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSMyShareViewController.xib; sourceTree = "<group>"; };
+		EB4699AE1E9CE2DB002AB82F /* FSMyShareCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMyShareCollectionViewCell.h; sourceTree = "<group>"; };
+		EB4699AF1E9CE2DB002AB82F /* FSMyShareCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMyShareCollectionViewCell.m; sourceTree = "<group>"; };
+		EB4699B01E9CE2DB002AB82F /* FSMyShareCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSMyShareCollectionViewCell.xib; sourceTree = "<group>"; };
 		EBBEC38F1E0E8D3E00872E7A /* FSMySiteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMySiteViewController.h; sourceTree = "<group>"; };
 		EBBEC3901E0E8D3E00872E7A /* FSMySiteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMySiteViewController.m; sourceTree = "<group>"; };
 		EBBEC3921E0E8D7100872E7A /* FSSelectDeliverySiteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSSelectDeliverySiteCell.h; sourceTree = "<group>"; };
@@ -2298,6 +2309,8 @@
 		EBD4CEE31E83701000600CB2 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		EBD663D61E51A76D0018F46B /* LPLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPLabel.h; sourceTree = "<group>"; };
 		EBD663D71E51A76D0018F46B /* LPLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPLabel.m; sourceTree = "<group>"; };
+		EBEC28E41E9F5E2500EFBEC2 /* FSMyShareModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMyShareModel.h; sourceTree = "<group>"; };
+		EBEC28E51E9F5E2500EFBEC2 /* FSMyShareModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMyShareModel.m; sourceTree = "<group>"; };
 		EBF6556D1E5C266F002328B2 /* FSGiftCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSGiftCardViewController.h; sourceTree = "<group>"; };
 		EBF6556E1E5C266F002328B2 /* FSGiftCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSGiftCardViewController.m; sourceTree = "<group>"; };
 		EBF6556F1E5C266F002328B2 /* FSGiftCardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSGiftCardViewController.xib; sourceTree = "<group>"; };
@@ -6739,6 +6752,36 @@
 			path = "帮助中心";
 			sourceTree = "<group>";
 		};
+		EB4699A61E9C8AF7002AB82F /* 我的分享 */ = {
+			isa = PBXGroup;
+			children = (
+				EBEC28E31E9F5E0B00EFBEC2 /* Model */,
+				EB4699AD1E9CE2BD002AB82F /* View */,
+				EB4699A71E9C8AF7002AB82F /* Controller */,
+			);
+			path = "我的分享";
+			sourceTree = "<group>";
+		};
+		EB4699A71E9C8AF7002AB82F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				EB4699A81E9C8B38002AB82F /* FSMyShareViewController.h */,
+				EB4699A91E9C8B38002AB82F /* FSMyShareViewController.m */,
+				EB4699AA1E9C8B38002AB82F /* FSMyShareViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		EB4699AD1E9CE2BD002AB82F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EB4699AE1E9CE2DB002AB82F /* FSMyShareCollectionViewCell.h */,
+				EB4699AF1E9CE2DB002AB82F /* FSMyShareCollectionViewCell.m */,
+				EB4699B01E9CE2DB002AB82F /* FSMyShareCollectionViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		EBBEC38C1E0E8D1000872E7A /* 我的地址 */ = {
 			isa = PBXGroup;
 			children = (
@@ -6773,6 +6816,15 @@
 				EBD663D71E51A76D0018F46B /* LPLabel.m */,
 			);
 			path = LineLabel;
+			sourceTree = "<group>";
+		};
+		EBEC28E31E9F5E0B00EFBEC2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EBEC28E41E9F5E2500EFBEC2 /* FSMyShareModel.h */,
+				EBEC28E51E9F5E2500EFBEC2 /* FSMyShareModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		EBF655691E5C2651002328B2 /* 礼品卡 */ = {
@@ -8548,6 +8600,7 @@
 		FECDE6A61E07C2C70083E11B /* 我的 */ = {
 			isa = PBXGroup;
 			children = (
+				EB4699A61E9C8AF7002AB82F /* 我的分享 */,
 				FE4609A71E84ABB300664B29 /* MyQRCode */,
 				FE17A8ED1E0D419700DC7949 /* Root */,
 				EBF655691E5C2651002328B2 /* 礼品卡 */,
@@ -9352,6 +9405,7 @@
 				E4FF92CD1CC9BB1C009E4B8F /* Myorder_待付款@3x.png in Resources */,
 				FECDE5F51E07B6770083E11B /* 黄-左边背景@2x.png in Resources */,
 				0CAFF7B41CB63A45006C1900 /* 商品详情.png in Resources */,
+				EB4699AC1E9C8B38002AB82F /* FSMyShareViewController.xib in Resources */,
 				098868211BCF4CBB0068FB84 /* 促销框@2x.png in Resources */,
 				FE8256631E13CE8E0028D0F2 /* GoodsDetailsIcon@2x.png in Resources */,
 				FECDE74C1E07C2C80083E11B /* Assets.xcassets in Resources */,
@@ -9511,6 +9565,7 @@
 				522452711CABBF5A00CBC780 /* 收货-编辑@3x.png in Resources */,
 				098867E31BCF34D90068FB84 /* 我的图标2@2x.png in Resources */,
 				0C9D60631CE07DB8002362C0 /* 登陆-按钮@3x.png in Resources */,
+				EB4699B21E9CE2DB002AB82F /* FSMyShareCollectionViewCell.xib in Resources */,
 				FECDE7391E07C2C80083E11B /* FSSearchFooterView.xib in Resources */,
 				E4FF92F01CC9FC0B009E4B8F /* 到店自提@2x.png in Resources */,
 				FECDE5FB1E07B7220083E11B /* AMap.bundle in Resources */,
@@ -9662,6 +9717,7 @@
 				0CCC4AE51D780FB0009CFBB0 /* NSDataEx.m in Sources */,
 				2BBC8BD31BF764B9000FF8D7 /* qrencode.c in Sources */,
 				0C5F42B41CE5D5B100FF660D /* AboutMeViewController.m in Sources */,
+				EB4699B11E9CE2DB002AB82F /* FSMyShareCollectionViewCell.m in Sources */,
 				521E31A31CB3A9BF00041F76 /* GroupStatusCell.m in Sources */,
 				0CF4FBAC1DEBBC300096D0DB /* AmountViewController.m in Sources */,
 				E4E000071CC78CDD00B9E603 /* MyCouponsModel.m in Sources */,
@@ -9881,6 +9937,7 @@
 				0969DC171BCDFE1700D98273 /* MMProgressHUDViewController.m in Sources */,
 				FE474DCC1E2C65190005CD98 /* XFTools.m in Sources */,
 				E4AB9B271CACCE7600FEEFA1 /* HomeAddressCell.m in Sources */,
+				EB4699AB1E9C8B38002AB82F /* FSMyShareViewController.m in Sources */,
 				0969DC691BCDFF6F00D98273 /* NSObject+category.m in Sources */,
 				52A35C8C1BCDEB9100309FC8 /* AppDelegate.m in Sources */,
 				E40D230D1C434CA100DC47C6 /* MJRefreshGifHeader.m in Sources */,
@@ -9916,6 +9973,7 @@
 				FECDE73D1E07C2C80083E11B /* FSSearchAssociationViewController.m in Sources */,
 				2BD89D4D1BE37334004EF4A0 /* OrderDetailUserModel.m in Sources */,
 				0C59D3651CC8D91600472352 /* GoodsCartTableView.m in Sources */,
+				EBEC28E61E9F5E2500EFBEC2 /* FSMyShareModel.m in Sources */,
 				52926B451C8563D100BC760B /* ModifyPasswordViewController.m in Sources */,
 				E40D23091C434CA100DC47C6 /* MJRefreshAutoStateFooter.m in Sources */,
 				FE282F7B1E778F9800B9B8A0 /* FSSplashViewController.m in Sources */,

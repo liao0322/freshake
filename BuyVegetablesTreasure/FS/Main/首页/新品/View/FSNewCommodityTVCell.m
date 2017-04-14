@@ -32,10 +32,39 @@
     [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:_model.imgUrl] placeholderImage:[UIImage imageNamed:@"placeholderimage"]];
     [self.titleLabel setText:_model.productName];
     
-    if ([_model.IsSpecialOffer boolValue]) {
-        [self.typeImageView setImage:[UIImage imageNamed:@"lmbec_special_hot_goods_cu"]];
+//    // 当前购物车数量
+//    NSInteger cartNum = [self.model.CartNum integerValue];
+    
+    // 当前库存
+    NSInteger stock = [self.model.stock integerValue];
+    
+    if (stock <= 0) { // 库存不足
+        self.addGoodsImage.hidden = NO;
+        self.priceLabel.textColor = [UIColor colorWithHexString:@"0xBABABA"];
+        if ([_model.IsSpecialOffer boolValue]) {
+            [self.typeImageView setImage:[UIImage imageNamed:@"Hot促-灰"]];
+        } else {
+            [self.typeImageView setImage:[UIImage imageNamed:@"Hot新-灰"]];
+        }
+        self.plusButton.hidden = YES;
+        self.plusButton.enabled = NO;
+        self.countLabel.hidden = YES;
+        self.minusButton.hidden = YES;
+        self.minusButton.enabled = NO;
+        
     } else {
-        [self.typeImageView setImage:[UIImage imageNamed:@"Home_hot_goods_re"]];
+        self.addGoodsImage.hidden = YES;
+        self.priceLabel.textColor = [UIColor colorOrange];
+        if ([_model.IsSpecialOffer boolValue]) {
+            [self.typeImageView setImage:[UIImage imageNamed:@"Hot促"]];
+        } else {
+            [self.typeImageView setImage:[UIImage imageNamed:@"Hot新"]];
+        }
+        self.plusButton.hidden = NO;
+        self.plusButton.enabled = YES;
+        self.countLabel.hidden = NO;
+        self.minusButton.hidden = NO;
+        self.minusButton.enabled = YES;
     }
     
     [self.descLabel setText:_model.categoryName];

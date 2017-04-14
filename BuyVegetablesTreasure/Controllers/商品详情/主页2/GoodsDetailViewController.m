@@ -91,6 +91,7 @@
     
     CompileNumber *compikeNumberVC = [[CompileNumber alloc] initWithFrame:CGRectMake(5, 10, ScreenWidth / 3, 50)];
     compikeNumberVC.stork = _stork;
+    compikeNumberVC.isUpselling = _isUpselling;
     [compikeNumberVC.goodsSumLabel setText:[NSString stringWithFormat:@"%zd",_productNum]];
     [_bottomview addSubview:compikeNumberVC];
     
@@ -112,14 +113,44 @@
     // 立即购买
     _buybutton = [UIButton buttonWithType:UIButtonTypeCustom];
     _buybutton.frame = CGRectMake(ScreenWidth / 3 * 2, 0, ScreenWidth / 3, 50);
-    _buybutton.backgroundColor = [UIColor orangeColor];
     _buybutton.tag = 222;
     _buybutton.titleLabel.font = [UIFont boldSystemFontOfSize:16];
-    [_buybutton setTitle:@"立即购买" forState:UIControlStateNormal];
+    
+    if (_stork > 0) {  // 有库存
+        _buybutton.backgroundColor = [UIColor colorOrange];
+        [_buybutton setTitle:@"立即购买" forState:UIControlStateNormal];
+    } else { // 库存不足
+        _buybutton.backgroundColor = [UIColor colorWithHexString:@"0x787878"];
+        [_buybutton setTitle:@"补货中" forState:UIControlStateNormal];
+        _buybutton.enabled = NO;
+    }
     [_buybutton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     
     [_buybutton addTarget:self action:@selector(addCart:) forControlEvents:UIControlEventTouchUpInside];
     [_bottomview addSubview:_buybutton];
+    
+    // 下架中
+    _soldOutButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    _soldOutButton.frame = CGRectMake(ScreenWidth / 3, 0, ScreenWidth / 3 * 2, 50);
+    [_soldOutButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    _soldOutButton.backgroundColor = [UIColor colorWithHexString:@"0x787878"];
+    [_soldOutButton setTitle:@"商品已下架" forState:UIControlStateNormal];
+    _soldOutButton.titleLabel.font = [UIFont boldSystemFontOfSize:16.0];
+    [_bottomview addSubview:_soldOutButton];
+    
+    if (!_isUpselling) { // 下架中
+        _addbutton.hidden =  YES;
+        _addbutton.enabled = NO;
+        _buybutton.hidden = YES;
+        _buybutton.enabled = NO;
+        _soldOutButton.hidden = NO;
+    } else {
+        _addbutton.hidden = NO;
+        _addbutton.enabled = YES;
+        _buybutton.hidden = NO;
+        _buybutton.enabled = YES;
+        _soldOutButton.hidden = YES;
+    }
     
     __weak typeof(compikeNumberVC)weakCompikeNumberView = compikeNumberVC;
     compikeNumberVC.goodsNumberBlock = ^(NSString *goodsNumberString,BOOL isStork,BOOL isDel,BOOL isAdd)
@@ -582,6 +613,9 @@
              _isCollectStr = @"1";
          }
          
+         // 是否下架
+         _isUpselling = model.upselling;
+         
          // 库存-购物车数量
          _stork = [model.stock integerValue] - [model.CartNum integerValue];
          
@@ -593,7 +627,7 @@
      } failure:nil];
 }
 
-#pragma mark 收藏请求√
+#pragma mark 收藏请求
 - (void)requestDataFromNetCollect {
     
     NSString *urlString = [NSString stringWithFormat:ADDFOLDER,
@@ -683,8 +717,8 @@
             NSString *urlString = [NSString stringWithFormat:ADDSHOPPINGART,_ProductId,_openid,_wid,_telphone,_address,price,_productNum,mid,storeId];
             NSLog(@"==加入购物车==%@",urlString);
             
-            if (_stork > 0) {
-                
+//            if (_stork > 0) {
+            
                 _stork -= _productNum;
       
                 [HttpRequest sendGetOrPostRequest:urlString param:nil requestStyle:Get setSerializer:Json isShowLoading:NO success:^(id data)
@@ -706,11 +740,11 @@
                  } failure:^(NSError *error) {
                      NSLog(@"%@", error);
                  }];
-            }
-            else {
-                
-                [Tools myHud:@"库存不足" inView:self.view];
-            }
+//            }
+//            else {
+//
+//                [Tools myHud:@"库存不足" inView:self.view];
+//            }
         }
     }
 }                             

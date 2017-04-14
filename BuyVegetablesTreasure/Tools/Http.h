@@ -10,7 +10,7 @@
 #define Shop_Http_h
 
 //域名
-#define HTTP_TEST_TYPE 1
+#define HTTP_TEST_TYPE 2
 
 #if HTTP_TEST_TYPE == 0
 
@@ -304,6 +304,9 @@
 #define GiftCardRecharge CARDLMMC(CardPath(@"chargeCard"))
 
 #define GetCoupons LMMC(Path(@"UseTick&userId=%d&tickcode=%@"))
+
+// 分享商品列表
+#define GetProShareImg LMMC(Path(@"GetProShareImg&userid=%@"))
 
 
 #endif

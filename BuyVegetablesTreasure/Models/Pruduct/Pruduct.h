@@ -45,6 +45,7 @@
 @property(nonatomic,copy)NSString *UserPrice;
 
 @property (nonatomic, copy) NSString *productUrl;
+@property (nonatomic, assign)BOOL     upselling;        // 下架
 @property (nonatomic, copy) NSString *stock;            // 库存
 @property (nonatomic, copy) NSString *PurchaseNum;      // 限购数量
 @property (nonatomic, copy) NSString *PurchasedNum;     // 已购数量

@@ -32,32 +32,50 @@
     return self;
 }
 
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    if (!_isUpselling) { // 下架中
+        _reduceGoodsQuantityBtn.enabled = NO;
+        [_reduceGoodsQuantityBtn setImage:[UIImage imageNamed:@"home减灰"] forState:UIControlStateNormal];
+        _addGoodsQuantityBtn.enabled = NO;
+        [_addGoodsQuantityBtn setImage:[UIImage imageNamed:@"home加灰"] forState:UIControlStateNormal];
+    } else {
+        _reduceGoodsQuantityBtn.enabled = YES;
+        [_reduceGoodsQuantityBtn setImage:[UIImage imageNamed:@"home减"] forState:UIControlStateNormal];
+        _addGoodsQuantityBtn.enabled = YES;
+        [_addGoodsQuantityBtn setImage:[UIImage imageNamed:@"home加"] forState:UIControlStateNormal];
+    }
+}
+
 - (void)initCompileNumber{
     
     int width = ScreenWidth / 3;
     
     // 减
-    UIButton *reduceGoodsQuantityBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    reduceGoodsQuantityBtn.frame = CGRectMake(0, 0, 30, 30);
-    [reduceGoodsQuantityBtn setImage:[UIImage imageNamed:@"减"] forState:UIControlStateNormal];
-    [reduceGoodsQuantityBtn addTarget:self action:@selector(reduceGoods) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:reduceGoodsQuantityBtn];
+    _reduceGoodsQuantityBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    _reduceGoodsQuantityBtn.frame = CGRectMake(0, 0, 30, 30);
+    [_reduceGoodsQuantityBtn addTarget:self action:@selector(reduceGoods) forControlEvents:UIControlEventTouchUpInside];
     
     // 加
-    UIButton *addGoodsQuantityBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    addGoodsQuantityBtn.frame = CGRectMake(width / 3 * 2, 0, 30, 30);
-    [addGoodsQuantityBtn setImage:[UIImage imageNamed:@"加"] forState:UIControlStateNormal];
-    [addGoodsQuantityBtn addTarget:self action:@selector(addGoods) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:addGoodsQuantityBtn];
+    _addGoodsQuantityBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    _addGoodsQuantityBtn.frame = CGRectMake(width / 3 * 2, 0, 30, 30);
+    [_addGoodsQuantityBtn addTarget:self action:@selector(addGoods) forControlEvents:UIControlEventTouchUpInside];
     
     // 数量
     _goodsSumLabel = [[UILabel alloc] initWithFrame:CGRectMake(width / 3, 0, 30, 30)];
     _goodsSumLabel.font = [UIFont systemFontOfSize:12];
     _goodsSumLabel.textAlignment = NSTextAlignmentCenter;
+    
+  
+    
+    [self addSubview:_reduceGoodsQuantityBtn];
+    [self addSubview:_addGoodsQuantityBtn];
     [self addSubview:_goodsSumLabel];
+
 }
 
 - (void)reduceGoods{
+    
     
     NSLog(@"%@",_goodsSumLabel.text);
     
@@ -92,12 +110,12 @@
 {
     BOOL isStork = NO;
     
-    if ([_goodsSumLabel.text integerValue] >= _stork) {
-        
-        _goodsSumLabel.text = [NSString stringWithFormat:@"%zd",_stork];
-        
-        isStork = YES;
-    }
+//    if ([_goodsSumLabel.text integerValue] >= _stork) {
+//    
+//        _goodsSumLabel.text = [NSString stringWithFormat:@"%zd",_stork];
+//        
+//        isStork = YES;
+//    }
     
     _goodsNumberBlock([NSString stringWithFormat:@"%zd",[_goodsSumLabel.text integerValue] + _num],isStork,_isDel,isAdd);
 }

@@ -11,8 +11,11 @@
 @interface CompileNumber : UIView
 
 @property (nonatomic, copy) UILabel *goodsSumLabel;
+@property (nonatomic, copy) UIButton *reduceGoodsQuantityBtn;
+@property (nonatomic, copy) UIButton *addGoodsQuantityBtn;
 
 @property (nonatomic, assign) BOOL isDel;
+@property (nonatomic, assign) BOOL isUpselling;
 @property (nonatomic, assign) NSInteger stork;
 @property (nonatomic, assign) NSInteger num;
 @property (nonatomic, copy) void(^addBlock)(NSString *goodsNumberString);

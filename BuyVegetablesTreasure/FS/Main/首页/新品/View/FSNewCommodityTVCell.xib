@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="135"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="134"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="134.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="opH-5d-J5h">
@@ -50,7 +49,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wt5-cM-hhI">
                         <rect key="frame" x="135" y="106" width="42" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" red="0.94509803921568625" green="0.51372549019607838" blue="0.086274509803921567" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OIa-m1-o2x">
@@ -84,8 +83,16 @@
                             <action selector="minusButtonTouchUpInside:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="XGp-xH-URy"/>
                         </connections>
                     </button>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Goods补货图章" translatesAutoresizingMaskIntoConstraints="NO" id="Ifr-io-1cI">
+                        <rect key="frame" x="290" y="45.5" width="67" height="56"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="67" id="QFj-xf-bxE"/>
+                            <constraint firstAttribute="height" constant="56" id="QeL-BM-dlo"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="bottomMargin" secondItem="Ifr-io-1cI" secondAttribute="bottom" constant="25" id="3lW-6m-5FX"/>
                     <constraint firstItem="Ah2-ms-PvV" firstAttribute="bottom" secondItem="OIa-m1-o2x" secondAttribute="bottom" id="8PJ-yF-hbX"/>
                     <constraint firstItem="JRH-vF-i0y" firstAttribute="leading" secondItem="xgi-8o-OPz" secondAttribute="leading" id="8ao-mr-f7K"/>
                     <constraint firstAttribute="bottom" secondItem="OIa-m1-o2x" secondAttribute="bottom" constant="15" id="9CE-uC-9DK"/>
@@ -102,10 +109,12 @@
                     <constraint firstItem="UtQ-dr-tbK" firstAttribute="leading" secondItem="JRH-vF-i0y" secondAttribute="trailing" constant="5" id="lyv-E6-cUP"/>
                     <constraint firstItem="OIa-m1-o2x" firstAttribute="leading" secondItem="mBY-Nr-G9a" secondAttribute="trailing" constant="5" id="mfg-gg-EiZ"/>
                     <constraint firstItem="JRH-vF-i0y" firstAttribute="top" secondItem="xgi-8o-OPz" secondAttribute="bottom" constant="5" id="oW8-TE-uHb"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Ifr-io-1cI" secondAttribute="trailing" constant="10" id="sc6-RX-5jg"/>
                     <constraint firstItem="xgi-8o-OPz" firstAttribute="leading" secondItem="opH-5d-J5h" secondAttribute="trailing" constant="8" id="twP-Wf-3Io"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="addGoodsImage" destination="Ifr-io-1cI" id="upQ-bm-izW"/>
                 <outlet property="countLabel" destination="mBY-Nr-G9a" id="Pbn-K5-mTA"/>
                 <outlet property="descLabel" destination="UtQ-dr-tbK" id="WxX-Tp-saP"/>
                 <outlet property="iconImageView" destination="opH-5d-J5h" id="pno-p4-6Th"/>
@@ -115,10 +124,11 @@
                 <outlet property="titleLabel" destination="xgi-8o-OPz" id="SMd-9q-wF6"/>
                 <outlet property="typeImageView" destination="JRH-vF-i0y" id="1LY-FW-TEO"/>
             </connections>
-            <point key="canvasLocation" x="90.5" y="99.5"/>
+            <point key="canvasLocation" x="-296" y="57"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="Goods补货图章" width="67" height="56"/>
         <image name="减" width="18" height="18"/>
         <image name="加" width="18" height="18"/>
     </resources>

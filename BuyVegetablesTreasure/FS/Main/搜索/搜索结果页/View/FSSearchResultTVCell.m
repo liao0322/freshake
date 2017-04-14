@@ -54,11 +54,34 @@
     self.minusButton.right = self.countLabel.x - spacing;
     self.minusButton.bottom = self.plusButton.bottom;
     
+    self.addGoodsImage.right = width - 10;
+    self.addGoodsImage.bottom = height - 25;
+    
 }
 
 - (void)setModel:(SearchModel *)model {
     _model = model;
     
+    NSInteger stock = [self.model.stock integerValue];
+    
+    if (stock <= 0) {
+        self.addGoodsImage.hidden = NO;
+        self.priceLabel.textColor = [UIColor colorWithHexString:@"0xBABABA"];
+        self.plusButton.hidden = YES;
+        self.plusButton.enabled = NO;
+        self.countLabel.hidden = YES;
+        self.minusButton.hidden = YES;
+        self.minusButton.enabled = NO;
+    } else {
+        self.addGoodsImage.hidden = YES;
+        self.priceLabel.textColor = [UIColor colorOrange];
+        self.plusButton.hidden = NO;
+        self.plusButton.enabled = YES;
+        self.countLabel.hidden = NO;
+        self.minusButton.hidden = NO;
+        self.minusButton.enabled = YES;
+    }
+
     [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:_model.imgUrl] placeholderImage:[UIImage imageNamed:@"placeholderimage"]];
     
     [self.titleLabel setText:_model.productName];

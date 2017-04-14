@@ -27,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *minusButton;
 @property (weak, nonatomic) IBOutlet UIButton *plusButton;
 @property (weak, nonatomic) IBOutlet UILabel *countLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *addGoodsImage;
 
 @property (weak, nonatomic) id<FSNewCommodityTVCellDelegate> delegate;
 
