@@ -37,7 +37,7 @@ static CGFloat const margin = 2.5;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -58,6 +58,7 @@ static CGFloat const margin = 2.5;
 
 - (void)registerViews {
     [super registerViews];
+    
     [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([FSMyShareCollectionViewCell class]) bundle:nil] forCellWithReuseIdentifier:MyShareCollectionCellID];
 }
 
@@ -104,6 +105,19 @@ static CGFloat const margin = 2.5;
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     FSMyShareModel *model = self.dataArray[indexPath.row];
+    
+    /// 弹出大图 视图
+        // 1.在view上添加tableView
+        // 2.tableViewcell设置与tableView的frame 同等大小
+        // 3.tableView的pagingEnabled打开
+    UIViewController *vc = [UIViewController new];
+    vc.modalPresentationStyle = UIModalPresentationCurrentContext;
+    [self presentViewController:vc animated:NO completion:^{
+        vc.view.backgroundColor = [UIColor clearColor];
+        vc.view.alpha = 0.3f;
+    }];
+    
+
     
     SDWebImageManager *manager = [SDWebImageManager sharedManager];
     [manager downloadImageWithURL:[NSURL URLWithString:model.productImg_url] options:SDWebImageRetryFailed progress:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
