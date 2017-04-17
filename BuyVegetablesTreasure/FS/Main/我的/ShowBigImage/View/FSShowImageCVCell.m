@@ -21,6 +21,9 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    
+    self.iconImageView.layer.cornerRadius = 5;
+    self.iconImageView.layer.masksToBounds = YES;
 
 }
 
@@ -33,7 +36,7 @@
     [super layoutSubviews];
     
     self.heightConstraint.constant = 1920 / (1080.0f / self.iconImageView.width);
-    self.iconImageView.layer.cornerRadius = 20;
+    
 
 }
 

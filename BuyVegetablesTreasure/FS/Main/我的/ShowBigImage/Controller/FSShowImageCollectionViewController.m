@@ -45,6 +45,15 @@ static NSString * const FSShowImageCVCellID = @"FSShowImageCVCellID";
     [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([FSShowImageCVCell class]) bundle:nil] forCellWithReuseIdentifier:FSShowImageCVCellID];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.ImageRow inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:NO];
+    
+    NSLog(@"%@", [NSIndexPath indexPathForRow:self.ImageRow inSection:0]);
+    
+}
+
 
 #pragma mark - UICollectionViewDataSource
 
@@ -53,14 +62,21 @@ static NSString * const FSShowImageCVCellID = @"FSShowImageCVCellID";
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    self.shareModel = self.imageDataArray[self.ImageRow];
+    self.shareModel = self.imageDataArray[indexPath.row];
+    NSLog(@"***%@", [NSIndexPath indexPathForRow:indexPath.row inSection:0]);
+
     FSShowImageCVCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:FSShowImageCVCellID forIndexPath:indexPath];
     cell.model = _shareModel;
-    cell.ToShareBlock = ^{
-        [self UMSocialShare];
+    cell.ToShareBlock= ^{
+        
+        [self UMSocialShare:indexPath.row];
     };
+    
+    
     return cell;
 }
+
+
 
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -68,13 +84,14 @@ static NSString * const FSShowImageCVCellID = @"FSShowImageCVCellID";
 }
 
 #pragma mark 友盟图片分享
-- (void)UMSocialShare {
+- (void)UMSocialShare:(NSInteger)index {
+    FSMyShareModel *model = self.imageDataArray[index];
     [UMSocialUIManager setPreDefinePlatforms:@[@(UMSocialPlatformType_QQ),@(UMSocialPlatformType_WechatSession), @(UMSocialPlatformType_WechatTimeLine), @(UMSocialPlatformType_Qzone)]];
     [UMSocialShareUIConfig shareInstance].shareTitleViewConfig.isShow = NO;
     [UMSocialShareUIConfig shareInstance].shareCancelControlConfig.isShow = NO;
     
     SDWebImageManager *manager = [SDWebImageManager sharedManager];
-    [manager downloadImageWithURL:[NSURL URLWithString:_shareModel.productImg_url] options:SDWebImageRetryFailed progress:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+    [manager downloadImageWithURL:[NSURL URLWithString:model.productImg_url] options:SDWebImageRetryFailed progress:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
         
         // 显示分享面板
         [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMSocialPlatformType platformType, NSDictionary *userInfo) {
