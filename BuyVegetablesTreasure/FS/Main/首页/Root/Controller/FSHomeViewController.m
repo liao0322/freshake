@@ -138,9 +138,6 @@ static NSString * const defaultFooterReuseID = @"defaultFooterReuseID";
         showCouponVC.view.alpha = 0.5f;
     }];
      */
-    
-
-
 
 //    [FSAlertView showSuccessWithString:@"优惠券领取成功!"];
 //    [FSAlertView showErrorWithString:@"优惠券领取失败!"];

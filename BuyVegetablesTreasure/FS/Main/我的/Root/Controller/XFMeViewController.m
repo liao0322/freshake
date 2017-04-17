@@ -180,7 +180,6 @@ static CGFloat const margin = 1;
             
             cell.avatarButtonBlock = ^{
                 [self.navigationController pushViewController:[PersonalDataViewController new] animated:YES];
-
             };
             
             cell.pointTapBlock = ^{

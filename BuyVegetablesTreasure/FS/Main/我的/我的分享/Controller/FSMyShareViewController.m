@@ -11,6 +11,7 @@
 #import "FSMyShareModel.h"
 #import <MJExtension.h>
 #import <UShareUI/UShareUI.h>
+#import "FSShowImageCollectionViewController.h"
 
 @interface FSMyShareViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -91,34 +92,30 @@ static CGFloat const margin = 2.5;
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.dataArray.count;
+//    return self.dataArray.count;
+    return 5;
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    FSMyShareModel *model = self.dataArray[indexPath.row];
+//    FSMyShareModel *model = self.dataArray[indexPath.row];
     FSMyShareCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:MyShareCollectionCellID forIndexPath:indexPath];
-    cell.model = model;
+//    cell.model = model;
     return cell;
 }
 
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    FSMyShareModel *model = self.dataArray[indexPath.row];
+//    FSMyShareModel *model = self.dataArray[indexPath.row];
+    FSShowImageCollectionViewController *showImageVC = [FSShowImageCollectionViewController new];
     
-    /// 弹出大图 视图
-        // 1.在view上添加tableView
-        // 2.tableViewcell设置与tableView的frame 同等大小
-        // 3.tableView的pagingEnabled打开
-    UIViewController *vc = [UIViewController new];
-    vc.modalPresentationStyle = UIModalPresentationCurrentContext;
-    [self presentViewController:vc animated:NO completion:^{
-        vc.view.backgroundColor = [UIColor clearColor];
-        vc.view.alpha = 0.3f;
+    showImageVC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    [self presentViewController:showImageVC animated:NO completion:^{
+        showImageVC.view.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5f];
     }];
-    
 
     
+    /*
     SDWebImageManager *manager = [SDWebImageManager sharedManager];
     [manager downloadImageWithURL:[NSURL URLWithString:model.productImg_url] options:SDWebImageRetryFailed progress:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
         self.iconImage = image;
@@ -164,6 +161,7 @@ static CGFloat const margin = 2.5;
         }];
 
     }];
+     */
 }
 
 
@@ -197,19 +195,5 @@ static CGFloat const margin = 2.5;
     return _dataArray;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

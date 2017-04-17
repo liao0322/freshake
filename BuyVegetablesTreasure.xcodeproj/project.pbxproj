@@ -871,6 +871,10 @@
 		FE282FA81E78EE4300B9B8A0 /* FSRequestAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FE282FA71E78EE4300B9B8A0 /* FSRequestAppDelegate.m */; };
 		FE282FB11E791A4E00B9B8A0 /* FSWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE282FAF1E791A4E00B9B8A0 /* FSWebViewController.m */; };
 		FE282FB21E791A4E00B9B8A0 /* FSWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE282FB01E791A4E00B9B8A0 /* FSWebViewController.xib */; };
+		FE2D7B991EA45955002F3169 /* FSShowImageCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2D7B971EA45955002F3169 /* FSShowImageCollectionViewController.m */; };
+		FE2D7B9A1EA45955002F3169 /* FSShowImageCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE2D7B981EA45955002F3169 /* FSShowImageCollectionViewController.xib */; };
+		FE2D7B9E1EA45A10002F3169 /* FSShowImageCVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2D7B9C1EA45A10002F3169 /* FSShowImageCVCell.m */; };
+		FE2D7B9F1EA45A10002F3169 /* FSShowImageCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE2D7B9D1EA45A10002F3169 /* FSShowImageCVCell.xib */; };
 		FE3CD22A1E37118F00DF0C23 /* NSString+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3CD2291E37118F00DF0C23 /* NSString+Size.m */; };
 		FE3CD22D1E37320B00DF0C23 /* FSMyOrderListSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3CD22C1E37320B00DF0C23 /* FSMyOrderListSectionHeaderView.m */; };
 		FE3CD2301E37323700DF0C23 /* FSMyOrderListSectionFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3CD22F1E37323700DF0C23 /* FSMyOrderListSectionFooterView.m */; };
@@ -2428,6 +2432,12 @@
 		FE282FAE1E791A4E00B9B8A0 /* FSWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSWebViewController.h; sourceTree = "<group>"; };
 		FE282FAF1E791A4E00B9B8A0 /* FSWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSWebViewController.m; sourceTree = "<group>"; };
 		FE282FB01E791A4E00B9B8A0 /* FSWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSWebViewController.xib; sourceTree = "<group>"; };
+		FE2D7B961EA45955002F3169 /* FSShowImageCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSShowImageCollectionViewController.h; sourceTree = "<group>"; };
+		FE2D7B971EA45955002F3169 /* FSShowImageCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSShowImageCollectionViewController.m; sourceTree = "<group>"; };
+		FE2D7B981EA45955002F3169 /* FSShowImageCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSShowImageCollectionViewController.xib; sourceTree = "<group>"; };
+		FE2D7B9B1EA45A10002F3169 /* FSShowImageCVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSShowImageCVCell.h; sourceTree = "<group>"; };
+		FE2D7B9C1EA45A10002F3169 /* FSShowImageCVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSShowImageCVCell.m; sourceTree = "<group>"; };
+		FE2D7B9D1EA45A10002F3169 /* FSShowImageCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSShowImageCVCell.xib; sourceTree = "<group>"; };
 		FE3CD2281E37118F00DF0C23 /* NSString+Size.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Size.h"; sourceTree = "<group>"; };
 		FE3CD2291E37118F00DF0C23 /* NSString+Size.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Size.m"; sourceTree = "<group>"; };
 		FE3CD22B1E37320B00DF0C23 /* FSMyOrderListSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMyOrderListSectionHeaderView.h; sourceTree = "<group>"; };
@@ -7415,6 +7425,43 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		FE2D7B921EA45932002F3169 /* ShowBigImage */ = {
+			isa = PBXGroup;
+			children = (
+				FE2D7B931EA45932002F3169 /* Controller */,
+				FE2D7B941EA45932002F3169 /* Model */,
+				FE2D7B951EA45932002F3169 /* View */,
+			);
+			path = ShowBigImage;
+			sourceTree = "<group>";
+		};
+		FE2D7B931EA45932002F3169 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FE2D7B961EA45955002F3169 /* FSShowImageCollectionViewController.h */,
+				FE2D7B971EA45955002F3169 /* FSShowImageCollectionViewController.m */,
+				FE2D7B981EA45955002F3169 /* FSShowImageCollectionViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FE2D7B941EA45932002F3169 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FE2D7B951EA45932002F3169 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FE2D7B9B1EA45A10002F3169 /* FSShowImageCVCell.h */,
+				FE2D7B9C1EA45A10002F3169 /* FSShowImageCVCell.m */,
+				FE2D7B9D1EA45A10002F3169 /* FSShowImageCVCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		FE440EDB1E88D90700D87777 /* UMSocial_6.4.1 */ = {
 			isa = PBXGroup;
 			children = (
@@ -8600,6 +8647,7 @@
 		FECDE6A61E07C2C70083E11B /* 我的 */ = {
 			isa = PBXGroup;
 			children = (
+				FE2D7B921EA45932002F3169 /* ShowBigImage */,
 				EB4699A61E9C8AF7002AB82F /* 我的分享 */,
 				FE4609A71E84ABB300664B29 /* MyQRCode */,
 				FE17A8ED1E0D419700DC7949 /* Root */,
@@ -9124,6 +9172,7 @@
 				2B05683C1BF1B8EA005D939A /* shake_activity_bg.jpg in Resources */,
 				EBF655711E5C266F002328B2 /* FSGiftCardViewController.xib in Resources */,
 				098867E21BCF34D90068FB84 /* 分类图标@2x.png in Resources */,
+				FE2D7B9A1EA45955002F3169 /* FSShowImageCollectionViewController.xib in Resources */,
 				0C77305C1CE1C252005EB107 /* 优惠券-右@3x.png in Resources */,
 				0C961B5C1D9CAC27000B6AF6 /* 余额付款@3x.png in Resources */,
 				5260250D1C98F19900E452C9 /* 新品Icon.png in Resources */,
@@ -9627,6 +9676,7 @@
 				FEA20ED71E4F3ADD00FAD315 /* XFExpressDetailsViewController.xib in Resources */,
 				0CB2B4691CE2E9BB00E8F0BB /* 匿名未勾选.png in Resources */,
 				0C625F161CC4C3DD0052181A /* 地址展开.png in Resources */,
+				FE2D7B9F1EA45A10002F3169 /* FSShowImageCVCell.xib in Resources */,
 				09B2BE6F1BDDB4C100716B27 /* 组-2@3x.png in Resources */,
 				0C9D60591CE07DB8002362C0 /* 登陆-密码@2x.png in Resources */,
 				520354781C76B33000BD6F63 /* 第二步@3x.png in Resources */,
@@ -10126,6 +10176,7 @@
 				FECDE70F1E07C2C70083E11B /* UIColor+Extension.m in Sources */,
 				0C961B491D9CAAFA000B6AF6 /* MyOrderDetailsView.m in Sources */,
 				0CC11CA81CB4EC6E00E1E789 /* RemainingTimeCell.m in Sources */,
+				FE2D7B991EA45955002F3169 /* FSShowImageCollectionViewController.m in Sources */,
 				0C9F5B371CBCF6FF0003B01E /* MapView.m in Sources */,
 				FEE262C81E8B560B00A11E9B /* XFFloatButton.m in Sources */,
 				0CB2B4771CE30AF900E8F0BB /* OrderStateView.m in Sources */,
@@ -10179,6 +10230,7 @@
 				0CBA54BD1DE7D47C00378911 /* CostCell.m in Sources */,
 				E4818F281CC861310081E06C /* MyGroupViewController.m in Sources */,
 				FECDE7221E07C2C80083E11B /* FSBaseTableView.m in Sources */,
+				FE2D7B9E1EA45A10002F3169 /* FSShowImageCVCell.m in Sources */,
 				E4818FB81CC87CFE0081E06C /* HelpViewController.m in Sources */,
 				0969DC161BCDFE1700D98273 /* MMProgressHUDOverlayView.m in Sources */,
 			);
