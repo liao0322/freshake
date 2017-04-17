@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+
+@class FSMyShareModel;
+
 @interface FSShowImageCVCell : UICollectionViewCell
+
+@property (nonatomic) FSMyShareModel *model;
+
+@property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
+
+@property (nonatomic) void(^ToShareBlock)();
 
 @end

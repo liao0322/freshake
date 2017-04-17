@@ -24,7 +24,7 @@
 
 - (void)setModel:(FSMyShareModel *)model {
     _model = model;
-    [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:_model.productImg_url] placeholderImage:[UIImage imageNamed:@"placeholderimage"]];
+    [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:_model.productImg_url] placeholderImage:[UIImage imageNamed:@"listPlaceHolder-"]];
 
 }
 @end

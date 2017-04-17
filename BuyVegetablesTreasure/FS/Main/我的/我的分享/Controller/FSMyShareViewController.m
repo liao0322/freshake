@@ -33,7 +33,7 @@ static NSString * const MyShareCollectionCellID = @"MyShareCollectionCellID";
 static NSInteger const cols = 3;
 static CGFloat const margin = 2.5;
 #define itemW ((SCREEN_WIDTH - 10) - (cols - 1) * margin) / cols
-#define itemH 175
+#define itemH 213
 
 
 - (void)viewDidLoad {
@@ -92,23 +92,22 @@ static CGFloat const margin = 2.5;
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-//    return self.dataArray.count;
-    return 5;
+    return self.dataArray.count;
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-//    FSMyShareModel *model = self.dataArray[indexPath.row];
+    FSMyShareModel *model = self.dataArray[indexPath.row];
     FSMyShareCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:MyShareCollectionCellID forIndexPath:indexPath];
-//    cell.model = model;
+    cell.model = model;
     return cell;
 }
 
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-//    FSMyShareModel *model = self.dataArray[indexPath.row];
     FSShowImageCollectionViewController *showImageVC = [FSShowImageCollectionViewController new];
-    
+    showImageVC.imageDataArray = self.dataArray;
+    showImageVC.ImageRow = indexPath.row;
     showImageVC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
     [self presentViewController:showImageVC animated:NO completion:^{
         showImageVC.view.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5f];

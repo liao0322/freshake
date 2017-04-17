@@ -10,4 +10,7 @@
 
 @interface FSShowImageCollectionViewController : FSBaseViewController
 
+@property (nonatomic, copy) NSMutableArray *imageDataArray;
+@property (nonatomic, assign) NSInteger ImageRow;
+
 @end
