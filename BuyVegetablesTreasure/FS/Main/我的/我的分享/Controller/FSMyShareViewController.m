@@ -46,6 +46,10 @@ static CGFloat const margin = 2.5;
     [self requestDataFromNet];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+}
+
 - (void)initialize {
     [super initialize];
     self.title = @"我的分享";
@@ -64,6 +68,8 @@ static CGFloat const margin = 2.5;
 }
 
 - (void)requestDataFromNet {
+    [XFWaterWaveView showLoading];
+
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     self.uidString = [userDefaults objectForKey:@"UID"];
     
@@ -81,9 +87,11 @@ static CGFloat const margin = 2.5;
         }
         
         self.dataArray = dataArr;
-        NSLog(@"%@", self.dataArray);
         [self.collectionView reloadData];
+        [XFWaterWaveView dismissLoading];
     } failure:^(NSError *error, NSInteger statusCode) {
+        
+        [XFWaterWaveView dismissLoading];
         [self showInfoWidthError:error];
 
     }];

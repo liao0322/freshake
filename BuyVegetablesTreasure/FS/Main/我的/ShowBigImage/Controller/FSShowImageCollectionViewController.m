@@ -86,6 +86,7 @@ static NSString * const FSShowImageCVCellID = @"FSShowImageCVCellID";
 #pragma mark 友盟图片分享
 - (void)UMSocialShare:(NSInteger)index {
     FSMyShareModel *model = self.imageDataArray[index];
+    
     [UMSocialUIManager setPreDefinePlatforms:@[@(UMSocialPlatformType_QQ),@(UMSocialPlatformType_WechatSession), @(UMSocialPlatformType_WechatTimeLine), @(UMSocialPlatformType_Qzone)]];
     [UMSocialShareUIConfig shareInstance].shareTitleViewConfig.isShow = NO;
     [UMSocialShareUIConfig shareInstance].shareCancelControlConfig.isShow = NO;
