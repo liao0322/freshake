@@ -125,7 +125,7 @@ static NSString * const FSShowImageCVCellID = @"FSShowImageCVCellID";
                         UMSocialLogInfo(@"response data is %@",data);
                     }
                 }
-                //            [self alertWithError:error];
+                [self alertWithError:error];
             }];
             
         }];
@@ -133,6 +133,24 @@ static NSString * const FSShowImageCVCellID = @"FSShowImageCVCellID";
         
     }];
 
+}
+
+- (void)alertWithError:(NSError *)error
+{
+    NSString *result = nil;
+    if (!error) {
+        result = [NSString stringWithFormat:@"分享成功！"];
+    }
+    else{
+        result = [NSString stringWithFormat:@"分享失败！"];
+
+    }
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"分享"
+                                                    message:result
+                                                   delegate:nil
+                                          cancelButtonTitle:@"确定"
+                                          otherButtonTitles:nil];
+    [alert show];
 }
 
 - (void)setImageDataArray:(NSMutableArray *)imageDataArray {
